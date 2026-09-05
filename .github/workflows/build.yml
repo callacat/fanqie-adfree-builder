@@ -53,6 +53,24 @@ jobs:
           python3 scripts/patch_fanqie.py work/decoded \
             --report build/patch-report.md --diff build/smali-diff.patch
 
+      - name: L1 签名校验静态审计（方案 §3：只记录，不修改）
+        run: |
+          {
+            echo "# L1 签名校验调用点清单（静态 grep，只记录未修改）"
+            echo
+            for pat in 'GET_SIGNATURES' 'GET_SIGNING_CERTIFICATES' 'SigningInfo' \
+                       'getApkContentsSigners' 'getSigningCertificateHistory' 'toCharsString' \
+                       'signatures:\[Landroid/content/pm/Signature;'; do
+              n=$(grep -rl --include='*.smali' -F "$pat" work/decoded 2>/dev/null | wc -l)
+              nd=$(grep -rl --include='*.smali' -F "$pat" work/decoded 2>/dev/null | grep -c 'com/dragon/read/' || true)
+              echo "- $pat : 命中文件 $n 个（com/dragon/read 包内 $nd）"
+              grep -rl --include='*.smali' -F "$pat" work/decoded 2>/dev/null | grep 'com/dragon/read/' | head -20 | sed 's/^/    - /'
+            done
+            echo
+            echo "## 结论待人工判读：真自检（取签名→摘要→比较） vs 仅收集上报"
+          } > build/signature-l1-report.md
+          cat build/signature-l1-report.md
+
       - name: apktool b（只重建 dex）
         run: |
           cd work
@@ -98,7 +116,7 @@ jobs:
           mkdir -p out
           cp work/fanqie-73532-adfree-signed.apk out/
           cp work/verify.txt work/sha256.txt out/
-          cp build/patch-report.md build/smali-diff.patch out/
+          cp build/patch-report.md build/smali-diff.patch build/signature-l1-report.md out/
           if [ "${{ steps.sign.outputs.SOURCE }}" = "generated" ]; then
             cp work/codery.keystore out/keystore-first-run.keystore
             echo "⚠️ 首跑 keystore，请下载回填 repo secret（KEYSTORE_BASE64/KEYSTORE_PASSWORD/KEY_ALIAS/KEY_PASSWORD）" | tee out/KEYSTORE-README.txt
