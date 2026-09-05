@@ -1,0 +1,118 @@
+name: fanqie-adfree-build
+
+# 番茄免费小说 7.3.5.32 去广告重打包（仅供东哥本地个人研究，不分发）
+# 版权红线：样本 APK / 解码树严禁提交进仓库，仅存在于 runner 运行时磁盘与 artifacts（retention 3 天）
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout（仓库仅 workflow+脚本）
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: 下载 apktool 3.0.3
+        run: |
+          curl -sSL -o /usr/local/bin/apktool.jar \
+            https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar
+          java -jar /usr/local/bin/apktool.jar --version
+
+      - name: Setup build-tools（zipalign/apksigner）
+        run: |
+          curl -sSL -o /tmp/bt.zip https://dl.google.com/android/repository/build-tools_r34-linux.zip
+          unzip -q /tmp/bt.zip -d /tmp/bt
+          BT=$(echo /tmp/bt/android-*)
+          sudo cp "$BT"/zipalign "$BT"/apksigner /usr/local/bin/
+          sudo cp "$BT"/lib/* /usr/local/lib/ 2>/dev/null || true
+          chmod +x /usr/local/bin/zipalign /usr/local/bin/apksigner
+          zipalign 2>&1 | head -1 || true
+          apksigner --version
+
+      - name: 下载样本 APK + sha256 校验
+        run: |
+          mkdir -p work && cd work
+          URL='http://imtt.dd.qq.com/sjy.00022/sjy.00004/16891/apk/157697EB9A4BECC44C3527D1DE956FD2.apk?fsname=com.dragon.read_7.3.5.32.apk'
+          curl -sSL --retry 3 --retry-delay 5 -o sample.apk "$URL"
+          ls -la sample.apk
+          echo "38920f1892af7d3be47c2324be4a6925cb2272328e0300b9fd4279fcf460986f  sample.apk" | sha256sum -c -
+
+      - name: apktool d -r（不解资源，避开 ARSC 混淆雷区）
+        run: |
+          cd work
+          java -jar /usr/local/bin/apktool.jar d -r -f -o decoded sample.apk
+          find decoded -maxdepth 1 -type d -name 'smali*' | sort
+          find decoded -name '*.smali' | wc -l
+
+      - name: 运行 patch 脚本（方案 §2 点位表）
+        run: |
+          python3 scripts/patch_fanqie.py work/decoded \
+            --report build/patch-report.md --diff build/smali-diff.patch
+
+      - name: apktool b（只重建 dex）
+        run: |
+          cd work
+          java -jar /usr/local/bin/apktool.jar b -o rebuilt-unsigned.apk decoded
+          ls -la rebuilt-unsigned.apk
+
+      - name: zipalign -P 16
+        run: |
+          cd work
+          zipalign -P 16 -f 4 rebuilt-unsigned.apk aligned.apk
+
+      - name: 签名（secret keystore 优先，首跑生成并作为 artifact 吐出）
+        id: sign
+        run: |
+          cd work
+          KEYSTOREpass='${{ secrets.KEYSTORE_PASSWORD }}'
+          if [ -n "$KEYSTOREpass" ]; then
+            echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > codery.keystore
+            ALIAS='${{ secrets.KEY_ALIAS }}'
+            KEYPASS='${{ secrets.KEY_PASSWORD }}'
+            echo "SOURCE=secret" >> "$GITHUB_OUTPUT"
+          else
+            keytool -genkeypair -v -keystore codery.keystore -alias codery \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass codery2026 -keypass codery2026 \
+              -dname "CN=Codery Debug,O=Codery,C=CN"
+            ALIAS=codery
+            KEYPASS=codery2026
+            echo "SOURCE=generated" >> "$GITHUB_OUTPUT"
+          fi
+          apksigner sign --ks codery.keystore --ks-key-alias "$ALIAS" \
+            --ks-pass pass:"$KEYSTOREpass" --key-pass pass:"$KEYPASS" \
+            --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
+            --out fanqie-73532-adfree-signed.apk aligned.apk
+          apksigner verify --verbose fanqie-73532-adfree-signed.apk | tee verify.txt
+          sha256sum fanqie-73532-adfree-signed.apk | tee sha256.txt
+
+      - name: 整理产物清单
+        run: |
+          mkdir -p out
+          cp work/fanqie-73532-adfree-signed.apk out/
+          cp work/verify.txt work/sha256.txt out/
+          cp build/patch-report.md build/smali-diff.patch out/
+          if [ "${{ steps.sign.outputs.SOURCE }}" = "generated" ]; then
+            cp work/codery.keystore out/keystore-first-run.keystore
+            echo "⚠️ 首跑 keystore，请下载回填 repo secret（KEYSTORE_BASE64/KEYSTORE_PASSWORD/KEY_ALIAS/KEY_PASSWORD）" | tee out/KEYSTORE-README.txt
+            echo "KEYSTOREpass=codery2026" >> out/KEYSTORE-README.txt
+          fi
+          ls -la out/
+
+      - name: 上传 artifacts（retention 3 天）
+        uses: actions/upload-artifact@v4
+        with:
+          name: fanqie-adfree-${{ github.run_number }}
+          path: out/
+          retention-days: 3
+
+      - name: 清理样本与解码树（runner 磁盘收尾，防 fork 泄留）
+        if: always()
+        run: rm -rf work decoded build out
