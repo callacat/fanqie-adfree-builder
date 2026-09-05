@@ -25,11 +25,11 @@ jobs:
             https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar
           java -jar /usr/local/bin/apktool.jar --version
 
-      - name: Setup build-tools（zipalign/apksigner，workspace 内引用免 sudo）
+      - name: Setup build-tools 35（sdkmanager 安装，zipalign -P 需 r35+）
         run: |
-          curl -sSL -o /tmp/bt.zip https://dl.google.com/android/repository/build-tools_r35-linux.zip
-          mkdir -p tools && unzip -q /tmp/bt.zip -d tools
-          BT=$(echo tools/android-*)
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;35.0.0" > /dev/null
+          BT="$ANDROID_HOME/build-tools/35.0.0"
+          echo "BT=$BT" >> "$GITHUB_ENV"
           "$BT/zipalign" 2>&1 | head -1 || true
           "$BT/apksigner" --version
 
@@ -80,7 +80,6 @@ jobs:
       - name: zipalign -P 16
         run: |
           cd work
-          BT=$(echo ../tools/android-*)
           "$BT/zipalign" -P 16 -f 4 rebuilt-unsigned.apk aligned.apk
 
       - name: 签名（secret keystore 优先，首跑生成并作为 artifact 吐出）
@@ -103,7 +102,6 @@ jobs:
             KEYPASS=codery2026
             echo "SOURCE=generated" >> "$GITHUB_OUTPUT"
           fi
-          BT=$(echo ../tools/android-*)
           "$BT/apksigner" sign --ks codery.keystore --ks-key-alias "$ALIAS" \
             --ks-pass pass:"$KEYSTOREpass" --key-pass pass:"$KEYPASS" \
             --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
