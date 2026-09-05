@@ -25,16 +25,13 @@ jobs:
             https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar
           java -jar /usr/local/bin/apktool.jar --version
 
-      - name: Setup build-tools（zipalign/apksigner）
+      - name: Setup build-tools（zipalign/apksigner，workspace 内引用免 sudo）
         run: |
           curl -sSL -o /tmp/bt.zip https://dl.google.com/android/repository/build-tools_r34-linux.zip
-          unzip -q /tmp/bt.zip -d /tmp/bt
-          BT=$(echo /tmp/bt/android-*)
-          sudo cp "$BT"/zipalign "$BT"/apksigner /usr/local/bin/
-          sudo cp "$BT"/lib/* /usr/local/lib/ 2>/dev/null || true
-          chmod +x /usr/local/bin/zipalign /usr/local/bin/apksigner
-          zipalign 2>&1 | head -1 || true
-          apksigner --version
+          mkdir -p tools && unzip -q /tmp/bt.zip -d tools
+          BT=$(echo tools/android-*)
+          "$BT/zipalign" 2>&1 | head -1 || true
+          "$BT/apksigner" --version
 
       - name: 下载样本 APK + sha256 校验
         run: |
@@ -65,7 +62,8 @@ jobs:
       - name: zipalign -P 16
         run: |
           cd work
-          zipalign -P 16 -f 4 rebuilt-unsigned.apk aligned.apk
+          BT=$(echo ../tools/android-*)
+          "$BT/zipalign" -P 16 -f 4 rebuilt-unsigned.apk aligned.apk
 
       - name: 签名（secret keystore 优先，首跑生成并作为 artifact 吐出）
         id: sign
@@ -83,14 +81,16 @@ jobs:
               -storepass codery2026 -keypass codery2026 \
               -dname "CN=Codery Debug,O=Codery,C=CN"
             ALIAS=codery
+            KEYSTOREpass=codery2026
             KEYPASS=codery2026
             echo "SOURCE=generated" >> "$GITHUB_OUTPUT"
           fi
-          apksigner sign --ks codery.keystore --ks-key-alias "$ALIAS" \
+          BT=$(echo ../tools/android-*)
+          "$BT/apksigner" sign --ks codery.keystore --ks-key-alias "$ALIAS" \
             --ks-pass pass:"$KEYSTOREpass" --key-pass pass:"$KEYPASS" \
             --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
             --out fanqie-73532-adfree-signed.apk aligned.apk
-          apksigner verify --verbose fanqie-73532-adfree-signed.apk | tee verify.txt
+          "$BT/apksigner" verify --verbose fanqie-73532-adfree-signed.apk | tee verify.txt
           sha256sum fanqie-73532-adfree-signed.apk | tee sha256.txt
 
       - name: 整理产物清单
