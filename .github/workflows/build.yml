@@ -27,7 +27,7 @@ jobs:
 
       - name: Setup build-tools（zipalign/apksigner，workspace 内引用免 sudo）
         run: |
-          curl -sSL -o /tmp/bt.zip https://dl.google.com/android/repository/build-tools_r34-linux.zip
+          curl -sSL -o /tmp/bt.zip https://dl.google.com/android/repository/build-tools_r35-linux.zip
           mkdir -p tools && unzip -q /tmp/bt.zip -d tools
           BT=$(echo tools/android-*)
           "$BT/zipalign" 2>&1 | head -1 || true
