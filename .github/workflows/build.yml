@@ -37,6 +37,8 @@ jobs:
           "$BT/apksigner" --version
 
       - name: 下载样本 APK（Release tag=samples）+ sha256 校验
+        env:
+          GH_TOKEN: ${{ github.token }}   # gh CLI 读取 private Release 需要
         run: |
           mkdir -p work && cd work
           gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73332-arm64-orig.apk' -D .
