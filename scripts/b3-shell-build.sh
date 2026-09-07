@@ -1,154 +1,189 @@
 #!/usr/bin/env bash
-# B3 壳空转版构建脚本（Phase1：结构验证，无去广告 hook）
-# 复刻破解版 Tinker 壳结构：官方包藏 assets + 外层 dex 全量拷贝 + MuteApplicationStub + sourceDir 重定向
-# 用法: bash b3-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-1-signed.apk
+# B3 壳空转版构建脚本 v2（Phase1：结构验证，无去广告 hook）
+# 复刻破解版 Tinker 壳结构：官方包藏 assets/orgapk + MuteApplicationStub(sourceDir 重定向) + ContentProvider 空桩
+# 路线：apktool d -r → 注入 stub smali/改 manifest → apktool b（复用 v3/v4 验证过的重建路线）
+# 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-1-signed.apk
 set -euo pipefail
 W="$1"
 cd "$W"
-BT="/usr/local/lib/android/sdk/build-tools/35.0.0"
+BT="$ANDROID_HOME/build-tools/35.0.0"
+MUTE="com/dragon/read/mute"
 
-echo "=== [1/7] apktool 解官方底包（73332）==="
-java -jar /usr/local/bin/apktool.jar d -r -f -o official decoder-input.apk
+echo "=== [1/6] apktool d -r 解官方底包（73332）==="
+java -jar /usr/local/bin/apktool.jar d -r -f -o shell_src decoder-input.apk
+# 提取官方 application android:name（真实 MainApplication）
+REAL_APP=$(grep -oE '<application[^>]*android:name="[^"]*"' shell_src/AndroidManifest.xml | head -1 | sed -E 's/.*android:name="([^"]*)".*/\1/')
+echo "官方 application android:name = $REAL_APP"
+[ -n "$REAL_APP" ] || { echo "未取到官方 MainApplication"; exit 1; }
 
-echo "=== [2/7] 外层 dex = 官方 dex 全量拷贝 ==="
-mkdir -p shell/classes
-i=0
-for d in official/smali*/; do
-  : $((i++))
-done
-echo "smali 目录数: $i"
-# 拷贝官方 dex 进壳（作为外层 classes*.dex）
-mkdir -p shell/base
-cp -r official/* shell/base/ 2>/dev/null || true
+echo "=== [2/6] 写 MuteApplicationStub/MuteReplacer/MuteHookProvider smali ==="
+: "${REAL_APP:=com.dragon.read.app.MainApplication}"  # 兜底
+mkdir -p "shell_src/smali/$MUTE"
 
-echo "=== [3/7] 藏匿官方包 assets/orgapk ==="
-mkdir -p shell/assets
-cp decoder-input.apk shell/assets/orgapk
-ls -la shell/assets/
+cat > "shell_src/smali/$MUTE/MuteApplicationStub.smali" <<'SMALI'
+.class public Lcom/dragon/read/mute/MuteApplicationStub;
+.super Landroid/app/Application;
 
-echo "=== [4/7] MuteApplicationStub + sourceDir 重定向 ==="
-# 生成 Tinker/Mute 壳入口类（android:name 指向它，super=Tinker 兼容链）
-mkdir -p stubsrc/com/dragon/read/mute
-cat > stubsrc/com/dragon/read/mute/MuteApplicationStub.java <<'JAVA'
-package com.dragon.read.mute;
+.field private mReal:Landroid/app/Application;
 
-import android.app.Application;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Build;
+.method protected attachBaseContext(Landroid/content/Context;)V
+    .locals 2
+    invoke-static {p1}, Lcom/dragon/read/mute/MuteReplacer;->redirect(Landroid/content/Context;)V
+    const-string v0, "__REAL_APP__"
+    invoke-static {v0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+    move-result-object v0
+    invoke-virtual {v0}, Ljava/lang/Class;->newInstance()Ljava/lang/Object;
+    move-result-object v0
+    check-cast v0, Landroid/app/Application;
+    invoke-virtual {v0, p1}, Landroid/app/Application;->attachBaseContext(Landroid/content/Context;)V
+    iput-object v0, p0, Lcom/dragon/read/mute/MuteApplicationStub;->mReal:Landroid/app/Application;
+    invoke-super {p0, p1}, Landroid/app/Application;->attachBaseContext(Landroid/content/Context;)V
+    return-void
+.end method
 
-public class MuteApplicationStub extends Application {
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MuteReplacer mod = new MuteReplacer();
-        mod.redirectSourceDir(base);
-    }
+.method public onCreate()V
+    .locals 1
+    iget-object v0, p0, Lcom/dragon/read/mute/MuteApplicationStub;->mReal:Landroid/app/Application;
+    invoke-virtual {v0}, Landroid/app/Application;->onCreate()V
+    invoke-super {}, Landroid/app/Application;->onCreate()V
+    return-void
+.end method
+SMALI
+# 替换真实 MainApplication 类名
+sed -i "s|__REAL_APP__|$REAL_APP|" "shell_src/smali/$MUTE/MuteApplicationStub.smali"
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        // Phase1 空转：无 hook，仅结构验证
-    }
-}
-JAVA
-cat > stubsrc/com/dragon/read/mute/MuteReplacer.java <<'JAVA'
-package com.dragon.read.mute;
+cat > "shell_src/smali/$MUTE/MuteReplacer.smali" <<'SMALI'
+.class public Lcom/dragon/read/mute/MuteReplacer;
+.super Ljava/lang/Object;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import java.io.File;
-import java.io.InputStream;
-import java.io.FileOutputStream;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipEntry;
+.method public static redirect(Landroid/content/Context;)V
+    .locals 6
+    :try_start_0
+    # v0 = getFilesDir()
+    invoke-virtual {p0}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+    move-result-object v0
+    # v1 = new File(v0, "orgapk")
+    new-instance v1, Ljava/io/File;
+    const-string v2, "orgapk"
+    invoke-direct {v1, v0, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+    invoke-virtual {v1}, Ljava/io/File;->mkdirs()Z
+    # v2 = new File(v1, "base.apk")   -- target
+    new-instance v2, Ljava/io/File;
+    const-string v3, "base.apk"
+    invoke-direct {v2, v1, v3}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+    # if target.exists() -> copied
+    invoke-virtual {v2}, Ljava/io/File;->exists()Z
+    move-result v1
+    if-nez v1, :cond_copied
+    # v3 = assets.open("orgapk")
+    invoke-virtual {p0}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+    move-result-object v1
+    const-string v3, "orgapk"
+    invoke-virtual {v1, v3}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
+    move-result-object v3
+    # v4 = new FileOutputStream(v2)
+    new-instance v4, Ljava/io/FileOutputStream;
+    invoke-direct {v4, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+    # v5 = byte[16384]
+    const/16 v5, 0x4000
+    new-array v5, v5, [B
+    :cond_loop
+    # v0 = in.read(v5)
+    invoke-virtual {v3, v5}, Ljava/io/InputStream;->read([B)I
+    move-result v0
+    if-ltz v0, :cond_loop_done
+    # out.write(v5, 0, v0)
+    const/4 v1, 0x0
+    invoke-virtual {v4, v5, v1, v0}, Ljava/io/FileOutputStream;->write([BII)V
+    goto :cond_loop
+    :cond_loop_done
+    invoke-virtual {v4}, Ljava/io/FileOutputStream;->close()V
+    invoke-virtual {v3}, Ljava/io/InputStream;->close()V
+    :cond_copied
+    # ai.sourceDir = target.getAbsolutePath()（公有字段）
+    invoke-virtual {p0}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+    move-result-object v1
+    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+    move-result-object v3
+    iput-object v3, v1, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;
+    :try_end_0
+    return-void
+.end method
+SMALI
 
-public class MuteReplacer {
-    // 复刻破解版：把藏匿的官方包释放到 files 目录，重定向 sourceDir 使 native 读到官方字节
-    public void redirectSourceDir(Context base) {
-        try {
-            File outDir = new File(base.getFilesDir(), "orgapk");
-            outDir.mkdirs();
-            File target = new File(outDir, "base.apk");
-            if (!target.exists() || target.length() < 100_000_000) { // 不完整则重新释放
-                try (InputStream is = base.getAssets().open("orgapk");
-                     FileOutputStream fos = new FileOutputStream(target)) {
-                    byte[] buf = new byte[65536];
-                    int n;
-                    while ((n = is.read(buf)) > 0) fos.write(buf, 0, n);
-                    fos.flush();
-                }
-            }
-            if (Build.VERSION.SDK_INT >= 26) {
-                ApplicationInfo ai = base.getApplicationInfo();
-                // 反射修改 sourceDir/dataDir 指向释放的官方包
-                java.lang.reflect.Field f = ApplicationInfo.class.getDeclaredField("sourceDir");
-                f.setAccessible(true);
-                f.set(ai, target.getAbsolutePath());
-            }
-        } catch (Throwable t) {
-            android.util.Log.w("MuteReplacer", "redirect failed", t);
-        }
-    }
-}
-JAVA
+cat > "shell_src/smali/$MUTE/MuteHookProvider.smali" <<'SMALI'
+.class public Lcom/dragon/read/mute/MuteHookProvider;
+.super Landroid/content/ContentProvider;
 
-echo "=== [5/7] 编译 stub + 打成 classes.dex（d8）==="
-# 用 SDK d8 把 stub 编成 dex 并与官方 classes.dex 合并进壳
-mkdir -p compile
-javac -source 8 -target 8 -bootclasspath "$ANDROID_HOME/platforms/android-30/android.jar" \
-  -d compile $(find stubsrc -name '*.java') 2>/dev/null || {
-    echo "javac 直编失败，退回：只放官方 classes.dex 进壳（stub 由 manifest 指向外层 dex）";
-    mkdir -p shell/classes
-    cp official/classes*.dex shell/classes/ 2>/dev/null || true
-  }
-if ls compile/com/dragon/read/mute/*.class >/dev/null 2>&1; then
-  mkdir -p shell/dexout
-  "$BT/d8" --lib "$ANDROID_HOME/platforms/android-30/android.jar" \
-    --output shell/dexout $(find compile -name '*.class') 2>&1 | tail -2 || true
-fi
+.method public onCreate()Z
+    .locals 1
+    invoke-virtual {p0}, Lcom/dragon/read/mute/MuteHookProvider;->getContext()Landroid/content/Context;
+    move-result-object v0
+    invoke-static {v0}, Lcom/dragon/read/mute/MuteReplacer;->redirect(Landroid/content/Context;)V
+    const/4 v0, 0x1
+    return v0
+.end method
 
-echo "=== [6/7] 组装壳 APK ==="
-mkdir -p shellout
-# 外层：官方包所有条目（去签名去原 manifest）+ 藏匿 orgapk + stub dex
-(
-  cd official
-  # 跳过 META-INF（签名）与 manifest（用壳的），其余全拷
-  find . -type f ! -path './META-INF/*' ! -name 'AndroidManifest.xml' | while read f; do
-    mkdir -p "../shellout/$(dirname "$f")"
-    cp "$f" "../shellout/$f"
-  done
-)
-# 藏匿与 stub dex 入壳
-cp -r shell/assets/* shellout/assets/ 2>/dev/null || true
-if ls shell/dexout/classes.dex >/dev/null 2>&1; then
-  # stub dex 与官方外层 classes*.dex 并存：壳 manifest 的 app 指向者必须在外层
-  cp official/classes.dex shellout/classes.dex
-fi
+.method public query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    .locals 1
+    const/4 v0, 0x0
+    return-object v0
+.end method
 
-# manifest：application android:name 指 MuteApplicationStub + 注册 ContentProvider（空桩）
-cat > shellout/AndroidManifest-overlay.xml <<'XML'
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-</manifest>
-XML
-echo "结构组装完成："
-find shellout -maxdepth 2 | head -20
+.method public getType(Landroid/net/Uri;)Ljava/lang/String;
+    .locals 1
+    const/4 v0, 0x0
+    return-object v0
+.end method
 
-echo "=== [7/7] 压缩 + zipalign + 签名 ==="
-cd shellout
-"$BT/aapt" package -f -M AndroidManifest.xml -S res -I "$ANDROID_HOME/platforms/android-30/android.jar" -F "$W/b3-unsigned.zip" 2>&1 | tail -3 || true
-cd "$W"
-"$BT/zipalign" -f -p 4 b3-unsigned.zip b3-aligned.zip
-# 用我们 keystore v1+v2+v3
+.method public insert(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    .locals 1
+    const/4 v0, 0x0
+    return-object v0
+.end method
+
+.method public delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
+    .locals 1
+    const/4 v0, 0x0
+    return v0
+.end method
+
+.method public update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    .locals 1
+    const/4 v0, 0x0
+    return v0
+.end method
+SMALI
+
+echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="
+MF="shell_src/AndroidManifest.xml"
+# Phase1 保留官方 application android:name（官方 MainApplication 正常跑，验「不崩/登录保留」）
+# 仅追加 MuteHookProvider ContentProvider（早启动 hook 载体，Phase2 注入去广告 hook）
+sed -i 's#</application>#    <provider android:name="com.dragon.read.mute.MuteHookProvider" android:authorities="com.dragon.read.mute.hook" android:exported="false" android:enabled="true" android:grantUriPermissions="false"/>\n</application>#' "$MF"
+grep -E "MuteHookProvider|application" "$MF" | head -4
+
+echo "=== [4/6] 藏匿官方包 assets/orgapk ==="
+mkdir -p shell_src/assets
+cp decoder-input.apk shell_src/assets/orgapk
+ls -la shell_src/assets/orgapk
+
+echo "=== [5/6] apktool b 重建（复用 v3/v4 验证路线）==="
+java -jar /usr/local/bin/apktool.jar b shell_src -o b3-unsigned.apk 2>&1 | tail -5
+ls -la b3-unsigned.apk
+
+echo "=== [6/6] zipalign + 签名（keystore v1+v2+v3）==="
+"$BT/zipalign" -f 4 b3-unsigned.apk b3-aligned.apk
 echo "$KEYSTORE_BASE64" | base64 -d > codery.keystore
 "$BT/apksigner" sign --ks codery.keystore --ks-key-alias codery --ks-pass pass:codery2026 --key-pass pass:codery2026 \
   --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
-  --out fanqie-b3-shell-1-signed.apk b3-aligned.zip
+  --out fanqie-b3-shell-1-signed.apk b3-aligned.apk
 "$BT/apksigner" verify --verbose fanqie-b3-shell-1-signed.apk | tee verify-b3.txt
 sha256sum fanqie-b3-shell-1-signed.apk | tee sha256-b3.txt
 
 echo "=== 自证 ==="
-unzip -l fanqie-b3-shell-1-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -5
+unzip -l fanqie-b3-shell-1-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6
+echo "--- ABI ---"
 unzip -l fanqie-b3-shell-1-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u
+echo "--- 壳类存在 ---"
+unzip -p fanqie-b3-shell-1-signed.apk classes.dex 2>/dev/null | strings | grep -E "MuteApplicationStub|MuteHookProvider" | head -3 || echo "(类在 apktool 重建的 dex 中，需 dex 内检查)"
 echo "DONE: fanqie-b3-shell-1-signed.apk"
