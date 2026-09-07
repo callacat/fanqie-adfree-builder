@@ -10,33 +10,20 @@ permissions:
 
 jobs:
   module:
-    # FanqieHook 模块 APK 构建（两底包共用）
+    # FanqieHook 模块：直接用方案验证的 v0.4.0 官方 release（dev.operit.fanqiehook）
+    # 注意：v6 首版误用 AoEiuV020/HookFanqie（6.5.5 时代同名不同项目），已纠正
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 10
     steps:
-      - name: Clone FanqieHook（上游 v0.4.0+）
-        run: git clone --depth 1 https://github.com/AoEiuV020/HookFanqie.git fanqiehook
-
-      - name: Setup JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
-
-      - name: gradle assembleRelease
-        working-directory: fanqiehook
-        run: |
-          chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace 2>&1 | tail -20
-
-      - name: 收集模块 APK（:hook buildDir 重定向在 build/.hook/outputs/apk/release，上游 CI 同款路径）
+      - name: 下载 FanqieHook v0.4.0 官方 release APK + sha256 校验
         run: |
           mkdir -p module-out
-          find fanqiehook/build -name "*.apk" -exec cp {} module-out/ \;
+          curl -sSL -o module-out/FanqieHook-v0.4.0-release.apk \
+            https://github.com/afwfv/FanqieHook/releases/download/v0.4.0/app-release.apk
+          echo "a7155cc416cf7fece197645e102361caec57a57de5a38f9d1b9d439e2b8580fa  module-out/FanqieHook-v0.4.0-release.apk" | sha256sum -c -
           ls -la module-out/
-          test -n "$(ls -A module-out)" || { echo "EMPTY module-out"; exit 1; }
 
-      - name: 上传模块 artifact（retention 3 天）
+      - name: 上传模块 artifact
         uses: actions/upload-artifact@v4
         with:
           name: fanqiehook-module-${{ github.run_number }}
