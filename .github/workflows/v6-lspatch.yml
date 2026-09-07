@@ -34,7 +34,6 @@ jobs:
           mkdir -p module-out
           find fanqiehook -path "*build/outputs/apk*" -name "*.apk" -exec cp {} module-out/ \;
           ls -la module-out/
-          ls -la module-out/
 
       - name: 上传模块 artifact（retention 3 天）
         uses: actions/upload-artifact@v4
