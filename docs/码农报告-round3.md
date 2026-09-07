@@ -27,11 +27,8 @@ v4 与 ACE5「不兼容」根因 = v4 基于 73532 应用宝样本（v7a-only 11
 - sha256：`cb561f23229ca42ad7c57c3f94efb5f1de531e57569767011635e06d2724dd6a`（Release 下载抽查）
 - ABI 抽查：`lib/arm64-v8a/` 唯一 ABI，117 so 完整（unzip -l 实测）——NO_MATCHING_ABIS 根因已除
 - verify.txt：Verifies，v1/v2/v3 全 true
-- Release：tag=v{run_number}（{链接}）
-- sha256：{回填}
-- ABI 抽查：{unzip -l 结果}
 
-## 5. patch report 摘要（P1/P2/P3 回读自证，run 完成后回填）
+## 5. patch report 摘要（P1/P2/P3 回读自证）
 
 **PATCHED 23 / SKIPPED 0 / NOT-FOUND 1**（NOT-FOUND 仅 #15 com.ss.android.update.ad 预期不存在）
 
