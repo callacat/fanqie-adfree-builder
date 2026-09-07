@@ -44,3 +44,17 @@ CI run：34141170862（build job success）｜ Release：**b3-shell**
 ACE5 装 `fanqie-b3-shell-1-signed.apk` → 验收：启动成功 / 不崩 / 无「不安全」弹窗 / 登录态保留。抓 logcat 看 `MuteReplacer`/`MuteHookProvider` 早启动日志。
 壳自签可能被检测风险已知悉（破解版同构实证大概率可过）。构建完即止，真机三测归老马。
 仅供东哥本地个人研究，不分发。
+
+---
+
+# round6b 追记（2026-09-08）：补无参构造器修复壳崩溃
+
+老马 ACE5 实测 b3-shell-1 启动即崩：`InstantiationException: Class<com.dragon.read.mute.MuteHookProvider> has no zero argument constructor`（smali 未写 `<init>` 就没有）。壳主体结构验证通过部分（MuteApplicationStub 入口正常/appComponentFactory 未劫持/orgapk 就位/v1v2v3）不动。
+
+修复（commit ecfc1f0）：MuteHookProvider/MuteApplicationStub/MuteReplacer 三类各补显式 `<init>`（同类坑一次排完，Stub 为 Phase2 切入口防再踩）。产物 `fanqie-b3-shell-2-signed.apk`（CI run 34170117603 全绿）。
+
+- sha256：`56e5fe4bcc05445c3d10f282a460efac8079b1d2e2ce9235b3cd6f666cf05081`（Release 下载抽查=CI 一致）
+- apksigner v1+v2+v3 全 true；纯 arm64-v8a；orgapk 藏匿在位（PK 头完整）；provider manifest 注册不变
+- Release b3-shell 追加 b3-shell-2 资产
+
+⚠️ 事故说明：第一次触发（run 34169648329）在 commit 推送前执行，跑的仍是旧脚本，且 softprops 重名替换使 **b3-shell-1 资产哈希变为 `285ee845…`**（同 v1 脚本重建版，功能等同；原 `20633e6a…` 文件已被覆盖）。修复版请用 **b3-shell-2**（`56e5fe4b…`）。
