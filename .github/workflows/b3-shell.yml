@@ -1,0 +1,73 @@
+name: fanqie-b3-shell
+
+# 路线B Phase1：Tinker 壳空转版（结构验证，无去广告 hook）
+# 复刻破解版：官方包藏 assets/orgapk + sourceDir 重定向（保官方签名）+ 外层 dex 全量拷贝
+# 仅供东哥本地个人研究，不分发。版权红线：官方包/产物不进 git，仅 runner 磁盘 + Release。
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Android SDK（platform-30 + build-tools 35）
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-30" "build-tools;35.0.0" > /dev/null
+          echo "BT=$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_ENV"
+
+      - name: 下载 apktool
+        run: |
+          curl -sSL -o /usr/local/bin/apktool.jar https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar
+          java -jar /usr/local/bin/apktool.jar --version
+
+      - name: 下载官方底包 + sha256 校验（73332 应用宝 arm64）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p work && cd work
+          gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73332-arm64-orig.apk' -D .
+          echo "dcd6dfd100340e0c67b04b4dada361d8734df083eab3811e6b091c267cbf0f12  fanqie-73332-arm64-orig.apk" | sha256sum -c -
+          cp fanqie-73332-arm64-orig.apk decoder-input.apk
+
+      - name: 运行壳构建脚本
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          ANDROID_HOME: $ANDROID_HOME
+        run: |
+          cd work
+          echo "$KEYSTORE_BASE64" | base64 -d > codery.keystore
+          bash ../scripts/b3-shell-build.sh "$PWD"
+
+      - name: 收集产物
+        run: |
+          mkdir -p out
+          cp work/fanqie-b3-shell-1-signed.apk work/verify-b3.txt work/sha256-b3.txt out/
+          ls -la out/
+
+      - name: 发布 Release b3-shell
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: b3-shell
+          name: 番茄 B3 壳空转版（结构验证，路线B Phase1）
+          body_path: work/sha256-b3.txt
+          files: |
+            out/fanqie-b3-shell-1-signed.apk
+            out/verify-b3.txt
+          fail_on_unmatched_files: true
+
+      - name: 清理版权物
+        if: always()
+        run: rm -rf work official shell shellout stubsrc compile
