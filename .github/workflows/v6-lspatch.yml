@@ -1,0 +1,225 @@
+name: fanqie-v6-lspatch
+
+# v6 路线A：LSPatch embed 官方底包 + FanqieHook 模块（sigBypass lv2 重定向）
+# 仅供东哥本地个人研究，不分发。版权红线：底包 APK/模块产物不进 git，仅 runner 磁盘 + Release。
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  module:
+    # FanqieHook 模块 APK 构建（两底包共用）
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Clone FanqieHook（上游 v0.4.0+）
+        run: git clone --depth 1 https://github.com/AoEiuV020/HookFanqie.git fanqiehook
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: gradle assembleRelease
+        working-directory: fanqiehook
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease --no-daemon --stacktrace 2>&1 | tail -20
+          find app/build/outputs/apk -name "*.apk" | head -5
+
+      - name: 收集模块 APK
+        run: |
+          mkdir -p module-out
+          find fanqiehook/app/build/outputs/apk -name "*release*.apk" -exec cp {} module-out/ \;
+          ls -la module-out/
+
+      - name: 上传模块 artifact（retention 3 天）
+        uses: actions/upload-artifact@v4
+        with:
+          name: fanqiehook-module-${{ github.run_number }}
+          path: module-out/
+          retention-days: 3
+
+  patch-alpha-73368:
+    # 底包α：73368 官方包（破解版 mod 内嵌的官方件，首选）
+    needs: module
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 21（LSPatch 建议版本）
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: 下载底包 + sha256 校验（inner-73368-orig.apk，来源=破解版抽出官方件，老马验证官方签名）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p work && cd work
+          gh release download samples -R "$GITHUB_REPOSITORY" -p 'inner-73368-orig.apk' -D .
+          echo "e60ef16eddaaf621b15b58b8fd131c75cf8601a50b9f651481de6b59b50d0655  inner-73368-orig.apk" | sha256sum -c -
+
+      - name: 下载模块 + LSPatch jar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd work
+          gh run download "${{ github.run_id }}" -R "$GITHUB_REPOSITORY" -n fanqiehook-module-${{ github.run_number }} -D module
+          MODULE_APK=$(find module -name "*.apk" | head -1)
+          cp "$MODULE_APK" fanqiehook-module.apk
+          # 活跃 fork JingMatrix v1.2（原仓 LSPosed/LSPatch 已归档）
+          curl -sSL -o lspatch.jar https://github.com/JingMatrix/LSPatch/releases/download/v1.2/lspatch-v1.2-487-release.jar
+          ls -la lspatch.jar fanqiehook-module.apk
+
+      - name: 下载我们 keystore（secrets 回填，保持与 v3/v5 同签名）
+        run: |
+          cd work
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > codery.keystore
+
+      - name: LSPatch embed 打包（-l 2 sigBypass + -m 模块 + -k 我们 keystore）
+        run: |
+          cd work
+          java -jar lspatch.jar inner-73368-orig.apk \
+            -m fanqiehook-module.apk \
+            -l 2 \
+            -k codery.keystore codery2026 codery codery2026 \
+            -f -v 2>&1 | tee lspatch-alpha.log
+          echo "=== modules loaded 确认 ==="
+          grep -iE "module|embed" lspatch-alpha.log | head -10
+          find . -name "*lspatched*.apk" | head -3
+
+      - name: 产物自证（ABI/verify/sha256）
+        run: |
+          cd work
+          OUT=$(find . -name "*lspatched*.apk" | head -1)
+          unzip -l "$OUT" | grep -oE "lib/[a-z0-9-]+/" | sort -u > abi.txt
+          cat abi.txt
+          unzip -l "$OUT" | grep -c "lib/arm64-v8a/" || true
+          unzip -l "$OUT" | grep -E "assets/lspatch/(origin.apk|loader.dex|modules/)" | head -5
+          cp "$OUT" fanqie-73368-adfree-v6-signed.apk
+          apksigner_path=$(echo /usr/local/lib/android/sdk/build-tools/*/apksigner | head -1)
+          "$apksigner_path" verify --verbose fanqie-73368-adfree-v6-signed.apk | tee verify-alpha.txt || true
+          sha256sum fanqie-73368-adfree-v6-signed.apk | tee sha256-alpha.txt
+
+      - name: 上传 artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: v6-alpha-73368-${{ github.run_number }}
+          path: |
+            work/fanqie-73368-adfree-v6-signed.apk
+            work/verify-alpha.txt
+            work/sha256-alpha.txt
+            work/abi.txt
+            work/lspatch-alpha.log
+          retention-days: 3
+
+      - name: 发布 Release v6b
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v6b
+          name: 番茄 v6b · LSPatch 73368 底包（路线A试水）
+          body_path: work/sha256-alpha.txt
+          files: |
+            work/fanqie-73368-adfree-v6-signed.apk
+            work/verify-alpha.txt
+          fail_on_unmatched_files: true
+
+      - name: 清理版权物
+        if: always()
+        run: rm -rf work
+
+  patch-beta-73332:
+    # 底包β：73332 官方包（备选对照）
+    needs: module
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: 下载底包 + sha256 校验（fanqie-73332-arm64-orig.apk）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p work && cd work
+          gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73332-arm64-orig.apk' -D .
+          echo "dcd6dfd100340e0c67b04b4dada361d8734df083eab3811e6b091c267cbf0f12  fanqie-73332-arm64-orig.apk" | sha256sum -c -
+
+      - name: 下载模块 + LSPatch jar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd work
+          gh run download "${{ github.run_id }}" -R "$GITHUB_REPOSITORY" -n fanqiehook-module-${{ github.run_number }} -D module
+          MODULE_APK=$(find module -name "*.apk" | head -1)
+          cp "$MODULE_APK" fanqiehook-module.apk
+          curl -sSL -o lspatch.jar https://github.com/JingMatrix/LSPatch/releases/download/v1.2/lspatch-v1.2-487-release.jar
+          ls -la lspatch.jar fanqiehook-module.apk
+
+      - name: 下载 keystore
+        run: |
+          cd work
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > codery.keystore
+
+      - name: LSPatch embed 打包
+        run: |
+          cd work
+          java -jar lspatch.jar fanqie-73332-arm64-orig.apk \
+            -m fanqiehook-module.apk \
+            -l 2 \
+            -k codery.keystore codery2026 codery codery2026 \
+            -f -v 2>&1 | tee lspatch-beta.log
+          grep -iE "module|embed" lspatch-beta.log | head -10
+          find . -name "*lspatched*.apk" | head -3
+
+      - name: 产物自证
+        run: |
+          cd work
+          OUT=$(find . -name "*lspatched*.apk" | head -1)
+          unzip -l "$OUT" | grep -oE "lib/[a-z0-9-]+/" | sort -u > abi.txt
+          cat abi.txt
+          unzip -l "$OUT" | grep -E "assets/lspatch/(origin.apk|loader.dex|modules/)" | head -5
+          cp "$OUT" fanqie-73332-adfree-v6-signed.apk
+          apksigner_path=$(echo /usr/local/lib/android/sdk/build-tools/*/apksigner | head -1)
+          "$apksigner_path" verify --verbose fanqie-73332-adfree-v6-signed.apk | tee verify-beta.txt || true
+          sha256sum fanqie-73332-adfree-v6-signed.apk | tee sha256-beta.txt
+
+      - name: 上传 artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: v6-beta-73332-${{ github.run_number }}
+          path: |
+            work/fanqie-73332-adfree-v6-signed.apk
+            work/verify-beta.txt
+            work/sha256-beta.txt
+            work/abi.txt
+            work/lspatch-beta.log
+          retention-days: 3
+
+      - name: 发布 Release v6c
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v6c
+          name: 番茄 v6c · LSPatch 73332 底包（路线A对照）
+          body_path: work/sha256-beta.txt
+          files: |
+            work/fanqie-73332-adfree-v6-signed.apk
+            work/verify-beta.txt
+          fail_on_unmatched_files: true
+
+      - name: 清理版权物
+        if: always()
+        run: rm -rf work
