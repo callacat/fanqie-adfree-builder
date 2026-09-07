@@ -29,11 +29,12 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon --stacktrace 2>&1 | tail -20
 
-      - name: 收集模块 APK（:hook 子项目产物）
+      - name: 收集模块 APK（:hook buildDir 重定向在 build/.hook/outputs/apk/release，上游 CI 同款路径）
         run: |
           mkdir -p module-out
-          find fanqiehook -path "*build/outputs/apk*" -name "*.apk" -exec cp {} module-out/ \;
+          find fanqiehook/build -name "*.apk" -exec cp {} module-out/ \;
           ls -la module-out/
+          test -n "$(ls -A module-out)" || { echo "EMPTY module-out"; exit 1; }
 
       - name: 上传模块 artifact（retention 3 天）
         uses: actions/upload-artifact@v4
