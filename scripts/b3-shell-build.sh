@@ -11,10 +11,10 @@ MUTE="com/dragon/read/mute"
 
 echo "=== [1/6] apktool d -r 解官方底包（73332）==="
 java -jar /usr/local/bin/apktool.jar d -r -f -o shell_src decoder-input.apk
-# 提取官方 application android:name（真实 MainApplication）
-REAL_APP=$(grep -oE '<application[^>]*android:name="[^"]*"' shell_src/AndroidManifest.xml | head -1 | sed -E 's/.*android:name="([^"]*)".*/\1/')
+# 提取官方 application android:name（真实 MainApplication）；grep 用 || true 防 set -e 误杀
+REAL_APP=$(grep -oE '<application[^>]*>' shell_src/AndroidManifest.xml | head -1 | grep -oE 'android:name="[^"]*"' | head -1 | sed 's/android:name="//;s/"$//') || true
+REAL_APP="${REAL_APP:-com.dragon.read.app.MainApplication}"  # 兜底
 echo "官方 application android:name = $REAL_APP"
-[ -n "$REAL_APP" ] || { echo "未取到官方 MainApplication"; exit 1; }
 
 echo "=== [2/6] 写 MuteApplicationStub/MuteReplacer/MuteHookProvider smali ==="
 : "${REAL_APP:=com.dragon.read.app.MainApplication}"  # 兜底
