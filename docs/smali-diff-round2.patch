@@ -1,0 +1,59 @@
+diff --git a/smali_classes2/com/dragon/read/component/base/NsBaseNetworkDependImpl.smali b/smali_classes2/com/dragon/read/component/base/NsBaseNetworkDependImpl.smali
+index 7fa4e4b..37ed302 100644
+--- a/smali_classes2/com/dragon/read/component/base/NsBaseNetworkDependImpl.smali
++++ b/smali_classes2/com/dragon/read/component/base/NsBaseNetworkDependImpl.smali
+@@ -245,23 +245,8 @@
+ 
+ # virtual methods
+ .method public assertIllegalAccess()V
+-    .locals 2
+-
+-    .prologue
+-    .line 65536
+-    const v0, 0x7f0611dd
+-
+-    .line 65537
+-    .line 65538
+-    .line 65539
+-    const/4 v1, 0x1
+-
+-    .line 65540
+-    invoke-static {v0, v1}, Lcom/dragon/read/util/ToastUtils;->showCommonToastSafely(II)V
++    .locals 0
+ 
+-    .line 65541
+-    .line 65542
+-    .line 65543
+     return-void
+ .end method
+ 
+diff --git a/smali_classes21/com/dragon/read/base/depend/NsBaseNetworkDependImpl.smali b/smali_classes21/com/dragon/read/base/depend/NsBaseNetworkDependImpl.smali
+index dd85b49..dfd687a 100644
+--- a/smali_classes21/com/dragon/read/base/depend/NsBaseNetworkDependImpl.smali
++++ b/smali_classes21/com/dragon/read/base/depend/NsBaseNetworkDependImpl.smali
+@@ -87,11 +87,7 @@
+ 
+ # virtual methods
+ .method public assertIllegalAccess()V
+-    .locals 1
+-
+-    iget-object v0, p0, Lcom/dragon/read/base/depend/NsBaseNetworkDependImpl;->$$delegate_0:Lcom/dragon/read/base/depend/NsBaseNetworkDepend;
+-
+-    invoke-interface {v0}, Lcom/dragon/read/base/depend/NsBaseNetworkDepend;->assertIllegalAccess()V
++    .locals 0
+ 
+     return-void
+ .end method
+diff --git a/smali_classes21/com/dragon/read/util/NetReqUtil.smali b/smali_classes21/com/dragon/read/util/NetReqUtil.smali
+index a46957b..bbf23a8 100644
+--- a/smali_classes21/com/dragon/read/util/NetReqUtil.smali
++++ b/smali_classes21/com/dragon/read/util/NetReqUtil.smali
+@@ -808,7 +808,7 @@
+     .line 84213837
+     .line 84213838
+     :cond_1
+-    const/16 v0, 0x6e
++    const/16 v0, 0x7fff
+ 
+     .line 84213839
+     .line 84213840

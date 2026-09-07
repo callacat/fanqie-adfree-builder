@@ -1,0 +1,1560 @@
+--- smali_classes13/com/dragon/read/component/biz/impl/NsAdImpl.smali.orig
++++ smali_classes13/com/dragon/read/component/biz/impl/NsAdImpl.smali
+@@ -1582,31 +1582,6 @@
+ 
+ .method public canReaderVideoAdShow()Z
+-    .locals 3
+-
+-    .prologue
+-    .line 131072
+-    invoke-static {}, Lfe3/a;->d()Lfe3/a;
+-
+-    .line 131073
+-    .line 131074
+-    .line 131075
+-    move-result-object v0
+-
+-    .line 131076
+-    const-string v1, "video_reader_ad"
+-
+-    .line 131077
+-    .line 131078
+-    const/4 v2, 0x0
+-
+-    .line 131079
+-    invoke-virtual {v0, v1, v2}, Lfe3/a;->checkAdAvailable(Ljava/lang/String;Ljava/lang/String;)Z
+-
+-    .line 131080
+-    .line 131081
+-    .line 131082
+-    move-result v0
+-
+-    .line 131083
++    .locals 1
++    const/4 v0, 0x0
+     return v0
+ .end method
+@@ -3381,61 +3356,18 @@
+ .method public checkAdAvailable(Ljava/lang/String;Ljava/lang/String;)Z
+     .locals 1
+-
+-    .prologue
+-    .line 33685504
+-    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+-
+-    .line 33685505
+-    .line 33685506
+-    .line 33685507
+-    invoke-static {}, Lfe3/a;->d()Lfe3/a;
+-
+-    .line 33685508
+-    .line 33685509
+-    .line 33685510
+-    move-result-object v0
+-
+-    .line 33685511
+-    invoke-virtual {v0, p1, p2}, Lfe3/a;->checkAdAvailable(Ljava/lang/String;Ljava/lang/String;)Z
+-
+-    .line 33685512
+-    .line 33685513
+-    .line 33685514
+-    move-result p1
+-
+-    .line 33685515
+-    return p1
++    const/4 v0, 0x0
++    return v0
+ .end method
+ 
+ .method public checkCanShowTopViewInMainPage(Lcom/dragon/read/base/AbsActivity;)Z
+-    .locals 0
+-
+-    .prologue
+-    .line 16842752
+-    invoke-static {p1}, Lcom/dragon/read/ad/splash/BrandTopViewDisplayStrategy;->c(Lcom/dragon/read/base/AbsActivity;)Z
+-
+-    .line 16842753
+-    .line 16842754
+-    .line 16842755
+-    move-result p1
+-
+-    .line 16842756
+-    return p1
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
+ 
+ .method public checkCanShowTopViewInReader(Lcom/dragon/read/base/AbsActivity;Lcom/dragon/reader/lib/ReaderClient;Ljava/lang/String;)Z
+-    .locals 0
+-
+-    .prologue
+-    .line 50397184
+-    invoke-static {p1, p2, p3}, Lcom/dragon/read/ad/splash/BrandTopViewDisplayStrategy;->checkCanShowTopViewInReader(Lcom/dragon/read/base/AbsActivity;Lcom/dragon/reader/lib/ReaderClient;Ljava/lang/String;)Z
+-
+-    .line 50397185
+-    .line 50397186
+-    .line 50397187
+-    move-result p1
+-
+-    .line 50397188
+-    return p1
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
+ 
+@@ -6742,31 +6674,5 @@
+ .method public enableRequestAudioInfoFlowAd()Z
+     .locals 1
+-
+-    .prologue
+-    .line 131072
+-    sget-object v0, Lcom/dragon/read/ad/brickservice/BsAudioAdService;->IMPL:Lcom/dragon/read/ad/brickservice/BsAudioAdService;
+-
+-    .line 131073
+-    .line 131074
+-    if-eqz v0, :cond_0
+-
+-    .line 131075
+-    .line 131076
+-    invoke-interface {v0}, Lcom/dragon/read/ad/brickservice/BsAudioAdService;->enableRequestAudioInfoFlowAd()Z
+-
+-    .line 131077
+-    .line 131078
+-    .line 131079
+-    move-result v0
+-
+-    .line 131080
+-    goto :goto_0
+-
+-    .line 131081
+-    :cond_0
+     const/4 v0, 0x0
+-
+-    .line 131082
+-    :goto_0
+     return v0
+ .end method
+@@ -6774,31 +6680,5 @@
+ .method public enableRequestAudioPatchAd()Z
+     .locals 1
+-
+-    .prologue
+-    .line 131072
+-    sget-object v0, Lcom/dragon/read/ad/brickservice/BsAudioAdService;->IMPL:Lcom/dragon/read/ad/brickservice/BsAudioAdService;
+-
+-    .line 131073
+-    .line 131074
+-    if-eqz v0, :cond_0
+-
+-    .line 131075
+-    .line 131076
+-    invoke-interface {v0}, Lcom/dragon/read/ad/brickservice/BsAudioAdService;->enableRequestAudioPatchAd()Z
+-
+-    .line 131077
+-    .line 131078
+-    .line 131079
+-    move-result v0
+-
+-    .line 131080
+-    goto :goto_0
+-
+-    .line 131081
+-    :cond_0
+     const/4 v0, 0x0
+-
+-    .line 131082
+-    :goto_0
+     return v0
+ .end method
+@@ -21805,295 +21685,6 @@
+ 
+ .method public needReadFlowAdLine(Lcom/dragon/reader/lib/ReaderClient;)Z
+-    .locals 3
+-
+-    .prologue
+-    .line 17170432
++    .locals 1
+     const/4 v0, 0x0
+-
+-    .line 17170433
+-    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+-
+-    .line 17170434
+-    .line 17170435
+-    .line 17170436
+-    invoke-static {}, Lcom/dragon/read/reader/ad/ReaderAdManager;->inst()Lcom/dragon/read/reader/ad/ReaderAdManager;
+-
+-    .line 17170437
+-    .line 17170438
+-    .line 17170439
+-    move-result-object v1
+-
+-    .line 17170440
+-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+-
+-    .line 17170441
+-    .line 17170442
+-    .line 17170443
+-    invoke-static {}, Lcom/dragon/read/app/App;->context()Landroid/app/Application;
+-
+-    .line 17170444
+-    .line 17170445
+-    .line 17170446
+-    move-result-object v1
+-
+-    .line 17170447
+-    invoke-static {v1}, Lo70/a;->b(Landroid/content/Context;)Z
+-
+-    .line 17170448
+-    .line 17170449
+-    .line 17170450
+-    move-result v1
+-
+-    .line 17170451
+-    if-eqz v1, :cond_0
+-
+-    .line 17170452
+-    .line 17170453
+-    invoke-static {}, Lcom/dragon/read/util/DebugManager;->inst()Lcom/dragon/read/util/DebugManager;
+-
+-    .line 17170454
+-    .line 17170455
+-    .line 17170456
+-    move-result-object v1
+-
+-    .line 17170457
+-    invoke-virtual {v1}, Lcom/dragon/read/util/DebugManager;->isFreeAd()Z
+-
+-    .line 17170458
+-    .line 17170459
+-    .line 17170460
+-    move-result v1
+-
+-    .line 17170461
+-    if-eqz v1, :cond_0
+-
+-    .line 17170462
+-    .line 17170463
+-    sget-object p1, Lcom/dragon/read/reader/ad/ReaderAdManager;->sLog:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17170464
+-    .line 17170465
+-    const-string v1, "needReadFlowAdLine: \u8c03\u8bd5\u6a21\u5f0f\u4e0b\u6253\u5f00\u514d\u5e7f\u544a"
+-
+-    .line 17170466
+-    .line 17170467
+-    new-array v2, v0, [Ljava/lang/Object;
+-
+-    .line 17170468
+-    .line 17170469
+-    invoke-virtual {p1, v1, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17170470
+-    .line 17170471
+-    .line 17170472
+-    goto :goto_1
+-
+-    .line 17170473
+-    :cond_0
+-    sget-object v1, Lcom/dragon/read/component/biz/api/NsVipApi;->IMPL:Lcom/dragon/read/component/biz/api/NsVipApi;
+-
+-    .line 17170474
+-    .line 17170475
+-    invoke-interface {v1}, Lcom/dragon/read/component/biz/api/NsVipApi;->privilegeManager()Lcom/dragon/read/component/biz/api/manager/privilege/IPrivilegeManager;
+-
+-    .line 17170476
+-    .line 17170477
+-    .line 17170478
+-    move-result-object v1
+-
+-    .line 17170479
+-    invoke-virtual {p1}, Lcom/dragon/reader/lib/ReaderClient;->getBookProviderProxy()Lcom/dragon/reader/lib/datalevel/AbsBookProviderProxy;
+-
+-    .line 17170480
+-    .line 17170481
+-    .line 17170482
+-    move-result-object p1
+-
+-    .line 17170483
+-    iget-object p1, p1, Lcom/dragon/reader/lib/datalevel/AbsBookProviderProxy;->bookId:Ljava/lang/String;
+-
+-    .line 17170484
+-    .line 17170485
+-    invoke-interface {v1, p1}, Lcom/dragon/read/component/biz/api/manager/privilege/IPrivilegeManager;->isNoAd(Ljava/lang/String;)Z
+-
+-    .line 17170486
+-    .line 17170487
+-    .line 17170488
+-    move-result p1
+-
+-    .line 17170489
+-    if-nez p1, :cond_5
+-
+-    .line 17170490
+-    .line 17170491
+-    invoke-interface {v1}, Lcom/dragon/read/component/biz/api/manager/privilege/IPrivilegeManager;->hasNoAdFollAllScene()Z
+-
+-    .line 17170492
+-    .line 17170493
+-    .line 17170494
+-    move-result p1
+-
+-    .line 17170495
+-    if-nez p1, :cond_5
+-
+-    .line 17170496
+-    .line 17170497
+-    invoke-interface {v1}, Lcom/dragon/read/component/biz/api/manager/privilege/IPrivilegeManager;->hasNoAdPrivilege()Z
+-
+-    .line 17170498
+-    .line 17170499
+-    .line 17170500
+-    move-result p1
+-
+-    .line 17170501
+-    if-eqz p1, :cond_1
+-
+-    .line 17170502
+-    .line 17170503
+-    goto :goto_0
+-
+-    .line 17170504
+-    :cond_1
+-    sget-object p1, Lcom/dragon/read/NsCommonDepend;->IMPL:Lcom/dragon/read/NsCommonDepend;
+-
+-    .line 17170505
+-    .line 17170506
+-    invoke-interface {p1}, Lcom/dragon/read/NsCommonDepend;->basicFunctionMode()Lcom/dragon/read/component/interfaces/NsBasicFunctionMode;
+-
+-    .line 17170507
+-    .line 17170508
+-    .line 17170509
+-    move-result-object p1
+-
+-    .line 17170510
+-    invoke-interface {p1}, Lcom/dragon/read/component/interfaces/NsBasicFunctionMode;->isEnabled()Z
+-
+-    .line 17170511
+-    .line 17170512
+-    .line 17170513
+-    move-result p1
+-
+-    .line 17170514
+-    if-eqz p1, :cond_2
+-
+-    .line 17170515
+-    .line 17170516
+-    sget-object p1, Lcom/dragon/read/reader/ad/ReaderAdManager;->sLog:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17170517
+-    .line 17170518
+-    const-string v1, "needReadFlowAdLine: [\u6700\u5c0f\u5408\u89c4\u5fc5\u8981\u5f00\u5173]\u9605\u8bfb\u5668\u4e0d\u5c55\u793a\u5e7f\u544a"
+-
+-    .line 17170519
+-    .line 17170520
+-    new-array v2, v0, [Ljava/lang/Object;
+-
+-    .line 17170521
+-    .line 17170522
+-    invoke-virtual {p1, v1, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17170523
+-    .line 17170524
+-    .line 17170525
+-    goto :goto_1
+-
+-    .line 17170526
+-    :cond_2
+-    sget-object p1, Lcom/dragon/read/NsUtilsDepend;->IMPL:Lcom/dragon/read/NsUtilsDepend;
+-
+-    .line 17170527
+-    .line 17170528
+-    invoke-interface {p1}, Lcom/dragon/read/NsUtilsDepend;->isTeenModeEnabled()Z
+-
+-    .line 17170529
+-    .line 17170530
+-    .line 17170531
+-    move-result p1
+-
+-    .line 17170532
+-    if-eqz p1, :cond_3
+-
+-    .line 17170533
+-    .line 17170534
+-    sget-object p1, Lcom/dragon/read/reader/ad/ReaderAdManager;->sLog:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17170535
+-    .line 17170536
+-    const-string v1, "needReadFlowAdLine: [\u672a\u6210\u5e74\u6a21\u5f0f]\u9605\u8bfb\u5668\u4e0d\u5c55\u793a\u5e7f\u544a"
+-
+-    .line 17170537
+-    .line 17170538
+-    new-array v2, v0, [Ljava/lang/Object;
+-
+-    .line 17170539
+-    .line 17170540
+-    invoke-virtual {p1, v1, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17170541
+-    .line 17170542
+-    .line 17170543
+-    goto :goto_1
+-
+-    .line 17170544
+-    :cond_3
+-    invoke-static {}, Lcom/dragon/read/ad/util/AdUtil;->readerIsAdFree()Z
+-
+-    .line 17170545
+-    .line 17170546
+-    .line 17170547
+-    move-result p1
+-
+-    .line 17170548
+-    if-eqz p1, :cond_4
+-
+-    .line 17170549
+-    .line 17170550
+-    sget-object p1, Lcom/dragon/read/reader/ad/ReaderAdManager;->sLog:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17170551
+-    .line 17170552
+-    const-string v1, "needReadFlowAdLine: [\u4e66\u7c4d\u5e7f\u544a\u63a7\u5236\u5f00\u5173]\u9605\u8bfb\u5668\u4e0d\u5c55\u793a\u5e7f\u544a"
+-
+-    .line 17170553
+-    .line 17170554
+-    new-array v2, v0, [Ljava/lang/Object;
+-
+-    .line 17170555
+-    .line 17170556
+-    invoke-virtual {p1, v1, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17170557
+-    .line 17170558
+-    .line 17170559
+-    goto :goto_1
+-
+-    .line 17170560
+-    :cond_4
+-    const/4 v0, 0x1
+-
+-    .line 17170561
+-    goto :goto_1
+-
+-    .line 17170562
+-    :cond_5
+-    :goto_0
+-    sget-object p1, Lcom/dragon/read/reader/ad/ReaderAdManager;->sLog:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17170563
+-    .line 17170564
+-    const-string v1, "needReadFlowAdLine: \u514d\u5e7f\u544a\u6743\u76ca"
+-
+-    .line 17170565
+-    .line 17170566
+-    new-array v2, v0, [Ljava/lang/Object;
+-
+-    .line 17170567
+-    .line 17170568
+-    invoke-virtual {p1, v1, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17170569
+-    .line 17170570
+-    .line 17170571
+-    :goto_1
+     return v0
+ .end method
+@@ -29280,43 +28871,5 @@
+ 
+ .method public openOpeningScreenAdActivity(Landroid/content/Context;Lcom/dragon/read/report/PageRecorder;)V
+-    .locals 2
+-
+-    .prologue
+-    .line 33751040
+-    const/4 v0, 0x0
+-
+-    .line 33751041
+-    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+-
+-    .line 33751042
+-    .line 33751043
+-    .line 33751044
+-    new-instance v0, Landroid/content/Intent;
+-
+-    .line 33751045
+-    .line 33751046
+-    const-class v1, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;
+-
+-    .line 33751047
+-    .line 33751048
+-    invoke-direct {v0, p1, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+-
+-    .line 33751049
+-    .line 33751050
+-    .line 33751051
+-    const-string v1, "enter_from"
+-
+-    .line 33751052
+-    .line 33751053
+-    invoke-virtual {v0, v1, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+-
+-    .line 33751054
+-    .line 33751055
+-    .line 33751056
+-    invoke-virtual {p1, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+-
+-    .line 33751057
+-    .line 33751058
+-    .line 33751059
++    .locals 0
+     return-void
+ .end method
+--- smali_classes7/com/dragon/read/reader/ad/ReaderAdManager.smali.orig
++++ smali_classes7/com/dragon/read/reader/ad/ReaderAdManager.smali
+@@ -4576,29 +4576,7 @@
+ 
+ .method public canLoadAd(Ljava/lang/String;)Z
+-    .locals 2
+-
+-    .prologue
+-    .line 16908288
+-    invoke-static {}, Lfe3/a;->d()Lfe3/a;
+-
+-    .line 16908289
+-    .line 16908290
+-    .line 16908291
+-    move-result-object v0
+-
+-    .line 16908292
+-    const-string v1, "reader_ad_for_sati"
+-
+-    .line 16908293
+-    .line 16908294
+-    invoke-virtual {v0, v1, p1}, Lfe3/a;->checkAdAvailable(Ljava/lang/String;Ljava/lang/String;)Z
+-
+-    .line 16908295
+-    .line 16908296
+-    .line 16908297
+-    move-result p1
+-
+-    .line 16908298
+-    return p1
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
+ 
+@@ -7896,28 +7874,6 @@
+ .method public needInterceptFetchAd(Ljava/lang/String;)Z
+     .locals 1
+-
+-    .prologue
+-    .line 16908288
+-    sget-object v0, Lcom/dragon/read/component/audio/api/NsAudioModuleApi;->IMPL:Lcom/dragon/read/component/audio/api/NsAudioModuleApi;
+-
+-    .line 16908289
+-    .line 16908290
+-    invoke-interface {v0}, Lcom/dragon/read/component/audio/api/NsAudioModuleApi;->inspireApi()Luk3/e;
+-
+-    .line 16908291
+-    .line 16908292
+-    .line 16908293
+-    move-result-object v0
+-
+-    .line 16908294
+-    invoke-interface {v0, p1}, Luk3/e;->v0(Ljava/lang/String;)Z
+-
+-    .line 16908295
+-    .line 16908296
+-    .line 16908297
+-    move-result p1
+-
+-    .line 16908298
+-    return p1
++    const/4 v0, 0x1
++    return v0
+ .end method
+ 
+--- smali_classes20/com/dragon/read/ad/onestop/seriespause/impl/SeriesPauseAdImpl.smali.orig
++++ smali_classes20/com/dragon/read/ad/onestop/seriespause/impl/SeriesPauseAdImpl.smali
+@@ -103,145 +103,7 @@
+ # virtual methods
+ .method public canShowPauseAd(Lso4/h;)Z
+-    .locals 3
+-
+-    .prologue
+-    .line 17104896
+-    sget-object v0, Li73/b;->a:Li73/b;
+-
+-    .line 17104897
+-    .line 17104898
+-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+-
+-    .line 17104899
+-    .line 17104900
+-    .line 17104901
+-    invoke-static {}, Li73/b;->a()Z
+-
+-    .line 17104902
+-    .line 17104903
+-    .line 17104904
+-    move-result v0
+-
+-    .line 17104905
+-    const/4 v1, 0x0
+-
+-    .line 17104906
+-    if-nez v0, :cond_0
+-
+-    .line 17104907
+-    .line 17104908
+-    sget-object p1, Lcom/dragon/read/ad/onestop/seriespause/impl/SeriesPauseAdImpl;->sLog:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17104909
+-    .line 17104910
+-    const-string v0, "\u77ed\u5267\u6682\u505c\u5e7f\u544a\u5f00\u5173\u5173\u95ed\uff0c\u4e0d\u5c55\u793a\u77ed\u5267\u6682\u505c\u5e7f\u544a"
+-
+-    .line 17104911
+-    .line 17104912
+-    new-array v2, v1, [Ljava/lang/Object;
+-
+-    .line 17104913
+-    .line 17104914
+-    invoke-virtual {p1, v0, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17104915
+-    .line 17104916
+-    .line 17104917
+-    return v1
+-
+-    .line 17104918
+-    :cond_0
+-    if-eqz p1, :cond_1
+-
+-    .line 17104919
+-    .line 17104920
+-    invoke-interface {p1}, Lso4/h;->a()Lso4/f;
+-
+-    .line 17104921
+-    .line 17104922
+-    .line 17104923
+-    move-result-object p1
+-
+-    .line 17104924
+-    if-eqz p1, :cond_1
+-
+-    .line 17104925
+-    .line 17104926
+-    invoke-interface {p1}, Lso4/f;->n0()Lcom/dragon/read/component/shortvideo/data/saas/video/SaasVideoData;
+-
+-    .line 17104927
+-    .line 17104928
+-    .line 17104929
+-    move-result-object p1
+-
+-    .line 17104930
+-    if-eqz p1, :cond_1
+-
+-    .line 17104931
+-    .line 17104932
+-    iget-object p1, p1, Lcom/dragon/read/component/shortvideo/data/saas/video/SaasVideoData;->vid:Ljava/lang/String;
+-
+-    .line 17104933
+-    .line 17104934
+-    if-nez p1, :cond_2
+-
+-    .line 17104935
+-    .line 17104936
+-    :cond_1
+-    const-string p1, ""
+-
+-    .line 17104937
+-    .line 17104938
+-    :cond_2
+-    sget-object v0, Lv73/g;->a:Lv73/g;
+-
+-    .line 17104939
+-    .line 17104940
+-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+-
+-    .line 17104941
+-    .line 17104942
+-    .line 17104943
+-    sget-object v0, Lv73/g;->d:Ljava/util/HashMap;
+-
+-    .line 17104944
+-    .line 17104945
+-    invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+-
+-    .line 17104946
+-    .line 17104947
+-    .line 17104948
+-    move-result-object p1
+-
+-    .line 17104949
+-    if-eqz p1, :cond_3
+-
+-    .line 17104950
+-    .line 17104951
+-    sget-object p1, Lcom/dragon/read/ad/onestop/seriespause/impl/SeriesPauseAdImpl;->sLog:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17104952
+-    .line 17104953
+-    const-string v0, "\u5b58\u5728\u54c1\u724c\u78c1\u8d34\u5e7f\u544a\uff0c\u4e0d\u5c55\u793a\u77ed\u5267\u6682\u505c\u5e7f\u544a"
+-
+-    .line 17104954
+-    .line 17104955
+-    new-array v2, v1, [Ljava/lang/Object;
+-
+-    .line 17104956
+-    .line 17104957
+-    invoke-virtual {p1, v0, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17104958
+-    .line 17104959
+-    .line 17104960
+-    return v1
+-
+-    .line 17104961
+-    :cond_3
+-    const/4 p1, 0x1
+-
+-    .line 17104962
+-    return p1
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
+ 
+@@ -343,24 +205,5 @@
+ .method public enablePauseAd()Z
+     .locals 1
+-
+-    .prologue
+-    .line 131072
+-    sget-object v0, Li73/b;->a:Li73/b;
+-
+-    .line 131073
+-    .line 131074
+-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+-
+-    .line 131075
+-    .line 131076
+-    .line 131077
+-    invoke-static {}, Li73/b;->a()Z
+-
+-    .line 131078
+-    .line 131079
+-    .line 131080
+-    move-result v0
+-
+-    .line 131081
++    const/4 v0, 0x0
+     return v0
+ .end method
+--- smali_classes13/com/dragon/read/component/biz/impl/NsVipImpl.smali.orig
++++ smali_classes13/com/dragon/read/component/biz/impl/NsVipImpl.smali
+@@ -876,79 +876,6 @@
+ 
+ .method public canShowVipEntranceHere(Lcom/dragon/read/component/biz/api/data/VipEntrance;)Z
+-    .locals 2
+-
+-    .prologue
+-    .line 17039360
++    .locals 1
+     const/4 v0, 0x0
+-
+-    .line 17039361
+-    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+-
+-    .line 17039362
+-    .line 17039363
+-    .line 17039364
+-    sget-object v1, Lga4/m4;->a:Lga4/m4;
+-
+-    .line 17039365
+-    .line 17039366
+-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+-
+-    .line 17039367
+-    .line 17039368
+-    .line 17039369
+-    invoke-static {p1}, Lga4/m4;->a(Lcom/dragon/read/component/biz/api/data/VipEntrance;)Z
+-
+-    .line 17039370
+-    .line 17039371
+-    .line 17039372
+-    move-result p1
+-
+-    .line 17039373
+-    if-eqz p1, :cond_1
+-
+-    .line 17039374
+-    .line 17039375
+-    sget-object p1, Lcom/dragon/read/component/biz/impl/brickservice/BsInlandVipService;->IMPL:Lcom/dragon/read/component/biz/impl/brickservice/BsInlandVipService;
+-
+-    .line 17039376
+-    .line 17039377
+-    const/4 v1, 0x1
+-
+-    .line 17039378
+-    if-eqz p1, :cond_0
+-
+-    .line 17039379
+-    .line 17039380
+-    invoke-interface {p1}, Lcom/dragon/read/component/biz/impl/brickservice/BsInlandVipService;->isAvailable()Z
+-
+-    .line 17039381
+-    .line 17039382
+-    .line 17039383
+-    move-result p1
+-
+-    .line 17039384
+-    if-ne p1, v1, :cond_0
+-
+-    .line 17039385
+-    .line 17039386
+-    const/4 p1, 0x1
+-
+-    .line 17039387
+-    goto :goto_0
+-
+-    .line 17039388
+-    :cond_0
+-    const/4 p1, 0x0
+-
+-    .line 17039389
+-    :goto_0
+-    if-eqz p1, :cond_1
+-
+-    .line 17039390
+-    .line 17039391
+-    const/4 v0, 0x1
+-
+-    .line 17039392
+-    :cond_1
+     return v0
+ .end method
+@@ -956,20 +883,5 @@
+ .method public canShowVipEntranceInAd()Z
+     .locals 1
+-
+-    .prologue
+-    .line 65536
+-    sget-object v0, Lga4/r5;->a:Lga4/r5;
+-
+-    .line 65537
+-    .line 65538
+-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+-
+-    .line 65539
+-    .line 65540
+-    .line 65541
+-    sget-boolean v0, Lga4/r5;->h:Z
+-
+-    .line 65542
+-    .line 65543
++    const/4 v0, 0x0
+     return v0
+ .end method
+--- smali_classes7/com/dragon/read/reader/ad/experiment/ExperimentUtil.smali.orig
++++ smali_classes7/com/dragon/read/reader/ad/experiment/ExperimentUtil.smali
+@@ -2996,39 +2996,5 @@
+ .method public static p()Z
+     .locals 1
+-
+-    .prologue
+-    .line 131072
+-    sget-object v0, Lcom/dragon/read/component/biz/impl/absettings/AdAbSettingsHelper;->INSTANCE:Lcom/dragon/read/component/biz/impl/absettings/AdAbSettingsHelper;
+-
+-    .line 131073
+-    .line 131074
+-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+-
+-    .line 131075
+-    .line 131076
+-    .line 131077
+-    invoke-static {}, Lcom/dragon/read/component/biz/impl/absettings/AdAbSettingsHelper;->A()Lcom/dragon/read/base/ssconfig/model/SeriesAdConfig;
+-
+-    .line 131078
+-    .line 131079
+-    .line 131080
+-    move-result-object v0
+-
+-    .line 131081
+-    if-eqz v0, :cond_0
+-
+-    .line 131082
+-    .line 131083
+-    iget-boolean v0, v0, Lcom/dragon/read/base/ssconfig/model/SeriesAdConfig;->enableMultiSeriesFlowAd:Z
+-
+-    .line 131084
+-    .line 131085
+-    return v0
+-
+-    .line 131086
+-    :cond_0
+-    const/4 v0, 0x0
+-
+-    .line 131087
++    const/4 v0, 0x0
+     return v0
+ .end method
+@@ -3123,46 +3089,5 @@
+ .method public static q0()Z
+     .locals 1
+-
+-    .prologue
+-    .line 196608
+-    sget-object v0, Lcom/dragon/read/component/biz/api/NsAdApi;->IMPL:Lcom/dragon/read/component/biz/api/NsAdApi;
+-
+-    .line 196609
+-    .line 196610
+-    invoke-interface {v0}, Lcom/dragon/read/component/biz/api/NsAdApi;->getCommonAdConfig()Lcom/dragon/read/base/ssconfig/model/CommonAdConfig;
+-
+-    .line 196611
+-    .line 196612
+-    .line 196613
+-    move-result-object v0
+-
+-    .line 196614
+-    iget-object v0, v0, Lcom/dragon/read/base/ssconfig/model/CommonAdConfig;->shortSeriesAdConfig:Lcom/dragon/read/base/ssconfig/model/ShortSeriesAdConfig;
+-
+-    .line 196615
+-    .line 196616
+-    if-eqz v0, :cond_0
+-
+-    .line 196617
+-    .line 196618
+-    iget-object v0, v0, Lcom/dragon/read/base/ssconfig/model/ShortSeriesAdConfig;->shortSeriesLandscapeInsertAdConfig:Lcom/dragon/read/base/ssconfig/model/ShortSeriesLandscapeInsertAdConfig;
+-
+-    .line 196619
+-    .line 196620
+-    if-eqz v0, :cond_0
+-
+-    .line 196621
+-    .line 196622
+-    iget-boolean v0, v0, Lcom/dragon/read/base/ssconfig/model/ShortSeriesLandscapeInsertAdConfig;->landscapeInsertAdEnable:Z
+-
+-    .line 196623
+-    .line 196624
+-    return v0
+-
+-    .line 196625
+-    :cond_0
+-    const/4 v0, 0x0
+-
+-    .line 196626
++    const/4 v0, 0x0
+     return v0
+ .end method
+--- smali_classes20/com/dragon/read/ad/openingscreenad/OpeningScreenADActivity.smali.orig
++++ smali_classes20/com/dragon/read/ad/openingscreenad/OpeningScreenADActivity.smali
+@@ -1161,300 +1161,15 @@
+ 
+ .method public showBrandAdView(Landroid/view/View;)V
+-    .locals 4
+-
+-    .prologue
+-    .line 16973824
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->l:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 16973825
+-    .line 16973826
+-    const/4 v1, 0x1
+-
+-    .line 16973827
+-    new-array v1, v1, [Ljava/lang/Object;
+-
+-    .line 16973828
+-    .line 16973829
+-    const/4 v2, 0x0
+-
+-    .line 16973830
+-    aput-object p1, v1, v2
+-
+-    .line 16973831
+-    .line 16973832
+-    const-string v3, "[BrandSplashTrace][Step 11.2] \u70ed\u542f\u52a8\u5bb9\u5668\u5f00\u59cb\u6302\u8f7d\u666e\u901a\u54c1\u724c\u5f00\u5c4f View\uff0cview=%s"
+-
+-    .line 16973833
+-    .line 16973834
+-    invoke-virtual {v0, v3, v1}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 16973835
+-    .line 16973836
+-    .line 16973837
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->h:Landroid/view/View;
+-
+-    .line 16973838
+-    .line 16973839
+-    const/16 v1, 0x8
+-
+-    .line 16973840
+-    .line 16973841
+-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+-
+-    .line 16973842
+-    .line 16973843
+-    .line 16973844
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->b:Landroid/widget/FrameLayout;
+-
+-    .line 16973845
+-    .line 16973846
+-    invoke-virtual {v0, v2}, Landroid/widget/FrameLayout;->setVisibility(I)V
+-
+-    .line 16973847
+-    .line 16973848
+-    .line 16973849
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->b:Landroid/widget/FrameLayout;
+-
+-    .line 16973850
+-    .line 16973851
+-    invoke-virtual {v0, p1}, Landroid/widget/FrameLayout;->addView(Landroid/view/View;)V
+-
+-    .line 16973852
+-    .line 16973853
+-    .line 16973854
++    .locals 0
+     return-void
+ .end method
+ 
+ .method public showImcSplashView(Landroid/view/View;)V
+-    .locals 4
+-
+-    .prologue
+-    .line 17039360
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->l:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17039361
+-    .line 17039362
+-    const/4 v1, 0x1
+-
+-    .line 17039363
+-    new-array v1, v1, [Ljava/lang/Object;
+-
+-    .line 17039364
+-    .line 17039365
+-    const/4 v2, 0x0
+-
+-    .line 17039366
+-    aput-object p1, v1, v2
+-
+-    .line 17039367
+-    .line 17039368
+-    const-string v3, "[ImcSplashTrace][Step 12.2] OpeningScreenADActivity.showImcSplashView, add view to hot start container, view = %s"
+-
+-    .line 17039369
+-    .line 17039370
+-    invoke-virtual {v0, v3, v1}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17039371
+-    .line 17039372
+-    .line 17039373
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->h:Landroid/view/View;
+-
+-    .line 17039374
+-    .line 17039375
+-    const/16 v1, 0x8
+-
+-    .line 17039376
+-    .line 17039377
+-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+-
+-    .line 17039378
+-    .line 17039379
+-    .line 17039380
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->d:Landroid/widget/FrameLayout;
+-
+-    .line 17039381
+-    .line 17039382
+-    invoke-virtual {v0, v2}, Landroid/widget/FrameLayout;->setVisibility(I)V
+-
+-    .line 17039383
+-    .line 17039384
+-    .line 17039385
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->d:Landroid/widget/FrameLayout;
+-
+-    .line 17039386
+-    .line 17039387
+-    new-instance v1, Landroid/view/ViewGroup$LayoutParams;
+-
+-    .line 17039388
+-    .line 17039389
+-    const/4 v3, -0x1
+-
+-    .line 17039390
+-    invoke-direct {v1, v3, v3}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
+-
+-    .line 17039391
+-    .line 17039392
+-    .line 17039393
+-    invoke-virtual {v0, p1, v1}, Landroid/widget/FrameLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+-
+-    .line 17039394
+-    .line 17039395
+-    .line 17039396
+-    instance-of v0, p1, Lfd5/g;
+-
+-    .line 17039397
+-    .line 17039398
+-    if-eqz v0, :cond_0
+-
+-    .line 17039399
+-    .line 17039400
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->l:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17039401
+-    .line 17039402
+-    const-string v1, "[ImcSplashTrace][Step 12.3] OpeningScreenADActivity inject skip runner to IMC view"
+-
+-    .line 17039403
+-    .line 17039404
+-    new-array v2, v2, [Ljava/lang/Object;
+-
+-    .line 17039405
+-    .line 17039406
+-    invoke-virtual {v0, v1, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17039407
+-    .line 17039408
+-    .line 17039409
+-    check-cast p1, Lfd5/g;
+-
+-    .line 17039410
+-    .line 17039411
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->m:Lo83/c;
+-
+-    .line 17039412
+-    .line 17039413
+-    invoke-interface {p1, v0}, Lfd5/g;->setRunner(Ljava/lang/Runnable;)V
+-
+-    .line 17039414
+-    .line 17039415
+-    .line 17039416
+-    :cond_0
++    .locals 0
+     return-void
+ .end method
+ 
+ .method public showNaturalAdView(Landroid/view/View;)V
+-    .locals 4
+-
+-    .prologue
+-    .line 17039360
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->l:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17039361
+-    .line 17039362
+-    const/4 v1, 0x1
+-
+-    .line 17039363
+-    new-array v1, v1, [Ljava/lang/Object;
+-
+-    .line 17039364
+-    .line 17039365
+-    const/4 v2, 0x0
+-
+-    .line 17039366
+-    aput-object p1, v1, v2
+-
+-    .line 17039367
+-    .line 17039368
+-    const-string v3, "[NaturalSplashTrace][Step 10.2] OpeningScreenADActivity.showNaturalAdView, add view to hot start container, view = %s"
+-
+-    .line 17039369
+-    .line 17039370
+-    invoke-virtual {v0, v3, v1}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17039371
+-    .line 17039372
+-    .line 17039373
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->h:Landroid/view/View;
+-
+-    .line 17039374
+-    .line 17039375
+-    const/16 v1, 0x8
+-
+-    .line 17039376
+-    .line 17039377
+-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+-
+-    .line 17039378
+-    .line 17039379
+-    .line 17039380
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->c:Landroid/widget/FrameLayout;
+-
+-    .line 17039381
+-    .line 17039382
+-    invoke-virtual {v0, v2}, Landroid/widget/FrameLayout;->setVisibility(I)V
+-
+-    .line 17039383
+-    .line 17039384
+-    .line 17039385
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->c:Landroid/widget/FrameLayout;
+-
+-    .line 17039386
+-    .line 17039387
+-    new-instance v1, Landroid/view/ViewGroup$LayoutParams;
+-
+-    .line 17039388
+-    .line 17039389
+-    const/4 v3, -0x1
+-
+-    .line 17039390
+-    invoke-direct {v1, v3, v3}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
+-
+-    .line 17039391
+-    .line 17039392
+-    .line 17039393
+-    invoke-virtual {v0, p1, v1}, Landroid/widget/FrameLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+-
+-    .line 17039394
+-    .line 17039395
+-    .line 17039396
+-    instance-of v0, p1, Lav3/a;
+-
+-    .line 17039397
+-    .line 17039398
+-    if-eqz v0, :cond_0
+-
+-    .line 17039399
+-    .line 17039400
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->l:Lcom/dragon/read/base/util/AdLog;
+-
+-    .line 17039401
+-    .line 17039402
+-    const-string v1, "[NaturalSplashTrace][Step 10.3] OpeningScreenADActivity inject navigator task to natural splash view"
+-
+-    .line 17039403
+-    .line 17039404
+-    new-array v2, v2, [Ljava/lang/Object;
+-
+-    .line 17039405
+-    .line 17039406
+-    invoke-virtual {v0, v1, v2}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 17039407
+-    .line 17039408
+-    .line 17039409
+-    check-cast p1, Lav3/a;
+-
+-    .line 17039410
+-    .line 17039411
+-    iget-object v0, p0, Lcom/dragon/read/ad/openingscreenad/OpeningScreenADActivity;->m:Lo83/c;
+-
+-    .line 17039412
+-    .line 17039413
+-    invoke-interface {p1, v0}, Lav3/a;->setNavigatorTask(Ljava/lang/Runnable;)V
+-
+-    .line 17039414
+-    .line 17039415
+-    .line 17039416
+-    :cond_0
++    .locals 0
+     return-void
+ .end method
+--- smali_classes21/fe3/a.smali.orig
++++ smali_classes21/fe3/a.smali
+@@ -2806,297 +2806,6 @@
+ 
+ .method public final checkAdAvailable(Ljava/lang/String;Ljava/lang/String;)Z
+-    .locals 11
+-
+-    .prologue
+-    .line 33947648
+-    sget-object v0, Lcom/dragon/read/ad/util/UserRegionAdUtil;->INSTANCE:Lcom/dragon/read/ad/util/UserRegionAdUtil;
+-
+-    .line 33947649
+-    .line 33947650
+-    invoke-virtual {v0}, Lcom/dragon/read/ad/util/UserRegionAdUtil;->isGoogleMarket()Z
+-
+-    .line 33947651
+-    .line 33947652
+-    .line 33947653
+-    move-result v0
+-
+-    .line 33947654
+-    const/4 v1, 0x2
+-
+-    .line 33947655
+-    const-string v2, "AdConfigManager"
+-
+-    .line 33947656
+-    .line 33947657
+-    const-string v3, "cash"
+-
+-    .line 33947658
+-    .line 33947659
+-    const/4 v4, 0x1
+-
+-    .line 33947660
+-    const/4 v5, 0x0
+-
+-    .line 33947661
+-    if-eqz v0, :cond_0
+-
+-    .line 33947662
+-    .line 33947663
+-    new-array v0, v1, [Ljava/lang/Object;
+-
+-    .line 33947664
+-    .line 33947665
+-    aput-object p1, v0, v5
+-
+-    .line 33947666
+-    .line 33947667
+-    aput-object p2, v0, v4
+-
+-    .line 33947668
+-    .line 33947669
+-    const-string/jumbo p1, "\u547d\u4e2d\u9999\u6e2f\u6216\u6fb3\u95e8\u5224\u65ad\uff0c\u4e0d\u51fa\u5e7f\u544a\u3002position: %s, source: %s"
+-
+-    .line 33947670
+-    .line 33947671
+-    .line 33947672
+-    invoke-static {v3, v2, p1, v0}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 33947673
+-    .line 33947674
+-    .line 33947675
+-    return v5
+-
+-    .line 33947676
+-    :cond_0
+-    new-instance v0, Lfe3/c;
+-
+-    .line 33947677
+-    .line 33947678
+-    const/4 v0, 0x3
+-
+-    .line 33947679
+-    const/4 v6, 0x4
+-
+-    .line 33947680
+-    :try_start_0
+-    sget-object v7, Lcom/dragon/read/component/biz/api/NsAdApi;->IMPL:Lcom/dragon/read/component/biz/api/NsAdApi;
+-
+-    .line 33947681
+-    .line 33947682
+-    invoke-interface {v7}, Lcom/dragon/read/component/biz/api/NsAdApi;->getAdConfigModel()Lcom/dragon/read/base/ssconfig/model/AdConfigModel;
+-
+-    .line 33947683
+-    .line 33947684
+-    .line 33947685
+-    move-result-object v7
+-
+-    .line 33947686
+-    if-eqz v7, :cond_2
+-
+-    .line 33947687
+-    .line 33947688
+-    iget-boolean v8, v7, Lcom/dragon/read/base/ssconfig/model/AdConfigModel;->isGlobalAdAvailable:Z
+-
+-    .line 33947689
+-    .line 33947690
+-    if-eqz v8, :cond_2
+-
+-    .line 33947691
+-    .line 33947692
+-    iget-object v7, v7, Lcom/dragon/read/base/ssconfig/model/AdConfigModel;->adAvailableConfig:Ljava/util/Map;
+-
+-    .line 33947693
+-    .line 33947694
+-    invoke-interface {v7, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+-
+-    .line 33947695
+-    .line 33947696
+-    .line 33947697
+-    move-result-object v7
+-
+-    .line 33947698
+-    check-cast v7, Lcom/dragon/read/base/ssconfig/model/AdConfigModel$AdAvailableConfig;
+-
+-    .line 33947699
+-    .line 33947700
+-    if-eqz v7, :cond_1
+-
+-    .line 33947701
+-    .line 33947702
+-    iget-boolean v8, v7, Lcom/dragon/read/base/ssconfig/model/AdConfigModel$AdAvailableConfig;->isEnabled:Z
+-
+-    .line 33947703
+-    .line 33947704
+-    goto :goto_0
+-
+-    .line 33947705
+-    :cond_1
+-    const/4 v8, 0x0
+-
+-    .line 33947706
+-    :goto_0
+-    invoke-static {p2}, Lcom/bytedance/common/utility/StringUtils;->isEmpty(Ljava/lang/String;)Z
+-
+-    .line 33947707
+-    .line 33947708
+-    .line 33947709
+-    move-result v9
+-
+-    .line 33947710
+-    if-nez v9, :cond_3
+-
+-    .line 33947711
+-    .line 33947712
+-    if-eqz v8, :cond_3
+-
+-    .line 33947713
+-    .line 33947714
+-    iget-object v7, v7, Lcom/dragon/read/base/ssconfig/model/AdConfigModel$AdAvailableConfig;->availableSources:Ljava/util/List;
+-
+-    .line 33947715
+-    .line 33947716
+-    invoke-interface {v7, p2}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+-
+-    .line 33947717
+-    .line 33947718
+-    .line 33947719
+-    move-result v7
+-
+-    .line 33947720
+-    if-nez v7, :cond_3
+-
+-    .line 33947721
+-    .line 33947722
+-    :cond_2
+-    const/4 v8, 0x0
+-
+-    .line 33947723
+-    :cond_3
+-    if-eqz v8, :cond_4
+-
+-    .line 33947724
+-    .line 33947725
+-    invoke-static {p1}, Lfe3/a;->b(Ljava/lang/String;)Z
+-
+-    .line 33947726
+-    .line 33947727
+-    .line 33947728
+-    move-result v7
+-
+-    .line 33947729
+-    if-eqz v7, :cond_4
+-
+-    .line 33947730
+-    .line 33947731
+-    invoke-static {p1}, Lfe3/a;->e(Ljava/lang/String;)Z
+-
+-    .line 33947732
+-    .line 33947733
+-    .line 33947734
+-    move-result v7
+-
+-    .line 33947735
+-    if-eqz v7, :cond_4
+-
+-    .line 33947736
+-    .line 33947737
+-    const/4 v7, 0x1
+-
+-    .line 33947738
+-    goto :goto_1
+-
+-    .line 33947739
+-    :cond_4
+-    const/4 v7, 0x0
+-
+-    .line 33947740
+-    :goto_1
+-    const-string v8, "%1s %2s %3s checkAdAvailable result: %4s"
+-
+-    .line 33947741
+-    .line 33947742
+-    new-array v9, v6, [Ljava/lang/Object;
+-
+-    .line 33947743
+-    .line 33947744
+-    aput-object v2, v9, v5
+-
+-    .line 33947745
+-    .line 33947746
+-    aput-object p1, v9, v4
+-
+-    .line 33947747
+-    .line 33947748
+-    aput-object p2, v9, v1
+-
+-    .line 33947749
+-    .line 33947750
+-    invoke-static {v7}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+-
+-    .line 33947751
+-    .line 33947752
+-    .line 33947753
+-    move-result-object v10
+-
+-    .line 33947754
+-    aput-object v10, v9, v0
+-
+-    .line 33947755
+-    .line 33947756
+-    invoke-static {v3, v8, v9}, Lcom/dragon/read/base/util/LogWrapper;->i(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+-    :try_end_0
+-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+-
+-    .line 33947757
+-    .line 33947758
+-    .line 33947759
+-    move v5, v7
+-
+-    .line 33947760
+-    goto :goto_2
+-
+-    .line 33947761
+-    :catch_0
+-    move-exception v7
+-
+-    .line 33947762
+-    new-array v6, v6, [Ljava/lang/Object;
+-
+-    .line 33947763
+-    .line 33947764
+-    aput-object v2, v6, v5
+-
+-    .line 33947765
+-    .line 33947766
+-    aput-object p1, v6, v4
+-
+-    .line 33947767
+-    .line 33947768
+-    aput-object p2, v6, v1
+-
+-    .line 33947769
+-    .line 33947770
+-    invoke-virtual {v7}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+-
+-    .line 33947771
+-    .line 33947772
+-    .line 33947773
+-    move-result-object p1
+-
+-    .line 33947774
+-    aput-object p1, v6, v0
+-
+-    .line 33947775
+-    .line 33947776
+-    const-string p1, "%1s %2s %3s checkAdAvailable error: %4s"
+-
+-    .line 33947777
+-    .line 33947778
+-    invoke-static {v3, p1, v6}, Lcom/dragon/read/base/util/LogWrapper;->i(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+-
+-    .line 33947779
+-    .line 33947780
+-    .line 33947781
+-    :goto_2
+-    return v5
++    .locals 1
++    const/4 v0, 0x0
++    return v0
+ .end method
