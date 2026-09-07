@@ -6,8 +6,9 @@
 set -eu
 W="$1"
 cd "$W"
-ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
-BT=$(ls -d "$ANDROID_HOME"/build-tools/* 2>/dev/null | sort -V | tail -1)
+# 优先用 workflow 注入的 BT（v5/v6 同款 sdkmanager 路径）；空则 glob 兜底
+BT="${BT:-$(ls -d "${ANDROID_HOME:-/usr/local/lib/android/sdk}"/build-tools/* 2>/dev/null | sort -V | tail -1)}"
+echo "BT=$BT"
 MUTE="com/dragon/read/mute"
 
 echo "=== [1/6] apktool d 解官方底包（73332，BT=$BT）==="
