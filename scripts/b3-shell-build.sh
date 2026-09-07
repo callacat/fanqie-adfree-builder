@@ -6,10 +6,11 @@
 set -eu
 W="$1"
 cd "$W"
-BT="$ANDROID_HOME/build-tools/35.0.0"
+ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+BT=$(ls -d "$ANDROID_HOME"/build-tools/* 2>/dev/null | sort -V | tail -1)
 MUTE="com/dragon/read/mute"
 
-echo "=== [1/6] apktool d -r 解官方底包（73332）==="
+echo "=== [1/6] apktool d 解官方底包（73332，BT=$BT）==="
 java -jar /usr/local/bin/apktool.jar d -f -o shell_src decoder-input.apk
 # 提取官方 application android:name（真实 MainApplication）；grep 用 || true 防 set -e 误杀
 REAL_APP=$(grep -oE '<application[^>]*>' shell_src/AndroidManifest.xml | head -1 | grep -oE 'android:name="[^"]*"' | head -1 | sed 's/android:name="//;s/"$//') || true
