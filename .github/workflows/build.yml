@@ -36,13 +36,13 @@ jobs:
           "$BT/zipalign" 2>&1 | head -1 || true
           "$BT/apksigner" --version
 
-      - name: 下载样本 APK + sha256 校验
+      - name: 下载样本 APK（Release tag=samples）+ sha256 校验
         run: |
           mkdir -p work && cd work
-          URL='http://imtt.dd.qq.com/sjy.00022/sjy.00004/16891/apk/157697EB9A4BECC44C3527D1DE956FD2.apk?fsname=com.dragon.read_7.3.5.32.apk'
-          curl -sSL --retry 3 --retry-delay 5 -o sample.apk "$URL"
-          ls -la sample.apk
-          echo "38920f1892af7d3be47c2324be4a6925cb2272328e0300b9fd4279fcf460986f  sample.apk" | sha256sum -c -
+          gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73332-arm64-orig.apk' -D .
+          ls -la fanqie-73332-arm64-orig.apk
+          echo "dcd6dfd100340e0c67b04b4dada361d8734df083eab3811e6b091c267cbf0f12  fanqie-73332-arm64-orig.apk" | sha256sum -c -
+          mv fanqie-73332-arm64-orig.apk sample.apk
 
       - name: apktool d -r（不解资源，避开 ARSC 混淆雷区）
         run: |
@@ -108,14 +108,14 @@ jobs:
           "$BT/apksigner" sign --ks codery.keystore --ks-key-alias "$ALIAS" \
             --ks-pass pass:"$KEYSTOREpass" --key-pass pass:"$KEYPASS" \
             --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
-            --out fanqie-73532-adfree-signed.apk aligned.apk
-          "$BT/apksigner" verify --verbose fanqie-73532-adfree-signed.apk | tee verify.txt
-          sha256sum fanqie-73532-adfree-signed.apk | tee sha256.txt
+            --out fanqie-73332-adfree-v5-signed.apk aligned.apk
+          "$BT/apksigner" verify --verbose fanqie-73332-adfree-v5-signed.apk | tee verify.txt
+          sha256sum fanqie-73332-adfree-v5-signed.apk | tee sha256.txt
 
       - name: 整理产物清单
         run: |
           mkdir -p out
-          cp work/fanqie-73532-adfree-signed.apk out/
+          cp work/fanqie-73332-adfree-v5-signed.apk out/
           cp work/verify.txt work/sha256.txt out/
           cp build/patch-report.md build/smali-diff.patch build/signature-l1-report.md out/
           if [ "${{ steps.sign.outputs.SOURCE }}" = "generated" ]; then
@@ -139,7 +139,7 @@ jobs:
           name: fanqie-adfree build #${{ github.run_number }}
           body_path: work/sha256.txt
           files: |
-            out/fanqie-73532-adfree-signed.apk
+            out/fanqie-73332-adfree-v5-signed.apk
             out/verify.txt
             out/patch-report.md
           fail_on_unmatched_files: true

@@ -71,10 +71,25 @@ TARGETS = [
      r"Landroid/view/View;", "V", "void"),
     ("14", "com/dragon/read/ad/openingscreenad/OpeningScreenADActivity", "showNaturalAdView",
      r"Landroid/view/View;", "V", "void"),
+    # ── 「当前版本不安全」弹窗修复（修复蓝图-不安全弹窗.md §2/§5，v4 起常驻）────
+    # P1：Toast 治本（cjw 文案 + ToastUtils.showCommonToastSafely）。73532=classes2，73332=classes2。
+    ("P1", "com/dragon/read/component/base/NsBaseNetworkDependImpl", "assertIllegalAccess",
+     r"", "V", "void"),
+    # P2：Kotlin delegate 层双保险（$$delegate_0 + invoke-interface）。73532/73332 均 classes21。
+    ("P2", "com/dragon/read/base/depend/NsBaseNetworkDependImpl", "assertIllegalAccess",
+     r"", "V", "void"),
 ]
 
 NSAD_CONFIG_IFACE = "Lcom/dragon/read/ad/manager/NsAdConfigManagerApi;"   # §2#9 反查
 UPDATE_AD_DIR = "com/ss/android/update/ad"                                # §2#15（预期不存在）
+
+# ── const_override 型点位（蓝图 P3：只改一行常量，不动方法体结构）────────────
+# (点位号, 类路径, 方法名regex, 旧常量行, 新常量行, 说明)
+CONST_OVERRIDES = [
+    ("P3", "com/dragon/read/util/NetReqUtil", r"doAfterDeserialization",
+     "const/16 v0, 0x6e", "const/16 v0, 0x7fff",
+     "业务 code=110 分支 → 永不命中（0x7fff），阻断 assertIllegalAccess 调用；其余 code 分支零扰动"),
+]
 
 
 def find_class_file(smali_roots, class_path):
@@ -134,7 +149,35 @@ def make_replacement(sig_line, kind):
 class Patcher:
     def __init__(self):
         self.snapshot = {}   # relpath → 原始全文（首个修改前留底，供 diff）
-        self.results = []    # (§2行, 类/文件, 方法, 状态, 详情)
+        self.results = []    # (点位行, 类/文件, 方法, 状态, 详情)
+        self._co_row = ""    # const_override 当前点位号（由调用方设置）
+
+    def process_const_override(self, path, rel, method_re, old_line, new_line, note):
+        """const_override 型点位：类内 method_re 匹配的方法区间里，把 old_line
+        （strip 后全等匹配）替换为 new_line，保留原缩进。只动常量行，结构零扰动。
+        返回是否命中。"""
+        raw = path.read_text(encoding="utf-8")
+        lines = raw.splitlines(keepends=True)
+        touched = False
+        for (start, end) in scan_methods(lines):
+            sig = parse_method_sig(lines[start])
+            if sig is None or re.search(method_re, sig[1]) is None:
+                continue
+            hits = [i for i in range(start + 1, end) if lines[i].strip() == old_line]
+            if not hits:
+                continue
+            if rel not in self.snapshot:
+                self.snapshot[rel] = raw
+            for i in hits:
+                indent = lines[i][:len(lines[i]) - len(lines[i].lstrip())]
+                lines[i] = indent + new_line + "\n"
+            self.results.append((self._co_row, rel, sig[1], "PATCHED",
+                                 "%s：%d 处 %s → %s（%s）"
+                                 % (sig[1], len(hits), old_line, new_line, note)))
+            touched = True
+        if touched:
+            path.write_text("".join(lines), encoding="utf-8")
+        return touched
 
     def process_file(self, path, rel, targets):
         """对单文件按 targets 打点。反向遍历 method 区间，替换后前面区间下标不受影响。"""
@@ -238,6 +281,18 @@ def main():
             for f in sorted(d.glob("*.smali")):
                 patcher.process_file(f, str(f.relative_to(root)),
                                      [("15", "k", r"", "Z", "false")])
+
+    # ── 弹窗修复 const_override 点位（蓝图 P3 等）
+    for (row, cls, method_re, old_line, new_line, note) in CONST_OVERRIDES:
+        patcher._co_row = row
+        f = find_class_file(smali_roots, cls)
+        if f is None:
+            patcher.results.append((row, cls, method_re, "NOT-FOUND-CLASS", "全部 smali 目录无此类"))
+            continue
+        rel = str(f.relative_to(root))
+        if not patcher.process_const_override(f, rel, method_re, old_line, new_line, note):
+            patcher.results.append((row, rel, method_re, "NOT-FOUND-METHOD",
+                                    "无方法 %s 内含常量行 %s" % (method_re, old_line)))
 
     # ── 报告
     out_report = Path(args.report)
