@@ -58,6 +58,11 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Setup build-tools 35（apksigner/zipalign，v5 同款）
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;35.0.0" > /dev/null
+          echo "BT=$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_ENV"
+
       - name: 下载底包 + sha256 校验（inner-73368-orig.apk，来源=破解版抽出官方件，老马验证官方签名）
         env:
           GH_TOKEN: ${{ github.token }}
@@ -66,17 +71,20 @@ jobs:
           gh release download samples -R "$GITHUB_REPOSITORY" -p 'inner-73368-orig.apk' -D .
           echo "e60ef16eddaaf621b15b58b8fd131c75cf8601a50b9f651481de6b59b50d0655  inner-73368-orig.apk" | sha256sum -c -
 
-      - name: 下载模块（官方 action，免 gh token 权限问题）
+      - name: 下载模块（官方 action，落到 module-dl/ 防与底包混淆）
         uses: actions/download-artifact@v4
         with:
           name: fanqiehook-module-${{ github.run_number }}
-          path: work
+          path: work/module-dl
 
       - name: 下载 LSPatch jar
         run: |
           cd work
-          MODULE_APK=$(find . -name "*.apk" -not -name "*lspatched*" | grep -v inner | head -1)
-          mv "$MODULE_APK" fanqiehook-module.apk
+          MODULE_APK=$(find module-dl -name "*.apk" | head -1)
+          test -n "$MODULE_APK" || { echo "module-dl 里没有 apk"; exit 1; }
+          SZ=$(stat -c%s "$MODULE_APK")
+          test "$SZ" -lt 52428800 || { echo "模块异常偏大($SZ)，疑似误选底包"; exit 1; }
+          cp "$MODULE_APK" fanqiehook-module.apk
           # 活跃 fork JingMatrix v1.2（原仓 LSPosed/LSPatch 已归档）
           curl -sSL -o lspatch.jar https://github.com/JingMatrix/LSPatch/releases/download/v1.2/lspatch-v1.2-487-release.jar
           ls -la lspatch.jar fanqiehook-module.apk
@@ -107,8 +115,7 @@ jobs:
           unzip -l "$OUT" | grep -c "lib/arm64-v8a/" || true
           unzip -l "$OUT" | grep -E "assets/lspatch/(origin.apk|loader.dex|modules/)" | head -5
           cp "$OUT" fanqie-73368-adfree-v6-signed.apk
-          apksigner_path=$(echo /usr/local/lib/android/sdk/build-tools/*/apksigner | head -1)
-          "$apksigner_path" verify --verbose fanqie-73368-adfree-v6-signed.apk | tee verify-alpha.txt || true
+          "$BT/apksigner" verify --verbose fanqie-73368-adfree-v6-signed.apk > verify-alpha.txt 2>&1 || { cat verify-alpha.txt; exit 1; }
           sha256sum fanqie-73368-adfree-v6-signed.apk | tee sha256-alpha.txt
 
       - name: 上传 artifacts
@@ -153,6 +160,11 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Setup build-tools 35（apksigner/zipalign，v5 同款）
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;35.0.0" > /dev/null
+          echo "BT=$ANDROID_HOME/build-tools/35.0.0" >> "$GITHUB_ENV"
+
       - name: 下载底包 + sha256 校验（fanqie-73332-arm64-orig.apk）
         env:
           GH_TOKEN: ${{ github.token }}
@@ -161,17 +173,20 @@ jobs:
           gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73332-arm64-orig.apk' -D .
           echo "dcd6dfd100340e0c67b04b4dada361d8734df083eab3811e6b091c267cbf0f12  fanqie-73332-arm64-orig.apk" | sha256sum -c -
 
-      - name: 下载模块（官方 action）
+      - name: 下载模块（官方 action，落到 module-dl/ 防与底包混淆）
         uses: actions/download-artifact@v4
         with:
           name: fanqiehook-module-${{ github.run_number }}
-          path: work
+          path: work/module-dl
 
       - name: 下载 LSPatch jar
         run: |
           cd work
-          MODULE_APK=$(find . -name "*.apk" -not -name "*lspatched*" | grep -v inner | head -1)
-          mv "$MODULE_APK" fanqiehook-module.apk
+          MODULE_APK=$(find module-dl -name "*.apk" | head -1)
+          test -n "$MODULE_APK" || { echo "module-dl 里没有 apk"; exit 1; }
+          SZ=$(stat -c%s "$MODULE_APK")
+          test "$SZ" -lt 52428800 || { echo "模块异常偏大($SZ)，疑似误选底包"; exit 1; }
+          cp "$MODULE_APK" fanqiehook-module.apk
           curl -sSL -o lspatch.jar https://github.com/JingMatrix/LSPatch/releases/download/v1.2/lspatch-v1.2-487-release.jar
           ls -la lspatch.jar fanqiehook-module.apk
 
@@ -199,8 +214,7 @@ jobs:
           cat abi.txt
           unzip -l "$OUT" | grep -E "assets/lspatch/(origin.apk|loader.dex|modules/)" | head -5
           cp "$OUT" fanqie-73332-adfree-v6-signed.apk
-          apksigner_path=$(echo /usr/local/lib/android/sdk/build-tools/*/apksigner | head -1)
-          "$apksigner_path" verify --verbose fanqie-73332-adfree-v6-signed.apk | tee verify-beta.txt || true
+          "$BT/apksigner" verify --verbose fanqie-73332-adfree-v6-signed.apk > verify-beta.txt 2>&1 || { cat verify-beta.txt; exit 1; }
           sha256sum fanqie-73332-adfree-v6-signed.apk | tee sha256-beta.txt
 
       - name: 上传 artifacts
