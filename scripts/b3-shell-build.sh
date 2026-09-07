@@ -2,7 +2,7 @@
 # B3 壳空转版构建脚本 v2（Phase1：结构验证，无去广告 hook）
 # 复刻破解版 Tinker 壳结构：官方包藏 assets/orgapk + MuteApplicationStub(sourceDir 重定向) + ContentProvider 空桩
 # 路线：apktool d -r → 注入 stub smali/改 manifest → apktool b（复用 v3/v4 验证过的重建路线）
-# 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-1-signed.apk
+# 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-2-signed.apk
 set -eu
 W="$1"
 cd "$W"
@@ -27,6 +27,12 @@ cat > "shell_src/smali/$MUTE/MuteApplicationStub.smali" <<'SMALI'
 .super Landroid/app/Application;
 
 .field private mReal:Landroid/app/Application;
+
+.method public constructor <init>()V
+    .locals 0
+    invoke-super {p0}, Landroid/app/Application;-><init>()V
+    return-void
+.end method
 
 .method protected attachBaseContext(Landroid/content/Context;)V
     .locals 2
@@ -57,6 +63,12 @@ sed -i "s|__REAL_APP__|$REAL_APP|" "shell_src/smali/$MUTE/MuteApplicationStub.sm
 cat > "shell_src/smali/$MUTE/MuteReplacer.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteReplacer;
 .super Ljava/lang/Object;
+
+.method public constructor <init>()V
+    .locals 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    return-void
+.end method
 
 .method public static redirect(Landroid/content/Context;)V
     .locals 6
@@ -116,6 +128,12 @@ SMALI
 cat > "shell_src/smali/$MUTE/MuteHookProvider.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteHookProvider;
 .super Landroid/content/ContentProvider;
+
+.method public constructor <init>()V
+    .locals 0
+    invoke-direct {p0}, Landroid/content/ContentProvider;-><init>()V
+    return-void
+.end method
 
 .method public onCreate()Z
     .locals 1
@@ -178,14 +196,14 @@ echo "=== [6/6] zipalign + 签名（keystore v1+v2+v3）==="
 echo "$KEYSTORE_BASE64" | base64 -d > codery.keystore
 "$BT/apksigner" sign --ks codery.keystore --ks-key-alias codery --ks-pass pass:codery2026 --key-pass pass:codery2026 \
   --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
-  --out fanqie-b3-shell-1-signed.apk b3-aligned.apk
-"$BT/apksigner" verify --verbose fanqie-b3-shell-1-signed.apk | tee verify-b3.txt
-sha256sum fanqie-b3-shell-1-signed.apk | tee sha256-b3.txt
+  --out fanqie-b3-shell-2-signed.apk b3-aligned.apk
+"$BT/apksigner" verify --verbose fanqie-b3-shell-2-signed.apk | tee verify-b3-2.txt
+sha256sum fanqie-b3-shell-2-signed.apk | tee sha256-b3-2.txt
 
 echo "=== 自证 ==="
-unzip -l fanqie-b3-shell-1-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6 || true
+unzip -l fanqie-b3-shell-2-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6 || true
 echo "--- ABI ---"
-unzip -l fanqie-b3-shell-1-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u || true
+unzip -l fanqie-b3-shell-2-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u || true
 echo "--- 壳类存在 ---"
-unzip -p fanqie-b3-shell-1-signed.apk classes.dex 2>/dev/null | strings | grep -E "MuteApplicationStub|MuteHookProvider" | head -3 || echo "(类在 apktool 重建的 dex 中，需 dex 内检查)"
-echo "DONE: fanqie-b3-shell-1-signed.apk"
+unzip -p fanqie-b3-shell-2-signed.apk classes.dex 2>/dev/null | strings | grep -E "MuteApplicationStub|MuteHookProvider" | head -3 || echo "(类在 apktool 重建的 dex 中，需 dex 内检查)"
+echo "DONE: fanqie-b3-shell-2-signed.apk"
