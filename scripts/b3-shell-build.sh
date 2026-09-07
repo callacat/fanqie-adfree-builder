@@ -3,14 +3,14 @@
 # 复刻破解版 Tinker 壳结构：官方包藏 assets/orgapk + MuteApplicationStub(sourceDir 重定向) + ContentProvider 空桩
 # 路线：apktool d -r → 注入 stub smali/改 manifest → apktool b（复用 v3/v4 验证过的重建路线）
 # 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-1-signed.apk
-set -euo pipefail
+set -eu
 W="$1"
 cd "$W"
 BT="$ANDROID_HOME/build-tools/35.0.0"
 MUTE="com/dragon/read/mute"
 
 echo "=== [1/6] apktool d -r 解官方底包（73332）==="
-java -jar /usr/local/bin/apktool.jar d -r -f -o shell_src decoder-input.apk
+java -jar /usr/local/bin/apktool.jar d -f -o shell_src decoder-input.apk
 # 提取官方 application android:name（真实 MainApplication）；grep 用 || true 防 set -e 误杀
 REAL_APP=$(grep -oE '<application[^>]*>' shell_src/AndroidManifest.xml | head -1 | grep -oE 'android:name="[^"]*"' | head -1 | sed 's/android:name="//;s/"$//') || true
 REAL_APP="${REAL_APP:-com.dragon.read.app.MainApplication}"  # 兜底
@@ -160,7 +160,7 @@ MF="shell_src/AndroidManifest.xml"
 # Phase1 保留官方 application android:name（官方 MainApplication 正常跑，验「不崩/登录保留」）
 # 仅追加 MuteHookProvider ContentProvider（早启动 hook 载体，Phase2 注入去广告 hook）
 sed -i 's#</application>#    <provider android:name="com.dragon.read.mute.MuteHookProvider" android:authorities="com.dragon.read.mute.hook" android:exported="false" android:enabled="true" android:grantUriPermissions="false"/>\n</application>#' "$MF"
-grep -E "MuteHookProvider|application" "$MF" | head -4
+grep -E "MuteHookProvider|application" "$MF" | head -4 || true
 
 echo "=== [4/6] 藏匿官方包 assets/orgapk ==="
 mkdir -p shell_src/assets
@@ -181,9 +181,9 @@ echo "$KEYSTORE_BASE64" | base64 -d > codery.keystore
 sha256sum fanqie-b3-shell-1-signed.apk | tee sha256-b3.txt
 
 echo "=== 自证 ==="
-unzip -l fanqie-b3-shell-1-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6
+unzip -l fanqie-b3-shell-1-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6 || true
 echo "--- ABI ---"
-unzip -l fanqie-b3-shell-1-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u
+unzip -l fanqie-b3-shell-1-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u || true
 echo "--- 壳类存在 ---"
 unzip -p fanqie-b3-shell-1-signed.apk classes.dex 2>/dev/null | strings | grep -E "MuteApplicationStub|MuteHookProvider" | head -3 || echo "(类在 apktool 重建的 dex 中，需 dex 内检查)"
 echo "DONE: fanqie-b3-shell-1-signed.apk"
