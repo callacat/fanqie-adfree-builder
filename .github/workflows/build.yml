@@ -5,6 +5,9 @@ name: fanqie-adfree-build
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write   # Release 发布需要（GITHUB_TOKEN 写 release/asset）
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -128,6 +131,18 @@ jobs:
           name: fanqie-adfree-${{ github.run_number }}
           path: out/
           retention-days: 3
+
+      - name: 发布到 Release（产物长期留存，private 仓仅协作者可下载）
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: fanqie-adfree build #${{ github.run_number }}
+          body_path: work/sha256.txt
+          files: |
+            out/fanqie-73532-adfree-signed.apk
+            out/verify.txt
+            out/patch-report.md
+          fail_on_unmatched_files: true
 
       - name: 清理样本与解码树（runner 磁盘收尾，防 fork 泄留）
         if: always()
