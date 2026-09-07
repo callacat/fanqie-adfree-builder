@@ -65,14 +65,17 @@ jobs:
           gh release download samples -R "$GITHUB_REPOSITORY" -p 'inner-73368-orig.apk' -D .
           echo "e60ef16eddaaf621b15b58b8fd131c75cf8601a50b9f651481de6b59b50d0655  inner-73368-orig.apk" | sha256sum -c -
 
-      - name: 下载模块 + LSPatch jar
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: 下载模块（官方 action，免 gh token 权限问题）
+        uses: actions/download-artifact@v4
+        with:
+          name: fanqiehook-module-${{ github.run_number }}
+          path: work
+
+      - name: 下载 LSPatch jar
         run: |
           cd work
-          gh run download "${{ github.run_id }}" -R "$GITHUB_REPOSITORY" -n fanqiehook-module-${{ github.run_number }} -D module
-          MODULE_APK=$(find module -name "*.apk" | head -1)
-          cp "$MODULE_APK" fanqiehook-module.apk
+          MODULE_APK=$(find . -name "*.apk" -not -name "*lspatched*" | grep -v inner | head -1)
+          mv "$MODULE_APK" fanqiehook-module.apk
           # 活跃 fork JingMatrix v1.2（原仓 LSPosed/LSPatch 已归档）
           curl -sSL -o lspatch.jar https://github.com/JingMatrix/LSPatch/releases/download/v1.2/lspatch-v1.2-487-release.jar
           ls -la lspatch.jar fanqiehook-module.apk
@@ -157,14 +160,17 @@ jobs:
           gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73332-arm64-orig.apk' -D .
           echo "dcd6dfd100340e0c67b04b4dada361d8734df083eab3811e6b091c267cbf0f12  fanqie-73332-arm64-orig.apk" | sha256sum -c -
 
-      - name: 下载模块 + LSPatch jar
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: 下载模块（官方 action）
+        uses: actions/download-artifact@v4
+        with:
+          name: fanqiehook-module-${{ github.run_number }}
+          path: work
+
+      - name: 下载 LSPatch jar
         run: |
           cd work
-          gh run download "${{ github.run_id }}" -R "$GITHUB_REPOSITORY" -n fanqiehook-module-${{ github.run_number }} -D module
-          MODULE_APK=$(find module -name "*.apk" | head -1)
-          cp "$MODULE_APK" fanqiehook-module.apk
+          MODULE_APK=$(find . -name "*.apk" -not -name "*lspatched*" | grep -v inner | head -1)
+          mv "$MODULE_APK" fanqiehook-module.apk
           curl -sSL -o lspatch.jar https://github.com/JingMatrix/LSPatch/releases/download/v1.2/lspatch-v1.2-487-release.jar
           ls -la lspatch.jar fanqiehook-module.apk
 
