@@ -18,6 +18,41 @@ REAL_APP=$(grep -oE '<application[^>]*>' shell_src/AndroidManifest.xml | head -1
 REAL_APP="${REAL_APP:-com.dragon.read.app.MainApplication}"  # 兜底
 echo "官方 application android:name = $REAL_APP"
 
+echo "=== [1.5/6] round7 recon：Mute loader 关键类摘录（含 mPatchSource/DirUtils/安全检查）==="
+dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
+  awk -v pat="$2" '/^\.method/ { inm = ($0 ~ pat) } inm { print } /^\.end method/ { if (inm) print "#----" }' "$1" 2>/dev/null | head -120
+}
+{
+  echo "## 文件定位"
+  find shell_src -path "*tinker*" \( -name "MuteMaxLoader.smali" -o -name "DirUtils*.smali" -o -name "MuteBooster*.smali" -o -name "MuteInstaller.smali" -o -name "KVManager*.smali" -o -name "MuteReplacer*.smali" \) | head -12
+  MM=$(find shell_src -path "*tinker*" -name "MuteMaxLoader.smali" | head -1)
+  echo; echo "## MuteMaxLoader=$MM"
+  echo "-- .field 声明 --"; [ -n "$MM" ] && grep -n "^\.field" "$MM" | head -30 || true
+  echo "-- 引用 mPatchSource 的行 --"; [ -n "$MM" ] && grep -n "mPatchSource" "$MM" | head -20 || true
+  DU=$(find shell_src -path "*tinker*" -name "DirUtils*.smali" | head -1)
+  echo; echo "## DirUtils=$DU"
+  if [ -n "$DU" ]; then
+    echo "-- getSourceApk --"; dump_method "$DU" "getSourceApk"
+    echo "-- getAlignApk --"; dump_method "$DU" "getAlignApk"
+    echo "-- 目录方法 --"; grep -nE "^\.method|const-string" "$DU" | grep -iE "dir|patch|path" | head -30
+  fi
+  MB=$(find shell_src -path "*tinker*" -name "MuteBooster*.smali" | head -1)
+  echo; echo "## MuteBooster=$MB"
+  [ -n "$MB" ] && dump_method "$MB" "submitSecurityCheck|verifyAPK|checkSign" | head -100 || true
+  KV=$(find shell_src -path "*tinker*" -name "KVManager*.smali" | head -1)
+  echo; echo "## KVManager=$KV 的 const-string 键"
+  [ -n "$KV" ] && grep -oE 'const-string [^"]*"[^"]{3,60}"' "$KV" | head -40 || true
+  SC=$(find shell_src -path "*tinker*" -name "ShareConstants.smali" | head -1)
+  echo; echo "## ShareConstants=$SC 目录常量"
+  [ -n "$SC" ] && grep -n "^\.field" "$SC" | grep -iE "dir|path|name|patch" | head -25 || true
+  MR=$(find shell_src -path "*tinker*" -name "MuteReplacer.smali" | head -1)
+  echo; echo "## 官方 MuteReplacer=$MR 方法清单"
+  [ -n "$MR" ] && grep -n "^\.method" "$MR" | head -15 || true
+  [ -n "$MR" ] && dump_method "$MR" "modifyAppInfo|verifyAPK|isDriverReady" | head -160 || true
+} | tee recon-report.txt
+echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
+if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
+
 echo "=== [2/6] 写 MuteApplicationStub/MuteReplacer/MuteHookProvider smali ==="
 : "${REAL_APP:=com.dragon.read.app.MainApplication}"  # 兜底
 mkdir -p "shell_src/smali/$MUTE"
