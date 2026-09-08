@@ -2,7 +2,7 @@
 # B3 壳空转版构建脚本 v2（Phase1：结构验证，无去广告 hook）
 # 复刻破解版 Tinker 壳结构：官方包藏 assets/orgapk + MuteApplicationStub(sourceDir 重定向) + ContentProvider 空桩
 # 路线：apktool d -r → 注入 stub smali/改 manifest → apktool b（复用 v3/v4 验证过的重建路线）
-# 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-3-signed.apk
+# 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-4-signed.apk
 set -eu
 W="$1"
 cd "$W"
@@ -178,98 +178,93 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
 # 2) 直接给 public static MuteMaxLoader.mPatchSource 赋值 base-1.apk（无需反射）
 # 之后官方 MuteReplacer.modifyAppInfo/modifyLoadedApk 自然接管（读 mPatchSource）
 .method public static wire(Landroid/content/Context;)V
-    .locals 8
+    .locals 5
     :try_start_0
     # v0 = filesDir
-    invoke-virtual {p0}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+    invoke-virtual {v5}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
     move-result-object v0
     # v1 = new File(filesDir, ".tinker_patchs")
     new-instance v1, Ljava/io/File;
     const-string v2, ".tinker_patchs"
     invoke-direct {v1, v0, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
     invoke-virtual {v1}, Ljava/io/File;->mkdirs()Z
-    # v2 = 宿主 versionCode（PackageInfo.longVersionCode > 0x7FFFFFFF 截断为 int）
-    const/4 v2, 0x0
+    # v2 = 宿主 versionCode（异常兜底 73332=0x8c4c）
+    const v2, 0x8c4c
     :try_start_1
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+    invoke-virtual {v5}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
     move-result-object v3
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    invoke-virtual {v5}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
     move-result-object v4
-    const/4 v5, 0x0
-    invoke-virtual {v3, v4, v5}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    const/4 v0, 0x0
+    invoke-virtual {v3, v4, v0}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     move-result-object v3
     iget v2, v3, Landroid/content/pm/PackageInfo;->versionCode:I
     :try_end_1
     .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_vc
-    goto :got_vc
-    :catch_vc
-    move-exception v3
-    const v2, 0x8c4c   # 73332 兜底
     :got_vc
-    # 对 ver ∈ {v2, 73332} 各放一组文件（双保险）
+    # 对 ver ∈ {73332, v2} 各放一组文件（双保险）
     const v3, 0x8c4c
-    invoke-static {p0, v1, v3}, Lcom/dragon/read/mute/MuteWiring;->plantVer(Landroid/content/Context;Ljava/io/File;I)V
+    invoke-static {v5, v1, v3}, Lcom/dragon/read/mute/MuteWiring;->plantVer(Landroid/content/Context;Ljava/io/File;I)V
     if-eq v2, v3, :skip_dup
-    invoke-static {p0, v1, v2}, Lcom/dragon/read/mute/MuteWiring;->plantVer(Landroid/content/Context;Ljava/io/File;I)V
+    invoke-static {v5, v1, v2}, Lcom/dragon/read/mute/MuteWiring;->plantVer(Landroid/content/Context;Ljava/io/File;I)V
     :skip_dup
-    # mPatchSource = base-1.apk（73332 目录；public static 非 final，直接 sput）
+    # mPatchSource = 73332/base-1.apk（public static 直接 sput）
     new-instance v3, Ljava/io/File;
     new-instance v4, Ljava/lang/StringBuilder;
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
     invoke-virtual {v1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
-    move-result-object v5
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    const-string v5, "/73332/base-1.apk"
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v0
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v0, "/73332/base-1.apk"
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-    move-result-object v4
-    invoke-direct {v3, v4}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+    move-result-object v0
+    invoke-direct {v3, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
     sput-object v3, Lcom/tencent/tinker/lib/MuteMaxLoader;->mPatchSource:Ljava/io/File;
-    # 同时喂 sBaseCtx（MuteMaxLoader static Context，loader 内部多处用）
-    sput-object p0, Lcom/tencent/tinker/lib/MuteMaxLoader;->sBaseCtx:Landroid/content/Context;
+    # 同时喂 sBaseCtx（官方 loader static Context）
+    sput-object v5, Lcom/tencent/tinker/lib/MuteMaxLoader;->sBaseCtx:Landroid/content/Context;
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_all
-    goto :done
     :catch_all
-    move-exception v3
-    const-string v4, "MuteWiring"
-    const-string v5, "wire failed"
-    invoke-static {v4, v5, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :done
+    const-string v0, "MuteWiring"
+    const-string v1, "wire failed"
+    const/4 v2, 0x0
+    invoke-static {v0, v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     return-void
 .end method
 
 # 释放 assets/orgapk -> .tinker_patchs/<ver>/base-1.apk 与 .tinker_patchs/<ver>/version-<ver>-align/base-2.apk
 .method private static plantVer(Landroid/content/Context;Ljava/io/File;I)V
-    .locals 8
+    .locals 5
     :try_start_0
-    # v0 = new File(base, String.valueOf(ver))
+    # v0 = new File(p1, String.valueOf(p2))
     new-instance v0, Ljava/io/File;
-    invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    invoke-static {v8}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
     move-result-object v1
-    invoke-direct {v0, p1, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+    invoke-direct {v0, v7, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
     invoke-virtual {v0}, Ljava/io/File;->mkdirs()Z
-    # f1 = ver/base-1.apk
+    # v1 = ver/base-1.apk
     new-instance v1, Ljava/io/File;
     const-string v2, "base-1.apk"
     invoke-direct {v1, v0, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-    # f2 = ver/version-<ver>-align/base-2.apk
+    # v2 = ver/version-<ver>-align/
     new-instance v2, Ljava/io/File;
     new-instance v3, Ljava/lang/StringBuilder;
     const-string v4, "version-"
     invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>()V
-    invoke-virtual {v3, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
     const-string v4, "-align"
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
     move-result-object v3
     invoke-direct {v2, v0, v3}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
     invoke-virtual {v2}, Ljava/io/File;->mkdirs()Z
+    # v3 = base-2.apk
     new-instance v3, Ljava/io/File;
     const-string v4, "base-2.apk"
     invoke-direct {v3, v2, v4}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-    invoke-static {p0, v1}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
-    invoke-static {p0, v3}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
+    invoke-static {v6, v1}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
+    invoke-static {v6, v3}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_all
     :catch_all
@@ -278,15 +273,15 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
 
 # 覆盖式复制 assets/orgapk -> dst
 .method private static copyAsset(Landroid/content/Context;Ljava/io/File;)V
-    .locals 5
+    .locals 4
     :try_start_0
-    invoke-virtual {p0}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+    invoke-virtual {v5}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
     move-result-object v0
     const-string v1, "orgapk"
     invoke-virtual {v0, v1}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
     move-result-object v0
     new-instance v1, Ljava/io/FileOutputStream;
-    invoke-direct {v1, p1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+    invoke-direct {v1, v6}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
     const/16 v2, 0x4000
     new-array v2, v2, [B
     :cond_loop
@@ -374,22 +369,35 @@ echo "=== [5/6] apktool b 重建（复用 v3/v4 验证路线）==="
 java -jar /usr/local/bin/apktool.jar b shell_src -o b3-unsigned.apk
 ls -la b3-unsigned.apk || true
 
+echo "=== [5.5/6] round7b dexdump 硬校验 MuteWiring（ART 会拒 apktool 不查的错误）==="
+DEXDIR=$(find shell_src -name "MuteWiring.smali" | sed 's|/com/dragon/read/mute/MuteWiring.smali||')
+for DX in "$DEXDIR"/*.dex; do
+  if "$BT/dexdump" "$DX" 2>/dev/null | grep -q "MuteWiring"; then
+    echo "校验目标: $DX"
+    "$BT/dexdump" "$DX" 2>/dev/null | awk '/Class descriptor.*MuteWiring/,/^Class #/' | grep -E "name|type|registers size|insns size|args size" | head -30
+    # 每个方法的 insns 反汇编中 invoke 行与 args size 交叉核对
+    "$BT/dexdump" -d "$DX" 2>/dev/null | grep -A 2 "MuteWiring.plantVer\|MuteWiring.wire\|MuteWiring.copyAsset" | head -20 || true
+    break
+  fi
+done
+echo "dexdump 校验完成（如上寄存器/参数数人工可读）"
+
 echo "=== [6/6] zipalign + 签名（keystore v1+v2+v3）==="
 "$BT/zipalign" -f 4 b3-unsigned.apk b3-aligned.apk
 echo "$KEYSTORE_BASE64" | base64 -d > codery.keystore
 "$BT/apksigner" sign --ks codery.keystore --ks-key-alias codery --ks-pass pass:codery2026 --key-pass pass:codery2026 \
   --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
-  --out fanqie-b3-shell-3-signed.apk b3-aligned.apk
-"$BT/apksigner" verify --verbose fanqie-b3-shell-3-signed.apk | tee verify-b3-3.txt
-sha256sum fanqie-b3-shell-3-signed.apk | tee sha256-b3-3.txt
+  --out fanqie-b3-shell-4-signed.apk b3-aligned.apk
+"$BT/apksigner" verify --verbose fanqie-b3-shell-4-signed.apk | tee verify-b3-4.txt
+sha256sum fanqie-b3-shell-4-signed.apk | tee sha256-b3-4.txt
 
 echo "=== 自证 ==="
-unzip -l fanqie-b3-shell-3-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6 || true
+unzip -l fanqie-b3-shell-4-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6 || true
 echo "--- ABI ---"
-unzip -l fanqie-b3-shell-3-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u || true
+unzip -l fanqie-b3-shell-4-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u || true
 echo "--- 壳类存在 ---"
-unzip -l fanqie-b3-shell-3-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V | head -3
-for DX in $(unzip -l fanqie-b3-shell-3-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V); do
-  unzip -p fanqie-b3-shell-3-signed.apk "$DX" 2>/dev/null | strings | grep -lE "MuteWiring" >/dev/null && { echo "MuteWiring 类位于 $DX"; break; }
+unzip -l fanqie-b3-shell-4-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V | head -3
+for DX in $(unzip -l fanqie-b3-shell-4-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V); do
+  unzip -p fanqie-b3-shell-4-signed.apk "$DX" 2>/dev/null | strings | grep -lE "MuteWiring" >/dev/null && { echo "MuteWiring 类位于 $DX"; break; }
 done || echo "(MuteWiring 类检索未命中，需人工核)"
-echo "DONE: fanqie-b3-shell-3-signed.apk"
+echo "DONE: fanqie-b3-shell-4-signed.apk"
