@@ -369,8 +369,8 @@ cp decoder-input.apk shell_src/assets/orgapk
 ls -la shell_src/assets/orgapk
 
 echo "=== [5/6] apktool b 重建（复用 v3/v4 验证路线）==="
-java -jar /usr/local/bin/apktool.jar b shell_src -o b3-unsigned.apk 2>&1 | tail -5
-ls -la b3-unsigned.apk
+java -jar /usr/local/bin/apktool.jar b shell_src -o b3-unsigned.apk
+ls -la b3-unsigned.apk || true
 
 echo "=== [6/6] zipalign + 签名（keystore v1+v2+v3）==="
 "$BT/zipalign" -f 4 b3-unsigned.apk b3-aligned.apk
