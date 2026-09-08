@@ -88,7 +88,7 @@ cat > "shell_src/smali/$MUTE/MuteApplicationStub.smali" <<'SMALI'
     .locals 1
     iget-object v0, p0, Lcom/dragon/read/mute/MuteApplicationStub;->mReal:Landroid/app/Application;
     invoke-virtual {v0}, Landroid/app/Application;->onCreate()V
-    invoke-super {}, Landroid/app/Application;->onCreate()V
+    invoke-super {p0}, Landroid/app/Application;->onCreate()V
     return-void
 .end method
 SMALI
