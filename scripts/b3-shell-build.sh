@@ -53,11 +53,13 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
 
-echo "=== [2/6] 写 MuteApplicationStub/MuteReplacer/MuteHookProvider smali ==="
+echo "=== [2/6] 写 MuteApplicationStub/MuteReplacer/MuteHookProvider/MuteWiring smali ==="
 : "${REAL_APP:=com.dragon.read.app.MainApplication}"  # 兜底
-mkdir -p "shell_src/smali/$MUTE"
+# 自定义类放 smali_classes21（与 tinker lib 同 dex）：避免主 dex 字符串池变化触发
+# apktool 3.0.3 对官方方法（如 RequiresOptIn$Level.values()）的 65536 编码 bug（round7 实测）
+mkdir -p "shell_src/smali_classes21/$MUTE"
 
-cat > "shell_src/smali/$MUTE/MuteApplicationStub.smali" <<'SMALI'
+cat > "shell_src/smali_classes21/$MUTE/MuteApplicationStub.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteApplicationStub;
 .super Landroid/app/Application;
 
@@ -93,9 +95,9 @@ cat > "shell_src/smali/$MUTE/MuteApplicationStub.smali" <<'SMALI'
 .end method
 SMALI
 # 替换真实 MainApplication 类名
-sed -i "s|__REAL_APP__|$REAL_APP|" "shell_src/smali/$MUTE/MuteApplicationStub.smali"
+sed -i "s|__REAL_APP__|$REAL_APP|" "shell_src/smali_classes21/$MUTE/MuteApplicationStub.smali"
 
-cat > "shell_src/smali/$MUTE/MuteReplacer.smali" <<'SMALI'
+cat > "shell_src/smali_classes21/$MUTE/MuteReplacer.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteReplacer;
 .super Ljava/lang/Object;
 
@@ -160,7 +162,7 @@ cat > "shell_src/smali/$MUTE/MuteReplacer.smali" <<'SMALI'
 .end method
 SMALI
 
-cat > "shell_src/smali/$MUTE/MuteWiring.smali" <<'SMALI'
+cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteWiring;
 .super Ljava/lang/Object;
 
@@ -304,7 +306,7 @@ cat > "shell_src/smali/$MUTE/MuteWiring.smali" <<'SMALI'
 .end method
 SMALI
 
-cat > "shell_src/smali/$MUTE/MuteHookProvider.smali" <<'SMALI'
+cat > "shell_src/smali_classes21/$MUTE/MuteHookProvider.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteHookProvider;
 .super Landroid/content/ContentProvider;
 
