@@ -59,7 +59,7 @@ jobs:
       - name: 收集产物
         run: |
           mkdir -p out
-          cp work/fanqie-b3-shell-4-signed.apk work/verify-b3-4.txt work/sha256-b3-4.txt out/
+          cp work/fanqie-b3-shell-5-signed.apk work/verify-b3-5.txt work/sha256-b3-5.txt out/
           ls -la out/
 
       - name: 发布 Release b3-shell
@@ -67,10 +67,10 @@ jobs:
         with:
           tag_name: b3-shell
           name: 番茄 B3 壳空转版（结构验证，路线B Phase1）
-          body_path: work/sha256-b3-4.txt
+          body_path: work/sha256-b3-5.txt
           files: |
-            out/fanqie-b3-shell-4-signed.apk
-            out/verify-b3-4.txt
+            out/fanqie-b3-shell-5-signed.apk
+            out/verify-b3-5.txt
           fail_on_unmatched_files: true
 
       - name: 清理版权物

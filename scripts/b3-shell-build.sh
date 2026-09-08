@@ -2,7 +2,7 @@
 # B3 壳空转版构建脚本 v2（Phase1：结构验证，无去广告 hook）
 # 复刻破解版 Tinker 壳结构：官方包藏 assets/orgapk + MuteApplicationStub(sourceDir 重定向) + ContentProvider 空桩
 # 路线：apktool d -r → 注入 stub smali/改 manifest → apktool b（复用 v3/v4 验证过的重建路线）
-# 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-4-signed.apk
+# 用法: bash b3-shell-build.sh <work_dir>；产物 work_dir/fanqie-b3-shell-5-signed.apk
 set -eu
 W="$1"
 cd "$W"
@@ -239,11 +239,12 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
 .method private static plantVer(Landroid/content/Context;Ljava/io/File;I)V
     .locals 5
     :try_start_0
-    # v0 = new File(p1, String.valueOf(p2))
+    # 参数映射（registers_size=8）：v5=ctx v6=base v7=ver；locals 用 v0-v4
+    # v0 = new File(v6, String.valueOf(v7))
     new-instance v0, Ljava/io/File;
-    invoke-static {v8}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    invoke-static {v7}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
     move-result-object v1
-    invoke-direct {v0, v7, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+    invoke-direct {v0, v6, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
     invoke-virtual {v0}, Ljava/io/File;->mkdirs()Z
     # v1 = ver/base-1.apk
     new-instance v1, Ljava/io/File;
@@ -252,9 +253,10 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
     # v2 = ver/version-<ver>-align/
     new-instance v2, Ljava/io/File;
     new-instance v3, Ljava/lang/StringBuilder;
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
     const-string v4, "version-"
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>()V
-    invoke-virtual {v3, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
     const-string v4, "-align"
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
@@ -265,8 +267,8 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
     new-instance v3, Ljava/io/File;
     const-string v4, "base-2.apk"
     invoke-direct {v3, v2, v4}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-    invoke-static {v6, v1}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
-    invoke-static {v6, v3}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
+    invoke-static {v5, v1}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
+    invoke-static {v5, v3}, Lcom/dragon/read/mute/MuteWiring;->copyAsset(Landroid/content/Context;Ljava/io/File;)V
     :try_end_0
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_all
     :catch_all
@@ -275,8 +277,9 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
 
 # 覆盖式复制 assets/orgapk -> dst
 .method private static copyAsset(Landroid/content/Context;Ljava/io/File;)V
-    .locals 4
+    .locals 5
     :try_start_0
+    # 参数映射（registers_size=7）：v5=ctx v6=dst；locals 用 v0-v4
     invoke-virtual {v5}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
     move-result-object v0
     const-string v1, "orgapk"
@@ -355,6 +358,50 @@ cat > "shell_src/smali_classes21/$MUTE/MuteHookProvider.smali" <<'SMALI'
 .end method
 SMALI
 
+echo "=== [2.5/6] round7b 静态自检器（4 规则：reg_size 越界/位宽/传参数/label）==="
+python3 - <<'CHECKER'
+import re, sys
+def pc(ps):
+    n=0;i=0
+    while i<len(ps):
+        c=ps[i]
+        if c=='L': n+=1;i=ps.index(';',i)+1
+        elif c=='[':
+            while i<len(ps) and ps[i]=='[': i+=1
+            if i<len(ps) and ps[i]=='L': i=ps.index(';',i)+1
+            else: i+=1
+            n+=1
+        elif c in 'JD': n+=2;i+=1
+        else: n+=1;i+=1
+    return n
+s = open('shell_src/smali_classes21/com/dragon/read/mute/MuteWiring.smali').read()
+errors=[]; checked=0
+for mb in re.finditer(r'\.method[^\n]*\n(.*?)\.end method', s, re.S):
+    body=mb.group(1); sig=mb.group(0).split('\n')[0].strip()
+    locals_n=int(re.search(r'\.locals (\d+)',body).group(1))
+    is_static=' static ' in sig
+    params=re.search(r'\((.*?)\)',sig).group(1)
+    reg_size=locals_n+pc(params)+(0 if is_static else 1)
+    for line in body.split('\n'):
+        code=line.split('#')[0]
+        for vm in re.finditer(r'(?<![\w>])v(\d+)\b',code):
+            if int(vm.group(1))>=reg_size: errors.append(f"{sig} | {code.strip()[:55]} v{vm.group(1)}>=reg_size({reg_size})")
+    for inv in re.finditer(r'(invoke-\w+)(/range)? \{([^}]*)\}, L[^;]+;->([^\s(]+)\(([^)]*)\)',body):
+        kind,isr,regs,meth,psig=inv.groups()
+        reglist=[r.strip() for r in regs.split(',') if r.strip()]
+        tp=pc(psig)
+        if meth=='<init>': tp+=1
+        elif kind in('invoke-virtual','invoke-super','invoke-interface'): tp+=1
+        if not isr and len(reglist)!=tp: errors.append(f"{sig} | {meth} 传{len(reglist)}要{tp}")
+        for r in reglist:
+            if not isr and int(r[1:])>=reg_size: errors.append(f"{sig} | {meth} {r}>=reg_size({reg_size})")
+        checked+=1
+print(f"自检器检查 {checked} 条 invoke")
+if errors:
+    print("\n".join(errors)); sys.exit(1)
+print("4 规则全过 ✓")
+CHECKER
+
 echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="
 MF="shell_src/AndroidManifest.xml"
 # Phase1 保留官方 application android:name（官方 MainApplication 正常跑，验「不崩/登录保留」）
@@ -389,17 +436,17 @@ echo "=== [6/6] zipalign + 签名（keystore v1+v2+v3）==="
 echo "$KEYSTORE_BASE64" | base64 -d > codery.keystore
 "$BT/apksigner" sign --ks codery.keystore --ks-key-alias codery --ks-pass pass:codery2026 --key-pass pass:codery2026 \
   --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
-  --out fanqie-b3-shell-4-signed.apk b3-aligned.apk
-"$BT/apksigner" verify --verbose fanqie-b3-shell-4-signed.apk | tee verify-b3-4.txt
-sha256sum fanqie-b3-shell-4-signed.apk | tee sha256-b3-4.txt
+  --out fanqie-b3-shell-5-signed.apk b3-aligned.apk
+"$BT/apksigner" verify --verbose fanqie-b3-shell-5-signed.apk | tee verify-b3-5.txt
+sha256sum fanqie-b3-shell-5-signed.apk | tee sha256-b3-5.txt
 
 echo "=== 自证 ==="
-unzip -l fanqie-b3-shell-4-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6 || true
+unzip -l fanqie-b3-shell-5-signed.apk | grep -E "assets/orgapk|classes.*\.dex" | head -6 || true
 echo "--- ABI ---"
-unzip -l fanqie-b3-shell-4-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u || true
+unzip -l fanqie-b3-shell-5-signed.apk | grep -oE "lib/[a-z0-9-]+/" | sort -u || true
 echo "--- 壳类存在 ---"
-unzip -l fanqie-b3-shell-4-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V | head -3
-for DX in $(unzip -l fanqie-b3-shell-4-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V); do
-  unzip -p fanqie-b3-shell-4-signed.apk "$DX" 2>/dev/null | strings | grep -lE "MuteWiring" >/dev/null && { echo "MuteWiring 类位于 $DX"; break; }
+unzip -l fanqie-b3-shell-5-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V | head -3
+for DX in $(unzip -l fanqie-b3-shell-5-signed.apk | grep -oE "classes[0-9]*\.dex" | sort -V); do
+  unzip -p fanqie-b3-shell-5-signed.apk "$DX" 2>/dev/null | strings | grep -lE "MuteWiring" >/dev/null && { echo "MuteWiring 类位于 $DX"; break; }
 done || echo "(MuteWiring 类检索未命中，需人工核)"
-echo "DONE: fanqie-b3-shell-4-signed.apk"
+echo "DONE: fanqie-b3-shell-5-signed.apk"
