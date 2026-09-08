@@ -201,6 +201,8 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
     iget v2, v3, Landroid/content/pm/PackageInfo;->versionCode:I
     :try_end_1
     .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_vc
+    goto :got_vc
+    :catch_vc
     :got_vc
     # 对 ver ∈ {73332, v2} 各放一组文件（双保险）
     const v3, 0x8c4c
