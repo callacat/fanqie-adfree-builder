@@ -749,7 +749,8 @@ else
   echo "!! PATCH_ABORT: stub 文件不存在 $STUB_F"; exit 1
 fi
 
-echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="MF="shell_src/AndroidManifest.xml"
+echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="
+MF="shell_src/AndroidManifest.xml"
 # Phase1 保留官方 application android:name（官方 MainApplication 正常跑，验「不崩/登录保留」）
 # 仅追加 MuteHookProvider ContentProvider（早启动 hook 载体，Phase2 注入去广告 hook）
 sed -i 's#</application>#    <provider android:name="com.dragon.read.mute.MuteHookProvider" android:authorities="com.dragon.read.mute.hook" android:exported="false" android:enabled="true" android:grantUriPermissions="false"/>\n</application>#' "$MF"
