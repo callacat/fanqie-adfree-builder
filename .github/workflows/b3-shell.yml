@@ -68,7 +68,7 @@ jobs:
         run: |
           mkdir -p out
           cp work/fanqie-b3-shell-5-signed.apk work/verify-b3-5.txt work/sha256-b3-5.txt work/patch-report.txt out/
-          cp out/fanqie-b3-shell-5-signed.apk out/fanqie-73532-adfree-purified-signed.apk
+          cp out/fanqie-b3-shell-5-signed.apk out/fanqie-73532-adfree-purified-v2-signed.apk
           ls -la out/
 
       - name: 发布 Release purified（tag=v<run_number>，round9 净化版）
@@ -79,7 +79,7 @@ jobs:
           name: 番茄净化版 round9（三层签名伪装 + b3-shell）
           body_path: work/sha256-b3-5.txt
           files: |
-            out/fanqie-73532-adfree-purified-signed.apk
+            out/fanqie-73532-adfree-purified-v2-signed.apk
             out/verify-b3-5.txt
             out/patch-report.txt
           fail_on_unmatched_files: true
