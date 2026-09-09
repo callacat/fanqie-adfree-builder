@@ -805,31 +805,20 @@ java -jar /usr/local/bin/apktool.jar b shell_src -o b3-unsigned.apk
 ls -la b3-unsigned.apk || true
 
 echo "=== [5.5/6] dexdump 硬校验（round11 扩全 mute 类：v22 教训=MuteWiring 单类不够）==="
-# 校验目标 dex = mute 6 类所在（classes22）；dexdump 反汇编整 dex，ART 会拒 apktool 不查的错误
-DEX22="shell_src/smali_classes22/com/dragon/read/mute"
-if [ -d "$DEX22" ] && [ -f "shell_src/classes22.dex" ]; then
-  "$BT/dexdump" -d shell_src/classes22.dex 2>/dev/null > /tmp/dexdump-c22.txt || true
+# mute 6 类在 smali_classes22 目录 → 编译产物在 b3-unsigned.apk 的 classes22.dex
+if [ -d "shell_src/smali_classes22/com/dragon/read/mute" ] && [ -f b3-unsigned.apk ] && unzip -l b3-unsigned.apk | grep -q classes22.dex; then
+  unzip -o -q b3-unsigned.apk classes22.dex -d /tmp/dexv
+  "$BT/dexdump" -d /tmp/dexv/classes22.dex 2>/dev/null > /tmp/dexdump-c22.txt || true
   echo "dexdump 输出 $(wc -l < /tmp/dexdump-c22.txt) 行"
-  # 每个方法打印寄存器/参数规模（异常规模异常一眼可见）
-  grep -E "Class descriptor.*mute|registers size|insns size|args size|name.*'(install|swapCtx|invoke|redirect|wire|plantVer|copyAsset|loadOrgSigs)'" /tmp/dexdump-c22.txt | head -40
-  # ART verifier 同款红线检查：move-exception 出现次数 vs handler 数（粗判）
-  ME_CNT=$(grep -c "move-exception" /tmp/dexdump-c22.txt || true)
-  echo "move-exception 指令数: $ME_CNT（应=handler 数，每处都应为 handler 入口首指令）"
-  grep -B 2 -A 1 "move-exception" /tmp/dexdump-c22.txt | head -30
-  if [ "$ME_CNT" -gt 0 ]; then
-    # 每处 move-exception 的上一条反汇编指令若非 catch/try 边界标记，报警（人工过目清单）
-    echo "--- move-exception 上下文留痕（handler 入口必须紧跟 catch 标记）---"
-  fi
-  rm -f /tmp/dexdump-c22.txt
+  # mute 各方法寄存器/参数规模 + move-exception 上下文（ART verifier 红线留痕）
+  grep -E "Class descriptor.*dragon/read/mute" /tmp/dexdump-c22.txt
+  echo "mute 方法数: $(grep -cE 'name.*:.*(install|swapCtx|invoke|redirect|wire|plantVer|copyAsset|loadOrgSigs|onCreate|attachBaseContext)' /tmp/dexdump-c22.txt)"
+  echo "move-exception 指令数: $(grep -c 'move-exception' /tmp/dexdump-c22.txt)"
+  echo "--- move-exception 上下文（应为 handler 入口首指令）---"
+  grep -B 2 -A 1 'move-exception' /tmp/dexdump-c22.txt | head -24
+  rm -rf /tmp/dexv /tmp/dexdump-c22.txt
 else
-  echo "!! 找不到 classes22.dex 或 mute 目录，跳过扩展校验"
-  DEXDIR=$(find shell_src -name "MuteWiring.smali" | sed 's|/com/dragon/read/mute/MuteWiring.smali||')
-  for DX in "$DEXDIR"/*.dex; do
-    if "$BT/dexdump" "$DX" 2>/dev/null | grep -q "MuteWiring"; then
-      "$BT/dexdump" -d "$DX" 2>/dev/null | awk '/Class descriptor.*MuteWiring/,/^Class #/' | grep -E "name|type|registers size|insns size|args size" | head -30
-      break
-    fi
-  done
+  echo "!! classes22.dex 未在 b3-unsigned.apk 中找到，跳过扩展校验（检查 smali_classes22 目录）"
 fi
 echo "dexdump 校验完成"
 
