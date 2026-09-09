@@ -49,6 +49,36 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   echo; echo "## 官方 MuteReplacer=$MR 方法清单"
   [ -n "$MR" ] && grep -n "^\.method" "$MR" | head -15 || true
   [ -n "$MR" ] && dump_method "$MR" "modifyAppInfo|verifyAPK|isDriverReady" | head -160 || true
+
+  # ===== round10 recon：时序根因取证 =====
+  echo; echo "## round10-A 官方 stub 结构（application android:name 指向的类）"
+  STUB_PATH=$(echo "$REAL_APP" | tr '.' '/')
+  find shell_src -path "*$STUB_PATH.smali" | head -2
+  STUB=$(find shell_src -path "*$STUB_PATH.smali" | head -1)
+  if [ -n "$STUB" ]; then
+    echo "-- attachBaseContext 方法体（前 60 行）--"
+    dump_method "$STUB" "attachBaseContext" | head -60
+    echo "-- onCreate 方法体（前 40 行）--"
+    dump_method "$STUB" "onCreate" | head -40
+  else
+    echo "!! 未找到官方 stub 类文件，REAL_APP=$REAL_APP"
+  fi
+
+  echo; echo "## round10-B AndroidManifest 全部 provider 声明顺序（决定初始化次序）"
+  grep -n "<provider" shell_src/AndroidManifest.xml | head -20
+
+  echo; echo "## round10-C MetaSec/风控 init 链定位（x-argus 采集时机）"
+  echo "-- manifest 中 meta-data/provider 含 sec/meta/argus 字样 --"
+  grep -noE '<(provider|meta-data)[^>]*(metasec|MetaSec|argus|Argus|phoenix|monitor|BDInstall)[^>]*' shell_src/AndroidManifest.xml | head -10 || true
+  echo "-- metasec 类文件定位 --"
+  find shell_src -path "*metasec*" -name "*.smali" | head -8 || true
+  MS_INIT=$(find shell_src -path "*metasec*" -name "*.smali" | head -1)
+  if [ -n "$MS_INIT" ]; then
+    echo "-- metasec 首文件 init/native 方法引用 --"
+    grep -nE '^\.method|loadLibrary|System;->load|initContext|init\(' "$MS_INIT" | head -20 || true
+  fi
+  echo "-- BDInstallProvider / 字节 provider 类定位 --"
+  find shell_src \( -path "*applog*" -o -path "*tinner*" -o -name "BDInstall*.smali" \) -name "*.smali" | head -8 || true
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
