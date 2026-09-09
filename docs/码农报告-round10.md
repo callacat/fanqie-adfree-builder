@@ -60,3 +60,38 @@ b3 底包=官方 73332 原 dex，mod 的 Copyright/oneseeker.top/作者声明天
 2. 书城内容：刷新应加载（x-argus 带官方签名）——弹窗/横幅是否消失同看
 3. 若仍失败：logcat `MuteSignProxy install FAILED` 栈 → 层2 单独修；`install OK` 但仍 110 → 风控走 native 直读签名块（层3 需升级为 native 拦截），下一轮方向
 仅供东哥本地个人研究，不分发。
+
+---
+
+# round11 追记（2026-09-09）：v22 真机崩溃热修 → v23
+
+## 1. 事故与根因（老马 ACE5 12:18 实测）
+
+v22 启动即崩，崩溃栈（存档 `/root/workspace/.tasks/fanqie-novel-ad-free/老马实测-round10-v22-crash.txt`）：
+`VerifyError: Verifier rejected class MuteSignProxy — install(Context): [0x9] invalid use of move-exception`（MuteHookProvider.onCreate → ActivityThread.installProvider 触发，classes22.dex）。
+
+根因（老马定位实锤，码农复核确认）：round10 P1 给 `MuteSignProxy.install` 加日志时，把 `:cond_skip` 与 `:try_end_0` 之间的边界改坏——**:cond_skip 后漏了 return-void，正常控制流 fall-through 进 :catch_all handler**，主线执行 `move-exception` = ART verifier 拒绝。v22 的静态自检器 v5 没有覆盖这个维度（4 规则全是寄存器/参数域），CI dexdump 步也只硬校验 MuteWiring 单类——两层验证同时漏过，真机才炸。
+
+## 2. 修复（commit 6175b06 → v23，CI run 34312455891 全绿）
+
+1. **install 补 return-void**：`:cond_skip` → `return-void` → `:try_end_0`（与同文件 wire/plantVer/copyAsset 的正确模式对齐）
+2. **自检器 v7 补规则 5（handler 边界）**，双档设计（回归测试驱动出的保守版）：
+   - 硬错：handler 前最近实指令是 move-exception（handler 间 fall-through，不可能合法）/ 纯 fall-through（无 label 间隔）自非终结指令
+   - 警告：最近实指令是终结指令但与 handler 隔着 label（v22 形态——文本扫描无法判数据流，输出人工过目清单）
+   - v22 坏形态回归验证：能抓到（WARN 定位）✓；swapCtx 警告位人工确认安全（handler 直接 return-void 无副作用）✓
+3. **CI dexdump 硬校验扩展**（commit f51e62b）：从 MuteWiring 单类扩到 classes22 整 dex 反汇编 + 全部 move-exception 上下文留痕——同类 smali 手写错误下轮 CI 即拦，不再漏到真机
+
+## 3. v23 产物
+
+- Release **tag=v23**：`fanqie-73532-adfree-purified-v2-signed.apk` sha256 `3a8914dcf7020b14b367e4f7302b2bc8c35f7dda127ad5fbe88fff4f5e4b0c70`（下载复核）
+- v1/v2/v3 全 Verifies；自检器 v7：6 文件/23 方法/131 invoke/边界检查全过（1 个已知安全警告位 swapCtx）
+- v22→v23 classes22.dex 内容 diff 61 字节（修复=插入 return-void + code_item 调整，量级吻合）；P1 日志串两版同在（非本轮改动项）
+
+## 4. 流程教训（写给下轮）
+
+- **真机 crash 的三类 smali 陷阱已全部入库**：35c 位宽/寄存器越界（round7b）→ label 未放置（round7b）→ handler fall-through（本轮）。自检器规则与 CI dexdump 扩展均已固化，同类错误 CI 拦截。
+- P1 加日志的教训：**改 try/catch 结构边界时必须重跑自检器全规则 + dexdump 反汇编人工过目**，不能只看新加的 invoke 参数数。
+
+## 5. 移交老马复测 v23
+
+观察点与 round10 §6 完全一致（logcat `-s MuteSignProxy` 应见 install OK → 书城内容/横幅 → 若 install OK 仍 110 则层3 升级）。启动应不再崩溃（本轮修的就是 verifier 拒类）。仅供东哥本地个人研究，不分发。
