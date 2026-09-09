@@ -79,6 +79,30 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   fi
   echo "-- BDInstallProvider / 字节 provider 类定位 --"
   find shell_src \( -path "*applog*" -o -path "*tinner*" -o -name "BDInstall*.smali" \) -name "*.smali" | head -8 || true
+
+  # ===== round12 recon：阅读页「当前版本不安全」判定链定位（Toast 锚点反查）=====
+  echo; echo "## round12-A 锚点：拦截 Toast 资源 ID 0x7f0611dd（round6b arsc@873338 实锤）"
+  echo "-- 引用 0x7f0611dd 的 smali 文件（判定函数候选）--"
+  grep -rln "0x7f0611dd" shell_src/smali* 2>/dev/null | head -8
+  T1=$(grep -rln "0x7f0611dd" shell_src/smali* 2>/dev/null | head -1)
+  if [ -n "$T1" ]; then
+    echo "-- $T1 中 0x7f0611dd 所在方法上下文（前后 40 行）--"
+    grep -B 40 "0x7f0611dd" "$T1" | tail -60
+  fi
+  echo; echo "## round12-B 判定链关键类引用（mod 乱码类返回值实锤的官方类名）"
+  for CLS in "MiraCastMonitor\\\$JudgmentType" "SafeModeActivity" "assertIllegalAccess" "NetReqUtil"; do
+    echo "-- $CLS 被引用位置（前 6 处）--"
+    grep -rln "$CLS" shell_src/smali* 2>/dev/null | head -6
+  done
+  echo; echo "## round12-C native so 签名读取路径（层3 升级判据）"
+  for SO in libmetasec_ml.so libttsec.so libsec.so libpandora.so; do
+    F=$(find shell_src/lib -name "$SO" 2>/dev/null | head -1)
+    [ -z "$F" ] && continue
+    echo "-- $SO 尺寸 $(stat -c%s "$F")B 特征 strings --"
+    strings -a "$F" | grep -iE 'signature|certificat|PackageInfo|/data/app|base\.apk|sourceDir|getPackageName|v2|v3|apk sign' | sort -u | head -12
+  done
+  echo "-- 全 lib 清单中含 sig/attest/sec 的 so --"
+  ls shell_src/lib/arm64-v8a/ 2>/dev/null | grep -iE 'sig|attest|sec|guard' | head -10
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
