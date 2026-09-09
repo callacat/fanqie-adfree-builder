@@ -103,6 +103,32 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   done
   echo "-- 全 lib 清单中含 sig/attest/sec 的 so --"
   ls shell_src/lib/arm64-v8a/ 2>/dev/null | grep -iE 'sig|attest|sec|guard' | head -10
+
+  # ===== round12-D 细 recon：patch 点位方法体摘录 =====
+  echo; echo "## round12-D1 NsBaseNetworkDependImpl.assertIllegalAccess 方法体（两个版本）"
+  for F in shell_src/smali_classes21/com/dragon/read/base/depend/NsBaseNetworkDependImpl.smali \
+           shell_src/smali_classes2/com/dragon/read/component/base/NsBaseNetworkDependImpl.smali; do
+    [ -f "$F" ] || continue
+    echo "-- $F --"
+    dump_method "$F" "assertIllegalAccess" | head -80
+  done
+  echo; echo "## round12-D2 NetReqUtil.assertIllegalAccess 方法体"
+  dump_method "shell_src/smali_classes6/com/dragon/read/util/NetReqUtil.smali" "assertIllegalAccess" | head -60
+  echo; echo "## round12-D3 SafeModeActivity 启动链（谁 startActivity 拉起它）"
+  grep -rn "SafeModeActivity" shell_src/smali* 2>/dev/null | grep -vE "SafeModeActivity[.$]" | grep -iE "Intent|startActivity" | head -6
+  for F in shell_src/smali_classes18/com/dragon/read/app/z1.smali shell_src/smali_classes18/com/dragon/read/app/y1.smali shell_src/smali_classes18/com/dragon/read/app/e2.smali; do
+    [ -f "$F" ] || continue
+    echo "-- $F 引用 SafeModeActivity 的方法 --"
+    awk '/^\.method/{inm=($0 ~ /SafeModeActivity/)} /^\.method/{m=$0} /SafeModeActivity/{if(!inm) print m}' "$F" | head -4
+    dump_method "$F" "SafeModeActivity" | head -40
+  done
+  echo; echo "## round12-D4 MiraCastMonitor.JudgmentType 判定用法（阅读页点位）"
+  dump_method "shell_src/smali_classes3/com/dragon/read/pages/main/r2.smali" "JudgmentType" | head -50
+  grep -n "JudgmentType" shell_src/smali_classes3/com/dragon/read/pages/main/MiraCastMonitor.smali | head -8
+  echo; echo "## round12-D5 拦截文案真实资源 ID（arsc 中「当前版本不安全」）"
+  R=$(find shell_src -name "strings.xml" | head -1)
+  grep -rn "不安全" shell_src/res/values*/strings.xml 2>/dev/null | head -4 || echo "(strings 未解码为明文，走 public.xml id 反查)"
+  grep -n "cjw" shell_src/res/values/public.xml 2>/dev/null | head -3
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
