@@ -737,6 +737,18 @@ if errors:
 print("4 规则全过 ✓")
 CHECKER
 
+echo "=== [2.6/6] round10 P0：patch 官方 stub attachBaseContext 头部插 redirect（时序前移核心）==="
+STUB_F="shell_src/smali_classes21/com/dragon/read/base/mute/MuteApplicationStub.smali"
+if [ -f "$STUB_F" ]; then
+  python3 ../scripts/patch_stub.py "$STUB_F" || exit 1
+  echo "-- patch 后 stub 方法头 12 行 --"
+  sed -n '/attachBaseContext/,+12p' "$STUB_F"
+  # MuteReplacer 类现在被 stub 引用：确保它在 smali_classes22（stub 在 classes21，跨 dex 引用合法）
+  grep -q "smali_classes22" <(find shell_src -name "MuteReplacer.smali") && echo "MuteReplacer 位置确认 classes22"
+else
+  echo "!! PATCH_ABORT: stub 文件不存在 $STUB_F"; exit 1
+fi
+
 echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="MF="shell_src/AndroidManifest.xml"
 # Phase1 保留官方 application android:name（官方 MainApplication 正常跑，验「不崩/登录保留」）
 # 仅追加 MuteHookProvider ContentProvider（早启动 hook 载体，Phase2 注入去广告 hook）
