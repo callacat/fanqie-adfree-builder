@@ -56,7 +56,15 @@ jobs:
           echo "$KEYSTORE_BASE64" | base64 -d > codery.keystore
           RECON_ONLY='${{ inputs.recon_only }}' bash ../scripts/b3-shell-build.sh "$PWD"
 
+      - name: recon 报告工件（recon_only 模式）
+        if: ${{ inputs.recon_only == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: recon-report
+          path: work/recon-report.txt
+
       - name: 收集产物
+        if: ${{ inputs.recon_only != 'true' }}
         run: |
           mkdir -p out
           cp work/fanqie-b3-shell-5-signed.apk work/verify-b3-5.txt work/sha256-b3-5.txt work/patch-report.txt out/
@@ -64,6 +72,7 @@ jobs:
           ls -la out/
 
       - name: 发布 Release purified（tag=v<run_number>，round9 净化版）
+        if: ${{ inputs.recon_only != 'true' }}
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}

@@ -469,10 +469,27 @@ cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
     invoke-static {p0, v5}, Lcom/dragon/read/mute/MuteSignProxy;->swapCtx(Landroid/content/Context;Ljava/lang/Object;)V
     const/4 v1, 0x1
     sput-boolean v1, Lcom/dragon/read/mute/MuteSignProxy;->sInstalled:Z
+    # round10 P1：装载成功必须可见（Android logcat + System.out 双通道）
+    const-string v1, "MuteSignProxy"
+    const-string v2, "install OK: sPackageManager proxied + ctx mPM swapped"
+    const/4 v3, 0x0
+    invoke-static {v1, v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    sget-object v1, Ljava/lang/System;->out:Ljava/io/PrintStream;
+    const-string v2, "[MuteSignProxy] install OK"
+    invoke-virtual {v1, v2}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
     :cond_skip
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catch_all
     :catch_all
+    move-exception v0
+    # round10 P1：失败不允许静默——异常栈全打（logcat w + System.err）
+    const-string v1, "MuteSignProxy"
+    const-string v2, "install FAILED (layer2 disabled, signature spoof inactive)"
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    sget-object v1, Ljava/lang/System;->err:Ljava/io/PrintStream;
+    const-string v2, "[MuteSignProxy] install FAILED:"
+    invoke-virtual {v1, v2}, Ljava/io/PrintStream;->print(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/Throwable;->printStackTrace(Ljava/io/PrintStream;)V
     return-void
 .end method
 
@@ -596,6 +613,11 @@ cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catch_all
     :catch_all
+    move-exception v1
+    # round10 P1：证书加载失败可见（层2 数据源缺失=代理必然空转）
+    const-string v2, "MuteSignProxy"
+    const-string v3, "loadOrgSigs FAILED: no orgcert.der and META-INF scan empty"
+    invoke-static {v2, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     const/4 v0, 0x0
     return-object v0
 .end method
@@ -715,8 +737,7 @@ if errors:
 print("4 规则全过 ✓")
 CHECKER
 
-echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="
-MF="shell_src/AndroidManifest.xml"
+echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="MF="shell_src/AndroidManifest.xml"
 # Phase1 保留官方 application android:name（官方 MainApplication 正常跑，验「不崩/登录保留」）
 # 仅追加 MuteHookProvider ContentProvider（早启动 hook 载体，Phase2 注入去广告 hook）
 sed -i 's#</application>#    <provider android:name="com.dragon.read.mute.MuteHookProvider" android:authorities="com.dragon.read.mute.hook" android:exported="false" android:enabled="true" android:grantUriPermissions="false"/>\n</application>#' "$MF"
