@@ -478,6 +478,7 @@ cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
     const-string v2, "[MuteSignProxy] install OK"
     invoke-virtual {v1, v2}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
     :cond_skip
+    return-void
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catch_all
     :catch_all
@@ -731,7 +732,35 @@ for fp in files:
             for r in reglist:
                 if not isr and int(r[1:])>=reg_size: errors.append(f"{fname} | {sig} | {meth} {r}>=reg_size({reg_size})")
             checked+=1
-print(f"自检器 v5：{len(files)} 文件 / {total} 方法 / {checked} 条 invoke")
+        # 规则5（round11，v22 真机 crash 实锤）：move-exception handler 不得被主线 fall-through 进入
+        # 硬错：handler label 向前最近实指令是 move-exception（不可能合法——handler 之间无 fall-through 语义）
+        #        或最近实指令非终结指令且中间无 label（纯 fall-through 直进 handler）
+        # 警告：最近实指令是终结指令但中间隔着 label（分支目标/try 边界混杂，人工过目——v22 形态即此类）
+        ls=body.split('\n')
+        handlers={}
+        for i,l in enumerate(ls):
+            md=re.search(r'\.catch(?:all)?\s+\{[^}]*\}\s+:(\w+)',l.split('#')[0])
+            if md: handlers[md.group(1)]=i
+        for hname in handlers:
+            for i,l in enumerate(ls):
+                if l.split('#')[0].strip()==':'+hname:
+                    j=i-1; saw_label=0
+                    while j>=0:
+                        c=ls[j].split('#')[0].strip()
+                        if c.startswith(':'): saw_label=1
+                        if (not c) or c.startswith(':') or c.startswith('.catch') or c.startswith('.line') or c.startswith('.prologue') or c.startswith('.local'): j-=1; continue
+                        break
+                    if j<0: break
+                    prev=ls[j].split('#')[0].strip()
+                    if prev.startswith('move-exception'):
+                        errors.append(f"{fname} | {sig} | :{hname} handler 前是另一 move-exception（非法）")
+                    elif not re.match(r'(return-|throw|goto)',prev):
+                        if saw_label:
+                            print(f"WARN(handler边界人工过目): {fname} | {sig} | :{hname} 与 {prev[:40]} 之间隔 label")
+                        else:
+                            errors.append(f"{fname} | {sig} | :{hname} handler 前 fall-through 自非终结指令: {prev[:50]}")
+                    break
+print(f"自检器 v7：{len(files)} 文件 / {total} 方法 / {checked} 条 invoke / handler 边界检查")
 if errors:
     print("\n".join(errors)); sys.exit(1)
 print("4 规则全过 ✓")
