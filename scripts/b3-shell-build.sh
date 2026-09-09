@@ -828,6 +828,14 @@ else
   echo "!! PATCH_ABORT: stub 文件不存在 $STUB_F"; exit 1
 fi
 
+echo "=== [2.7/6] round12：阅读页「当前版本不安全」拦截 patch（round4 蓝图 P1/P2/P3 @73332）==="
+python3 ../scripts/patch_illegal.py shell_src || exit 1
+# P3 布局核对预案：若 NetReqUtil 里 110 常量非 0x6e（蓝图是 73532 的），打出方法体现场
+if ! grep -q "PATCHED_ROUND12 P3" shell_src/smali_classes6/com/dragon/read/util/NetReqUtil.smali 2>/dev/null; then
+  echo "!! P3 未落位——dump doAfterDeserialization 现场（人工核对 110 常量编码）"
+  dump_method "shell_src/smali_classes6/com/dragon/read/util/NetReqUtil.smali" "doAfterDeserialization" | grep -nE "const|assertIllegalAccess" | head -10 || true
+fi
+
 echo "=== [3/6] manifest：保留官方 app（不换 app name 避崩）；注册 MuteHookProvider 做早启动重定向 ==="
 MF="shell_src/AndroidManifest.xml"
 # Phase1 保留官方 application android:name（官方 MainApplication 正常跑，验「不崩/登录保留」）
