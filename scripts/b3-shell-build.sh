@@ -804,18 +804,34 @@ echo "=== [5/6] apktool b 重建（复用 v3/v4 验证路线）==="
 java -jar /usr/local/bin/apktool.jar b shell_src -o b3-unsigned.apk
 ls -la b3-unsigned.apk || true
 
-echo "=== [5.5/6] round7b dexdump 硬校验 MuteWiring（ART 会拒 apktool 不查的错误）==="
-DEXDIR=$(find shell_src -name "MuteWiring.smali" | sed 's|/com/dragon/read/mute/MuteWiring.smali||')
-for DX in "$DEXDIR"/*.dex; do
-  if "$BT/dexdump" "$DX" 2>/dev/null | grep -q "MuteWiring"; then
-    echo "校验目标: $DX"
-    "$BT/dexdump" "$DX" 2>/dev/null | awk '/Class descriptor.*MuteWiring/,/^Class #/' | grep -E "name|type|registers size|insns size|args size" | head -30
-    # 每个方法的 insns 反汇编中 invoke 行与 args size 交叉核对
-    "$BT/dexdump" -d "$DX" 2>/dev/null | grep -A 2 "MuteWiring.plantVer\|MuteWiring.wire\|MuteWiring.copyAsset" | head -20 || true
-    break
+echo "=== [5.5/6] dexdump 硬校验（round11 扩全 mute 类：v22 教训=MuteWiring 单类不够）==="
+# 校验目标 dex = mute 6 类所在（classes22）；dexdump 反汇编整 dex，ART 会拒 apktool 不查的错误
+DEX22="shell_src/smali_classes22/com/dragon/read/mute"
+if [ -d "$DEX22" ] && [ -f "shell_src/classes22.dex" ]; then
+  "$BT/dexdump" -d shell_src/classes22.dex 2>/dev/null > /tmp/dexdump-c22.txt || true
+  echo "dexdump 输出 $(wc -l < /tmp/dexdump-c22.txt) 行"
+  # 每个方法打印寄存器/参数规模（异常规模异常一眼可见）
+  grep -E "Class descriptor.*mute|registers size|insns size|args size|name.*'(install|swapCtx|invoke|redirect|wire|plantVer|copyAsset|loadOrgSigs)'" /tmp/dexdump-c22.txt | head -40
+  # ART verifier 同款红线检查：move-exception 出现次数 vs handler 数（粗判）
+  ME_CNT=$(grep -c "move-exception" /tmp/dexdump-c22.txt || true)
+  echo "move-exception 指令数: $ME_CNT（应=handler 数，每处都应为 handler 入口首指令）"
+  grep -B 2 -A 1 "move-exception" /tmp/dexdump-c22.txt | head -30
+  if [ "$ME_CNT" -gt 0 ]; then
+    # 每处 move-exception 的上一条反汇编指令若非 catch/try 边界标记，报警（人工过目清单）
+    echo "--- move-exception 上下文留痕（handler 入口必须紧跟 catch 标记）---"
   fi
-done
-echo "dexdump 校验完成（如上寄存器/参数数人工可读）"
+  rm -f /tmp/dexdump-c22.txt
+else
+  echo "!! 找不到 classes22.dex 或 mute 目录，跳过扩展校验"
+  DEXDIR=$(find shell_src -name "MuteWiring.smali" | sed 's|/com/dragon/read/mute/MuteWiring.smali||')
+  for DX in "$DEXDIR"/*.dex; do
+    if "$BT/dexdump" "$DX" 2>/dev/null | grep -q "MuteWiring"; then
+      "$BT/dexdump" -d "$DX" 2>/dev/null | awk '/Class descriptor.*MuteWiring/,/^Class #/' | grep -E "name|type|registers size|insns size|args size" | head -30
+      break
+    fi
+  done
+fi
+echo "dexdump 校验完成"
 
 echo "=== [6/6] zipalign + 签名（keystore v1+v2+v3）==="
 "$BT/zipalign" -f 4 b3-unsigned.apk b3-aligned.apk
