@@ -2,7 +2,7 @@
 
 任务 rid：recvul3UNi4ptV ｜ 2026-09-09 ｜ 执行：码农（全 CI）
 输入：老马 v18 ACE5 实测（10:53-11:25，书城「网络出错」+「当前版本不安全」横幅，视频 CDN 正常/内容 API 断粮=x-argus 被拒）+ 决定性对照（破解版同机正常=设备未拉黑，方案方向对、败在时序）。
-产物：**fanqie-73532-adfree-purified-v2-signed.apk**（Release v<run_number>）
+产物：**fanqie-73532-adfree-purified-v2-signed.apk**（258.7MB，Release **tag=v22**）
 实现 commit：`4886268`（P0/P1）+ recon `c14dad0` ｜ CI：recon run 34308439073 + 构建 run 见 §5
 
 ## 0. 一句话
@@ -48,7 +48,8 @@ b3 底包=官方 73332 原 dex，mod 的 Copyright/oneseeker.top/作者声明天
 ## 5. CI 与产物
 
 - recon run：34308439073（recon-report 工件，本轮时序证据来源）
-- 构建 run：<待填> ｜ Release：v<run_number>
+- 构建 run：34308944807 全绿 ｜ **Release：tag=v22**（v19-21 被 recon/失败 run 消耗）
+- 产物实测核验（本机）：sha256 `8ea03f59a98cab5bc619bd83e7accb4ac0f6a22fb3329a34ebf9746d175536be`（下载复核）；v1/v2/v3 全 Verifies；**classes21.dex（stub 所在）已引用 MuteReplacer 类型=patch 注入进 dex 实锤**（方法引用表拆分存储，按类型描述符验证）；classes22 含 MuteSignProxy；自检器 v5 131 invoke 全过（+6 条=stub 注入调用与日志调用）
 - 产物三件套：purified-v2 apk + verify + patch-report（自检器 v5 扩 mute 全类 + stub patch 痕迹）
 - 踩坑记录（CI 实测）：①recon_only 模式产物收集步无 APK 可拷→收集/发布步加 recon_only 条件跳过，recon-report 走 artifact 上传 ②[3/6] echo 与 MF 赋值行被误并成一行（早前编辑丢换行）→ set -u 下 MF unbound 崩溃，修复重跑
 
