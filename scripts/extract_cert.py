@@ -68,6 +68,17 @@ if not data:
     data, src = from_block(apk), 'v2/v3(signing block)'
 if not data:
     print('NO_CERT_FOUND'); sys.exit(1)
+# PKCS#7 容器（v1 .RSA/.DSA/.EC）→ 归一化为裸 X.509 DER（Java CertificateFactory 双兼容，
+# 但裸 DER 让 openssl 自证步与 MuteSignProxy.loadOrgSigs 单路径无歧义）
+if not data.startswith(b'\x30\x82') or b'\x06\x09\x2a\x86\x48\x86\xf7\x0d\x01\x07\x02' in data[:64]:
+    try:
+        from cryptography import x509
+        from cryptography.hazmat.primitives.serialization import pkcs7, Encoding
+        certs = pkcs7.load_der_pkcs7_certificates(data)
+        data = certs[0].public_bytes(Encoding.DER)
+        src += '→x509-normalized'
+    except ImportError:
+        print('WARN: cryptography 未装，保留 PKCS#7 容器（Java generateCertificates 可读）')
 with open(out, 'wb') as f:
     f.write(data)
 print(f'cert_extracted src={src} bytes={len(data)} out={out}')

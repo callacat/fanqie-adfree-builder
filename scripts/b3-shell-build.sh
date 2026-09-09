@@ -55,11 +55,11 @@ if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建";
 
 echo "=== [2/6] 写 MuteApplicationStub/MuteReplacer/MuteHookProvider/MuteWiring smali ==="
 : "${REAL_APP:=com.dragon.read.app.MainApplication}"  # 兜底
-# 自定义类放 smali_classes21（与 tinker lib 同 dex）：避免主 dex 字符串池变化触发
-# apktool 3.0.3 对官方方法（如 RequiresOptIn$Level.values()）的 65536 编码 bug（round7 实测）
-mkdir -p "shell_src/smali_classes21/$MUTE"
+# 自定义类放 smali_classes22（round9 起独立新 dex）：官方 classes21 已近 65536 索引上限
+# （round9 首跑新增 2 类即触发 jsoup 类 65536 溢出），新 dex 零重排官方内容、索引空间独立
+mkdir -p "shell_src/smali_classes22/$MUTE"
 
-cat > "shell_src/smali_classes21/$MUTE/MuteApplicationStub.smali" <<'SMALI'
+cat > "shell_src/smali_classes22/$MUTE/MuteApplicationStub.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteApplicationStub;
 .super Landroid/app/Application;
 
@@ -95,9 +95,9 @@ cat > "shell_src/smali_classes21/$MUTE/MuteApplicationStub.smali" <<'SMALI'
 .end method
 SMALI
 # 替换真实 MainApplication 类名
-sed -i "s|__REAL_APP__|$REAL_APP|" "shell_src/smali_classes21/$MUTE/MuteApplicationStub.smali"
+sed -i "s|__REAL_APP__|$REAL_APP|" "shell_src/smali_classes22/$MUTE/MuteApplicationStub.smali"
 
-cat > "shell_src/smali_classes21/$MUTE/MuteReplacer.smali" <<'SMALI'
+cat > "shell_src/smali_classes22/$MUTE/MuteReplacer.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteReplacer;
 .super Ljava/lang/Object;
 
@@ -163,7 +163,7 @@ cat > "shell_src/smali_classes21/$MUTE/MuteReplacer.smali" <<'SMALI'
 .end method
 SMALI
 
-cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
+cat > "shell_src/smali_classes22/$MUTE/MuteWiring.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteWiring;
 .super Ljava/lang/Object;
 
@@ -307,7 +307,7 @@ cat > "shell_src/smali_classes21/$MUTE/MuteWiring.smali" <<'SMALI'
 .end method
 SMALI
 
-cat > "shell_src/smali_classes21/$MUTE/SignHandler.smali" <<'SMALI'
+cat > "shell_src/smali_classes22/$MUTE/SignHandler.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/SignHandler;
 .super Ljava/lang/Object;
 
@@ -364,7 +364,7 @@ cat > "shell_src/smali_classes21/$MUTE/SignHandler.smali" <<'SMALI'
 .end method
 SMALI
 
-cat > "shell_src/smali_classes21/$MUTE/MuteSignProxy.smali" <<'SMALI'
+cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteSignProxy;
 .super Ljava/lang/Object;
 
@@ -582,7 +582,7 @@ cat > "shell_src/smali_classes21/$MUTE/MuteSignProxy.smali" <<'SMALI'
 .end method
 SMALI
 
-cat > "shell_src/smali_classes21/$MUTE/MuteHookProvider.smali" <<'SMALI'
+cat > "shell_src/smali_classes22/$MUTE/MuteHookProvider.smali" <<'SMALI'
 .class public Lcom/dragon/read/mute/MuteHookProvider;
 .super Landroid/content/ContentProvider;
 
@@ -653,7 +653,7 @@ def pc(ps):
         elif c in 'JD': n+=2;i+=1
         else: n+=1;i+=1
     return n
-files = sorted(glob.glob('shell_src/smali_classes21/com/dragon/read/mute/*.smali'))
+files = sorted(glob.glob('shell_src/smali_classes22/com/dragon/read/mute/*.smali'))
 errors=[]; checked=0; total=0
 for fp in files:
     s = open(fp).read()
@@ -696,6 +696,14 @@ echo "=== [4/6] 藏匿官方包 assets/orgapk + 提取官方证书 assets/orgcer
 mkdir -p shell_src/assets
 cp decoder-input.apk shell_src/assets/orgapk
 python3 ../scripts/extract_cert.py decoder-input.apk shell_src/assets/orgcert.der
+# PKCS#7→X.509 归一化（extract_cert 无 cryptography 时由 openssl 兜底；裸 DER 双端无歧义）
+if openssl x509 -inform DER -in shell_src/assets/orgcert.der -noout -subject >/dev/null 2>&1; then
+  echo "orgcert 已是裸 X.509 DER"
+else
+  openssl pkcs7 -inform DER -in shell_src/assets/orgcert.der -print_certs -outform PEM 2>/dev/null \
+    | openssl x509 -outform DER -out shell_src/assets/orgcert.der
+  echo "orgcert 经 pkcs7→x509 归一化"
+fi
 openssl x509 -inform DER -in shell_src/assets/orgcert.der -noout -subject -fingerprint -sha256 || true
 ls -la shell_src/assets/orgapk shell_src/assets/orgcert.der
 
@@ -728,7 +736,7 @@ sha256sum fanqie-b3-shell-5-signed.apk | tee sha256-b3-5.txt
 {
   echo ""
   echo "## round9 三层签名伪装自证"
-  echo "- 层1 redirect: $(grep -c 'publicSourceDir' shell_src/smali_classes21/com/dragon/read/mute/MuteReplacer.smali) 处 publicSourceDir 写入（+sourceDir）"
+  echo "- 层1 redirect: $(grep -c 'publicSourceDir' shell_src/smali_classes22/com/dragon/read/mute/MuteReplacer.smali) 处 publicSourceDir 写入（+sourceDir）"
   echo "- 层2 PMS 代理: SignHandler/MuteSignProxy 类在 $(unzip -l fanqie-b3-shell-5-signed.apk | grep -c classes 2>/dev/null || echo '?') dex 结构中；orgcert.der=$(unzip -l fanqie-b3-shell-5-signed.apk | grep -oE 'assets/orgcert.der' | head -1)"
   echo "- 层3 native 面: sourceDir 指向官方 73332 原包文件（真官方 v2/v3 签名块），native 解析该路径即读官方签名，无需代码"
   echo "- 官方证书: $(openssl x509 -inform DER -in shell_src/assets/orgcert.der -noout -fingerprint -sha256 2>/dev/null || echo 'n/a')"
