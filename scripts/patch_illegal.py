@@ -68,8 +68,35 @@ if os.path.exists(p3_path):
 else:
     report.append('P3: SKIP(文件不存在)')
 
+# P4（round13）：z56/l.k(View,Throwable) —— 阅读页页面级错误处理器（真机实锤的全屏拦截页渲染点，
+# ci2 文案@1289；v28 三点位掐 Toast 后拦截依旧的真链）。置空 = 拦截占位页不渲染。
+ok4 = replace_method_body(
+    os.path.join(root, 'smali_classes6/z56/l.smali'),
+    r' final k\(Landroid/view/View;Ljava/lang/Throwable;\)V',
+    '    .locals 0\n    # PATCHED_ROUND13 P4: 阅读页全屏拦截页=本方法渲染的占位 View（v28 真机实证 Toast 链非真身）。置空=不渲染拦截页（正常加载路径不经过本方法，副作用=内容真失败时无占位提示）\n    return-void\n',
+    'P4-z56lk')
+
+# P5（round13）：uh3/z$b 的 ci2 引用（另一文案消费点，预防二线）
+# 不整体置空（z$b 是多方法内部类），只把引用 ci2 的 const 值改为 0x0——渲染空文案
+p5_path = os.path.join(root, 'smali_classes2/uh3/z$b.smali')
+if os.path.exists(p5_path):
+    src5 = open(p5_path, encoding='utf-8').read()
+    if 'PATCHED_ROUND13 P5' in src5:
+        report.append('P5: SKIP(已patch)')
+    else:
+        nb5, n5 = re.subn(r'const (v\d+,) 0x7f061199\b', r'const \1 0x0 # PATCHED_ROUND13 P5: ci2→null 资源（文案消费点熄灭）', src5)
+        if n5 == 0:
+            report.append('P5: WARN(未找到 ci2 引用——人工核对)')
+        else:
+            open(p5_path, 'w', encoding='utf-8').write(nb5)
+            report.append(f'P5: OK（{n5} 处 ci2→0x0）{p5_path}')
+else:
+    report.append('P5: SKIP(文件不存在)')
+
 print('\n'.join(report))
-# P1 为治本必成；P2/P3 失败可接受（有 P1 兜底）但必须留痕
+# P1 为治本必成；P4 为 round13 真链主点（未落位仅报警不 fatal，P5 兜底）
 if not ok1:
     print('PATCH_ILLEGAL_FATAL: P1 未落位'); sys.exit(1)
+if not ok4:
+    print('WARN: P4 未落位（真链主点缺失，人工核对 z56/l.k 签名）')
 print('PATCH_ILLEGAL_DONE')
