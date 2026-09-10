@@ -129,6 +129,27 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   R=$(find shell_src -name "strings.xml" | head -1)
   grep -rn "不安全" shell_src/res/values*/strings.xml 2>/dev/null | head -4 || echo "(strings 未解码为明文，走 public.xml id 反查)"
   grep -n "cjw" shell_src/res/values/public.xml 2>/dev/null | head -3
+
+  # ===== round13 recon：全屏拦截页真链重定位（round12 Toast 链被真机证伪）=====
+  echo; echo "## round13-A 拦截文案 @string/ci2 的资源 ID 与全部引用者（不只 ToastUtils）"
+  CI2_ID=$(grep -oE '<public type="string" name="ci2" id="0x[0-9a-f]+"' shell_src/res/values/public.xml | grep -oE '0x[0-9a-f]+')
+  echo "ci2 id = $CI2_ID"
+  [ -n "$CI2_ID" ] && grep -rln "$CI2_ID" shell_src/smali* 2>/dev/null | head -12
+  echo; echo "## round13-B layout cjw（0x7f0512bc）使用者——全屏拦截页布局消费者"
+  LAY_ID=$(grep -oE '<public type="layout" name="cjw" id="0x[0-9a-f]+"' shell_src/res/values/public.xml | grep -oE '0x[0-9a-f]+')
+  echo "layout cjw id = $LAY_ID"
+  [ -n "$LAY_ID" ] && grep -rln "$LAY_ID" shell_src/smali* 2>/dev/null | head -10
+  echo "-- layout cjw 解码树文件（布局内容看结构）--"
+  find shell_src/res -path "*layout*" -name "cjw.xml" | head -2
+  F_LAY=$(find shell_src/res -path "*layout*" -name "cjw.xml" | head -1)
+  [ -n "$F_LAY" ] && head -30 "$F_LAY"
+  echo; echo "## round13-C SafeModeActivity 完整启动链（z1.run 里到底拉起什么）"
+  SF=shell_src/smali_classes18/com/dragon/read/app/z1.smali
+  [ -f "$SF" ] && dump_method "$SF" "run" | head -60
+  echo; echo "## round13-D SafeModeActivity 自身如何被唤起（Intent 构造）"
+  grep -rn "SafeModeActivity" shell_src/smali* 2>/dev/null | grep -vE "smali_classes18/com/dragon/read/app/(SafeModeActivity|z1|y1|e2)" | head -10
+  echo; echo "## round13-E ci2/e2/y1 之外：strings.xml 中其他「不安全」相关文案与引用"
+  grep -n "不安全\|版本过低\|禁止使用\|已停止" shell_src/res/values/strings.xml 2>/dev/null | head -8
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
