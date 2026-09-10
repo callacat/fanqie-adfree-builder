@@ -167,11 +167,14 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
 
   # ===== round13-I z56/l 真链判定（f/c/a 三个 View 渲染方法全文）=====
   echo; echo "## round13-I1 z56/l.f(u67/d)View 全文（占位 View 渲染器）"
-  dump_method "$F2" "^f\\(Lu67/d;\\)" | head -160
+  dump_method "$F2" " final f\\(Lu67/d;\\)" | head -170
   echo; echo "## round13-I2 z56/l.c(u67/d,Throwable)View 全文（错误 View 渲染器）"
-  dump_method "$F2" "^c\\(Lu67/d;Ljava/lang/Throwable;\\)" | head -60
-  echo; echo "## round13-I3 z56/l.a 前 120 行（ReaderClient 入口判据）"
-  dump_method "$F2" "^a\\(Lcom/dragon/reader/lib/ReaderClient" | head -120
+  dump_method "$F2" " final c\\(Lu67/d;Ljava/lang/Throwable;\\)" | head -60
+  echo; echo "## round13-I3 z56/l.a 前 130 行（ReaderClient 入口判据）"
+  dump_method "$F2" " final a\\(Lcom/dragon/reader/lib/ReaderClient" | head -130
+  echo; echo "## round13-I4 z56/l 内 ci2(0x7f061199) 引用行上下文（哪个方法用到文案）"
+  grep -n "0x7f061199" "$F2"
+  awk 'BEGIN{m=""} /^\.method/{m=$0} /0x7f061199/{print "所在方法: " m}' "$F2" | head -3
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
