@@ -164,6 +164,14 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   echo; echo "## round13-H 阅读页 Dialog 覆盖层候选（ReaderActivity 链上的全屏 Dialog）"
   grep -rln "0x7f061199\|ci2" shell_src/smali_classes6/z56/ 2>/dev/null | head -4
   dump_method "$F2" "inflate|setContentView|addView|show" | head -50
+
+  # ===== round13-I z56/l 真链判定（f/c/a 三个 View 渲染方法全文）=====
+  echo; echo "## round13-I1 z56/l.f(u67/d)View 全文（占位 View 渲染器）"
+  dump_method "$F2" "^f\\(Lu67/d;\\)" | head -160
+  echo; echo "## round13-I2 z56/l.c(u67/d,Throwable)View 全文（错误 View 渲染器）"
+  dump_method "$F2" "^c\\(Lu67/d;Ljava/lang/Throwable;\\)" | head -60
+  echo; echo "## round13-I3 z56/l.a 前 120 行（ReaderClient 入口判据）"
+  dump_method "$F2" "^a\\(Lcom/dragon/reader/lib/ReaderClient" | head -120
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
