@@ -623,6 +623,21 @@ cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
 .method private static loadOrgSigs(Landroid/content/Context;)[Landroid/content/pm/Signature;
     .locals 7
     :try_start_0
+    # round14 内置证书优先（v33 实锤：redirect 后 assets/orgcert.der 读不到+官方包无 META-INF 条目）
+    invoke-static {}, Lcom/dragon/read/mute/MuteBuiltinCert;->get()[B
+    move-result-object v1
+    if-eqz v1, :cond_fallback
+    array-length v2, v1
+    if-lez v2, :cond_fallback
+    invoke-static {v1}, Lcom/dragon/read/mute/MuteSignProxy;->certBytesToSigs([B)[Landroid/content/pm/Signature;
+    move-result-object v0
+    if-eqz v0, :cond_fallback
+    const-string v1, "MuteSignProxy"
+    const-string v2, "loadOrgSigs OK: builtin cert (dex constant)"
+    const/4 v3, 0x0
+    invoke-static {v1, v2, v3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    return-object v0
+    :cond_fallback
     const-string v0, "X.509"
     invoke-static {v0}, Ljava/security/cert/CertificateFactory;->getInstance(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
     move-result-object v0
@@ -642,7 +657,7 @@ cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
     invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
     move-result-object v2
     check-cast v2, Ljava/security/cert/Certificate;
-    invoke-interface {v2}, Ljava/security/cert/Certificate;->getEncoded()[B
+    invoke-virtual {v2}, Ljava/security/cert/Certificate;->getEncoded()[B
     move-result-object v2
     invoke-static {v2}, Lcom/dragon/read/mute/MuteSignProxy;->toSigs([B)[Landroid/content/pm/Signature;
     move-result-object v0
@@ -696,7 +711,7 @@ cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
     invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
     move-result-object v4
     check-cast v4, Ljava/security/cert/Certificate;
-    invoke-interface {v4}, Ljava/security/cert/Certificate;->getEncoded()[B
+    invoke-virtual {v4}, Ljava/security/cert/Certificate;->getEncoded()[B
     move-result-object v4
     invoke-static {v4}, Lcom/dragon/read/mute/MuteSignProxy;->toSigs([B)[Landroid/content/pm/Signature;
     move-result-object v0
@@ -715,6 +730,45 @@ cat > "shell_src/smali_classes22/$MUTE/MuteSignProxy.smali" <<'SMALI'
     const-string v2, "MuteSignProxy"
     const-string v3, "loadOrgSigs FAILED: no orgcert.der and META-INF scan empty"
     invoke-static {v2, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    const/4 v0, 0x0
+    return-object v0
+.end method
+
+# round14：DER 字节 → Signature[]（内置证书路径；Certificate 为 abstract class，getEncoded 走 invoke-virtual）
+.method private static certBytesToSigs([B)[Landroid/content/pm/Signature;
+    .locals 4
+    :try_start_0
+    const-string v0, "X.509"
+    invoke-static {v0}, Ljava/security/cert/CertificateFactory;->getInstance(Ljava/lang/String;)Ljava/security/cert/CertificateFactory;
+    move-result-object v0
+    new-instance v1, Ljava/io/ByteArrayInputStream;
+    invoke-direct {v1, p0}, Ljava/io/ByteArrayInputStream;-><init>([B)V
+    invoke-virtual {v0, v1}, Ljava/security/cert/CertificateFactory;->generateCertificates(Ljava/io/InputStream;)Ljava/util/Collection;
+    move-result-object v2
+    invoke-virtual {v1}, Ljava/io/InputStream;->close()V
+    invoke-interface {v2}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+    move-result-object v2
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+    move-result v3
+    if-eqz v3, :cond_empty
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    move-result-object v2
+    check-cast v2, Ljava/security/cert/Certificate;
+    invoke-virtual {v2}, Ljava/security/cert/Certificate;->getEncoded()[B
+    move-result-object v2
+    invoke-static {v2}, Lcom/dragon/read/mute/MuteSignProxy;->toSigs([B)[Landroid/content/pm/Signature;
+    move-result-object v0
+    return-object v0
+    :cond_empty
+    const/4 v0, 0x0
+    return-object v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catch_all
+    :catch_all
+    move-exception v0
+    const-string v1, "MuteSignProxy"
+    const-string v2, "certBytesToSigs FAILED"
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     const/4 v0, 0x0
     return-object v0
 .end method
@@ -902,6 +956,10 @@ else
   echo "orgcert 经 pkcs7→x509 归一化"
 fi
 openssl x509 -inform DER -in shell_src/assets/orgcert.der -noout -subject -fingerprint -sha256 || true
+# round14：证书编进 dex（MuteBuiltinCert 常量数组）——消解层1 assets 重定向副作用
+# （v33 实测实锤：redirect 后壳 assets/orgcert.der 读不到 + 官方包 v2/v3-only 无 META-INF 条目 → 双数据源断）
+python3 ../scripts/gen_builtin_cert.py shell_src/assets/orgcert.der "shell_src/smali_classes22/$MUTE/MuteBuiltinCert.smali"
+head -3 "shell_src/smali_classes22/$MUTE/MuteBuiltinCert.smali"
 ls -la shell_src/assets/orgapk shell_src/assets/orgcert.der
 
 echo "=== [5/6] apktool b 重建（复用 v3/v4 验证路线）==="
