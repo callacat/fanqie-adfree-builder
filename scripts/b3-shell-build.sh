@@ -150,6 +150,20 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   grep -rn "SafeModeActivity" shell_src/smali* 2>/dev/null | grep -vE "smali_classes18/com/dragon/read/app/(SafeModeActivity|z1|y1|e2)" | head -10
   echo; echo "## round13-E ci2/e2/y1 之外：strings.xml 中其他「不安全」相关文案与引用"
   grep -n "不安全\|版本过低\|禁止使用\|已停止" shell_src/res/values/strings.xml 2>/dev/null | head -8
+
+  # ===== round13-F 真链候选方法体（ci2 另两处引用 + 它们的调用者）=====
+  echo; echo "## round13-F1 uh3/z\$b 方法体（ci2 引用上下文）"
+  F1=shell_src/smali_classes2/uh3/z\$b.smali
+  [ -f "$F1" ] && { grep -n "^\.method" "$F1" | head -10; dump_method "$F1" "0x7f061199|showCommonToast|Dialog|AlertDialog" | head -70; } || echo "未找到 $F1"
+  echo; echo "## round13-F2 z56/l 方法体（ci2 引用上下文）"
+  F2=shell_src/smali_classes6/z56/l.smali
+  [ -f "$F2" ] && { grep -n "^\.method" "$F2" | head -10; dump_method "$F2" "0x7f061199|showCommonToast|Dialog|AlertDialog" | head -70; } || echo "未找到 $F2"
+  echo; echo "## round13-G 谁调用 uh3/z\$b 与 z56/l（调用者链上溯一层）"
+  grep -rln 'Luh3/z\$b;->' shell_src/smali* 2>/dev/null | head -6
+  grep -rln 'Lz56/l;->' shell_src/smali* 2>/dev/null | grep -v "smali_classes6/z56/l.smali" | head -6
+  echo; echo "## round13-H 阅读页 Dialog 覆盖层候选（ReaderActivity 链上的全屏 Dialog）"
+  grep -rln "0x7f061199\|ci2" shell_src/smali_classes6/z56/ 2>/dev/null | head -4
+  dump_method "$F2" "inflate|setContentView|addView|show" | head -50
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
