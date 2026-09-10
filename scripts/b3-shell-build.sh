@@ -978,6 +978,27 @@ if [ -d "shell_src/smali_classes22/com/dragon/read/mute" ] && [ -f b3-unsigned.a
   echo "move-exception 指令数: $(grep -c 'move-exception' /tmp/dexdump-c22.txt)"
   echo "--- move-exception 上下文（应为 handler 入口首指令）---"
   grep -B 2 -A 1 'move-exception' /tmp/dexdump-c22.txt | head -24
+  # round15：fill-array-data element_width 与 payload 长度配对校验（v34 mismatch 8 vs 1 防再犯）
+  # dexdump -d 反汇编 fill-array-data 显示格式：[...]: fill-array-data {vN}, data@off + 数据块（含 element_width）
+  FA=$(grep -c 'fill-array-data' /tmp/dexdump-c22.txt || true)
+  echo "fill-array-data 指令数: $FA（MuteBuiltinCert 应=1）"
+  if [ "$FA" -gt 0 ]; then
+    # 抽查 MuteBuiltinCert.clinit 的 fill-array 上下文（ dexdump 输出 array 数据块行含尺寸信息）
+    grep -A 6 'MuteBuiltinCert' /tmp/dexdump-c22.txt | grep -iE 'fill-array|array' | head -6 || true
+    # 硬校验：smali 源层面三宽一致（const/16 尺寸 == array-data 1 行数 == 证书字节数）
+    SRC_CERT="shell_src/smali_classes22/com/dragon/read/mute/MuteBuiltinCert.smali"
+    if [ -f "$SRC_CERT" ]; then
+      C_VAL=$(grep -oE 'const/16 v0, 0x[0-9a-f]+' "$SRC_CERT" | grep -oE '0x[0-9a-f]+')
+      AD_W=$(grep -oE '\.array-data [0-9]+' "$SRC_CERT" | awk '{print $2}')
+      AD_N=$(awk '/\.array-data/{f=1;next}/\.end array-data/{f=0}f' "$SRC_CERT" | grep -c '^        0x')
+      python3 -c "
+c=int('$C_VAL',16); w=int('$AD_W'); n=$AD_N
+assert w==1, f'element_width={w} 非 1（r15 规范）'
+assert c==n, f'const 尺寸 {c} != payload 行数 {n}（v34 mismatch 再犯！）'
+print(f'fill-array 配对校验 ✓ const={c} width={w} payload_rows={n}')"
+      echo "fill-array 配对校验 ✓ const=$C_VAL width=$AD_W payload_rows=$AD_N"
+    fi
+  fi
   rm -rf /tmp/dexv /tmp/dexdump-c22.txt
 else
   echo "!! classes22.dex 未在 b3-unsigned.apk 中找到，跳过扩展校验（检查 smali_classes22 目录）"
