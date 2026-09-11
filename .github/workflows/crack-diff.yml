@@ -1,0 +1,113 @@
+name: fanqie-crack-diff
+
+# round16a：破解版外层 22 dex vs 内嵌官方原包全量 diff（纯分析，不改包）
+# 产出：docs/diff-report.md + docs/diff-baksmali/ + 体积审计 —— 产物回 push 仓库供老马 A/B/C/D 分类
+# 版权红线：样本 APK 不落 git（仅 runner 磁盘），入库的只有 diff 分析文本
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ github.token }}
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: 下载工具（baksmali）
+        run: |
+          curl -sSL -o /usr/local/bin/baksmali.jar https://github.com/JesusFreke/smali/releases/download/v2.5.2/baksmali-2.5.2.jar
+          java -jar /usr/local/bin/baksmali.jar --version
+
+      - name: 拉样本 + sha256 校验
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p work && cd work
+          gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73368-mod-218M.apk' -p 'inner-73368-orig.apk' -D .
+          echo "fdf7e7c1b56a0f3409bf4bf3d1a9c7c252f43d951de0debdbccbb8ff798a3024  fanqie-73368-mod-218M.apk" | sha256sum -c -
+
+      - name: 解包双包（mod 外层 dex + inner 官方包）
+        run: |
+          cd work
+          unzip -o -q fanqie-73368-mod-218M.apk 'classes*.dex' -d mod-outer/
+          unzip -o -q inner-73368-orig.apk 'classes*.dex' -d inner-org/
+          unzip -o -q fanqie-73368-mod-218M.apk -d mod-full/ -x 'classes*.dex' 2>/dev/null || unzip -o -q fanqie-73368-mod-218M.apk -d mod-full/
+          echo "mod 外层 dex 数: $(ls mod-outer/classes*.dex | wc -l)"
+          echo "inner dex 数: $(ls inner-org/classes*.dex | wc -l)"
+          ls mod-outer/classes*.dex | head -25
+
+      - name: baksmali 双包全量反编译
+        run: |
+          cd work
+          for D in mod-outer/classes*.dex; do
+            N=$(basename "$D" .dex)
+            java -jar /usr/local/bin/baksmali.jar d "$D" -o "smali-mod/$N" 2>/dev/null
+          done
+          for D in inner-org/classes*.dex; do
+            N=$(basename "$D" .dex)
+            java -jar /usr/local/bin/baksmali.jar d "$D" -o "smali-inner/$N" 2>/dev/null
+          done
+          echo "mod smali 文件数: $(find smali-mod -name '*.smali' | wc -l)"
+          echo "inner smali 文件数: $(find smali-inner -name '*.smali' | wc -l)"
+
+      - name: 全量 diff + 归档（python 机械对比）
+        run: |
+          cd work
+          python3 ../scripts/crack_diff.py "$PWD" | tee diff-run.log
+          cp -r diff-out/docs ../
+          ls ../docs/diff-report.md ../docs/diff-baksmali/ | head -5
+
+      - name: 体积构成审计（外层 ~100MB 构成）
+        run: |
+          cd work
+          python3 - <<'EOF' | tee diff-out/docs/size-audit.txt
+          import os, zipfile
+          z = zipfile.ZipFile('fanqie-73368-mod-218M.apk')
+          total = sum(i.file_size for i in z.infolist())
+          cats = {}
+          for i in z.infolist():
+              n = i.filename
+              sz = i.file_size
+              if n.startswith('assets/liborgapk.so'): k='assets/liborgapk.so(官方原包)'
+              elif n.startswith('assets/'): k='assets(其他)'
+              elif n.startswith('lib/'): k='lib/(so)'
+              elif n.startswith('classes') and n.endswith('.dex'): k='外层 dex'
+              elif n.startswith('res/'): k='res/'
+              elif n.startswith('r/'): k='resources(arsc/等)'
+              elif n.startswith('META-INF/'): k='META-INF'
+              else: k='其他(root)'
+              cats[k] = cats.get(k,0)+sz
+          print(f'总解压体积: {total/1048576:.1f} MB')
+          for k,v in sorted(cats.items(), key=lambda x:-x[1]):
+              print(f'{k:32s} {v/1048576:8.1f} MB  {v*100.0/total:5.1f}%')
+          print('\n== 大文件 top20 ==')
+          files = sorted(z.infolist(), key=lambda i:-i.file_size)[:20]
+          for i in files:
+              print(f'{i.file_size/1048576:7.1f} MB  {i.filename}')
+          EOF
+
+      - name: Commit + push 产物
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git config user.name "codery-ci"
+          git config user.email "codery-ci@noreply"
+          git add docs/diff-report.md docs/diff-baksmali/ docs/size-audit.txt
+          git commit -m "docs: round16a 全量 dex diff 产物（外层22dex vs 官方原包，机械归档供 A/B/C/D 分类）" || echo "无变更"
+          git push origin main
+
+      - name: 清理版权物
+        if: always()
+        run: rm -rf work
