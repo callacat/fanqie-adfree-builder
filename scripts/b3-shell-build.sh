@@ -215,8 +215,25 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   grep -rln 'com/rN/' shell_src/smali* 2>/dev/null | grep -v '/rN/' | head -8
   echo "-- arm/model 类清单 --"
   find shell_src -path "*arm/model*" -name "*.smali" | head -12
-  echo "-- arm/model 消费方（目录外）--"
-  grep -rln 'Larm/model' shell_src/smali* 2>/dev/null | grep -v 'arm/model' | head -8
+  # ===== round16b recon-B：mod 包侧依赖分析（16b patch 对象=mod 外层 dex，非官方 73332）=====
+  echo; echo "## r16b-B0 输入切换说明"
+  echo "蓝图点位（com/a/a、com/rN、arm/model、sgcore0）经 recon 确认在 mod 包（round16a diff 实锤 added/classes22），官方 73332 无此类——本段用 round16a 已归档的 mod baksmali 产物做消费方反查"
+  MODSMALI="$GITHUB_WORKSPACE/docs/diff-baksmali/added"
+  echo "-- com/a/a 消费方（在 mod added 树反查）--"
+  grep -rln 'Lcom/a/a;->' "$MODSMALI" 2>/dev/null | head -15
+  echo "-- com/rN 消费方 --"
+  grep -rln 'Lcom/rN;->\|com/rN' "$MODSMALI" 2>/dev/null | grep -v 'com/rN.smali' | head -10
+  echo "-- arm/model 类定位 --"
+  find "$MODSMALI" -path "*arm/model*" -name "*.smali" | head -12
+  echo "-- arm/model 消费方 --"
+  grep -rln 'Larm/model' "$MODSMALI" 2>/dev/null | grep -v '/arm/model/' | head -10
+  echo "-- sgcore0/SafeLoader 定位 --"
+  find "$MODSMALI" -iname "*safeloader*" -o -ipath "*sgcore*" | head -8
+  grep -rln 'sgcore0\|registerNatives' "$MODSMALI" 2>/dev/null | head -10
+  echo "-- MinePolarisBenefitRepository.a() 方法体（语义判定）--"
+  MPB=$(find "$GITHUB_WORKSPACE/docs/diff-baksmali" -name "MinePolarisBenefitRepository.smali" | head -1)
+  echo "MPB=$MPB（若空=在 inner 原包非 mod 新增，需 CI 现场解 inner）"
+  [ -n "$MPB" ] && cat "$MPB" | head -60
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
