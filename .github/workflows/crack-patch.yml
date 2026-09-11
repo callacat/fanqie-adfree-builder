@@ -60,7 +60,9 @@ jobs:
           # mod 资源脏条目清理：作者重打包遗留 public.xml invalid* 类型（aapt1 容忍 aapt2 拒绝，五跑实锤 54479 行）
           sed -i 's|<public type="invalid[0-9]*" |<public type="ignore_me" |g' mod_src/res/values/public.xml
           sed -i '/type="ignore_me"/d' mod_src/res/values/public.xml
-          echo "public.xml invalid 条目清理完成: $(grep -c 'invalid' mod_src/res/values/public.xml || echo 0) 残留"
+          # 非法资源目录本体（六跑实锤 res/invalid15/arm_path.xml）
+          rm -rf mod_src/res/invalid*
+          echo "public.xml invalid 残留: $(grep -c 'invalid' mod_src/res/values/public.xml || echo 0)；res/invalid 目录残留: $(ls -d mod_src/res/invalid* 2>/dev/null | wc -l)"
 
       - name: patch 自检（改动点复核 + 残留引用扫描）
         run: |
