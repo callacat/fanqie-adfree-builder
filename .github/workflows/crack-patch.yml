@@ -57,6 +57,10 @@ jobs:
           grep -q 'PATCH_16B_DONE' patch-16b.log || { echo '!! patch 脚本未正常结束'; exit 1; }
           # P1 允许 WARN（首跑实锤 init 调用可能内联/不在 stub，标注不确定点交真机验证），P2/P3 必须命中
           grep -q 'P2-rN 合计' patch-16b.log && ! grep -q 'P3-registerNatives: WARN(0 命中' patch-16b.log || { echo '!! P2/P3 关键点位未命中'; exit 1; }
+          # mod 资源脏条目清理：作者重打包遗留 public.xml invalid* 类型（aapt1 容忍 aapt2 拒绝，五跑实锤 54479 行）
+          sed -i 's|<public type="invalid[0-9]*" |<public type="ignore_me" |g' mod_src/res/values/public.xml
+          sed -i '/type="ignore_me"/d' mod_src/res/values/public.xml
+          echo "public.xml invalid 条目清理完成: $(grep -c 'invalid' mod_src/res/values/public.xml || echo 0) 残留"
 
       - name: patch 自检（改动点复核 + 残留引用扫描）
         run: |
