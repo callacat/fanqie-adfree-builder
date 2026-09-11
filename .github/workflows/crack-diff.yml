@@ -26,9 +26,9 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: 下载工具（baksmali）
+      - name: 下载工具（baksmali 3.0.10 社区仓；JesusFreke v2.5.2 release 已删）
         run: |
-          curl -sSL -o /usr/local/bin/baksmali.jar https://github.com/JesusFreke/smali/releases/download/v2.5.2/baksmali-2.5.2.jar
+          curl -sSL -o /usr/local/bin/baksmali.jar https://github.com/baksmali/smali/releases/download/3.0.10/baksmali-3.0.10-fat.jar
           java -jar /usr/local/bin/baksmali.jar --version
 
       - name: 拉样本 + sha256 校验
