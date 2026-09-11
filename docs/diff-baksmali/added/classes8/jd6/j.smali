@@ -1,0 +1,70 @@
+.class public final Ljd6/j;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/functions/Consumer;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/rpc/model/NovelReply;
+
+.field public final synthetic b:Ljd6/e;
+
+
+# direct methods
+.method public constructor <init>(Ljd6/e;Lcom/dragon/read/rpc/model/NovelReply;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
+
+    .prologue
+    .line 33619968
+    iput-object p1, p0, Ljd6/j;->b:Ljd6/e;
+
+    .line 33619970
+    iput-object p2, p0, Ljd6/j;->a:Lcom/dragon/read/rpc/model/NovelReply;
+
+    .line 33619972
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33619975
+    return-void
+.end method
+
+
+# virtual methods
+.method public final accept(Ljava/lang/Object;)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/Exception;
+        }
+    .end annotation
+
+    .prologue
+    .line 16908288
+    iget-object p1, p0, Ljd6/j;->b:Ljd6/e;
+
+    .line 16908290
+    iget-object v0, p1, Ljd6/e;->i:Landroid/widget/ImageView;
+
+    .line 16908292
+    iget-object v1, p0, Ljd6/j;->a:Lcom/dragon/read/rpc/model/NovelReply;
+
+    .line 16908294
+    iget-object p1, p1, Ljd6/e;->v:Ljd6/e$g;
+
+    .line 16908296
+    if-eqz p1, :cond_d
+
+    .line 16908298
+    invoke-interface {p1, v0, v1}, Ljd6/e$g;->a(Landroid/view/View;Lcom/dragon/read/rpc/model/NovelReply;)V
+
+    .line 16908301
+    :cond_d
+    return-void
+.end method

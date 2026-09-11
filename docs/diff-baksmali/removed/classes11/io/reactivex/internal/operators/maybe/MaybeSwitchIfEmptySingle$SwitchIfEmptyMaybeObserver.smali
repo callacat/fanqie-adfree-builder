@@ -1,0 +1,282 @@
+.class final Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;
+.super Ljava/util/concurrent/atomic/AtomicReference;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/MaybeObserver;
+.implements Lio/reactivex/disposables/Disposable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "SwitchIfEmptyMaybeObserver"
+.end annotation
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver$a;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/util/concurrent/atomic/AtomicReference<",
+        "Lio/reactivex/disposables/Disposable;",
+        ">;",
+        "Lio/reactivex/MaybeObserver<",
+        "TT;>;",
+        "Lio/reactivex/disposables/Disposable;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final serialVersionUID:J = 0x3fe4688d997527b3L
+
+
+# instance fields
+.field final downstream:Lio/reactivex/SingleObserver;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lio/reactivex/SingleObserver<",
+            "-TT;>;"
+        }
+    .end annotation
+.end field
+
+.field final other:Lio/reactivex/SingleSource;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lio/reactivex/SingleSource<",
+            "+TT;>;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa4e29
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lio/reactivex/SingleObserver;Lio/reactivex/SingleSource;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lio/reactivex/SingleObserver<",
+            "-TT;>;",
+            "Lio/reactivex/SingleSource<",
+            "+TT;>;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 33619968
+    invoke-direct {p0}, Ljava/util/concurrent/atomic/AtomicReference;-><init>()V
+
+    .line 33619969
+    .line 33619970
+    .line 33619971
+    iput-object p1, p0, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;->downstream:Lio/reactivex/SingleObserver;
+
+    .line 33619972
+    .line 33619973
+    iput-object p2, p0, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;->other:Lio/reactivex/SingleSource;
+
+    .line 33619974
+    .line 33619975
+    return-void
+.end method
+
+
+# virtual methods
+.method public final dispose()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-static {p0}, Lio/reactivex/internal/disposables/DisposableHelper;->dispose(Ljava/util/concurrent/atomic/AtomicReference;)Z
+
+    .line 1
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method public final isDisposed()Z
+    .registers 2
+
+    .prologue
+    .line 131072
+    invoke-virtual {p0}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 131073
+    .line 131074
+    .line 131075
+    move-result-object v0
+
+    .line 131076
+    check-cast v0, Lio/reactivex/disposables/Disposable;
+
+    .line 131077
+    .line 131078
+    invoke-static {v0}, Lio/reactivex/internal/disposables/DisposableHelper;->isDisposed(Lio/reactivex/disposables/Disposable;)Z
+
+    .line 131079
+    .line 131080
+    .line 131081
+    move-result v0
+
+    .line 131082
+    return v0
+.end method
+
+.method public final onComplete()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    invoke-virtual {p0}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 196609
+    .line 196610
+    .line 196611
+    move-result-object v0
+
+    .line 196612
+    check-cast v0, Lio/reactivex/disposables/Disposable;
+
+    .line 196613
+    .line 196614
+    sget-object v1, Lio/reactivex/internal/disposables/DisposableHelper;->DISPOSED:Lio/reactivex/internal/disposables/DisposableHelper;
+
+    .line 196615
+    .line 196616
+    if-eq v0, v1, :cond_1d
+
+    .line 196617
+    .line 196618
+    const/4 v1, 0x0
+
+    .line 196619
+    invoke-virtual {p0, v0, v1}, Ljava/util/concurrent/atomic/AtomicReference;->compareAndSet(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result v0
+
+    .line 196623
+    if-eqz v0, :cond_1d
+
+    .line 196624
+    .line 196625
+    iget-object v0, p0, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;->other:Lio/reactivex/SingleSource;
+
+    .line 196626
+    .line 196627
+    new-instance v1, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver$a;
+
+    .line 196628
+    .line 196629
+    iget-object v2, p0, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;->downstream:Lio/reactivex/SingleObserver;
+
+    .line 196630
+    .line 196631
+    invoke-direct {v1, v2, p0}, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver$a;-><init>(Lio/reactivex/SingleObserver;Ljava/util/concurrent/atomic/AtomicReference;)V
+
+    .line 196632
+    .line 196633
+    .line 196634
+    invoke-interface {v0, v1}, Lio/reactivex/SingleSource;->subscribe(Lio/reactivex/SingleObserver;)V
+
+    .line 196635
+    .line 196636
+    .line 196637
+    :cond_1d
+    return-void
+.end method
+
+.method public final onError(Ljava/lang/Throwable;)V
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;->downstream:Lio/reactivex/SingleObserver;
+
+    .line 16842753
+    .line 16842754
+    invoke-interface {v0, p1}, Lio/reactivex/SingleObserver;->onError(Ljava/lang/Throwable;)V
+
+    .line 16842755
+    .line 16842756
+    .line 16842757
+    return-void
+.end method
+
+.method public final onSubscribe(Lio/reactivex/disposables/Disposable;)V
+    .registers 2
+
+    .prologue
+    .line 16908288
+    invoke-static {p0, p1}, Lio/reactivex/internal/disposables/DisposableHelper;->setOnce(Ljava/util/concurrent/atomic/AtomicReference;Lio/reactivex/disposables/Disposable;)Z
+
+    .line 16908289
+    .line 16908290
+    .line 16908291
+    move-result p1
+
+    .line 16908292
+    if-eqz p1, :cond_b
+
+    .line 16908293
+    .line 16908294
+    iget-object p1, p0, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;->downstream:Lio/reactivex/SingleObserver;
+
+    .line 16908295
+    .line 16908296
+    invoke-interface {p1, p0}, Lio/reactivex/SingleObserver;->onSubscribe(Lio/reactivex/disposables/Disposable;)V
+
+    .line 16908297
+    .line 16908298
+    .line 16908299
+    :cond_b
+    return-void
+.end method
+
+.method public final onSuccess(Ljava/lang/Object;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lio/reactivex/internal/operators/maybe/MaybeSwitchIfEmptySingle$SwitchIfEmptyMaybeObserver;->downstream:Lio/reactivex/SingleObserver;
+
+    .line 16842753
+    .line 16842754
+    invoke-interface {v0, p1}, Lio/reactivex/SingleObserver;->onSuccess(Ljava/lang/Object;)V
+
+    .line 16842755
+    .line 16842756
+    .line 16842757
+    return-void
+.end method

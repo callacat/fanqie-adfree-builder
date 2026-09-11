@@ -1,0 +1,45 @@
+.class public final synthetic Lxg2/k;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/community/generate/view/holder/AiImageResultItemView;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/community/generate/view/holder/AiImageResultItemView;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lxg2/k;->a:Lcom/dragon/community/generate/view/holder/AiImageResultItemView;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onClick(Landroid/view/View;)V
+    .registers 2
+
+    .prologue
+    .line 16908288
+    iget-object p1, p0, Lxg2/k;->a:Lcom/dragon/community/generate/view/holder/AiImageResultItemView;
+
+    .line 16908290
+    iget-object p1, p1, Lcom/dragon/community/generate/view/holder/AiImageResultItemView;->q:Lcom/dragon/community/generate/view/holder/AiImageResultItemView$a;
+
+    .line 16908292
+    if-eqz p1, :cond_9
+
+    .line 16908294
+    invoke-interface {p1}, Lcom/dragon/community/generate/view/holder/AiImageResultItemView$a;->b()V
+
+    .line 16908297
+    :cond_9
+    return-void
+.end method

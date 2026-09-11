@@ -1,0 +1,351 @@
+## classes15/r21/j.smali
+# added=0 removed=0 changed=2
+
+.method public constructor <init>(Lr21/j$a;)V
+[MOD-CHANGED]
+.method public constructor <init>(Lr21/j$a;)V
+    .registers 4
+
+    .prologue
+    .line 16973824
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16973827
+    iget-boolean v0, p1, Lr21/j$a;->a:Z
+
+    .line 16973829
+    iput-boolean v0, p0, Lr21/j;->a:Z
+
+    .line 16973831
+    iget-boolean v0, p1, Lr21/j$a;->b:Z
+
+    .line 16973833
+    iput-boolean v0, p0, Lr21/j;->b:Z
+
+    .line 16973835
+    iget-boolean v0, p1, Lr21/j$a;->c:Z
+
+    .line 16973837
+    iput-boolean v0, p0, Lr21/j;->c:Z
+
+    .line 16973839
+    iget-wide v0, p1, Lr21/j$a;->e:J
+
+    .line 16973841
+    iput-wide v0, p0, Lr21/j;->e:J
+
+    .line 16973843
+    iget v0, p1, Lr21/j$a;->f:I
+
+    .line 16973845
+    iput v0, p0, Lr21/j;->f:I
+
+    .line 16973847
+    iget-boolean p1, p1, Lr21/j$a;->d:Z
+
+    .line 16973849
+    iput-boolean p1, p0, Lr21/j;->d:Z
+
+    .line 16973851
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Lr21/j$a;)V
+    .registers 4
+
+    .prologue
+    .line 16973824
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16973825
+    .line 16973826
+    .line 16973827
+    iget-boolean v0, p1, Lr21/j$a;->a:Z
+
+    .line 16973828
+    .line 16973829
+    iput-boolean v0, p0, Lr21/j;->a:Z
+
+    .line 16973830
+    .line 16973831
+    iget-boolean v0, p1, Lr21/j$a;->b:Z
+
+    .line 16973832
+    .line 16973833
+    iput-boolean v0, p0, Lr21/j;->b:Z
+
+    .line 16973834
+    .line 16973835
+    iget-boolean v0, p1, Lr21/j$a;->c:Z
+
+    .line 16973836
+    .line 16973837
+    iput-boolean v0, p0, Lr21/j;->c:Z
+
+    .line 16973838
+    .line 16973839
+    iget-wide v0, p1, Lr21/j$a;->e:J
+
+    .line 16973840
+    .line 16973841
+    iput-wide v0, p0, Lr21/j;->e:J
+
+    .line 16973842
+    .line 16973843
+    iget v0, p1, Lr21/j$a;->f:I
+
+    .line 16973844
+    .line 16973845
+    iput v0, p0, Lr21/j;->f:I
+
+    .line 16973846
+    .line 16973847
+    iget-boolean p1, p1, Lr21/j$a;->d:Z
+
+    .line 16973848
+    .line 16973849
+    iput-boolean p1, p0, Lr21/j;->d:Z
+
+    .line 16973850
+    .line 16973851
+    return-void
+.end method
+
+
+.method public final toString()Ljava/lang/String;
+[MOD-CHANGED]
+.method public final toString()Ljava/lang/String;
+    .registers 4
+
+    .prologue
+    .line 327680
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 327682
+    const-string v1, "MonitorConfig{enableAtrace="
+
+    .line 327684
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327687
+    iget-boolean v1, p0, Lr21/j;->a:Z
+
+    .line 327689
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327692
+    const-string v1, ", enableBinder="
+
+    .line 327694
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327697
+    iget-boolean v1, p0, Lr21/j;->b:Z
+
+    .line 327699
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327702
+    const-string v1, ", enableLooperMonitor="
+
+    .line 327704
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327707
+    iget-boolean v1, p0, Lr21/j;->c:Z
+
+    .line 327709
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327712
+    const-string v1, ", enableStackSampling="
+
+    .line 327714
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327717
+    iget-boolean v1, p0, Lr21/j;->d:Z
+
+    .line 327719
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327722
+    const-string v1, ", atraceTag="
+
+    .line 327724
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327727
+    iget-wide v1, p0, Lr21/j;->e:J
+
+    .line 327729
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 327732
+    const-string v1, ", runMode="
+
+    .line 327734
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327737
+    iget v1, p0, Lr21/j;->f:I
+
+    .line 327739
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 327742
+    const-string v1, ", alogRef=0}"
+
+    .line 327744
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327747
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327750
+    move-result-object v0
+
+    .line 327751
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final toString()Ljava/lang/String;
+    .registers 4
+
+    .prologue
+    .line 327680
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 327681
+    .line 327682
+    const-string v1, "MonitorConfig{enableAtrace="
+
+    .line 327683
+    .line 327684
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327685
+    .line 327686
+    .line 327687
+    iget-boolean v1, p0, Lr21/j;->a:Z
+
+    .line 327688
+    .line 327689
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327690
+    .line 327691
+    .line 327692
+    const-string v1, ", enableBinder="
+
+    .line 327693
+    .line 327694
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327695
+    .line 327696
+    .line 327697
+    iget-boolean v1, p0, Lr21/j;->b:Z
+
+    .line 327698
+    .line 327699
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327700
+    .line 327701
+    .line 327702
+    const-string v1, ", enableLooperMonitor="
+
+    .line 327703
+    .line 327704
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327705
+    .line 327706
+    .line 327707
+    iget-boolean v1, p0, Lr21/j;->c:Z
+
+    .line 327708
+    .line 327709
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327710
+    .line 327711
+    .line 327712
+    const-string v1, ", enableStackSampling="
+
+    .line 327713
+    .line 327714
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327715
+    .line 327716
+    .line 327717
+    iget-boolean v1, p0, Lr21/j;->d:Z
+
+    .line 327718
+    .line 327719
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 327720
+    .line 327721
+    .line 327722
+    const-string v1, ", atraceTag="
+
+    .line 327723
+    .line 327724
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327725
+    .line 327726
+    .line 327727
+    iget-wide v1, p0, Lr21/j;->e:J
+
+    .line 327728
+    .line 327729
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 327730
+    .line 327731
+    .line 327732
+    const-string v1, ", runMode="
+
+    .line 327733
+    .line 327734
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327735
+    .line 327736
+    .line 327737
+    iget v1, p0, Lr21/j;->f:I
+
+    .line 327738
+    .line 327739
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 327740
+    .line 327741
+    .line 327742
+    const-string v1, ", alogRef=0}"
+
+    .line 327743
+    .line 327744
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327745
+    .line 327746
+    .line 327747
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327748
+    .line 327749
+    .line 327750
+    move-result-object v0
+
+    .line 327751
+    return-object v0
+.end method
+
+

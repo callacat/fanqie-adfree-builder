@@ -1,0 +1,90 @@
+.class public Lreadersaas/com/dragon/read/saas/rpc/model/UPriceAuditListData;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/io/Serializable;
+
+
+# static fields
+.field private static fieldTypeClassRef:Ljava/lang/Class;
+
+.field private static final serialVersionUID:J
+
+
+# instance fields
+.field public auditId:J
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "audit_id"
+    .end annotation
+.end field
+
+.field public newAmount:I
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "new_amount"
+    .end annotation
+.end field
+
+.field public oldAmount:I
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "old_amount"
+    .end annotation
+.end field
+
+.field public operator:Ljava/lang/String;
+
+.field public passTime:J
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "pass_time"
+    .end annotation
+.end field
+
+.field public reason:Ljava/lang/String;
+
+.field public submitTime:J
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "submit_time"
+    .end annotation
+.end field
+
+.field public unitPriceId:J
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "unit_price_id"
+    .end annotation
+.end field
+
+.field public unitPriceName:Ljava/lang/String;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "unit_price_name"
+    .end annotation
+.end field
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 131072
+    const v0, 0xa7033
+
+    .line 131075
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 131078
+    const-class v0, Lcom/bytedance/rpc/serialize/FieldType;
+
+    .line 131080
+    sput-object v0, Lreadersaas/com/dragon/read/saas/rpc/model/UPriceAuditListData;->fieldTypeClassRef:Ljava/lang/Class;
+
+    .line 131082
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

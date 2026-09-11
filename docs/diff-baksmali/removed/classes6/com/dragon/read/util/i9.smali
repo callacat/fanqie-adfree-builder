@@ -1,0 +1,97 @@
+.class public final Lcom/dragon/read/util/i9;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/dragon/read/util/UiConfigSetter$e;
+
+
+# instance fields
+.field public final synthetic a:Z
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    const/4 v0, 0x0
+
+    .line 65537
+    iput-boolean v0, p0, Lcom/dragon/read/util/i9;->a:Z
+
+    .line 65538
+    .line 65539
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 65540
+    .line 65541
+    .line 65542
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Landroid/view/View;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16973826
+    .line 16973827
+    .line 16973828
+    instance-of v0, p1, Landroid/view/ViewGroup;
+
+    .line 16973829
+    .line 16973830
+    if-eqz v0, :cond_b
+
+    .line 16973831
+    .line 16973832
+    check-cast p1, Landroid/view/ViewGroup;
+
+    .line 16973833
+    .line 16973834
+    goto :goto_c
+
+    .line 16973835
+    :cond_b
+    const/4 p1, 0x0
+
+    .line 16973836
+    :goto_c
+    if-eqz p1, :cond_13
+
+    .line 16973837
+    .line 16973838
+    iget-boolean v0, p0, Lcom/dragon/read/util/i9;->a:Z
+
+    .line 16973839
+    .line 16973840
+    invoke-virtual {p1, v0}, Landroid/view/ViewGroup;->setClipToPadding(Z)V
+
+    .line 16973841
+    .line 16973842
+    .line 16973843
+    :cond_13
+    return-void
+.end method
+
+.method public final b(Ljava/lang/StringBuilder;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    invoke-static {p1}, Lcom/dragon/read/util/UiConfigSetter$e$a;->a(Ljava/lang/StringBuilder;)V
+
+    .line 16777217
+    .line 16777218
+    .line 16777219
+    return-void
+.end method

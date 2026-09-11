@@ -1,0 +1,233 @@
+.class public final Lqv3/l;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ls05/n;
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lci5/c;Lci5/b;)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    invoke-static {p1, p2}, Ls05/n$a;->a(Lci5/c;Lci5/b;)V
+
+    .line 33554435
+    return-void
+.end method
+
+.method public final b(Lci5/d;Lci5/b;)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    invoke-static {p1, p2}, Ls05/n$a;->b(Lci5/d;Lci5/b;)V
+
+    .line 33554435
+    return-void
+.end method
+
+.method public final c(Lo05/m;Ls05/z;)V
+    .registers 4
+
+    .prologue
+    .line 33619968
+    sget v0, Ls05/n$a;->a:I
+
+    .line 33619970
+    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 33619973
+    return-void
+.end method
+
+.method public final d(Lci5/d;Lci5/b;)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    invoke-static {p1, p2}, Ls05/n$a;->d(Lci5/d;Lci5/b;)V
+
+    .line 33554435
+    return-void
+.end method
+
+.method public final e(Lo05/m;Ls05/z;)V
+    .registers 4
+
+    .prologue
+    .line 33619968
+    sget v0, Ls05/n$a;->a:I
+
+    .line 33619970
+    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 33619973
+    return-void
+.end method
+
+.method public final f()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    sget v0, Ls05/n$a;->a:I
+
+    .line 65538
+    sget v0, Lxh5/g$a;->a:I
+
+    .line 65540
+    return-void
+.end method
+
+.method public final g(Ljava/lang/Object;Ls05/z;)V
+    .registers 3
+
+    .prologue
+    .line 33619968
+    sget p1, Ls05/n$a;->a:I
+
+    .line 33619970
+    sget p1, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->a:I
+
+    .line 33619972
+    return-void
+.end method
+
+.method public final h(Ljava/lang/Throwable;Ls05/z;)V
+    .registers 3
+
+    .prologue
+    .line 33619968
+    sget p1, Ls05/n$a;->a:I
+
+    .line 33619970
+    const/4 p1, 0x0
+
+    .line 33619971
+    invoke-static {p2, p1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33619974
+    return-void
+.end method
+
+.method public final i(Ljava/lang/Throwable;Lci5/b;)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    invoke-static {p2}, Ls05/n$a;->c(Lci5/b;)V
+
+    .line 33554435
+    return-void
+.end method
+
+.method public final j(I)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sget p1, Ls05/n$a;->a:I
+
+    .line 16777218
+    return-void
+.end method
+
+.method public final k()Z
+    .registers 2
+
+    .prologue
+    .line 65536
+    sget v0, Ls05/n$a;->a:I
+
+    .line 65538
+    sget v0, Lxh5/g$a;->a:I
+
+    .line 65540
+    const/4 v0, 0x0
+
+    .line 65541
+    return v0
+.end method
+
+.method public final l(Lcom/dragon/read/rpc/model/GetBookMallCellChangeRequest;)V
+    .registers 3
+
+    .prologue
+    .line 16842752
+    const/4 v0, 0x0
+
+    .line 16842753
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16842756
+    invoke-static {p1}, Lqv3/m;->a(Lcom/dragon/read/rpc/model/GetBookMallCellChangeRequest;)V
+
+    .line 16842759
+    return-void
+.end method
+
+.method public final m(IZ)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    sget p1, Ls05/n$a;->a:I
+
+    .line 33554434
+    return-void
+.end method
+
+.method public final n()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    sget v0, Ls05/n$a;->a:I
+
+    .line 65538
+    sget v0, Lxh5/g$a;->a:I
+
+    .line 65540
+    return-void
+.end method
+
+.method public final o()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    sget v0, Ls05/n$a;->a:I
+
+    .line 65538
+    sget v0, Lxh5/g$a;->a:I
+
+    .line 65540
+    return-void
+.end method
+
+.method public final onShowLoading()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    sget v0, Ls05/n$a;->a:I
+
+    .line 65538
+    sget v0, Lxh5/g$a;->a:I
+
+    .line 65540
+    return-void
+.end method

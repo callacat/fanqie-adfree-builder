@@ -1,0 +1,184 @@
+## classes6/o46/f0.smali
+# added=0 removed=0 changed=1
+
+.method public final onClick(Landroid/view/View;)V
+[MOD-CHANGED]
+.method public final onClick(Landroid/view/View;)V
+    .registers 6
+
+    .prologue
+    .line 17039360
+    sget v0, Lcom/dragon/read/reader/bookcover/view/BookCoverPageToolBar;->s:I
+
+    .line 17039362
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 17039365
+    move-result-object p1
+
+    .line 17039366
+    const-string v0, ""
+
+    .line 17039368
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 17039371
+    check-cast p1, Lcom/dragon/read/reader/ui/ReaderActivity;
+
+    .line 17039373
+    new-instance v1, Lcom/dragon/read/base/Args;
+
+    .line 17039375
+    invoke-direct {v1}, Lcom/dragon/read/base/Args;-><init>()V
+
+    .line 17039378
+    invoke-virtual {p1}, Lcom/dragon/read/reader/ui/ReaderActivity;->getBookId()Ljava/lang/String;
+
+    .line 17039381
+    move-result-object v2
+
+    .line 17039382
+    const-string v3, "book_id"
+
+    .line 17039384
+    invoke-virtual {v1, v3, v2}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17039387
+    const-string v2, "clicked_content"
+
+    .line 17039389
+    const-string v3, "back"
+
+    .line 17039391
+    invoke-virtual {v1, v2, v3}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17039394
+    sget-object v2, Lcom/dragon/read/reader/depend/a;->b:Lcom/dragon/read/reader/depend/a;
+
+    .line 17039396
+    const-string v3, "click_reader_cover"
+
+    .line 17039398
+    invoke-virtual {v2, v3, v1}, Lcom/dragon/read/reader/depend/a;->n(Ljava/lang/String;Lcom/dragon/read/base/Args;)V
+
+    .line 17039401
+    new-instance v1, Lu66/i;
+
+    .line 17039403
+    sget-object v2, Lcom/dragon/read/reader/lifecycle/ReaderExitType;->PageTop:Lcom/dragon/read/reader/lifecycle/ReaderExitType;
+
+    .line 17039405
+    invoke-direct {v1, v2, v0}, Lu66/i;-><init>(Lcom/dragon/read/reader/lifecycle/ReaderExitType;Ljava/lang/String;)V
+
+    .line 17039408
+    invoke-virtual {p1, v1}, Lcom/dragon/read/reader/ui/ReaderActivity;->J1(Lu66/i;)V
+
+    .line 17039411
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public final onClick(Landroid/view/View;)V
+    .registers 6
+
+    .prologue
+    .line 17039360
+    sget v0, Lcom/dragon/read/reader/bookcover/view/BookCoverPageToolBar;->s:I
+
+    .line 17039361
+    .line 17039362
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 17039363
+    .line 17039364
+    .line 17039365
+    move-result-object p1
+
+    .line 17039366
+    const-string v0, ""
+
+    .line 17039367
+    .line 17039368
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 17039369
+    .line 17039370
+    .line 17039371
+    check-cast p1, Lcom/dragon/read/reader/ui/ReaderActivity;
+
+    .line 17039372
+    .line 17039373
+    new-instance v1, Lcom/dragon/read/base/Args;
+
+    .line 17039374
+    .line 17039375
+    invoke-direct {v1}, Lcom/dragon/read/base/Args;-><init>()V
+
+    .line 17039376
+    .line 17039377
+    .line 17039378
+    invoke-virtual {p1}, Lcom/dragon/read/reader/ui/ReaderActivity;->getBookId()Ljava/lang/String;
+
+    .line 17039379
+    .line 17039380
+    .line 17039381
+    move-result-object v2
+
+    .line 17039382
+    const-string v3, "book_id"
+
+    .line 17039383
+    .line 17039384
+    invoke-virtual {v1, v3, v2}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17039385
+    .line 17039386
+    .line 17039387
+    const-string v2, "clicked_content"
+
+    .line 17039388
+    .line 17039389
+    const-string v3, "back"
+
+    .line 17039390
+    .line 17039391
+    invoke-virtual {v1, v2, v3}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17039392
+    .line 17039393
+    .line 17039394
+    sget-object v2, Lcom/dragon/read/reader/depend/a;->b:Lcom/dragon/read/reader/depend/a;
+
+    .line 17039395
+    .line 17039396
+    const-string v3, "click_reader_cover"
+
+    .line 17039397
+    .line 17039398
+    invoke-virtual {v2, v3, v1}, Lcom/dragon/read/reader/depend/a;->n(Ljava/lang/String;Lcom/dragon/read/base/Args;)V
+
+    .line 17039399
+    .line 17039400
+    .line 17039401
+    new-instance v1, Lu66/i;
+
+    .line 17039402
+    .line 17039403
+    sget-object v2, Lcom/dragon/read/reader/lifecycle/ReaderExitType;->PageTop:Lcom/dragon/read/reader/lifecycle/ReaderExitType;
+
+    .line 17039404
+    .line 17039405
+    invoke-direct {v1, v2, v0}, Lu66/i;-><init>(Lcom/dragon/read/reader/lifecycle/ReaderExitType;Ljava/lang/String;)V
+
+    .line 17039406
+    .line 17039407
+    .line 17039408
+    invoke-virtual {p1, v1}, Lcom/dragon/read/reader/ui/ReaderActivity;->J1(Lu66/i;)V
+
+    .line 17039409
+    .line 17039410
+    .line 17039411
+    return-void
+.end method
+
+

@@ -1,0 +1,74 @@
+.class public final synthetic Lvg2/j2;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 33816576
+    check-cast p1, Ljava/lang/String;
+
+    .line 33816578
+    check-cast p2, Ljava/lang/String;
+
+    .line 33816580
+    const/4 p1, 0x0
+
+    .line 33816581
+    invoke-static {p2, p1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33816584
+    sget-object p1, Lcom/dragon/read/lib/community/inner/c;->a:Lcom/dragon/read/lib/community/inner/c;
+
+    .line 33816586
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33816589
+    invoke-static {}, Lcom/dragon/read/lib/community/inner/c;->b()Lmt5/a;
+
+    .line 33816592
+    move-result-object p1
+
+    .line 33816593
+    iget-object p1, p1, Lmt5/a;->a:Lmt5/g;
+
+    .line 33816595
+    invoke-interface {p1}, Lmt5/g;->a()Lib6/v;
+
+    .line 33816598
+    move-result-object p1
+
+    .line 33816599
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33816602
+    sget-object p1, Lib6/b2;->a:Lib6/b2;
+
+    .line 33816604
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33816607
+    invoke-static {p2}, Lcom/dragon/read/util/ToastUtils;->showCommonToast(Ljava/lang/String;)V
+
+    .line 33816610
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33816612
+    return-object p1
+.end method

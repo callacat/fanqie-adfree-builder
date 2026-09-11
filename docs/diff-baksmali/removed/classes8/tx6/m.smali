@@ -1,0 +1,765 @@
+.class public final Ltx6/m;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Ltx6/m$a;,
+        Ltx6/m$b;
+    }
+.end annotation
+
+.annotation runtime Lkotlinx/serialization/Serializable;
+.end annotation
+
+
+# static fields
+.field public static final Companion:Ltx6/m$b;
+
+
+# instance fields
+.field public final a:Ljava/lang/String;
+
+.field public final b:Z
+
+.field public final c:Ljava/lang/String;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 131072
+    const v0, 0x9efd0
+
+    .line 131073
+    .line 131074
+    .line 131075
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 131076
+    .line 131077
+    .line 131078
+    new-instance v0, Ltx6/m$b;
+
+    .line 131079
+    .line 131080
+    invoke-direct {v0}, Ltx6/m$b;-><init>()V
+
+    .line 131081
+    .line 131082
+    .line 131083
+    sput-object v0, Ltx6/m;->Companion:Ltx6/m$b;
+
+    .line 131084
+    .line 131085
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 3
+
+    .prologue
+    .line 65536
+    const-string v0, ""
+
+    .line 65537
+    .line 65538
+    const/4 v1, 0x0
+
+    .line 65539
+    invoke-direct {p0, v0, v1, v0}, Ltx6/m;-><init>(Ljava/lang/String;ZLjava/lang/String;)V
+
+    .line 65540
+    .line 65541
+    .line 65542
+    return-void
+.end method
+
+.method public synthetic constructor <init>(ILjava/lang/String;Ljava/lang/String;Z)V
+    .registers 8
+
+    .prologue
+    .line 67371008
+    and-int/lit8 v0, p1, 0x0
+
+    .line 67371009
+    .line 67371010
+    const/4 v1, 0x0
+
+    .line 67371011
+    if-eqz v0, :cond_e
+
+    .line 67371012
+    .line 67371013
+    sget-object v0, Ltx6/m$a;->a:Ltx6/m$a;
+
+    .line 67371014
+    .line 67371015
+    invoke-virtual {v0}, Ltx6/m$a;->getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 67371016
+    .line 67371017
+    .line 67371018
+    move-result-object v0
+
+    .line 67371019
+    invoke-static {p1, v1, v0}, Lkotlinx/serialization/internal/PluginExceptionsKt;->throwMissingFieldException(IILkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 67371020
+    .line 67371021
+    .line 67371022
+    :cond_e
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 67371023
+    .line 67371024
+    .line 67371025
+    and-int/lit8 v0, p1, 0x1
+
+    .line 67371026
+    .line 67371027
+    const-string v2, ""
+
+    .line 67371028
+    .line 67371029
+    if-nez v0, :cond_1a
+
+    .line 67371030
+    .line 67371031
+    iput-object v2, p0, Ltx6/m;->a:Ljava/lang/String;
+
+    .line 67371032
+    .line 67371033
+    goto :goto_1c
+
+    .line 67371034
+    :cond_1a
+    iput-object p2, p0, Ltx6/m;->a:Ljava/lang/String;
+
+    .line 67371035
+    .line 67371036
+    :goto_1c
+    and-int/lit8 p2, p1, 0x2
+
+    .line 67371037
+    .line 67371038
+    if-nez p2, :cond_23
+
+    .line 67371039
+    .line 67371040
+    iput-boolean v1, p0, Ltx6/m;->b:Z
+
+    .line 67371041
+    .line 67371042
+    goto :goto_25
+
+    .line 67371043
+    :cond_23
+    iput-boolean p4, p0, Ltx6/m;->b:Z
+
+    .line 67371044
+    .line 67371045
+    :goto_25
+    and-int/lit8 p1, p1, 0x4
+
+    .line 67371046
+    .line 67371047
+    if-nez p1, :cond_2c
+
+    .line 67371048
+    .line 67371049
+    iput-object v2, p0, Ltx6/m;->c:Ljava/lang/String;
+
+    .line 67371050
+    .line 67371051
+    goto :goto_2e
+
+    .line 67371052
+    :cond_2c
+    iput-object p3, p0, Ltx6/m;->c:Ljava/lang/String;
+
+    .line 67371053
+    .line 67371054
+    :goto_2e
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;ZLjava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 50462720
+    invoke-static {p1, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50462721
+    .line 50462722
+    .line 50462723
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50462724
+    .line 50462725
+    .line 50462726
+    iput-object p1, p0, Ltx6/m;->a:Ljava/lang/String;
+
+    .line 50462727
+    .line 50462728
+    iput-boolean p2, p0, Ltx6/m;->b:Z
+
+    .line 50462729
+    .line 50462730
+    iput-object p3, p0, Ltx6/m;->c:Ljava/lang/String;
+
+    .line 50462731
+    .line 50462732
+    return-void
+.end method
+
+.method public static d(Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonElement;
+    .registers 5
+
+    .prologue
+    .line 17104896
+    instance-of v0, p0, Lkotlinx/serialization/json/JsonObject;
+
+    .line 17104897
+    .line 17104898
+    if-eqz v0, :cond_40
+
+    .line 17104899
+    .line 17104900
+    new-instance v0, Lkotlinx/serialization/json/JsonObjectBuilder;
+
+    .line 17104901
+    .line 17104902
+    invoke-direct {v0}, Lkotlinx/serialization/json/JsonObjectBuilder;-><init>()V
+
+    .line 17104903
+    .line 17104904
+    .line 17104905
+    check-cast p0, Ljava/util/Map;
+
+    .line 17104906
+    .line 17104907
+    invoke-interface {p0}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    .line 17104908
+    .line 17104909
+    .line 17104910
+    move-result-object p0
+
+    .line 17104911
+    invoke-interface {p0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 17104912
+    .line 17104913
+    .line 17104914
+    move-result-object p0
+
+    .line 17104915
+    :cond_13
+    :goto_13
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17104916
+    .line 17104917
+    .line 17104918
+    move-result v1
+
+    .line 17104919
+    if-eqz v1, :cond_3b
+
+    .line 17104920
+    .line 17104921
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17104922
+    .line 17104923
+    .line 17104924
+    move-result-object v1
+
+    .line 17104925
+    check-cast v1, Ljava/util/Map$Entry;
+
+    .line 17104926
+    .line 17104927
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 17104928
+    .line 17104929
+    .line 17104930
+    move-result-object v2
+
+    .line 17104931
+    check-cast v2, Ljava/lang/String;
+
+    .line 17104932
+    .line 17104933
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 17104934
+    .line 17104935
+    .line 17104936
+    move-result-object v1
+
+    .line 17104937
+    check-cast v1, Lkotlinx/serialization/json/JsonElement;
+
+    .line 17104938
+    .line 17104939
+    sget-object v3, Lkotlinx/serialization/json/JsonNull;->INSTANCE:Lkotlinx/serialization/json/JsonNull;
+
+    .line 17104940
+    .line 17104941
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17104942
+    .line 17104943
+    .line 17104944
+    move-result v3
+
+    .line 17104945
+    if-nez v3, :cond_13
+
+    .line 17104946
+    .line 17104947
+    invoke-static {v1}, Ltx6/m;->d(Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonElement;
+
+    .line 17104948
+    .line 17104949
+    .line 17104950
+    move-result-object v1
+
+    .line 17104951
+    invoke-virtual {v0, v2, v1}, Lkotlinx/serialization/json/JsonObjectBuilder;->put(Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonElement;
+
+    .line 17104952
+    .line 17104953
+    .line 17104954
+    goto :goto_13
+
+    .line 17104955
+    :cond_3b
+    invoke-virtual {v0}, Lkotlinx/serialization/json/JsonObjectBuilder;->build()Lkotlinx/serialization/json/JsonObject;
+
+    .line 17104956
+    .line 17104957
+    .line 17104958
+    move-result-object p0
+
+    .line 17104959
+    goto :goto_6f
+
+    .line 17104960
+    :cond_40
+    instance-of v0, p0, Lkotlinx/serialization/json/JsonArray;
+
+    .line 17104961
+    .line 17104962
+    if-eqz v0, :cond_6f
+
+    .line 17104963
+    .line 17104964
+    new-instance v0, Lkotlinx/serialization/json/JsonArrayBuilder;
+
+    .line 17104965
+    .line 17104966
+    invoke-direct {v0}, Lkotlinx/serialization/json/JsonArrayBuilder;-><init>()V
+
+    .line 17104967
+    .line 17104968
+    .line 17104969
+    check-cast p0, Ljava/lang/Iterable;
+
+    .line 17104970
+    .line 17104971
+    invoke-interface {p0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 17104972
+    .line 17104973
+    .line 17104974
+    move-result-object p0
+
+    .line 17104975
+    :cond_4f
+    :goto_4f
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17104976
+    .line 17104977
+    .line 17104978
+    move-result v1
+
+    .line 17104979
+    if-eqz v1, :cond_6b
+
+    .line 17104980
+    .line 17104981
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17104982
+    .line 17104983
+    .line 17104984
+    move-result-object v1
+
+    .line 17104985
+    check-cast v1, Lkotlinx/serialization/json/JsonElement;
+
+    .line 17104986
+    .line 17104987
+    sget-object v2, Lkotlinx/serialization/json/JsonNull;->INSTANCE:Lkotlinx/serialization/json/JsonNull;
+
+    .line 17104988
+    .line 17104989
+    invoke-static {v1, v2}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17104990
+    .line 17104991
+    .line 17104992
+    move-result v2
+
+    .line 17104993
+    if-nez v2, :cond_4f
+
+    .line 17104994
+    .line 17104995
+    invoke-static {v1}, Ltx6/m;->d(Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonElement;
+
+    .line 17104996
+    .line 17104997
+    .line 17104998
+    move-result-object v1
+
+    .line 17104999
+    invoke-virtual {v0, v1}, Lkotlinx/serialization/json/JsonArrayBuilder;->add(Lkotlinx/serialization/json/JsonElement;)Z
+
+    .line 17105000
+    .line 17105001
+    .line 17105002
+    goto :goto_4f
+
+    .line 17105003
+    :cond_6b
+    invoke-virtual {v0}, Lkotlinx/serialization/json/JsonArrayBuilder;->build()Lkotlinx/serialization/json/JsonArray;
+
+    .line 17105004
+    .line 17105005
+    .line 17105006
+    move-result-object p0
+
+    .line 17105007
+    :cond_6f
+    :goto_6f
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public final a()Ltx6/f;
+    .registers 4
+
+    .prologue
+    .line 262144
+    :try_start_0
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 262145
+    .line 262146
+    invoke-virtual {p0}, Ltx6/m;->b()Lkotlinx/serialization/json/JsonObject;
+
+    .line 262147
+    .line 262148
+    .line 262149
+    move-result-object v0
+
+    .line 262150
+    invoke-static {v0}, Ltx6/m;->d(Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonElement;
+
+    .line 262151
+    .line 262152
+    .line 262153
+    move-result-object v0
+
+    .line 262154
+    sget-object v1, Lcom/dragon/read/kmp/base/h;->a:Lq08/o;
+
+    .line 262155
+    .line 262156
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 262157
+    .line 262158
+    .line 262159
+    sget-object v2, Ltx6/f;->Companion:Ltx6/f$b;
+
+    .line 262160
+    .line 262161
+    invoke-virtual {v2}, Ltx6/f$b;->serializer()Lkotlinx/serialization/KSerializer;
+
+    .line 262162
+    .line 262163
+    .line 262164
+    move-result-object v2
+
+    .line 262165
+    check-cast v2, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 262166
+    .line 262167
+    invoke-virtual {v1, v2, v0}, Lq08/a;->b(Lkotlinx/serialization/DeserializationStrategy;Lkotlinx/serialization/json/JsonElement;)Ljava/lang/Object;
+
+    .line 262168
+    .line 262169
+    .line 262170
+    move-result-object v0
+
+    .line 262171
+    check-cast v0, Ltx6/f;
+
+    .line 262172
+    .line 262173
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 262174
+    .line 262175
+    .line 262176
+    move-result-object v0
+    :try_end_21
+    .catchall {:try_start_0 .. :try_end_21} :catchall_22
+
+    .line 262177
+    goto :goto_2d
+
+    .line 262178
+    :catchall_22
+    move-exception v0
+
+    .line 262179
+    sget-object v1, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 262180
+    .line 262181
+    invoke-static {v0}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 262182
+    .line 262183
+    .line 262184
+    move-result-object v0
+
+    .line 262185
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 262186
+    .line 262187
+    .line 262188
+    move-result-object v0
+
+    .line 262189
+    :goto_2d
+    invoke-static {v0}, Lkotlin/Result;->isFailure-impl(Ljava/lang/Object;)Z
+
+    .line 262190
+    .line 262191
+    .line 262192
+    move-result v1
+
+    .line 262193
+    if-eqz v1, :cond_34
+
+    .line 262194
+    .line 262195
+    const/4 v0, 0x0
+
+    .line 262196
+    :cond_34
+    check-cast v0, Ltx6/f;
+
+    .line 262197
+    .line 262198
+    return-object v0
+.end method
+
+.method public final b()Lkotlinx/serialization/json/JsonObject;
+    .registers 3
+
+    .prologue
+    .line 262144
+    iget-object v0, p0, Ltx6/m;->c:Ljava/lang/String;
+
+    .line 262145
+    .line 262146
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    .line 262147
+    .line 262148
+    .line 262149
+    move-result v0
+
+    .line 262150
+    if-nez v0, :cond_a
+
+    .line 262151
+    .line 262152
+    const/4 v0, 0x1
+
+    .line 262153
+    goto :goto_b
+
+    .line 262154
+    :cond_a
+    const/4 v0, 0x0
+
+    .line 262155
+    :goto_b
+    if-eqz v0, :cond_17
+
+    .line 262156
+    .line 262157
+    new-instance v0, Lkotlinx/serialization/json/JsonObject;
+
+    .line 262158
+    .line 262159
+    invoke-static {}, Lkotlin/collections/MapsKt;->emptyMap()Ljava/util/Map;
+
+    .line 262160
+    .line 262161
+    .line 262162
+    move-result-object v1
+
+    .line 262163
+    invoke-direct {v0, v1}, Lkotlinx/serialization/json/JsonObject;-><init>(Ljava/util/Map;)V
+
+    .line 262164
+    .line 262165
+    .line 262166
+    return-object v0
+
+    .line 262167
+    :cond_17
+    sget-object v0, Lcom/dragon/read/kmp/base/h;->a:Lq08/o;
+
+    .line 262168
+    .line 262169
+    iget-object v1, p0, Ltx6/m;->c:Ljava/lang/String;
+
+    .line 262170
+    .line 262171
+    invoke-virtual {v0, v1}, Lq08/a;->e(Ljava/lang/String;)Lkotlinx/serialization/json/JsonElement;
+
+    .line 262172
+    .line 262173
+    .line 262174
+    move-result-object v0
+
+    .line 262175
+    invoke-static {v0}, Lkotlinx/serialization/json/JsonElementKt;->getJsonObject(Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonObject;
+
+    .line 262176
+    .line 262177
+    .line 262178
+    move-result-object v0
+
+    .line 262179
+    return-object v0
+.end method
+
+.method public final c()[Ljava/lang/Object;
+    .registers 4
+
+    const/4 v0, 0x3
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    const/4 v1, 0x0
+
+    iget-object v2, p0, Ltx6/m;->a:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    iget-boolean v1, p0, Ltx6/m;->b:Z
+
+    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v1
+
+    const/4 v2, 0x1
+
+    aput-object v1, v0, v2
+
+    const/4 v1, 0x2
+
+    iget-object v2, p0, Ltx6/m;->c:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    return-object v0
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .registers 3
+
+    if-ne p0, p1, :cond_4
+
+    const/4 p1, 0x1
+
+    return p1
+
+    :cond_4
+    instance-of v0, p1, Ltx6/m;
+
+    if-nez v0, :cond_a
+
+    const/4 p1, 0x0
+
+    return p1
+
+    :cond_a
+    check-cast p1, Ltx6/m;
+
+    invoke-virtual {p1}, Ltx6/m;->c()[Ljava/lang/Object;
+
+    move-result-object p1
+
+    invoke-virtual {p0}, Ltx6/m;->c()[Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-static {p1, v0}, Lgr7/a;->a([Ljava/lang/Object;[Ljava/lang/Object;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public final hashCode()I
+    .registers 2
+
+    invoke-virtual {p0}, Ltx6/m;->c()[Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljava/util/Objects;->hash([Ljava/lang/Object;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .registers 3
+
+    invoke-virtual {p0}, Ltx6/m;->c()[Ljava/lang/Object;
+
+    move-result-object v0
+
+    const-string v1, "KmpSingleTaskModel:%s,%s,%s"
+
+    invoke-static {v1, v0}, Lgr7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

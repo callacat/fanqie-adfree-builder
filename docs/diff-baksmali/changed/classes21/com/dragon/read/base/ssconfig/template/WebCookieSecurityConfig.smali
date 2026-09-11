@@ -1,0 +1,573 @@
+## classes21/com/dragon/read/base/ssconfig/template/WebCookieSecurityConfig.smali
+# added=0 removed=0 changed=3
+
+.method public static constructor <clinit>()V
+[MOD-CHANGED]
+.method public static constructor <clinit>()V
+    .registers 9
+
+    .prologue
+    .line 262144
+    const v0, 0x8fb25
+
+    .line 262147
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 262150
+    new-instance v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig$a;
+
+    .line 262152
+    invoke-direct {v0}, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig$a;-><init>()V
+
+    .line 262155
+    sput-object v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->a:Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig$a;
+
+    .line 262157
+    const-class v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;
+
+    .line 262159
+    const-class v1, Lcom/dragon/read/base/ssconfig/template/IWebCookieSecurityConfig;
+
+    .line 262161
+    const-string/jumbo v2, "web_cookie_security_config_v703"
+
+    .line 262164
+    invoke-static {v2, v0, v1}, Lcom/dragon/read/base/ssconfig/SsConfigMgr;->prepareAB(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Class;)V
+
+    .line 262167
+    new-instance v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;
+
+    .line 262169
+    const/4 v4, 0x0
+
+    .line 262170
+    const/4 v5, 0x0
+
+    .line 262171
+    const/4 v6, 0x0
+
+    .line 262172
+    const/4 v7, 0x7
+
+    .line 262173
+    const/4 v8, 0x0
+
+    .line 262174
+    move-object v3, v0
+
+    .line 262175
+    invoke-direct/range {v3 .. v8}, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;-><init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 262178
+    sput-object v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->b:Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;
+
+    .line 262180
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public static constructor <clinit>()V
+    .registers 9
+
+    .prologue
+    .line 262144
+    const v0, 0x8fb25
+
+    .line 262145
+    .line 262146
+    .line 262147
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 262148
+    .line 262149
+    .line 262150
+    new-instance v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig$a;
+
+    .line 262151
+    .line 262152
+    invoke-direct {v0}, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig$a;-><init>()V
+
+    .line 262153
+    .line 262154
+    .line 262155
+    sput-object v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->a:Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig$a;
+
+    .line 262156
+    .line 262157
+    const-class v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;
+
+    .line 262158
+    .line 262159
+    const-class v1, Lcom/dragon/read/base/ssconfig/template/IWebCookieSecurityConfig;
+
+    .line 262160
+    .line 262161
+    const-string/jumbo v2, "web_cookie_security_config_v703"
+
+    .line 262162
+    .line 262163
+    .line 262164
+    invoke-static {v2, v0, v1}, Lcom/dragon/read/base/ssconfig/SsConfigMgr;->prepareAB(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Class;)V
+
+    .line 262165
+    .line 262166
+    .line 262167
+    new-instance v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;
+
+    .line 262168
+    .line 262169
+    const/4 v4, 0x0
+
+    .line 262170
+    const/4 v5, 0x0
+
+    .line 262171
+    const/4 v6, 0x0
+
+    .line 262172
+    const/4 v7, 0x7
+
+    .line 262173
+    const/4 v8, 0x0
+
+    .line 262174
+    move-object v3, v0
+
+    .line 262175
+    invoke-direct/range {v3 .. v8}, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;-><init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 262176
+    .line 262177
+    .line 262178
+    sput-object v0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->b:Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;
+
+    .line 262179
+    .line 262180
+    return-void
+.end method
+
+
+.method public constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+[MOD-CHANGED]
+.method public constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 50528256
+    invoke-static {p1, p2, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50528259
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50528262
+    iput-object p1, p0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->enableOnLoadUrlList:Ljava/util/List;
+
+    .line 50528264
+    iput-object p2, p0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->shareCookieSensitiveKey:Ljava/util/List;
+
+    .line 50528266
+    iput-object p3, p0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->shareHeaderSensitiveKey:Ljava/util/List;
+
+    .line 50528268
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/util/List<",
+            "Ljava/lang/String;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 50528256
+    invoke-static {p1, p2, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50528257
+    .line 50528258
+    .line 50528259
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50528260
+    .line 50528261
+    .line 50528262
+    iput-object p1, p0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->enableOnLoadUrlList:Ljava/util/List;
+
+    .line 50528263
+    .line 50528264
+    iput-object p2, p0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->shareCookieSensitiveKey:Ljava/util/List;
+
+    .line 50528265
+    .line 50528266
+    iput-object p3, p0, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;->shareHeaderSensitiveKey:Ljava/util/List;
+
+    .line 50528267
+    .line 50528268
+    return-void
+.end method
+
+
+.method public synthetic constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+[MOD-CHANGED]
+.method public synthetic constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .registers 22
+
+    .prologue
+    .line 84213760
+    and-int/lit8 v0, p4, 0x1
+
+    .line 84213762
+    if-eqz v0, :cond_9
+
+    .line 84213764
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 84213767
+    move-result-object v0
+
+    .line 84213768
+    goto :goto_b
+
+    .line 84213769
+    :cond_9
+    move-object/from16 v0, p1
+
+    .line 84213771
+    :goto_b
+    and-int/lit8 v1, p4, 0x2
+
+    .line 84213773
+    if-eqz v1, :cond_39
+
+    .line 84213775
+    const-string v2, "sessionid"
+
+    .line 84213777
+    const-string v3, "install_id"
+
+    .line 84213779
+    const-string v4, "sessionid_ss"
+
+    .line 84213781
+    const-string/jumbo v5, "sid_guard"
+
+    .line 84213784
+    const-string/jumbo v6, "sid_tt"
+
+    .line 84213787
+    const-string/jumbo v7, "uid_tt"
+
+    .line 84213790
+    const-string/jumbo v8, "uid_tt_ss"
+
+    .line 84213793
+    const-string v9, "odin_tt"
+
+    .line 84213795
+    const-string v10, "passport_csrf_token_default"
+
+    .line 84213797
+    const-string v11, "passport_csrf_token"
+
+    .line 84213799
+    const-string/jumbo v12, "ttreq"
+
+    .line 84213802
+    const-string v13, "multi_sids"
+
+    .line 84213804
+    const-string v14, "d_ticket"
+
+    .line 84213806
+    const-string v15, "passport_mfa_token"
+
+    .line 84213808
+    filled-new-array/range {v2 .. v15}, [Ljava/lang/String;
+
+    .line 84213811
+    move-result-object v1
+
+    .line 84213812
+    invoke-static {v1}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 84213815
+    move-result-object v1
+
+    .line 84213816
+    goto :goto_3b
+
+    .line 84213817
+    :cond_39
+    move-object/from16 v1, p2
+
+    .line 84213819
+    :goto_3b
+    and-int/lit8 v2, p4, 0x4
+
+    .line 84213821
+    if-eqz v2, :cond_55
+
+    .line 84213823
+    const-string/jumbo v2, "x-tt-multi-sids"
+
+    .line 84213826
+    const-string v3, "X-Tt-Token"
+
+    .line 84213828
+    const-string/jumbo v4, "x-tt-token"
+
+    .line 84213831
+    const-string/jumbo v5, "x-Tt-Token"
+
+    .line 84213834
+    filled-new-array {v4, v5, v2, v3}, [Ljava/lang/String;
+
+    .line 84213837
+    move-result-object v2
+
+    .line 84213838
+    invoke-static {v2}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 84213841
+    move-result-object v2
+
+    .line 84213842
+    move-object/from16 v3, p0
+
+    .line 84213844
+    goto :goto_59
+
+    .line 84213845
+    :cond_55
+    move-object/from16 v3, p0
+
+    .line 84213847
+    move-object/from16 v2, p3
+
+    .line 84213849
+    :goto_59
+    invoke-direct {v3, v0, v1, v2}, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;-><init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+
+    .line 84213852
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public synthetic constructor <init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .registers 22
+
+    .prologue
+    .line 84213760
+    and-int/lit8 v0, p4, 0x1
+
+    .line 84213761
+    .line 84213762
+    if-eqz v0, :cond_9
+
+    .line 84213763
+    .line 84213764
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 84213765
+    .line 84213766
+    .line 84213767
+    move-result-object v0
+
+    .line 84213768
+    goto :goto_b
+
+    .line 84213769
+    :cond_9
+    move-object/from16 v0, p1
+
+    .line 84213770
+    .line 84213771
+    :goto_b
+    and-int/lit8 v1, p4, 0x2
+
+    .line 84213772
+    .line 84213773
+    if-eqz v1, :cond_39
+
+    .line 84213774
+    .line 84213775
+    const-string v2, "sessionid"
+
+    .line 84213776
+    .line 84213777
+    const-string v3, "install_id"
+
+    .line 84213778
+    .line 84213779
+    const-string v4, "sessionid_ss"
+
+    .line 84213780
+    .line 84213781
+    const-string/jumbo v5, "sid_guard"
+
+    .line 84213782
+    .line 84213783
+    .line 84213784
+    const-string/jumbo v6, "sid_tt"
+
+    .line 84213785
+    .line 84213786
+    .line 84213787
+    const-string/jumbo v7, "uid_tt"
+
+    .line 84213788
+    .line 84213789
+    .line 84213790
+    const-string/jumbo v8, "uid_tt_ss"
+
+    .line 84213791
+    .line 84213792
+    .line 84213793
+    const-string v9, "odin_tt"
+
+    .line 84213794
+    .line 84213795
+    const-string v10, "passport_csrf_token_default"
+
+    .line 84213796
+    .line 84213797
+    const-string v11, "passport_csrf_token"
+
+    .line 84213798
+    .line 84213799
+    const-string/jumbo v12, "ttreq"
+
+    .line 84213800
+    .line 84213801
+    .line 84213802
+    const-string v13, "multi_sids"
+
+    .line 84213803
+    .line 84213804
+    const-string v14, "d_ticket"
+
+    .line 84213805
+    .line 84213806
+    const-string v15, "passport_mfa_token"
+
+    .line 84213807
+    .line 84213808
+    filled-new-array/range {v2 .. v15}, [Ljava/lang/String;
+
+    .line 84213809
+    .line 84213810
+    .line 84213811
+    move-result-object v1
+
+    .line 84213812
+    invoke-static {v1}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 84213813
+    .line 84213814
+    .line 84213815
+    move-result-object v1
+
+    .line 84213816
+    goto :goto_3b
+
+    .line 84213817
+    :cond_39
+    move-object/from16 v1, p2
+
+    .line 84213818
+    .line 84213819
+    :goto_3b
+    and-int/lit8 v2, p4, 0x4
+
+    .line 84213820
+    .line 84213821
+    if-eqz v2, :cond_55
+
+    .line 84213822
+    .line 84213823
+    const-string/jumbo v2, "x-tt-multi-sids"
+
+    .line 84213824
+    .line 84213825
+    .line 84213826
+    const-string v3, "X-Tt-Token"
+
+    .line 84213827
+    .line 84213828
+    const-string/jumbo v4, "x-tt-token"
+
+    .line 84213829
+    .line 84213830
+    .line 84213831
+    const-string/jumbo v5, "x-Tt-Token"
+
+    .line 84213832
+    .line 84213833
+    .line 84213834
+    filled-new-array {v4, v5, v2, v3}, [Ljava/lang/String;
+
+    .line 84213835
+    .line 84213836
+    .line 84213837
+    move-result-object v2
+
+    .line 84213838
+    invoke-static {v2}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 84213839
+    .line 84213840
+    .line 84213841
+    move-result-object v2
+
+    .line 84213842
+    move-object/from16 v3, p0
+
+    .line 84213843
+    .line 84213844
+    goto :goto_59
+
+    .line 84213845
+    :cond_55
+    move-object/from16 v3, p0
+
+    .line 84213846
+    .line 84213847
+    move-object/from16 v2, p3
+
+    .line 84213848
+    .line 84213849
+    :goto_59
+    invoke-direct {v3, v0, v1, v2}, Lcom/dragon/read/base/ssconfig/template/WebCookieSecurityConfig;-><init>(Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+
+    .line 84213850
+    .line 84213851
+    .line 84213852
+    return-void
+.end method
+
+

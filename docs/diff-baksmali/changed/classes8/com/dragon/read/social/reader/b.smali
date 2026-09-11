@@ -1,0 +1,87 @@
+## classes8/com/dragon/read/social/reader/b.smali
+# added=0 removed=0 changed=1
+
+.method public final invoke()Ljava/lang/Object;
+[MOD-CHANGED]
+.method public final invoke()Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 196608
+    sget-object v0, Lnc6/c;->a:Lnc6/c;
+
+    .line 196610
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196613
+    sget-object v0, Lcom/dragon/read/base/ssconfig/model/ReaderCommunitySwitchConfig;->a:Lcom/dragon/read/base/ssconfig/model/ReaderCommunitySwitchConfig;
+
+    .line 196615
+    const-string v1, ""
+
+    .line 196617
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 196620
+    iget-wide v0, v0, Lcom/dragon/read/base/ssconfig/model/ReaderCommunitySwitchConfig;->guideInterval:J
+
+    .line 196622
+    long-to-int v1, v0
+
+    .line 196623
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 196626
+    move-result-object v0
+
+    .line 196627
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final invoke()Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 196608
+    sget-object v0, Lnc6/c;->a:Lnc6/c;
+
+    .line 196609
+    .line 196610
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196611
+    .line 196612
+    .line 196613
+    sget-object v0, Lcom/dragon/read/base/ssconfig/model/ReaderCommunitySwitchConfig;->a:Lcom/dragon/read/base/ssconfig/model/ReaderCommunitySwitchConfig;
+
+    .line 196614
+    .line 196615
+    const-string v1, ""
+
+    .line 196616
+    .line 196617
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 196618
+    .line 196619
+    .line 196620
+    iget-wide v0, v0, Lcom/dragon/read/base/ssconfig/model/ReaderCommunitySwitchConfig;->guideInterval:J
+
+    .line 196621
+    .line 196622
+    long-to-int v1, v0
+
+    .line 196623
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 196624
+    .line 196625
+    .line 196626
+    move-result-object v0
+
+    .line 196627
+    return-object v0
+.end method
+
+

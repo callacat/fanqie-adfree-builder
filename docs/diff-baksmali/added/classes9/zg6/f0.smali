@@ -1,0 +1,52 @@
+.class public final Lzg6/f0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/operation/reply/TopicCommentReplyListView;
+
+
+# direct methods
+.method public constructor <init>(Lcom/dragon/read/social/operation/reply/TopicCommentReplyListView;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lzg6/f0;->a:Lcom/dragon/read/social/operation/reply/TopicCommentReplyListView;
+
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onClick(Landroid/view/View;)V
+    .registers 2
+
+    .prologue
+    .line 16908288
+    invoke-static {p1}, Lcom/bytedance/apm/agent/v2/instrumentation/ClickAgent;->onClick(Landroid/view/View;)V
+
+    .line 16908291
+    iget-object p1, p0, Lzg6/f0;->a:Lcom/dragon/read/social/operation/reply/TopicCommentReplyListView;
+
+    .line 16908293
+    iget-object p1, p1, Lcom/dragon/read/social/operation/reply/TopicCommentReplyListView;->V:Lzg6/r;
+
+    .line 16908295
+    if-eqz p1, :cond_c
+
+    .line 16908297
+    invoke-virtual {p1}, Lzg6/r;->a()V
+
+    .line 16908300
+    :cond_c
+    return-void
+.end method

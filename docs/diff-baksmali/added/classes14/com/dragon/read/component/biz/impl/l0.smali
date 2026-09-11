@@ -1,0 +1,88 @@
+.class public final synthetic Lcom/dragon/read/component/biz/impl/l0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Lkotlin/jvm/internal/Ref$BooleanRef;
+
+.field public final synthetic b:Lsp5/g;
+
+.field public final synthetic c:Lkotlin/jvm/functions/Function0;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lkotlin/jvm/internal/Ref$BooleanRef;Lsp5/g;Lkotlin/jvm/functions/Function0;)V
+    .registers 4
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/dragon/read/component/biz/impl/l0;->a:Lkotlin/jvm/internal/Ref$BooleanRef;
+
+    iput-object p2, p0, Lcom/dragon/read/component/biz/impl/l0;->b:Lsp5/g;
+
+    iput-object p3, p0, Lcom/dragon/read/component/biz/impl/l0;->c:Lkotlin/jvm/functions/Function0;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 6
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lcom/dragon/read/component/biz/impl/l0;->a:Lkotlin/jvm/internal/Ref$BooleanRef;
+
+    .line 17039362
+    iget-object v1, p0, Lcom/dragon/read/component/biz/impl/l0;->b:Lsp5/g;
+
+    .line 17039364
+    iget-object v2, p0, Lcom/dragon/read/component/biz/impl/l0;->c:Lkotlin/jvm/functions/Function0;
+
+    .line 17039366
+    check-cast p1, Lys1/a;
+
+    .line 17039368
+    const/4 v3, 0x0
+
+    .line 17039369
+    invoke-static {p1, v3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17039372
+    const/4 v3, 0x1
+
+    .line 17039373
+    iput-boolean v3, v0, Lkotlin/jvm/internal/Ref$BooleanRef;->element:Z
+
+    .line 17039375
+    sget-object v0, Lcom/dragon/read/kmp/share/manger/c;->a:Lcom/dragon/read/kmp/share/manger/c;
+
+    .line 17039377
+    iget-object v1, v1, Lrp5/a;->g:Lyp5/b;
+
+    .line 17039379
+    iget-object p1, p1, Lys1/a;->a:Ljava/lang/String;
+
+    .line 17039381
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17039384
+    const/4 v0, 0x0
+
+    .line 17039385
+    invoke-static {v1, p1, v0}, Lcom/dragon/read/kmp/share/manger/c;->d(Lyp5/b;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17039388
+    invoke-interface {v2}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 17039391
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17039393
+    return-object p1
+.end method

@@ -1,0 +1,410 @@
+## classes3/com/dragon/read/pages/detail/c.smali
+# added=0 removed=0 changed=2
+
+.method public constructor <init>(Ljava/lang/String;Lcom/dragon/read/pages/detail/BookDetailTopView;Ljava/lang/String;)V
+[MOD-CHANGED]
+.method public constructor <init>(Ljava/lang/String;Lcom/dragon/read/pages/detail/BookDetailTopView;Ljava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 50462720
+    iput-object p1, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 50462722
+    iput-object p2, p0, Lcom/dragon/read/pages/detail/c;->b:Lcom/dragon/read/pages/detail/BookDetailTopView;
+
+    .line 50462724
+    iput-object p3, p0, Lcom/dragon/read/pages/detail/c;->c:Ljava/lang/String;
+
+    .line 50462726
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50462729
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Ljava/lang/String;Lcom/dragon/read/pages/detail/BookDetailTopView;Ljava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 50462720
+    iput-object p1, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 50462721
+    .line 50462722
+    iput-object p2, p0, Lcom/dragon/read/pages/detail/c;->b:Lcom/dragon/read/pages/detail/BookDetailTopView;
+
+    .line 50462723
+    .line 50462724
+    iput-object p3, p0, Lcom/dragon/read/pages/detail/c;->c:Ljava/lang/String;
+
+    .line 50462725
+    .line 50462726
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50462727
+    .line 50462728
+    .line 50462729
+    return-void
+.end method
+
+
+.method public final onItemClick(I)V
+[MOD-CHANGED]
+.method public final onItemClick(I)V
+    .registers 7
+
+    .prologue
+    .line 17104896
+    const/4 v0, 0x1
+
+    .line 17104897
+    if-eq p1, v0, :cond_4
+
+    .line 17104899
+    goto :goto_66
+
+    .line 17104900
+    :cond_4
+    iget-object p1, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 17104902
+    const/4 v0, 0x0
+
+    .line 17104903
+    new-array v1, v0, [Ljava/lang/Object;
+
+    .line 17104905
+    const-string v2, "default"
+
+    .line 17104907
+    const-string v3, "\u7528\u6237\u70b9\u51fb\u4e86\u590d\u5236\u6309\u94ae\uff0ctext = %s"
+
+    .line 17104909
+    invoke-static {v2, v3, p1, v1}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17104912
+    const-string p1, "Label"
+
+    .line 17104914
+    iget-object v1, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 17104916
+    invoke-static {p1, v1}, Landroid/content/ClipData;->newPlainText(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Landroid/content/ClipData;
+
+    .line 17104919
+    move-result-object p1
+
+    .line 17104920
+    sget-object v1, Lv56/v0;->b:Lv56/v0;
+
+    .line 17104922
+    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 17104925
+    const-string v3, "bpea-reader_selection_copy"
+
+    .line 17104927
+    invoke-virtual {v1, p1, v3}, Lv56/v0;->setPrimaryClip(Landroid/content/ClipData;Ljava/lang/String;)V
+
+    .line 17104930
+    const-string p1, "\u590d\u5236\u6210\u529f"
+
+    .line 17104932
+    invoke-static {p1}, Lcom/dragon/read/util/ToastUtils;->showCommonToastSafely(Ljava/lang/String;)V
+
+    .line 17104935
+    iget-object p1, p0, Lcom/dragon/read/pages/detail/c;->b:Lcom/dragon/read/pages/detail/BookDetailTopView;
+
+    .line 17104937
+    iget-object v1, p0, Lcom/dragon/read/pages/detail/c;->c:Ljava/lang/String;
+
+    .line 17104939
+    iget-object v3, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 17104941
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104944
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    .line 17104946
+    const-string v4, "\u4e0a\u62a5\u590d\u5236\u4e66\u540d:"
+
+    .line 17104948
+    invoke-direct {p1, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17104951
+    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104954
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104957
+    move-result-object p1
+
+    .line 17104958
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 17104960
+    const-string v3, "BookDetailTopView"
+
+    .line 17104962
+    invoke-static {v2, v3, p1, v0}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17104965
+    new-instance p1, Lcom/dragon/read/base/Args;
+
+    .line 17104967
+    invoke-direct {p1}, Lcom/dragon/read/base/Args;-><init>()V
+
+    .line 17104970
+    const-string v0, "book_id"
+
+    .line 17104972
+    invoke-virtual {p1, v0, v1}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17104975
+    const-string v0, "clicked_content"
+
+    .line 17104977
+    const-string v1, "copy_name"
+
+    .line 17104979
+    invoke-virtual {p1, v0, v1}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17104982
+    sget-object v0, Lcom/dragon/read/reader/depend/a;->b:Lcom/dragon/read/reader/depend/a;
+
+    .line 17104984
+    const-string v1, "click_novel_page"
+
+    .line 17104986
+    invoke-virtual {v0, v1, p1}, Lcom/dragon/read/reader/depend/a;->n(Ljava/lang/String;Lcom/dragon/read/base/Args;)V
+
+    .line 17104989
+    iget-object p1, p0, Lcom/dragon/read/pages/detail/c;->b:Lcom/dragon/read/pages/detail/BookDetailTopView;
+
+    .line 17104991
+    iget-object p1, p1, Lcom/dragon/read/pages/detail/BookDetailTopView;->v:Lcom/dragon/read/pages/detail/CopyBookNamePopupWindow;
+
+    .line 17104993
+    if-eqz p1, :cond_66
+
+    .line 17104995
+    invoke-virtual {p1}, Lcom/dragon/read/pages/detail/CopyBookNamePopupWindow;->dismiss()V
+
+    .line 17104998
+    :cond_66
+    :goto_66
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public final onItemClick(I)V
+    .registers 7
+
+    .prologue
+    .line 17104896
+    const/4 v0, 0x1
+
+    .line 17104897
+    if-eq p1, v0, :cond_4
+
+    .line 17104898
+    .line 17104899
+    goto :goto_66
+
+    .line 17104900
+    :cond_4
+    iget-object p1, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 17104901
+    .line 17104902
+    const/4 v0, 0x0
+
+    .line 17104903
+    new-array v1, v0, [Ljava/lang/Object;
+
+    .line 17104904
+    .line 17104905
+    const-string v2, "default"
+
+    .line 17104906
+    .line 17104907
+    const-string v3, "\u7528\u6237\u70b9\u51fb\u4e86\u590d\u5236\u6309\u94ae\uff0ctext = %s"
+
+    .line 17104908
+    .line 17104909
+    invoke-static {v2, v3, p1, v1}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17104910
+    .line 17104911
+    .line 17104912
+    const-string p1, "Label"
+
+    .line 17104913
+    .line 17104914
+    iget-object v1, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 17104915
+    .line 17104916
+    invoke-static {p1, v1}, Landroid/content/ClipData;->newPlainText(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Landroid/content/ClipData;
+
+    .line 17104917
+    .line 17104918
+    .line 17104919
+    move-result-object p1
+
+    .line 17104920
+    sget-object v1, Lv56/v0;->b:Lv56/v0;
+
+    .line 17104921
+    .line 17104922
+    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 17104923
+    .line 17104924
+    .line 17104925
+    const-string v3, "bpea-reader_selection_copy"
+
+    .line 17104926
+    .line 17104927
+    invoke-virtual {v1, p1, v3}, Lv56/v0;->setPrimaryClip(Landroid/content/ClipData;Ljava/lang/String;)V
+
+    .line 17104928
+    .line 17104929
+    .line 17104930
+    const-string p1, "\u590d\u5236\u6210\u529f"
+
+    .line 17104931
+    .line 17104932
+    invoke-static {p1}, Lcom/dragon/read/util/ToastUtils;->showCommonToastSafely(Ljava/lang/String;)V
+
+    .line 17104933
+    .line 17104934
+    .line 17104935
+    iget-object p1, p0, Lcom/dragon/read/pages/detail/c;->b:Lcom/dragon/read/pages/detail/BookDetailTopView;
+
+    .line 17104936
+    .line 17104937
+    iget-object v1, p0, Lcom/dragon/read/pages/detail/c;->c:Ljava/lang/String;
+
+    .line 17104938
+    .line 17104939
+    iget-object v3, p0, Lcom/dragon/read/pages/detail/c;->a:Ljava/lang/String;
+
+    .line 17104940
+    .line 17104941
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104942
+    .line 17104943
+    .line 17104944
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    .line 17104945
+    .line 17104946
+    const-string v4, "\u4e0a\u62a5\u590d\u5236\u4e66\u540d:"
+
+    .line 17104947
+    .line 17104948
+    invoke-direct {p1, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17104949
+    .line 17104950
+    .line 17104951
+    invoke-virtual {p1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104952
+    .line 17104953
+    .line 17104954
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104955
+    .line 17104956
+    .line 17104957
+    move-result-object p1
+
+    .line 17104958
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 17104959
+    .line 17104960
+    const-string v3, "BookDetailTopView"
+
+    .line 17104961
+    .line 17104962
+    invoke-static {v2, v3, p1, v0}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17104963
+    .line 17104964
+    .line 17104965
+    new-instance p1, Lcom/dragon/read/base/Args;
+
+    .line 17104966
+    .line 17104967
+    invoke-direct {p1}, Lcom/dragon/read/base/Args;-><init>()V
+
+    .line 17104968
+    .line 17104969
+    .line 17104970
+    const-string v0, "book_id"
+
+    .line 17104971
+    .line 17104972
+    invoke-virtual {p1, v0, v1}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17104973
+    .line 17104974
+    .line 17104975
+    const-string v0, "clicked_content"
+
+    .line 17104976
+    .line 17104977
+    const-string v1, "copy_name"
+
+    .line 17104978
+    .line 17104979
+    invoke-virtual {p1, v0, v1}, Lcom/dragon/read/base/Args;->put(Ljava/lang/String;Ljava/lang/Object;)Lcom/dragon/read/base/Args;
+
+    .line 17104980
+    .line 17104981
+    .line 17104982
+    sget-object v0, Lcom/dragon/read/reader/depend/a;->b:Lcom/dragon/read/reader/depend/a;
+
+    .line 17104983
+    .line 17104984
+    const-string v1, "click_novel_page"
+
+    .line 17104985
+    .line 17104986
+    invoke-virtual {v0, v1, p1}, Lcom/dragon/read/reader/depend/a;->n(Ljava/lang/String;Lcom/dragon/read/base/Args;)V
+
+    .line 17104987
+    .line 17104988
+    .line 17104989
+    iget-object p1, p0, Lcom/dragon/read/pages/detail/c;->b:Lcom/dragon/read/pages/detail/BookDetailTopView;
+
+    .line 17104990
+    .line 17104991
+    iget-object p1, p1, Lcom/dragon/read/pages/detail/BookDetailTopView;->v:Lcom/dragon/read/pages/detail/CopyBookNamePopupWindow;
+
+    .line 17104992
+    .line 17104993
+    if-eqz p1, :cond_66
+
+    .line 17104994
+    .line 17104995
+    invoke-virtual {p1}, Lcom/dragon/read/pages/detail/CopyBookNamePopupWindow;->dismiss()V
+
+    .line 17104996
+    .line 17104997
+    .line 17104998
+    :cond_66
+    :goto_66
+    return-void
+.end method
+
+

@@ -1,0 +1,34 @@
+.class public final synthetic Lwe4/a2;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function3;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 4
+
+    check-cast p1, Ljava/lang/Long;
+
+    check-cast p2, Ljava/lang/Long;
+
+    check-cast p3, Ljava/lang/Long;
+
+    invoke-static {p1, p2, p3}, Lcom/dragon/read/component/download/impl/NsDownloadApiImpl;->b(Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;)Ljava/lang/Long;
+
+    move-result-object p1
+
+    return-object p1
+.end method

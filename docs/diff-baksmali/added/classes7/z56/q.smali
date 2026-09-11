@@ -1,0 +1,84 @@
+.class public final synthetic Lz56/q;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/functions/Consumer;
+
+
+# instance fields
+.field public final synthetic a:Lz56/q0;
+
+.field public final synthetic b:Ljava/lang/String;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lz56/q0;Ljava/lang/String;)V
+    .registers 3
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lz56/q;->a:Lz56/q0;
+
+    iput-object p2, p0, Lz56/q;->b:Ljava/lang/String;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final accept(Ljava/lang/Object;)V
+    .registers 5
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lz56/q;->a:Lz56/q0;
+
+    .line 17039362
+    iget-object v1, p0, Lz56/q;->b:Ljava/lang/String;
+
+    .line 17039364
+    check-cast p1, Lio/reactivex/disposables/Disposable;
+
+    .line 17039366
+    iget-object p1, v0, Lz56/q0;->g:Lcom/dragon/read/base/util/LogHelper;
+
+    .line 17039368
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 17039370
+    const-string/jumbo v2, "\u9884\u52a0\u8f7d\u5f00\u59cb\u8bf7\u6c42\u76ee\u5f55aigc, bookId="
+
+    .line 17039373
+    invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17039376
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17039379
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17039382
+    move-result-object v0
+
+    .line 17039383
+    const/4 v1, 0x0
+
+    .line 17039384
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 17039386
+    invoke-virtual {p1}, Lcom/dragon/read/base/util/LogHelper;->getTag()Ljava/lang/String;
+
+    .line 17039389
+    move-result-object p1
+
+    .line 17039390
+    const-string v2, "experience"
+
+    .line 17039392
+    invoke-static {v2, p1, v0, v1}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17039395
+    return-void
+.end method

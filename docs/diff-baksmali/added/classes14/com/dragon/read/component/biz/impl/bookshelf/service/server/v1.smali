@@ -1,0 +1,68 @@
+.class public final Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1$a;
+    }
+.end annotation
+
+
+# static fields
+.field public static final a:Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;
+
+.field public static final b:Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1$b;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 2
+
+    .prologue
+    .line 196608
+    const v0, 0x91f25
+
+    .line 196611
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 196614
+    new-instance v0, Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;
+
+    .line 196616
+    invoke-direct {v0}, Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;-><init>()V
+
+    .line 196619
+    sput-object v0, Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;->a:Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;
+
+    .line 196621
+    new-instance v0, Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1$b;
+
+    .line 196623
+    invoke-direct {v0}, Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1$b;-><init>()V
+
+    .line 196626
+    sput-object v0, Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;->b:Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1$b;
+
+    .line 196628
+    sget-object v0, Lcom/dragon/read/component/biz/api/service/BsSeriesTenThousandService;->IMPL:Lcom/dragon/read/component/biz/api/service/BsSeriesTenThousandService;
+
+    .line 196630
+    sget-object v1, Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1;->b:Lcom/dragon/read/component/biz/impl/bookshelf/service/server/v1$b;
+
+    .line 196632
+    invoke-interface {v0, v1}, Lcom/dragon/read/component/biz/api/service/BsSeriesTenThousandService;->addVideoCollectEventListener(Lmx5/g;)V
+
+    .line 196635
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

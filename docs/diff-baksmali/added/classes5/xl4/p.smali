@@ -1,0 +1,169 @@
+.class public final Lxl4/p;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Llh4/p$a;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;
+
+
+# direct methods
+.method public constructor <init>(Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lxl4/p;->a:Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;
+
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final J()V
+    .registers 2
+
+    .prologue
+    .line 0
+    sget v0, Llh4/p$a$a;->a:I
+
+    .line 2
+    return-void
+.end method
+
+.method public final r(Ljava/util/List;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "+",
+            "Lcom/dragon/read/component/shortvideo/data/saas/video/SaasVideoData;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    sget v0, Llh4/p$a$a;->a:I
+
+    .line 16842754
+    const/4 v0, 0x0
+
+    .line 16842755
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16842758
+    return-void
+.end method
+
+.method public final x0(Ljava/util/Map;)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Map<",
+            "Ljava/lang/Long;",
+            "+",
+            "Lcom/dragon/read/rpc/model/BookGroup;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17039364
+    iget-object v0, p0, Lxl4/p;->a:Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;
+
+    .line 17039366
+    iget-object v0, v0, Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;->l:Lai4/h;
+
+    .line 17039368
+    if-eqz v0, :cond_38
+
+    .line 17039370
+    invoke-interface {v0}, Lai4/h;->getDataProvider()Lcom/dragon/read/component/shortvideo/data/saas/video/c;
+
+    .line 17039373
+    move-result-object v0
+
+    .line 17039374
+    if-eqz v0, :cond_38
+
+    .line 17039376
+    invoke-interface {v0}, Lcom/dragon/read/component/shortvideo/data/saas/video/c;->getVideoData()Lcom/dragon/read/component/shortvideo/data/saas/video/SaasVideoData;
+
+    .line 17039379
+    move-result-object v0
+
+    .line 17039380
+    if-eqz v0, :cond_38
+
+    .line 17039382
+    iget-object v0, v0, Lcom/dragon/read/component/shortvideo/data/saas/video/SaasVideoData;->seriesId:Ljava/lang/String;
+
+    .line 17039384
+    if-eqz v0, :cond_38
+
+    .line 17039386
+    invoke-static {v0}, Lkotlin/text/StringsKt;->toLongOrNull(Ljava/lang/String;)Ljava/lang/Long;
+
+    .line 17039389
+    move-result-object v0
+
+    .line 17039390
+    if-eqz v0, :cond_38
+
+    .line 17039392
+    invoke-virtual {v0}, Ljava/lang/Long;->longValue()J
+
+    .line 17039395
+    move-result-wide v0
+
+    .line 17039396
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 17039399
+    move-result-object v0
+
+    .line 17039400
+    invoke-interface {p1, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    .line 17039403
+    move-result p1
+
+    .line 17039404
+    if-nez p1, :cond_2f
+
+    .line 17039406
+    return-void
+
+    .line 17039407
+    :cond_2f
+    iget-object p1, p0, Lxl4/p;->a:Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;
+
+    .line 17039409
+    iget-object v0, p1, Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;->l:Lai4/h;
+
+    .line 17039411
+    if-eqz v0, :cond_38
+
+    .line 17039413
+    invoke-virtual {p1, v0}, Lcom/dragon/read/component/shortvideo/impl/catalogview/KmpShortSeriesCatalogView;->b(Lai4/h;)V
+
+    .line 17039416
+    :cond_38
+    return-void
+.end method

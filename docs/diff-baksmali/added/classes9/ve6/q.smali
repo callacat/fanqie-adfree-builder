@@ -1,0 +1,57 @@
+.class public final synthetic Lve6/q;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/editor/video/editor/musicselector/MusicSearchEditTextView;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/social/editor/video/editor/musicselector/MusicSearchEditTextView;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lve6/q;->a:Lcom/dragon/read/social/editor/video/editor/musicselector/MusicSearchEditTextView;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lve6/q;->a:Lcom/dragon/read/social/editor/video/editor/musicselector/MusicSearchEditTextView;
+
+    .line 196610
+    iget-object v0, v0, Lcom/dragon/read/social/editor/video/editor/musicselector/MusicSearchEditTextView;->i:Landroid/widget/ImageView;
+
+    .line 196612
+    if-nez v0, :cond_c
+
+    .line 196614
+    const-string v0, ""
+
+    .line 196616
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
+
+    .line 196619
+    const/4 v0, 0x0
+
+    .line 196620
+    :cond_c
+    const/16 v1, 0x8
+
+    .line 196622
+    invoke-static {v0, v1}, Lcom/dragon/read/util/UiUtils;->expandClickArea(Landroid/view/View;I)V
+
+    .line 196625
+    return-void
+.end method

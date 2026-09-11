@@ -1,0 +1,152 @@
+## classes18/com/bytedance/salamander/adapter/h.smali
+# added=0 removed=0 changed=2
+
+.method public constructor <init>(ILjava/lang/String;)V
+[MOD-CHANGED]
+.method public constructor <init>(ILjava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 33685504
+    const/4 v0, 0x0
+
+    .line 33685505
+    invoke-static {p2, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33685508
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33685511
+    iput p1, p0, Lcom/bytedance/salamander/adapter/h;->a:I
+
+    .line 33685513
+    iput-object p2, p0, Lcom/bytedance/salamander/adapter/h;->b:Ljava/lang/String;
+
+    .line 33685515
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(ILjava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 33685504
+    const/4 v0, 0x0
+
+    .line 33685505
+    invoke-static {p2, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33685506
+    .line 33685507
+    .line 33685508
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33685509
+    .line 33685510
+    .line 33685511
+    iput p1, p0, Lcom/bytedance/salamander/adapter/h;->a:I
+
+    .line 33685512
+    .line 33685513
+    iput-object p2, p0, Lcom/bytedance/salamander/adapter/h;->b:Ljava/lang/String;
+
+    .line 33685514
+    .line 33685515
+    return-void
+.end method
+
+
+.method public final newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
+[MOD-CHANGED]
+.method public final newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
+    .registers 3
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16973828
+    new-instance v0, Ljava/lang/Thread;
+
+    .line 16973830
+    invoke-direct {v0, p1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+
+    .line 16973833
+    iget p1, p0, Lcom/bytedance/salamander/adapter/h;->a:I
+
+    .line 16973835
+    invoke-static {p1}, Landroid/os/Process;->setThreadPriority(I)V
+
+    .line 16973838
+    iget-object p1, p0, Lcom/bytedance/salamander/adapter/h;->b:Ljava/lang/String;
+
+    .line 16973840
+    invoke-virtual {v0, p1}, Ljava/lang/Thread;->setName(Ljava/lang/String;)V
+
+    .line 16973843
+    const/4 p1, 0x1
+
+    .line 16973844
+    invoke-virtual {v0, p1}, Ljava/lang/Thread;->setDaemon(Z)V
+
+    .line 16973847
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
+    .registers 3
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16973826
+    .line 16973827
+    .line 16973828
+    new-instance v0, Ljava/lang/Thread;
+
+    .line 16973829
+    .line 16973830
+    invoke-direct {v0, p1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+
+    .line 16973831
+    .line 16973832
+    .line 16973833
+    iget p1, p0, Lcom/bytedance/salamander/adapter/h;->a:I
+
+    .line 16973834
+    .line 16973835
+    invoke-static {p1}, Landroid/os/Process;->setThreadPriority(I)V
+
+    .line 16973836
+    .line 16973837
+    .line 16973838
+    iget-object p1, p0, Lcom/bytedance/salamander/adapter/h;->b:Ljava/lang/String;
+
+    .line 16973839
+    .line 16973840
+    invoke-virtual {v0, p1}, Ljava/lang/Thread;->setName(Ljava/lang/String;)V
+
+    .line 16973841
+    .line 16973842
+    .line 16973843
+    const/4 p1, 0x1
+
+    .line 16973844
+    invoke-virtual {v0, p1}, Ljava/lang/Thread;->setDaemon(Z)V
+
+    .line 16973845
+    .line 16973846
+    .line 16973847
+    return-object v0
+.end method
+
+

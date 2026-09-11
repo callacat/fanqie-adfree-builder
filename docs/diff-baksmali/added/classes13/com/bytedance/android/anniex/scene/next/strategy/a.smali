@@ -1,0 +1,864 @@
+.class public final Lcom/bytedance/android/anniex/scene/next/strategy/a;
+.super Ljr/d;
+.source "SourceFile"
+
+
+# instance fields
+.field public final b:Ljava/lang/String;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x7ec98
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    invoke-direct {p0}, Ljr/d;-><init>()V
+
+    .line 65539
+    const-string v0, "FuzzyThresholdStrategy"
+
+    .line 65541
+    iput-object v0, p0, Lcom/bytedance/android/anniex/scene/next/strategy/a;->b:Ljava/lang/String;
+
+    .line 65543
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lcom/bytedance/android/anniex/scene/next/a;)Ljava/util/List;
+    .registers 23
+
+    .prologue
+    .line 17235968
+    move-object/from16 v0, p1
+
+    .line 17235970
+    check-cast v0, Lcom/bytedance/android/anniex/scene/next/g;
+
+    .line 17235972
+    const/4 v1, 0x0
+
+    .line 17235973
+    invoke-static {v0, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17235976
+    iget-object v0, v0, Lcom/bytedance/android/anniex/scene/next/g;->c:Ljava/util/Map;
+
+    .line 17235978
+    sget-object v2, Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;->a:Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;
+
+    .line 17235980
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17235983
+    sget-object v2, Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;->d0:Lkotlin/Lazy;
+
+    .line 17235985
+    invoke-interface {v2}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    .line 17235988
+    move-result-object v2
+
+    .line 17235989
+    check-cast v2, Ljava/lang/Number;
+
+    .line 17235991
+    invoke-virtual {v2}, Ljava/lang/Number;->intValue()I
+
+    .line 17235994
+    move-result v2
+
+    .line 17235995
+    mul-int/lit8 v2, v2, 0x2
+
+    .line 17235997
+    const/4 v3, 0x1
+
+    .line 17235998
+    if-eqz v0, :cond_29
+
+    .line 17236000
+    invoke-interface {v0}, Ljava/util/Map;->isEmpty()Z
+
+    .line 17236003
+    move-result v4
+
+    .line 17236004
+    if-eqz v4, :cond_27
+
+    .line 17236006
+    goto :goto_29
+
+    .line 17236007
+    :cond_27
+    const/4 v4, 0x0
+
+    .line 17236008
+    goto :goto_2a
+
+    .line 17236009
+    :cond_29
+    :goto_29
+    const/4 v4, 0x1
+
+    .line 17236010
+    :goto_2a
+    if-eqz v4, :cond_32
+
+    .line 17236012
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 17236015
+    move-result-object v0
+
+    .line 17236016
+    goto/16 :goto_1f4
+
+    .line 17236018
+    :cond_32
+    invoke-interface {v0}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    .line 17236021
+    move-result-object v0
+
+    .line 17236022
+    check-cast v0, Ljava/lang/Iterable;
+
+    .line 17236024
+    new-instance v4, Lmr/a;
+
+    .line 17236026
+    invoke-direct {v4}, Lmr/a;-><init>()V
+
+    .line 17236029
+    invoke-static {v0, v4}, Lkotlin/collections/CollectionsKt;->sortedWith(Ljava/lang/Iterable;Ljava/util/Comparator;)Ljava/util/List;
+
+    .line 17236032
+    move-result-object v0
+
+    .line 17236033
+    invoke-static {v0, v2}, Lkotlin/collections/CollectionsKt;->take(Ljava/lang/Iterable;I)Ljava/util/List;
+
+    .line 17236036
+    move-result-object v0
+
+    .line 17236037
+    new-instance v4, Ljava/util/HashMap;
+
+    .line 17236039
+    mul-int/lit8 v2, v2, 0x2
+
+    .line 17236041
+    invoke-direct {v4, v2}, Ljava/util/HashMap;-><init>(I)V
+
+    .line 17236044
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 17236047
+    move-result-object v2
+
+    .line 17236048
+    :cond_50
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17236051
+    move-result v5
+
+    .line 17236052
+    const-wide/16 v6, 0x0
+
+    .line 17236054
+    const-string v8, ","
+
+    .line 17236056
+    if-eqz v5, :cond_d8
+
+    .line 17236058
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17236061
+    move-result-object v5
+
+    .line 17236062
+    check-cast v5, Ljava/util/Map$Entry;
+
+    .line 17236064
+    invoke-interface {v5}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 17236067
+    move-result-object v9
+
+    .line 17236068
+    check-cast v9, Lkotlin/Pair;
+
+    .line 17236070
+    invoke-virtual {v9}, Lkotlin/Pair;->getSecond()Ljava/lang/Object;
+
+    .line 17236073
+    move-result-object v9
+
+    .line 17236074
+    check-cast v9, Ljava/lang/Number;
+
+    .line 17236076
+    invoke-virtual {v9}, Ljava/lang/Number;->doubleValue()D
+
+    .line 17236079
+    move-result-wide v9
+
+    .line 17236080
+    invoke-interface {v5}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 17236083
+    move-result-object v5
+
+    .line 17236084
+    move-object v11, v5
+
+    .line 17236085
+    check-cast v11, Ljava/lang/CharSequence;
+
+    .line 17236087
+    filled-new-array {v8}, [Ljava/lang/String;
+
+    .line 17236090
+    move-result-object v12
+
+    .line 17236091
+    const/4 v13, 0x0
+
+    .line 17236092
+    const/4 v14, 0x0
+
+    .line 17236093
+    const/4 v15, 0x6
+
+    .line 17236094
+    const/16 v16, 0x0
+
+    .line 17236096
+    invoke-static/range {v11 .. v16}, Lkotlin/text/StringsKt;->split$default(Ljava/lang/CharSequence;[Ljava/lang/String;ZIILjava/lang/Object;)Ljava/util/List;
+
+    .line 17236099
+    move-result-object v5
+
+    .line 17236100
+    invoke-static {v5}, Lkotlin/collections/CollectionsKt;->asSequence(Ljava/lang/Iterable;)Lkotlin/sequences/Sequence;
+
+    .line 17236103
+    move-result-object v5
+
+    .line 17236104
+    sget-object v8, Lcom/bytedance/android/anniex/scene/next/strategy/FuzzyThresholdStrategy$predict$1$1;->INSTANCE:Lcom/bytedance/android/anniex/scene/next/strategy/FuzzyThresholdStrategy$predict$1$1;
+
+    .line 17236106
+    invoke-static {v5, v8}, Lkotlin/sequences/SequencesKt;->filter(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;
+
+    .line 17236109
+    move-result-object v5
+
+    .line 17236110
+    invoke-interface {v5}, Lkotlin/sequences/Sequence;->iterator()Ljava/util/Iterator;
+
+    .line 17236113
+    move-result-object v5
+
+    .line 17236114
+    :goto_92
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17236117
+    move-result v8
+
+    .line 17236118
+    if-eqz v8, :cond_50
+
+    .line 17236120
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17236123
+    move-result-object v8
+
+    .line 17236124
+    check-cast v8, Ljava/lang/String;
+
+    .line 17236126
+    invoke-virtual {v4, v8}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236129
+    move-result-object v11
+
+    .line 17236130
+    check-cast v11, Lkotlin/Pair;
+
+    .line 17236132
+    if-nez v11, :cond_b2
+
+    .line 17236134
+    invoke-static {v6, v7}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 17236137
+    move-result-object v11
+
+    .line 17236138
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 17236141
+    move-result-object v12
+
+    .line 17236142
+    invoke-static {v11, v12}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 17236145
+    move-result-object v11
+
+    .line 17236146
+    :cond_b2
+    invoke-virtual {v11}, Lkotlin/Pair;->component1()Ljava/lang/Object;
+
+    .line 17236149
+    move-result-object v12
+
+    .line 17236150
+    check-cast v12, Ljava/lang/Number;
+
+    .line 17236152
+    invoke-virtual {v12}, Ljava/lang/Number;->doubleValue()D
+
+    .line 17236155
+    move-result-wide v12
+
+    .line 17236156
+    invoke-virtual {v11}, Lkotlin/Pair;->component2()Ljava/lang/Object;
+
+    .line 17236159
+    move-result-object v11
+
+    .line 17236160
+    check-cast v11, Ljava/lang/Number;
+
+    .line 17236162
+    invoke-virtual {v11}, Ljava/lang/Number;->intValue()I
+
+    .line 17236165
+    move-result v11
+
+    .line 17236166
+    add-double/2addr v12, v9
+
+    .line 17236167
+    invoke-static {v12, v13}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 17236170
+    move-result-object v12
+
+    .line 17236171
+    add-int/2addr v11, v3
+
+    .line 17236172
+    invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 17236175
+    move-result-object v11
+
+    .line 17236176
+    invoke-static {v12, v11}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 17236179
+    move-result-object v11
+
+    .line 17236180
+    invoke-virtual {v4, v8, v11}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236183
+    goto :goto_92
+
+    .line 17236184
+    :cond_d8
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 17236187
+    move-result-object v0
+
+    .line 17236188
+    move-wide v9, v6
+
+    .line 17236189
+    move-wide v11, v9
+
+    .line 17236190
+    :goto_de
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17236193
+    move-result v2
+
+    .line 17236194
+    if-eqz v2, :cond_140
+
+    .line 17236196
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17236199
+    move-result-object v2
+
+    .line 17236200
+    check-cast v2, Ljava/util/Map$Entry;
+
+    .line 17236202
+    invoke-interface {v2}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 17236205
+    move-result-object v5
+
+    .line 17236206
+    check-cast v5, Lkotlin/Pair;
+
+    .line 17236208
+    invoke-virtual {v5}, Lkotlin/Pair;->getSecond()Ljava/lang/Object;
+
+    .line 17236211
+    move-result-object v5
+
+    .line 17236212
+    check-cast v5, Ljava/lang/Number;
+
+    .line 17236214
+    invoke-virtual {v5}, Ljava/lang/Number;->doubleValue()D
+
+    .line 17236217
+    move-result-wide v13
+
+    .line 17236218
+    invoke-interface {v2}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 17236221
+    move-result-object v2
+
+    .line 17236222
+    move-object v15, v2
+
+    .line 17236223
+    check-cast v15, Ljava/lang/CharSequence;
+
+    .line 17236225
+    filled-new-array {v8}, [Ljava/lang/String;
+
+    .line 17236228
+    move-result-object v16
+
+    .line 17236229
+    const/16 v17, 0x0
+
+    .line 17236231
+    const/16 v18, 0x0
+
+    .line 17236233
+    const/16 v19, 0x6
+
+    .line 17236235
+    const/16 v20, 0x0
+
+    .line 17236237
+    invoke-static/range {v15 .. v20}, Lkotlin/text/StringsKt;->split$default(Ljava/lang/CharSequence;[Ljava/lang/String;ZIILjava/lang/Object;)Ljava/util/List;
+
+    .line 17236240
+    move-result-object v2
+
+    .line 17236241
+    new-instance v5, Ljava/util/ArrayList;
+
+    .line 17236243
+    invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V
+
+    .line 17236246
+    invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 17236249
+    move-result-object v2
+
+    .line 17236250
+    :cond_11a
+    :goto_11a
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17236253
+    move-result v15
+
+    .line 17236254
+    if-eqz v15, :cond_134
+
+    .line 17236256
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17236259
+    move-result-object v15
+
+    .line 17236260
+    move-object/from16 v16, v15
+
+    .line 17236262
+    check-cast v16, Ljava/lang/String;
+
+    .line 17236264
+    invoke-static/range {v16 .. v16}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17236267
+    move-result v16
+
+    .line 17236268
+    xor-int/lit8 v16, v16, 0x1
+
+    .line 17236270
+    if-eqz v16, :cond_11a
+
+    .line 17236272
+    invoke-virtual {v5, v15}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 17236275
+    goto :goto_11a
+
+    .line 17236276
+    :cond_134
+    invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
+
+    .line 17236279
+    move-result v2
+
+    .line 17236280
+    int-to-double v6, v2
+
+    .line 17236281
+    mul-double v6, v6, v13
+
+    .line 17236283
+    add-double/2addr v11, v6
+
+    .line 17236284
+    add-double/2addr v9, v13
+
+    .line 17236285
+    const-wide/16 v6, 0x0
+
+    .line 17236287
+    goto :goto_de
+
+    .line 17236288
+    :cond_140
+    int-to-double v5, v1
+
+    .line 17236289
+    cmpl-double v0, v9, v5
+
+    .line 17236291
+    if-lez v0, :cond_14e
+
+    .line 17236293
+    div-double/2addr v11, v9
+
+    .line 17236294
+    invoke-static {v11, v12}, Lkotlin/math/MathKt;->roundToInt(D)I
+
+    .line 17236297
+    move-result v0
+
+    .line 17236298
+    invoke-static {v0, v3}, Lkotlin/ranges/RangesKt;->coerceAtLeast(II)I
+
+    .line 17236301
+    move-result v1
+
+    .line 17236302
+    :cond_14e
+    invoke-static {v4}, Lkotlin/collections/MapsKt;->asSequence(Ljava/util/Map;)Lkotlin/sequences/Sequence;
+
+    .line 17236305
+    move-result-object v0
+
+    .line 17236306
+    sget-object v2, Lcom/bytedance/android/anniex/scene/next/strategy/FuzzyThresholdStrategy$predict$sortedWithProb$1;->INSTANCE:Lcom/bytedance/android/anniex/scene/next/strategy/FuzzyThresholdStrategy$predict$sortedWithProb$1;
+
+    .line 17236308
+    invoke-static {v0, v2}, Lkotlin/sequences/SequencesKt;->map(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)Lkotlin/sequences/Sequence;
+
+    .line 17236311
+    move-result-object v0
+
+    .line 17236312
+    new-instance v2, Lmr/b;
+
+    .line 17236314
+    invoke-direct {v2}, Lmr/b;-><init>()V
+
+    .line 17236317
+    invoke-static {v0, v2}, Lkotlin/sequences/SequencesKt;->sortedWith(Lkotlin/sequences/Sequence;Ljava/util/Comparator;)Lkotlin/sequences/Sequence;
+
+    .line 17236320
+    move-result-object v0
+
+    .line 17236321
+    sget-object v2, Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;->a:Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;
+
+    .line 17236323
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236326
+    sget-object v2, Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;->m0:Lkotlin/Lazy;
+
+    .line 17236328
+    invoke-interface {v2}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    .line 17236331
+    move-result-object v2
+
+    .line 17236332
+    check-cast v2, Ljava/lang/Number;
+
+    .line 17236334
+    invoke-virtual {v2}, Ljava/lang/Number;->intValue()I
+
+    .line 17236337
+    move-result v2
+
+    .line 17236338
+    mul-int v1, v1, v2
+
+    .line 17236340
+    invoke-static {v0, v1}, Lkotlin/sequences/SequencesKt;->take(Lkotlin/sequences/Sequence;I)Lkotlin/sequences/Sequence;
+
+    .line 17236343
+    move-result-object v0
+
+    .line 17236344
+    invoke-static {v0}, Lkotlin/sequences/SequencesKt;->toList(Lkotlin/sequences/Sequence;)Ljava/util/List;
+
+    .line 17236347
+    move-result-object v0
+
+    .line 17236348
+    new-instance v4, Ljava/util/ArrayList;
+
+    .line 17236350
+    const/16 v1, 0xa
+
+    .line 17236352
+    invoke-static {v0, v1}, Lkotlin/collections/CollectionsKt;->collectionSizeOrDefault(Ljava/lang/Iterable;I)I
+
+    .line 17236355
+    move-result v1
+
+    .line 17236356
+    invoke-direct {v4, v1}, Ljava/util/ArrayList;-><init>(I)V
+
+    .line 17236359
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 17236362
+    move-result-object v1
+
+    .line 17236363
+    const-wide/16 v5, 0x0
+
+    .line 17236365
+    :goto_18d
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17236368
+    move-result v2
+
+    .line 17236369
+    if-eqz v2, :cond_1ae
+
+    .line 17236371
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17236374
+    move-result-object v2
+
+    .line 17236375
+    check-cast v2, Lkotlin/Pair;
+
+    .line 17236377
+    invoke-virtual {v2}, Lkotlin/Pair;->getSecond()Ljava/lang/Object;
+
+    .line 17236380
+    move-result-object v7
+
+    .line 17236381
+    check-cast v7, Ljava/lang/Number;
+
+    .line 17236383
+    invoke-virtual {v7}, Ljava/lang/Number;->doubleValue()D
+
+    .line 17236386
+    move-result-wide v7
+
+    .line 17236387
+    add-double/2addr v5, v7
+
+    .line 17236388
+    invoke-virtual {v2}, Lkotlin/Pair;->getFirst()Ljava/lang/Object;
+
+    .line 17236391
+    move-result-object v2
+
+    .line 17236392
+    check-cast v2, Ljava/lang/String;
+
+    .line 17236394
+    invoke-virtual {v4, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 17236397
+    goto :goto_18d
+
+    .line 17236398
+    :cond_1ae
+    invoke-interface {v0}, Ljava/util/Collection;->isEmpty()Z
+
+    .line 17236401
+    move-result v1
+
+    .line 17236402
+    xor-int/2addr v1, v3
+
+    .line 17236403
+    if-eqz v1, :cond_1be
+
+    .line 17236405
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
+    .line 17236408
+    move-result v0
+
+    .line 17236409
+    int-to-double v0, v0
+
+    .line 17236410
+    div-double v6, v5, v0
+
+    .line 17236412
+    move-wide v0, v6
+
+    .line 17236413
+    goto :goto_1c0
+
+    .line 17236414
+    :cond_1be
+    const-wide/16 v0, 0x0
+
+    .line 17236416
+    :goto_1c0
+    sget-object v2, Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;->a:Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;
+
+    .line 17236418
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236421
+    sget-object v2, Lcom/bytedance/android/anniex/scene/settings/SwitchCenter;->l0:Lkotlin/Lazy;
+
+    .line 17236423
+    invoke-interface {v2}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    .line 17236426
+    move-result-object v2
+
+    .line 17236427
+    check-cast v2, Ljava/lang/Number;
+
+    .line 17236429
+    invoke-virtual {v2}, Ljava/lang/Number;->floatValue()F
+
+    .line 17236432
+    move-result v2
+
+    .line 17236433
+    float-to-double v2, v2
+
+    .line 17236434
+    cmpg-double v5, v0, v2
+
+    .line 17236436
+    if-gtz v5, :cond_1db
+
+    .line 17236438
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 17236441
+    move-result-object v0
+
+    .line 17236442
+    goto :goto_1f4
+
+    .line 17236443
+    :cond_1db
+    const-string v5, ","
+
+    .line 17236445
+    const/4 v6, 0x0
+
+    .line 17236446
+    const/4 v7, 0x0
+
+    .line 17236447
+    const/4 v8, 0x0
+
+    .line 17236448
+    const/4 v9, 0x0
+
+    .line 17236449
+    const/4 v10, 0x0
+
+    .line 17236450
+    const/16 v11, 0x3e
+
+    .line 17236452
+    const/4 v12, 0x0
+
+    .line 17236453
+    invoke-static/range {v4 .. v12}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 17236456
+    move-result-object v2
+
+    .line 17236457
+    new-instance v3, Lkr/b;
+
+    .line 17236459
+    sget-object v4, Lcom/bytedance/android/anniex/scene/next/base/PredictElementType;->SceneId:Lcom/bytedance/android/anniex/scene/next/base/PredictElementType;
+
+    .line 17236461
+    invoke-direct {v3, v4, v2, v0, v1}, Lkr/b;-><init>(Lcom/bytedance/android/anniex/scene/next/base/PredictElementType;Ljava/lang/Object;D)V
+
+    .line 17236464
+    invoke-static {v3}, Lkotlin/collections/CollectionsKt;->listOf(Ljava/lang/Object;)Ljava/util/List;
+
+    .line 17236467
+    move-result-object v0
+
+    .line 17236468
+    :goto_1f4
+    return-object v0
+.end method
+
+.method public final getName()Ljava/lang/String;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lcom/bytedance/android/anniex/scene/next/strategy/a;->b:Ljava/lang/String;
+
+    .line 2
+    return-object v0
+.end method

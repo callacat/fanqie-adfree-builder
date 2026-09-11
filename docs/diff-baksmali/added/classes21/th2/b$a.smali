@@ -1,0 +1,186 @@
+.class public final Lth2/b$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lth2/b;-><init>(Landroid/content/Context;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Lkotlin/jvm/functions/Function2<",
+        "Landroidx/compose/runtime/Composer;",
+        "Ljava/lang/Integer;",
+        "Lkotlin/Unit;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lth2/b;
+
+
+# direct methods
+.method public constructor <init>(Lth2/b;)V
+    .registers 2
+
+    iput-object p1, p0, Lth2/b$a;->a:Lth2/b;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 6
+
+    .prologue
+    .line 33882112
+    check-cast p1, Landroidx/compose/runtime/Composer;
+
+    .line 33882114
+    check-cast p2, Ljava/lang/Number;
+
+    .line 33882116
+    invoke-virtual {p2}, Ljava/lang/Number;->intValue()I
+
+    .line 33882119
+    move-result p2
+
+    .line 33882120
+    and-int/lit8 v0, p2, 0x3
+
+    .line 33882122
+    const/4 v1, 0x2
+
+    .line 33882123
+    if-eq v0, v1, :cond_f
+
+    .line 33882125
+    const/4 v0, 0x1
+
+    .line 33882126
+    goto :goto_10
+
+    .line 33882127
+    :cond_f
+    const/4 v0, 0x0
+
+    .line 33882128
+    :goto_10
+    and-int/lit8 v1, p2, 0x1
+
+    .line 33882130
+    invoke-interface {p1, v0, v1}, Landroidx/compose/runtime/Composer;->shouldExecute(ZI)Z
+
+    .line 33882133
+    move-result v0
+
+    .line 33882134
+    if-eqz v0, :cond_50
+
+    .line 33882136
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 33882139
+    move-result v0
+
+    .line 33882140
+    if-eqz v0, :cond_27
+
+    .line 33882142
+    const v0, 0x3151dde1
+
+    .line 33882145
+    const/4 v1, -0x1
+
+    .line 33882146
+    const-string v2, "com.dragon.community.impl.comment.playlet.detail.page.bottombar.KmpPlayletCommentDetailBottomBar.<anonymous>.<anonymous> (KmpPlayletCommentDetailBottomBar.kt:133)"
+
+    .line 33882148
+    invoke-static {v0, p2, v1, v2}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 33882151
+    :cond_27
+    new-instance p2, Lec2/l;
+
+    .line 33882153
+    new-instance v0, Lhc2/e;
+
+    .line 33882155
+    invoke-direct {v0}, Lhc2/e;-><init>()V
+
+    .line 33882158
+    const/4 v1, 0x0
+
+    .line 33882159
+    const/4 v2, 0x6
+
+    .line 33882160
+    invoke-direct {p2, v0, v1, v2}, Lec2/l;-><init>(Lec2/m;Lec2/m;I)V
+
+    .line 33882163
+    new-instance v0, Lth2/a;
+
+    .line 33882165
+    iget-object v1, p0, Lth2/b$a;->a:Lth2/b;
+
+    .line 33882167
+    invoke-direct {v0, v1}, Lth2/a;-><init>(Lth2/b;)V
+
+    .line 33882170
+    const v1, 0x20bae285
+
+    .line 33882173
+    invoke-static {v1, v0, p1}, Ly/s;->c(ILkotlin/Function;Landroidx/compose/runtime/Composer;)Landroidx/compose/runtime/internal/ComposableLambdaImpl;
+
+    .line 33882176
+    move-result-object v0
+
+    .line 33882177
+    const/16 v1, 0x30
+
+    .line 33882179
+    invoke-static {p2, v0, p1, v1}, Lec2/i;->a(Lec2/l;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)V
+
+    .line 33882182
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 33882185
+    move-result p1
+
+    .line 33882186
+    if-eqz p1, :cond_53
+
+    .line 33882188
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .line 33882191
+    goto :goto_53
+
+    .line 33882192
+    :cond_50
+    invoke-interface {p1}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
+
+    .line 33882195
+    :cond_53
+    :goto_53
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33882197
+    return-object p1
+.end method

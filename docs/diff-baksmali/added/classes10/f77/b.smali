@@ -1,0 +1,47 @@
+.class public final synthetic Lf77/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/dragon/reader/lib/dispatcher/IReceiver;
+
+
+# instance fields
+.field public final synthetic a:Lf77/a$a;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lf77/a$a;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lf77/b;->a:Lf77/a$a;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onReceive(Ljava/lang/Object;)V
+    .registers 4
+
+    .prologue
+    .line 16908288
+    iget-object v0, p0, Lf77/b;->a:Lf77/a$a;
+
+    .line 16908290
+    check-cast p1, Lcom/dragon/reader/lib/model/k;
+
+    .line 16908292
+    const/4 v1, 0x0
+
+    .line 16908293
+    invoke-static {p1, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908296
+    invoke-interface {v0, p1}, Lf77/a$a;->a(Ljava/lang/Object;)V
+
+    .line 16908299
+    return-void
+.end method

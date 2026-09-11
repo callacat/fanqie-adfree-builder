@@ -1,0 +1,123 @@
+## classes5/ci5/d.smali
+# added=0 removed=0 changed=1
+
+.method public constructor <init>(Ljava/util/List;ILjava/lang/String;Lcom/bytedance/kmp/reading/model/cl;I)V
+[MOD-CHANGED]
+.method public constructor <init>(Ljava/util/List;ILjava/lang/String;Lcom/bytedance/kmp/reading/model/cl;I)V
+    .registers 8
+
+    .prologue
+    .line 84082688
+    and-int/lit8 v0, p5, 0x4
+
+    .line 84082690
+    const/4 v1, 0x0
+
+    .line 84082691
+    if-eqz v0, :cond_6
+
+    .line 84082693
+    move-object p3, v1
+
+    .line 84082694
+    :cond_6
+    and-int/lit8 p5, p5, 0x8
+
+    .line 84082696
+    if-eqz p5, :cond_b
+
+    .line 84082698
+    move-object p4, v1
+
+    .line 84082699
+    :cond_b
+    const/4 p5, 0x0
+
+    .line 84082700
+    invoke-static {p1, p5}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 84082703
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 84082706
+    iput-object p1, p0, Lci5/d;->a:Ljava/util/List;
+
+    .line 84082708
+    iput p2, p0, Lci5/d;->b:I
+
+    .line 84082710
+    iput-object p3, p0, Lci5/d;->c:Ljava/lang/String;
+
+    .line 84082712
+    iput-object p4, p0, Lci5/d;->d:Ljava/lang/Object;
+
+    .line 84082714
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Ljava/util/List;ILjava/lang/String;Lcom/bytedance/kmp/reading/model/cl;I)V
+    .registers 8
+
+    .prologue
+    .line 84082688
+    and-int/lit8 v0, p5, 0x4
+
+    .line 84082689
+    .line 84082690
+    const/4 v1, 0x0
+
+    .line 84082691
+    if-eqz v0, :cond_6
+
+    .line 84082692
+    .line 84082693
+    move-object p3, v1
+
+    .line 84082694
+    :cond_6
+    and-int/lit8 p5, p5, 0x8
+
+    .line 84082695
+    .line 84082696
+    if-eqz p5, :cond_b
+
+    .line 84082697
+    .line 84082698
+    move-object p4, v1
+
+    .line 84082699
+    :cond_b
+    const/4 p5, 0x0
+
+    .line 84082700
+    invoke-static {p1, p5}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 84082701
+    .line 84082702
+    .line 84082703
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 84082704
+    .line 84082705
+    .line 84082706
+    iput-object p1, p0, Lci5/d;->a:Ljava/util/List;
+
+    .line 84082707
+    .line 84082708
+    iput p2, p0, Lci5/d;->b:I
+
+    .line 84082709
+    .line 84082710
+    iput-object p3, p0, Lci5/d;->c:Ljava/lang/String;
+
+    .line 84082711
+    .line 84082712
+    iput-object p4, p0, Lci5/d;->d:Ljava/lang/Object;
+
+    .line 84082713
+    .line 84082714
+    return-void
+.end method
+
+

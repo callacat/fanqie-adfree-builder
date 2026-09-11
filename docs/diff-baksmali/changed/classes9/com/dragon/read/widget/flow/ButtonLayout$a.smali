@@ -1,0 +1,59 @@
+## classes9/com/dragon/read/widget/flow/ButtonLayout$a.smali
+# added=0 removed=0 changed=2
+
+.method public constructor <init>(II)V
+[MOD-CHANGED]
+.method public constructor <init>(II)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(II)V
+
+    .line 33554435
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(II)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(II)V
+
+    .line 33554433
+    .line 33554434
+    .line 33554435
+    return-void
+.end method
+
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+[MOD-CHANGED]
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    .registers 3
+
+    .prologue
+    .line 33619968
+    invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+
+    .line 33619971
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    .registers 3
+
+    .prologue
+    .line 33619968
+    invoke-direct {p0, p1, p2}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+
+    .line 33619969
+    .line 33619970
+    .line 33619971
+    return-void
+.end method
+
+

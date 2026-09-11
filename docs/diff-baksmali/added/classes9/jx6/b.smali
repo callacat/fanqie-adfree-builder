@@ -1,0 +1,286 @@
+.class public final Ljx6/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Ljx6/b$a;,
+        Ljx6/b$b;
+    }
+.end annotation
+
+.annotation runtime Lkotlinx/serialization/Serializable;
+.end annotation
+
+
+# static fields
+.field public static final Companion:Ljx6/b$b;
+
+
+# instance fields
+.field public final a:Ljava/lang/String;
+
+.field public final b:Ljava/lang/String;
+
+.field public final c:Ljava/lang/String;
+
+.field public final d:Ljava/lang/String;
+
+.field public final e:Ljava/lang/String;
+
+.field public final f:Ljava/lang/String;
+
+.field public final g:Ljava/lang/String;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 131072
+    const v0, 0x9ef0e
+
+    .line 131075
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 131078
+    new-instance v0, Ljx6/b$b;
+
+    .line 131080
+    invoke-direct {v0}, Ljx6/b$b;-><init>()V
+
+    .line 131083
+    sput-object v0, Ljx6/b;->Companion:Ljx6/b$b;
+
+    .line 131085
+    return-void
+.end method
+
+.method public synthetic constructor <init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 11
+
+    .prologue
+    .line 134479872
+    and-int/lit8 v0, p1, 0x3f
+
+    .line 134479874
+    const/16 v1, 0x3f
+
+    .line 134479876
+    if-eq v1, v0, :cond_f
+
+    .line 134479878
+    sget-object v0, Ljx6/b$a;->a:Ljx6/b$a;
+
+    .line 134479880
+    invoke-virtual {v0}, Ljx6/b$a;->getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 134479883
+    move-result-object v0
+
+    .line 134479884
+    invoke-static {p1, v1, v0}, Lkotlinx/serialization/internal/PluginExceptionsKt;->throwMissingFieldException(IILkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 134479887
+    :cond_f
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 134479890
+    iput-object p2, p0, Ljx6/b;->a:Ljava/lang/String;
+
+    .line 134479892
+    iput-object p3, p0, Ljx6/b;->b:Ljava/lang/String;
+
+    .line 134479894
+    iput-object p4, p0, Ljx6/b;->c:Ljava/lang/String;
+
+    .line 134479896
+    iput-object p5, p0, Ljx6/b;->d:Ljava/lang/String;
+
+    .line 134479898
+    iput-object p6, p0, Ljx6/b;->e:Ljava/lang/String;
+
+    .line 134479900
+    iput-object p7, p0, Ljx6/b;->f:Ljava/lang/String;
+
+    .line 134479902
+    and-int/lit8 p1, p1, 0x40
+
+    .line 134479904
+    if-nez p1, :cond_27
+
+    .line 134479906
+    const-string p1, "goldcoin"
+
+    .line 134479908
+    iput-object p1, p0, Ljx6/b;->g:Ljava/lang/String;
+
+    .line 134479910
+    goto :goto_29
+
+    .line 134479911
+    :cond_27
+    iput-object p8, p0, Ljx6/b;->g:Ljava/lang/String;
+
+    .line 134479913
+    :goto_29
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 9
+
+    .prologue
+    .line 117637120
+    sget v0, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->a:I
+
+    .line 117637122
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 117637125
+    iput-object p1, p0, Ljx6/b;->a:Ljava/lang/String;
+
+    .line 117637127
+    iput-object p2, p0, Ljx6/b;->b:Ljava/lang/String;
+
+    .line 117637129
+    iput-object p3, p0, Ljx6/b;->c:Ljava/lang/String;
+
+    .line 117637131
+    iput-object p4, p0, Ljx6/b;->d:Ljava/lang/String;
+
+    .line 117637133
+    iput-object p5, p0, Ljx6/b;->e:Ljava/lang/String;
+
+    .line 117637135
+    iput-object p6, p0, Ljx6/b;->f:Ljava/lang/String;
+
+    .line 117637137
+    iput-object p7, p0, Ljx6/b;->g:Ljava/lang/String;
+
+    .line 117637139
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()[Ljava/lang/Object;
+    .registers 4
+
+    const/4 v0, 0x7
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    const/4 v1, 0x0
+
+    iget-object v2, p0, Ljx6/b;->a:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x1
+
+    iget-object v2, p0, Ljx6/b;->b:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x2
+
+    iget-object v2, p0, Ljx6/b;->c:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x3
+
+    iget-object v2, p0, Ljx6/b;->d:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x4
+
+    iget-object v2, p0, Ljx6/b;->e:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x5
+
+    iget-object v2, p0, Ljx6/b;->f:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x6
+
+    iget-object v2, p0, Ljx6/b;->g:Ljava/lang/String;
+
+    aput-object v2, v0, v1
+
+    return-object v0
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .registers 3
+
+    if-ne p0, p1, :cond_4
+
+    const/4 p1, 0x1
+
+    return p1
+
+    :cond_4
+    instance-of v0, p1, Ljx6/b;
+
+    if-nez v0, :cond_a
+
+    const/4 p1, 0x0
+
+    return p1
+
+    :cond_a
+    check-cast p1, Ljx6/b;
+
+    invoke-virtual {p1}, Ljx6/b;->a()[Ljava/lang/Object;
+
+    move-result-object p1
+
+    invoke-virtual {p0}, Ljx6/b;->a()[Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-static {p1, v0}, Lgr7/a;->a([Ljava/lang/Object;[Ljava/lang/Object;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public final hashCode()I
+    .registers 2
+
+    invoke-virtual {p0}, Ljx6/b;->a()[Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljava/util/Objects;->hash([Ljava/lang/Object;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .registers 3
+
+    invoke-virtual {p0}, Ljx6/b;->a()[Ljava/lang/Object;
+
+    move-result-object v0
+
+    const-string v1, "IceFreeCashModel:%s,%s,%s,%s,%s,%s,%s"
+
+    invoke-static {v1, v0}, Lgr7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

@@ -1,0 +1,83 @@
+.class public final Ltt3/w;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnAttachStateChangeListener;
+
+
+# instance fields
+.field public final synthetic a:Ltt3/z;
+
+
+# direct methods
+.method public constructor <init>(Ltt3/z;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Ltt3/w;->a:Ltt3/z;
+
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onViewAttachedToWindow(Landroid/view/View;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16973828
+    iget-object p1, p0, Ltt3/w;->a:Ltt3/z;
+
+    .line 16973830
+    iget-object p1, p1, Ltt3/z;->u:Ltt3/y;
+
+    .line 16973832
+    const-string v0, "action_skin_type_change"
+
+    .line 16973834
+    filled-new-array {v0}, [Ljava/lang/String;
+
+    .line 16973837
+    move-result-object v0
+
+    .line 16973838
+    invoke-virtual {p1, v0}, Lcom/dragon/read/base/AbsBroadcastReceiver;->localRegister([Ljava/lang/String;)V
+
+    .line 16973841
+    return-void
+.end method
+
+.method public final onViewDetachedFromWindow(Landroid/view/View;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    iget-object p1, p0, Ltt3/w;->a:Ltt3/z;
+
+    .line 16908294
+    iget-object p1, p1, Ltt3/z;->u:Ltt3/y;
+
+    .line 16908296
+    invoke-virtual {p1}, Lcom/dragon/read/base/AbsBroadcastReceiver;->unregister()V
+
+    .line 16908299
+    return-void
+.end method

@@ -1,0 +1,99 @@
+.class public final synthetic Lgs3/k0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/component/biz/impl/bookmall/holder/video/vm/VideoTabVMModel;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/component/biz/impl/bookmall/holder/video/vm/VideoTabVMModel;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lgs3/k0;->a:Lcom/dragon/read/component/biz/impl/bookmall/holder/video/vm/VideoTabVMModel;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 6
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lgs3/k0;->a:Lcom/dragon/read/component/biz/impl/bookmall/holder/video/vm/VideoTabVMModel;
+
+    .line 17039362
+    check-cast p1, Ljava/lang/Throwable;
+
+    .line 17039364
+    sget-object v1, Lcom/dragon/read/component/biz/impl/bookmall/holder/video/vm/VideoTabVMModel;->u:Lcom/dragon/read/base/util/LogHelper;
+
+    .line 17039366
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 17039368
+    const-string v3, "dislike error: "
+
+    .line 17039370
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17039373
+    invoke-static {p1}, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 17039376
+    move-result-object p1
+
+    .line 17039377
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17039380
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17039383
+    move-result-object p1
+
+    .line 17039384
+    const/4 v2, 0x0
+
+    .line 17039385
+    new-array v2, v2, [Ljava/lang/Object;
+
+    .line 17039387
+    invoke-virtual {v1}, Lcom/dragon/read/base/util/LogHelper;->getTag()Ljava/lang/String;
+
+    .line 17039390
+    move-result-object v1
+
+    .line 17039391
+    const-string v3, "deliver"
+
+    .line 17039393
+    invoke-static {v3, v1, p1, v2}, Lcom/dragon/read/base/util/LogWrapper;->error(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17039396
+    iget-object p1, v0, Lcom/dragon/read/component/biz/impl/bookmall/holder/video/vm/VideoTabVMModel;->t:Lgs3/n0;
+
+    .line 17039398
+    if-eqz p1, :cond_2d
+
+    .line 17039400
+    sget-object v0, Lcom/dragon/read/component/biz/impl/bookmall/holder/video/model/VideoTabDislikeState;->FAIL:Lcom/dragon/read/component/biz/impl/bookmall/holder/video/model/VideoTabDislikeState;
+
+    .line 17039402
+    invoke-virtual {p1, v0}, Lgs3/n0;->p1(Lcom/dragon/read/component/biz/impl/bookmall/holder/video/model/VideoTabDislikeState;)V
+
+    .line 17039405
+    :cond_2d
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17039407
+    return-object p1
+.end method

@@ -1,0 +1,78 @@
+.class public final Lk04/e;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lk04/j;
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Ljava/lang/String;
+    .registers 2
+
+    const-string v0, "history_common"
+
+    return-object v0
+.end method
+
+.method public final b(Lm04/e;Lcom/dragon/read/component/biz/impl/history/b0$b;)Z
+    .registers 3
+
+    .prologue
+    .line 33685504
+    sget p1, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->a:I
+
+    .line 33685506
+    sget-object p1, Lk04/q;->r:Lk04/q$a;
+
+    .line 33685508
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33685511
+    sget-object p1, Lk04/q;->s:Ljava/util/Set;
+
+    .line 33685513
+    iget-object p2, p2, Lcom/dragon/read/component/biz/impl/history/b0$b;->y:Lcom/dragon/read/rpc/model/ChaseBookUpdateType;
+
+    .line 33685515
+    invoke-interface {p1, p2}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
+
+    .line 33685518
+    move-result p1
+
+    .line 33685519
+    return p1
+.end method
+
+.method public final createView(Landroid/content/Context;)Lk04/d0;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    new-instance v0, Lk04/q;
+
+    .line 16908294
+    invoke-direct {v0, p1}, Lk04/q;-><init>(Landroid/content/Context;)V
+
+    .line 16908297
+    return-object v0
+.end method

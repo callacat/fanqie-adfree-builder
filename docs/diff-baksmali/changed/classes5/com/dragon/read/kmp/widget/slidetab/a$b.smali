@@ -1,0 +1,163 @@
+## classes5/com/dragon/read/kmp/widget/slidetab/a$b.smali
+# added=0 removed=0 changed=1
+
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+[MOD-CHANGED]
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 5
+
+    .prologue
+    .line 50593792
+    check-cast p1, Ljava/util/List;
+
+    .line 50593794
+    check-cast p2, Landroidx/compose/runtime/Composer;
+
+    .line 50593796
+    check-cast p3, Ljava/lang/Number;
+
+    .line 50593798
+    invoke-virtual {p3}, Ljava/lang/Number;->intValue()I
+
+    .line 50593801
+    move-result p2
+
+    .line 50593802
+    const-string p3, ""
+
+    .line 50593804
+    invoke-static {p1, p3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50593807
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 50593810
+    move-result p1
+
+    .line 50593811
+    if-eqz p1, :cond_1e
+
+    .line 50593813
+    const-string p1, "com.dragon.read.kmp.widget.slidetab.ComposableSingletons$SlideTabLayoutKt.lambda$-1307695095.<anonymous> (SlideTabLayout.kt:53)"
+
+    .line 50593815
+    const p3, -0x4df1d7f7
+
+    .line 50593818
+    const/4 v0, -0x1
+
+    .line 50593819
+    invoke-static {p3, p2, v0, p1}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 50593822
+    :cond_1e
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 50593825
+    move-result p1
+
+    .line 50593826
+    if-eqz p1, :cond_27
+
+    .line 50593828
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .line 50593831
+    :cond_27
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50593833
+    return-object p1
+.end method
+
+[INNER-ORIGINAL]
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 5
+
+    .prologue
+    .line 50593792
+    check-cast p1, Ljava/util/List;
+
+    .line 50593793
+    .line 50593794
+    check-cast p2, Landroidx/compose/runtime/Composer;
+
+    .line 50593795
+    .line 50593796
+    check-cast p3, Ljava/lang/Number;
+
+    .line 50593797
+    .line 50593798
+    invoke-virtual {p3}, Ljava/lang/Number;->intValue()I
+
+    .line 50593799
+    .line 50593800
+    .line 50593801
+    move-result p2
+
+    .line 50593802
+    const-string p3, ""
+
+    .line 50593803
+    .line 50593804
+    invoke-static {p1, p3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50593805
+    .line 50593806
+    .line 50593807
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 50593808
+    .line 50593809
+    .line 50593810
+    move-result p1
+
+    .line 50593811
+    if-eqz p1, :cond_1e
+
+    .line 50593812
+    .line 50593813
+    const-string p1, "com.dragon.read.kmp.widget.slidetab.ComposableSingletons$SlideTabLayoutKt.lambda$-1307695095.<anonymous> (SlideTabLayout.kt:53)"
+
+    .line 50593814
+    .line 50593815
+    const p3, -0x4df1d7f7
+
+    .line 50593816
+    .line 50593817
+    .line 50593818
+    const/4 v0, -0x1
+
+    .line 50593819
+    invoke-static {p3, p2, v0, p1}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 50593820
+    .line 50593821
+    .line 50593822
+    :cond_1e
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 50593823
+    .line 50593824
+    .line 50593825
+    move-result p1
+
+    .line 50593826
+    if-eqz p1, :cond_27
+
+    .line 50593827
+    .line 50593828
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .line 50593829
+    .line 50593830
+    .line 50593831
+    :cond_27
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50593832
+    .line 50593833
+    return-object p1
+.end method
+
+

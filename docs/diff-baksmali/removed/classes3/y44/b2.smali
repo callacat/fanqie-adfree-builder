@@ -1,0 +1,83 @@
+.class public final synthetic Ly44/b2;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lu44/p;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV1;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV1;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Ly44/b2;->a:Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV1;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(ILjava/lang/Object;)V
+    .registers 4
+
+    .prologue
+    .line 33751040
+    iget-object p1, p0, Ly44/b2;->a:Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV1;
+
+    .line 33751041
+    .line 33751042
+    check-cast p2, Lcom/dragon/read/component/biz/impl/mine/pref/interest/model/PrefChildContentData;
+
+    .line 33751043
+    .line 33751044
+    iget-object v0, p1, Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV1;->c:Lu44/o1;
+
+    .line 33751045
+    .line 33751046
+    iget-object v0, v0, Lu44/o1;->l:Landroidx/lifecycle/MutableLiveData;
+
+    .line 33751047
+    .line 33751048
+    invoke-virtual {v0}, Landroidx/lifecycle/LiveData;->getValue()Ljava/lang/Object;
+
+    .line 33751049
+    .line 33751050
+    .line 33751051
+    move-result-object v0
+
+    .line 33751052
+    check-cast v0, Ljava/util/LinkedHashSet;
+
+    .line 33751053
+    .line 33751054
+    if-eqz v0, :cond_1a
+
+    .line 33751055
+    .line 33751056
+    invoke-virtual {v0, p2}, Ljava/util/LinkedHashSet;->remove(Ljava/lang/Object;)Z
+
+    .line 33751057
+    .line 33751058
+    .line 33751059
+    iget-object p1, p1, Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV1;->c:Lu44/o1;
+
+    .line 33751060
+    .line 33751061
+    iget-object p1, p1, Lu44/o1;->l:Landroidx/lifecycle/MutableLiveData;
+
+    .line 33751062
+    .line 33751063
+    invoke-virtual {p1, v0}, Landroidx/lifecycle/MutableLiveData;->setValue(Ljava/lang/Object;)V
+
+    .line 33751064
+    .line 33751065
+    .line 33751066
+    :cond_1a
+    return-void
+.end method

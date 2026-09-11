@@ -1,0 +1,656 @@
+.class public Lcom/ss/texturerender/producer/ImageReaderProducer;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/ss/texturerender/producer/IFrameProducer;
+.implements Landroid/media/ImageReader$OnImageAvailableListener;
+
+
+# static fields
+.field private static final MatrixFlipV:[F
+
+
+# instance fields
+.field private final TAG:Ljava/lang/String;
+
+.field private volatile mCurImage:Landroid/media/Image;
+
+.field private mEffectTexture:Lcom/ss/texturerender/effect/EffectTexture;
+
+.field private mFrameAvailableListener:Lcom/ss/texturerender/IFrameAvailableListener;
+
+.field private mImageReader:Landroid/media/ImageReader;
+
+.field private volatile mIsRelease:Z
+
+.field private volatile mStatus:I
+
+.field private mTexType:I
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 262144
+    const v0, 0xa38d4
+
+    .line 262147
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 262150
+    const/16 v0, 0x10
+
+    .line 262152
+    new-array v0, v0, [F
+
+    .line 262154
+    fill-array-data v0, :array_10
+
+    .line 262157
+    sput-object v0, Lcom/ss/texturerender/producer/ImageReaderProducer;->MatrixFlipV:[F
+
+    .line 262159
+    return-void
+
+    .line 262160
+    :array_10
+    .array-data 4
+        0x3f800000    # 1.0f
+        0x0
+        0x0
+        0x0
+        0x0
+        -0x40800000    # -1.0f
+        0x0
+        0x0
+        0x0
+        0x0
+        0x3f800000    # 1.0f
+        0x0
+        0x0
+        0x3f800000    # 1.0f
+        0x0
+        0x3f800000    # 1.0f
+    .end array-data
+.end method
+
+.method public constructor <init>(I)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16908291
+    invoke-static {p0}, Lcom/ss/texturerender/TextureRenderLog;->getLogTag(Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 16908294
+    move-result-object v0
+
+    .line 16908295
+    iput-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->TAG:Ljava/lang/String;
+
+    .line 16908297
+    iput p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mTexType:I
+
+    .line 16908299
+    return-void
+.end method
+
+.method private _updateImage()V
+    .registers 6
+
+    .prologue
+    .line 262144
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mImageReader:Landroid/media/ImageReader;
+
+    .line 262146
+    if-nez v0, :cond_5
+
+    .line 262148
+    return-void
+
+    .line 262149
+    :cond_5
+    const/4 v1, 0x0
+
+    .line 262150
+    :try_start_6
+    invoke-virtual {v0}, Landroid/media/ImageReader;->acquireNextImage()Landroid/media/Image;
+
+    .line 262153
+    move-result-object v0
+    :try_end_a
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_a} :catch_2a
+
+    .line 262154
+    if-eqz v0, :cond_3e
+
+    .line 262156
+    :try_start_c
+    iget-object v2, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 262158
+    if-eqz v2, :cond_17
+
+    .line 262160
+    iget-object v2, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 262162
+    invoke-virtual {v2}, Landroid/media/Image;->close()V
+
+    .line 262165
+    iput-object v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 262167
+    :cond_17
+    iget-boolean v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mIsRelease:Z
+
+    .line 262169
+    if-nez v1, :cond_24
+
+    .line 262171
+    iget v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mStatus:I
+
+    .line 262173
+    const/4 v2, 0x1
+
+    .line 262174
+    if-ne v1, v2, :cond_21
+
+    .line 262176
+    goto :goto_24
+
+    .line 262177
+    :cond_21
+    iput-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 262179
+    goto :goto_3e
+
+    .line 262180
+    :cond_24
+    :goto_24
+    invoke-virtual {v0}, Landroid/media/Image;->close()V
+    :try_end_27
+    .catch Ljava/lang/Exception; {:try_start_c .. :try_end_27} :catch_28
+
+    .line 262183
+    goto :goto_3e
+
+    .line 262184
+    :catch_28
+    move-exception v1
+
+    .line 262185
+    goto :goto_2e
+
+    .line 262186
+    :catch_2a
+    move-exception v0
+
+    .line 262187
+    move-object v4, v1
+
+    .line 262188
+    move-object v1, v0
+
+    .line 262189
+    move-object v0, v4
+
+    .line 262190
+    :goto_2e
+    iget v2, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mTexType:I
+
+    .line 262192
+    iget-object v3, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->TAG:Ljava/lang/String;
+
+    .line 262194
+    invoke-virtual {v1}, Ljava/lang/Exception;->toString()Ljava/lang/String;
+
+    .line 262197
+    move-result-object v1
+
+    .line 262198
+    invoke-static {v2, v3, v1}, Lcom/ss/texturerender/TextureRenderLog;->e(ILjava/lang/String;Ljava/lang/String;)V
+
+    .line 262201
+    if-eqz v0, :cond_3e
+
+    .line 262203
+    invoke-virtual {v0}, Landroid/media/Image;->close()V
+
+    .line 262206
+    :cond_3e
+    :goto_3e
+    return-void
+.end method
+
+
+# virtual methods
+.method public getEffectTexture()Lcom/ss/texturerender/effect/EffectTexture;
+    .registers 9
+
+    .prologue
+    .line 327680
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mImageReader:Landroid/media/ImageReader;
+
+    .line 327682
+    if-eqz v0, :cond_54
+
+    .line 327684
+    iget-boolean v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mIsRelease:Z
+
+    .line 327686
+    if-eqz v0, :cond_9
+
+    .line 327688
+    goto :goto_54
+
+    .line 327689
+    :cond_9
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 327691
+    if-nez v0, :cond_10
+
+    .line 327693
+    invoke-direct {p0}, Lcom/ss/texturerender/producer/ImageReaderProducer;->_updateImage()V
+
+    .line 327696
+    :cond_10
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 327698
+    if-eqz v0, :cond_51
+
+    .line 327700
+    :try_start_14
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 327702
+    invoke-virtual {v0}, Landroid/media/Image;->getHardwareBuffer()Landroid/hardware/HardwareBuffer;
+
+    .line 327705
+    move-result-object v3
+
+    .line 327706
+    if-eqz v3, :cond_51
+
+    .line 327708
+    new-instance v0, Lcom/ss/texturerender/effect/EffectTexture;
+
+    .line 327710
+    const/4 v2, 0x0
+
+    .line 327711
+    iget-object v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 327713
+    invoke-virtual {v1}, Landroid/media/Image;->getWidth()I
+
+    .line 327716
+    move-result v4
+
+    .line 327717
+    iget-object v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 327719
+    invoke-virtual {v1}, Landroid/media/Image;->getHeight()I
+
+    .line 327722
+    move-result v5
+
+    .line 327723
+    invoke-virtual {v3}, Landroid/hardware/HardwareBuffer;->getFormat()I
+
+    .line 327726
+    move-result v6
+
+    .line 327727
+    const/4 v7, 0x2
+
+    .line 327728
+    move-object v1, v0
+
+    .line 327729
+    invoke-direct/range {v1 .. v7}, Lcom/ss/texturerender/effect/EffectTexture;-><init>(Lcom/ss/texturerender/effect/EffectTextureManager;Landroid/hardware/HardwareBuffer;IIII)V
+
+    .line 327732
+    iput-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mEffectTexture:Lcom/ss/texturerender/effect/EffectTexture;
+    :try_end_36
+    .catch Ljava/lang/Exception; {:try_start_14 .. :try_end_36} :catch_37
+
+    .line 327734
+    goto :goto_51
+
+    .line 327735
+    :catch_37
+    move-exception v0
+
+    .line 327736
+    iget v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mTexType:I
+
+    .line 327738
+    iget-object v2, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->TAG:Ljava/lang/String;
+
+    .line 327740
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 327742
+    const-string v4, "getEffectTexture,e:"
+
+    .line 327744
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327747
+    invoke-virtual {v0}, Ljava/lang/Exception;->toString()Ljava/lang/String;
+
+    .line 327750
+    move-result-object v0
+
+    .line 327751
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327754
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327757
+    move-result-object v0
+
+    .line 327758
+    invoke-static {v1, v2, v0}, Lcom/ss/texturerender/TextureRenderLog;->e(ILjava/lang/String;Ljava/lang/String;)V
+
+    .line 327761
+    :cond_51
+    :goto_51
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mEffectTexture:Lcom/ss/texturerender/effect/EffectTexture;
+
+    .line 327763
+    return-object v0
+
+    .line 327764
+    :cond_54
+    :goto_54
+    const/4 v0, 0x0
+
+    .line 327765
+    return-object v0
+.end method
+
+.method public getProducerType()I
+    .registers 2
+
+    const/4 v0, 0x2
+
+    return v0
+.end method
+
+.method public getTimestamp()J
+    .registers 3
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 131074
+    if-eqz v0, :cond_b
+
+    .line 131076
+    :try_start_4
+    iget-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 131078
+    invoke-virtual {v0}, Landroid/media/Image;->getTimestamp()J
+
+    .line 131081
+    move-result-wide v0
+    :try_end_a
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_a} :catch_b
+
+    .line 131082
+    return-wide v0
+
+    .line 131083
+    :catch_b
+    :cond_b
+    const-wide/16 v0, 0x0
+
+    .line 131085
+    return-wide v0
+.end method
+
+.method public getTransformMatrix([F)V
+    .registers 4
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    :goto_1
+    const/16 v1, 0x10
+
+    .line 16908291
+    if-ge v0, v1, :cond_e
+
+    .line 16908293
+    sget-object v1, Lcom/ss/texturerender/producer/ImageReaderProducer;->MatrixFlipV:[F
+
+    .line 16908295
+    aget v1, v1, v0
+
+    .line 16908297
+    aput v1, p1, v0
+
+    .line 16908299
+    add-int/lit8 v0, v0, 0x1
+
+    .line 16908301
+    goto :goto_1
+
+    .line 16908302
+    :cond_e
+    return-void
+.end method
+
+.method public onImageAvailable(Landroid/media/ImageReader;)V
+    .registers 4
+
+    .prologue
+    .line 16973824
+    iget v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mStatus:I
+
+    .line 16973826
+    const/4 v1, 0x1
+
+    .line 16973827
+    if-ne v0, v1, :cond_6
+
+    .line 16973829
+    return-void
+
+    .line 16973830
+    :cond_6
+    iput-object p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mImageReader:Landroid/media/ImageReader;
+
+    .line 16973832
+    invoke-direct {p0}, Lcom/ss/texturerender/producer/ImageReaderProducer;->_updateImage()V
+
+    .line 16973835
+    iget-object p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mFrameAvailableListener:Lcom/ss/texturerender/IFrameAvailableListener;
+
+    .line 16973837
+    if-eqz p1, :cond_12
+
+    .line 16973839
+    invoke-interface {p1}, Lcom/ss/texturerender/IFrameAvailableListener;->onFrameAvailable()V
+
+    .line 16973842
+    :cond_12
+    return-void
+.end method
+
+.method public release()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    const/4 v0, 0x1
+
+    .line 196609
+    iput-boolean v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mIsRelease:Z
+
+    .line 196611
+    const/4 v0, 0x0
+
+    .line 196612
+    iput-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mImageReader:Landroid/media/ImageReader;
+
+    .line 196614
+    iput-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mFrameAvailableListener:Lcom/ss/texturerender/IFrameAvailableListener;
+
+    .line 196616
+    iput-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mEffectTexture:Lcom/ss/texturerender/effect/EffectTexture;
+
+    .line 196618
+    iget-object v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 196620
+    if-eqz v1, :cond_15
+
+    .line 196622
+    :try_start_e
+    iget-object v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 196624
+    invoke-virtual {v1}, Landroid/media/Image;->close()V
+
+    .line 196627
+    iput-object v0, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+    :try_end_15
+    .catch Ljava/lang/Exception; {:try_start_e .. :try_end_15} :catch_15
+
+    .line 196629
+    :catch_15
+    :cond_15
+    return-void
+.end method
+
+.method public releaseOffScreenSurface()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-virtual {p0}, Lcom/ss/texturerender/producer/ImageReaderProducer;->release()V
+
+    .line 3
+    return-void
+.end method
+
+.method public setIntOption(II)V
+    .registers 7
+
+    .prologue
+    .line 33816576
+    const/4 v0, 0x1
+
+    .line 33816577
+    if-ne p1, v0, :cond_34
+
+    .line 33816579
+    iput p2, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mStatus:I
+
+    .line 33816581
+    iget p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mTexType:I
+
+    .line 33816583
+    iget-object v1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->TAG:Ljava/lang/String;
+
+    .line 33816585
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 33816587
+    const-string v3, "set status:"
+
+    .line 33816589
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 33816592
+    iget v3, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mStatus:I
+
+    .line 33816594
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 33816597
+    const-string v3, "image:"
+
+    .line 33816599
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33816602
+    iget-object v3, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 33816604
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 33816607
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 33816610
+    move-result-object v2
+
+    .line 33816611
+    invoke-static {p1, v1, v2}, Lcom/ss/texturerender/TextureRenderLog;->d(ILjava/lang/String;Ljava/lang/String;)V
+
+    .line 33816614
+    if-ne p2, v0, :cond_34
+
+    .line 33816616
+    iget-object p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 33816618
+    if-eqz p1, :cond_34
+
+    .line 33816620
+    iget-object p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 33816622
+    invoke-virtual {p1}, Landroid/media/Image;->close()V
+
+    .line 33816625
+    const/4 p1, 0x0
+
+    .line 33816626
+    iput-object p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mCurImage:Landroid/media/Image;
+
+    .line 33816628
+    :cond_34
+    return-void
+.end method
+
+.method public setOnFrameAvailableListener(Lcom/ss/texturerender/IFrameAvailableListener;Landroid/os/Handler;)V
+    .registers 3
+
+    .prologue
+    .line 33554432
+    iput-object p1, p0, Lcom/ss/texturerender/producer/ImageReaderProducer;->mFrameAvailableListener:Lcom/ss/texturerender/IFrameAvailableListener;
+
+    .line 33554434
+    return-void
+.end method
+
+.method public updateImage()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public updateTexDimension(II)V
+    .registers 3
+
+    return-void
+.end method

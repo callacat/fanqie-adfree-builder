@@ -1,0 +1,110 @@
+.class public final synthetic Lz46/a1;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Lz46/f1;
+
+.field public final synthetic b:Z
+
+.field public final synthetic c:Lcom/dragon/read/reader/bookmark/d;
+
+.field public final synthetic d:Ljava/lang/String;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lz46/f1;ZLcom/dragon/read/reader/bookmark/d;Ljava/lang/String;)V
+    .registers 5
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lz46/a1;->a:Lz46/f1;
+
+    iput-boolean p2, p0, Lz46/a1;->b:Z
+
+    iput-object p3, p0, Lz46/a1;->c:Lcom/dragon/read/reader/bookmark/d;
+
+    iput-object p4, p0, Lz46/a1;->d:Ljava/lang/String;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 9
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lz46/a1;->a:Lz46/f1;
+
+    .line 17039362
+    iget-boolean v2, p0, Lz46/a1;->b:Z
+
+    .line 17039364
+    iget-object v3, p0, Lz46/a1;->c:Lcom/dragon/read/reader/bookmark/d;
+
+    .line 17039366
+    iget-object v4, p0, Lz46/a1;->d:Ljava/lang/String;
+
+    .line 17039368
+    check-cast p1, Ljava/lang/Throwable;
+
+    .line 17039370
+    sget-object v1, Lcom/dragon/read/kmp/reader/utils/t;->b:Lt55/g;
+
+    .line 17039372
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 17039374
+    const-string/jumbo v6, "\u672c\u5730\u4e66\u7c4d\u6dfb\u52a0\u5212\u7ebf\u5931\u8d25,:"
+
+    .line 17039377
+    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17039380
+    invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 17039383
+    move-result-object p1
+
+    .line 17039384
+    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17039387
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17039390
+    move-result-object p1
+
+    .line 17039391
+    invoke-virtual {v1, p1}, Lt55/g;->c(Ljava/lang/String;)V
+
+    .line 17039394
+    const/4 v1, 0x1
+
+    .line 17039395
+    const-string v5, "other"
+
+    .line 17039397
+    const/4 v6, 0x0
+
+    .line 17039398
+    invoke-virtual/range {v0 .. v6}, Lf56/d;->l(ZZLcom/dragon/read/reader/bookmark/d;Ljava/lang/String;Ljava/lang/String;Z)V
+
+    .line 17039401
+    const p1, 0x7f0601e1
+
+    .line 17039404
+    invoke-static {p1}, Lcom/dragon/read/util/ToastUtils;->showCommonToastSafely(I)V
+
+    .line 17039407
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17039409
+    return-object p1
+.end method

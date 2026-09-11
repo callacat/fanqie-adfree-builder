@@ -1,0 +1,180 @@
+.class public final Lto2/a;
+.super Lcom/dragon/community/kmp/utils/i;
+.source "SourceFile"
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x8ccd0
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Lcom/dragon/community/kmp/utils/i;-><init>()V
+
+    .line 3
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Landroidx/compose/runtime/Composer;I)Landroidx/compose/ui/graphics/m0;
+    .registers 6
+
+    .prologue
+    .line 33816576
+    const v0, 0x6a1faf28
+
+    .line 33816579
+    invoke-interface {p1, v0}, Landroidx/compose/runtime/Composer;->startReplaceGroup(I)V
+
+    .line 33816582
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 33816585
+    move-result v1
+
+    .line 33816586
+    if-eqz v1, :cond_12
+
+    .line 33816588
+    const/4 v1, -0x1
+
+    .line 33816589
+    const-string v2, "com.dragon.community.kmp_playlet_comment.list.GrayScoreStarDrawableStyleConfig.halfStarTintColor (KmpListPlayletCommentItem.kt:344)"
+
+    .line 33816591
+    invoke-static {v0, p2, v1, v2}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 33816594
+    :cond_12
+    sget-object p2, Lcc2/a;->a:Lcc2/a;
+
+    .line 33816596
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33816599
+    const/4 p2, 0x0
+
+    .line 33816600
+    invoke-static {p1, p2}, Lcc2/a;->d(Landroidx/compose/runtime/Composer;I)Lfc2/i;
+
+    .line 33816603
+    move-result-object p2
+
+    .line 33816604
+    invoke-interface {p2}, Lfc2/i;->d()J
+
+    .line 33816607
+    move-result-wide v0
+
+    .line 33816608
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 33816611
+    move-result p2
+
+    .line 33816612
+    if-eqz p2, :cond_29
+
+    .line 33816614
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .line 33816617
+    :cond_29
+    invoke-interface {p1}, Landroidx/compose/runtime/Composer;->endReplaceGroup()V
+
+    .line 33816620
+    new-instance p1, Landroidx/compose/ui/graphics/m0;
+
+    .line 33816622
+    invoke-direct {p1, v0, v1}, Landroidx/compose/ui/graphics/m0;-><init>(J)V
+
+    .line 33816625
+    return-object p1
+.end method
+
+.method public final b(Landroidx/compose/runtime/Composer;I)Landroidx/compose/ui/graphics/m0;
+    .registers 6
+
+    .prologue
+    .line 33816576
+    const v0, 0x43dc884
+
+    .line 33816579
+    invoke-interface {p1, v0}, Landroidx/compose/runtime/Composer;->startReplaceGroup(I)V
+
+    .line 33816582
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 33816585
+    move-result v1
+
+    .line 33816586
+    if-eqz v1, :cond_12
+
+    .line 33816588
+    const/4 v1, -0x1
+
+    .line 33816589
+    const-string v2, "com.dragon.community.kmp_playlet_comment.list.GrayScoreStarDrawableStyleConfig.fullStarTintColor (KmpListPlayletCommentItem.kt:350)"
+
+    .line 33816591
+    invoke-static {v0, p2, v1, v2}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 33816594
+    :cond_12
+    sget-object p2, Lcc2/a;->a:Lcc2/a;
+
+    .line 33816596
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33816599
+    const/4 p2, 0x0
+
+    .line 33816600
+    invoke-static {p1, p2}, Lcc2/a;->d(Landroidx/compose/runtime/Composer;I)Lfc2/i;
+
+    .line 33816603
+    move-result-object p2
+
+    .line 33816604
+    invoke-interface {p2}, Lfc2/i;->d()J
+
+    .line 33816607
+    move-result-wide v0
+
+    .line 33816608
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 33816611
+    move-result p2
+
+    .line 33816612
+    if-eqz p2, :cond_29
+
+    .line 33816614
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .line 33816617
+    :cond_29
+    invoke-interface {p1}, Landroidx/compose/runtime/Composer;->endReplaceGroup()V
+
+    .line 33816620
+    new-instance p1, Landroidx/compose/ui/graphics/m0;
+
+    .line 33816622
+    invoke-direct {p1, v0, v1}, Landroidx/compose/ui/graphics/m0;-><init>(J)V
+
+    .line 33816625
+    return-object p1
+.end method

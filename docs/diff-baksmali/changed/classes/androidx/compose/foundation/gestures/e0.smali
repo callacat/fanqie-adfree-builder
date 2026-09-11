@@ -1,0 +1,65 @@
+## classes/androidx/compose/foundation/gestures/e0.smali
+# added=0 removed=0 changed=1
+
+.method public final invoke()Ljava/lang/Object;
+[MOD-CHANGED]
+.method public final invoke()Ljava/lang/Object;
+    .registers 2
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Landroidx/compose/foundation/gestures/e0;->a:Landroidx/compose/foundation/gestures/DragGestureNode;
+
+    .line 131074
+    invoke-virtual {v0}, Landroidx/compose/foundation/gestures/DragGestureNode;->k2()Z
+
+    .line 131077
+    move-result v0
+
+    .line 131078
+    xor-int/lit8 v0, v0, 0x1
+
+    .line 131080
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 131083
+    move-result-object v0
+
+    .line 131084
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final invoke()Ljava/lang/Object;
+    .registers 2
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Landroidx/compose/foundation/gestures/e0;->a:Landroidx/compose/foundation/gestures/DragGestureNode;
+
+    .line 131073
+    .line 131074
+    invoke-virtual {v0}, Landroidx/compose/foundation/gestures/DragGestureNode;->k2()Z
+
+    .line 131075
+    .line 131076
+    .line 131077
+    move-result v0
+
+    .line 131078
+    xor-int/lit8 v0, v0, 0x1
+
+    .line 131079
+    .line 131080
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 131081
+    .line 131082
+    .line 131083
+    move-result-object v0
+
+    .line 131084
+    return-object v0
+.end method
+
+

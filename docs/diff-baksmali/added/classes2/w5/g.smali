@@ -1,0 +1,105 @@
+.class public final Lw5/g;
+.super Lw5/n;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lw5/n<",
+        "Lcom/airbnb/lottie/value/c;",
+        "Lcom/airbnb/lottie/value/c;",
+        ">;"
+    }
+.end annotation
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x7c8f4
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 3
+
+    .prologue
+    .line 131072
+    new-instance v0, Lcom/airbnb/lottie/value/c;
+
+    .line 131074
+    const/high16 v1, 0x3f800000    # 1.0f
+
+    .line 131076
+    invoke-direct {v0, v1, v1}, Lcom/airbnb/lottie/value/c;-><init>(FF)V
+
+    .line 131079
+    invoke-direct {p0, v0}, Lw5/n;-><init>(Ljava/lang/Object;)V
+
+    .line 131082
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/airbnb/lottie/value/c;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    invoke-direct {p0, p1}, Lw5/n;-><init>(Ljava/lang/Object;)V
+
+    .line 16777219
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/util/List;)V
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "Lcom/airbnb/lottie/value/a<",
+            "Lcom/airbnb/lottie/value/c;",
+            ">;>;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    invoke-direct {p0, p1}, Lw5/n;-><init>(Ljava/util/List;)V
+
+    .line 16842755
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Lr5/a;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lr5/a<",
+            "Lcom/airbnb/lottie/value/c;",
+            "Lcom/airbnb/lottie/value/c;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 65536
+    new-instance v0, Lr5/k;
+
+    .line 65538
+    iget-object v1, p0, Lw5/n;->a:Ljava/util/List;
+
+    .line 65540
+    invoke-direct {v0, v1}, Lr5/k;-><init>(Ljava/util/List;)V
+
+    .line 65543
+    return-object v0
+.end method

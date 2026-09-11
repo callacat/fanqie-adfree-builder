@@ -1,0 +1,169 @@
+.class public final Lzj6/b$r;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/ViewTreeObserver$OnDrawListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lzj6/b;-><init>(Landroid/app/Activity;Luj6/e3;Landroidx/fragment/app/Fragment;Z)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Landroid/view/View;
+
+.field public final synthetic b:Lzj6/b;
+
+
+# direct methods
+.method public constructor <init>(Lzj6/b;Landroid/view/View;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
+
+    .prologue
+    .line 33619968
+    iput-object p1, p0, Lzj6/b$r;->b:Lzj6/b;
+
+    .line 33619970
+    iput-object p2, p0, Lzj6/b$r;->a:Landroid/view/View;
+
+    .line 33619972
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33619975
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onDraw()V
+    .registers 5
+
+    .prologue
+    .line 327680
+    iget-object v0, p0, Lzj6/b$r;->b:Lzj6/b;
+
+    .line 327682
+    iget-object v1, v0, Lzj6/b;->w:Landroid/view/Window;
+
+    .line 327684
+    if-eqz v1, :cond_47
+
+    .line 327686
+    iget v1, v0, Lzj6/b;->r:F
+
+    .line 327688
+    const/4 v2, 0x0
+
+    .line 327689
+    cmpl-float v1, v1, v2
+
+    .line 327691
+    if-lez v1, :cond_47
+
+    .line 327693
+    iget v0, v0, Lzj6/b;->s:I
+
+    .line 327695
+    iget-object v1, p0, Lzj6/b$r;->a:Landroid/view/View;
+
+    .line 327697
+    invoke-virtual {v1}, Landroid/view/View;->getTop()I
+
+    .line 327700
+    move-result v1
+
+    .line 327701
+    if-eq v0, v1, :cond_47
+
+    .line 327703
+    iget-object v0, p0, Lzj6/b$r;->b:Lzj6/b;
+
+    .line 327705
+    iget-object v1, p0, Lzj6/b$r;->a:Landroid/view/View;
+
+    .line 327707
+    invoke-virtual {v1}, Landroid/view/View;->getTop()I
+
+    .line 327710
+    move-result v1
+
+    .line 327711
+    iput v1, v0, Lzj6/b;->s:I
+
+    .line 327713
+    iget-object v0, p0, Lzj6/b$r;->b:Lzj6/b;
+
+    .line 327715
+    iget v1, v0, Lzj6/b;->r:F
+
+    .line 327717
+    iget v0, v0, Lzj6/b;->s:I
+
+    .line 327719
+    int-to-float v0, v0
+
+    .line 327720
+    sub-float v0, v1, v0
+
+    .line 327722
+    div-float/2addr v0, v1
+
+    .line 327723
+    const/high16 v1, 0x3f000000    # 0.5f
+
+    .line 327725
+    mul-float v0, v0, v1
+
+    .line 327727
+    const/4 v1, 0x1
+
+    .line 327728
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 327730
+    const/4 v2, 0x0
+
+    .line 327731
+    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
+
+    .line 327734
+    move-result-object v3
+
+    .line 327735
+    aput-object v3, v1, v2
+
+    .line 327737
+    const-string v2, "deliver"
+
+    .line 327739
+    const-string v3, "contentView amount: %1s"
+
+    .line 327741
+    invoke-static {v2, v3, v1}, Lcom/dragon/read/base/util/LogWrapper;->i(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 327744
+    iget-object v1, p0, Lzj6/b$r;->b:Lzj6/b;
+
+    .line 327746
+    iget-object v1, v1, Lzj6/b;->w:Landroid/view/Window;
+
+    .line 327748
+    invoke-virtual {v1, v0}, Landroid/view/Window;->setDimAmount(F)V
+
+    .line 327751
+    :cond_47
+    return-void
+.end method

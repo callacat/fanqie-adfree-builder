@@ -1,0 +1,75 @@
+.class public final Lvp3/j$a;
+.super Lcom/dragon/read/base/AbsBroadcastReceiver;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lvp3/j;-><init>(Lcom/dragon/read/rpc/model/PrivilegeAuthDouyinData;Landroid/content/Context;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lvp3/j;
+
+
+# direct methods
+.method public constructor <init>(Lvp3/j;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lvp3/j$a;->a:Lvp3/j;
+
+    .line 16842754
+    invoke-direct {p0}, Lcom/dragon/read/base/AbsBroadcastReceiver;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onReceive(Landroid/content/Context;Landroid/content/Intent;Ljava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 50528256
+    invoke-static {p1, p2, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50528259
+    const-string p1, "action_skin_type_change"
+
+    .line 50528261
+    invoke-virtual {p2}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+
+    .line 50528264
+    move-result-object p2
+
+    .line 50528265
+    invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 50528268
+    move-result p1
+
+    .line 50528269
+    if-nez p1, :cond_10
+
+    .line 50528271
+    return-void
+
+    .line 50528272
+    :cond_10
+    iget-object p1, p0, Lvp3/j$a;->a:Lvp3/j;
+
+    .line 50528274
+    invoke-virtual {p1}, Lvp3/j;->H()V
+
+    .line 50528277
+    return-void
+.end method

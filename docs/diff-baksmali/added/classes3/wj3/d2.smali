@@ -1,0 +1,54 @@
+.class public final synthetic Lwj3/d2;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Lkotlin/jvm/functions/Function1;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lkotlin/jvm/functions/Function1;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lwj3/d2;->a:Lkotlin/jvm/functions/Function1;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    iget-object v0, p0, Lwj3/d2;->a:Lkotlin/jvm/functions/Function1;
+
+    .line 16908290
+    check-cast p1, Ljava/lang/String;
+
+    .line 16908292
+    sget p1, Lcom/dragon/read/component/audio/impl/ui/privilege/dialog/ui/AudioTtsPrivilegeUnlockTimeView;->A:I
+
+    .line 16908294
+    if-eqz v0, :cond_d
+
+    .line 16908296
+    const-string p1, "task closed"
+
+    .line 16908298
+    invoke-interface {v0, p1}, Lkotlin/jvm/functions/Function1;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 16908301
+    :cond_d
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 16908303
+    return-object p1
+.end method

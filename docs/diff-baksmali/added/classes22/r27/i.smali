@@ -1,0 +1,84 @@
+.class public final synthetic Lr27/i;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Lr27/l;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lr27/l;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lr27/i;->a:Lr27/l;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 5
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lr27/i;->a:Lr27/l;
+
+    .line 17039362
+    check-cast p1, Ll27/b;
+
+    .line 17039364
+    iget-boolean v1, p1, Ll27/b;->b:Z
+
+    .line 17039366
+    iput-boolean v1, v0, Lr27/l;->h:Z
+
+    .line 17039368
+    iget-wide v1, p1, Ll27/b;->c:J
+
+    .line 17039370
+    iput-wide v1, v0, Lr27/l;->g:J
+
+    .line 17039372
+    iget-object v1, v0, Lr27/l;->a:Lk27/l;
+
+    .line 17039374
+    iget-object v2, p1, Ll27/b;->a:Ljava/util/List;
+
+    .line 17039376
+    invoke-virtual {v1, v2}, Lk27/l;->d(Ljava/util/List;)V
+
+    .line 17039379
+    iget-object v1, v0, Lr27/l;->b:Lo27/g;
+
+    .line 17039381
+    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 17039384
+    invoke-interface {v1, p1}, Lo27/d;->yd(Ll27/b;)V
+
+    .line 17039387
+    iget-boolean p1, v0, Lr27/l;->h:Z
+
+    .line 17039389
+    if-nez p1, :cond_24
+
+    .line 17039391
+    iget-object p1, v0, Lr27/l;->b:Lo27/g;
+
+    .line 17039393
+    invoke-interface {p1}, Lo27/d;->k()V
+
+    .line 17039396
+    :cond_24
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17039398
+    return-object p1
+.end method

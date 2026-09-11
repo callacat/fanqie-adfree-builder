@@ -1,0 +1,39 @@
+.class public final Lwj6/c;
+.super Lcom/dragon/read/widget/n7$b;
+.source "SourceFile"
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/profile/book/AuthorBookFragment;
+
+
+# direct methods
+.method public constructor <init>(Lcom/dragon/read/social/profile/book/AuthorBookFragment;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lwj6/c;->a:Lcom/dragon/read/social/profile/book/AuthorBookFragment;
+
+    .line 16842754
+    invoke-direct {p0}, Lcom/dragon/read/widget/n7$b;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final b()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    iget-object v0, p0, Lwj6/c;->a:Lcom/dragon/read/social/profile/book/AuthorBookFragment;
+
+    .line 65538
+    invoke-virtual {v0}, Lcom/dragon/read/social/profile/book/AuthorBookFragment;->E()V
+
+    .line 65541
+    return-void
+.end method

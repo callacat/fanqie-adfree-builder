@@ -1,0 +1,69 @@
+## classes5/com/dragon/read/kmp/mine/polaris/a.smali
+# added=0 removed=0 changed=1
+
+.method public constructor <init>(Ljava/lang/Object;FLjava/lang/Object;F)V
+[MOD-CHANGED]
+.method public constructor <init>(Ljava/lang/Object;FLjava/lang/Object;F)V
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;FTT;F)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 67239936
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 67239939
+    iput-object p1, p0, Lcom/dragon/read/kmp/mine/polaris/a;->a:Ljava/lang/Object;
+
+    .line 67239941
+    iput p2, p0, Lcom/dragon/read/kmp/mine/polaris/a;->b:F
+
+    .line 67239943
+    iput-object p3, p0, Lcom/dragon/read/kmp/mine/polaris/a;->c:Ljava/lang/Object;
+
+    .line 67239945
+    iput p4, p0, Lcom/dragon/read/kmp/mine/polaris/a;->d:F
+
+    .line 67239947
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Ljava/lang/Object;FLjava/lang/Object;F)V
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;FTT;F)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 67239936
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 67239937
+    .line 67239938
+    .line 67239939
+    iput-object p1, p0, Lcom/dragon/read/kmp/mine/polaris/a;->a:Ljava/lang/Object;
+
+    .line 67239940
+    .line 67239941
+    iput p2, p0, Lcom/dragon/read/kmp/mine/polaris/a;->b:F
+
+    .line 67239942
+    .line 67239943
+    iput-object p3, p0, Lcom/dragon/read/kmp/mine/polaris/a;->c:Ljava/lang/Object;
+
+    .line 67239944
+    .line 67239945
+    iput p4, p0, Lcom/dragon/read/kmp/mine/polaris/a;->d:F
+
+    .line 67239946
+    .line 67239947
+    return-void
+.end method
+
+

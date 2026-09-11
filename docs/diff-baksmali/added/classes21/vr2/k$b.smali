@@ -1,0 +1,27 @@
+.class public final Lvr2/k$b;
+.super Lvr2/a;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lvr2/k;->p2(Landroid/view/ViewGroup;I)Lvr2/a;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# direct methods
+.method public constructor <init>(Landroid/view/View;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    invoke-direct {p0, p1}, Lvr2/a;-><init>(Landroid/view/View;)V
+
+    .line 16777219
+    return-void
+.end method

@@ -1,0 +1,33 @@
+.class public final Lkotlinx/coroutines/w0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# instance fields
+.field public final a:Lkotlinx/coroutines/v0;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa561d
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lkotlinx/coroutines/v0;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842755
+    iput-object p1, p0, Lkotlinx/coroutines/w0;->a:Lkotlinx/coroutines/v0;
+
+    .line 16842757
+    return-void
+.end method

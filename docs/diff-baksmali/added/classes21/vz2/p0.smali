@@ -1,0 +1,269 @@
+.class public final Lvz2/p0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lfn1/m0;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lvz2/p0$a;
+    }
+.end annotation
+
+
+# static fields
+.field public static final a:Lcom/dragon/read/base/util/AdLog;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    const v0, 0x8d852
+
+    .line 196611
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 196614
+    new-instance v0, Lvz2/p0$a;
+
+    .line 196616
+    new-instance v0, Lcom/dragon/read/base/util/AdLog;
+
+    .line 196618
+    const-string v1, "preventAutoTurnPage"
+
+    .line 196620
+    const-string v2, "[\u4e00\u7ad9\u5f0f][\u8fb9\u542c\u8fb9\u8bfb]"
+
+    .line 196622
+    invoke-direct {v0, v1, v2}, Lcom/dragon/read/base/util/AdLog;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 196625
+    sput-object v0, Lvz2/p0;->a:Lcom/dragon/read/base/util/AdLog;
+
+    .line 196627
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()V
+    .registers 7
+
+    .prologue
+    .line 393216
+    sget-object v0, Lcom/dragon/read/reader/ad/experiment/ExperimentUtil;->a:Lcom/dragon/read/base/util/AdLog;
+
+    .line 393218
+    sget-object v0, Lcom/dragon/read/component/biz/impl/absettings/AdAbSettingsHelper;->INSTANCE:Lcom/dragon/read/component/biz/impl/absettings/AdAbSettingsHelper;
+
+    .line 393220
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 393223
+    invoke-static {}, Lcom/dragon/read/component/biz/impl/absettings/AdAbSettingsHelper;->v()Lcom/dragon/read/base/ssconfig/model/ReadFlowAdConfig;
+
+    .line 393226
+    move-result-object v0
+
+    .line 393227
+    const/4 v1, 0x0
+
+    .line 393228
+    if-eqz v0, :cond_11
+
+    .line 393230
+    iget-boolean v0, v0, Lcom/dragon/read/base/ssconfig/model/ReadFlowAdConfig;->notAutoTurnPage:Z
+
+    .line 393232
+    goto :goto_12
+
+    .line 393233
+    :cond_11
+    const/4 v0, 0x0
+
+    .line 393234
+    :goto_12
+    if-nez v0, :cond_1e
+
+    .line 393236
+    sget-object v0, Lvz2/p0;->a:Lcom/dragon/read/base/util/AdLog;
+
+    .line 393238
+    const-string v2, "preventAutoTurnPage() \u672a\u547d\u4e2d\u5b9e\u9a8c"
+
+    .line 393240
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 393242
+    invoke-virtual {v0, v2, v1}, Lcom/dragon/read/base/util/AdLog;->e(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 393245
+    return-void
+
+    .line 393246
+    :cond_1e
+    sget-object v0, Lcom/dragon/read/component/biz/api/NsReaderServiceApi;->IMPL:Lcom/dragon/read/component/biz/api/NsReaderServiceApi;
+
+    .line 393248
+    invoke-interface {v0}, Lcom/dragon/read/component/biz/api/NsReaderServiceApi;->readerLifecycleService()Lcom/dragon/read/reader/services/j;
+
+    .line 393251
+    move-result-object v0
+
+    .line 393252
+    invoke-interface {v0}, Lcom/dragon/read/reader/services/j;->a()Lu76/d;
+
+    .line 393255
+    move-result-object v0
+
+    .line 393256
+    invoke-virtual {v0}, Lu76/d;->f()Lcom/dragon/reader/lib/ReaderClient;
+
+    .line 393259
+    move-result-object v0
+
+    .line 393260
+    if-eqz v0, :cond_39
+
+    .line 393262
+    invoke-virtual {v0}, Lcom/dragon/reader/lib/ReaderClient;->getReaderConfig()Lcom/dragon/reader/lib/interfaces/IReaderConfig;
+
+    .line 393265
+    move-result-object v0
+
+    .line 393266
+    if-eqz v0, :cond_39
+
+    .line 393268
+    invoke-interface {v0}, Lcom/dragon/reader/lib/interfaces/IReaderConfig;->H0()Z
+
+    .line 393271
+    move-result v0
+
+    .line 393272
+    goto :goto_3a
+
+    .line 393273
+    :cond_39
+    const/4 v0, 0x0
+
+    .line 393274
+    :goto_3a
+    if-eqz v0, :cond_4c
+
+    .line 393276
+    invoke-static {}, Lcom/dragon/read/reader/ad/experiment/ExperimentUtil;->m()Z
+
+    .line 393279
+    move-result v2
+
+    .line 393280
+    if-nez v2, :cond_4c
+
+    .line 393282
+    sget-object v0, Lvz2/p0;->a:Lcom/dragon/read/base/util/AdLog;
+
+    .line 393284
+    const-string v2, "preventAutoTurnPage() \u672a\u547d\u4e2d\u7ad6\u7248\u8fb9\u542c\u8fb9\u8bfb\u5b9e\u9a8c"
+
+    .line 393286
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 393288
+    invoke-virtual {v0, v2, v1}, Lcom/dragon/read/base/util/AdLog;->e(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 393291
+    return-void
+
+    .line 393292
+    :cond_4c
+    sget-object v2, Lcom/dragon/read/component/audio/api/NsAudioModuleApi;->IMPL:Lcom/dragon/read/component/audio/api/NsAudioModuleApi;
+
+    .line 393294
+    invoke-interface {v2}, Lcom/dragon/read/component/audio/api/NsAudioModuleApi;->audioCoreContextApi()Lbf3/a;
+
+    .line 393297
+    move-result-object v2
+
+    .line 393298
+    invoke-interface {v2}, Lbf3/a;->O0()Lcf3/b;
+
+    .line 393301
+    move-result-object v2
+
+    .line 393302
+    invoke-interface {v2}, Lcf3/b;->isCurrentPlayerPlaying()Z
+
+    .line 393305
+    move-result v2
+
+    .line 393306
+    sget-object v3, Lvz2/p0;->a:Lcom/dragon/read/base/util/AdLog;
+
+    .line 393308
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 393310
+    const-string v5, "preventAutoTurnPage() \u6682\u505c\u81ea\u52a8\u7ffb\u9875 isCurrentPlayerPlaying = "
+
+    .line 393312
+    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 393315
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 393318
+    const-string/jumbo v5, "\uff0cupDownPageMode = "
+
+    .line 393320
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 393323
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 393326
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 393329
+    move-result-object v0
+
+    .line 393330
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 393332
+    invoke-virtual {v3, v0, v1}, Lcom/dragon/read/base/util/AdLog;->i(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 393335
+    if-eqz v2, :cond_84
+
+    .line 393337
+    sget-object v0, Lh03/l;->a:Lh03/l;
+
+    .line 393339
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 393342
+    const-wide/16 v0, -0x1
+
+    .line 393344
+    invoke-static {v0, v1}, Lh03/l;->h(J)V
+
+    .line 393347
+    :cond_84
+    return-void
+.end method

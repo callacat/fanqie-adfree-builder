@@ -1,0 +1,135 @@
+.class public final Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic a:Lcom/android/ttcjpaysdk/thirdparty/verify/view/VerifyPasswordFragment;
+
+.field public final synthetic b:Z
+
+.field public final synthetic c:Ljava/lang/String;
+
+.field public final synthetic d:Z
+
+
+# direct methods
+.method public constructor <init>(Lcom/android/ttcjpaysdk/thirdparty/verify/view/VerifyPasswordFragment;)V
+    .registers 2
+
+    iput-object p1, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->a:Lcom/android/ttcjpaysdk/thirdparty/verify/view/VerifyPasswordFragment;
+
+    const/4 p1, 0x1
+
+    iput-boolean p1, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->b:Z
+
+    const-string p1, ""
+
+    iput-object p1, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->c:Ljava/lang/String;
+
+    const/4 p1, 0x0
+
+    iput-boolean p1, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->d:Z
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 5
+
+    .prologue
+    .line 262144
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->a:Lcom/android/ttcjpaysdk/thirdparty/verify/view/VerifyPasswordFragment;
+
+    .line 262145
+    .line 262146
+    invoke-virtual {v0}, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;
+
+    .line 262147
+    .line 262148
+    .line 262149
+    move-result-object v0
+
+    .line 262150
+    if-eqz v0, :cond_27
+
+    .line 262151
+    .line 262152
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->a:Lcom/android/ttcjpaysdk/thirdparty/verify/view/VerifyPasswordFragment;
+
+    .line 262153
+    .line 262154
+    invoke-virtual {v0}, Landroidx/fragment/app/Fragment;->getActivity()Landroidx/fragment/app/FragmentActivity;
+
+    .line 262155
+    .line 262156
+    .line 262157
+    move-result-object v0
+
+    .line 262158
+    const/4 v1, 0x0
+
+    .line 262159
+    if-eqz v0, :cond_19
+
+    .line 262160
+    .line 262161
+    invoke-virtual {v0}, Landroid/app/Activity;->isFinishing()Z
+
+    .line 262162
+    .line 262163
+    .line 262164
+    move-result v0
+
+    .line 262165
+    const/4 v2, 0x1
+
+    .line 262166
+    if-ne v0, v2, :cond_19
+
+    .line 262167
+    .line 262168
+    const/4 v1, 0x1
+
+    .line 262169
+    :cond_19
+    if-eqz v1, :cond_1c
+
+    .line 262170
+    .line 262171
+    goto :goto_27
+
+    .line 262172
+    :cond_1c
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->a:Lcom/android/ttcjpaysdk/thirdparty/verify/view/VerifyPasswordFragment;
+
+    .line 262173
+    .line 262174
+    iget-boolean v1, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->b:Z
+
+    .line 262175
+    .line 262176
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->c:Ljava/lang/String;
+
+    .line 262177
+    .line 262178
+    iget-boolean v3, p0, Lcom/android/ttcjpaysdk/thirdparty/verify/view/d0;->d:Z
+
+    .line 262179
+    .line 262180
+    invoke-virtual {v0, v2, v1, v3}, Lcom/android/ttcjpaysdk/thirdparty/verify/view/VerifyPasswordFragment;->Yg(Ljava/lang/String;ZZ)V
+
+    .line 262181
+    .line 262182
+    .line 262183
+    :cond_27
+    :goto_27
+    return-void
+.end method

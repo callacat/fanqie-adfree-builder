@@ -1,0 +1,54 @@
+.class public final synthetic Lcom/gX;
+.super Ljava/lang/Object;
+.source "ayeif"
+
+# interfaces
+.implements Lcom/ay;
+
+
+# instance fields
+.field private final synthetic a:Lcom/rN;
+
+.field private final synthetic b:Lcom/kc;
+
+.field private final synthetic c:Landroid/view/View;
+
+.field private final synthetic d:Landroid/app/AlertDialog;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/rN;Lcom/kc;Landroid/view/View;Landroid/app/AlertDialog;)V
+    .registers 5
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/gX;->a:Lcom/rN;
+
+    iput-object p2, p0, Lcom/gX;->b:Lcom/kc;
+
+    iput-object p3, p0, Lcom/gX;->c:Landroid/view/View;
+
+    iput-object p4, p0, Lcom/gX;->d:Landroid/app/AlertDialog;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Ljava/lang/Object;)V
+    .registers 6
+
+    iget-object v0, p0, Lcom/gX;->a:Lcom/rN;
+
+    iget-object v1, p0, Lcom/gX;->b:Lcom/kc;
+
+    iget-object v2, p0, Lcom/gX;->c:Landroid/view/View;
+
+    iget-object v3, p0, Lcom/gX;->d:Landroid/app/AlertDialog;
+
+    check-cast p1, Lcom/jY;
+
+    invoke-virtual {v0, v1, v2, v3, p1}, Lcom/rN;->a(Lcom/kc;Landroid/view/View;Landroid/app/AlertDialog;Lcom/jY;)V
+
+    return-void
+.end method

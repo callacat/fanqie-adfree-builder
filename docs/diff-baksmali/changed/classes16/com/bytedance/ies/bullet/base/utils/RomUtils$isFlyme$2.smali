@@ -1,0 +1,345 @@
+## classes16/com/bytedance/ies/bullet/base/utils/RomUtils$isFlyme$2.smali
+# added=0 removed=0 changed=2
+
+.method public final invoke()Ljava/lang/Boolean;
+[MOD-CHANGED]
+.method public final invoke()Ljava/lang/Boolean;
+    .registers 9
+
+    .prologue
+    .line 327680
+    sget-object v0, Landroid/os/Build;->DISPLAY:Ljava/lang/String;
+
+    .line 327682
+    const/4 v6, 0x0
+
+    .line 327683
+    const/4 v7, 0x1
+
+    .line 327684
+    if-eqz v0, :cond_f
+
+    .line 327686
+    invoke-interface {v0}, Ljava/lang/CharSequence;->length()I
+
+    .line 327689
+    move-result v1
+
+    .line 327690
+    if-nez v1, :cond_d
+
+    .line 327692
+    goto :goto_f
+
+    .line 327693
+    :cond_d
+    const/4 v1, 0x0
+
+    .line 327694
+    goto :goto_10
+
+    .line 327695
+    :cond_f
+    :goto_f
+    const/4 v1, 0x1
+
+    .line 327696
+    :goto_10
+    if-nez v1, :cond_23
+
+    .line 327698
+    const-string v1, ""
+
+    .line 327700
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 327703
+    const-string v1, "Flyme"
+
+    .line 327705
+    const/4 v2, 0x0
+
+    .line 327706
+    const/4 v3, 0x0
+
+    .line 327707
+    const/4 v4, 0x6
+
+    .line 327708
+    const/4 v5, 0x0
+
+    .line 327709
+    invoke-static/range {v0 .. v5}, Lkotlin/text/StringsKt;->indexOf$default(Ljava/lang/CharSequence;Ljava/lang/String;IZILjava/lang/Object;)I
+
+    .line 327712
+    move-result v0
+
+    .line 327713
+    if-gez v0, :cond_3d
+
+    .line 327715
+    :cond_23
+    sget-object v0, Landroid/os/Build;->USER:Ljava/lang/String;
+
+    .line 327717
+    if-eqz v0, :cond_30
+
+    .line 327719
+    invoke-interface {v0}, Ljava/lang/CharSequence;->length()I
+
+    .line 327722
+    move-result v0
+
+    .line 327723
+    if-nez v0, :cond_2e
+
+    .line 327725
+    goto :goto_30
+
+    .line 327726
+    :cond_2e
+    const/4 v0, 0x0
+
+    .line 327727
+    goto :goto_31
+
+    .line 327728
+    :cond_30
+    :goto_30
+    const/4 v0, 0x1
+
+    .line 327729
+    :goto_31
+    if-nez v0, :cond_3e
+
+    .line 327731
+    sget-object v0, Landroid/os/Build;->USER:Ljava/lang/String;
+
+    .line 327733
+    const-string v1, "flyme"
+
+    .line 327735
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 327738
+    move-result v0
+
+    .line 327739
+    if-eqz v0, :cond_3e
+
+    .line 327741
+    :cond_3d
+    const/4 v6, 0x1
+
+    .line 327742
+    :cond_3e
+    invoke-static {v6}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 327745
+    move-result-object v0
+
+    .line 327746
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final invoke()Ljava/lang/Boolean;
+    .registers 9
+
+    .prologue
+    .line 327680
+    sget-object v0, Landroid/os/Build;->DISPLAY:Ljava/lang/String;
+
+    .line 327681
+    .line 327682
+    const/4 v6, 0x0
+
+    .line 327683
+    const/4 v7, 0x1
+
+    .line 327684
+    if-eqz v0, :cond_f
+
+    .line 327685
+    .line 327686
+    invoke-interface {v0}, Ljava/lang/CharSequence;->length()I
+
+    .line 327687
+    .line 327688
+    .line 327689
+    move-result v1
+
+    .line 327690
+    if-nez v1, :cond_d
+
+    .line 327691
+    .line 327692
+    goto :goto_f
+
+    .line 327693
+    :cond_d
+    const/4 v1, 0x0
+
+    .line 327694
+    goto :goto_10
+
+    .line 327695
+    :cond_f
+    :goto_f
+    const/4 v1, 0x1
+
+    .line 327696
+    :goto_10
+    if-nez v1, :cond_23
+
+    .line 327697
+    .line 327698
+    const-string v1, ""
+
+    .line 327699
+    .line 327700
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 327701
+    .line 327702
+    .line 327703
+    const-string v1, "Flyme"
+
+    .line 327704
+    .line 327705
+    const/4 v2, 0x0
+
+    .line 327706
+    const/4 v3, 0x0
+
+    .line 327707
+    const/4 v4, 0x6
+
+    .line 327708
+    const/4 v5, 0x0
+
+    .line 327709
+    invoke-static/range {v0 .. v5}, Lkotlin/text/StringsKt;->indexOf$default(Ljava/lang/CharSequence;Ljava/lang/String;IZILjava/lang/Object;)I
+
+    .line 327710
+    .line 327711
+    .line 327712
+    move-result v0
+
+    .line 327713
+    if-gez v0, :cond_3d
+
+    .line 327714
+    .line 327715
+    :cond_23
+    sget-object v0, Landroid/os/Build;->USER:Ljava/lang/String;
+
+    .line 327716
+    .line 327717
+    if-eqz v0, :cond_30
+
+    .line 327718
+    .line 327719
+    invoke-interface {v0}, Ljava/lang/CharSequence;->length()I
+
+    .line 327720
+    .line 327721
+    .line 327722
+    move-result v0
+
+    .line 327723
+    if-nez v0, :cond_2e
+
+    .line 327724
+    .line 327725
+    goto :goto_30
+
+    .line 327726
+    :cond_2e
+    const/4 v0, 0x0
+
+    .line 327727
+    goto :goto_31
+
+    .line 327728
+    :cond_30
+    :goto_30
+    const/4 v0, 0x1
+
+    .line 327729
+    :goto_31
+    if-nez v0, :cond_3e
+
+    .line 327730
+    .line 327731
+    sget-object v0, Landroid/os/Build;->USER:Ljava/lang/String;
+
+    .line 327732
+    .line 327733
+    const-string v1, "flyme"
+
+    .line 327734
+    .line 327735
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 327736
+    .line 327737
+    .line 327738
+    move-result v0
+
+    .line 327739
+    if-eqz v0, :cond_3e
+
+    .line 327740
+    .line 327741
+    :cond_3d
+    const/4 v6, 0x1
+
+    .line 327742
+    :cond_3e
+    invoke-static {v6}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 327743
+    .line 327744
+    .line 327745
+    move-result-object v0
+
+    .line 327746
+    return-object v0
+.end method
+
+
+.method public bridge synthetic invoke()Ljava/lang/Object;
+[MOD-CHANGED]
+.method public bridge synthetic invoke()Ljava/lang/Object;
+    .registers 2
+
+    .prologue
+    .line 65536
+    invoke-virtual {p0}, Lcom/bytedance/ies/bullet/base/utils/RomUtils$isFlyme$2;->invoke()Ljava/lang/Boolean;
+
+    .line 65539
+    move-result-object v0
+
+    .line 65540
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public bridge synthetic invoke()Ljava/lang/Object;
+    .registers 2
+
+    .prologue
+    .line 65536
+    invoke-virtual {p0}, Lcom/bytedance/ies/bullet/base/utils/RomUtils$isFlyme$2;->invoke()Ljava/lang/Boolean;
+
+    .line 65537
+    .line 65538
+    .line 65539
+    move-result-object v0
+
+    .line 65540
+    return-object v0
+.end method
+
+

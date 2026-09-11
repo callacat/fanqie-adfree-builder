@@ -1,0 +1,1309 @@
+.class public final enum Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+.super Ljava/lang/Enum;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Enum<",
+        "Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;",
+        ">;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final synthetic $VALUES:[Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+.field public static final enum None:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "0"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCActivity:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "513"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCBookEndDoubleRow:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "514"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCParaCommentEditor:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "500"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCParaCommentReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "503"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCParaImageAndVideo:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "510"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCParaPreProduce:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "509"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCParaVideo:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "511"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCPostEditor:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "501"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCPostReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "504"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCReader:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "502"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCStoryParaEditor:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "506"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCStoryParaImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "507"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCStoryParaReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "508"
+    .end annotation
+.end field
+
+.field public static final enum NovelAIGCTopicReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "505"
+    .end annotation
+.end field
+
+.field public static final enum NovelAdvertiseCreativeItemCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "1000"
+    .end annotation
+.end field
+
+.field public static final enum NovelAdvertiseCreativeItemReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "1001"
+    .end annotation
+.end field
+
+.field public static final enum NovelAuthorTopicCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "15"
+    .end annotation
+.end field
+
+.field public static final enum NovelAuthorTopicReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "16"
+    .end annotation
+.end field
+
+.field public static final enum NovelBookCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "1"
+    .end annotation
+.end field
+
+.field public static final enum NovelBookLevel2ReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "7"
+    .end annotation
+.end field
+
+.field public static final enum NovelBookReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "6"
+    .end annotation
+.end field
+
+.field public static final enum NovelItemCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "3"
+    .end annotation
+.end field
+
+.field public static final enum NovelItemCommentAuthorStick:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "100"
+    .end annotation
+.end field
+
+.field public static final enum NovelItemDanmakuAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "1500"
+    .end annotation
+.end field
+
+.field public static final enum NovelItemDanmakuReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "1501"
+    .end annotation
+.end field
+
+.field public static final enum NovelItemReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "9"
+    .end annotation
+.end field
+
+.field public static final enum NovelMsgCenterReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "14"
+    .end annotation
+.end field
+
+.field public static final enum NovelParaCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "2"
+    .end annotation
+.end field
+
+.field public static final enum NovelParaReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "8"
+    .end annotation
+.end field
+
+.field public static final enum NovelPlayletCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "12"
+    .end annotation
+.end field
+
+.field public static final enum NovelPlayletReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "13"
+    .end annotation
+.end field
+
+.field public static final enum NovelPostCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "10"
+    .end annotation
+.end field
+
+.field public static final enum NovelPostReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "11"
+    .end annotation
+.end field
+
+.field public static final enum NovelStoreTopicLevel2ReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "18"
+    .end annotation
+.end field
+
+.field public static final enum NovelStoreTopicReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "17"
+    .end annotation
+.end field
+
+.field public static final enum NovelUserSwitcher:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "4"
+    .end annotation
+.end field
+
+.field public static final enum NovelWebAIGCImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "512"
+    .end annotation
+.end field
+
+.field public static final enum NovlBookAdditionCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "5"
+    .end annotation
+.end field
+
+
+# instance fields
+.field private final value:I
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 42
+
+    .prologue
+    .line 524288
+    const v0, 0xa7255
+
+    .line 524291
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 524294
+    new-instance v0, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524296
+    const-string v1, "None"
+
+    .line 524298
+    const/4 v2, 0x0
+
+    .line 524299
+    invoke-direct {v0, v1, v2, v2}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524302
+    sput-object v0, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->None:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524304
+    new-instance v1, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524306
+    const-string v3, "NovelBookCommentAdd"
+
+    .line 524308
+    const/4 v4, 0x1
+
+    .line 524309
+    invoke-direct {v1, v3, v4, v4}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524312
+    sput-object v1, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelBookCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524314
+    new-instance v3, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524316
+    const-string v5, "NovelParaCommentAdd"
+
+    .line 524318
+    const/4 v6, 0x2
+
+    .line 524319
+    invoke-direct {v3, v5, v6, v6}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524322
+    sput-object v3, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelParaCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524324
+    new-instance v5, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524326
+    const-string v7, "NovelItemCommentAdd"
+
+    .line 524328
+    const/4 v8, 0x3
+
+    .line 524329
+    invoke-direct {v5, v7, v8, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524332
+    sput-object v5, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelItemCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524334
+    new-instance v7, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524336
+    const-string v9, "NovelUserSwitcher"
+
+    .line 524338
+    const/4 v10, 0x4
+
+    .line 524339
+    invoke-direct {v7, v9, v10, v10}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524342
+    sput-object v7, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelUserSwitcher:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524344
+    new-instance v9, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524346
+    const-string v11, "NovlBookAdditionCommentAdd"
+
+    .line 524348
+    const/4 v12, 0x5
+
+    .line 524349
+    invoke-direct {v9, v11, v12, v12}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524352
+    sput-object v9, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovlBookAdditionCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524354
+    new-instance v11, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524356
+    const-string v13, "NovelBookReplyAdd"
+
+    .line 524358
+    const/4 v14, 0x6
+
+    .line 524359
+    invoke-direct {v11, v13, v14, v14}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524362
+    sput-object v11, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelBookReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524364
+    new-instance v13, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524366
+    const-string v15, "NovelBookLevel2ReplyAdd"
+
+    .line 524368
+    const/4 v14, 0x7
+
+    .line 524369
+    invoke-direct {v13, v15, v14, v14}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524372
+    sput-object v13, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelBookLevel2ReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524374
+    new-instance v15, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524376
+    const-string v14, "NovelParaReplyAdd"
+
+    .line 524378
+    const/16 v12, 0x8
+
+    .line 524380
+    invoke-direct {v15, v14, v12, v12}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524383
+    sput-object v15, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelParaReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524385
+    new-instance v14, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524387
+    const-string v12, "NovelItemReplyAdd"
+
+    .line 524389
+    const/16 v10, 0x9
+
+    .line 524391
+    invoke-direct {v14, v12, v10, v10}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524394
+    sput-object v14, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelItemReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524396
+    new-instance v12, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524398
+    const-string v10, "NovelPostCommentAdd"
+
+    .line 524400
+    const/16 v8, 0xa
+
+    .line 524402
+    invoke-direct {v12, v10, v8, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524405
+    sput-object v12, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelPostCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524407
+    new-instance v10, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524409
+    const-string v8, "NovelPostReplyAdd"
+
+    .line 524411
+    const/16 v6, 0xb
+
+    .line 524413
+    invoke-direct {v10, v8, v6, v6}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524416
+    sput-object v10, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelPostReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524418
+    new-instance v8, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524420
+    const-string v6, "NovelPlayletCommentAdd"
+
+    .line 524422
+    const/16 v4, 0xc
+
+    .line 524424
+    invoke-direct {v8, v6, v4, v4}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524427
+    sput-object v8, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelPlayletCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524429
+    new-instance v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524431
+    const-string v4, "NovelPlayletReplyAdd"
+
+    .line 524433
+    const/16 v2, 0xd
+
+    .line 524435
+    invoke-direct {v6, v4, v2, v2}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524438
+    sput-object v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelPlayletReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524440
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524442
+    const-string v2, "NovelMsgCenterReplyAdd"
+
+    .line 524444
+    move-object/from16 v16, v6
+
+    .line 524446
+    const/16 v6, 0xe
+
+    .line 524448
+    invoke-direct {v4, v2, v6, v6}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524451
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelMsgCenterReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524453
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524455
+    const-string v6, "NovelAuthorTopicCommentAdd"
+
+    .line 524457
+    move-object/from16 v17, v4
+
+    .line 524459
+    const/16 v4, 0xf
+
+    .line 524461
+    invoke-direct {v2, v6, v4, v4}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524464
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAuthorTopicCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524466
+    new-instance v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524468
+    const-string v4, "NovelAuthorTopicReplyAdd"
+
+    .line 524470
+    move-object/from16 v18, v2
+
+    .line 524472
+    const/16 v2, 0x10
+
+    .line 524474
+    invoke-direct {v6, v4, v2, v2}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524477
+    sput-object v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAuthorTopicReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524479
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524481
+    const-string v2, "NovelStoreTopicReplyAdd"
+
+    .line 524483
+    move-object/from16 v19, v6
+
+    .line 524485
+    const/16 v6, 0x11
+
+    .line 524487
+    invoke-direct {v4, v2, v6, v6}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524490
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelStoreTopicReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524492
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524494
+    const-string v6, "NovelStoreTopicLevel2ReplyAdd"
+
+    .line 524496
+    move-object/from16 v20, v4
+
+    .line 524498
+    const/16 v4, 0x12
+
+    .line 524500
+    invoke-direct {v2, v6, v4, v4}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524503
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelStoreTopicLevel2ReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524505
+    new-instance v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524507
+    const/16 v4, 0x64
+
+    .line 524509
+    move-object/from16 v21, v2
+
+    .line 524511
+    const-string v2, "NovelItemCommentAuthorStick"
+
+    .line 524513
+    move-object/from16 v22, v8
+
+    .line 524515
+    const/16 v8, 0x13
+
+    .line 524517
+    invoke-direct {v6, v2, v8, v4}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524520
+    sput-object v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelItemCommentAuthorStick:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524522
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524524
+    const/16 v4, 0x1f4
+
+    .line 524526
+    const-string v8, "NovelAIGCParaCommentEditor"
+
+    .line 524528
+    move-object/from16 v23, v6
+
+    .line 524530
+    const/16 v6, 0x14
+
+    .line 524532
+    invoke-direct {v2, v8, v6, v4}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524535
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCParaCommentEditor:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524537
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524539
+    const/16 v8, 0x1f5
+
+    .line 524541
+    const-string v6, "NovelAIGCPostEditor"
+
+    .line 524543
+    move-object/from16 v24, v2
+
+    .line 524545
+    const/16 v2, 0x15
+
+    .line 524547
+    invoke-direct {v4, v6, v2, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524550
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCPostEditor:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524552
+    new-instance v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524554
+    const/16 v8, 0x16
+
+    .line 524556
+    const/16 v2, 0x1f6
+
+    .line 524558
+    move-object/from16 v25, v4
+
+    .line 524560
+    const-string v4, "NovelAIGCReader"
+
+    .line 524562
+    invoke-direct {v6, v4, v8, v2}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524565
+    sput-object v6, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCReader:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524567
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524569
+    const/16 v4, 0x17
+
+    .line 524571
+    const/16 v8, 0x1f7
+
+    .line 524573
+    move-object/from16 v26, v6
+
+    .line 524575
+    const-string v6, "NovelAIGCParaCommentReImage"
+
+    .line 524577
+    invoke-direct {v2, v6, v4, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524580
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCParaCommentReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524582
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524584
+    const/16 v6, 0x18
+
+    .line 524586
+    const/16 v8, 0x1f8
+
+    .line 524588
+    move-object/from16 v27, v2
+
+    .line 524590
+    const-string v2, "NovelAIGCPostReImage"
+
+    .line 524592
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524595
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCPostReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524597
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524599
+    const/16 v6, 0x19
+
+    .line 524601
+    const/16 v8, 0x1f9
+
+    .line 524603
+    move-object/from16 v28, v4
+
+    .line 524605
+    const-string v4, "NovelAIGCTopicReImage"
+
+    .line 524607
+    invoke-direct {v2, v4, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524610
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCTopicReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524612
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524614
+    const/16 v6, 0x1a
+
+    .line 524616
+    const/16 v8, 0x1fa
+
+    .line 524618
+    move-object/from16 v29, v2
+
+    .line 524620
+    const-string v2, "NovelAIGCStoryParaEditor"
+
+    .line 524622
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524625
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCStoryParaEditor:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524627
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524629
+    const/16 v6, 0x1b
+
+    .line 524631
+    const/16 v8, 0x1fb
+
+    .line 524633
+    move-object/from16 v30, v4
+
+    .line 524635
+    const-string v4, "NovelAIGCStoryParaImage"
+
+    .line 524637
+    invoke-direct {v2, v4, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524640
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCStoryParaImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524642
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524644
+    const/16 v6, 0x1c
+
+    .line 524646
+    const/16 v8, 0x1fc
+
+    .line 524648
+    move-object/from16 v31, v2
+
+    .line 524650
+    const-string v2, "NovelAIGCStoryParaReImage"
+
+    .line 524652
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524655
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCStoryParaReImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524657
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524659
+    const/16 v6, 0x1d
+
+    .line 524661
+    const/16 v8, 0x1fd
+
+    .line 524663
+    move-object/from16 v32, v4
+
+    .line 524665
+    const-string v4, "NovelAIGCParaPreProduce"
+
+    .line 524667
+    invoke-direct {v2, v4, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524670
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCParaPreProduce:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524672
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524674
+    const/16 v6, 0x1e
+
+    .line 524676
+    const/16 v8, 0x1fe
+
+    .line 524678
+    move-object/from16 v33, v2
+
+    .line 524680
+    const-string v2, "NovelAIGCParaImageAndVideo"
+
+    .line 524682
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524685
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCParaImageAndVideo:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524687
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524689
+    const/16 v6, 0x1f
+
+    .line 524691
+    const/16 v8, 0x1ff
+
+    .line 524693
+    move-object/from16 v34, v4
+
+    .line 524695
+    const-string v4, "NovelAIGCParaVideo"
+
+    .line 524697
+    invoke-direct {v2, v4, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524700
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCParaVideo:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524702
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524704
+    const/16 v6, 0x20
+
+    .line 524706
+    const/16 v8, 0x200
+
+    .line 524708
+    move-object/from16 v35, v2
+
+    .line 524710
+    const-string v2, "NovelWebAIGCImage"
+
+    .line 524712
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524715
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelWebAIGCImage:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524717
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524719
+    const/16 v6, 0x21
+
+    .line 524721
+    const/16 v8, 0x201
+
+    .line 524723
+    move-object/from16 v36, v4
+
+    .line 524725
+    const-string v4, "NovelAIGCActivity"
+
+    .line 524727
+    invoke-direct {v2, v4, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524730
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCActivity:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524732
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524734
+    const/16 v6, 0x22
+
+    .line 524736
+    const/16 v8, 0x202
+
+    .line 524738
+    move-object/from16 v37, v2
+
+    .line 524740
+    const-string v2, "NovelAIGCBookEndDoubleRow"
+
+    .line 524742
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524745
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAIGCBookEndDoubleRow:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524747
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524749
+    const/16 v6, 0x23
+
+    .line 524751
+    const/16 v8, 0x3e8
+
+    .line 524753
+    move-object/from16 v38, v4
+
+    .line 524755
+    const-string v4, "NovelAdvertiseCreativeItemCommentAdd"
+
+    .line 524757
+    invoke-direct {v2, v4, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524760
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAdvertiseCreativeItemCommentAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524762
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524764
+    const/16 v6, 0x24
+
+    .line 524766
+    const/16 v8, 0x3e9
+
+    .line 524768
+    move-object/from16 v39, v2
+
+    .line 524770
+    const-string v2, "NovelAdvertiseCreativeItemReplyAdd"
+
+    .line 524772
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524775
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelAdvertiseCreativeItemReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524777
+    new-instance v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524779
+    const/16 v6, 0x25
+
+    .line 524781
+    const/16 v8, 0x5dc
+
+    .line 524783
+    move-object/from16 v40, v4
+
+    .line 524785
+    const-string v4, "NovelItemDanmakuAdd"
+
+    .line 524787
+    invoke-direct {v2, v4, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524790
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelItemDanmakuAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524792
+    new-instance v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524794
+    const/16 v6, 0x26
+
+    .line 524796
+    const/16 v8, 0x5dd
+
+    .line 524798
+    move-object/from16 v41, v2
+
+    .line 524800
+    const-string v2, "NovelItemDanmakuReplyAdd"
+
+    .line 524802
+    invoke-direct {v4, v2, v6, v8}, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;-><init>(Ljava/lang/String;II)V
+
+    .line 524805
+    sput-object v4, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->NovelItemDanmakuReplyAdd:Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524807
+    const/16 v2, 0x27
+
+    .line 524809
+    new-array v2, v2, [Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524811
+    const/4 v6, 0x0
+
+    .line 524812
+    aput-object v0, v2, v6
+
+    .line 524814
+    const/4 v0, 0x1
+
+    .line 524815
+    aput-object v1, v2, v0
+
+    .line 524817
+    const/4 v0, 0x2
+
+    .line 524818
+    aput-object v3, v2, v0
+
+    .line 524820
+    const/4 v0, 0x3
+
+    .line 524821
+    aput-object v5, v2, v0
+
+    .line 524823
+    const/4 v0, 0x4
+
+    .line 524824
+    aput-object v7, v2, v0
+
+    .line 524826
+    const/4 v0, 0x5
+
+    .line 524827
+    aput-object v9, v2, v0
+
+    .line 524829
+    const/4 v0, 0x6
+
+    .line 524830
+    aput-object v11, v2, v0
+
+    .line 524832
+    const/4 v0, 0x7
+
+    .line 524833
+    aput-object v13, v2, v0
+
+    .line 524835
+    const/16 v0, 0x8
+
+    .line 524837
+    aput-object v15, v2, v0
+
+    .line 524839
+    const/16 v0, 0x9
+
+    .line 524841
+    aput-object v14, v2, v0
+
+    .line 524843
+    const/16 v0, 0xa
+
+    .line 524845
+    aput-object v12, v2, v0
+
+    .line 524847
+    const/16 v0, 0xb
+
+    .line 524849
+    aput-object v10, v2, v0
+
+    .line 524851
+    const/16 v0, 0xc
+
+    .line 524853
+    aput-object v22, v2, v0
+
+    .line 524855
+    const/16 v0, 0xd
+
+    .line 524857
+    aput-object v16, v2, v0
+
+    .line 524859
+    const/16 v0, 0xe
+
+    .line 524861
+    aput-object v17, v2, v0
+
+    .line 524863
+    const/16 v0, 0xf
+
+    .line 524865
+    aput-object v18, v2, v0
+
+    .line 524867
+    const/16 v0, 0x10
+
+    .line 524869
+    aput-object v19, v2, v0
+
+    .line 524871
+    const/16 v0, 0x11
+
+    .line 524873
+    aput-object v20, v2, v0
+
+    .line 524875
+    const/16 v0, 0x12
+
+    .line 524877
+    aput-object v21, v2, v0
+
+    .line 524879
+    const/16 v0, 0x13
+
+    .line 524881
+    aput-object v23, v2, v0
+
+    .line 524883
+    const/16 v0, 0x14
+
+    .line 524885
+    aput-object v24, v2, v0
+
+    .line 524887
+    const/16 v0, 0x15
+
+    .line 524889
+    aput-object v25, v2, v0
+
+    .line 524891
+    const/16 v0, 0x16
+
+    .line 524893
+    aput-object v26, v2, v0
+
+    .line 524895
+    const/16 v0, 0x17
+
+    .line 524897
+    aput-object v27, v2, v0
+
+    .line 524899
+    const/16 v0, 0x18
+
+    .line 524901
+    aput-object v28, v2, v0
+
+    .line 524903
+    const/16 v0, 0x19
+
+    .line 524905
+    aput-object v29, v2, v0
+
+    .line 524907
+    const/16 v0, 0x1a
+
+    .line 524909
+    aput-object v30, v2, v0
+
+    .line 524911
+    const/16 v0, 0x1b
+
+    .line 524913
+    aput-object v31, v2, v0
+
+    .line 524915
+    const/16 v0, 0x1c
+
+    .line 524917
+    aput-object v32, v2, v0
+
+    .line 524919
+    const/16 v0, 0x1d
+
+    .line 524921
+    aput-object v33, v2, v0
+
+    .line 524923
+    const/16 v0, 0x1e
+
+    .line 524925
+    aput-object v34, v2, v0
+
+    .line 524927
+    const/16 v0, 0x1f
+
+    .line 524929
+    aput-object v35, v2, v0
+
+    .line 524931
+    const/16 v0, 0x20
+
+    .line 524933
+    aput-object v36, v2, v0
+
+    .line 524935
+    const/16 v0, 0x21
+
+    .line 524937
+    aput-object v37, v2, v0
+
+    .line 524939
+    const/16 v0, 0x22
+
+    .line 524941
+    aput-object v38, v2, v0
+
+    .line 524943
+    const/16 v0, 0x23
+
+    .line 524945
+    aput-object v39, v2, v0
+
+    .line 524947
+    const/16 v0, 0x24
+
+    .line 524949
+    aput-object v40, v2, v0
+
+    .line 524951
+    const/16 v0, 0x25
+
+    .line 524953
+    aput-object v41, v2, v0
+
+    .line 524955
+    const/16 v0, 0x26
+
+    .line 524957
+    aput-object v4, v2, v0
+
+    .line 524959
+    sput-object v2, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->$VALUES:[Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 524961
+    return-void
+.end method
+
+.method private constructor <init>(Ljava/lang/String;II)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 50397184
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    .line 50397187
+    iput p3, p0, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->value:I
+
+    .line 50397189
+    return-void
+.end method
+
+.method public static valueOf(Ljava/lang/String;)Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .registers 2
+
+    .prologue
+    .line 16908288
+    const-class v0, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 16908290
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+
+    .line 16908293
+    move-result-object p0
+
+    .line 16908294
+    check-cast p0, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 16908296
+    return-object p0
+.end method
+
+.method public static values()[Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+    .registers 1
+
+    .prologue
+    .line 131072
+    sget-object v0, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->$VALUES:[Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 131074
+    invoke-virtual {v0}, [Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->clone()Ljava/lang/Object;
+
+    .line 131077
+    move-result-object v0
+
+    .line 131078
+    check-cast v0, [Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;
+
+    .line 131080
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public getValue()I
+    .registers 2
+
+    .prologue
+    .line 0
+    iget v0, p0, Lseriessdk/com/dragon/read/saas/rpc/model/UgcCommentCommitSourceEnum;->value:I
+
+    .line 2
+    return v0
+.end method

@@ -1,0 +1,360 @@
+.class public final Lmv5/b$b;
+.super Lmv5/b$a;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lmv5/b;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "b"
+.end annotation
+
+
+# static fields
+.field public static final f:[I
+
+
+# instance fields
+.field public c:I
+
+.field public d:I
+
+.field public final e:[I
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 524288
+    const v0, 0x9941a
+
+    .line 524289
+    .line 524290
+    .line 524291
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 524292
+    .line 524293
+    .line 524294
+    const/16 v0, 0x100
+
+    .line 524295
+    .line 524296
+    new-array v0, v0, [I
+
+    .line 524297
+    .line 524298
+    fill-array-data v0, :array_10
+
+    .line 524299
+    .line 524300
+    .line 524301
+    sput-object v0, Lmv5/b$b;->f:[I
+
+    .line 524302
+    .line 524303
+    return-void
+
+    .line 524304
+    :array_10
+    .array-data 4
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        0x3e
+        -0x1
+        -0x1
+        -0x1
+        0x3f
+        0x34
+        0x35
+        0x36
+        0x37
+        0x38
+        0x39
+        0x3a
+        0x3b
+        0x3c
+        0x3d
+        -0x1
+        -0x1
+        -0x1
+        -0x2
+        -0x1
+        -0x1
+        -0x1
+        0x0
+        0x1
+        0x2
+        0x3
+        0x4
+        0x5
+        0x6
+        0x7
+        0x8
+        0x9
+        0xa
+        0xb
+        0xc
+        0xd
+        0xe
+        0xf
+        0x10
+        0x11
+        0x12
+        0x13
+        0x14
+        0x15
+        0x16
+        0x17
+        0x18
+        0x19
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        0x1a
+        0x1b
+        0x1c
+        0x1d
+        0x1e
+        0x1f
+        0x20
+        0x21
+        0x22
+        0x23
+        0x24
+        0x25
+        0x26
+        0x27
+        0x28
+        0x29
+        0x2a
+        0x2b
+        0x2c
+        0x2d
+        0x2e
+        0x2f
+        0x30
+        0x31
+        0x32
+        0x33
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+        -0x1
+    .end array-data
+.end method
+
+.method public constructor <init>([B)V
+    .registers 2
+
+    .prologue
+    .line 16908288
+    invoke-direct {p0}, Lmv5/b$a;-><init>()V
+
+    .line 16908289
+    .line 16908290
+    .line 16908291
+    iput-object p1, p0, Lmv5/b$a;->a:[B
+
+    .line 16908292
+    .line 16908293
+    sget-object p1, Lmv5/b$b;->f:[I
+
+    .line 16908294
+    .line 16908295
+    iput-object p1, p0, Lmv5/b$b;->e:[I
+
+    .line 16908296
+    .line 16908297
+    const/4 p1, 0x0
+
+    .line 16908298
+    iput p1, p0, Lmv5/b$b;->c:I
+
+    .line 16908299
+    .line 16908300
+    iput p1, p0, Lmv5/b$b;->d:I
+
+    .line 16908301
+    .line 16908302
+    return-void
+.end method

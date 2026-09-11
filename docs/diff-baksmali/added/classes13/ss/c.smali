@@ -1,0 +1,126 @@
+.class public final Lss/c;
+.super Ljava/lang/ref/WeakReference;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/lang/ref/WeakReference<",
+        "TT;>;"
+    }
+.end annotation
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x7edee
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/Object;)V
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 16777216
+    invoke-direct {p0, p1}, Ljava/lang/ref/WeakReference;-><init>(Ljava/lang/Object;)V
+
+    .line 16777219
+    return-void
+.end method
+
+
+# virtual methods
+.method public final equals(Ljava/lang/Object;)Z
+    .registers 4
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    if-nez p1, :cond_4
+
+    .line 16973827
+    return v0
+
+    .line 16973828
+    :cond_4
+    instance-of v1, p1, Lss/c;
+
+    .line 16973830
+    if-nez v1, :cond_9
+
+    .line 16973832
+    return v0
+
+    .line 16973833
+    :cond_9
+    invoke-virtual {p0}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
+
+    .line 16973836
+    move-result-object v1
+
+    .line 16973837
+    check-cast p1, Lss/c;
+
+    .line 16973839
+    invoke-virtual {p1}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
+
+    .line 16973842
+    move-result-object p1
+
+    .line 16973843
+    if-ne v1, p1, :cond_16
+
+    .line 16973845
+    const/4 v0, 0x1
+
+    .line 16973846
+    :cond_16
+    return v0
+.end method
+
+.method public final hashCode()I
+    .registers 2
+
+    .prologue
+    .line 131072
+    invoke-virtual {p0}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
+
+    .line 131075
+    move-result-object v0
+
+    .line 131076
+    if-eqz v0, :cond_b
+
+    .line 131078
+    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
+
+    .line 131081
+    move-result v0
+
+    .line 131082
+    goto :goto_c
+
+    .line 131083
+    :cond_b
+    const/4 v0, 0x0
+
+    .line 131084
+    :goto_c
+    return v0
+.end method

@@ -1,0 +1,314 @@
+.class public final Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "GetRewardResponse"
+.end annotation
+
+
+# instance fields
+.field public final grantRewardExtra:Ljava/lang/String;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "grant_reward_extra"
+    .end annotation
+.end field
+
+.field public final hasNextReward:Z
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "has_next_reward"
+    .end annotation
+.end field
+
+.field public final rewardInfo:Ljava/util/Map;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "reward_info"
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x7e360
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 7
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x7
+
+    const/4 v5, 0x0
+
+    move-object v0, p0
+
+    invoke-direct/range {v0 .. v5}, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;-><init>(Ljava/util/Map;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/util/Map;Ljava/lang/String;Z)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "+",
+            "Ljava/lang/Object;",
+            ">;",
+            "Ljava/lang/String;",
+            "Z)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 50528256
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50528257
+    .line 50528258
+    .line 50528259
+    iput-object p1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->rewardInfo:Ljava/util/Map;
+
+    .line 50528260
+    .line 50528261
+    iput-object p2, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->grantRewardExtra:Ljava/lang/String;
+
+    .line 50528262
+    .line 50528263
+    iput-boolean p3, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->hasNextReward:Z
+
+    .line 50528264
+    .line 50528265
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Ljava/util/Map;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .registers 7
+
+    .prologue
+    .line 84148224
+    and-int/lit8 p5, p4, 0x1
+
+    .line 84148225
+    .line 84148226
+    const/4 v0, 0x0
+
+    .line 84148227
+    if-eqz p5, :cond_6
+
+    .line 84148228
+    .line 84148229
+    move-object p1, v0
+
+    .line 84148230
+    :cond_6
+    and-int/lit8 p5, p4, 0x2
+
+    .line 84148231
+    .line 84148232
+    if-eqz p5, :cond_b
+
+    .line 84148233
+    .line 84148234
+    move-object p2, v0
+
+    .line 84148235
+    :cond_b
+    and-int/lit8 p4, p4, 0x4
+
+    .line 84148236
+    .line 84148237
+    if-eqz p4, :cond_10
+
+    .line 84148238
+    .line 84148239
+    const/4 p3, 0x0
+
+    .line 84148240
+    :cond_10
+    invoke-direct {p0, p1, p2, p3}, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;-><init>(Ljava/util/Map;Ljava/lang/String;Z)V
+
+    .line 84148241
+    .line 84148242
+    .line 84148243
+    return-void
+.end method
+
+
+# virtual methods
+.method public final equals(Ljava/lang/Object;)Z
+    .registers 6
+
+    const/4 v0, 0x1
+
+    if-ne p0, p1, :cond_4
+
+    return v0
+
+    :cond_4
+    instance-of v1, p1, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;
+
+    const/4 v2, 0x0
+
+    if-nez v1, :cond_a
+
+    return v2
+
+    :cond_a
+    check-cast p1, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;
+
+    iget-object v1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->rewardInfo:Ljava/util/Map;
+
+    iget-object v3, p1, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->rewardInfo:Ljava/util/Map;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_17
+
+    return v2
+
+    :cond_17
+    iget-object v1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->grantRewardExtra:Ljava/lang/String;
+
+    iget-object v3, p1, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->grantRewardExtra:Ljava/lang/String;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_22
+
+    return v2
+
+    :cond_22
+    iget-boolean v1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->hasNextReward:Z
+
+    iget-boolean p1, p1, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->hasNextReward:Z
+
+    if-eq v1, p1, :cond_29
+
+    return v2
+
+    :cond_29
+    return v0
+.end method
+
+.method public final hashCode()I
+    .registers 4
+
+    iget-object v0, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->rewardInfo:Ljava/util/Map;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_7
+
+    const/4 v0, 0x0
+
+    goto :goto_b
+
+    :cond_7
+    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
+
+    move-result v0
+
+    :goto_b
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->grantRewardExtra:Ljava/lang/String;
+
+    if-nez v2, :cond_12
+
+    goto :goto_16
+
+    :cond_12
+    invoke-virtual {v2}, Ljava/lang/String;->hashCode()I
+
+    move-result v1
+
+    :goto_16
+    add-int/2addr v0, v1
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-boolean v1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->hasNextReward:Z
+
+    if-eqz v1, :cond_1e
+
+    const/4 v1, 0x1
+
+    :cond_1e
+    add-int/2addr v0, v1
+
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .registers 3
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    const-string v1, "GetRewardResponse(rewardInfo="
+
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->rewardInfo:Ljava/util/Map;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v1, ", grantRewardExtra="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->grantRewardExtra:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, ", hasNextReward="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-boolean v1, p0, Lcom/bytedance/android/ad/rewarded/jsbridge/openreward/OpenRewardRequest$GetRewardResponse;->hasNextReward:Z
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x29
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

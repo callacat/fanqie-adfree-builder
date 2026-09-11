@@ -1,0 +1,3257 @@
+## classes17/qv0/th$a.smali
+# added=0 removed=0 changed=6
+
+.method public static constructor <clinit>()V
+[MOD-CHANGED]
+.method public static constructor <clinit>()V
+    .registers 4
+
+    .prologue
+    .line 327680
+    new-instance v0, Lqv0/th$a;
+
+    .line 327682
+    invoke-direct {v0}, Lqv0/th$a;-><init>()V
+
+    .line 327685
+    sput-object v0, Lqv0/th$a;->a:Lqv0/th$a;
+
+    .line 327687
+    new-instance v1, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 327689
+    const-string v2, "com.bytedance.kmp.reading.model.UserResearch"
+
+    .line 327691
+    const/16 v3, 0xa
+
+    .line 327693
+    invoke-direct {v1, v2, v0, v3}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;-><init>(Ljava/lang/String;Lkotlinx/serialization/internal/GeneratedSerializer;I)V
+
+    .line 327696
+    const-string v0, "research_id"
+
+    .line 327698
+    const/4 v2, 0x1
+
+    .line 327699
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327702
+    const-string v0, "research_title"
+
+    .line 327704
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327707
+    const-string v0, "score_option_info"
+
+    .line 327709
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327712
+    const-string v0, "score_remarks"
+
+    .line 327714
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327717
+    const-string v0, "option_infos"
+
+    .line 327719
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327722
+    const-string v0, "show_type"
+
+    .line 327724
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327727
+    const-string v0, "scene_type"
+
+    .line 327729
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327732
+    const-string v0, "insert_index"
+
+    .line 327734
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327737
+    const-string v0, "option_name_with_input"
+
+    .line 327739
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327742
+    const-string v0, "skip_option"
+
+    .line 327744
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327747
+    sput-object v1, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 327749
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public static constructor <clinit>()V
+    .registers 4
+
+    .prologue
+    .line 327680
+    new-instance v0, Lqv0/th$a;
+
+    .line 327681
+    .line 327682
+    invoke-direct {v0}, Lqv0/th$a;-><init>()V
+
+    .line 327683
+    .line 327684
+    .line 327685
+    sput-object v0, Lqv0/th$a;->a:Lqv0/th$a;
+
+    .line 327686
+    .line 327687
+    new-instance v1, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 327688
+    .line 327689
+    const-string v2, "com.bytedance.kmp.reading.model.UserResearch"
+
+    .line 327690
+    .line 327691
+    const/16 v3, 0xa
+
+    .line 327692
+    .line 327693
+    invoke-direct {v1, v2, v0, v3}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;-><init>(Ljava/lang/String;Lkotlinx/serialization/internal/GeneratedSerializer;I)V
+
+    .line 327694
+    .line 327695
+    .line 327696
+    const-string v0, "research_id"
+
+    .line 327697
+    .line 327698
+    const/4 v2, 0x1
+
+    .line 327699
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327700
+    .line 327701
+    .line 327702
+    const-string v0, "research_title"
+
+    .line 327703
+    .line 327704
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327705
+    .line 327706
+    .line 327707
+    const-string v0, "score_option_info"
+
+    .line 327708
+    .line 327709
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327710
+    .line 327711
+    .line 327712
+    const-string v0, "score_remarks"
+
+    .line 327713
+    .line 327714
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327715
+    .line 327716
+    .line 327717
+    const-string v0, "option_infos"
+
+    .line 327718
+    .line 327719
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327720
+    .line 327721
+    .line 327722
+    const-string v0, "show_type"
+
+    .line 327723
+    .line 327724
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327725
+    .line 327726
+    .line 327727
+    const-string v0, "scene_type"
+
+    .line 327728
+    .line 327729
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327730
+    .line 327731
+    .line 327732
+    const-string v0, "insert_index"
+
+    .line 327733
+    .line 327734
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327735
+    .line 327736
+    .line 327737
+    const-string v0, "option_name_with_input"
+
+    .line 327738
+    .line 327739
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327740
+    .line 327741
+    .line 327742
+    const-string v0, "skip_option"
+
+    .line 327743
+    .line 327744
+    invoke-virtual {v1, v0, v2}, Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;->addElement(Ljava/lang/String;Z)V
+
+    .line 327745
+    .line 327746
+    .line 327747
+    sput-object v1, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 327748
+    .line 327749
+    return-void
+.end method
+
+
+.method public final childSerializers()[Lkotlinx/serialization/KSerializer;
+[MOD-CHANGED]
+.method public final childSerializers()[Lkotlinx/serialization/KSerializer;
+    .registers 6
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()[",
+            "Lkotlinx/serialization/KSerializer<",
+            "*>;"
+        }
+    .end annotation
+
+    .prologue
+    .line 327680
+    sget-object v0, Lqv0/th;->k:[Lkotlinx/serialization/KSerializer;
+
+    .line 327682
+    const/16 v1, 0xa
+
+    .line 327684
+    new-array v1, v1, [Lkotlinx/serialization/KSerializer;
+
+    .line 327686
+    sget-object v2, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 327688
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327691
+    move-result-object v3
+
+    .line 327692
+    const/4 v4, 0x0
+
+    .line 327693
+    aput-object v3, v1, v4
+
+    .line 327695
+    const/4 v3, 0x1
+
+    .line 327696
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327699
+    move-result-object v4
+
+    .line 327700
+    aput-object v4, v1, v3
+
+    .line 327702
+    const/4 v3, 0x2
+
+    .line 327703
+    aget-object v4, v0, v3
+
+    .line 327705
+    invoke-static {v4}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327708
+    move-result-object v4
+
+    .line 327709
+    aput-object v4, v1, v3
+
+    .line 327711
+    const/4 v3, 0x3
+
+    .line 327712
+    aget-object v0, v0, v3
+
+    .line 327714
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327717
+    move-result-object v0
+
+    .line 327718
+    aput-object v0, v1, v3
+
+    .line 327720
+    sget-object v0, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 327722
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327725
+    move-result-object v0
+
+    .line 327726
+    const/4 v3, 0x4
+
+    .line 327727
+    aput-object v0, v1, v3
+
+    .line 327729
+    sget-object v0, Lp08/o0;->a:Lp08/o0;
+
+    .line 327731
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327734
+    move-result-object v3
+
+    .line 327735
+    const/4 v4, 0x5
+
+    .line 327736
+    aput-object v3, v1, v4
+
+    .line 327738
+    const/4 v3, 0x6
+
+    .line 327739
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327742
+    move-result-object v4
+
+    .line 327743
+    aput-object v4, v1, v3
+
+    .line 327745
+    const/4 v3, 0x7
+
+    .line 327746
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327749
+    move-result-object v0
+
+    .line 327750
+    aput-object v0, v1, v3
+
+    .line 327752
+    const/16 v0, 0x8
+
+    .line 327754
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327757
+    move-result-object v3
+
+    .line 327758
+    aput-object v3, v1, v0
+
+    .line 327760
+    const/16 v0, 0x9
+
+    .line 327762
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327765
+    move-result-object v2
+
+    .line 327766
+    aput-object v2, v1, v0
+
+    .line 327768
+    return-object v1
+.end method
+
+[INNER-ORIGINAL]
+.method public final childSerializers()[Lkotlinx/serialization/KSerializer;
+    .registers 6
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()[",
+            "Lkotlinx/serialization/KSerializer<",
+            "*>;"
+        }
+    .end annotation
+
+    .prologue
+    .line 327680
+    sget-object v0, Lqv0/th;->k:[Lkotlinx/serialization/KSerializer;
+
+    .line 327681
+    .line 327682
+    const/16 v1, 0xa
+
+    .line 327683
+    .line 327684
+    new-array v1, v1, [Lkotlinx/serialization/KSerializer;
+
+    .line 327685
+    .line 327686
+    sget-object v2, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 327687
+    .line 327688
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327689
+    .line 327690
+    .line 327691
+    move-result-object v3
+
+    .line 327692
+    const/4 v4, 0x0
+
+    .line 327693
+    aput-object v3, v1, v4
+
+    .line 327694
+    .line 327695
+    const/4 v3, 0x1
+
+    .line 327696
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327697
+    .line 327698
+    .line 327699
+    move-result-object v4
+
+    .line 327700
+    aput-object v4, v1, v3
+
+    .line 327701
+    .line 327702
+    const/4 v3, 0x2
+
+    .line 327703
+    aget-object v4, v0, v3
+
+    .line 327704
+    .line 327705
+    invoke-static {v4}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327706
+    .line 327707
+    .line 327708
+    move-result-object v4
+
+    .line 327709
+    aput-object v4, v1, v3
+
+    .line 327710
+    .line 327711
+    const/4 v3, 0x3
+
+    .line 327712
+    aget-object v0, v0, v3
+
+    .line 327713
+    .line 327714
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327715
+    .line 327716
+    .line 327717
+    move-result-object v0
+
+    .line 327718
+    aput-object v0, v1, v3
+
+    .line 327719
+    .line 327720
+    sget-object v0, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 327721
+    .line 327722
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327723
+    .line 327724
+    .line 327725
+    move-result-object v0
+
+    .line 327726
+    const/4 v3, 0x4
+
+    .line 327727
+    aput-object v0, v1, v3
+
+    .line 327728
+    .line 327729
+    sget-object v0, Lp08/o0;->a:Lp08/o0;
+
+    .line 327730
+    .line 327731
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327732
+    .line 327733
+    .line 327734
+    move-result-object v3
+
+    .line 327735
+    const/4 v4, 0x5
+
+    .line 327736
+    aput-object v3, v1, v4
+
+    .line 327737
+    .line 327738
+    const/4 v3, 0x6
+
+    .line 327739
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327740
+    .line 327741
+    .line 327742
+    move-result-object v4
+
+    .line 327743
+    aput-object v4, v1, v3
+
+    .line 327744
+    .line 327745
+    const/4 v3, 0x7
+
+    .line 327746
+    invoke-static {v0}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327747
+    .line 327748
+    .line 327749
+    move-result-object v0
+
+    .line 327750
+    aput-object v0, v1, v3
+
+    .line 327751
+    .line 327752
+    const/16 v0, 0x8
+
+    .line 327753
+    .line 327754
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327755
+    .line 327756
+    .line 327757
+    move-result-object v3
+
+    .line 327758
+    aput-object v3, v1, v0
+
+    .line 327759
+    .line 327760
+    const/16 v0, 0x9
+
+    .line 327761
+    .line 327762
+    invoke-static {v2}, Lkotlinx/serialization/builtins/BuiltinSerializersKt;->getNullable(Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/KSerializer;
+
+    .line 327763
+    .line 327764
+    .line 327765
+    move-result-object v2
+
+    .line 327766
+    aput-object v2, v1, v0
+
+    .line 327767
+    .line 327768
+    return-object v1
+.end method
+
+
+.method public final deserialize(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+[MOD-CHANGED]
+.method public final deserialize(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+    .registers 24
+
+    .prologue
+    .line 17235968
+    move-object/from16 v0, p1
+
+    .line 17235970
+    const/4 v1, 0x0
+
+    .line 17235971
+    invoke-static {v0, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17235974
+    sget-object v2, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 17235976
+    invoke-interface {v0, v2}, Lkotlinx/serialization/encoding/Decoder;->beginStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)Lkotlinx/serialization/encoding/CompositeDecoder;
+
+    .line 17235979
+    move-result-object v0
+
+    .line 17235980
+    sget-object v3, Lqv0/th;->k:[Lkotlinx/serialization/KSerializer;
+
+    .line 17235982
+    invoke-interface {v0}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeSequentially()Z
+
+    .line 17235985
+    move-result v4
+
+    .line 17235986
+    const/4 v5, 0x3
+
+    .line 17235987
+    const/4 v6, 0x5
+
+    .line 17235988
+    const/4 v7, 0x6
+
+    .line 17235989
+    const/4 v8, 0x7
+
+    .line 17235990
+    const/16 v9, 0x9
+
+    .line 17235992
+    const/4 v10, 0x2
+
+    .line 17235993
+    const/4 v11, 0x4
+
+    .line 17235994
+    const/16 v12, 0x8
+
+    .line 17235996
+    const/4 v13, 0x1
+
+    .line 17235997
+    const/4 v14, 0x0
+
+    .line 17235998
+    if-eqz v4, :cond_7f
+
+    .line 17236000
+    sget-object v4, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236002
+    invoke-interface {v0, v2, v1, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236005
+    move-result-object v1
+
+    .line 17236006
+    check-cast v1, Ljava/lang/String;
+
+    .line 17236008
+    invoke-interface {v0, v2, v13, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236011
+    move-result-object v13
+
+    .line 17236012
+    check-cast v13, Ljava/lang/String;
+
+    .line 17236014
+    aget-object v15, v3, v10
+
+    .line 17236016
+    check-cast v15, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236018
+    invoke-interface {v0, v2, v10, v15, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236021
+    move-result-object v10
+
+    .line 17236022
+    check-cast v10, Ljava/util/Map;
+
+    .line 17236024
+    aget-object v3, v3, v5
+
+    .line 17236026
+    check-cast v3, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236028
+    invoke-interface {v0, v2, v5, v3, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236031
+    move-result-object v3
+
+    .line 17236032
+    check-cast v3, Ljava/util/Map;
+
+    .line 17236034
+    sget-object v5, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 17236036
+    invoke-interface {v0, v2, v11, v5, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236039
+    move-result-object v5
+
+    .line 17236040
+    check-cast v5, Lqv0/wh;
+
+    .line 17236042
+    sget-object v11, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236044
+    invoke-interface {v0, v2, v6, v11, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236047
+    move-result-object v6
+
+    .line 17236048
+    check-cast v6, Ljava/lang/Integer;
+
+    .line 17236050
+    invoke-interface {v0, v2, v7, v11, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236053
+    move-result-object v7
+
+    .line 17236054
+    check-cast v7, Ljava/lang/Integer;
+
+    .line 17236056
+    invoke-interface {v0, v2, v8, v11, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236059
+    move-result-object v8
+
+    .line 17236060
+    check-cast v8, Ljava/lang/Integer;
+
+    .line 17236062
+    invoke-interface {v0, v2, v12, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236065
+    move-result-object v11
+
+    .line 17236066
+    check-cast v11, Ljava/lang/String;
+
+    .line 17236068
+    invoke-interface {v0, v2, v9, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236071
+    move-result-object v4
+
+    .line 17236072
+    check-cast v4, Ljava/lang/String;
+
+    .line 17236074
+    const/16 v9, 0x3ff
+
+    .line 17236076
+    move-object v14, v3
+
+    .line 17236077
+    move-object/from16 v20, v4
+
+    .line 17236079
+    move-object v15, v5
+
+    .line 17236080
+    move-object/from16 v16, v6
+
+    .line 17236082
+    move-object/from16 v17, v7
+
+    .line 17236084
+    move-object/from16 v18, v8
+
+    .line 17236086
+    move-object/from16 v19, v11
+
+    .line 17236088
+    move-object v12, v13
+
+    .line 17236089
+    move-object v11, v1
+
+    .line 17236090
+    move-object v13, v10
+
+    .line 17236091
+    const/16 v10, 0x3ff
+
+    .line 17236093
+    goto/16 :goto_153
+
+    .line 17236095
+    :cond_7f
+    move-object v1, v14
+
+    .line 17236096
+    move-object v5, v1
+
+    .line 17236097
+    move-object v6, v5
+
+    .line 17236098
+    move-object v7, v6
+
+    .line 17236099
+    move-object v10, v7
+
+    .line 17236100
+    move-object v11, v10
+
+    .line 17236101
+    move-object v13, v11
+
+    .line 17236102
+    move-object v15, v13
+
+    .line 17236103
+    move-object/from16 v16, v15
+
+    .line 17236105
+    const/4 v4, 0x0
+
+    .line 17236106
+    const/16 v21, 0x1
+
+    .line 17236108
+    :goto_8c
+    if-eqz v21, :cond_141
+
+    .line 17236110
+    invoke-interface {v0, v2}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeElementIndex(Lkotlinx/serialization/descriptors/SerialDescriptor;)I
+
+    .line 17236113
+    move-result v8
+
+    .line 17236114
+    packed-switch v8, :pswitch_data_15e
+
+    .line 17236117
+    new-instance v0, Lkotlinx/serialization/UnknownFieldException;
+
+    .line 17236119
+    invoke-direct {v0, v8}, Lkotlinx/serialization/UnknownFieldException;-><init>(I)V
+
+    .line 17236122
+    throw v0
+
+    .line 17236123
+    :pswitch_9b
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236125
+    invoke-interface {v0, v2, v9, v8, v6}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236128
+    move-result-object v6
+
+    .line 17236129
+    check-cast v6, Ljava/lang/String;
+
+    .line 17236131
+    or-int/lit16 v4, v4, 0x200
+
+    .line 17236133
+    goto :goto_e6
+
+    .line 17236134
+    :pswitch_a6
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236136
+    invoke-interface {v0, v2, v12, v8, v7}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236139
+    move-result-object v7
+
+    .line 17236140
+    check-cast v7, Ljava/lang/String;
+
+    .line 17236142
+    or-int/lit16 v4, v4, 0x100
+
+    .line 17236144
+    goto :goto_e6
+
+    .line 17236145
+    :pswitch_b1
+    sget-object v8, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236147
+    const/4 v9, 0x7
+
+    .line 17236148
+    invoke-interface {v0, v2, v9, v8, v13}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236151
+    move-result-object v8
+
+    .line 17236152
+    move-object v13, v8
+
+    .line 17236153
+    check-cast v13, Ljava/lang/Integer;
+
+    .line 17236155
+    or-int/lit16 v4, v4, 0x80
+
+    .line 17236157
+    goto :goto_e6
+
+    .line 17236158
+    :pswitch_be
+    const/4 v9, 0x7
+
+    .line 17236159
+    sget-object v8, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236161
+    const/4 v9, 0x6
+
+    .line 17236162
+    invoke-interface {v0, v2, v9, v8, v11}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236165
+    move-result-object v8
+
+    .line 17236166
+    move-object v11, v8
+
+    .line 17236167
+    check-cast v11, Ljava/lang/Integer;
+
+    .line 17236169
+    or-int/lit8 v4, v4, 0x40
+
+    .line 17236171
+    goto :goto_e6
+
+    .line 17236172
+    :pswitch_cc
+    const/4 v9, 0x6
+
+    .line 17236173
+    sget-object v8, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236175
+    const/4 v9, 0x5
+
+    .line 17236176
+    invoke-interface {v0, v2, v9, v8, v5}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236179
+    move-result-object v5
+
+    .line 17236180
+    check-cast v5, Ljava/lang/Integer;
+
+    .line 17236182
+    or-int/lit8 v4, v4, 0x20
+
+    .line 17236184
+    goto :goto_e6
+
+    .line 17236185
+    :pswitch_d9
+    const/4 v9, 0x5
+
+    .line 17236186
+    sget-object v8, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 17236188
+    const/4 v9, 0x4
+
+    .line 17236189
+    invoke-interface {v0, v2, v9, v8, v10}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236192
+    move-result-object v8
+
+    .line 17236193
+    move-object v10, v8
+
+    .line 17236194
+    check-cast v10, Lqv0/wh;
+
+    .line 17236196
+    or-int/lit8 v4, v4, 0x10
+
+    .line 17236198
+    :goto_e6
+    const/4 v8, 0x3
+
+    .line 17236199
+    goto :goto_f9
+
+    .line 17236200
+    :pswitch_e8
+    const/4 v8, 0x3
+
+    .line 17236201
+    const/4 v9, 0x4
+
+    .line 17236202
+    aget-object v19, v3, v8
+
+    .line 17236204
+    move-object/from16 v9, v19
+
+    .line 17236206
+    check-cast v9, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236208
+    invoke-interface {v0, v2, v8, v9, v15}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236211
+    move-result-object v9
+
+    .line 17236212
+    move-object v15, v9
+
+    .line 17236213
+    check-cast v15, Ljava/util/Map;
+
+    .line 17236215
+    or-int/lit8 v4, v4, 0x8
+
+    .line 17236217
+    :goto_f9
+    const/4 v9, 0x2
+
+    .line 17236218
+    goto :goto_10b
+
+    .line 17236219
+    :pswitch_fb
+    const/4 v8, 0x3
+
+    .line 17236220
+    const/4 v9, 0x2
+
+    .line 17236221
+    aget-object v18, v3, v9
+
+    .line 17236223
+    move-object/from16 v8, v18
+
+    .line 17236225
+    check-cast v8, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236227
+    invoke-interface {v0, v2, v9, v8, v1}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236230
+    move-result-object v1
+
+    .line 17236231
+    check-cast v1, Ljava/util/Map;
+
+    .line 17236233
+    or-int/lit8 v4, v4, 0x4
+
+    .line 17236235
+    :goto_10b
+    const/4 v9, 0x1
+
+    .line 17236236
+    goto :goto_11a
+
+    .line 17236237
+    :pswitch_10d
+    const/4 v9, 0x2
+
+    .line 17236238
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236240
+    const/4 v9, 0x1
+
+    .line 17236241
+    invoke-interface {v0, v2, v9, v8, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236244
+    move-result-object v8
+
+    .line 17236245
+    move-object v14, v8
+
+    .line 17236246
+    check-cast v14, Ljava/lang/String;
+
+    .line 17236248
+    or-int/lit8 v4, v4, 0x2
+
+    .line 17236250
+    :goto_11a
+    move-object/from16 v8, v16
+
+    .line 17236252
+    const/4 v12, 0x0
+
+    .line 17236253
+    goto :goto_12c
+
+    .line 17236254
+    :pswitch_11e
+    const/4 v9, 0x1
+
+    .line 17236255
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236257
+    move-object/from16 v9, v16
+
+    .line 17236259
+    const/4 v12, 0x0
+
+    .line 17236260
+    invoke-interface {v0, v2, v12, v8, v9}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236263
+    move-result-object v8
+
+    .line 17236264
+    check-cast v8, Ljava/lang/String;
+
+    .line 17236266
+    or-int/lit8 v4, v4, 0x1
+
+    .line 17236268
+    :goto_12c
+    move-object/from16 v16, v8
+
+    .line 17236270
+    const/4 v8, 0x7
+
+    .line 17236271
+    const/16 v9, 0x9
+
+    .line 17236273
+    const/16 v12, 0x8
+
+    .line 17236275
+    goto/16 :goto_8c
+
+    .line 17236277
+    :pswitch_135
+    move-object/from16 v9, v16
+
+    .line 17236279
+    const/4 v12, 0x0
+
+    .line 17236280
+    const/4 v8, 0x7
+
+    .line 17236281
+    const/16 v9, 0x9
+
+    .line 17236283
+    const/16 v12, 0x8
+
+    .line 17236285
+    const/16 v21, 0x0
+
+    .line 17236287
+    goto/16 :goto_8c
+
+    .line 17236289
+    :cond_141
+    move-object/from16 v9, v16
+
+    .line 17236291
+    move-object/from16 v16, v5
+
+    .line 17236293
+    move-object/from16 v20, v6
+
+    .line 17236295
+    move-object/from16 v19, v7
+
+    .line 17236297
+    move-object/from16 v17, v11
+
+    .line 17236299
+    move-object/from16 v18, v13
+
+    .line 17236301
+    move-object v12, v14
+
+    .line 17236302
+    move-object v14, v15
+
+    .line 17236303
+    move-object v13, v1
+
+    .line 17236304
+    move-object v11, v9
+
+    .line 17236305
+    move-object v15, v10
+
+    .line 17236306
+    move v10, v4
+
+    .line 17236307
+    :goto_153
+    invoke-interface {v0, v2}, Lkotlinx/serialization/encoding/CompositeDecoder;->endStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 17236310
+    new-instance v0, Lqv0/th;
+
+    .line 17236312
+    move-object v9, v0
+
+    .line 17236313
+    invoke-direct/range {v9 .. v20}, Lqv0/th;-><init>(ILjava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lqv0/wh;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236316
+    return-object v0
+
+    nop
+
+    .line 17236318
+    :pswitch_data_15e
+    .packed-switch -0x1
+        :pswitch_135
+        :pswitch_11e
+        :pswitch_10d
+        :pswitch_fb
+        :pswitch_e8
+        :pswitch_d9
+        :pswitch_cc
+        :pswitch_be
+        :pswitch_b1
+        :pswitch_a6
+        :pswitch_9b
+    .end packed-switch
+.end method
+
+[INNER-ORIGINAL]
+.method public final deserialize(Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+    .registers 24
+
+    .prologue
+    .line 17235968
+    move-object/from16 v0, p1
+
+    .line 17235969
+    .line 17235970
+    const/4 v1, 0x0
+
+    .line 17235971
+    invoke-static {v0, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17235972
+    .line 17235973
+    .line 17235974
+    sget-object v2, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 17235975
+    .line 17235976
+    invoke-interface {v0, v2}, Lkotlinx/serialization/encoding/Decoder;->beginStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)Lkotlinx/serialization/encoding/CompositeDecoder;
+
+    .line 17235977
+    .line 17235978
+    .line 17235979
+    move-result-object v0
+
+    .line 17235980
+    sget-object v3, Lqv0/th;->k:[Lkotlinx/serialization/KSerializer;
+
+    .line 17235981
+    .line 17235982
+    invoke-interface {v0}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeSequentially()Z
+
+    .line 17235983
+    .line 17235984
+    .line 17235985
+    move-result v4
+
+    .line 17235986
+    const/4 v5, 0x3
+
+    .line 17235987
+    const/4 v6, 0x5
+
+    .line 17235988
+    const/4 v7, 0x6
+
+    .line 17235989
+    const/4 v8, 0x7
+
+    .line 17235990
+    const/16 v9, 0x9
+
+    .line 17235991
+    .line 17235992
+    const/4 v10, 0x2
+
+    .line 17235993
+    const/4 v11, 0x4
+
+    .line 17235994
+    const/16 v12, 0x8
+
+    .line 17235995
+    .line 17235996
+    const/4 v13, 0x1
+
+    .line 17235997
+    const/4 v14, 0x0
+
+    .line 17235998
+    if-eqz v4, :cond_7f
+
+    .line 17235999
+    .line 17236000
+    sget-object v4, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236001
+    .line 17236002
+    invoke-interface {v0, v2, v1, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236003
+    .line 17236004
+    .line 17236005
+    move-result-object v1
+
+    .line 17236006
+    check-cast v1, Ljava/lang/String;
+
+    .line 17236007
+    .line 17236008
+    invoke-interface {v0, v2, v13, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236009
+    .line 17236010
+    .line 17236011
+    move-result-object v13
+
+    .line 17236012
+    check-cast v13, Ljava/lang/String;
+
+    .line 17236013
+    .line 17236014
+    aget-object v15, v3, v10
+
+    .line 17236015
+    .line 17236016
+    check-cast v15, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236017
+    .line 17236018
+    invoke-interface {v0, v2, v10, v15, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236019
+    .line 17236020
+    .line 17236021
+    move-result-object v10
+
+    .line 17236022
+    check-cast v10, Ljava/util/Map;
+
+    .line 17236023
+    .line 17236024
+    aget-object v3, v3, v5
+
+    .line 17236025
+    .line 17236026
+    check-cast v3, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236027
+    .line 17236028
+    invoke-interface {v0, v2, v5, v3, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236029
+    .line 17236030
+    .line 17236031
+    move-result-object v3
+
+    .line 17236032
+    check-cast v3, Ljava/util/Map;
+
+    .line 17236033
+    .line 17236034
+    sget-object v5, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 17236035
+    .line 17236036
+    invoke-interface {v0, v2, v11, v5, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236037
+    .line 17236038
+    .line 17236039
+    move-result-object v5
+
+    .line 17236040
+    check-cast v5, Lqv0/wh;
+
+    .line 17236041
+    .line 17236042
+    sget-object v11, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236043
+    .line 17236044
+    invoke-interface {v0, v2, v6, v11, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236045
+    .line 17236046
+    .line 17236047
+    move-result-object v6
+
+    .line 17236048
+    check-cast v6, Ljava/lang/Integer;
+
+    .line 17236049
+    .line 17236050
+    invoke-interface {v0, v2, v7, v11, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236051
+    .line 17236052
+    .line 17236053
+    move-result-object v7
+
+    .line 17236054
+    check-cast v7, Ljava/lang/Integer;
+
+    .line 17236055
+    .line 17236056
+    invoke-interface {v0, v2, v8, v11, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236057
+    .line 17236058
+    .line 17236059
+    move-result-object v8
+
+    .line 17236060
+    check-cast v8, Ljava/lang/Integer;
+
+    .line 17236061
+    .line 17236062
+    invoke-interface {v0, v2, v12, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236063
+    .line 17236064
+    .line 17236065
+    move-result-object v11
+
+    .line 17236066
+    check-cast v11, Ljava/lang/String;
+
+    .line 17236067
+    .line 17236068
+    invoke-interface {v0, v2, v9, v4, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236069
+    .line 17236070
+    .line 17236071
+    move-result-object v4
+
+    .line 17236072
+    check-cast v4, Ljava/lang/String;
+
+    .line 17236073
+    .line 17236074
+    const/16 v9, 0x3ff
+
+    .line 17236075
+    .line 17236076
+    move-object v14, v3
+
+    .line 17236077
+    move-object/from16 v20, v4
+
+    .line 17236078
+    .line 17236079
+    move-object v15, v5
+
+    .line 17236080
+    move-object/from16 v16, v6
+
+    .line 17236081
+    .line 17236082
+    move-object/from16 v17, v7
+
+    .line 17236083
+    .line 17236084
+    move-object/from16 v18, v8
+
+    .line 17236085
+    .line 17236086
+    move-object/from16 v19, v11
+
+    .line 17236087
+    .line 17236088
+    move-object v12, v13
+
+    .line 17236089
+    move-object v11, v1
+
+    .line 17236090
+    move-object v13, v10
+
+    .line 17236091
+    const/16 v10, 0x3ff
+
+    .line 17236092
+    .line 17236093
+    goto/16 :goto_153
+
+    .line 17236094
+    .line 17236095
+    :cond_7f
+    move-object v1, v14
+
+    .line 17236096
+    move-object v5, v1
+
+    .line 17236097
+    move-object v6, v5
+
+    .line 17236098
+    move-object v7, v6
+
+    .line 17236099
+    move-object v10, v7
+
+    .line 17236100
+    move-object v11, v10
+
+    .line 17236101
+    move-object v13, v11
+
+    .line 17236102
+    move-object v15, v13
+
+    .line 17236103
+    move-object/from16 v16, v15
+
+    .line 17236104
+    .line 17236105
+    const/4 v4, 0x0
+
+    .line 17236106
+    const/16 v21, 0x1
+
+    .line 17236107
+    .line 17236108
+    :goto_8c
+    if-eqz v21, :cond_141
+
+    .line 17236109
+    .line 17236110
+    invoke-interface {v0, v2}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeElementIndex(Lkotlinx/serialization/descriptors/SerialDescriptor;)I
+
+    .line 17236111
+    .line 17236112
+    .line 17236113
+    move-result v8
+
+    .line 17236114
+    packed-switch v8, :pswitch_data_15e
+
+    .line 17236115
+    .line 17236116
+    .line 17236117
+    new-instance v0, Lkotlinx/serialization/UnknownFieldException;
+
+    .line 17236118
+    .line 17236119
+    invoke-direct {v0, v8}, Lkotlinx/serialization/UnknownFieldException;-><init>(I)V
+
+    .line 17236120
+    .line 17236121
+    .line 17236122
+    throw v0
+
+    .line 17236123
+    :pswitch_9b
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236124
+    .line 17236125
+    invoke-interface {v0, v2, v9, v8, v6}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236126
+    .line 17236127
+    .line 17236128
+    move-result-object v6
+
+    .line 17236129
+    check-cast v6, Ljava/lang/String;
+
+    .line 17236130
+    .line 17236131
+    or-int/lit16 v4, v4, 0x200
+
+    .line 17236132
+    .line 17236133
+    goto :goto_e6
+
+    .line 17236134
+    :pswitch_a6
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236135
+    .line 17236136
+    invoke-interface {v0, v2, v12, v8, v7}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236137
+    .line 17236138
+    .line 17236139
+    move-result-object v7
+
+    .line 17236140
+    check-cast v7, Ljava/lang/String;
+
+    .line 17236141
+    .line 17236142
+    or-int/lit16 v4, v4, 0x100
+
+    .line 17236143
+    .line 17236144
+    goto :goto_e6
+
+    .line 17236145
+    :pswitch_b1
+    sget-object v8, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236146
+    .line 17236147
+    const/4 v9, 0x7
+
+    .line 17236148
+    invoke-interface {v0, v2, v9, v8, v13}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236149
+    .line 17236150
+    .line 17236151
+    move-result-object v8
+
+    .line 17236152
+    move-object v13, v8
+
+    .line 17236153
+    check-cast v13, Ljava/lang/Integer;
+
+    .line 17236154
+    .line 17236155
+    or-int/lit16 v4, v4, 0x80
+
+    .line 17236156
+    .line 17236157
+    goto :goto_e6
+
+    .line 17236158
+    :pswitch_be
+    const/4 v9, 0x7
+
+    .line 17236159
+    sget-object v8, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236160
+    .line 17236161
+    const/4 v9, 0x6
+
+    .line 17236162
+    invoke-interface {v0, v2, v9, v8, v11}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236163
+    .line 17236164
+    .line 17236165
+    move-result-object v8
+
+    .line 17236166
+    move-object v11, v8
+
+    .line 17236167
+    check-cast v11, Ljava/lang/Integer;
+
+    .line 17236168
+    .line 17236169
+    or-int/lit8 v4, v4, 0x40
+
+    .line 17236170
+    .line 17236171
+    goto :goto_e6
+
+    .line 17236172
+    :pswitch_cc
+    const/4 v9, 0x6
+
+    .line 17236173
+    sget-object v8, Lp08/o0;->a:Lp08/o0;
+
+    .line 17236174
+    .line 17236175
+    const/4 v9, 0x5
+
+    .line 17236176
+    invoke-interface {v0, v2, v9, v8, v5}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236177
+    .line 17236178
+    .line 17236179
+    move-result-object v5
+
+    .line 17236180
+    check-cast v5, Ljava/lang/Integer;
+
+    .line 17236181
+    .line 17236182
+    or-int/lit8 v4, v4, 0x20
+
+    .line 17236183
+    .line 17236184
+    goto :goto_e6
+
+    .line 17236185
+    :pswitch_d9
+    const/4 v9, 0x5
+
+    .line 17236186
+    sget-object v8, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 17236187
+    .line 17236188
+    const/4 v9, 0x4
+
+    .line 17236189
+    invoke-interface {v0, v2, v9, v8, v10}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236190
+    .line 17236191
+    .line 17236192
+    move-result-object v8
+
+    .line 17236193
+    move-object v10, v8
+
+    .line 17236194
+    check-cast v10, Lqv0/wh;
+
+    .line 17236195
+    .line 17236196
+    or-int/lit8 v4, v4, 0x10
+
+    .line 17236197
+    .line 17236198
+    :goto_e6
+    const/4 v8, 0x3
+
+    .line 17236199
+    goto :goto_f9
+
+    .line 17236200
+    :pswitch_e8
+    const/4 v8, 0x3
+
+    .line 17236201
+    const/4 v9, 0x4
+
+    .line 17236202
+    aget-object v19, v3, v8
+
+    .line 17236203
+    .line 17236204
+    move-object/from16 v9, v19
+
+    .line 17236205
+    .line 17236206
+    check-cast v9, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236207
+    .line 17236208
+    invoke-interface {v0, v2, v8, v9, v15}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236209
+    .line 17236210
+    .line 17236211
+    move-result-object v9
+
+    .line 17236212
+    move-object v15, v9
+
+    .line 17236213
+    check-cast v15, Ljava/util/Map;
+
+    .line 17236214
+    .line 17236215
+    or-int/lit8 v4, v4, 0x8
+
+    .line 17236216
+    .line 17236217
+    :goto_f9
+    const/4 v9, 0x2
+
+    .line 17236218
+    goto :goto_10b
+
+    .line 17236219
+    :pswitch_fb
+    const/4 v8, 0x3
+
+    .line 17236220
+    const/4 v9, 0x2
+
+    .line 17236221
+    aget-object v18, v3, v9
+
+    .line 17236222
+    .line 17236223
+    move-object/from16 v8, v18
+
+    .line 17236224
+    .line 17236225
+    check-cast v8, Lkotlinx/serialization/DeserializationStrategy;
+
+    .line 17236226
+    .line 17236227
+    invoke-interface {v0, v2, v9, v8, v1}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236228
+    .line 17236229
+    .line 17236230
+    move-result-object v1
+
+    .line 17236231
+    check-cast v1, Ljava/util/Map;
+
+    .line 17236232
+    .line 17236233
+    or-int/lit8 v4, v4, 0x4
+
+    .line 17236234
+    .line 17236235
+    :goto_10b
+    const/4 v9, 0x1
+
+    .line 17236236
+    goto :goto_11a
+
+    .line 17236237
+    :pswitch_10d
+    const/4 v9, 0x2
+
+    .line 17236238
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236239
+    .line 17236240
+    const/4 v9, 0x1
+
+    .line 17236241
+    invoke-interface {v0, v2, v9, v8, v14}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236242
+    .line 17236243
+    .line 17236244
+    move-result-object v8
+
+    .line 17236245
+    move-object v14, v8
+
+    .line 17236246
+    check-cast v14, Ljava/lang/String;
+
+    .line 17236247
+    .line 17236248
+    or-int/lit8 v4, v4, 0x2
+
+    .line 17236249
+    .line 17236250
+    :goto_11a
+    move-object/from16 v8, v16
+
+    .line 17236251
+    .line 17236252
+    const/4 v12, 0x0
+
+    .line 17236253
+    goto :goto_12c
+
+    .line 17236254
+    :pswitch_11e
+    const/4 v9, 0x1
+
+    .line 17236255
+    sget-object v8, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 17236256
+    .line 17236257
+    move-object/from16 v9, v16
+
+    .line 17236258
+    .line 17236259
+    const/4 v12, 0x0
+
+    .line 17236260
+    invoke-interface {v0, v2, v12, v8, v9}, Lkotlinx/serialization/encoding/CompositeDecoder;->decodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236261
+    .line 17236262
+    .line 17236263
+    move-result-object v8
+
+    .line 17236264
+    check-cast v8, Ljava/lang/String;
+
+    .line 17236265
+    .line 17236266
+    or-int/lit8 v4, v4, 0x1
+
+    .line 17236267
+    .line 17236268
+    :goto_12c
+    move-object/from16 v16, v8
+
+    .line 17236269
+    .line 17236270
+    const/4 v8, 0x7
+
+    .line 17236271
+    const/16 v9, 0x9
+
+    .line 17236272
+    .line 17236273
+    const/16 v12, 0x8
+
+    .line 17236274
+    .line 17236275
+    goto/16 :goto_8c
+
+    .line 17236276
+    .line 17236277
+    :pswitch_135
+    move-object/from16 v9, v16
+
+    .line 17236278
+    .line 17236279
+    const/4 v12, 0x0
+
+    .line 17236280
+    const/4 v8, 0x7
+
+    .line 17236281
+    const/16 v9, 0x9
+
+    .line 17236282
+    .line 17236283
+    const/16 v12, 0x8
+
+    .line 17236284
+    .line 17236285
+    const/16 v21, 0x0
+
+    .line 17236286
+    .line 17236287
+    goto/16 :goto_8c
+
+    .line 17236288
+    .line 17236289
+    :cond_141
+    move-object/from16 v9, v16
+
+    .line 17236290
+    .line 17236291
+    move-object/from16 v16, v5
+
+    .line 17236292
+    .line 17236293
+    move-object/from16 v20, v6
+
+    .line 17236294
+    .line 17236295
+    move-object/from16 v19, v7
+
+    .line 17236296
+    .line 17236297
+    move-object/from16 v17, v11
+
+    .line 17236298
+    .line 17236299
+    move-object/from16 v18, v13
+
+    .line 17236300
+    .line 17236301
+    move-object v12, v14
+
+    .line 17236302
+    move-object v14, v15
+
+    .line 17236303
+    move-object v13, v1
+
+    .line 17236304
+    move-object v11, v9
+
+    .line 17236305
+    move-object v15, v10
+
+    .line 17236306
+    move v10, v4
+
+    .line 17236307
+    :goto_153
+    invoke-interface {v0, v2}, Lkotlinx/serialization/encoding/CompositeDecoder;->endStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 17236308
+    .line 17236309
+    .line 17236310
+    new-instance v0, Lqv0/th;
+
+    .line 17236311
+    .line 17236312
+    move-object v9, v0
+
+    .line 17236313
+    invoke-direct/range {v9 .. v20}, Lqv0/th;-><init>(ILjava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lqv0/wh;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236314
+    .line 17236315
+    .line 17236316
+    return-object v0
+
+    .line 17236317
+    nop
+
+    .line 17236318
+    :pswitch_data_15e
+    .packed-switch -0x1
+        :pswitch_135
+        :pswitch_11e
+        :pswitch_10d
+        :pswitch_fb
+        :pswitch_e8
+        :pswitch_d9
+        :pswitch_cc
+        :pswitch_be
+        :pswitch_b1
+        :pswitch_a6
+        :pswitch_9b
+    .end packed-switch
+.end method
+
+
+.method public final getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+[MOD-CHANGED]
+.method public final getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+    .registers 2
+
+    .prologue
+    .line 0
+    sget-object v0, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 2
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+    .registers 2
+
+    .prologue
+    .line 0
+    sget-object v0, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+
+.method public final serialize(Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+[MOD-CHANGED]
+.method public final serialize(Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+    .registers 10
+
+    .prologue
+    .line 34013184
+    check-cast p2, Lqv0/th;
+
+    .line 34013186
+    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 34013189
+    sget-object v0, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 34013191
+    invoke-interface {p1, v0}, Lkotlinx/serialization/encoding/Encoder;->beginStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)Lkotlinx/serialization/encoding/CompositeEncoder;
+
+    .line 34013194
+    move-result-object p1
+
+    .line 34013195
+    sget-object v1, Lqv0/th;->k:[Lkotlinx/serialization/KSerializer;
+
+    .line 34013197
+    const/4 v2, 0x0
+
+    .line 34013198
+    invoke-interface {p1, v0, v2}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013201
+    move-result v3
+
+    .line 34013202
+    const/4 v4, 0x1
+
+    .line 34013203
+    if-eqz v3, :cond_16
+
+    .line 34013205
+    goto :goto_1a
+
+    .line 34013206
+    :cond_16
+    iget-object v3, p2, Lqv0/th;->a:Ljava/lang/String;
+
+    .line 34013208
+    if-eqz v3, :cond_1c
+
+    .line 34013210
+    :goto_1a
+    const/4 v3, 0x1
+
+    .line 34013211
+    goto :goto_1d
+
+    .line 34013212
+    :cond_1c
+    const/4 v3, 0x0
+
+    .line 34013213
+    :goto_1d
+    if-eqz v3, :cond_26
+
+    .line 34013215
+    sget-object v3, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013217
+    iget-object v5, p2, Lqv0/th;->a:Ljava/lang/String;
+
+    .line 34013219
+    invoke-interface {p1, v0, v2, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013222
+    :cond_26
+    invoke-interface {p1, v0, v4}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013225
+    move-result v3
+
+    .line 34013226
+    if-eqz v3, :cond_2d
+
+    .line 34013228
+    goto :goto_31
+
+    .line 34013229
+    :cond_2d
+    iget-object v3, p2, Lqv0/th;->b:Ljava/lang/String;
+
+    .line 34013231
+    if-eqz v3, :cond_33
+
+    .line 34013233
+    :goto_31
+    const/4 v3, 0x1
+
+    .line 34013234
+    goto :goto_34
+
+    .line 34013235
+    :cond_33
+    const/4 v3, 0x0
+
+    .line 34013236
+    :goto_34
+    if-eqz v3, :cond_3d
+
+    .line 34013238
+    sget-object v3, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013240
+    iget-object v5, p2, Lqv0/th;->b:Ljava/lang/String;
+
+    .line 34013242
+    invoke-interface {p1, v0, v4, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013245
+    :cond_3d
+    const/4 v3, 0x2
+
+    .line 34013246
+    invoke-interface {p1, v0, v3}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013249
+    move-result v5
+
+    .line 34013250
+    if-eqz v5, :cond_45
+
+    .line 34013252
+    goto :goto_49
+
+    .line 34013253
+    :cond_45
+    iget-object v5, p2, Lqv0/th;->c:Ljava/util/Map;
+
+    .line 34013255
+    if-eqz v5, :cond_4b
+
+    .line 34013257
+    :goto_49
+    const/4 v5, 0x1
+
+    .line 34013258
+    goto :goto_4c
+
+    .line 34013259
+    :cond_4b
+    const/4 v5, 0x0
+
+    .line 34013260
+    :goto_4c
+    if-eqz v5, :cond_57
+
+    .line 34013262
+    aget-object v5, v1, v3
+
+    .line 34013264
+    check-cast v5, Lkotlinx/serialization/SerializationStrategy;
+
+    .line 34013266
+    iget-object v6, p2, Lqv0/th;->c:Ljava/util/Map;
+
+    .line 34013268
+    invoke-interface {p1, v0, v3, v5, v6}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013271
+    :cond_57
+    const/4 v3, 0x3
+
+    .line 34013272
+    invoke-interface {p1, v0, v3}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013275
+    move-result v5
+
+    .line 34013276
+    if-eqz v5, :cond_5f
+
+    .line 34013278
+    goto :goto_63
+
+    .line 34013279
+    :cond_5f
+    iget-object v5, p2, Lqv0/th;->d:Ljava/util/Map;
+
+    .line 34013281
+    if-eqz v5, :cond_65
+
+    .line 34013283
+    :goto_63
+    const/4 v5, 0x1
+
+    .line 34013284
+    goto :goto_66
+
+    .line 34013285
+    :cond_65
+    const/4 v5, 0x0
+
+    .line 34013286
+    :goto_66
+    if-eqz v5, :cond_71
+
+    .line 34013288
+    aget-object v1, v1, v3
+
+    .line 34013290
+    check-cast v1, Lkotlinx/serialization/SerializationStrategy;
+
+    .line 34013292
+    iget-object v5, p2, Lqv0/th;->d:Ljava/util/Map;
+
+    .line 34013294
+    invoke-interface {p1, v0, v3, v1, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013297
+    :cond_71
+    const/4 v1, 0x4
+
+    .line 34013298
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013301
+    move-result v3
+
+    .line 34013302
+    if-eqz v3, :cond_79
+
+    .line 34013304
+    goto :goto_7d
+
+    .line 34013305
+    :cond_79
+    iget-object v3, p2, Lqv0/th;->e:Lqv0/wh;
+
+    .line 34013307
+    if-eqz v3, :cond_7f
+
+    .line 34013309
+    :goto_7d
+    const/4 v3, 0x1
+
+    .line 34013310
+    goto :goto_80
+
+    .line 34013311
+    :cond_7f
+    const/4 v3, 0x0
+
+    .line 34013312
+    :goto_80
+    if-eqz v3, :cond_89
+
+    .line 34013314
+    sget-object v3, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 34013316
+    iget-object v5, p2, Lqv0/th;->e:Lqv0/wh;
+
+    .line 34013318
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013321
+    :cond_89
+    const/4 v1, 0x5
+
+    .line 34013322
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013325
+    move-result v3
+
+    .line 34013326
+    if-eqz v3, :cond_91
+
+    .line 34013328
+    goto :goto_95
+
+    .line 34013329
+    :cond_91
+    iget-object v3, p2, Lqv0/th;->f:Ljava/lang/Integer;
+
+    .line 34013331
+    if-eqz v3, :cond_97
+
+    .line 34013333
+    :goto_95
+    const/4 v3, 0x1
+
+    .line 34013334
+    goto :goto_98
+
+    .line 34013335
+    :cond_97
+    const/4 v3, 0x0
+
+    .line 34013336
+    :goto_98
+    if-eqz v3, :cond_a1
+
+    .line 34013338
+    sget-object v3, Lp08/o0;->a:Lp08/o0;
+
+    .line 34013340
+    iget-object v5, p2, Lqv0/th;->f:Ljava/lang/Integer;
+
+    .line 34013342
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013345
+    :cond_a1
+    const/4 v1, 0x6
+
+    .line 34013346
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013349
+    move-result v3
+
+    .line 34013350
+    if-eqz v3, :cond_a9
+
+    .line 34013352
+    goto :goto_ad
+
+    .line 34013353
+    :cond_a9
+    iget-object v3, p2, Lqv0/th;->g:Ljava/lang/Integer;
+
+    .line 34013355
+    if-eqz v3, :cond_af
+
+    .line 34013357
+    :goto_ad
+    const/4 v3, 0x1
+
+    .line 34013358
+    goto :goto_b0
+
+    .line 34013359
+    :cond_af
+    const/4 v3, 0x0
+
+    .line 34013360
+    :goto_b0
+    if-eqz v3, :cond_b9
+
+    .line 34013362
+    sget-object v3, Lp08/o0;->a:Lp08/o0;
+
+    .line 34013364
+    iget-object v5, p2, Lqv0/th;->g:Ljava/lang/Integer;
+
+    .line 34013366
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013369
+    :cond_b9
+    const/4 v1, 0x7
+
+    .line 34013370
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013373
+    move-result v3
+
+    .line 34013374
+    if-eqz v3, :cond_c1
+
+    .line 34013376
+    goto :goto_c5
+
+    .line 34013377
+    :cond_c1
+    iget-object v3, p2, Lqv0/th;->h:Ljava/lang/Integer;
+
+    .line 34013379
+    if-eqz v3, :cond_c7
+
+    .line 34013381
+    :goto_c5
+    const/4 v3, 0x1
+
+    .line 34013382
+    goto :goto_c8
+
+    .line 34013383
+    :cond_c7
+    const/4 v3, 0x0
+
+    .line 34013384
+    :goto_c8
+    if-eqz v3, :cond_d1
+
+    .line 34013386
+    sget-object v3, Lp08/o0;->a:Lp08/o0;
+
+    .line 34013388
+    iget-object v5, p2, Lqv0/th;->h:Ljava/lang/Integer;
+
+    .line 34013390
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013393
+    :cond_d1
+    const/16 v1, 0x8
+
+    .line 34013395
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013398
+    move-result v3
+
+    .line 34013399
+    if-eqz v3, :cond_da
+
+    .line 34013401
+    goto :goto_de
+
+    .line 34013402
+    :cond_da
+    iget-object v3, p2, Lqv0/th;->i:Ljava/lang/String;
+
+    .line 34013404
+    if-eqz v3, :cond_e0
+
+    .line 34013406
+    :goto_de
+    const/4 v3, 0x1
+
+    .line 34013407
+    goto :goto_e1
+
+    .line 34013408
+    :cond_e0
+    const/4 v3, 0x0
+
+    .line 34013409
+    :goto_e1
+    if-eqz v3, :cond_ea
+
+    .line 34013411
+    sget-object v3, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013413
+    iget-object v5, p2, Lqv0/th;->i:Ljava/lang/String;
+
+    .line 34013415
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013418
+    :cond_ea
+    const/16 v1, 0x9
+
+    .line 34013420
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013423
+    move-result v3
+
+    .line 34013424
+    if-eqz v3, :cond_f3
+
+    .line 34013426
+    goto :goto_f7
+
+    .line 34013427
+    :cond_f3
+    iget-object v3, p2, Lqv0/th;->j:Ljava/lang/String;
+
+    .line 34013429
+    if-eqz v3, :cond_f8
+
+    .line 34013431
+    :goto_f7
+    const/4 v2, 0x1
+
+    .line 34013432
+    :cond_f8
+    if-eqz v2, :cond_101
+
+    .line 34013434
+    sget-object v2, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013436
+    iget-object p2, p2, Lqv0/th;->j:Ljava/lang/String;
+
+    .line 34013438
+    invoke-interface {p1, v0, v1, v2, p2}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013441
+    :cond_101
+    invoke-interface {p1, v0}, Lkotlinx/serialization/encoding/CompositeEncoder;->endStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 34013444
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public final serialize(Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+    .registers 10
+
+    .prologue
+    .line 34013184
+    check-cast p2, Lqv0/th;
+
+    .line 34013185
+    .line 34013186
+    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 34013187
+    .line 34013188
+    .line 34013189
+    sget-object v0, Lqv0/th$a;->descriptor:Lkotlinx/serialization/internal/PluginGeneratedSerialDescriptor;
+
+    .line 34013190
+    .line 34013191
+    invoke-interface {p1, v0}, Lkotlinx/serialization/encoding/Encoder;->beginStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)Lkotlinx/serialization/encoding/CompositeEncoder;
+
+    .line 34013192
+    .line 34013193
+    .line 34013194
+    move-result-object p1
+
+    .line 34013195
+    sget-object v1, Lqv0/th;->k:[Lkotlinx/serialization/KSerializer;
+
+    .line 34013196
+    .line 34013197
+    const/4 v2, 0x0
+
+    .line 34013198
+    invoke-interface {p1, v0, v2}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013199
+    .line 34013200
+    .line 34013201
+    move-result v3
+
+    .line 34013202
+    const/4 v4, 0x1
+
+    .line 34013203
+    if-eqz v3, :cond_16
+
+    .line 34013204
+    .line 34013205
+    goto :goto_1a
+
+    .line 34013206
+    :cond_16
+    iget-object v3, p2, Lqv0/th;->a:Ljava/lang/String;
+
+    .line 34013207
+    .line 34013208
+    if-eqz v3, :cond_1c
+
+    .line 34013209
+    .line 34013210
+    :goto_1a
+    const/4 v3, 0x1
+
+    .line 34013211
+    goto :goto_1d
+
+    .line 34013212
+    :cond_1c
+    const/4 v3, 0x0
+
+    .line 34013213
+    :goto_1d
+    if-eqz v3, :cond_26
+
+    .line 34013214
+    .line 34013215
+    sget-object v3, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013216
+    .line 34013217
+    iget-object v5, p2, Lqv0/th;->a:Ljava/lang/String;
+
+    .line 34013218
+    .line 34013219
+    invoke-interface {p1, v0, v2, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013220
+    .line 34013221
+    .line 34013222
+    :cond_26
+    invoke-interface {p1, v0, v4}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013223
+    .line 34013224
+    .line 34013225
+    move-result v3
+
+    .line 34013226
+    if-eqz v3, :cond_2d
+
+    .line 34013227
+    .line 34013228
+    goto :goto_31
+
+    .line 34013229
+    :cond_2d
+    iget-object v3, p2, Lqv0/th;->b:Ljava/lang/String;
+
+    .line 34013230
+    .line 34013231
+    if-eqz v3, :cond_33
+
+    .line 34013232
+    .line 34013233
+    :goto_31
+    const/4 v3, 0x1
+
+    .line 34013234
+    goto :goto_34
+
+    .line 34013235
+    :cond_33
+    const/4 v3, 0x0
+
+    .line 34013236
+    :goto_34
+    if-eqz v3, :cond_3d
+
+    .line 34013237
+    .line 34013238
+    sget-object v3, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013239
+    .line 34013240
+    iget-object v5, p2, Lqv0/th;->b:Ljava/lang/String;
+
+    .line 34013241
+    .line 34013242
+    invoke-interface {p1, v0, v4, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013243
+    .line 34013244
+    .line 34013245
+    :cond_3d
+    const/4 v3, 0x2
+
+    .line 34013246
+    invoke-interface {p1, v0, v3}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013247
+    .line 34013248
+    .line 34013249
+    move-result v5
+
+    .line 34013250
+    if-eqz v5, :cond_45
+
+    .line 34013251
+    .line 34013252
+    goto :goto_49
+
+    .line 34013253
+    :cond_45
+    iget-object v5, p2, Lqv0/th;->c:Ljava/util/Map;
+
+    .line 34013254
+    .line 34013255
+    if-eqz v5, :cond_4b
+
+    .line 34013256
+    .line 34013257
+    :goto_49
+    const/4 v5, 0x1
+
+    .line 34013258
+    goto :goto_4c
+
+    .line 34013259
+    :cond_4b
+    const/4 v5, 0x0
+
+    .line 34013260
+    :goto_4c
+    if-eqz v5, :cond_57
+
+    .line 34013261
+    .line 34013262
+    aget-object v5, v1, v3
+
+    .line 34013263
+    .line 34013264
+    check-cast v5, Lkotlinx/serialization/SerializationStrategy;
+
+    .line 34013265
+    .line 34013266
+    iget-object v6, p2, Lqv0/th;->c:Ljava/util/Map;
+
+    .line 34013267
+    .line 34013268
+    invoke-interface {p1, v0, v3, v5, v6}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013269
+    .line 34013270
+    .line 34013271
+    :cond_57
+    const/4 v3, 0x3
+
+    .line 34013272
+    invoke-interface {p1, v0, v3}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013273
+    .line 34013274
+    .line 34013275
+    move-result v5
+
+    .line 34013276
+    if-eqz v5, :cond_5f
+
+    .line 34013277
+    .line 34013278
+    goto :goto_63
+
+    .line 34013279
+    :cond_5f
+    iget-object v5, p2, Lqv0/th;->d:Ljava/util/Map;
+
+    .line 34013280
+    .line 34013281
+    if-eqz v5, :cond_65
+
+    .line 34013282
+    .line 34013283
+    :goto_63
+    const/4 v5, 0x1
+
+    .line 34013284
+    goto :goto_66
+
+    .line 34013285
+    :cond_65
+    const/4 v5, 0x0
+
+    .line 34013286
+    :goto_66
+    if-eqz v5, :cond_71
+
+    .line 34013287
+    .line 34013288
+    aget-object v1, v1, v3
+
+    .line 34013289
+    .line 34013290
+    check-cast v1, Lkotlinx/serialization/SerializationStrategy;
+
+    .line 34013291
+    .line 34013292
+    iget-object v5, p2, Lqv0/th;->d:Ljava/util/Map;
+
+    .line 34013293
+    .line 34013294
+    invoke-interface {p1, v0, v3, v1, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013295
+    .line 34013296
+    .line 34013297
+    :cond_71
+    const/4 v1, 0x4
+
+    .line 34013298
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013299
+    .line 34013300
+    .line 34013301
+    move-result v3
+
+    .line 34013302
+    if-eqz v3, :cond_79
+
+    .line 34013303
+    .line 34013304
+    goto :goto_7d
+
+    .line 34013305
+    :cond_79
+    iget-object v3, p2, Lqv0/th;->e:Lqv0/wh;
+
+    .line 34013306
+    .line 34013307
+    if-eqz v3, :cond_7f
+
+    .line 34013308
+    .line 34013309
+    :goto_7d
+    const/4 v3, 0x1
+
+    .line 34013310
+    goto :goto_80
+
+    .line 34013311
+    :cond_7f
+    const/4 v3, 0x0
+
+    .line 34013312
+    :goto_80
+    if-eqz v3, :cond_89
+
+    .line 34013313
+    .line 34013314
+    sget-object v3, Lqv0/wh$a;->a:Lqv0/wh$a;
+
+    .line 34013315
+    .line 34013316
+    iget-object v5, p2, Lqv0/th;->e:Lqv0/wh;
+
+    .line 34013317
+    .line 34013318
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013319
+    .line 34013320
+    .line 34013321
+    :cond_89
+    const/4 v1, 0x5
+
+    .line 34013322
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013323
+    .line 34013324
+    .line 34013325
+    move-result v3
+
+    .line 34013326
+    if-eqz v3, :cond_91
+
+    .line 34013327
+    .line 34013328
+    goto :goto_95
+
+    .line 34013329
+    :cond_91
+    iget-object v3, p2, Lqv0/th;->f:Ljava/lang/Integer;
+
+    .line 34013330
+    .line 34013331
+    if-eqz v3, :cond_97
+
+    .line 34013332
+    .line 34013333
+    :goto_95
+    const/4 v3, 0x1
+
+    .line 34013334
+    goto :goto_98
+
+    .line 34013335
+    :cond_97
+    const/4 v3, 0x0
+
+    .line 34013336
+    :goto_98
+    if-eqz v3, :cond_a1
+
+    .line 34013337
+    .line 34013338
+    sget-object v3, Lp08/o0;->a:Lp08/o0;
+
+    .line 34013339
+    .line 34013340
+    iget-object v5, p2, Lqv0/th;->f:Ljava/lang/Integer;
+
+    .line 34013341
+    .line 34013342
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013343
+    .line 34013344
+    .line 34013345
+    :cond_a1
+    const/4 v1, 0x6
+
+    .line 34013346
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013347
+    .line 34013348
+    .line 34013349
+    move-result v3
+
+    .line 34013350
+    if-eqz v3, :cond_a9
+
+    .line 34013351
+    .line 34013352
+    goto :goto_ad
+
+    .line 34013353
+    :cond_a9
+    iget-object v3, p2, Lqv0/th;->g:Ljava/lang/Integer;
+
+    .line 34013354
+    .line 34013355
+    if-eqz v3, :cond_af
+
+    .line 34013356
+    .line 34013357
+    :goto_ad
+    const/4 v3, 0x1
+
+    .line 34013358
+    goto :goto_b0
+
+    .line 34013359
+    :cond_af
+    const/4 v3, 0x0
+
+    .line 34013360
+    :goto_b0
+    if-eqz v3, :cond_b9
+
+    .line 34013361
+    .line 34013362
+    sget-object v3, Lp08/o0;->a:Lp08/o0;
+
+    .line 34013363
+    .line 34013364
+    iget-object v5, p2, Lqv0/th;->g:Ljava/lang/Integer;
+
+    .line 34013365
+    .line 34013366
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013367
+    .line 34013368
+    .line 34013369
+    :cond_b9
+    const/4 v1, 0x7
+
+    .line 34013370
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013371
+    .line 34013372
+    .line 34013373
+    move-result v3
+
+    .line 34013374
+    if-eqz v3, :cond_c1
+
+    .line 34013375
+    .line 34013376
+    goto :goto_c5
+
+    .line 34013377
+    :cond_c1
+    iget-object v3, p2, Lqv0/th;->h:Ljava/lang/Integer;
+
+    .line 34013378
+    .line 34013379
+    if-eqz v3, :cond_c7
+
+    .line 34013380
+    .line 34013381
+    :goto_c5
+    const/4 v3, 0x1
+
+    .line 34013382
+    goto :goto_c8
+
+    .line 34013383
+    :cond_c7
+    const/4 v3, 0x0
+
+    .line 34013384
+    :goto_c8
+    if-eqz v3, :cond_d1
+
+    .line 34013385
+    .line 34013386
+    sget-object v3, Lp08/o0;->a:Lp08/o0;
+
+    .line 34013387
+    .line 34013388
+    iget-object v5, p2, Lqv0/th;->h:Ljava/lang/Integer;
+
+    .line 34013389
+    .line 34013390
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013391
+    .line 34013392
+    .line 34013393
+    :cond_d1
+    const/16 v1, 0x8
+
+    .line 34013394
+    .line 34013395
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013396
+    .line 34013397
+    .line 34013398
+    move-result v3
+
+    .line 34013399
+    if-eqz v3, :cond_da
+
+    .line 34013400
+    .line 34013401
+    goto :goto_de
+
+    .line 34013402
+    :cond_da
+    iget-object v3, p2, Lqv0/th;->i:Ljava/lang/String;
+
+    .line 34013403
+    .line 34013404
+    if-eqz v3, :cond_e0
+
+    .line 34013405
+    .line 34013406
+    :goto_de
+    const/4 v3, 0x1
+
+    .line 34013407
+    goto :goto_e1
+
+    .line 34013408
+    :cond_e0
+    const/4 v3, 0x0
+
+    .line 34013409
+    :goto_e1
+    if-eqz v3, :cond_ea
+
+    .line 34013410
+    .line 34013411
+    sget-object v3, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013412
+    .line 34013413
+    iget-object v5, p2, Lqv0/th;->i:Ljava/lang/String;
+
+    .line 34013414
+    .line 34013415
+    invoke-interface {p1, v0, v1, v3, v5}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013416
+    .line 34013417
+    .line 34013418
+    :cond_ea
+    const/16 v1, 0x9
+
+    .line 34013419
+    .line 34013420
+    invoke-interface {p1, v0, v1}, Lkotlinx/serialization/encoding/CompositeEncoder;->shouldEncodeElementDefault(Lkotlinx/serialization/descriptors/SerialDescriptor;I)Z
+
+    .line 34013421
+    .line 34013422
+    .line 34013423
+    move-result v3
+
+    .line 34013424
+    if-eqz v3, :cond_f3
+
+    .line 34013425
+    .line 34013426
+    goto :goto_f7
+
+    .line 34013427
+    :cond_f3
+    iget-object v3, p2, Lqv0/th;->j:Ljava/lang/String;
+
+    .line 34013428
+    .line 34013429
+    if-eqz v3, :cond_f8
+
+    .line 34013430
+    .line 34013431
+    :goto_f7
+    const/4 v2, 0x1
+
+    .line 34013432
+    :cond_f8
+    if-eqz v2, :cond_101
+
+    .line 34013433
+    .line 34013434
+    sget-object v2, Lkotlinx/serialization/internal/StringSerializer;->INSTANCE:Lkotlinx/serialization/internal/StringSerializer;
+
+    .line 34013435
+    .line 34013436
+    iget-object p2, p2, Lqv0/th;->j:Ljava/lang/String;
+
+    .line 34013437
+    .line 34013438
+    invoke-interface {p1, v0, v1, v2, p2}, Lkotlinx/serialization/encoding/CompositeEncoder;->encodeNullableSerializableElement(Lkotlinx/serialization/descriptors/SerialDescriptor;ILkotlinx/serialization/SerializationStrategy;Ljava/lang/Object;)V
+
+    .line 34013439
+    .line 34013440
+    .line 34013441
+    :cond_101
+    invoke-interface {p1, v0}, Lkotlinx/serialization/encoding/CompositeEncoder;->endStructure(Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 34013442
+    .line 34013443
+    .line 34013444
+    return-void
+.end method
+
+
+.method public final typeParametersSerializers()[Lkotlinx/serialization/KSerializer;
+[MOD-CHANGED]
+.method public final typeParametersSerializers()[Lkotlinx/serialization/KSerializer;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()[",
+            "Lkotlinx/serialization/KSerializer<",
+            "*>;"
+        }
+    .end annotation
+
+    .prologue
+    .line 65536
+    invoke-static {p0}, Lkotlinx/serialization/internal/GeneratedSerializer$DefaultImpls;->typeParametersSerializers(Lkotlinx/serialization/internal/GeneratedSerializer;)[Lkotlinx/serialization/KSerializer;
+
+    .line 65539
+    move-result-object v0
+
+    .line 65540
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final typeParametersSerializers()[Lkotlinx/serialization/KSerializer;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()[",
+            "Lkotlinx/serialization/KSerializer<",
+            "*>;"
+        }
+    .end annotation
+
+    .prologue
+    .line 65536
+    invoke-static {p0}, Lkotlinx/serialization/internal/GeneratedSerializer$DefaultImpls;->typeParametersSerializers(Lkotlinx/serialization/internal/GeneratedSerializer;)[Lkotlinx/serialization/KSerializer;
+
+    .line 65537
+    .line 65538
+    .line 65539
+    move-result-object v0
+
+    .line 65540
+    return-object v0
+.end method
+
+

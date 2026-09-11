@@ -1,0 +1,29 @@
+总解压体积: 430.7 MB
+外层 dex                              208.2 MB   48.3%
+assets/liborgapk.so(官方原包)           122.4 MB   28.4%
+lib/(so)                             60.4 MB   14.0%
+res/                                 28.0 MB    6.5%
+assets(其他)                            7.6 MB    1.8%
+其他(root)                              4.1 MB    1.0%
+
+== 大文件 top20 ==
+  122.4 MB  assets/liborgapk.so
+   12.6 MB  classes5.dex
+   12.4 MB  classes17.dex
+   11.6 MB  classes2.dex
+   11.1 MB  classes21.dex
+   10.7 MB  classes8.dex
+   10.2 MB  classes14.dex
+    9.9 MB  classes6.dex
+    9.6 MB  classes20.dex
+    9.6 MB  classes4.dex
+    9.5 MB  classes18.dex
+    9.4 MB  classes11.dex
+    9.4 MB  classes.dex
+    9.2 MB  classes19.dex
+    9.2 MB  classes3.dex
+    9.1 MB  classes12.dex
+    9.0 MB  classes13.dex
+    8.6 MB  classes15.dex
+    8.6 MB  classes16.dex
+    8.1 MB  classes10.dex

@@ -1,0 +1,109 @@
+.class Lcom/lynx/tasm/ui/image/FlattenUIImage$ImageHelperCallback;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/lynx/tasm/ui/image/helper/BigImageDrawingHelper$ImageLoaderCallback;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/lynx/tasm/ui/image/FlattenUIImage;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "ImageHelperCallback"
+.end annotation
+
+
+# instance fields
+.field final synthetic this$0:Lcom/lynx/tasm/ui/image/FlattenUIImage;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa17cd
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/lynx/tasm/ui/image/FlattenUIImage;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lcom/lynx/tasm/ui/image/FlattenUIImage$ImageHelperCallback;->this$0:Lcom/lynx/tasm/ui/image/FlattenUIImage;
+
+    .line 16842753
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842755
+    .line 16842756
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public onImageLoadFailed(Ljava/lang/String;)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public onImageLoadSuccess(Lcom/lynx/tasm/ui/image/helper/BigImageDrawingHelper$Tile;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+
+    .line 16973825
+    .line 16973826
+    .line 16973827
+    move-result-object p1
+
+    .line 16973828
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 16973829
+    .line 16973830
+    .line 16973831
+    move-result-object v0
+
+    .line 16973832
+    if-ne p1, v0, :cond_10
+
+    .line 16973833
+    .line 16973834
+    iget-object p1, p0, Lcom/lynx/tasm/ui/image/FlattenUIImage$ImageHelperCallback;->this$0:Lcom/lynx/tasm/ui/image/FlattenUIImage;
+
+    .line 16973835
+    .line 16973836
+    invoke-virtual {p1}, Lcom/lynx/tasm/behavior/ui/LynxFlattenUI;->invalidate()V
+
+    .line 16973837
+    .line 16973838
+    .line 16973839
+    goto :goto_15
+
+    .line 16973840
+    :cond_10
+    iget-object p1, p0, Lcom/lynx/tasm/ui/image/FlattenUIImage$ImageHelperCallback;->this$0:Lcom/lynx/tasm/ui/image/FlattenUIImage;
+
+    .line 16973841
+    .line 16973842
+    invoke-virtual {p1}, Lcom/lynx/tasm/ui/image/FlattenUIImage;->postInvalidate()V
+
+    .line 16973843
+    .line 16973844
+    .line 16973845
+    :goto_15
+    return-void
+.end method

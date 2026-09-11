@@ -1,0 +1,63 @@
+.class public final synthetic Lym5/c;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# instance fields
+.field public final synthetic a:Lym5/n;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lym5/n;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lym5/c;->a:Lym5/n;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke()Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lym5/c;->a:Lym5/n;
+
+    .line 196610
+    iget-object v1, v0, Lym5/n;->h:Landroidx/compose/runtime/MutableState;
+
+    .line 196612
+    invoke-interface {v1}, Landroidx/compose/runtime/MutableState;->getValue()Ljava/lang/Object;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    check-cast v1, Ljava/lang/Boolean;
+
+    .line 196618
+    invoke-virtual {v1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 196621
+    move-result v1
+
+    .line 196622
+    if-nez v1, :cond_13
+
+    .line 196624
+    invoke-virtual {v0}, Lym5/n;->e()V
+
+    .line 196627
+    :cond_13
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 196629
+    return-object v0
+.end method

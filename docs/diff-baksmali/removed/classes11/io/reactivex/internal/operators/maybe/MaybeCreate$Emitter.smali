@@ -1,0 +1,557 @@
+.class final Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;
+.super Ljava/util/concurrent/atomic/AtomicReference;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/MaybeEmitter;
+.implements Lio/reactivex/disposables/Disposable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/reactivex/internal/operators/maybe/MaybeCreate;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Emitter"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/util/concurrent/atomic/AtomicReference<",
+        "Lio/reactivex/disposables/Disposable;",
+        ">;",
+        "Lio/reactivex/MaybeEmitter<",
+        "TT;>;",
+        "Lio/reactivex/disposables/Disposable;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final serialVersionUID:J = -0x223dd198233781a4L
+
+
+# instance fields
+.field final downstream:Lio/reactivex/MaybeObserver;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lio/reactivex/MaybeObserver<",
+            "-TT;>;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa4dc6
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lio/reactivex/MaybeObserver;)V
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lio/reactivex/MaybeObserver<",
+            "-TT;>;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    invoke-direct {p0}, Ljava/util/concurrent/atomic/AtomicReference;-><init>()V
+
+    .line 16842753
+    .line 16842754
+    .line 16842755
+    iput-object p1, p0, Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;->downstream:Lio/reactivex/MaybeObserver;
+
+    .line 16842756
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final dispose()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-static {p0}, Lio/reactivex/internal/disposables/DisposableHelper;->dispose(Ljava/util/concurrent/atomic/AtomicReference;)Z
+
+    .line 1
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method public final isDisposed()Z
+    .registers 2
+
+    .prologue
+    .line 131072
+    invoke-virtual {p0}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 131073
+    .line 131074
+    .line 131075
+    move-result-object v0
+
+    .line 131076
+    check-cast v0, Lio/reactivex/disposables/Disposable;
+
+    .line 131077
+    .line 131078
+    invoke-static {v0}, Lio/reactivex/internal/disposables/DisposableHelper;->isDisposed(Lio/reactivex/disposables/Disposable;)Z
+
+    .line 131079
+    .line 131080
+    .line 131081
+    move-result v0
+
+    .line 131082
+    return v0
+.end method
+
+.method public final onComplete()V
+    .registers 3
+
+    .prologue
+    .line 262144
+    invoke-virtual {p0}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 262145
+    .line 262146
+    .line 262147
+    move-result-object v0
+
+    .line 262148
+    sget-object v1, Lio/reactivex/internal/disposables/DisposableHelper;->DISPOSED:Lio/reactivex/internal/disposables/DisposableHelper;
+
+    .line 262149
+    .line 262150
+    if-eq v0, v1, :cond_22
+
+    .line 262151
+    .line 262152
+    invoke-virtual {p0, v1}, Ljava/util/concurrent/atomic/AtomicReference;->getAndSet(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 262153
+    .line 262154
+    .line 262155
+    move-result-object v0
+
+    .line 262156
+    check-cast v0, Lio/reactivex/disposables/Disposable;
+
+    .line 262157
+    .line 262158
+    if-eq v0, v1, :cond_22
+
+    .line 262159
+    .line 262160
+    :try_start_10
+    iget-object v1, p0, Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;->downstream:Lio/reactivex/MaybeObserver;
+
+    .line 262161
+    .line 262162
+    invoke-interface {v1}, Lio/reactivex/MaybeObserver;->onComplete()V
+    :try_end_15
+    .catchall {:try_start_10 .. :try_end_15} :catchall_1b
+
+    .line 262163
+    .line 262164
+    .line 262165
+    if-eqz v0, :cond_22
+
+    .line 262166
+    .line 262167
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->dispose()V
+
+    .line 262168
+    .line 262169
+    .line 262170
+    goto :goto_22
+
+    .line 262171
+    :catchall_1b
+    move-exception v1
+
+    .line 262172
+    if-eqz v0, :cond_21
+
+    .line 262173
+    .line 262174
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->dispose()V
+
+    .line 262175
+    .line 262176
+    .line 262177
+    :cond_21
+    throw v1
+
+    .line 262178
+    :cond_22
+    :goto_22
+    return-void
+.end method
+
+.method public final onError(Ljava/lang/Throwable;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    invoke-virtual {p0, p1}, Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;->tryOnError(Ljava/lang/Throwable;)Z
+
+    .line 16908289
+    .line 16908290
+    .line 16908291
+    move-result v0
+
+    .line 16908292
+    if-nez v0, :cond_9
+
+    .line 16908293
+    .line 16908294
+    invoke-static {p1}, Lio/reactivex/plugins/RxJavaPlugins;->onError(Ljava/lang/Throwable;)V
+
+    .line 16908295
+    .line 16908296
+    .line 16908297
+    :cond_9
+    return-void
+.end method
+
+.method public final onSuccess(Ljava/lang/Object;)V
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 17039360
+    invoke-virtual {p0}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 17039361
+    .line 17039362
+    .line 17039363
+    move-result-object v0
+
+    .line 17039364
+    sget-object v1, Lio/reactivex/internal/disposables/DisposableHelper;->DISPOSED:Lio/reactivex/internal/disposables/DisposableHelper;
+
+    .line 17039365
+    .line 17039366
+    if-eq v0, v1, :cond_31
+
+    .line 17039367
+    .line 17039368
+    invoke-virtual {p0, v1}, Ljava/util/concurrent/atomic/AtomicReference;->getAndSet(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17039369
+    .line 17039370
+    .line 17039371
+    move-result-object v0
+
+    .line 17039372
+    check-cast v0, Lio/reactivex/disposables/Disposable;
+
+    .line 17039373
+    .line 17039374
+    if-eq v0, v1, :cond_31
+
+    .line 17039375
+    .line 17039376
+    if-nez p1, :cond_1f
+
+    .line 17039377
+    .line 17039378
+    :try_start_12
+    iget-object p1, p0, Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;->downstream:Lio/reactivex/MaybeObserver;
+
+    .line 17039379
+    .line 17039380
+    new-instance v1, Ljava/lang/NullPointerException;
+
+    .line 17039381
+    .line 17039382
+    const-string v2, "onSuccess called with null. Null values are generally not allowed in 2.x operators and sources."
+
+    .line 17039383
+    .line 17039384
+    invoke-direct {v1, v2}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 17039385
+    .line 17039386
+    .line 17039387
+    invoke-interface {p1, v1}, Lio/reactivex/MaybeObserver;->onError(Ljava/lang/Throwable;)V
+
+    .line 17039388
+    .line 17039389
+    .line 17039390
+    goto :goto_24
+
+    .line 17039391
+    :cond_1f
+    iget-object v1, p0, Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;->downstream:Lio/reactivex/MaybeObserver;
+
+    .line 17039392
+    .line 17039393
+    invoke-interface {v1, p1}, Lio/reactivex/MaybeObserver;->onSuccess(Ljava/lang/Object;)V
+    :try_end_24
+    .catchall {:try_start_12 .. :try_end_24} :catchall_2a
+
+    .line 17039394
+    .line 17039395
+    .line 17039396
+    :goto_24
+    if-eqz v0, :cond_31
+
+    .line 17039397
+    .line 17039398
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->dispose()V
+
+    .line 17039399
+    .line 17039400
+    .line 17039401
+    goto :goto_31
+
+    .line 17039402
+    :catchall_2a
+    move-exception p1
+
+    .line 17039403
+    if-eqz v0, :cond_30
+
+    .line 17039404
+    .line 17039405
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->dispose()V
+
+    .line 17039406
+    .line 17039407
+    .line 17039408
+    :cond_30
+    throw p1
+
+    .line 17039409
+    :cond_31
+    :goto_31
+    return-void
+.end method
+
+.method public final setCancellable(Lio/reactivex/functions/Cancellable;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    new-instance v0, Lio/reactivex/internal/disposables/CancellableDisposable;
+
+    .line 16908289
+    .line 16908290
+    invoke-direct {v0, p1}, Lio/reactivex/internal/disposables/CancellableDisposable;-><init>(Lio/reactivex/functions/Cancellable;)V
+
+    .line 16908291
+    .line 16908292
+    .line 16908293
+    invoke-static {p0, v0}, Lio/reactivex/internal/disposables/DisposableHelper;->set(Ljava/util/concurrent/atomic/AtomicReference;Lio/reactivex/disposables/Disposable;)Z
+
+    .line 16908294
+    .line 16908295
+    .line 16908296
+    return-void
+.end method
+
+.method public final setDisposable(Lio/reactivex/disposables/Disposable;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    invoke-static {p0, p1}, Lio/reactivex/internal/disposables/DisposableHelper;->set(Ljava/util/concurrent/atomic/AtomicReference;Lio/reactivex/disposables/Disposable;)Z
+
+    .line 16777217
+    .line 16777218
+    .line 16777219
+    return-void
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .registers 4
+
+    .prologue
+    .line 196608
+    const/4 v0, 0x2
+
+    .line 196609
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 196610
+    .line 196611
+    const-class v1, Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;
+
+    .line 196612
+    .line 196613
+    invoke-virtual {v1}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    .line 196614
+    .line 196615
+    .line 196616
+    move-result-object v1
+
+    .line 196617
+    const/4 v2, 0x0
+
+    .line 196618
+    aput-object v1, v0, v2
+
+    .line 196619
+    .line 196620
+    const/4 v1, 0x1
+
+    .line 196621
+    invoke-super {p0}, Ljava/util/concurrent/atomic/AtomicReference;->toString()Ljava/lang/String;
+
+    .line 196622
+    .line 196623
+    .line 196624
+    move-result-object v2
+
+    .line 196625
+    aput-object v2, v0, v1
+
+    .line 196626
+    .line 196627
+    const-string v1, "%s{%s}"
+
+    .line 196628
+    .line 196629
+    invoke-static {v1, v0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 196630
+    .line 196631
+    .line 196632
+    move-result-object v0
+
+    .line 196633
+    return-object v0
+.end method
+
+.method public final tryOnError(Ljava/lang/Throwable;)Z
+    .registers 4
+
+    .prologue
+    .line 17039360
+    if-nez p1, :cond_9
+
+    .line 17039361
+    .line 17039362
+    new-instance p1, Ljava/lang/NullPointerException;
+
+    .line 17039363
+    .line 17039364
+    const-string v0, "onError called with null. Null values are generally not allowed in 2.x operators and sources."
+
+    .line 17039365
+    .line 17039366
+    invoke-direct {p1, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 17039367
+    .line 17039368
+    .line 17039369
+    :cond_9
+    invoke-virtual {p0}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 17039370
+    .line 17039371
+    .line 17039372
+    move-result-object v0
+
+    .line 17039373
+    sget-object v1, Lio/reactivex/internal/disposables/DisposableHelper;->DISPOSED:Lio/reactivex/internal/disposables/DisposableHelper;
+
+    .line 17039374
+    .line 17039375
+    if-eq v0, v1, :cond_2c
+
+    .line 17039376
+    .line 17039377
+    invoke-virtual {p0, v1}, Ljava/util/concurrent/atomic/AtomicReference;->getAndSet(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17039378
+    .line 17039379
+    .line 17039380
+    move-result-object v0
+
+    .line 17039381
+    check-cast v0, Lio/reactivex/disposables/Disposable;
+
+    .line 17039382
+    .line 17039383
+    if-eq v0, v1, :cond_2c
+
+    .line 17039384
+    .line 17039385
+    :try_start_19
+    iget-object v1, p0, Lio/reactivex/internal/operators/maybe/MaybeCreate$Emitter;->downstream:Lio/reactivex/MaybeObserver;
+
+    .line 17039386
+    .line 17039387
+    invoke-interface {v1, p1}, Lio/reactivex/MaybeObserver;->onError(Ljava/lang/Throwable;)V
+    :try_end_1e
+    .catchall {:try_start_19 .. :try_end_1e} :catchall_25
+
+    .line 17039388
+    .line 17039389
+    .line 17039390
+    if-eqz v0, :cond_23
+
+    .line 17039391
+    .line 17039392
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->dispose()V
+
+    .line 17039393
+    .line 17039394
+    .line 17039395
+    :cond_23
+    const/4 p1, 0x1
+
+    .line 17039396
+    return p1
+
+    .line 17039397
+    :catchall_25
+    move-exception p1
+
+    .line 17039398
+    if-eqz v0, :cond_2b
+
+    .line 17039399
+    .line 17039400
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->dispose()V
+
+    .line 17039401
+    .line 17039402
+    .line 17039403
+    :cond_2b
+    throw p1
+
+    .line 17039404
+    :cond_2c
+    const/4 p1, 0x0
+
+    .line 17039405
+    return p1
+.end method

@@ -1,0 +1,41 @@
+.class public final synthetic Lg97/l;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/dragon/reader/lib/dispatcher/IReceiver;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onReceive(Ljava/lang/Object;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    check-cast p1, Lcom/dragon/reader/lib/model/w;
+
+    .line 16908290
+    const/4 v0, 0x0
+
+    .line 16908291
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908294
+    sget-object p1, Lg97/m;->b:Landroid/util/LruCache;
+
+    .line 16908296
+    invoke-virtual {p1}, Landroid/util/LruCache;->evictAll()V
+
+    .line 16908299
+    return-void
+.end method

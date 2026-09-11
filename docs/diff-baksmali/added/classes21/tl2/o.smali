@@ -1,0 +1,417 @@
+.class public abstract Ltl2/o;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lne2/a;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Ltl2/o$a;
+    }
+.end annotation
+
+
+# static fields
+.field public static final e:Ltl2/o$a;
+
+.field public static final f:Lkotlin/Lazy;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lkotlin/Lazy<",
+            "Lcom/dragon/community/saas/utils/LogHelper;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# instance fields
+.field public final a:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+.field public final b:Ltl2/j;
+
+.field public final c:Ltl2/k;
+
+.field public d:Lio/reactivex/ObservableEmitter;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lio/reactivex/ObservableEmitter<",
+            "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 196608
+    const v0, 0x8c83f
+
+    .line 196611
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 196614
+    new-instance v0, Ltl2/o$a;
+
+    .line 196616
+    invoke-direct {v0}, Ltl2/o$a;-><init>()V
+
+    .line 196619
+    sput-object v0, Ltl2/o;->e:Ltl2/o$a;
+
+    .line 196621
+    new-instance v0, Ltl2/i;
+
+    .line 196623
+    invoke-direct {v0}, Ltl2/i;-><init>()V
+
+    .line 196626
+    invoke-static {v0}, Lkotlin/LazyKt;->lazy(Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    .line 196629
+    move-result-object v0
+
+    .line 196630
+    sput-object v0, Ltl2/o;->f:Lkotlin/Lazy;
+
+    .line 196632
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 5
+
+    .prologue
+    .line 262144
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 262147
+    sget-object v0, Lcom/dragon/community/saas/utils/n1;->b:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 262149
+    const-string v1, ""
+
+    .line 262151
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 262154
+    iput-object v0, p0, Ltl2/o;->a:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 262156
+    new-instance v0, Ltl2/j;
+
+    .line 262158
+    invoke-direct {v0, p0}, Ltl2/j;-><init>(Ltl2/o;)V
+
+    .line 262161
+    iput-object v0, p0, Ltl2/o;->b:Ltl2/j;
+
+    .line 262163
+    new-instance v0, Ltl2/k;
+
+    .line 262165
+    invoke-direct {v0, p0}, Ltl2/k;-><init>(Ltl2/o;)V
+
+    .line 262168
+    iput-object v0, p0, Ltl2/o;->c:Ltl2/k;
+
+    .line 262170
+    new-instance v0, Ltl2/l;
+
+    .line 262172
+    invoke-direct {v0, p0}, Ltl2/l;-><init>(Ltl2/o;)V
+
+    .line 262175
+    invoke-static {v0}, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/ObservableDelegate;->create(Lio/reactivex/ObservableOnSubscribe;)Lio/reactivex/Observable;
+
+    .line 262178
+    move-result-object v0
+
+    .line 262179
+    const-wide/16 v1, 0x5dc
+
+    .line 262181
+    sget-object v3, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+
+    .line 262183
+    invoke-virtual {v0, v1, v2, v3}, Lio/reactivex/Observable;->throttleFirst(JLjava/util/concurrent/TimeUnit;)Lio/reactivex/Observable;
+
+    .line 262186
+    move-result-object v0
+
+    .line 262187
+    new-instance v1, Ltl2/m;
+
+    .line 262189
+    invoke-direct {v1, p0}, Ltl2/m;-><init>(Ltl2/o;)V
+
+    .line 262192
+    new-instance v2, Ltl2/n;
+
+    .line 262194
+    invoke-direct {v2, v1}, Ltl2/n;-><init>(Ltl2/m;)V
+
+    .line 262197
+    invoke-virtual {v0, v2}, Lio/reactivex/Observable;->subscribe(Lio/reactivex/functions/Consumer;)Lio/reactivex/disposables/Disposable;
+
+    .line 262200
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(ILandroid/view/ViewGroup;Landroid/content/Context;)Landroid/view/View;
+    .registers 10
+
+    .prologue
+    .line 50724864
+    invoke-virtual {p0}, Ltl2/o;->b()Ltl2/u;
+
+    .line 50724867
+    move-result-object v0
+
+    .line 50724868
+    const/4 v1, 0x4
+
+    .line 50724869
+    const/4 v2, 0x0
+
+    .line 50724870
+    if-nez v0, :cond_1a
+
+    .line 50724872
+    sget-object p1, Ltl2/o;->e:Ltl2/o$a;
+
+    .line 50724874
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724877
+    invoke-static {}, Ltl2/o$a;->a()Lcom/dragon/community/saas/utils/LogHelper;
+
+    .line 50724880
+    move-result-object p1
+
+    .line 50724881
+    new-array p2, v2, [Ljava/lang/Object;
+
+    .line 50724883
+    const-string p3, "[getPreloadView] empty model, return null"
+
+    .line 50724885
+    invoke-virtual {p1, v1, p3, p2}, Lcom/dragon/community/saas/utils/LogHelper;->b(ILjava/lang/String;[Ljava/lang/Object;)V
+
+    .line 50724888
+    const/4 p1, 0x0
+
+    .line 50724889
+    return-object p1
+
+    .line 50724890
+    :cond_1a
+    invoke-virtual {v0, p1}, Ltl2/u;->m(I)Ljava/lang/String;
+
+    .line 50724893
+    move-result-object v3
+
+    .line 50724894
+    invoke-virtual {v0, p1}, Ltl2/u;->o(I)Z
+
+    .line 50724897
+    move-result v0
+
+    .line 50724898
+    const-string v4, "[getPreloadView] ["
+
+    .line 50724900
+    if-eqz v0, :cond_46
+
+    .line 50724902
+    sget-object v0, Ltl2/o;->e:Ltl2/o$a;
+
+    .line 50724904
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724907
+    invoke-static {}, Ltl2/o$a;->a()Lcom/dragon/community/saas/utils/LogHelper;
+
+    .line 50724910
+    move-result-object v0
+
+    .line 50724911
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 50724913
+    invoke-direct {v5, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50724916
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724919
+    const-string v3, "] cache is ready"
+
+    .line 50724921
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724924
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50724927
+    move-result-object v3
+
+    .line 50724928
+    new-array v4, v2, [Ljava/lang/Object;
+
+    .line 50724930
+    invoke-virtual {v0, v1, v3, v4}, Lcom/dragon/community/saas/utils/LogHelper;->b(ILjava/lang/String;[Ljava/lang/Object;)V
+
+    .line 50724933
+    goto :goto_65
+
+    .line 50724934
+    :cond_46
+    sget-object v0, Ltl2/o;->e:Ltl2/o$a;
+
+    .line 50724936
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724939
+    invoke-static {}, Ltl2/o$a;->a()Lcom/dragon/community/saas/utils/LogHelper;
+
+    .line 50724942
+    move-result-object v0
+
+    .line 50724943
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 50724945
+    invoke-direct {v5, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50724948
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724951
+    const-string v3, "] cache is not ready"
+
+    .line 50724953
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724956
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50724959
+    move-result-object v3
+
+    .line 50724960
+    new-array v4, v2, [Ljava/lang/Object;
+
+    .line 50724962
+    invoke-virtual {v0, v1, v3, v4}, Lcom/dragon/community/saas/utils/LogHelper;->b(ILjava/lang/String;[Ljava/lang/Object;)V
+
+    .line 50724965
+    :goto_65
+    const/4 v0, 0x1
+
+    .line 50724966
+    invoke-static {p1, p2, p3, v0}, Ls73/x;->b(ILandroid/view/ViewGroup;Landroid/content/Context;Z)Landroid/view/View;
+
+    .line 50724969
+    move-result-object p1
+
+    .line 50724970
+    sget-object p2, Ltl2/o;->e:Ltl2/o$a;
+
+    .line 50724972
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724975
+    invoke-static {}, Ltl2/o$a;->a()Lcom/dragon/community/saas/utils/LogHelper;
+
+    .line 50724978
+    move-result-object p2
+
+    .line 50724979
+    new-instance p3, Ljava/lang/StringBuilder;
+
+    .line 50724981
+    const-string v0, "[getPreloadView] view: "
+
+    .line 50724983
+    invoke-direct {p3, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50724986
+    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 50724989
+    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50724992
+    move-result-object p3
+
+    .line 50724993
+    new-array v0, v2, [Ljava/lang/Object;
+
+    .line 50724995
+    invoke-virtual {p2, v1, p3, v0}, Lcom/dragon/community/saas/utils/LogHelper;->b(ILjava/lang/String;[Ljava/lang/Object;)V
+
+    .line 50724998
+    return-object p1
+.end method
+
+.method public abstract b()Ltl2/u;
+.end method
+
+.method public final c(Z)V
+    .registers 6
+
+    .prologue
+    .line 16973824
+    iget-object v0, p0, Ltl2/o;->a:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 16973826
+    iget-object v1, p0, Ltl2/o;->b:Ltl2/j;
+
+    .line 16973828
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 16973831
+    iget-object v0, p0, Ltl2/o;->a:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 16973833
+    iget-object v1, p0, Ltl2/o;->c:Ltl2/k;
+
+    .line 16973835
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 16973838
+    iget-object v0, p0, Ltl2/o;->a:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 16973840
+    iget-object v1, p0, Ltl2/o;->c:Ltl2/k;
+
+    .line 16973842
+    if-eqz p1, :cond_17
+
+    .line 16973844
+    const-wide/16 v2, 0x0
+
+    .line 16973846
+    goto :goto_1a
+
+    .line 16973847
+    :cond_17
+    const-wide/32 v2, 0x9c40
+
+    .line 16973850
+    :goto_1a
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 16973853
+    return-void
+.end method

@@ -1,0 +1,33941 @@
+.class public final Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;
+    }
+.end annotation
+
+
+# static fields
+.field public static final CJPAY_HOST:Ljava/lang/String;
+
+.field public static final Companion:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;
+
+.field public static final TAG:Ljava/lang/String;
+
+.field public static final isNew:Z
+
+.field public static final singleInstance$delegate:Lkotlin/Lazy;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lkotlin/Lazy<",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# instance fields
+.field private generalPayCallback:Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;
+
+.field public hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+.field public final isInited:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+.field private final mReleaseAllCallBack:Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayReleaseAll;
+
+.field private volatile remoteDataHasInit:Z
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 2
+
+    .prologue
+    .line 262144
+    const v0, 0x7da38
+
+    .line 262147
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 262150
+    new-instance v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;
+
+    .line 262152
+    const/4 v1, 0x0
+
+    .line 262153
+    invoke-direct {v0, v1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 262156
+    sput-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->Companion:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;
+
+    .line 262158
+    const-string v0, "TTCJPayUtils"
+
+    .line 262160
+    sput-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 262162
+    sget-object v0, Lkotlin/LazyThreadSafetyMode;->SYNCHRONIZED:Lkotlin/LazyThreadSafetyMode;
+
+    .line 262164
+    sget-object v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion$singleInstance$2;->INSTANCE:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion$singleInstance$2;
+
+    .line 262166
+    invoke-static {v0, v1}, Lkotlin/LazyKt;->lazy(Lkotlin/LazyThreadSafetyMode;Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    .line 262169
+    move-result-object v0
+
+    .line 262170
+    sput-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->singleInstance$delegate:Lkotlin/Lazy;
+
+    .line 262172
+    const-string v0, "cjpay"
+
+    .line 262174
+    sput-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->CJPAY_HOST:Ljava/lang/String;
+
+    .line 262176
+    const/4 v0, 0x1
+
+    .line 262177
+    sput-boolean v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->isNew:Z
+
+    .line 262179
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .registers 5
+
+    .prologue
+    .line 327680
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 327683
+    new-instance v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 327685
+    invoke-direct {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;-><init>()V
+
+    .line 327688
+    iput-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 327690
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 327692
+    const/4 v1, 0x0
+
+    .line 327693
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
+    .line 327696
+    iput-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->isInited:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 327698
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 327700
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 327702
+    const-string v2, "dispatch init from "
+
+    .line 327704
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327707
+    new-instance v2, Ljava/lang/Error;
+
+    .line 327709
+    const-string v3, "trace init"
+
+    .line 327711
+    invoke-direct {v2, v3}, Ljava/lang/Error;-><init>(Ljava/lang/String;)V
+
+    .line 327714
+    invoke-static {v2}, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 327717
+    move-result-object v2
+
+    .line 327718
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327721
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327724
+    move-result-object v1
+
+    .line 327725
+    invoke-static {v0, v1}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 327728
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->initBasic()V
+
+    .line 327731
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->init()V
+
+    .line 327734
+    invoke-direct {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->rrpUpload()V
+
+    .line 327737
+    new-instance v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$generalPayCallback$1;
+
+    .line 327739
+    invoke-direct {v0, p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$generalPayCallback$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;)V
+
+    .line 327742
+    iput-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->generalPayCallback:Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;
+
+    .line 327744
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$mReleaseAllCallBack$1;->INSTANCE:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$mReleaseAllCallBack$1;
+
+    .line 327746
+    iput-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->mReleaseAllCallBack:Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayReleaseAll;
+
+    .line 327748
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .registers 2
+
+    invoke-direct {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;-><init>()V
+
+    return-void
+.end method
+
+.method private final addTrackInfo(Ljava/lang/String;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    if-eqz p1, :cond_13
+
+    .line 16973826
+    :try_start_2
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 16973828
+    invoke-direct {v0, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 16973831
+    const-string p1, "track_info"
+
+    .line 16973833
+    invoke-virtual {v0, p1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 16973836
+    move-result-object p1
+
+    .line 16973837
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16973840
+    move-result-object v0
+
+    .line 16973841
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->y:Lorg/json/JSONObject;
+    :try_end_13
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_13} :catch_13
+
+    .line 16973843
+    :catch_13
+    :cond_13
+    return-void
+.end method
+
+.method private final aliPayIndependentSign(Landroid/content/Context;Ljava/lang/String;)V
+    .registers 10
+
+    .prologue
+    .line 33882112
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 33882115
+    move-result-object v0
+
+    .line 33882116
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;
+
+    .line 33882118
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 33882121
+    move-result-object v0
+
+    .line 33882122
+    move-object v1, v0
+
+    .line 33882123
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;
+
+    .line 33882125
+    if-eqz p2, :cond_3b
+
+    .line 33882127
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 33882129
+    invoke-direct {v0, p2}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33882132
+    const-string p2, "appId"
+
+    .line 33882134
+    invoke-virtual {v0, p2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882137
+    move-result-object v4
+
+    .line 33882138
+    const-string p2, "merchantId"
+
+    .line 33882140
+    invoke-virtual {v0, p2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882143
+    move-result-object v5
+
+    .line 33882144
+    const-string p2, "sign_params"
+
+    .line 33882146
+    invoke-virtual {v0, p2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882149
+    move-result-object v3
+
+    .line 33882150
+    const/4 p2, 0x0
+
+    .line 33882151
+    if-eqz v1, :cond_39
+
+    .line 33882153
+    instance-of v0, p1, Landroid/app/Activity;
+
+    .line 33882155
+    if-eqz v0, :cond_31
+
+    .line 33882157
+    check-cast p1, Landroid/app/Activity;
+
+    .line 33882159
+    move-object v2, p1
+
+    .line 33882160
+    goto :goto_32
+
+    .line 33882161
+    :cond_31
+    move-object v2, p2
+
+    .line 33882162
+    :goto_32
+    sget-object v6, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$aliPayIndependentSign$2$1;->INSTANCE:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$aliPayIndependentSign$2$1;
+
+    .line 33882164
+    invoke-interface/range {v1 .. v6}, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;->independentSign(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService$OnSignResultCallback;)V
+
+    .line 33882167
+    sget-object p2, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33882169
+    :cond_39
+    if-nez p2, :cond_49
+
+    .line 33882171
+    :cond_3b
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 33882174
+    move-result-object p1
+
+    .line 33882175
+    const/16 p2, 0x70
+
+    .line 33882177
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 33882180
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 33882183
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33882185
+    :cond_49
+    return-void
+.end method
+
+.method private final antiFraudBeforePay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+    .registers 26
+
+    .prologue
+    .line 134676480
+    move-object/from16 v11, p0
+
+    .line 134676482
+    move-object/from16 v0, p8
+
+    .line 134676484
+    const-string v12, ""
+
+    .line 134676486
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 134676489
+    move-result-object v1
+
+    .line 134676490
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;
+
+    .line 134676492
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 134676495
+    move-result-object v1
+
+    .line 134676496
+    move-object v13, v1
+
+    .line 134676497
+    check-cast v13, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;
+
+    .line 134676499
+    :try_start_13
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 134676501
+    move-object/from16 v6, p1
+
+    .line 134676503
+    invoke-direct {v1, v6}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 134676506
+    const-string v2, "anti_fraud_code"
+
+    .line 134676508
+    invoke-virtual {v1, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 134676511
+    move-result-object v2
+
+    .line 134676512
+    const-string v3, "anti_fraud_msg"
+
+    .line 134676514
+    invoke-virtual {v1, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 134676517
+    move-result-object v15
+
+    .line 134676518
+    const/4 v10, 0x1
+
+    .line 134676519
+    if-eqz v15, :cond_32
+
+    .line 134676521
+    invoke-static {v15}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 134676524
+    move-result v1
+
+    .line 134676525
+    if-eqz v1, :cond_30
+
+    .line 134676527
+    goto :goto_32
+
+    .line 134676528
+    :cond_30
+    const/4 v1, 0x0
+
+    .line 134676529
+    goto :goto_33
+
+    .line 134676530
+    :cond_32
+    :goto_32
+    const/4 v1, 0x1
+
+    .line 134676531
+    :goto_33
+    if-nez v1, :cond_142
+
+    .line 134676533
+    new-instance v9, Lkotlin/jvm/internal/Ref$ObjectRef;
+
+    .line 134676535
+    invoke-direct {v9}, Lkotlin/jvm/internal/Ref$ObjectRef;-><init>()V
+
+    .line 134676538
+    iget-object v1, v11, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 134676540
+    const/4 v3, 0x0
+
+    .line 134676541
+    if-eqz v1, :cond_44
+
+    .line 134676543
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 134676546
+    move-result-object v1
+
+    .line 134676547
+    goto :goto_45
+
+    .line 134676548
+    :cond_44
+    move-object v1, v3
+
+    .line 134676549
+    :goto_45
+    instance-of v4, v1, Landroid/app/Activity;
+
+    .line 134676551
+    if-eqz v4, :cond_4c
+
+    .line 134676553
+    check-cast v1, Landroid/app/Activity;
+
+    .line 134676555
+    goto :goto_4d
+
+    .line 134676556
+    :cond_4c
+    move-object v1, v3
+
+    .line 134676557
+    :goto_4d
+    if-eqz v1, :cond_142
+
+    .line 134676559
+    invoke-virtual {v1}, Landroid/app/Activity;->isFinishing()Z
+
+    .line 134676562
+    move-result v4
+
+    .line 134676563
+    xor-int/2addr v4, v10
+
+    .line 134676564
+    if-eqz v4, :cond_58
+
+    .line 134676566
+    move-object v8, v1
+
+    .line 134676567
+    goto :goto_59
+
+    .line 134676568
+    :cond_58
+    move-object v8, v3
+
+    .line 134676569
+    :goto_59
+    if-eqz v8, :cond_142
+
+    .line 134676571
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134676574
+    move-result-object v1
+
+    .line 134676575
+    invoke-static/range {p2 .. p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 134676578
+    move-result-object v3
+
+    .line 134676579
+    iput-object v3, v1, Lcom/android/ttcjpaysdk/base/c;->D:Ljava/lang/String;
+
+    .line 134676581
+    if-eqz v0, :cond_6d
+
+    .line 134676583
+    move/from16 v7, p2
+
+    .line 134676585
+    invoke-virtual {v0, v7}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->k(I)V
+
+    .line 134676588
+    goto :goto_6f
+
+    .line 134676589
+    :cond_6d
+    move/from16 v7, p2
+
+    .line 134676591
+    :goto_6f
+    const-string v1, "1"
+
+    .line 134676593
+    invoke-static {v2, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 134676596
+    move-result v1
+    :try_end_75
+    .catch Ljava/lang/Exception; {:try_start_13 .. :try_end_75} :catch_146
+
+    .line 134676597
+    if-eqz v1, :cond_d4
+
+    .line 134676599
+    :try_start_77
+    invoke-static {v8}, Lcom/android/ttcjpaysdk/base/ui/dialog/i;->a(Landroid/app/Activity;)Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;
+
+    .line 134676602
+    move-result-object v5
+
+    .line 134676603
+    new-instance v4, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$antiFraudBeforePay$2$1;
+    :try_end_7d
+    .catch Ljava/lang/Exception; {:try_start_77 .. :try_end_7d} :catch_cf
+
+    .line 134676605
+    move-object v1, v4
+
+    .line 134676606
+    move-object/from16 v2, p5
+
+    .line 134676608
+    move-object/from16 v3, p0
+
+    .line 134676610
+    move-object v14, v4
+
+    .line 134676611
+    move-object v4, v9
+
+    .line 134676612
+    move-object v0, v5
+
+    .line 134676613
+    move-object v5, v13
+
+    .line 134676614
+    move-object/from16 v6, p1
+
+    .line 134676616
+    move/from16 v7, p2
+
+    .line 134676618
+    move-object/from16 v16, v12
+
+    .line 134676620
+    move-object v12, v8
+
+    .line 134676621
+    move-object/from16 v8, p3
+
+    .line 134676623
+    move-object/from16 p1, v9
+
+    .line 134676625
+    move-object/from16 v9, p4
+
+    .line 134676627
+    const/4 v11, 0x1
+
+    .line 134676628
+    move-object/from16 v10, p7
+
+    .line 134676630
+    :try_start_96
+    invoke-direct/range {v1 .. v10}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$antiFraudBeforePay$2$1;-><init>(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Lkotlin/jvm/internal/Ref$ObjectRef;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134676633
+    iput-object v14, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->B:Landroid/view/View$OnClickListener;
+
+    .line 134676635
+    new-instance v8, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$antiFraudBeforePay$2$2;
+
+    .line 134676637
+    move-object v1, v8
+
+    .line 134676638
+    move-object/from16 v2, p0
+
+    .line 134676640
+    move-object/from16 v3, p7
+
+    .line 134676642
+    move-object v4, v13
+
+    .line 134676643
+    move-object/from16 v5, p5
+
+    .line 134676645
+    move-object/from16 v6, p1
+
+    .line 134676647
+    move-object/from16 v7, p8
+
+    .line 134676649
+    invoke-direct/range {v1 .. v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$antiFraudBeforePay$2$2;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;Ljava/lang/String;Lkotlin/jvm/internal/Ref$ObjectRef;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134676652
+    iput-object v8, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->C:Landroid/view/View$OnClickListener;
+
+    .line 134676654
+    const v1, 0x7f0607ff
+
+    .line 134676657
+    invoke-virtual {v12, v1}, Landroid/app/Activity;->getString(I)Ljava/lang/String;
+
+    .line 134676660
+    move-result-object v1
+
+    .line 134676661
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->d:Ljava/lang/String;
+
+    .line 134676663
+    const v1, 0x7f0607da
+
+    .line 134676666
+    invoke-virtual {v12, v1}, Landroid/app/Activity;->getString(I)Ljava/lang/String;
+
+    .line 134676669
+    move-result-object v1
+
+    .line 134676670
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->e:Ljava/lang/String;
+
+    .line 134676672
+    iput-object v15, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->a:Ljava/lang/String;
+
+    .line 134676674
+    iput-boolean v11, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->p:Z
+
+    .line 134676676
+    iput-boolean v11, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->n:Z
+
+    .line 134676678
+    invoke-static {v0}, Lcom/android/ttcjpaysdk/base/ui/dialog/i;->c(Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;)Lcom/android/ttcjpaysdk/base/ui/dialog/c;
+
+    .line 134676681
+    move-result-object v0
+
+    .line 134676682
+    move-object/from16 v9, p1
+
+    .line 134676684
+    iput-object v0, v9, Lkotlin/jvm/internal/Ref$ObjectRef;->element:Ljava/lang/Object;
+
+    .line 134676686
+    goto :goto_10c
+
+    .line 134676687
+    :catch_cf
+    move-exception v0
+
+    .line 134676688
+    move-object/from16 v16, v12
+
+    .line 134676690
+    goto/16 :goto_13f
+
+    .line 134676692
+    :cond_d4
+    move-object/from16 v16, v12
+
+    .line 134676694
+    const/4 v11, 0x1
+
+    .line 134676695
+    move-object v12, v8
+
+    .line 134676696
+    const-string v0, "2"
+
+    .line 134676698
+    invoke-static {v2, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 134676701
+    move-result v0
+
+    .line 134676702
+    if-eqz v0, :cond_10c
+
+    .line 134676704
+    invoke-static {v12}, Lcom/android/ttcjpaysdk/base/ui/dialog/i;->a(Landroid/app/Activity;)Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;
+
+    .line 134676707
+    move-result-object v0
+
+    .line 134676708
+    iput-object v15, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->a:Ljava/lang/String;
+
+    .line 134676710
+    iput-boolean v11, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->p:Z
+
+    .line 134676712
+    const v1, 0x7f060400
+
+    .line 134676715
+    invoke-virtual {v12, v1}, Landroid/app/Activity;->getString(I)Ljava/lang/String;
+
+    .line 134676718
+    move-result-object v1
+
+    .line 134676719
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->f:Ljava/lang/String;
+
+    .line 134676721
+    iput-boolean v11, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->o:Z
+
+    .line 134676723
+    new-instance v10, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$antiFraudBeforePay$2$3;
+
+    .line 134676725
+    move-object v1, v10
+
+    .line 134676726
+    move-object/from16 v2, p0
+
+    .line 134676728
+    move-object/from16 v3, p7
+
+    .line 134676730
+    move-object v4, v13
+
+    .line 134676731
+    move-object/from16 v5, p5
+
+    .line 134676733
+    move-object v6, v9
+
+    .line 134676734
+    move-object v7, v12
+
+    .line 134676735
+    move-object/from16 v8, p8
+
+    .line 134676737
+    invoke-direct/range {v1 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$antiFraudBeforePay$2$3;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;Ljava/lang/String;Lkotlin/jvm/internal/Ref$ObjectRef;Landroid/app/Activity;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134676740
+    iput-object v10, v0, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;->D:Landroid/view/View$OnClickListener;
+
+    .line 134676742
+    invoke-static {v0}, Lcom/android/ttcjpaysdk/base/ui/dialog/i;->c(Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayDialogBuilder;)Lcom/android/ttcjpaysdk/base/ui/dialog/c;
+
+    .line 134676745
+    move-result-object v0
+
+    .line 134676746
+    iput-object v0, v9, Lkotlin/jvm/internal/Ref$ObjectRef;->element:Ljava/lang/Object;
+
+    .line 134676748
+    :cond_10c
+    :goto_10c
+    iget-object v0, v9, Lkotlin/jvm/internal/Ref$ObjectRef;->element:Ljava/lang/Object;
+
+    .line 134676750
+    check-cast v0, Lcom/android/ttcjpaysdk/base/ui/dialog/c;
+
+    .line 134676752
+    if-eqz v0, :cond_13b
+
+    .line 134676754
+    sget-object v1, Lbf/b;->a:Lbf/b;
+    :try_end_114
+    .catch Ljava/lang/Exception; {:try_start_96 .. :try_end_114} :catch_13e
+
+    .line 134676756
+    move-object/from16 v2, p0
+
+    .line 134676758
+    :try_start_116
+    iget-object v3, v2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 134676760
+    if-eqz v3, :cond_11e
+
+    .line 134676762
+    iget-object v4, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 134676764
+    if-nez v4, :cond_120
+
+    .line 134676766
+    :cond_11e
+    move-object/from16 v4, v16
+
+    .line 134676768
+    :cond_120
+    if-eqz v3, :cond_126
+
+    .line 134676770
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 134676772
+    if-nez v3, :cond_128
+
+    .line 134676774
+    :cond_126
+    move-object/from16 v3, v16
+
+    .line 134676776
+    :cond_128
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134676779
+    move-object/from16 v1, p5
+
+    .line 134676781
+    invoke-static {v1, v4, v3}, Lbf/b;->g(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134676784
+    if-eqz v13, :cond_135
+
+    .line 134676786
+    invoke-interface {v13}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->hideDialogLoadingForInnerInvoke()V
+
+    .line 134676789
+    :cond_135
+    invoke-static {v0, v12}, Lcom/android/ttcjpaysdk/base/ktextension/CJPayKotlinExtensionsKt;->showSafely(Landroid/app/Dialog;Landroid/app/Activity;)V
+    :try_end_138
+    .catch Ljava/lang/Exception; {:try_start_116 .. :try_end_138} :catch_139
+
+    .line 134676792
+    goto :goto_16e
+
+    .line 134676793
+    :catch_139
+    move-exception v0
+
+    .line 134676794
+    goto :goto_14a
+
+    .line 134676795
+    :cond_13b
+    move-object/from16 v2, p0
+
+    .line 134676797
+    goto :goto_143
+
+    .line 134676798
+    :catch_13e
+    move-exception v0
+
+    .line 134676799
+    :goto_13f
+    move-object/from16 v2, p0
+
+    .line 134676801
+    goto :goto_14a
+
+    .line 134676802
+    :cond_142
+    move-object v2, v11
+
+    .line 134676803
+    :goto_143
+    const/4 v0, 0x1
+
+    .line 134676804
+    const/4 v14, 0x1
+
+    .line 134676805
+    goto :goto_16f
+
+    .line 134676806
+    :catch_146
+    move-exception v0
+
+    .line 134676807
+    move-object v2, v11
+
+    .line 134676808
+    move-object/from16 v16, v12
+
+    .line 134676810
+    :goto_14a
+    if-eqz v13, :cond_14f
+
+    .line 134676812
+    invoke-interface {v13}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 134676815
+    :cond_14f
+    sget-object v1, Lbf/b;->a:Lbf/b;
+
+    .line 134676817
+    invoke-static {v0}, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 134676820
+    move-result-object v0
+
+    .line 134676821
+    move-object/from16 v3, v16
+
+    .line 134676823
+    invoke-static {v0, v3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 134676826
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134676829
+    const-string v1, "112"
+
+    .line 134676831
+    invoke-static {v1, v0}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134676834
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134676837
+    move-result-object v0
+
+    .line 134676838
+    const/16 v1, 0x70
+
+    .line 134676840
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 134676843
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 134676846
+    :goto_16e
+    const/4 v14, 0x0
+
+    .line 134676847
+    :goto_16f
+    return v14
+.end method
+
+.method private final appendBtmTokenToSchema(Ljava/lang/String;Lorg/json/JSONObject;)Ljava/lang/String;
+    .registers 6
+
+    .prologue
+    .line 33882112
+    :try_start_0
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 33882114
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->INSTANCE:Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;
+
+    .line 33882116
+    const-class v1, Lcom/bytedance/caijing/sdk/infra/base/api/container/IHostContainerInfo;
+
+    .line 33882118
+    invoke-virtual {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->getService(Ljava/lang/Class;)Lcom/bytedance/caijing/sdk/infra/base/core/di/ICJService;
+
+    .line 33882121
+    move-result-object v0
+
+    .line 33882122
+    check-cast v0, Lcom/bytedance/caijing/sdk/infra/base/api/container/IHostContainerInfo;
+
+    .line 33882124
+    const/4 v1, 0x0
+
+    .line 33882125
+    if-eqz v0, :cond_32
+
+    .line 33882127
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882129
+    if-eqz v2, :cond_33
+
+    .line 33882131
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33882134
+    move-result-object v2
+
+    .line 33882135
+    if-eqz v2, :cond_33
+
+    .line 33882137
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/ktextension/CJPayBasicExtensionKt;->toActivity(Landroid/content/Context;)Landroid/app/Activity;
+
+    .line 33882140
+    move-result-object v2
+
+    .line 33882141
+    if-eqz v2, :cond_33
+
+    .line 33882143
+    if-eqz p2, :cond_27
+
+    .line 33882145
+    const-string v1, "btm_params"
+
+    .line 33882147
+    invoke-virtual {p2, v1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 33882150
+    move-result-object v1
+
+    .line 33882151
+    :cond_27
+    invoke-direct {p0, v1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->createBtmInfo(Lorg/json/JSONObject;)Lwb0/a;
+
+    .line 33882154
+    move-result-object p2
+
+    .line 33882155
+    if-eqz p2, :cond_33
+
+    .line 33882157
+    invoke-interface {v0, v2, p1, p2}, Lcom/bytedance/caijing/sdk/infra/base/api/container/IHostContainerInfo;->appendSourceBtmTokenToSchema(Landroid/app/Activity;Ljava/lang/String;Lwb0/a;)Ljava/lang/String;
+
+    .line 33882160
+    move-result-object p1
+
+    .line 33882161
+    return-object p1
+
+    .line 33882162
+    :cond_32
+    move-object v0, v1
+
+    .line 33882163
+    :cond_33
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_36
+    .catchall {:try_start_0 .. :try_end_36} :catchall_37
+
+    .line 33882166
+    goto :goto_41
+
+    .line 33882167
+    :catchall_37
+    move-exception p2
+
+    .line 33882168
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 33882170
+    invoke-static {p2}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 33882173
+    move-result-object p2
+
+    .line 33882174
+    invoke-static {p2}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33882177
+    :goto_41
+    return-object p1
+.end method
+
+.method public static synthetic bdPay$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;ILjava/lang/Object;)V
+    .registers 4
+
+    .prologue
+    .line 67239936
+    and-int/lit8 p2, p2, 0x1
+
+    .line 67239938
+    if-eqz p2, :cond_5
+
+    .line 67239940
+    const/4 p1, 0x0
+
+    .line 67239941
+    :cond_5
+    invoke-virtual {p0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->bdPay(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 67239944
+    return-void
+.end method
+
+.method private final buildRequestParams(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+    .registers 12
+
+    .prologue
+    .line 67502080
+    const-string v0, "show_loading"
+
+    .line 67502082
+    const-string v1, ""
+
+    .line 67502084
+    const-string v2, "TT_CJ_PAY_REQUEST_PARAMS_ILLEGAL"
+
+    .line 67502086
+    if-nez p4, :cond_9
+
+    .line 67502088
+    goto :goto_b
+
+    .line 67502089
+    :cond_9
+    :try_start_9
+    iput-object p3, p4, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67502091
+    :goto_b
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502094
+    move-result-object p4
+
+    .line 67502095
+    iput-object p3, p4, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67502097
+    new-instance p3, Lorg/json/JSONObject;
+
+    .line 67502099
+    invoke-direct {p3, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 67502102
+    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 67502105
+    move-result p1
+
+    .line 67502106
+    const/4 p4, 0x0
+
+    .line 67502107
+    if-nez p1, :cond_32
+
+    .line 67502109
+    new-instance p1, Lorg/json/JSONObject;
+
+    .line 67502111
+    invoke-direct {p1, p2}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 67502114
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 67502117
+    move-result v3
+
+    .line 67502118
+    if-eqz v3, :cond_2d
+
+    .line 67502120
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    .line 67502123
+    move-result p1
+
+    .line 67502124
+    goto :goto_2e
+
+    .line 67502125
+    :cond_2d
+    const/4 p1, 0x0
+
+    .line 67502126
+    :goto_2e
+    invoke-direct {p0, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->addTrackInfo(Ljava/lang/String;)V
+
+    .line 67502129
+    goto :goto_33
+
+    .line 67502130
+    :cond_32
+    const/4 p1, 0x0
+
+    .line 67502131
+    :goto_33
+    invoke-virtual {p3}, Lorg/json/JSONObject;->names()Lorg/json/JSONArray;
+
+    .line 67502134
+    move-result-object p2
+
+    .line 67502135
+    if-eqz p2, :cond_6f
+
+    .line 67502137
+    new-instance v0, Ljava/util/LinkedHashMap;
+
+    .line 67502139
+    invoke-direct {v0}, Ljava/util/LinkedHashMap;-><init>()V
+
+    .line 67502142
+    invoke-virtual {p2}, Lorg/json/JSONArray;->length()I
+
+    .line 67502145
+    move-result v3
+
+    .line 67502146
+    const/4 v4, 0x0
+
+    .line 67502147
+    :goto_43
+    if-ge v4, v3, :cond_64
+
+    .line 67502149
+    invoke-virtual {p2, v4}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 67502152
+    move-result-object v5
+
+    .line 67502153
+    invoke-static {v5, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67502156
+    check-cast v5, Ljava/lang/String;
+
+    .line 67502158
+    invoke-virtual {p2, v4}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 67502161
+    move-result-object v6
+
+    .line 67502162
+    invoke-static {v6, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67502165
+    check-cast v6, Ljava/lang/String;
+
+    .line 67502167
+    invoke-virtual {p3, v6}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 67502170
+    move-result-object v6
+
+    .line 67502171
+    invoke-static {v6, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67502174
+    invoke-interface {v0, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 67502177
+    add-int/lit8 v4, v4, 0x1
+
+    .line 67502179
+    goto :goto_43
+
+    .line 67502180
+    :cond_64
+    const/4 p2, 0x1
+
+    .line 67502181
+    if-ne p1, p2, :cond_68
+
+    .line 67502183
+    const/4 p4, 0x1
+
+    .line 67502184
+    :cond_68
+    invoke-virtual {p0, p4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setNeedLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 67502187
+    invoke-virtual {p0, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 67502190
+    return p2
+
+    .line 67502191
+    :cond_6f
+    new-instance p1, Ljava/lang/Throwable;
+
+    .line 67502193
+    invoke-direct {p1, v2}, Ljava/lang/Throwable;-><init>(Ljava/lang/String;)V
+
+    .line 67502196
+    throw p1
+    :try_end_75
+    .catchall {:try_start_9 .. :try_end_75} :catchall_75
+
+    .line 67502197
+    :catchall_75
+    move-exception p1
+
+    .line 67502198
+    invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 67502201
+    move-result-object p1
+
+    .line 67502202
+    invoke-static {p1, v2}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 67502205
+    move-result p1
+
+    .line 67502206
+    if-eqz p1, :cond_86
+
+    .line 67502208
+    new-instance p1, Ljava/lang/Throwable;
+
+    .line 67502210
+    invoke-direct {p1, v2}, Ljava/lang/Throwable;-><init>(Ljava/lang/String;)V
+
+    .line 67502213
+    throw p1
+
+    .line 67502214
+    :cond_86
+    new-instance p1, Ljava/lang/Throwable;
+
+    .line 67502216
+    const-string p2, "ALIPAY_EXCEPTION"
+
+    .line 67502218
+    invoke-direct {p1, p2}, Ljava/lang/Throwable;-><init>(Ljava/lang/String;)V
+
+    .line 67502221
+    throw p1
+.end method
+
+.method public static synthetic cloudUnionPay$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;ILjava/lang/Object;)V
+    .registers 16
+
+    .prologue
+    .line 151126016
+    and-int/lit8 p7, p7, 0x20
+
+    .line 151126018
+    if-eqz p7, :cond_5
+
+    .line 151126020
+    const/4 p6, 0x0
+
+    .line 151126021
+    :cond_5
+    move-object v6, p6
+
+    .line 151126022
+    move-object v0, p0
+
+    .line 151126023
+    move-object v1, p1
+
+    .line 151126024
+    move-object v2, p2
+
+    .line 151126025
+    move-object v3, p3
+
+    .line 151126026
+    move-object v4, p4
+
+    .line 151126027
+    move-object v5, p5
+
+    .line 151126028
+    invoke-virtual/range {v0 .. v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->cloudUnionPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 151126031
+    return-void
+.end method
+
+.method private final commonActionForLynx(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 5
+
+    .prologue
+    .line 33816576
+    const/4 v0, 0x0
+
+    .line 33816577
+    if-eqz p1, :cond_35
+
+    .line 33816579
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 33816582
+    move-result v1
+
+    .line 33816583
+    if-lez v1, :cond_b
+
+    .line 33816585
+    const/4 v1, 0x1
+
+    .line 33816586
+    goto :goto_c
+
+    .line 33816587
+    :cond_b
+    const/4 v1, 0x0
+
+    .line 33816588
+    :goto_c
+    if-eqz v1, :cond_10
+
+    .line 33816590
+    move-object v1, p1
+
+    .line 33816591
+    goto :goto_11
+
+    .line 33816592
+    :cond_10
+    const/4 v1, 0x0
+
+    .line 33816593
+    :goto_11
+    if-eqz v1, :cond_35
+
+    .line 33816595
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 33816598
+    move-result-object v0
+
+    .line 33816599
+    const-string v1, "cjpay_action"
+
+    .line 33816601
+    invoke-virtual {v0, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33816604
+    move-result-object v0
+
+    .line 33816605
+    const-string v1, "open_protocol"
+
+    .line 33816607
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 33816610
+    move-result v1
+
+    .line 33816611
+    if-eqz v1, :cond_29
+
+    .line 33816613
+    invoke-direct {p0, p1, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->showProtocolPage(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 33816616
+    goto :goto_3e
+
+    .line 33816617
+    :cond_29
+    const-string v1, "get_dev_info"
+
+    .line 33816619
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 33816622
+    move-result v0
+
+    .line 33816623
+    if-eqz v0, :cond_3e
+
+    .line 33816625
+    invoke-direct {p0, p1, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getDevInfoAndRiskInfo(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 33816628
+    goto :goto_3e
+
+    .line 33816629
+    :cond_35
+    if-eqz p2, :cond_3e
+
+    .line 33816631
+    const-string p1, ""
+
+    .line 33816633
+    invoke-interface {p2, v0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33816636
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33816638
+    :cond_3e
+    :goto_3e
+    return-void
+.end method
+
+.method private final createBtmInfo(Lorg/json/JSONObject;)Lwb0/a;
+    .registers 5
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    if-nez p1, :cond_4
+
+    .line 17039363
+    return-object v0
+
+    .line 17039364
+    :cond_4
+    const-string v1, "btm"
+
+    .line 17039366
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17039369
+    move-result-object v1
+
+    .line 17039370
+    const-string v2, "bcm"
+
+    .line 17039372
+    invoke-virtual {p1, v2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 17039375
+    move-result-object p1
+
+    .line 17039376
+    if-eqz p1, :cond_1c
+
+    .line 17039378
+    sget-object v2, Lcom/android/ttcjpaysdk/base/utils/q;->a:Lcom/android/ttcjpaysdk/base/utils/q;
+
+    .line 17039380
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17039383
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/utils/q;->b(Lorg/json/JSONObject;)Ljava/util/Map;
+
+    .line 17039386
+    move-result-object p1
+
+    .line 17039387
+    goto :goto_20
+
+    .line 17039388
+    :cond_1c
+    invoke-static {}, Lkotlin/collections/MapsKt;->emptyMap()Ljava/util/Map;
+
+    .line 17039391
+    move-result-object p1
+
+    .line 17039392
+    :goto_20
+    const/4 v2, 0x0
+
+    .line 17039393
+    invoke-static {v1, v2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17039396
+    invoke-static {v1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17039399
+    move-result v2
+
+    .line 17039400
+    xor-int/lit8 v2, v2, 0x1
+
+    .line 17039402
+    if-eqz v2, :cond_31
+
+    .line 17039404
+    new-instance v0, Lwb0/a;
+
+    .line 17039406
+    invoke-direct {v0, v1, p1}, Lwb0/a;-><init>(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 17039409
+    :cond_31
+    return-object v0
+.end method
+
+.method private final delegateCloseCallback(Ljava/lang/String;)Z
+    .registers 6
+
+    .prologue
+    .line 17104896
+    const/4 v0, 0x0
+
+    .line 17104897
+    if-nez p1, :cond_4
+
+    .line 17104899
+    return v0
+
+    .line 17104900
+    :cond_4
+    :try_start_4
+    sget-object v1, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 17104902
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 17104904
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 17104907
+    const-string p1, "schema"
+
+    .line 17104909
+    invoke-virtual {v1, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17104912
+    move-result-object p1
+
+    .line 17104913
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17104916
+    const-string v1, "cjpay_content_height"
+
+    .line 17104918
+    const/4 v2, 0x0
+
+    .line 17104919
+    const/4 v3, 0x2
+
+    .line 17104920
+    invoke-static {p1, v1, v0, v3, v2}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 17104923
+    move-result v1
+
+    .line 17104924
+    if-nez v1, :cond_26
+
+    .line 17104926
+    const-string v1, "cjpay_content_height_percent"
+
+    .line 17104928
+    invoke-static {p1, v1, v0, v3, v2}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 17104931
+    move-result p1
+
+    .line 17104932
+    if-eqz p1, :cond_36
+
+    .line 17104934
+    :cond_26
+    const-string p1, "1"
+
+    .line 17104936
+    sget-object v1, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayABExperimentKeys;->i:Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;
+
+    .line 17104938
+    const/4 v2, 0x1
+
+    .line 17104939
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;->a(Z)Ljava/lang/Object;
+
+    .line 17104942
+    move-result-object v1
+
+    .line 17104943
+    invoke-static {p1, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17104946
+    move-result p1
+
+    .line 17104947
+    if-eqz p1, :cond_36
+
+    .line 17104949
+    return v2
+
+    .line 17104950
+    :cond_36
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17104952
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_3b
+    .catchall {:try_start_4 .. :try_end_3b} :catchall_3c
+
+    .line 17104955
+    goto :goto_46
+
+    .line 17104956
+    :catchall_3c
+    move-exception p1
+
+    .line 17104957
+    sget-object v1, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 17104959
+    invoke-static {p1}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 17104962
+    move-result-object p1
+
+    .line 17104963
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17104966
+    :goto_46
+    return v0
+.end method
+
+.method private final directPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+    .registers 9
+
+    .prologue
+    .line 50724864
+    const/16 v0, 0x70
+
+    .line 50724866
+    const/4 v1, 0x0
+
+    .line 50724867
+    if-eqz p1, :cond_b
+
+    .line 50724869
+    :try_start_5
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 50724871
+    invoke-direct {v2, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724874
+    goto :goto_c
+
+    .line 50724875
+    :cond_b
+    move-object v2, v1
+
+    .line 50724876
+    :goto_c
+    if-eqz v2, :cond_15
+
+    .line 50724878
+    const-string p1, "direct_bank_info"
+
+    .line 50724880
+    invoke-virtual {v2, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724883
+    move-result-object p1
+
+    .line 50724884
+    goto :goto_16
+
+    .line 50724885
+    :cond_15
+    move-object p1, v1
+
+    .line 50724886
+    :goto_16
+    const/4 v2, 0x1
+
+    .line 50724887
+    if-eqz p2, :cond_30
+
+    .line 50724889
+    invoke-static {p2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 50724892
+    move-result v3
+
+    .line 50724893
+    xor-int/2addr v3, v2
+
+    .line 50724894
+    if-eqz v3, :cond_21
+
+    .line 50724896
+    goto :goto_22
+
+    .line 50724897
+    :cond_21
+    move-object p2, v1
+
+    .line 50724898
+    :goto_22
+    if-eqz p2, :cond_30
+
+    .line 50724900
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 50724902
+    invoke-direct {v3, p2}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724905
+    const-string p2, "track_info"
+
+    .line 50724907
+    invoke-virtual {v3, p2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50724910
+    move-result-object p2
+
+    .line 50724911
+    goto :goto_31
+
+    .line 50724912
+    :cond_30
+    move-object p2, v1
+
+    .line 50724913
+    :goto_31
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 50724915
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724918
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 50724921
+    move-result-object v3
+
+    .line 50724922
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_FRONT_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 50724924
+    iget-object v4, v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 50724926
+    invoke-static {v3, v4}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 50724929
+    const-string v3, "caijing_cashdesk_request"
+
+    .line 50724931
+    invoke-static {v3}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 50724934
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724936
+    if-eqz v3, :cond_4e
+
+    .line 50724938
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50724941
+    move-result-object v1
+
+    .line 50724942
+    :cond_4e
+    if-eqz v1, :cond_7a
+
+    .line 50724944
+    if-eqz p1, :cond_59
+
+    .line 50724946
+    invoke-static {p1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 50724949
+    move-result v3
+
+    .line 50724950
+    if-nez v3, :cond_59
+
+    .line 50724952
+    goto :goto_5a
+
+    .line 50724953
+    :cond_59
+    const/4 v2, 0x0
+
+    .line 50724954
+    :goto_5a
+    if-nez v2, :cond_5d
+
+    .line 50724956
+    goto :goto_7a
+
+    .line 50724957
+    :cond_5d
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50724960
+    move-result-object v2
+
+    .line 50724961
+    const-class v3, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;
+
+    .line 50724963
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50724966
+    move-result-object v2
+
+    .line 50724967
+    check-cast v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;
+
+    .line 50724969
+    if-eqz v2, :cond_a2
+
+    .line 50724971
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50724973
+    iget-object v4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724975
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724978
+    invoke-static {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50724981
+    move-result-object v3
+
+    .line 50724982
+    invoke-interface {v2, v1, p1, p2, v3}, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;->startDirectPay(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
+    :try_end_79
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_79} :catch_a6
+
+    .line 50724985
+    goto :goto_a2
+
+    .line 50724986
+    :cond_7a
+    :goto_7a
+    const-string p1, "112"
+
+    .line 50724988
+    if-nez v1, :cond_89
+
+    .line 50724990
+    :try_start_7e
+    sget-object p2, Lbf/b;->a:Lbf/b;
+
+    .line 50724992
+    const-string v1, "context is null"
+
+    .line 50724994
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724997
+    invoke-static {p1, v1}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725000
+    goto :goto_93
+
+    .line 50725001
+    :cond_89
+    sget-object p2, Lbf/b;->a:Lbf/b;
+
+    .line 50725003
+    const-string v1, "transferPayInfo is null"
+
+    .line 50725005
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725008
+    invoke-static {p1, v1}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725011
+    :goto_93
+    if-eqz p3, :cond_98
+
+    .line 50725013
+    invoke-interface {p3}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 50725016
+    :cond_98
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725019
+    move-result-object p1
+
+    .line 50725020
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725023
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725026
+    :cond_a2
+    :goto_a2
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+    :try_end_a5
+    .catch Ljava/lang/Exception; {:try_start_7e .. :try_end_a5} :catch_a6
+
+    .line 50725029
+    goto :goto_b5
+
+    .line 50725030
+    :catch_a6
+    if-eqz p3, :cond_ab
+
+    .line 50725032
+    invoke-interface {p3}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 50725035
+    :cond_ab
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725038
+    move-result-object p1
+
+    .line 50725039
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725042
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725045
+    :goto_b5
+    return-void
+.end method
+
+.method public static synthetic directPay$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;ILjava/lang/Object;)V
+    .registers 6
+
+    .prologue
+    .line 100794368
+    and-int/lit8 p4, p4, 0x4
+
+    .line 100794370
+    if-eqz p4, :cond_5
+
+    .line 100794372
+    const/4 p3, 0x0
+
+    .line 100794373
+    :cond_5
+    invoke-direct {p0, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->directPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+
+    .line 100794376
+    return-void
+.end method
+
+.method private final doFrontTimeConsumeInStageTrackReport(Ljava/lang/String;Ljava/lang/String;)V
+    .registers 19
+
+    .prologue
+    .line 33947648
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 33947651
+    move-result-wide v0
+
+    .line 33947652
+    const-wide/16 v2, 0x0
+
+    .line 33947654
+    if-eqz p2, :cond_41
+
+    .line 33947656
+    invoke-static/range {p2 .. p2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 33947659
+    move-result v4
+
+    .line 33947660
+    xor-int/lit8 v4, v4, 0x1
+
+    .line 33947662
+    if-eqz v4, :cond_13
+
+    .line 33947664
+    move-object/from16 v4, p2
+
+    .line 33947666
+    goto :goto_14
+
+    .line 33947667
+    :cond_13
+    const/4 v4, 0x0
+
+    .line 33947668
+    :goto_14
+    if-eqz v4, :cond_41
+
+    .line 33947670
+    new-instance v5, Lorg/json/JSONObject;
+
+    .line 33947672
+    invoke-direct {v5, v4}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33947675
+    const-string v4, "timestamp_info"
+
+    .line 33947677
+    invoke-virtual {v5, v4}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 33947680
+    move-result-object v4
+
+    .line 33947681
+    if-eqz v4, :cond_41
+
+    .line 33947683
+    const-string v5, ""
+
+    .line 33947685
+    invoke-static {v4, v5}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33947688
+    const-string v5, "create_order"
+
+    .line 33947690
+    invoke-virtual {v4, v5, v2, v3}, Lorg/json/JSONObject;->optLong(Ljava/lang/String;J)J
+
+    .line 33947693
+    move-result-wide v5
+
+    .line 33947694
+    const-string v7, "create_order_request"
+
+    .line 33947696
+    invoke-virtual {v4, v7, v5, v6}, Lorg/json/JSONObject;->optLong(Ljava/lang/String;J)J
+
+    .line 33947699
+    move-result-wide v7
+
+    .line 33947700
+    const-string v9, "create_order_response"
+
+    .line 33947702
+    invoke-virtual {v4, v9, v2, v3}, Lorg/json/JSONObject;->optLong(Ljava/lang/String;J)J
+
+    .line 33947705
+    move-result-wide v9
+
+    .line 33947706
+    const-string v11, "launch_ttpay"
+
+    .line 33947708
+    invoke-virtual {v4, v11, v2, v3}, Lorg/json/JSONObject;->optLong(Ljava/lang/String;J)J
+
+    .line 33947711
+    move-result-wide v11
+
+    .line 33947712
+    goto :goto_45
+
+    .line 33947713
+    :cond_41
+    move-wide v5, v2
+
+    .line 33947714
+    move-wide v7, v5
+
+    .line 33947715
+    move-wide v9, v7
+
+    .line 33947716
+    move-wide v11, v9
+
+    .line 33947717
+    :goto_45
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 33947719
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947722
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 33947725
+    move-result-object v4
+
+    .line 33947726
+    sget-object v13, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->FRONT_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 33947728
+    iget-object v13, v13, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 33947730
+    cmp-long v14, v5, v2
+
+    .line 33947732
+    if-eqz v14, :cond_5f
+
+    .line 33947734
+    cmp-long v15, v9, v2
+
+    .line 33947736
+    if-eqz v15, :cond_5f
+
+    .line 33947738
+    cmp-long v15, v11, v2
+
+    .line 33947740
+    if-eqz v15, :cond_5f
+
+    .line 33947742
+    goto :goto_60
+
+    .line 33947743
+    :cond_5f
+    move-wide v5, v0
+
+    .line 33947744
+    :goto_60
+    invoke-virtual {v4, v5, v6, v13}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->i(JLjava/lang/String;)V
+
+    .line 33947747
+    if-eqz v14, :cond_93
+
+    .line 33947749
+    cmp-long v4, v9, v2
+
+    .line 33947751
+    if-eqz v4, :cond_93
+
+    .line 33947753
+    cmp-long v4, v11, v2
+
+    .line 33947755
+    if-eqz v4, :cond_93
+
+    .line 33947757
+    invoke-direct/range {p0 .. p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getCheckType(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947760
+    move-result-object v2
+
+    .line 33947761
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;->Companion:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum$a;
+
+    .line 33947763
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;->PrepareCreateOrder:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;
+
+    .line 33947765
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947768
+    invoke-static {v4, v2, v7, v8}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum$a;->a(Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;Ljava/lang/String;J)V
+
+    .line 33947771
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;->SubmitOrder:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;
+
+    .line 33947773
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947776
+    invoke-static {v4, v2, v9, v10}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum$a;->a(Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;Ljava/lang/String;J)V
+
+    .line 33947779
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;->OrderDataAnalysis:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;
+
+    .line 33947781
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947784
+    invoke-static {v4, v2, v11, v12}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum$a;->a(Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;Ljava/lang/String;J)V
+
+    .line 33947787
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;->TTPayTrigger:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;
+
+    .line 33947789
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947792
+    invoke-static {v4, v2, v0, v1}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum$a;->a(Lcom/android/ttcjpaysdk/base/CJPayTrackReport$FrontCounterSubSectionEnum;Ljava/lang/String;J)V
+
+    .line 33947795
+    :cond_93
+    return-void
+.end method
+
+.method private final doSuperPay(Ljava/lang/String;Lcom/android/ttcjpaysdk/base/CJPayHostInfo;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 28
+
+    .prologue
+    .line 84344832
+    move-object/from16 v9, p1
+
+    .line 84344834
+    move-object/from16 v10, p3
+
+    .line 84344836
+    move-object/from16 v11, p4
+
+    .line 84344838
+    move-object/from16 v12, p5
+
+    .line 84344840
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker;->b:Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;
+
+    .line 84344842
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84344845
+    const-string v0, "wallet_rd_common_sdk_start"
+
+    .line 84344847
+    const-string v1, "super_pay"
+
+    .line 84344849
+    invoke-static {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 84344852
+    const-string v14, "error_msg"
+
+    .line 84344854
+    const-string v15, "TTCJPayUtilsInner-doSuperPay"
+
+    .line 84344856
+    const-string v8, "node"
+
+    .line 84344858
+    const-string v7, "0"
+
+    .line 84344860
+    const-string v6, "result"
+
+    .line 84344862
+    const-string v5, "super_pay_exception"
+
+    .line 84344864
+    const-string v4, "wallet_rd_super_pay"
+
+    .line 84344866
+    const-string v3, ""
+
+    .line 84344868
+    const/4 v2, 0x0
+
+    .line 84344869
+    const/4 v1, 0x0
+
+    .line 84344870
+    if-eqz v9, :cond_36
+
+    .line 84344872
+    :try_start_28
+    invoke-virtual/range {p1 .. p1}, Ljava/lang/String;->length()I
+
+    .line 84344875
+    move-result v0
+
+    .line 84344876
+    if-lez v0, :cond_30
+
+    .line 84344878
+    const/4 v0, 0x1
+
+    .line 84344879
+    goto :goto_31
+
+    .line 84344880
+    :cond_30
+    const/4 v0, 0x0
+
+    .line 84344881
+    :goto_31
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 84344884
+    move-result-object v0
+
+    .line 84344885
+    goto :goto_37
+
+    .line 84344886
+    :cond_36
+    move-object v0, v2
+
+    .line 84344887
+    :goto_37
+    if-eqz v0, :cond_3e
+
+    .line 84344889
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 84344892
+    move-result v0
+
+    .line 84344893
+    goto :goto_3f
+
+    .line 84344894
+    :cond_3e
+    const/4 v0, 0x0
+
+    .line 84344895
+    :goto_3f
+    if-eqz v0, :cond_df
+
+    .line 84344897
+    if-eqz v9, :cond_4f
+
+    .line 84344899
+    const-string v0, "zg_info"
+
+    .line 84344901
+    const/4 v13, 0x2
+
+    .line 84344902
+    invoke-static {v9, v0, v1, v13, v2}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 84344905
+    move-result v0
+
+    .line 84344906
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 84344909
+    move-result-object v0
+
+    .line 84344910
+    goto :goto_50
+
+    .line 84344911
+    :cond_4f
+    move-object v0, v2
+
+    .line 84344912
+    :goto_50
+    if-eqz v0, :cond_57
+
+    .line 84344914
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 84344917
+    move-result v0
+
+    .line 84344918
+    goto :goto_58
+
+    .line 84344919
+    :cond_57
+    const/4 v0, 0x0
+
+    .line 84344920
+    :goto_58
+    if-eqz v0, :cond_df
+
+    .line 84344922
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 84344924
+    const-string v13, "\u6781\u901f\u4ed8\u5207\u6d41\u81f3service10"
+
+    .line 84344926
+    invoke-static {v0, v13}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 84344929
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 84344931
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84344934
+    invoke-static {v11, v9}, Lbf/b;->j(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 84344937
+    const/16 v0, 0xa
+
+    .line 84344939
+    const/4 v13, 0x0
+
+    .line 84344940
+    const/16 v16, 0x0
+
+    .line 84344942
+    const-string v17, "from_native"
+    :try_end_70
+    .catch Ljava/lang/Exception; {:try_start_28 .. :try_end_70} :catch_8e
+
+    .line 84344944
+    move-object/from16 v1, p0
+
+    .line 84344946
+    move-object/from16 v2, p1
+
+    .line 84344948
+    move-object/from16 v18, v3
+
+    .line 84344950
+    move v3, v0
+
+    .line 84344951
+    move-object/from16 v19, v4
+
+    .line 84344953
+    move-object v4, v13
+
+    .line 84344954
+    move-object v13, v5
+
+    .line 84344955
+    move-object/from16 v5, v16
+
+    .line 84344957
+    move-object/from16 v20, v6
+
+    .line 84344959
+    move-object/from16 v6, p4
+
+    .line 84344961
+    move-object/from16 v21, v7
+
+    .line 84344963
+    move-object/from16 v7, v17
+
+    .line 84344965
+    move-object v11, v8
+
+    .line 84344966
+    move-object/from16 v8, p3
+
+    .line 84344968
+    :try_start_88
+    invoke-virtual/range {v1 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    :try_end_8b
+    .catch Ljava/lang/Exception; {:try_start_88 .. :try_end_8b} :catch_8c
+
+    .line 84344971
+    return-void
+
+    .line 84344972
+    :catch_8c
+    move-exception v0
+
+    .line 84344973
+    goto :goto_99
+
+    .line 84344974
+    :catch_8e
+    move-exception v0
+
+    .line 84344975
+    move-object/from16 v18, v3
+
+    .line 84344977
+    move-object/from16 v19, v4
+
+    .line 84344979
+    move-object v13, v5
+
+    .line 84344980
+    move-object/from16 v20, v6
+
+    .line 84344982
+    move-object/from16 v21, v7
+
+    .line 84344984
+    move-object v11, v8
+
+    .line 84344985
+    :goto_99
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 84344987
+    invoke-direct {v1}, Lorg/json/JSONObject;-><init>()V
+
+    .line 84344990
+    move-object/from16 v2, v18
+
+    .line 84344992
+    :try_start_a0
+    invoke-static {v2, v2}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->g(Ljava/lang/String;Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 84344995
+    move-result-object v3
+    :try_end_a4
+    .catch Ljava/lang/Exception; {:try_start_a0 .. :try_end_a4} :catch_c1
+
+    .line 84344996
+    const/4 v4, 0x0
+
+    .line 84344997
+    :try_start_a5
+    invoke-static {v3, v4}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+    :try_end_a8
+    .catch Ljava/lang/Exception; {:try_start_a5 .. :try_end_a8} :catch_bc
+
+    .line 84345000
+    move-object/from16 v6, v20
+
+    .line 84345002
+    move-object/from16 v5, v21
+
+    .line 84345004
+    :try_start_ac
+    invoke-virtual {v3, v6, v5}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 84345007
+    invoke-virtual {v3, v11, v15}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 84345010
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    .line 84345013
+    move-result-object v1
+
+    .line 84345014
+    invoke-virtual {v3, v14, v1}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_b9
+    .catch Ljava/lang/Exception; {:try_start_ac .. :try_end_b9} :catch_ba
+
+    .line 84345017
+    goto :goto_c7
+
+    .line 84345018
+    :catch_ba
+    move-object v1, v3
+
+    .line 84345019
+    goto :goto_c6
+
+    .line 84345020
+    :catch_bc
+    move-object/from16 v6, v20
+
+    .line 84345022
+    move-object/from16 v5, v21
+
+    .line 84345024
+    goto :goto_c6
+
+    .line 84345025
+    :catch_c1
+    move-object/from16 v6, v20
+
+    .line 84345027
+    move-object/from16 v5, v21
+
+    .line 84345029
+    const/4 v4, 0x0
+
+    .line 84345030
+    :goto_c6
+    move-object v3, v1
+
+    .line 84345031
+    :goto_c7
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84345034
+    move-result-object v1
+
+    .line 84345035
+    const/4 v7, 0x1
+
+    .line 84345036
+    new-array v8, v7, [Lorg/json/JSONObject;
+
+    .line 84345038
+    aput-object v3, v8, v4
+
+    .line 84345040
+    move-object/from16 v3, v19
+
+    .line 84345042
+    invoke-virtual {v1, v3, v8}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+
+    .line 84345045
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 84345047
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84345050
+    const/4 v1, 0x0
+
+    .line 84345051
+    invoke-static {v1, v13, v4, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 84345054
+    goto :goto_e6
+
+    .line 84345055
+    :cond_df
+    move-object v1, v2
+
+    .line 84345056
+    move-object v2, v3
+
+    .line 84345057
+    move-object v3, v4
+
+    .line 84345058
+    move-object v13, v5
+
+    .line 84345059
+    move-object v5, v7
+
+    .line 84345060
+    move-object v11, v8
+
+    .line 84345061
+    const/4 v4, 0x0
+
+    .line 84345062
+    :goto_e6
+    if-eqz v9, :cond_f8
+
+    .line 84345064
+    :try_start_e8
+    invoke-virtual/range {p1 .. p1}, Ljava/lang/String;->length()I
+
+    .line 84345067
+    move-result v0
+
+    .line 84345068
+    if-lez v0, :cond_f0
+
+    .line 84345070
+    const/4 v0, 0x1
+
+    .line 84345071
+    goto :goto_f1
+
+    .line 84345072
+    :cond_f0
+    const/4 v0, 0x0
+
+    .line 84345073
+    :goto_f1
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 84345076
+    move-result-object v0
+
+    .line 84345077
+    goto :goto_f9
+
+    .line 84345078
+    :catch_f6
+    move-exception v0
+
+    .line 84345079
+    goto :goto_11e
+
+    .line 84345080
+    :cond_f8
+    move-object v0, v1
+
+    .line 84345081
+    :goto_f9
+    if-eqz v0, :cond_100
+
+    .line 84345083
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 84345086
+    move-result v0
+
+    .line 84345087
+    goto :goto_101
+
+    .line 84345088
+    :cond_100
+    const/4 v0, 0x0
+
+    .line 84345089
+    :goto_101
+    if-eqz v0, :cond_14e
+
+    .line 84345091
+    if-eqz v9, :cond_111
+
+    .line 84345093
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 84345095
+    invoke-direct {v0, v9}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 84345098
+    const-string v7, "scene"
+
+    .line 84345100
+    invoke-virtual {v0, v7}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 84345103
+    move-result-object v0
+
+    .line 84345104
+    goto :goto_112
+
+    .line 84345105
+    :cond_111
+    move-object v0, v1
+
+    .line 84345106
+    :goto_112
+    const-string v7, "sign_and_pay_query"
+
+    .line 84345108
+    invoke-static {v0, v7}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 84345111
+    move-result v0
+
+    .line 84345112
+    if-eqz v0, :cond_14e
+
+    .line 84345114
+    invoke-direct/range {p0 .. p4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->superPayOpenAndPay(Ljava/lang/String;Lcom/android/ttcjpaysdk/base/CJPayHostInfo;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;)V
+    :try_end_11d
+    .catch Ljava/lang/Exception; {:try_start_e8 .. :try_end_11d} :catch_f6
+
+    .line 84345117
+    return-void
+
+    .line 84345118
+    :goto_11e
+    new-instance v7, Lorg/json/JSONObject;
+
+    .line 84345120
+    invoke-direct {v7}, Lorg/json/JSONObject;-><init>()V
+
+    .line 84345123
+    :try_start_123
+    invoke-static {v2, v2}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->g(Ljava/lang/String;Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 84345126
+    move-result-object v8
+
+    .line 84345127
+    invoke-static {v8, v4}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+    :try_end_12a
+    .catch Ljava/lang/Exception; {:try_start_123 .. :try_end_12a} :catch_139
+
+    .line 84345130
+    :try_start_12a
+    invoke-virtual {v8, v6, v5}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 84345133
+    invoke-virtual {v8, v11, v15}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 84345136
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    .line 84345139
+    move-result-object v5
+
+    .line 84345140
+    invoke-virtual {v8, v14, v5}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_137
+    .catch Ljava/lang/Exception; {:try_start_12a .. :try_end_137} :catch_138
+
+    .line 84345143
+    goto :goto_13a
+
+    .line 84345144
+    :catch_138
+    move-object v7, v8
+
+    .line 84345145
+    :catch_139
+    move-object v8, v7
+
+    .line 84345146
+    :goto_13a
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84345149
+    move-result-object v5
+
+    .line 84345150
+    const/4 v6, 0x1
+
+    .line 84345151
+    new-array v7, v6, [Lorg/json/JSONObject;
+
+    .line 84345153
+    aput-object v8, v7, v4
+
+    .line 84345155
+    invoke-virtual {v5, v3, v7}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+
+    .line 84345158
+    sget-object v3, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 84345160
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84345163
+    invoke-static {v1, v13, v4, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 84345166
+    :cond_14e
+    const/16 v3, 0x70
+
+    .line 84345168
+    const-string v5, "112"
+
+    .line 84345170
+    if-nez v12, :cond_155
+
+    .line 84345172
+    goto :goto_157
+
+    .line 84345173
+    :cond_155
+    :try_start_155
+    iput-object v10, v12, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 84345175
+    :goto_157
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84345178
+    move-result-object v0
+
+    .line 84345179
+    iput-object v10, v0, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 84345181
+    if-eqz p2, :cond_164
+
+    .line 84345183
+    invoke-virtual/range {p2 .. p2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 84345186
+    move-result-object v0
+
+    .line 84345187
+    goto :goto_165
+
+    .line 84345188
+    :cond_164
+    move-object v0, v1
+
+    .line 84345189
+    :goto_165
+    if-eqz v9, :cond_175
+
+    .line 84345191
+    invoke-virtual/range {p1 .. p1}, Ljava/lang/String;->length()I
+
+    .line 84345194
+    move-result v1
+
+    .line 84345195
+    if-lez v1, :cond_16f
+
+    .line 84345197
+    const/4 v1, 0x1
+
+    .line 84345198
+    goto :goto_170
+
+    .line 84345199
+    :cond_16f
+    const/4 v1, 0x0
+
+    .line 84345200
+    :goto_170
+    const/4 v6, 0x1
+
+    .line 84345201
+    if-ne v1, v6, :cond_175
+
+    .line 84345203
+    const/4 v13, 0x1
+
+    .line 84345204
+    goto :goto_176
+
+    .line 84345205
+    :cond_175
+    const/4 v13, 0x0
+
+    .line 84345206
+    :goto_176
+    if-eqz v13, :cond_1ad
+
+    .line 84345208
+    if-nez v0, :cond_17b
+
+    .line 84345210
+    goto :goto_1ad
+
+    .line 84345211
+    :cond_17b
+    move-object/from16 v1, p4
+
+    .line 84345213
+    if-eqz v1, :cond_192
+
+    .line 84345215
+    new-instance v4, Lorg/json/JSONObject;
+
+    .line 84345217
+    invoke-direct {v4, v1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 84345220
+    const-string v6, "track_info"
+
+    .line 84345222
+    invoke-virtual {v4, v6}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 84345225
+    move-result-object v4
+
+    .line 84345226
+    if-eqz v4, :cond_192
+
+    .line 84345228
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84345231
+    move-result-object v6
+
+    .line 84345232
+    iput-object v4, v6, Lcom/android/ttcjpaysdk/base/c;->y:Lorg/json/JSONObject;
+
+    .line 84345234
+    :cond_192
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 84345237
+    move-result-object v4
+
+    .line 84345238
+    const-class v6, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 84345240
+    invoke-virtual {v4, v6}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 84345243
+    move-result-object v4
+
+    .line 84345244
+    check-cast v4, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 84345246
+    if-eqz v4, :cond_1e9
+
+    .line 84345248
+    sget-object v6, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 84345250
+    invoke-virtual {v6}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84345253
+    invoke-static/range {p2 .. p2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 84345256
+    move-result-object v6
+
+    .line 84345257
+    invoke-interface {v4, v0, v9, v6, v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;->doSuperPay(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
+
+    .line 84345260
+    goto :goto_1e9
+
+    .line 84345261
+    :cond_1ad
+    :goto_1ad
+    if-nez v0, :cond_1ba
+
+    .line 84345263
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 84345265
+    const-string v1, "context is null"
+
+    .line 84345267
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84345270
+    invoke-static {v5, v1}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 84345273
+    goto :goto_1c4
+
+    .line 84345274
+    :cond_1ba
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 84345276
+    const-string v1, "sdkInfo is empty"
+
+    .line 84345278
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84345281
+    invoke-static {v5, v1}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 84345284
+    :goto_1c4
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84345287
+    move-result-object v0
+
+    .line 84345288
+    invoke-virtual {v0, v3}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84345291
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_1ce
+    .catch Ljava/lang/Exception; {:try_start_155 .. :try_end_1ce} :catch_1cf
+
+    .line 84345294
+    goto :goto_1e9
+
+    .line 84345295
+    :catch_1cf
+    move-exception v0
+
+    .line 84345296
+    sget-object v1, Lbf/b;->a:Lbf/b;
+
+    .line 84345298
+    invoke-static {v0}, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 84345301
+    move-result-object v0
+
+    .line 84345302
+    invoke-static {v0, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 84345305
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84345308
+    invoke-static {v5, v0}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 84345311
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84345314
+    move-result-object v0
+
+    .line 84345315
+    invoke-virtual {v0, v3}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84345318
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 84345321
+    :cond_1e9
+    :goto_1e9
+    return-void
+.end method
+
+.method private final execute(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;)V
+    .registers 10
+
+    .prologue
+    .line 50724864
+    if-nez p2, :cond_1d
+
+    .line 50724866
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 50724868
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724870
+    const-string v1, ""
+
+    .line 50724872
+    if-eqz v0, :cond_e
+
+    .line 50724874
+    iget-object v2, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 50724876
+    if-nez v2, :cond_f
+
+    .line 50724878
+    :cond_e
+    move-object v2, v1
+
+    .line 50724879
+    :cond_f
+    if-eqz v0, :cond_17
+
+    .line 50724881
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 50724883
+    if-nez v0, :cond_16
+
+    .line 50724885
+    goto :goto_17
+
+    .line 50724886
+    :cond_16
+    move-object v1, v0
+
+    .line 50724887
+    :cond_17
+    :goto_17
+    const-string v0, "execute"
+
+    .line 50724889
+    invoke-static {p2, v0, v2, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 50724892
+    move-result-object p2
+
+    .line 50724893
+    :cond_1d
+    move-object v3, p2
+
+    .line 50724894
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50724896
+    const-string v0, "cashier"
+
+    .line 50724898
+    invoke-virtual {p2, v0, v3}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 50724901
+    :try_start_25
+    invoke-static {p3}, Lcom/android/ttcjpaysdk/base/ktextension/j;->a(Ljava/lang/String;)Z
+
+    .line 50724904
+    move-result p2
+
+    .line 50724905
+    if-eqz p2, :cond_2d
+
+    .line 50724907
+    move-object p2, p3
+
+    .line 50724908
+    goto :goto_2e
+
+    .line 50724909
+    :cond_2d
+    const/4 p2, 0x0
+
+    .line 50724910
+    :goto_2e
+    if-eqz p2, :cond_43
+
+    .line 50724912
+    new-instance p2, Lorg/json/JSONObject;
+
+    .line 50724914
+    invoke-direct {p2, p3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724917
+    const-string p3, "hide_loading"
+
+    .line 50724919
+    const/4 v0, 0x0
+
+    .line 50724920
+    invoke-virtual {p2, p3, v0}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;I)I
+
+    .line 50724923
+    move-result p2
+
+    .line 50724924
+    const/4 p3, 0x1
+
+    .line 50724925
+    if-ne p2, p3, :cond_40
+
+    .line 50724927
+    const/4 v0, 0x1
+
+    .line 50724928
+    :cond_40
+    invoke-virtual {p0, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setUnifyHideLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 50724931
+    :cond_43
+    const/4 v2, 0x0
+
+    .line 50724932
+    const/4 v4, 0x2
+
+    .line 50724933
+    const/4 v5, 0x0
+
+    .line 50724934
+    move-object v0, p0
+
+    .line 50724935
+    move-object v1, p1
+
+    .line 50724936
+    invoke-static/range {v0 .. v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->executeImpl$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;ILjava/lang/Object;)V
+    :try_end_4b
+    .catchall {:try_start_25 .. :try_end_4b} :catchall_4c
+
+    .line 50724939
+    goto :goto_aa
+
+    .line 50724940
+    :catchall_4c
+    move-exception p1
+
+    .line 50724941
+    invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 50724944
+    move-result-object p2
+
+    .line 50724945
+    const-string p3, "params illegal"
+
+    .line 50724947
+    invoke-static {p2, p3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 50724950
+    move-result v0
+
+    .line 50724951
+    const/16 v1, 0x70
+
+    .line 50724953
+    const-string v2, "wallet_cashier_imp_failed"
+
+    .line 50724955
+    if-eqz v0, :cond_73
+
+    .line 50724957
+    sget-object p1, Lbf/b;->a:Lbf/b;
+
+    .line 50724959
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724962
+    invoke-static {v2, p3}, Lbf/b;->h(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50724965
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724968
+    move-result-object p1
+
+    .line 50724969
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50724972
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50724975
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 50724978
+    goto :goto_aa
+
+    .line 50724979
+    :cond_73
+    const-string p3, "request params is null"
+
+    .line 50724981
+    invoke-static {p2, p3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 50724984
+    move-result p2
+
+    .line 50724985
+    if-eqz p2, :cond_93
+
+    .line 50724987
+    sget-object p1, Lbf/b;->a:Lbf/b;
+
+    .line 50724989
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724992
+    const-string p1, "wallet_rd_illegal_execute_params"
+
+    .line 50724994
+    invoke-static {p1, p3}, Lbf/b;->h(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50724997
+    invoke-static {v2, p3}, Lbf/b;->h(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725000
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725003
+    move-result-object p1
+
+    .line 50725004
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725007
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725010
+    goto :goto_aa
+
+    .line 50725011
+    :cond_93
+    sget-object p2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 50725013
+    new-instance p3, Ljava/lang/StringBuilder;
+
+    .line 50725015
+    const-string v0, "execute error: "
+
+    .line 50725017
+    invoke-direct {p3, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50725020
+    invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 50725023
+    move-result-object p1
+
+    .line 50725024
+    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50725027
+    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50725030
+    move-result-object p1
+
+    .line 50725031
+    invoke-static {p2, p1}, Lfe0/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725034
+    :goto_aa
+    return-void
+.end method
+
+.method public static synthetic execute$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Object;)V
+    .registers 6
+
+    .prologue
+    .line 100794368
+    and-int/lit8 p4, p4, 0x4
+
+    .line 100794370
+    if-eqz p4, :cond_5
+
+    .line 100794372
+    const/4 p3, 0x0
+
+    .line 100794373
+    :cond_5
+    invoke-direct {p0, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->execute(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;)V
+
+    .line 100794376
+    return-void
+.end method
+
+.method private final executeImpl(Ljava/lang/String;ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 12
+
+    .prologue
+    .line 50790400
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790402
+    if-nez v0, :cond_5
+
+    .line 50790404
+    goto :goto_b
+
+    .line 50790405
+    :cond_5
+    invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 50790408
+    move-result-object v1
+
+    .line 50790409
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->unifyFromService:Ljava/lang/String;
+
+    .line 50790411
+    :goto_b
+    if-eqz p3, :cond_10
+
+    .line 50790413
+    invoke-virtual {p3, p2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->k(I)V
+
+    .line 50790416
+    :cond_10
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker;->b:Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;
+
+    .line 50790418
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50790421
+    const-string p2, "wallet_rd_common_sdk_start"
+
+    .line 50790423
+    const-string v0, "standard_pay_desk"
+
+    .line 50790425
+    invoke-static {p2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50790428
+    sget-object p2, Lbf/b;->a:Lbf/b;
+
+    .line 50790430
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790432
+    const-string v1, "merchant_id"
+
+    .line 50790434
+    const/4 v2, 0x0
+
+    .line 50790435
+    if-eqz v0, :cond_30
+
+    .line 50790437
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50790439
+    if-eqz v0, :cond_30
+
+    .line 50790441
+    invoke-interface {v0, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50790444
+    move-result-object v0
+
+    .line 50790445
+    check-cast v0, Ljava/lang/String;
+
+    .line 50790447
+    goto :goto_31
+
+    .line 50790448
+    :cond_30
+    move-object v0, v2
+
+    .line 50790449
+    :goto_31
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790451
+    const-string v4, "app_id"
+
+    .line 50790453
+    if-eqz v3, :cond_42
+
+    .line 50790455
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50790457
+    if-eqz v3, :cond_42
+
+    .line 50790459
+    invoke-interface {v3, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50790462
+    move-result-object v3
+
+    .line 50790463
+    check-cast v3, Ljava/lang/String;
+
+    .line 50790465
+    goto :goto_43
+
+    .line 50790466
+    :cond_42
+    move-object v3, v2
+
+    .line 50790467
+    :goto_43
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50790470
+    const-string p2, "wallet_rd_cashier_call_execute"
+
+    .line 50790472
+    invoke-static {p2, v0, v3}, Lbf/b;->b(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50790475
+    sget-object p2, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 50790477
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50790480
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 50790483
+    move-result-object p2
+
+    .line 50790484
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_INTEGRATED_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 50790486
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 50790488
+    invoke-static {p2, v0}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 50790491
+    new-instance p2, Ljava/lang/StringBuilder;
+
+    .line 50790493
+    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 50790496
+    invoke-virtual {p2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50790499
+    const-string v0, "_\u805a\u5408\u6536\u94f6\u53f0"
+
+    .line 50790501
+    invoke-virtual {p2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50790504
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50790507
+    move-result-object p2
+
+    .line 50790508
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 50790511
+    move-result-object v0
+
+    .line 50790512
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->c()Ljava/lang/String;
+
+    .line 50790515
+    move-result-object v3
+
+    .line 50790516
+    iget-object v5, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790518
+    if-eqz v5, :cond_7b
+
+    .line 50790520
+    iget-object v5, v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 50790522
+    goto :goto_7c
+
+    .line 50790523
+    :cond_7b
+    move-object v5, v2
+
+    .line 50790524
+    :goto_7c
+    invoke-direct {p0, p2, v0, v3, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->monitorCounterParams(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50790527
+    sget-object p2, Lbf/a;->a:Lbf/a;
+
+    .line 50790529
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790531
+    if-eqz v0, :cond_88
+
+    .line 50790533
+    iget-object v3, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 50790535
+    goto :goto_89
+
+    .line 50790536
+    :cond_88
+    move-object v3, v2
+
+    .line 50790537
+    :goto_89
+    if-eqz v0, :cond_8e
+
+    .line 50790539
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 50790541
+    goto :goto_8f
+
+    .line 50790542
+    :cond_8e
+    move-object v0, v2
+
+    .line 50790543
+    :goto_8f
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50790546
+    sget-object p2, Ln9/a;->a:Ln9/a;
+
+    .line 50790548
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50790551
+    sget-object v5, Ln9/a;->b:Ljava/lang/String;
+
+    .line 50790553
+    invoke-static {v3, v0, v5}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 50790556
+    move-result-object v0
+
+    .line 50790557
+    iget-boolean v0, v0, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->isNeedDegrade:Z
+
+    .line 50790559
+    if-nez v0, :cond_a6
+
+    .line 50790561
+    const-string v0, "caijing_cashdesk_request"
+
+    .line 50790563
+    invoke-static {v0}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 50790566
+    :cond_a6
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790568
+    if-eqz v0, :cond_af
+
+    .line 50790570
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50790573
+    move-result-object v0
+
+    .line 50790574
+    goto :goto_b0
+
+    .line 50790575
+    :cond_af
+    move-object v0, v2
+
+    .line 50790576
+    :goto_b0
+    if-eqz v0, :cond_1aa
+
+    .line 50790578
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790580
+    if-eqz v3, :cond_b9
+
+    .line 50790582
+    iget-object v6, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50790584
+    goto :goto_ba
+
+    .line 50790585
+    :cond_b9
+    move-object v6, v2
+
+    .line 50790586
+    :goto_ba
+    if-eqz v6, :cond_1aa
+
+    .line 50790588
+    if-eqz v3, :cond_c3
+
+    .line 50790590
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 50790593
+    move-result-object v3
+
+    .line 50790594
+    goto :goto_c4
+
+    .line 50790595
+    :cond_c3
+    move-object v3, v2
+
+    .line 50790596
+    :goto_c4
+    if-eqz v3, :cond_1aa
+
+    .line 50790598
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790600
+    const/4 v6, 0x0
+
+    .line 50790601
+    if-eqz v3, :cond_d8
+
+    .line 50790603
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50790605
+    if-eqz v3, :cond_d8
+
+    .line 50790607
+    invoke-interface {v3}, Ljava/util/Map;->isEmpty()Z
+
+    .line 50790610
+    move-result v3
+
+    .line 50790611
+    const/4 v7, 0x1
+
+    .line 50790612
+    xor-int/2addr v3, v7
+
+    .line 50790613
+    if-nez v3, :cond_d8
+
+    .line 50790615
+    goto :goto_d9
+
+    .line 50790616
+    :cond_d8
+    const/4 v7, 0x0
+
+    .line 50790617
+    :goto_d9
+    if-nez v7, :cond_1a2
+
+    .line 50790619
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790621
+    if-eqz v3, :cond_ea
+
+    .line 50790623
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50790625
+    if-eqz v3, :cond_ea
+
+    .line 50790627
+    invoke-interface {v3, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50790630
+    move-result-object v1
+
+    .line 50790631
+    check-cast v1, Ljava/lang/String;
+
+    .line 50790633
+    goto :goto_eb
+
+    .line 50790634
+    :cond_ea
+    move-object v1, v2
+
+    .line 50790635
+    :goto_eb
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790637
+    if-eqz v3, :cond_fa
+
+    .line 50790639
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50790641
+    if-eqz v3, :cond_fa
+
+    .line 50790643
+    invoke-interface {v3, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50790646
+    move-result-object v3
+
+    .line 50790647
+    check-cast v3, Ljava/lang/String;
+
+    .line 50790649
+    goto :goto_fb
+
+    .line 50790650
+    :cond_fa
+    move-object v3, v2
+
+    .line 50790651
+    :goto_fb
+    const-string v4, "wallet_rd_cashier_call_execute_successfully"
+
+    .line 50790653
+    invoke-static {v4, v1, v3}, Lbf/b;->b(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50790656
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790658
+    if-eqz v1, :cond_107
+
+    .line 50790660
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50790662
+    goto :goto_108
+
+    .line 50790663
+    :cond_107
+    move-object v3, v2
+
+    .line 50790664
+    :goto_108
+    if-eqz v1, :cond_10d
+
+    .line 50790666
+    iget-object v4, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 50790668
+    goto :goto_10e
+
+    .line 50790669
+    :cond_10d
+    move-object v4, v2
+
+    .line 50790670
+    :goto_10e
+    if-eqz v1, :cond_112
+
+    .line 50790672
+    iget-object v2, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 50790674
+    :cond_112
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50790677
+    invoke-static {v4, v2, v5}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 50790680
+    move-result-object p2
+
+    .line 50790681
+    iget-boolean p2, p2, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->isNeedDegrade:Z
+
+    .line 50790683
+    if-eqz p2, :cond_182
+
+    .line 50790685
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790687
+    if-nez p1, :cond_122
+
+    .line 50790689
+    goto :goto_128
+
+    .line 50790690
+    :cond_122
+    invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50790693
+    move-result-object p2
+
+    .line 50790694
+    iput-object p2, p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->mScreenOrientationType:Ljava/lang/Integer;
+
+    .line 50790696
+    :goto_128
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790698
+    if-nez v3, :cond_12f
+
+    .line 50790700
+    if-nez p1, :cond_12f
+
+    .line 50790702
+    goto :goto_19e
+
+    .line 50790703
+    :cond_12f
+    new-instance p2, Lorg/json/JSONObject;
+
+    .line 50790705
+    invoke-direct {p2, v3}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+
+    .line 50790708
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50790711
+    move-result-object p3
+
+    .line 50790712
+    const-class v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 50790714
+    invoke-virtual {p3, v0}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50790717
+    move-result-object p3
+
+    .line 50790718
+    check-cast p3, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 50790720
+    if-eqz p3, :cond_19e
+
+    .line 50790722
+    new-instance v0, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 50790724
+    invoke-direct {v0}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 50790727
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50790730
+    move-result-object v1
+
+    .line 50790731
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 50790734
+    move-result-object v0
+
+    .line 50790735
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 50790737
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 50790740
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->l()Ljava/lang/String;
+
+    .line 50790743
+    move-result-object v2
+
+    .line 50790744
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50790747
+    const-string v2, "/cashdesk_offline"
+
+    .line 50790749
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50790752
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50790755
+    move-result-object v1
+
+    .line 50790756
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 50790759
+    move-result-object v0
+
+    .line 50790760
+    invoke-virtual {v0, p2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setOrderInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 50790763
+    move-result-object p2
+
+    .line 50790764
+    invoke-virtual {p2, v6}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setScreenType(I)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 50790767
+    move-result-object p2
+
+    .line 50790768
+    const-string v0, "0"
+
+    .line 50790770
+    invoke-virtual {p2, v0}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setCashDeskScene(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 50790773
+    move-result-object p2
+
+    .line 50790774
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->f(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50790777
+    move-result-object p1
+
+    .line 50790778
+    invoke-virtual {p2, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 50790781
+    move-result-object p1
+
+    .line 50790782
+    invoke-interface {p3, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5CashDesk(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 50790785
+    goto :goto_19e
+
+    .line 50790786
+    :cond_182
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50790789
+    move-result-object p2
+
+    .line 50790790
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 50790792
+    invoke-virtual {p2, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50790795
+    move-result-object p2
+
+    .line 50790796
+    check-cast p2, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 50790798
+    if-eqz p2, :cond_19e
+
+    .line 50790800
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50790802
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50790804
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50790807
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50790810
+    move-result-object v1
+
+    .line 50790811
+    invoke-interface {p2, v0, p1, v1, p3}, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;->startNewCounterActivity(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 50790814
+    :cond_19e
+    :goto_19e
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 50790817
+    return-void
+
+    .line 50790818
+    :cond_1a2
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 50790820
+    const-string p2, "request params is null"
+
+    .line 50790822
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 50790825
+    throw p1
+
+    .line 50790826
+    :cond_1aa
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 50790828
+    const-string p2, "params illegal"
+
+    .line 50790830
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 50790833
+    throw p1
+.end method
+
+.method public static synthetic executeImpl$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;ILjava/lang/Object;)V
+    .registers 6
+
+    .prologue
+    .line 100794368
+    and-int/lit8 p4, p4, 0x2
+
+    .line 100794370
+    if-eqz p4, :cond_6
+
+    .line 100794372
+    const/16 p2, 0x14
+
+    .line 100794374
+    :cond_6
+    invoke-direct {p0, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->executeImpl(Ljava/lang/String;ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 100794377
+    return-void
+.end method
+
+.method private final extractParamSimple(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .registers 9
+
+    .prologue
+    .line 33882112
+    const/4 v0, 0x0
+
+    .line 33882113
+    const/4 v1, 0x0
+
+    .line 33882114
+    :goto_2
+    const-string v2, "%"
+
+    .line 33882116
+    const/4 v3, 0x2
+
+    .line 33882117
+    const/4 v4, 0x0
+
+    .line 33882118
+    invoke-static {p1, v2, v0, v3, v4}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 33882121
+    move-result v2
+
+    .line 33882122
+    if-eqz v2, :cond_1d
+
+    .line 33882124
+    const/4 v2, 0x5
+
+    .line 33882125
+    if-ge v1, v2, :cond_1d
+
+    .line 33882127
+    const-string v2, "UTF-8"
+
+    .line 33882129
+    invoke-static {p1, v2}, Ljava/net/URLDecoder;->decode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882132
+    move-result-object p1
+
+    .line 33882133
+    const-string v2, ""
+
+    .line 33882135
+    invoke-static {p1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33882138
+    add-int/lit8 v1, v1, 0x1
+
+    .line 33882140
+    goto :goto_2
+
+    .line 33882141
+    :cond_1d
+    new-instance v1, Lkotlin/text/Regex;
+
+    .line 33882143
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 33882145
+    const-string v5, "(?:^|&)"
+
+    .line 33882147
+    invoke-direct {v2, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 33882150
+    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33882153
+    const-string p2, "=([^&]*)"
+
+    .line 33882155
+    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33882158
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 33882161
+    move-result-object p2
+
+    .line 33882162
+    sget-object v2, Lkotlin/text/RegexOption;->IGNORE_CASE:Lkotlin/text/RegexOption;
+
+    .line 33882164
+    invoke-direct {v1, p2, v2}, Lkotlin/text/Regex;-><init>(Ljava/lang/String;Lkotlin/text/RegexOption;)V
+
+    .line 33882167
+    invoke-static {v1, p1, v0, v3, v4}, Lkotlin/text/Regex;->findAll$default(Lkotlin/text/Regex;Ljava/lang/CharSequence;IILjava/lang/Object;)Lkotlin/sequences/Sequence;
+
+    .line 33882170
+    move-result-object p1
+
+    .line 33882171
+    invoke-static {p1}, Lkotlin/sequences/SequencesKt;->lastOrNull(Lkotlin/sequences/Sequence;)Ljava/lang/Object;
+
+    .line 33882174
+    move-result-object p1
+
+    .line 33882175
+    check-cast p1, Lkotlin/text/MatchResult;
+
+    .line 33882177
+    if-eqz p1, :cond_51
+
+    .line 33882179
+    invoke-interface {p1}, Lkotlin/text/MatchResult;->getGroupValues()Ljava/util/List;
+
+    .line 33882182
+    move-result-object p1
+
+    .line 33882183
+    if-eqz p1, :cond_51
+
+    .line 33882185
+    const/4 p2, 0x1
+
+    .line 33882186
+    invoke-interface {p1, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    .line 33882189
+    move-result-object p1
+
+    .line 33882190
+    move-object v4, p1
+
+    .line 33882191
+    check-cast v4, Ljava/lang/String;
+
+    .line 33882193
+    :cond_51
+    return-object v4
+.end method
+
+.method private final fromValidContext()Z
+    .registers 4
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 196610
+    const/4 v1, 0x0
+
+    .line 196611
+    if-eqz v0, :cond_a
+
+    .line 196613
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 196616
+    move-result-object v0
+
+    .line 196617
+    goto :goto_b
+
+    .line 196618
+    :cond_a
+    move-object v0, v1
+
+    .line 196619
+    :goto_b
+    instance-of v2, v0, Landroid/app/Activity;
+
+    .line 196621
+    if-eqz v2, :cond_12
+
+    .line 196623
+    move-object v1, v0
+
+    .line 196624
+    check-cast v1, Landroid/app/Activity;
+
+    .line 196626
+    :cond_12
+    if-eqz v1, :cond_16
+
+    .line 196628
+    const/4 v0, 0x1
+
+    .line 196629
+    goto :goto_17
+
+    .line 196630
+    :cond_16
+    const/4 v0, 0x0
+
+    .line 196631
+    :goto_17
+    return v0
+.end method
+
+.method private final frontPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLorg/json/JSONObject;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 30
+
+    .prologue
+    .line 168230912
+    move-object/from16 v9, p0
+
+    .line 168230914
+    move-object/from16 v15, p5
+
+    .line 168230916
+    move-object/from16 v0, p9
+
+    .line 168230918
+    const-string v1, "papi_id"
+
+    .line 168230920
+    sget-object v2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 168230922
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 168230924
+    const-string v4, "frontPay: tradeInfo:"
+
+    .line 168230926
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 168230929
+    move-object/from16 v12, p1
+
+    .line 168230931
+    invoke-virtual {v3, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230934
+    const-string v4, ",source:"
+
+    .line 168230936
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230939
+    move-object/from16 v14, p2
+
+    .line 168230941
+    invoke-virtual {v3, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230944
+    const-string v4, ",bindCardInfo:"
+
+    .line 168230946
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230949
+    move-object/from16 v13, p3
+
+    .line 168230951
+    invoke-virtual {v3, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230954
+    const-string v4, ",closeWebview:"
+
+    .line 168230956
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230959
+    move/from16 v11, p4
+
+    .line 168230961
+    invoke-virtual {v3, v11}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 168230964
+    const-string v4, ",frontInfo:"
+
+    .line 168230966
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230969
+    invoke-virtual {v3, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 168230972
+    const-string v4, ",unifyCashierInfo:"
+
+    .line 168230974
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230977
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168230980
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 168230983
+    move-result-object v3
+
+    .line 168230984
+    invoke-static {v2, v3}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 168230987
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 168230989
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 168230992
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 168230995
+    move-result-object v3
+
+    .line 168230996
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_FRONT_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 168230998
+    iget-object v4, v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 168231000
+    invoke-static {v3, v4}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 168231003
+    const-string v3, "caijing_cashdesk_request"
+
+    .line 168231005
+    invoke-static {v3}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 168231008
+    iget-object v3, v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 168231010
+    const/4 v4, 0x0
+
+    .line 168231011
+    if-eqz v3, :cond_6c
+
+    .line 168231013
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 168231016
+    move-result-object v3
+
+    .line 168231017
+    move-object/from16 v16, v3
+
+    .line 168231019
+    goto :goto_6e
+
+    .line 168231020
+    :cond_6c
+    move-object/from16 v16, v4
+
+    .line 168231022
+    :goto_6e
+    if-eqz v16, :cond_125
+
+    .line 168231024
+    iget-object v3, v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 168231026
+    if-eqz v3, :cond_78
+
+    .line 168231028
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 168231031
+    move-result-object v4
+
+    .line 168231032
+    :cond_78
+    if-nez v4, :cond_7c
+
+    .line 168231034
+    goto/16 :goto_125
+
+    .line 168231036
+    :cond_7c
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 168231039
+    move-result-object v3
+
+    .line 168231040
+    const-class v4, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;
+
+    .line 168231042
+    invoke-virtual {v3, v4}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 168231045
+    move-result-object v3
+
+    .line 168231046
+    move-object v10, v3
+
+    .line 168231047
+    check-cast v10, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;
+
+    .line 168231049
+    const-string v3, "cashier_scene"
+
+    .line 168231051
+    invoke-virtual {v15, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 168231054
+    move-result-object v3
+
+    .line 168231055
+    const-string v4, "standard"
+
+    .line 168231057
+    invoke-static {v4, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 168231060
+    move-result v3
+
+    .line 168231061
+    if-eqz v3, :cond_106
+
+    .line 168231063
+    if-eqz v0, :cond_a2
+
+    .line 168231065
+    invoke-virtual/range {p9 .. p9}, Ljava/lang/String;->length()I
+
+    .line 168231068
+    move-result v3
+
+    .line 168231069
+    if-nez v3, :cond_a0
+
+    .line 168231071
+    goto :goto_a2
+
+    .line 168231072
+    :cond_a0
+    const/4 v3, 0x0
+
+    .line 168231073
+    goto :goto_a3
+
+    .line 168231074
+    :cond_a2
+    :goto_a2
+    const/4 v3, 0x1
+
+    .line 168231075
+    :goto_a3
+    if-nez v3, :cond_e6
+
+    .line 168231077
+    :try_start_a5
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 168231079
+    invoke-direct {v3, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 168231082
+    invoke-virtual {v3, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 168231085
+    move-result v0
+
+    .line 168231086
+    if-eqz v0, :cond_e6
+
+    .line 168231088
+    const-string v0, "frontPay \u5207\u6362\u5230\u7edf\u4e00\u6536\u94f6\u53f0\u903b\u8f91"
+
+    .line 168231090
+    invoke-static {v2, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 168231093
+    invoke-virtual {v3, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 168231096
+    move-result-object v3
+
+    .line 168231097
+    const/16 v2, 0xa
+
+    .line 168231099
+    const-string v7, "front_pay_standard_to_unify"
+
+    .line 168231101
+    move-object/from16 v1, p0
+
+    .line 168231103
+    move-object/from16 v4, p6
+
+    .line 168231105
+    move-object/from16 v5, p7
+
+    .line 168231107
+    move-object/from16 v6, p8
+
+    .line 168231109
+    move-object/from16 v8, p10
+
+    .line 168231111
+    invoke-direct/range {v1 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->switchToUnifyUsedPapiId(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+
+    .line 168231114
+    move-result v0
+    :try_end_cb
+    .catch Ljava/lang/Exception; {:try_start_a5 .. :try_end_cb} :catch_ce
+
+    .line 168231115
+    if-eqz v0, :cond_e6
+
+    .line 168231117
+    return-void
+
+    .line 168231118
+    :catch_ce
+    move-exception v0
+
+    .line 168231119
+    sget-object v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 168231121
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 168231123
+    const-string v3, "frontPay\uff0cException:"
+
+    .line 168231125
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 168231128
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    .line 168231131
+    move-result-object v0
+
+    .line 168231132
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 168231135
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 168231138
+    move-result-object v0
+
+    .line 168231139
+    invoke-static {v1, v0}, Lfe0/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 168231142
+    :cond_e6
+    if-eqz v10, :cond_14a
+
+    .line 168231144
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 168231146
+    iget-object v1, v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 168231148
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 168231151
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 168231154
+    move-result-object v0
+
+    .line 168231155
+    move-object/from16 v11, v16
+
+    .line 168231157
+    move-object/from16 v12, p1
+
+    .line 168231159
+    move-object v13, v0
+
+    .line 168231160
+    move-object/from16 v14, p2
+
+    .line 168231162
+    move-object/from16 v15, p3
+
+    .line 168231164
+    move/from16 v16, p4
+
+    .line 168231166
+    move-object/from16 v17, p5
+
+    .line 168231168
+    move-object/from16 v18, p10
+
+    .line 168231170
+    invoke-interface/range {v10 .. v18}, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;->startNewStandard(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/String;ZLorg/json/JSONObject;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 168231173
+    goto :goto_14a
+
+    .line 168231174
+    :cond_106
+    if-eqz v10, :cond_14a
+
+    .line 168231176
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 168231178
+    iget-object v1, v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 168231180
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 168231183
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 168231186
+    move-result-object v13
+
+    .line 168231187
+    move-object/from16 v11, v16
+
+    .line 168231189
+    move-object/from16 v12, p1
+
+    .line 168231191
+    move-object/from16 v14, p2
+
+    .line 168231193
+    move-object/from16 v15, p3
+
+    .line 168231195
+    move/from16 v16, p4
+
+    .line 168231197
+    move-object/from16 v17, p5
+
+    .line 168231199
+    move-object/from16 v18, p10
+
+    .line 168231201
+    invoke-interface/range {v10 .. v18}, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;->startNewET(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/String;ZLorg/json/JSONObject;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 168231204
+    goto :goto_14a
+
+    .line 168231205
+    :cond_125
+    :goto_125
+    const-string v0, "112"
+
+    .line 168231207
+    if-nez v16, :cond_134
+
+    .line 168231209
+    sget-object v1, Lbf/b;->a:Lbf/b;
+
+    .line 168231211
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 168231214
+    const-string v1, "context is null"
+
+    .line 168231216
+    invoke-static {v0, v1}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 168231219
+    goto :goto_13e
+
+    .line 168231220
+    :cond_134
+    sget-object v1, Lbf/b;->a:Lbf/b;
+
+    .line 168231222
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 168231225
+    const-string v1, "RiskInfo is null"
+
+    .line 168231227
+    invoke-static {v0, v1}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 168231230
+    :goto_13e
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 168231233
+    move-result-object v0
+
+    .line 168231234
+    const/16 v1, 0x70
+
+    .line 168231236
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 168231239
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 168231242
+    :cond_14a
+    :goto_14a
+    invoke-virtual/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 168231245
+    return-void
+.end method
+
+.method private final getBiometricsInfo(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 6
+
+    .prologue
+    .line 33816576
+    const/4 v0, 0x1
+
+    .line 33816577
+    const-string v1, ""
+
+    .line 33816579
+    if-eqz p1, :cond_28
+
+    .line 33816581
+    :try_start_5
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 33816584
+    move-result v2
+
+    .line 33816585
+    if-lez v2, :cond_d
+
+    .line 33816587
+    const/4 v2, 0x1
+
+    .line 33816588
+    goto :goto_e
+
+    .line 33816589
+    :cond_d
+    const/4 v2, 0x0
+
+    .line 33816590
+    :goto_e
+    if-eqz v2, :cond_11
+
+    .line 33816592
+    goto :goto_12
+
+    .line 33816593
+    :cond_11
+    const/4 p1, 0x0
+
+    .line 33816594
+    :goto_12
+    if-eqz p1, :cond_28
+
+    .line 33816596
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 33816598
+    invoke-direct {v2, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33816601
+    const-string p1, "uid"
+
+    .line 33816603
+    invoke-virtual {v2, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33816606
+    move-result-object p1
+
+    .line 33816607
+    if-nez p1, :cond_22
+
+    .line 33816609
+    goto :goto_28
+
+    .line 33816610
+    :cond_22
+    invoke-static {p1, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    :try_end_25
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_25} :catch_27
+
+    .line 33816613
+    move-object v1, p1
+
+    .line 33816614
+    goto :goto_28
+
+    .line 33816615
+    :catch_27
+    nop
+
+    .line 33816616
+    :cond_28
+    :goto_28
+    if-eqz p2, :cond_31
+
+    .line 33816618
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->u(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33816621
+    move-result-object p1
+
+    .line 33816622
+    invoke-interface {p2, v0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33816625
+    :cond_31
+    return-void
+.end method
+
+.method private final getCheckType(Ljava/lang/String;)Ljava/lang/String;
+    .registers 6
+
+    .prologue
+    .line 17170432
+    const/4 v0, 0x0
+
+    .line 17170433
+    if-eqz p1, :cond_48
+
+    .line 17170435
+    :try_start_3
+    invoke-static {p1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17170438
+    move-result v1
+    :try_end_7
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_7} :catch_47
+
+    .line 17170439
+    const/4 v2, 0x1
+
+    .line 17170440
+    xor-int/2addr v1, v2
+
+    .line 17170441
+    const-string v3, "zg_info"
+
+    .line 17170443
+    if-eqz v1, :cond_1d
+
+    .line 17170445
+    :try_start_d
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 17170447
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 17170450
+    invoke-virtual {v1, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17170453
+    move-result-object v1
+
+    .line 17170454
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 17170457
+    move-result v1
+
+    .line 17170458
+    if-nez v1, :cond_1d
+
+    .line 17170460
+    goto :goto_1e
+
+    .line 17170461
+    :cond_1d
+    const/4 v2, 0x0
+
+    .line 17170462
+    :goto_1e
+    if-eqz v2, :cond_21
+
+    .line 17170464
+    goto :goto_22
+
+    .line 17170465
+    :cond_21
+    move-object p1, v0
+
+    .line 17170466
+    :goto_22
+    if-eqz p1, :cond_48
+
+    .line 17170468
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 17170470
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 17170472
+    invoke-direct {v2, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 17170475
+    invoke-virtual {v2, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17170478
+    move-result-object p1
+
+    .line 17170479
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 17170482
+    const-string p1, "user_info"
+
+    .line 17170484
+    invoke-virtual {v1, p1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 17170487
+    move-result-object p1
+
+    .line 17170488
+    if-eqz p1, :cond_41
+
+    .line 17170490
+    const-string v1, "pwd_check_way"
+
+    .line 17170492
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17170495
+    move-result-object p1
+    :try_end_40
+    .catch Ljava/lang/Exception; {:try_start_d .. :try_end_40} :catch_47
+
+    .line 17170496
+    goto :goto_42
+
+    .line 17170497
+    :cond_41
+    move-object p1, v0
+
+    .line 17170498
+    :goto_42
+    if-nez p1, :cond_45
+
+    .line 17170500
+    goto :goto_48
+
+    .line 17170501
+    :cond_45
+    move-object v0, p1
+
+    .line 17170502
+    goto :goto_48
+
+    .line 17170503
+    :catch_47
+    nop
+
+    .line 17170504
+    :cond_48
+    :goto_48
+    if-eqz v0, :cond_8e
+
+    .line 17170506
+    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
+
+    .line 17170509
+    move-result p1
+
+    .line 17170510
+    packed-switch p1, :pswitch_data_92
+
+    .line 17170513
+    :pswitch_51
+    goto :goto_8e
+
+    .line 17170514
+    :pswitch_52
+    const-string p1, "6"
+
+    .line 17170516
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 17170519
+    move-result p1
+
+    .line 17170520
+    if-nez p1, :cond_5b
+
+    .line 17170522
+    goto :goto_8e
+
+    .line 17170523
+    :cond_5b
+    const-string p1, "token"
+
+    .line 17170525
+    goto :goto_90
+
+    .line 17170526
+    :pswitch_5e
+    const-string p1, "5"
+
+    .line 17170528
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 17170531
+    move-result p1
+
+    .line 17170532
+    if-nez p1, :cond_67
+
+    .line 17170534
+    goto :goto_8e
+
+    .line 17170535
+    :cond_67
+    const-string p1, "\u514d\u9a8c\u5bc6"
+
+    .line 17170537
+    goto :goto_90
+
+    .line 17170538
+    :pswitch_6a
+    const-string p1, "3"
+
+    .line 17170540
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 17170543
+    move-result p1
+
+    .line 17170544
+    if-nez p1, :cond_73
+
+    .line 17170546
+    goto :goto_8e
+
+    .line 17170547
+    :cond_73
+    const-string p1, "\u514d\u5bc6"
+
+    .line 17170549
+    goto :goto_90
+
+    .line 17170550
+    :pswitch_76
+    const-string p1, "1"
+
+    .line 17170552
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 17170555
+    move-result p1
+
+    .line 17170556
+    if-nez p1, :cond_7f
+
+    .line 17170558
+    goto :goto_8e
+
+    .line 17170559
+    :cond_7f
+    const-string p1, "\u6307\u7eb9"
+
+    .line 17170561
+    goto :goto_90
+
+    .line 17170562
+    :pswitch_82
+    const-string p1, "0"
+
+    .line 17170564
+    invoke-virtual {v0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 17170567
+    move-result p1
+
+    .line 17170568
+    if-nez p1, :cond_8b
+
+    .line 17170570
+    goto :goto_8e
+
+    .line 17170571
+    :cond_8b
+    const-string p1, "\u5bc6\u7801"
+
+    .line 17170573
+    goto :goto_90
+
+    .line 17170574
+    :cond_8e
+    :goto_8e
+    const-string p1, "\u65e0"
+
+    .line 17170576
+    :goto_90
+    return-object p1
+
+    nop
+
+    .line 17170578
+    :pswitch_data_92
+    .packed-switch 0x30
+        :pswitch_82
+        :pswitch_76
+        :pswitch_51
+        :pswitch_6a
+        :pswitch_51
+        :pswitch_5e
+        :pswitch_52
+    .end packed-switch
+.end method
+
+.method private final getDevInfoAndRiskInfo(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 12
+
+    .prologue
+    .line 33947648
+    const/4 v0, 0x0
+
+    .line 33947649
+    const/4 v1, 0x1
+
+    .line 33947650
+    const/4 v2, 0x0
+
+    .line 33947651
+    const-string v3, ""
+
+    .line 33947653
+    if-eqz p1, :cond_28
+
+    .line 33947655
+    :try_start_7
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 33947658
+    move-result v4
+
+    .line 33947659
+    if-lez v4, :cond_f
+
+    .line 33947661
+    const/4 v4, 0x1
+
+    .line 33947662
+    goto :goto_10
+
+    .line 33947663
+    :cond_f
+    const/4 v4, 0x0
+
+    .line 33947664
+    :goto_10
+    if-eqz v4, :cond_13
+
+    .line 33947666
+    goto :goto_14
+
+    .line 33947667
+    :cond_13
+    move-object p1, v0
+
+    .line 33947668
+    :goto_14
+    if-eqz p1, :cond_28
+
+    .line 33947670
+    new-instance v4, Lorg/json/JSONObject;
+
+    .line 33947672
+    invoke-direct {v4, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33947675
+    const-string p1, "uid"
+
+    .line 33947677
+    invoke-virtual {v4, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947680
+    move-result-object p1
+
+    .line 33947681
+    if-nez p1, :cond_24
+
+    .line 33947683
+    goto :goto_28
+
+    .line 33947684
+    :cond_24
+    invoke-static {p1, v3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33947687
+    goto :goto_29
+
+    .line 33947688
+    :cond_28
+    :goto_28
+    move-object p1, v3
+
+    .line 33947689
+    :goto_29
+    new-instance v4, Lorg/json/JSONObject;
+
+    .line 33947691
+    invoke-direct {v4}, Lorg/json/JSONObject;-><init>()V
+
+    .line 33947694
+    const-string v5, "dev_info"
+
+    .line 33947696
+    new-instance v6, Lorg/json/JSONObject;
+
+    .line 33947698
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->c()Ljava/lang/String;
+
+    .line 33947701
+    move-result-object v7
+
+    .line 33947702
+    const-string v8, "UTF-8"
+
+    .line 33947704
+    invoke-static {v7, v8}, Ljava/net/URLDecoder;->decode(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947707
+    move-result-object v7
+
+    .line 33947708
+    invoke-direct {v6, v7}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33947711
+    invoke-static {v4, v5, v6}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 33947714
+    iget-object v5, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947716
+    if-eqz v5, :cond_54
+
+    .line 33947718
+    const-string v6, "risk_info"
+
+    .line 33947720
+    new-instance v7, Lorg/json/JSONObject;
+
+    .line 33947722
+    invoke-virtual {v5}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 33947725
+    move-result-object v5
+
+    .line 33947726
+    invoke-direct {v7, v5}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+
+    .line 33947729
+    invoke-static {v4, v6, v7}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 33947732
+    :cond_54
+    const-string v5, "device_info"
+
+    .line 33947734
+    new-instance v6, Lorg/json/JSONObject;
+
+    .line 33947736
+    iget-object v7, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947738
+    if-eqz v7, :cond_60
+
+    .line 33947740
+    iget-object v7, v7, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 33947742
+    if-nez v7, :cond_61
+
+    .line 33947744
+    :cond_60
+    move-object v7, v3
+
+    .line 33947745
+    :cond_61
+    invoke-static {v7}, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->w(Ljava/lang/String;)Ljava/util/Map;
+
+    .line 33947748
+    move-result-object v7
+
+    .line 33947749
+    invoke-direct {v6, v7}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+
+    .line 33947752
+    invoke-static {v4, v5, v6}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 33947755
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 33947758
+    move-result v5
+
+    .line 33947759
+    if-lez v5, :cond_73
+
+    .line 33947761
+    const/4 v5, 0x1
+
+    .line 33947762
+    goto :goto_74
+
+    .line 33947763
+    :cond_73
+    const/4 v5, 0x0
+
+    .line 33947764
+    :goto_74
+    if-eqz v5, :cond_78
+
+    .line 33947766
+    move-object v5, p1
+
+    .line 33947767
+    goto :goto_79
+
+    .line 33947768
+    :cond_78
+    move-object v5, v0
+
+    .line 33947769
+    :goto_79
+    if-eqz v5, :cond_84
+
+    .line 33947771
+    const-string v5, "bio_info"
+
+    .line 33947773
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->u(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947776
+    move-result-object p1
+
+    .line 33947777
+    invoke-static {v4, v5, p1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 33947780
+    :cond_84
+    invoke-virtual {v4}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 33947783
+    move-result-object p1
+
+    .line 33947784
+    invoke-static {p1, v2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33947787
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 33947790
+    move-result v4
+
+    .line 33947791
+    if-lez v4, :cond_93
+
+    .line 33947793
+    const/4 v4, 0x1
+
+    .line 33947794
+    goto :goto_94
+
+    .line 33947795
+    :cond_93
+    const/4 v4, 0x0
+
+    .line 33947796
+    :goto_94
+    if-eqz v4, :cond_97
+
+    .line 33947798
+    goto :goto_98
+
+    .line 33947799
+    :cond_97
+    move-object p1, v0
+
+    .line 33947800
+    :goto_98
+    if-eqz p1, :cond_a3
+
+    .line 33947802
+    if-eqz p2, :cond_a1
+
+    .line 33947804
+    invoke-interface {p2, v1, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33947807
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33947809
+    :cond_a1
+    if-nez v0, :cond_aa
+
+    .line 33947811
+    :cond_a3
+    if-eqz p2, :cond_aa
+
+    .line 33947813
+    invoke-interface {p2, v2, v3}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33947816
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+    :try_end_aa
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_aa} :catch_aa
+
+    .line 33947818
+    :catch_aa
+    :cond_aa
+    return-void
+.end method
+
+.method public static final getInstance()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 1
+
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->Companion:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;
+
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;->getInstance()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method private final getLynxDepositScheme(Lorg/json/JSONObject;)Ljava/lang/String;
+    .registers 5
+
+    .prologue
+    .line 17104896
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 17104899
+    move-result-object v0
+
+    .line 17104900
+    invoke-virtual {v0}, Ll9/a;->o()Lcom/android/ttcjpaysdk/base/settings/bean/LynxSchemaBean;
+
+    .line 17104903
+    move-result-object v0
+
+    .line 17104904
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/settings/bean/LynxSchemaBean;->dydeposit_schema:Ljava/lang/String;
+
+    .line 17104906
+    const/4 v1, 0x0
+
+    .line 17104907
+    if-eqz v0, :cond_1b
+
+    .line 17104909
+    invoke-interface {v0}, Ljava/lang/CharSequence;->length()I
+
+    .line 17104912
+    move-result v2
+
+    .line 17104913
+    if-nez v2, :cond_15
+
+    .line 17104915
+    const/4 v2, 0x1
+
+    .line 17104916
+    goto :goto_16
+
+    .line 17104917
+    :cond_15
+    const/4 v2, 0x0
+
+    .line 17104918
+    :goto_16
+    if-eqz v2, :cond_1c
+
+    .line 17104920
+    const-string v0, "sslocal://webcast_lynxview?page_name=deposit_middle&hide_loading=1&show_error=1&trans_status_bar=1&type=popup&hide_nav_bar=1&web_bg_color=transparent&host=aweme&width_percent=100&height_percent=100&mask_click_disable=0&engine_type=new&open_animate=0&mask_alpha=0&gravity=center&url=https%3A%2F%2Flf-webcast-sourcecdn-tos.bytegecko.com%2Fobj%2Fbyte-gurd-source%2F10181%2Fgecko%2Fresource%2Fcashdesk_fe_credit%2Frouter%2Ftemplate.js"
+
+    .line 17104922
+    goto :goto_1c
+
+    .line 17104923
+    :cond_1b
+    const/4 v0, 0x0
+
+    .line 17104924
+    :cond_1c
+    :goto_1c
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->e(Lorg/json/JSONObject;)Ljava/util/Map;
+
+    .line 17104927
+    move-result-object p1
+
+    .line 17104928
+    invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 17104931
+    move-result-object v0
+
+    .line 17104932
+    invoke-virtual {v0}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
+
+    .line 17104935
+    move-result-object v0
+
+    .line 17104936
+    invoke-static {p1, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17104939
+    check-cast p1, Ljava/util/HashMap;
+
+    .line 17104941
+    invoke-virtual {p1}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
+
+    .line 17104944
+    move-result-object p1
+
+    .line 17104945
+    invoke-interface {p1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 17104948
+    move-result-object p1
+
+    .line 17104949
+    :goto_35
+    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17104952
+    move-result v1
+
+    .line 17104953
+    if-eqz v1, :cond_51
+
+    .line 17104955
+    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17104958
+    move-result-object v1
+
+    .line 17104959
+    check-cast v1, Ljava/util/Map$Entry;
+
+    .line 17104961
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 17104964
+    move-result-object v2
+
+    .line 17104965
+    check-cast v2, Ljava/lang/String;
+
+    .line 17104967
+    invoke-interface {v1}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 17104970
+    move-result-object v1
+
+    .line 17104971
+    check-cast v1, Ljava/lang/String;
+
+    .line 17104973
+    invoke-virtual {v0, v2, v1}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 17104976
+    goto :goto_35
+
+    .line 17104977
+    :cond_51
+    invoke-virtual {v0}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+
+    .line 17104980
+    move-result-object p1
+
+    .line 17104981
+    invoke-virtual {p1}, Landroid/net/Uri;->toString()Ljava/lang/String;
+
+    .line 17104984
+    move-result-object p1
+
+    .line 17104985
+    const-string v0, ""
+
+    .line 17104987
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 17104990
+    return-object p1
+.end method
+
+.method private final getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    new-instance v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$getOnPayResultCallback$1;
+
+    .line 16842754
+    invoke-direct {v0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$getOnPayResultCallback$1;-><init>(Ljava/lang/String;)V
+
+    .line 16842757
+    return-object v0
+.end method
+
+.method private final getRequestParamsMap()Ljava/util/HashMap;
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/HashMap<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    new-instance v0, Ljava/util/HashMap;
+
+    .line 196610
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 196613
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 196615
+    const/4 v2, 0x0
+
+    .line 196616
+    if-eqz v1, :cond_d
+
+    .line 196618
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 196620
+    goto :goto_e
+
+    .line 196621
+    :cond_d
+    move-object v1, v2
+
+    .line 196622
+    :goto_e
+    const-string v3, "app_id"
+
+    .line 196624
+    invoke-interface {v0, v3, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 196627
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 196629
+    if-eqz v1, :cond_19
+
+    .line 196631
+    iget-object v2, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 196633
+    :cond_19
+    const-string v1, "merchant_id"
+
+    .line 196635
+    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 196638
+    return-object v0
+.end method
+
+.method public static final getSingleInstance()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 1
+
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->Companion:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;
+
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;->getSingleInstance()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method private final gotoCheckFace(Ljava/lang/String;)V
+    .registers 26
+
+    .prologue
+    .line 17170432
+    move-object/from16 v0, p0
+
+    .line 17170434
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17170437
+    move-result-object v1
+
+    .line 17170438
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFaceCheckService;
+
+    .line 17170440
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17170443
+    move-result-object v1
+
+    .line 17170444
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayFaceCheckService;
+
+    .line 17170446
+    :try_start_e
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 17170448
+    move-object/from16 v3, p1
+
+    .line 17170450
+    invoke-direct {v2, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 17170453
+    const/16 v23, 0x0
+
+    .line 17170455
+    if-eqz v1, :cond_6b
+
+    .line 17170457
+    const-string v3, "order_id"
+
+    .line 17170459
+    invoke-virtual {v2, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17170462
+    move-result-object v3
+
+    .line 17170463
+    const-string v4, "clientSource"
+
+    .line 17170465
+    invoke-virtual {v2, v4}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    .line 17170468
+    move-result v4
+
+    .line 17170469
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 17170472
+    move-result-object v4
+
+    .line 17170473
+    const-string v5, "serverSource"
+
+    .line 17170475
+    invoke-virtual {v2, v5}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17170478
+    move-result-object v5
+
+    .line 17170479
+    const-string v6, "live_route"
+
+    .line 17170481
+    invoke-virtual {v2, v6}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17170484
+    move-result-object v6
+
+    .line 17170485
+    sget-object v7, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17170487
+    iget-object v8, v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170489
+    invoke-virtual {v7}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170492
+    invoke-static {v8}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17170495
+    move-result-object v7
+
+    .line 17170496
+    const-string v8, "isShowDialog"
+
+    .line 17170498
+    invoke-virtual {v2, v8}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;)Z
+
+    .line 17170501
+    move-result v8
+
+    .line 17170502
+    invoke-static {v8}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 17170505
+    move-result-object v8
+
+    .line 17170506
+    const/4 v9, 0x0
+
+    .line 17170507
+    const/4 v10, 0x0
+
+    .line 17170508
+    const/4 v11, 0x0
+
+    .line 17170509
+    const-string v12, "face_scene"
+
+    .line 17170511
+    invoke-virtual {v2, v12}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17170514
+    move-result-object v12
+
+    .line 17170515
+    const/4 v13, 0x0
+
+    .line 17170516
+    const/4 v14, 0x0
+
+    .line 17170517
+    const/4 v15, 0x0
+
+    .line 17170518
+    const/16 v16, 0x0
+
+    .line 17170520
+    const/16 v17, 0x0
+
+    .line 17170522
+    const/16 v18, 0x0
+
+    .line 17170524
+    const/16 v19, 0x0
+
+    .line 17170526
+    const/16 v20, 0x0
+
+    .line 17170528
+    const v21, 0x3fdc0
+
+    .line 17170531
+    const/16 v22, 0x0
+
+    .line 17170533
+    move-object v2, v1
+
+    .line 17170534
+    invoke-static/range {v2 .. v22}, Lcom/android/ttcjpaysdk/base/service/ICJPayFaceCheckService$DefaultImpls;->getFaceVerifyParams$default(Lcom/android/ttcjpaysdk/base/service/ICJPayFaceCheckService;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 17170537
+    move-result-object v2
+
+    .line 17170538
+    goto :goto_6d
+
+    .line 17170539
+    :cond_6b
+    move-object/from16 v2, v23
+
+    .line 17170541
+    :goto_6d
+    if-eqz v1, :cond_88
+
+    .line 17170543
+    iget-object v3, v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170545
+    if-eqz v3, :cond_77
+
+    .line 17170547
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17170550
+    move-result-object v23
+
+    .line 17170551
+    :cond_77
+    move-object/from16 v3, v23
+
+    .line 17170553
+    const-string v4, ""
+
+    .line 17170555
+    invoke-static {v3, v4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 17170558
+    check-cast v3, Landroid/app/Activity;
+
+    .line 17170560
+    new-instance v4, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$gotoCheckFace$2;
+
+    .line 17170562
+    invoke-direct {v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$gotoCheckFace$2;-><init>()V
+
+    .line 17170565
+    invoke-interface {v1, v3, v2, v4}, Lcom/android/ttcjpaysdk/base/service/ICJPayFaceCheckService;->gotoCheckFace(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/base/service/ICJPayFaceCheckCallback;)V
+    :try_end_88
+    .catch Lorg/json/JSONException; {:try_start_e .. :try_end_88} :catch_88
+
+    .line 17170568
+    :catch_88
+    :cond_88
+    return-void
+.end method
+
+.method private final handleBiometrics(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 5
+
+    .prologue
+    .line 50528256
+    const-string v0, "0"
+
+    .line 50528258
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 50528261
+    move-result v0
+
+    .line 50528262
+    if-eqz v0, :cond_c
+
+    .line 50528264
+    invoke-direct {p0, p1, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getBiometricsInfo(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 50528267
+    goto :goto_1b
+
+    .line 50528268
+    :cond_c
+    const-string v0, "1"
+
+    .line 50528270
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 50528273
+    move-result p2
+
+    .line 50528274
+    if-eqz p2, :cond_18
+
+    .line 50528276
+    invoke-direct {p0, p1, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->verifyBiometrics(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 50528279
+    goto :goto_1b
+
+    .line 50528280
+    :cond_18
+    invoke-direct {p0, p1, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getBiometricsInfo(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 50528283
+    :goto_1b
+    return-void
+.end method
+
+.method private final handleCreateOrderAndPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 18
+
+    .prologue
+    .line 100990976
+    move-object/from16 v6, p5
+
+    .line 100990978
+    move-object/from16 v7, p6
+
+    .line 100990980
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 100990983
+    move-result-object v0
+
+    .line 100990984
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;
+
+    .line 100990986
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 100990989
+    move-result-object v0
+
+    .line 100990990
+    move-object v8, v0
+
+    .line 100990991
+    check-cast v8, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;
+
+    .line 100990993
+    if-nez v8, :cond_17
+
+    .line 100990995
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 100990998
+    return-void
+
+    .line 100990999
+    :cond_17
+    new-instance v9, Lkotlin/jvm/internal/Ref$BooleanRef;
+
+    .line 100991001
+    invoke-direct {v9}, Lkotlin/jvm/internal/Ref$BooleanRef;-><init>()V
+
+    .line 100991004
+    const/4 v0, 0x1
+
+    .line 100991005
+    iput-boolean v0, v9, Lkotlin/jvm/internal/Ref$BooleanRef;->element:Z
+
+    .line 100991007
+    if-nez v7, :cond_22
+
+    .line 100991009
+    goto :goto_24
+
+    .line 100991010
+    :cond_22
+    iput-object v6, v7, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 100991012
+    :goto_24
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100991015
+    move-result-object v0
+
+    .line 100991016
+    iput-object v6, v0, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 100991018
+    new-instance v10, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleCreateOrderAndPay$1;
+
+    .line 100991020
+    move-object v0, v10
+
+    .line 100991021
+    move-object v1, v9
+
+    .line 100991022
+    move-object v2, p0
+
+    .line 100991023
+    move-object v3, v8
+
+    .line 100991024
+    move-object v4, p2
+
+    .line 100991025
+    move-object v5, p3
+
+    .line 100991026
+    move-object/from16 v6, p5
+
+    .line 100991028
+    invoke-direct/range {v0 .. v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleCreateOrderAndPay$1;-><init>(Lkotlin/jvm/internal/Ref$BooleanRef;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 100991031
+    move-object v0, v8
+
+    .line 100991032
+    move-object v1, p1
+
+    .line 100991033
+    move-object v2, p2
+
+    .line 100991034
+    move-object v3, p4
+
+    .line 100991035
+    move-object v4, v10
+
+    .line 100991036
+    move-object/from16 v5, p6
+
+    .line 100991038
+    invoke-interface/range {v0 .. v5}, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontCounterService;->createOrder(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/bean/CJCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 100991041
+    iget-boolean v0, v9, Lkotlin/jvm/internal/Ref$BooleanRef;->element:Z
+
+    .line 100991043
+    if-eqz v0, :cond_59
+
+    .line 100991045
+    sget-object v0, Lcom/android/ttcjpaysdk/base/ui/Utils/f;->a:Lcom/android/ttcjpaysdk/base/ui/Utils/f;
+
+    .line 100991047
+    move-object v1, p0
+
+    .line 100991048
+    iget-object v2, v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 100991050
+    const/4 v3, 0x0
+
+    .line 100991051
+    if-eqz v2, :cond_52
+
+    .line 100991053
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 100991056
+    move-result-object v2
+
+    .line 100991057
+    goto :goto_53
+
+    .line 100991058
+    :cond_52
+    move-object v2, v3
+
+    .line 100991059
+    :goto_53
+    const/16 v4, 0xc
+
+    .line 100991061
+    invoke-static {v0, v2, v3, v4}, Lcom/android/ttcjpaysdk/base/ui/Utils/f;->d(Lcom/android/ttcjpaysdk/base/ui/Utils/f;Landroid/content/Context;Ljava/lang/Integer;I)V
+
+    .line 100991064
+    goto :goto_5a
+
+    .line 100991065
+    :cond_59
+    move-object v1, p0
+
+    .line 100991066
+    :goto_5a
+    return-void
+.end method
+
+.method private final handleNativeCacheData(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 11
+
+    .prologue
+    .line 33947648
+    const-string v0, "get"
+
+    .line 33947650
+    const/4 v1, -0x1
+
+    .line 33947651
+    if-nez p1, :cond_d
+
+    .line 33947653
+    if-eqz p2, :cond_c
+
+    .line 33947655
+    const-string p1, "sdkInfo is null"
+
+    .line 33947657
+    invoke-interface {p2, v1, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33947660
+    :cond_c
+    return-void
+
+    .line 33947661
+    :cond_d
+    new-instance v2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleNativeCacheData$callback$1;
+
+    .line 33947663
+    invoke-direct {v2, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleNativeCacheData$callback$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 33947666
+    const/4 p2, 0x1
+
+    .line 33947667
+    :try_start_13
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 33947669
+    invoke-direct {v3, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33947672
+    const-string p1, "method"
+
+    .line 33947674
+    invoke-virtual {v3, p1, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947677
+    move-result-object p1
+
+    .line 33947678
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 33947681
+    move-result v0
+    :try_end_22
+    .catch Ljava/lang/Exception; {:try_start_13 .. :try_end_22} :catch_78
+
+    .line 33947682
+    const-string v4, "key\u4e3a\u7a7a"
+
+    .line 33947684
+    const/4 v5, 0x0
+
+    .line 33947685
+    const-string v6, "key"
+
+    .line 33947687
+    const-string v7, ""
+
+    .line 33947689
+    if-eqz v0, :cond_49
+
+    .line 33947691
+    :try_start_2b
+    invoke-virtual {v3, v6}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947694
+    move-result-object p1
+
+    .line 33947695
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 33947698
+    move-result v0
+
+    .line 33947699
+    if-eqz v0, :cond_38
+
+    .line 33947701
+    invoke-virtual {v2, v5, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleNativeCacheData$callback$1;->onResult(ILjava/lang/String;)V
+
+    .line 33947704
+    :cond_38
+    sget-object v0, Lcom/android/ttcjpaysdk/base/utils/a;->a:Lcom/android/ttcjpaysdk/base/utils/a;
+
+    .line 33947706
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947709
+    sget-object v0, Lcom/android/ttcjpaysdk/base/utils/a;->b:Ljava/util/Map;
+
+    .line 33947711
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33947714
+    move-result-object p1
+
+    .line 33947715
+    check-cast p1, Ljava/lang/String;
+
+    .line 33947717
+    invoke-virtual {v2, p2, v7, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleNativeCacheData$callback$1;->onResult(ILjava/lang/String;Ljava/lang/String;)V
+
+    .line 33947720
+    goto :goto_a0
+
+    .line 33947721
+    :cond_49
+    const-string v0, "set"
+
+    .line 33947723
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 33947726
+    move-result p1
+
+    .line 33947727
+    if-eqz p1, :cond_a0
+
+    .line 33947729
+    invoke-virtual {v3, v6}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947732
+    move-result-object p1
+
+    .line 33947733
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 33947736
+    move-result v0
+
+    .line 33947737
+    if-eqz v0, :cond_5e
+
+    .line 33947739
+    invoke-virtual {v2, v5, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleNativeCacheData$callback$1;->onResult(ILjava/lang/String;)V
+
+    .line 33947742
+    :cond_5e
+    const-string v0, "value"
+
+    .line 33947744
+    invoke-virtual {v3, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947747
+    move-result-object v0
+
+    .line 33947748
+    sget-object v3, Lcom/android/ttcjpaysdk/base/utils/a;->a:Lcom/android/ttcjpaysdk/base/utils/a;
+
+    .line 33947750
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947753
+    sget-object v3, Lcom/android/ttcjpaysdk/base/utils/a;->b:Ljava/util/Map;
+
+    .line 33947755
+    invoke-static {p1, v7}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33947758
+    invoke-static {v0, v7}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33947761
+    invoke-interface {v3, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33947764
+    invoke-virtual {v2, p2, v7, v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleNativeCacheData$callback$1;->onResult(ILjava/lang/String;Ljava/lang/String;)V
+    :try_end_77
+    .catch Ljava/lang/Exception; {:try_start_2b .. :try_end_77} :catch_78
+
+    .line 33947767
+    goto :goto_a0
+
+    .line 33947768
+    :catch_78
+    move-exception p1
+
+    .line 33947769
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 33947771
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 33947774
+    move-result-object v3
+
+    .line 33947775
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 33947778
+    move-result-object v3
+
+    .line 33947779
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947782
+    const-string v0, "handleNativeCacheData_exception"
+
+    .line 33947784
+    invoke-static {v3, v0, p2, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 33947787
+    new-instance p2, Ljava/lang/StringBuilder;
+
+    .line 33947789
+    const-string v0, "handleNativeCacheData fail:"
+
+    .line 33947791
+    invoke-direct {p2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 33947794
+    invoke-virtual {p1}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    .line 33947797
+    move-result-object p1
+
+    .line 33947798
+    invoke-virtual {p2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33947801
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 33947804
+    move-result-object p1
+
+    .line 33947805
+    invoke-virtual {v2, v1, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$handleNativeCacheData$callback$1;->onResult(ILjava/lang/String;)V
+
+    .line 33947808
+    :cond_a0
+    :goto_a0
+    return-void
+.end method
+
+.method private final independentBindCard(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 12
+
+    .prologue
+    .line 50724864
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724866
+    const/4 v1, 0x0
+
+    .line 50724867
+    if-eqz v0, :cond_a
+
+    .line 50724869
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50724872
+    move-result-object v0
+
+    .line 50724873
+    goto :goto_b
+
+    .line 50724874
+    :cond_a
+    move-object v0, v1
+
+    .line 50724875
+    :goto_b
+    const-string v2, "caijing_cashdesk_request"
+
+    .line 50724877
+    invoke-static {v2}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 50724880
+    if-eqz v0, :cond_92
+
+    .line 50724882
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724884
+    if-eqz v2, :cond_19
+
+    .line 50724886
+    iget-object v3, v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 50724888
+    goto :goto_1a
+
+    .line 50724889
+    :cond_19
+    move-object v3, v1
+
+    .line 50724890
+    :goto_1a
+    if-eqz v3, :cond_92
+
+    .line 50724892
+    if-eqz v2, :cond_23
+
+    .line 50724894
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 50724897
+    move-result-object v2
+
+    .line 50724898
+    goto :goto_24
+
+    .line 50724899
+    :cond_23
+    move-object v2, v1
+
+    .line 50724900
+    :goto_24
+    if-nez v2, :cond_27
+
+    .line 50724902
+    goto :goto_92
+
+    .line 50724903
+    :cond_27
+    instance-of v2, v0, Landroid/app/Activity;
+
+    .line 50724905
+    if-eqz v2, :cond_2e
+
+    .line 50724907
+    check-cast v0, Landroid/app/Activity;
+
+    .line 50724909
+    goto :goto_2f
+
+    .line 50724910
+    :cond_2e
+    move-object v0, v1
+
+    .line 50724911
+    :goto_2f
+    if-eqz v0, :cond_9e
+
+    .line 50724913
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50724916
+    move-result-object v2
+
+    .line 50724917
+    const-class v3, Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService;
+
+    .line 50724919
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50724922
+    move-result-object v2
+
+    .line 50724923
+    check-cast v2, Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService;
+
+    .line 50724925
+    if-eqz v2, :cond_9e
+
+    .line 50724927
+    sget-object v3, Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$BindCardType;->TYPE_INDEPENDENT:Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$BindCardType;
+
+    .line 50724929
+    new-instance v4, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;
+
+    .line 50724931
+    invoke-direct {v4}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;-><init>()V
+
+    .line 50724934
+    sget-object v5, Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$BizType;->TTPayBindCard:Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$BizType;
+
+    .line 50724936
+    invoke-virtual {v4, v5}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setBizType(Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$BizType;)V
+
+    .line 50724939
+    sget-object v5, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
+
+    .line 50724941
+    invoke-virtual {v4, v5}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setNeedAuthGuide(Ljava/lang/Boolean;)V
+
+    .line 50724944
+    const-string v5, "card_sign"
+
+    .line 50724946
+    invoke-virtual {v4, v5}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setBizOrderType(Ljava/lang/String;)V
+
+    .line 50724949
+    const/16 v5, 0x9
+
+    .line 50724951
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50724954
+    move-result-object v5
+
+    .line 50724955
+    invoke-virtual {v4, v5}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setBindSourceType(Ljava/lang/Integer;)V
+
+    .line 50724958
+    const/4 v5, 0x0
+
+    .line 50724959
+    if-eqz p3, :cond_6e
+
+    .line 50724961
+    invoke-virtual {p3}, Ljava/lang/String;->length()I
+
+    .line 50724964
+    move-result v6
+
+    .line 50724965
+    const/4 v7, 0x1
+
+    .line 50724966
+    if-lez v6, :cond_6a
+
+    .line 50724968
+    const/4 v6, 0x1
+
+    .line 50724969
+    goto :goto_6b
+
+    .line 50724970
+    :cond_6a
+    const/4 v6, 0x0
+
+    .line 50724971
+    :goto_6b
+    if-ne v6, v7, :cond_6e
+
+    .line 50724973
+    const/4 v5, 0x1
+
+    .line 50724974
+    :cond_6e
+    if-eqz v5, :cond_73
+
+    .line 50724976
+    invoke-virtual {v4, p3}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setSchemaExtStr(Ljava/lang/String;)V
+
+    .line 50724979
+    :cond_73
+    sget-object p3, Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$SourceType;->IndependentBindCard:Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$SourceType;
+
+    .line 50724981
+    invoke-virtual {v4, p3}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setType(Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$SourceType;)V
+
+    .line 50724984
+    sget-object p3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50724986
+    iget-object v5, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724988
+    invoke-virtual {p3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724991
+    invoke-static {v5}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50724994
+    move-result-object p3
+
+    .line 50724995
+    invoke-virtual {v4, p3}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setHostInfoJSON(Lorg/json/JSONObject;)V
+
+    .line 50724998
+    invoke-virtual {v4, p1}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setSource(Ljava/lang/String;)V
+
+    .line 50725001
+    invoke-virtual {v4, p2}, Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;->setBindCardInfo(Ljava/lang/String;)V
+
+    .line 50725004
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50725006
+    invoke-interface {v2, v0, v3, v4, v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService;->startBindCardProcess(Landroid/app/Activity;Lcom/android/ttcjpaysdk/base/service/ICJPayNormalBindCardService$BindCardType;Lcom/android/ttcjpaysdk/base/service/bean/NormalBindCardBean;Lcom/android/ttcjpaysdk/base/service/INormalBindCardCallback;)V
+
+    .line 50725009
+    goto :goto_9e
+
+    .line 50725010
+    :cond_92
+    :goto_92
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725013
+    move-result-object p1
+
+    .line 50725014
+    const/16 p2, 0x100f
+
+    .line 50725016
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725019
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725022
+    :cond_9e
+    :goto_9e
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 50725025
+    return-void
+.end method
+
+.method public static synthetic independentBindCard$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)V
+    .registers 6
+
+    .prologue
+    .line 100794368
+    and-int/lit8 p4, p4, 0x4
+
+    .line 100794370
+    if-eqz p4, :cond_5
+
+    .line 100794372
+    const/4 p3, 0x0
+
+    .line 100794373
+    :cond_5
+    invoke-direct {p0, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->independentBindCard(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 100794376
+    return-void
+.end method
+
+.method private final isDirectPay(Ljava/lang/String;)Z
+    .registers 5
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    if-eqz p1, :cond_24
+
+    .line 17039363
+    invoke-static {p1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17039366
+    move-result v1
+
+    .line 17039367
+    xor-int/lit8 v1, v1, 0x1
+
+    .line 17039369
+    if-eqz v1, :cond_d
+
+    .line 17039371
+    move-object v1, p1
+
+    .line 17039372
+    goto :goto_e
+
+    .line 17039373
+    :cond_d
+    const/4 v1, 0x0
+
+    .line 17039374
+    :goto_e
+    if-eqz v1, :cond_24
+
+    .line 17039376
+    :try_start_10
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 17039378
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 17039381
+    const-string p1, "way"
+
+    .line 17039383
+    const-string v2, ""
+
+    .line 17039385
+    invoke-virtual {v1, p1, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17039388
+    move-result-object p1
+
+    .line 17039389
+    const-string v1, "25"
+
+    .line 17039391
+    invoke-static {v1, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17039394
+    move-result p1
+    :try_end_23
+    .catch Lorg/json/JSONException; {:try_start_10 .. :try_end_23} :catch_24
+
+    .line 17039395
+    move v0, p1
+
+    .line 17039396
+    :catch_24
+    :cond_24
+    return v0
+.end method
+
+.method private final isLargeAmountPayOrToBTransfer(Ljava/lang/String;)Z
+    .registers 6
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    if-eqz p1, :cond_2e
+
+    .line 17039363
+    invoke-static {p1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17039366
+    move-result v1
+
+    .line 17039367
+    const/4 v2, 0x1
+
+    .line 17039368
+    xor-int/2addr v1, v2
+
+    .line 17039369
+    if-eqz v1, :cond_d
+
+    .line 17039371
+    move-object v1, p1
+
+    .line 17039372
+    goto :goto_e
+
+    .line 17039373
+    :cond_d
+    const/4 v1, 0x0
+
+    .line 17039374
+    :goto_e
+    if-eqz v1, :cond_2e
+
+    .line 17039376
+    :try_start_10
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 17039378
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 17039381
+    const-string p1, "way"
+
+    .line 17039383
+    const-string v3, ""
+
+    .line 17039385
+    invoke-virtual {v1, p1, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17039388
+    move-result-object p1
+
+    .line 17039389
+    const-string v1, "17"
+
+    .line 17039391
+    invoke-static {v1, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17039394
+    move-result v1
+
+    .line 17039395
+    if-nez v1, :cond_2d
+
+    .line 17039397
+    const-string v1, "26"
+
+    .line 17039399
+    invoke-static {v1, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17039402
+    move-result p1
+    :try_end_2b
+    .catch Lorg/json/JSONException; {:try_start_10 .. :try_end_2b} :catch_2e
+
+    .line 17039403
+    if-eqz p1, :cond_2e
+
+    .line 17039405
+    :cond_2d
+    const/4 v0, 0x1
+
+    .line 17039406
+    :catch_2e
+    :cond_2e
+    return v0
+.end method
+
+.method private final isLynxCardKeepDialog(Lorg/json/JSONObject;)Z
+    .registers 3
+
+    .prologue
+    .line 16973824
+    if-eqz p1, :cond_9
+
+    .line 16973826
+    const-string v0, "type"
+
+    .line 16973828
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 16973831
+    move-result-object p1
+
+    .line 16973832
+    goto :goto_a
+
+    .line 16973833
+    :cond_9
+    const/4 p1, 0x0
+
+    .line 16973834
+    :goto_a
+    const-string v0, "retain_dialog"
+
+    .line 16973836
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 16973839
+    move-result p1
+
+    .line 16973840
+    if-eqz p1, :cond_14
+
+    .line 16973842
+    const/4 p1, 0x1
+
+    .line 16973843
+    return p1
+
+    .line 16973844
+    :cond_14
+    const/4 p1, 0x0
+
+    .line 16973845
+    return p1
+.end method
+
+.method public static final isNew()Z
+    .registers 1
+
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->Companion:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;
+
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$Companion;->isNew()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method private final isNoPwdCombine(Ljava/lang/String;)Z
+    .registers 4
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    if-nez p1, :cond_5
+
+    .line 17039363
+    :try_start_3
+    const-string p1, ""
+
+    .line 17039365
+    :cond_5
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 17039368
+    move-result-object p1
+
+    .line 17039369
+    if-eqz p1, :cond_24
+
+    .line 17039371
+    const-string v1, "loading_style_info"
+
+    .line 17039373
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 17039376
+    move-result-object p1
+
+    .line 17039377
+    if-eqz p1, :cond_24
+
+    .line 17039379
+    const-string v1, "nopwd_combine_pre_show_info"
+
+    .line 17039381
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 17039384
+    move-result v1
+
+    .line 17039385
+    if-nez v1, :cond_23
+
+    .line 17039387
+    const-string v1, "nopwd_combine_paying_show_info"
+
+    .line 17039389
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 17039392
+    move-result p1
+    :try_end_21
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_21} :catch_24
+
+    .line 17039393
+    if-eqz p1, :cond_24
+
+    .line 17039395
+    :cond_23
+    const/4 v0, 0x1
+
+    .line 17039396
+    :catch_24
+    :cond_24
+    return v0
+.end method
+
+.method private final isSwitchToUnifyPay(Ljava/lang/String;)Z
+    .registers 4
+
+    .prologue
+    .line 16973824
+    :try_start_0
+    const-string v0, "native"
+
+    .line 16973826
+    const-string v1, "switch_product_code"
+
+    .line 16973828
+    invoke-direct {p0, p1, v1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->extractParamSimple(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 16973831
+    move-result-object p1
+
+    .line 16973832
+    invoke-static {v0, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 16973835
+    move-result p1
+    :try_end_c
+    .catchall {:try_start_0 .. :try_end_c} :catchall_d
+
+    .line 16973836
+    goto :goto_16
+
+    .line 16973837
+    :catchall_d
+    move-exception p1
+
+    .line 16973838
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 16973840
+    const-string v1, "isSwitchToUnifyPay error"
+
+    .line 16973842
+    invoke-static {v0, v1, p1}, Lfe0/a;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 16973845
+    const/4 p1, 0x0
+
+    .line 16973846
+    :goto_16
+    return p1
+.end method
+
+.method private final largeAmountPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+    .registers 20
+
+    .prologue
+    .line 50724864
+    move-object/from16 v0, p0
+
+    .line 50724866
+    move-object/from16 v1, p1
+
+    .line 50724868
+    const/16 v2, 0x70
+
+    .line 50724870
+    const/4 v3, 0x0
+
+    .line 50724871
+    if-eqz v1, :cond_f
+
+    .line 50724873
+    :try_start_9
+    new-instance v4, Lorg/json/JSONObject;
+
+    .line 50724875
+    invoke-direct {v4, v1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724878
+    goto :goto_10
+
+    .line 50724879
+    :cond_f
+    move-object v4, v3
+
+    .line 50724880
+    :goto_10
+    if-eqz v4, :cond_1b
+
+    .line 50724882
+    const-string v1, "way"
+
+    .line 50724884
+    const-string v5, ""
+
+    .line 50724886
+    invoke-virtual {v4, v1, v5}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724889
+    move-result-object v1
+
+    .line 50724890
+    goto :goto_1c
+
+    .line 50724891
+    :cond_1b
+    move-object v1, v3
+
+    .line 50724892
+    :goto_1c
+    const-string v5, "17"
+
+    .line 50724894
+    invoke-static {v1, v5}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 50724897
+    move-result v1
+
+    .line 50724898
+    const/4 v5, 0x1
+
+    .line 50724899
+    xor-int/lit8 v8, v1, 0x1
+
+    .line 50724901
+    if-eqz v4, :cond_2f
+
+    .line 50724903
+    const-string v1, "transfer_info"
+
+    .line 50724905
+    invoke-virtual {v4, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724908
+    move-result-object v1
+
+    .line 50724909
+    move-object v9, v1
+
+    .line 50724910
+    goto :goto_30
+
+    .line 50724911
+    :cond_2f
+    move-object v9, v3
+
+    .line 50724912
+    :goto_30
+    if-eqz p2, :cond_4c
+
+    .line 50724914
+    invoke-static/range {p2 .. p2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 50724917
+    move-result v1
+
+    .line 50724918
+    xor-int/2addr v1, v5
+
+    .line 50724919
+    if-eqz v1, :cond_3c
+
+    .line 50724921
+    move-object/from16 v1, p2
+
+    .line 50724923
+    goto :goto_3d
+
+    .line 50724924
+    :cond_3c
+    move-object v1, v3
+
+    .line 50724925
+    :goto_3d
+    if-eqz v1, :cond_4c
+
+    .line 50724927
+    new-instance v4, Lorg/json/JSONObject;
+
+    .line 50724929
+    invoke-direct {v4, v1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724932
+    const-string v1, "track_info"
+
+    .line 50724934
+    invoke-virtual {v4, v1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50724937
+    move-result-object v1
+
+    .line 50724938
+    move-object v10, v1
+
+    .line 50724939
+    goto :goto_4d
+
+    .line 50724940
+    :cond_4c
+    move-object v10, v3
+
+    .line 50724941
+    :goto_4d
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 50724943
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724946
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 50724949
+    move-result-object v1
+
+    .line 50724950
+    sget-object v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_FRONT_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 50724952
+    iget-object v4, v4, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 50724954
+    invoke-static {v1, v4}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 50724957
+    const-string v1, "caijing_cashdesk_request"
+
+    .line 50724959
+    invoke-static {v1}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 50724962
+    iget-object v1, v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724964
+    if-eqz v1, :cond_6a
+
+    .line 50724966
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50724969
+    move-result-object v3
+
+    .line 50724970
+    :cond_6a
+    move-object v7, v3
+
+    .line 50724971
+    if-eqz v7, :cond_9f
+
+    .line 50724973
+    const/4 v1, 0x0
+
+    .line 50724974
+    if-eqz v9, :cond_77
+
+    .line 50724976
+    invoke-static {v9}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 50724979
+    move-result v3
+
+    .line 50724980
+    if-nez v3, :cond_77
+
+    .line 50724982
+    goto :goto_78
+
+    .line 50724983
+    :cond_77
+    const/4 v5, 0x0
+
+    .line 50724984
+    :goto_78
+    if-nez v5, :cond_7b
+
+    .line 50724986
+    goto :goto_9f
+
+    .line 50724987
+    :cond_7b
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50724990
+    move-result-object v3
+
+    .line 50724991
+    const-class v4, Lcom/android/ttcjpaysdk/base/service/ICJPayLargeAmountService;
+
+    .line 50724993
+    invoke-virtual {v3, v4}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50724996
+    move-result-object v3
+
+    .line 50724997
+    move-object v6, v3
+
+    .line 50724998
+    check-cast v6, Lcom/android/ttcjpaysdk/base/service/ICJPayLargeAmountService;
+
+    .line 50725000
+    invoke-static {v6, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 50725003
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50725005
+    iget-object v3, v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50725007
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725010
+    invoke-static {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50725013
+    move-result-object v11
+
+    .line 50725014
+    const/4 v12, 0x0
+
+    .line 50725015
+    const/4 v13, 0x0
+
+    .line 50725016
+    const/16 v14, 0x60
+
+    .line 50725018
+    const/4 v15, 0x0
+
+    .line 50725019
+    invoke-static/range {v6 .. v15}, Lcom/android/ttcjpaysdk/base/service/ICJPayLargeAmountService$DefaultImpls;->largeAmountPay$default(Lcom/android/ttcjpaysdk/base/service/ICJPayLargeAmountService;Landroid/content/Context;ILjava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/base/service/ICJPayLargeAmountService$ICJPayLargeAmountCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayLargeAmountService$ICJPayExternalLoadingAdapter;ILjava/lang/Object;)V
+    :try_end_9e
+    .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9e} :catch_cb
+
+    .line 50725022
+    goto :goto_c7
+
+    .line 50725023
+    :cond_9f
+    :goto_9f
+    const-string v1, "112"
+
+    .line 50725025
+    if-nez v7, :cond_ae
+
+    .line 50725027
+    :try_start_a3
+    sget-object v3, Lbf/b;->a:Lbf/b;
+
+    .line 50725029
+    const-string v4, "context is null"
+
+    .line 50725031
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725034
+    invoke-static {v1, v4}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725037
+    goto :goto_b8
+
+    .line 50725038
+    :cond_ae
+    sget-object v3, Lbf/b;->a:Lbf/b;
+
+    .line 50725040
+    const-string v4, "transferPayInfo is null"
+
+    .line 50725042
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725045
+    invoke-static {v1, v4}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725048
+    :goto_b8
+    if-eqz p3, :cond_bd
+
+    .line 50725050
+    invoke-interface/range {p3 .. p3}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 50725053
+    :cond_bd
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725056
+    move-result-object v1
+
+    .line 50725057
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725060
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725063
+    :goto_c7
+    invoke-virtual/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+    :try_end_ca
+    .catch Ljava/lang/Exception; {:try_start_a3 .. :try_end_ca} :catch_cb
+
+    .line 50725066
+    goto :goto_da
+
+    .line 50725067
+    :catch_cb
+    if-eqz p3, :cond_d0
+
+    .line 50725069
+    invoke-interface/range {p3 .. p3}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 50725072
+    :cond_d0
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725075
+    move-result-object v1
+
+    .line 50725076
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725079
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725082
+    :goto_da
+    return-void
+.end method
+
+.method public static synthetic largeAmountPay$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;ILjava/lang/Object;)V
+    .registers 6
+
+    .prologue
+    .line 100794368
+    and-int/lit8 p4, p4, 0x4
+
+    .line 100794370
+    if-eqz p4, :cond_5
+
+    .line 100794372
+    const/4 p3, 0x0
+
+    .line 100794373
+    :cond_5
+    invoke-direct {p0, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->largeAmountPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+
+    .line 100794376
+    return-void
+.end method
+
+.method private final monitorCounterParams(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 17
+
+    .prologue
+    .line 67502080
+    const/4 v0, 0x1
+
+    .line 67502081
+    const/4 v1, 0x0
+
+    .line 67502082
+    if-eqz p2, :cond_2a
+
+    .line 67502084
+    invoke-interface {p2}, Ljava/lang/CharSequence;->length()I
+
+    .line 67502087
+    move-result v2
+
+    .line 67502088
+    if-lez v2, :cond_c
+
+    .line 67502090
+    const/4 v2, 0x1
+
+    .line 67502091
+    goto :goto_d
+
+    .line 67502092
+    :cond_c
+    const/4 v2, 0x0
+
+    .line 67502093
+    :goto_d
+    if-eqz v2, :cond_2a
+
+    .line 67502095
+    if-eqz p3, :cond_2a
+
+    .line 67502097
+    invoke-interface {p3}, Ljava/lang/CharSequence;->length()I
+
+    .line 67502100
+    move-result v2
+
+    .line 67502101
+    if-lez v2, :cond_19
+
+    .line 67502103
+    const/4 v2, 0x1
+
+    .line 67502104
+    goto :goto_1a
+
+    .line 67502105
+    :cond_19
+    const/4 v2, 0x0
+
+    .line 67502106
+    :goto_1a
+    if-eqz v2, :cond_2a
+
+    .line 67502108
+    if-eqz p4, :cond_2a
+
+    .line 67502110
+    invoke-interface/range {p4 .. p4}, Ljava/lang/CharSequence;->length()I
+
+    .line 67502113
+    move-result v2
+
+    .line 67502114
+    if-lez v2, :cond_26
+
+    .line 67502116
+    const/4 v2, 0x1
+
+    .line 67502117
+    goto :goto_27
+
+    .line 67502118
+    :cond_26
+    const/4 v2, 0x0
+
+    .line 67502119
+    :goto_27
+    if-eqz v2, :cond_2a
+
+    .line 67502121
+    return-void
+
+    .line 67502122
+    :cond_2a
+    new-instance v3, Ljava/util/ArrayList;
+
+    .line 67502124
+    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
+
+    .line 67502127
+    if-eqz p2, :cond_3c
+
+    .line 67502129
+    invoke-interface {p2}, Ljava/lang/CharSequence;->length()I
+
+    .line 67502132
+    move-result v2
+
+    .line 67502133
+    if-nez v2, :cond_39
+
+    .line 67502135
+    const/4 v2, 0x1
+
+    .line 67502136
+    goto :goto_3a
+
+    .line 67502137
+    :cond_39
+    const/4 v2, 0x0
+
+    .line 67502138
+    :goto_3a
+    if-eqz v2, :cond_41
+
+    .line 67502140
+    :cond_3c
+    const-string v2, "aid"
+
+    .line 67502142
+    invoke-interface {v3, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 67502145
+    :cond_41
+    if-eqz p3, :cond_4e
+
+    .line 67502147
+    invoke-interface {p3}, Ljava/lang/CharSequence;->length()I
+
+    .line 67502150
+    move-result v2
+
+    .line 67502151
+    if-nez v2, :cond_4b
+
+    .line 67502153
+    const/4 v2, 0x1
+
+    .line 67502154
+    goto :goto_4c
+
+    .line 67502155
+    :cond_4b
+    const/4 v2, 0x0
+
+    .line 67502156
+    :goto_4c
+    if-eqz v2, :cond_53
+
+    .line 67502158
+    :cond_4e
+    const-string v2, "did"
+
+    .line 67502160
+    invoke-interface {v3, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 67502163
+    :cond_53
+    if-eqz p4, :cond_5f
+
+    .line 67502165
+    invoke-interface/range {p4 .. p4}, Ljava/lang/CharSequence;->length()I
+
+    .line 67502168
+    move-result v2
+
+    .line 67502169
+    if-nez v2, :cond_5c
+
+    .line 67502171
+    goto :goto_5d
+
+    .line 67502172
+    :cond_5c
+    const/4 v0, 0x0
+
+    .line 67502173
+    :goto_5d
+    if-eqz v0, :cond_64
+
+    .line 67502175
+    :cond_5f
+    const-string v0, "merchantId"
+
+    .line 67502177
+    invoke-interface {v3, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 67502180
+    :cond_64
+    :try_start_64
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 67502182
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    .line 67502185
+    const-string v1, "counter_type"
+
+    .line 67502187
+    move-object v2, p1
+
+    .line 67502188
+    invoke-virtual {v0, v1, p1}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 67502191
+    const-string v1, "missing_params"
+
+    .line 67502193
+    const/4 v4, 0x0
+
+    .line 67502194
+    const/4 v5, 0x0
+
+    .line 67502195
+    const/4 v6, 0x0
+
+    .line 67502196
+    const/4 v7, 0x0
+
+    .line 67502197
+    const/4 v8, 0x0
+
+    .line 67502198
+    const/4 v9, 0x0
+
+    .line 67502199
+    const/16 v10, 0x3f
+
+    .line 67502201
+    const/4 v11, 0x0
+
+    .line 67502202
+    invoke-static/range {v3 .. v11}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 67502205
+    move-result-object v2
+
+    .line 67502206
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 67502209
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502212
+    move-result-object v1
+
+    .line 67502213
+    const-string v2, "wallet_rd_checkout_counter_params_verify"
+
+    .line 67502215
+    invoke-virtual {v1, v2, v0}, Lcom/android/ttcjpaysdk/base/c;->l(Ljava/lang/String;Lorg/json/JSONObject;)V
+    :try_end_8a
+    .catch Ljava/lang/Exception; {:try_start_64 .. :try_end_8a} :catch_8a
+
+    .line 67502218
+    :catch_8a
+    return-void
+.end method
+
+.method private final monitorErrorSchema(Ljava/lang/String;ZZ)V
+    .registers 11
+
+    .prologue
+    .line 50724864
+    const-string v0, "url"
+
+    .line 50724866
+    const-string v1, "error schema: "
+
+    .line 50724868
+    :try_start_4
+    sget-object v2, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 50724870
+    invoke-static {p1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 50724873
+    move-result-object v2
+
+    .line 50724874
+    invoke-virtual {v2, v0}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724877
+    move-result-object v2
+
+    .line 50724878
+    invoke-static {v2}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 50724881
+    move-result-object v3
+
+    .line 50724882
+    invoke-virtual {v3}, Landroid/net/Uri;->getHost()Ljava/lang/String;
+
+    .line 50724885
+    move-result-object v3
+
+    .line 50724886
+    sget-object v4, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 50724888
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 50724890
+    invoke-direct {v5, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50724893
+    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724896
+    const-string v1, "\u3001url: "
+
+    .line 50724898
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724901
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724904
+    const-string v1, "\u3001host: "
+
+    .line 50724906
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724909
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724912
+    const-string v1, "\u3001open_config: "
+
+    .line 50724914
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724917
+    invoke-virtual {v5, p2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 50724920
+    const-string v1, "\u3001is_trust: "
+
+    .line 50724922
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50724925
+    invoke-virtual {v5, p3}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 50724928
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50724931
+    move-result-object v1
+
+    .line 50724932
+    invoke-static {v4, v1}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50724935
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724938
+    move-result-object v1
+
+    .line 50724939
+    const-string v4, "wallet_rd_error_schema_info"
+
+    .line 50724941
+    new-instance v5, Lorg/json/JSONObject;
+
+    .line 50724943
+    invoke-direct {v5}, Lorg/json/JSONObject;-><init>()V
+
+    .line 50724946
+    const-string v6, "schema"
+
+    .line 50724948
+    invoke-static {v5, v6, p1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724951
+    invoke-static {v5, v0, v2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724954
+    const-string p1, "host"
+
+    .line 50724956
+    invoke-static {v5, p1, v3}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724959
+    const-string p1, "open_config"
+
+    .line 50724961
+    const/4 v0, 0x1
+
+    .line 50724962
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50724965
+    move-result-object v2
+
+    .line 50724966
+    const/4 v3, 0x0
+
+    .line 50724967
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50724970
+    move-result-object v6
+
+    .line 50724971
+    invoke-static {p2, v2, v6}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->tf(ZLjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50724974
+    move-result-object p2
+
+    .line 50724975
+    invoke-static {v5, p1, p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724978
+    const-string p1, "is_trust"
+
+    .line 50724980
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50724983
+    move-result-object p2
+
+    .line 50724984
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50724987
+    move-result-object v0
+
+    .line 50724988
+    invoke-static {p3, p2, v0}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->tf(ZLjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50724991
+    move-result-object p2
+
+    .line 50724992
+    invoke-static {v5, p1, p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724995
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50724997
+    invoke-virtual {v1, v4, v5}, Lcom/android/ttcjpaysdk/base/c;->l(Ljava/lang/String;Lorg/json/JSONObject;)V
+
+    .line 50725000
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50725002
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_8d
+    .catchall {:try_start_4 .. :try_end_8d} :catchall_8e
+
+    .line 50725005
+    goto :goto_98
+
+    .line 50725006
+    :catchall_8e
+    move-exception p1
+
+    .line 50725007
+    sget-object p2, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 50725009
+    invoke-static {p1}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 50725012
+    move-result-object p1
+
+    .line 50725013
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50725016
+    :goto_98
+    return-void
+.end method
+
+.method private final openH5ByScheme(Ljava/lang/String;I)V
+    .registers 33
+
+    .prologue
+    .line 34144256
+    move-object/from16 v1, p0
+
+    .line 34144258
+    move-object/from16 v0, p1
+
+    .line 34144260
+    move/from16 v2, p2
+
+    .line 34144262
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 34144264
+    if-eqz v3, :cond_f
+
+    .line 34144266
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 34144269
+    move-result-object v3
+
+    .line 34144270
+    goto :goto_10
+
+    .line 34144271
+    :cond_f
+    const/4 v3, 0x0
+
+    .line 34144272
+    :goto_10
+    if-eqz v3, :cond_54d
+
+    .line 34144274
+    invoke-static/range {p1 .. p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 34144277
+    move-result v5
+
+    .line 34144278
+    if-nez v5, :cond_54d
+
+    .line 34144280
+    iget-object v5, v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 34144282
+    if-eqz v5, :cond_21
+
+    .line 34144284
+    invoke-virtual {v5}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 34144287
+    move-result-object v5
+
+    .line 34144288
+    goto :goto_22
+
+    .line 34144289
+    :cond_21
+    const/4 v5, 0x0
+
+    .line 34144290
+    :goto_22
+    if-nez v5, :cond_26
+
+    .line 34144292
+    goto/16 :goto_54d
+
+    .line 34144294
+    :cond_26
+    invoke-static/range {p1 .. p1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 34144297
+    move-result-object v5
+
+    .line 34144298
+    const-string v6, ""
+
+    .line 34144300
+    if-eqz v5, :cond_74
+
+    .line 34144302
+    invoke-virtual {v5}, Landroid/net/Uri;->getHost()Ljava/lang/String;
+
+    .line 34144305
+    move-result-object v7
+
+    .line 34144306
+    invoke-virtual {v5}, Landroid/net/Uri;->getPath()Ljava/lang/String;
+
+    .line 34144309
+    move-result-object v8
+
+    .line 34144310
+    sget-object v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->CJPAY_HOST:Ljava/lang/String;
+
+    .line 34144312
+    invoke-static {v9, v7}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144315
+    move-result v7
+
+    .line 34144316
+    if-nez v7, :cond_3f
+
+    .line 34144318
+    return-void
+
+    .line 34144319
+    :cond_3f
+    const-string v7, "kernel"
+
+    .line 34144321
+    invoke-virtual {v5, v7}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144324
+    const-string v7, "merchant_id"
+
+    .line 34144326
+    invoke-virtual {v5, v7}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144329
+    move-result-object v7
+
+    .line 34144330
+    const-string v9, "app_id"
+
+    .line 34144332
+    invoke-virtual {v5, v9}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144335
+    move-result-object v9
+
+    .line 34144336
+    const-string v10, "inherit_theme"
+
+    .line 34144338
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144341
+    move-result-object v10
+
+    .line 34144342
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 34144345
+    move-result v11
+
+    .line 34144346
+    if-nez v11, :cond_63
+
+    .line 34144348
+    iget-object v11, v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 34144350
+    if-nez v11, :cond_61
+
+    .line 34144352
+    goto :goto_63
+
+    .line 34144353
+    :cond_61
+    iput-object v7, v11, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 34144355
+    :cond_63
+    :goto_63
+    invoke-static {v9}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 34144358
+    move-result v11
+
+    .line 34144359
+    if-nez v11, :cond_70
+
+    .line 34144361
+    iget-object v11, v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 34144363
+    if-nez v11, :cond_6e
+
+    .line 34144365
+    goto :goto_70
+
+    .line 34144366
+    :cond_6e
+    iput-object v9, v11, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 34144368
+    :cond_70
+    :goto_70
+    invoke-virtual {v1, v10}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setInheritTheme(Ljava/lang/String;)V
+
+    .line 34144371
+    goto :goto_77
+
+    .line 34144372
+    :cond_74
+    move-object v7, v6
+
+    .line 34144373
+    move-object v8, v7
+
+    .line 34144374
+    move-object v9, v8
+
+    .line 34144375
+    :goto_77
+    const-string v10, "/bankcardlist"
+
+    .line 34144377
+    invoke-static {v10, v8}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144380
+    move-result v10
+
+    .line 34144381
+    if-eqz v10, :cond_86
+
+    .line 34144383
+    if-eqz v5, :cond_55b
+
+    .line 34144385
+    invoke-virtual/range {p0 .. p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->myBankCard(Ljava/lang/String;)V
+
+    .line 34144388
+    goto/16 :goto_55b
+
+    .line 34144390
+    :cond_86
+    const-string v10, "/bdtopupdesk"
+
+    .line 34144392
+    invoke-static {v10, v8}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144395
+    move-result v10
+
+    .line 34144396
+    if-eqz v10, :cond_9c
+
+    .line 34144398
+    if-eqz v5, :cond_55b
+
+    .line 34144400
+    invoke-direct/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getRequestParamsMap()Ljava/util/HashMap;
+
+    .line 34144403
+    move-result-object v0
+
+    .line 34144404
+    invoke-virtual {v1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 34144407
+    invoke-virtual/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->recharge()V
+
+    .line 34144410
+    goto/16 :goto_55b
+
+    .line 34144412
+    :cond_9c
+    const-string v10, "/bdwithdrawaldesk"
+
+    .line 34144414
+    invoke-static {v10, v8}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144417
+    move-result v10
+
+    .line 34144418
+    if-eqz v10, :cond_b2
+
+    .line 34144420
+    if-eqz v5, :cond_55b
+
+    .line 34144422
+    invoke-direct/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getRequestParamsMap()Ljava/util/HashMap;
+
+    .line 34144425
+    move-result-object v0
+
+    .line 34144426
+    invoke-virtual {v1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 34144429
+    invoke-virtual/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->executeWithdraw()V
+
+    .line 34144432
+    goto/16 :goto_55b
+
+    .line 34144434
+    :cond_b2
+    const-string v10, "/quickbindsign"
+
+    .line 34144436
+    invoke-static {v10, v8}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144439
+    move-result v10
+
+    .line 34144440
+    if-eqz v10, :cond_cd
+
+    .line 34144442
+    sget-object v2, Lz7/b;->a:Lz7/b;
+
+    .line 34144444
+    new-instance v3, Lh8/s0;
+
+    .line 34144446
+    sget-object v4, Lh8/s0;->Companion:Lh8/s0$a;
+
+    .line 34144448
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34144451
+    sget-object v4, Lh8/s0;->HAS_CARD:Ljava/lang/String;
+
+    .line 34144453
+    invoke-direct {v3, v4, v0}, Lh8/s0;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34144456
+    invoke-virtual {v2, v3}, Lz7/b;->a(Lz7/a;)V
+
+    .line 34144459
+    goto/16 :goto_55b
+
+    .line 34144461
+    :cond_cd
+    const-string v10, "/bindcardpage"
+
+    .line 34144463
+    invoke-static {v10, v8}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144466
+    move-result v10
+
+    .line 34144467
+    if-eqz v10, :cond_e8
+
+    .line 34144469
+    sget-object v2, Lz7/b;->a:Lz7/b;
+
+    .line 34144471
+    new-instance v3, Lh8/s0;
+
+    .line 34144473
+    sget-object v4, Lh8/s0;->Companion:Lh8/s0$a;
+
+    .line 34144475
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34144478
+    sget-object v4, Lh8/s0;->NONE_CARD:Ljava/lang/String;
+
+    .line 34144480
+    invoke-direct {v3, v4, v0}, Lh8/s0;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34144483
+    invoke-virtual {v2, v3}, Lz7/b;->a(Lz7/a;)V
+
+    .line 34144486
+    goto/16 :goto_55b
+
+    .line 34144488
+    :cond_e8
+    const-string v10, "/outerbindcard"
+
+    .line 34144490
+    invoke-static {v10, v8}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144493
+    move-result v10
+
+    .line 34144494
+    if-eqz v10, :cond_10f
+
+    .line 34144496
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 34144498
+    invoke-direct {v2}, Lorg/json/JSONObject;-><init>()V
+
+    .line 34144501
+    :try_start_f5
+    const-string v3, "outerBindCardScheme"
+
+    .line 34144503
+    invoke-virtual {v2, v3, v0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_fa
+    .catch Ljava/lang/Exception; {:try_start_f5 .. :try_end_fa} :catch_fa
+
+    .line 34144506
+    :catch_fa
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->INSTANCE:Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;
+
+    .line 34144508
+    const-class v3, Lcom/bytedance/caijing/sdk/infra/base/api/container/old_container/CJExternalEventService;
+
+    .line 34144510
+    invoke-virtual {v0, v3}, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->getServiceNonNull(Ljava/lang/Class;)Lcom/bytedance/caijing/sdk/infra/base/core/di/ICJService;
+
+    .line 34144513
+    move-result-object v0
+
+    .line 34144514
+    check-cast v0, Lcom/bytedance/caijing/sdk/infra/base/api/container/old_container/CJExternalEventService;
+
+    .line 34144516
+    const-string v3, "ttcjpay.outerBindCardCallback"
+
+    .line 34144518
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 34144521
+    move-result-wide v4
+
+    .line 34144522
+    invoke-interface {v0, v3, v4, v5, v2}, Lcom/bytedance/caijing/sdk/infra/base/api/container/old_container/CJExternalEventService;->enqueueEvent(Ljava/lang/String;JLorg/json/JSONObject;)V
+
+    .line 34144525
+    goto/16 :goto_55b
+
+    .line 34144527
+    :cond_10f
+    const-string v10, "/trip_service"
+
+    .line 34144529
+    invoke-static {v10, v8}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144532
+    move-result v8
+
+    .line 34144533
+    if-eqz v8, :cond_13a
+
+    .line 34144535
+    const-class v2, Lcom/bytedance/caijing/sdk/infra/base/api/trip/ICJTripService;
+
+    .line 34144537
+    invoke-static {v2}, Lhd0/a;->a(Ljava/lang/Class;)Lcom/bytedance/caijing/sdk/infra/base/core/di/ICJService;
+
+    .line 34144540
+    move-result-object v2
+
+    .line 34144541
+    check-cast v2, Lcom/bytedance/caijing/sdk/infra/base/api/trip/ICJTripService;
+
+    .line 34144543
+    if-eqz v2, :cond_12c
+
+    .line 34144545
+    new-instance v4, Lcom/bytedance/caijing/sdk/infra/base/api/trip/a;
+
+    .line 34144547
+    invoke-direct {v4, v0}, Lcom/bytedance/caijing/sdk/infra/base/api/trip/a;-><init>(Ljava/lang/String;)V
+
+    .line 34144550
+    invoke-interface {v2, v3, v4}, Lcom/bytedance/caijing/sdk/infra/base/api/trip/ICJTripService;->openTripPage(Landroid/content/Context;Lcom/bytedance/caijing/sdk/infra/base/api/trip/a;)V
+
+    .line 34144553
+    sget-object v4, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 34144555
+    goto :goto_12d
+
+    .line 34144556
+    :cond_12c
+    const/4 v4, 0x0
+
+    .line 34144557
+    :goto_12d
+    if-nez v4, :cond_55b
+
+    .line 34144559
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 34144561
+    const-string v2, "openTripPage failed"
+
+    .line 34144563
+    invoke-static {v0, v2}, Lfe0/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34144566
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 34144568
+    goto/16 :goto_55b
+
+    .line 34144570
+    :cond_13a
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 34144573
+    move-result-object v8
+
+    .line 34144574
+    invoke-virtual {v8}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34144577
+    invoke-static {}, Ll9/a;->q()Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;
+
+    .line 34144580
+    move-result-object v8
+
+    .line 34144581
+    const-string v10, "url"
+
+    .line 34144583
+    if-eqz v5, :cond_14f
+
+    .line 34144585
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144588
+    move-result-object v11
+
+    .line 34144589
+    if-nez v11, :cond_150
+
+    .line 34144591
+    :cond_14f
+    move-object v11, v6
+
+    .line 34144592
+    :cond_150
+    invoke-virtual {v8, v11}, Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;->isDispatchAnnieXUrl(Ljava/lang/String;)Z
+
+    .line 34144595
+    move-result v8
+
+    .line 34144596
+    const/4 v12, 0x1
+
+    .line 34144597
+    const/4 v13, 0x0
+
+    .line 34144598
+    const-string v14, "cj_native_open_time"
+
+    .line 34144600
+    const-string v15, "1"
+
+    .line 34144602
+    if-eqz v8, :cond_168
+
+    .line 34144604
+    sget-object v8, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayABExperimentKeys;->j:Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;
+
+    .line 34144606
+    invoke-virtual {v8, v12}, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;->a(Z)Ljava/lang/Object;
+
+    .line 34144609
+    move-result-object v8
+
+    .line 34144610
+    invoke-static {v8, v15}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34144613
+    move-result v8
+
+    .line 34144614
+    if-nez v8, :cond_1c0
+
+    .line 34144616
+    :cond_168
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 34144619
+    move-result-object v8
+
+    .line 34144620
+    invoke-virtual {v8}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34144623
+    invoke-static {}, Ll9/a;->q()Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;
+
+    .line 34144626
+    move-result-object v8
+
+    .line 34144627
+    if-eqz v5, :cond_17f
+
+    .line 34144629
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144632
+    move-result-object v16
+
+    .line 34144633
+    if-nez v16, :cond_17c
+
+    .line 34144635
+    goto :goto_17f
+
+    .line 34144636
+    :cond_17c
+    move-object/from16 v4, v16
+
+    .line 34144638
+    goto :goto_180
+
+    .line 34144639
+    :cond_17f
+    :goto_17f
+    move-object v4, v6
+
+    .line 34144640
+    :goto_180
+    invoke-virtual {v8, v4}, Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;->isAnnieXUrl(Ljava/lang/String;)Z
+
+    .line 34144643
+    move-result v4
+
+    .line 34144644
+    if-nez v4, :cond_1c0
+
+    .line 34144646
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 34144649
+    move-result-object v4
+
+    .line 34144650
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34144653
+    invoke-static {}, Ll9/a;->q()Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;
+
+    .line 34144656
+    move-result-object v4
+
+    .line 34144657
+    if-eqz v5, :cond_199
+
+    .line 34144659
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144662
+    move-result-object v8
+
+    .line 34144663
+    if-nez v8, :cond_19a
+
+    .line 34144665
+    :cond_199
+    move-object v8, v6
+
+    .line 34144666
+    :cond_19a
+    invoke-virtual {v4, v8}, Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;->isAnnieXPrefixMatchUrl(Ljava/lang/String;)Z
+
+    .line 34144669
+    move-result v4
+
+    .line 34144670
+    if-nez v4, :cond_1c0
+
+    .line 34144672
+    sget-object v4, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayABExperimentKeys;->l:Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;
+
+    .line 34144674
+    invoke-virtual {v4, v13}, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;->a(Z)Ljava/lang/Object;
+
+    .line 34144677
+    move-result-object v8
+
+    .line 34144678
+    check-cast v8, Lcom/android/ttcjpaysdk/base/settings/bean/CJPayWebToAnnieXConfig;
+
+    .line 34144680
+    if-eqz v5, :cond_1b4
+
+    .line 34144682
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144685
+    move-result-object v17
+
+    .line 34144686
+    if-nez v17, :cond_1b1
+
+    .line 34144688
+    goto :goto_1b4
+
+    .line 34144689
+    :cond_1b1
+    move-object/from16 v11, v17
+
+    .line 34144691
+    goto :goto_1b5
+
+    .line 34144692
+    :cond_1b4
+    :goto_1b4
+    move-object v11, v6
+
+    .line 34144693
+    :goto_1b5
+    new-instance v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openH5ByScheme$2$1;
+
+    .line 34144695
+    invoke-direct {v12, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openH5ByScheme$2$1;-><init>(Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;)V
+
+    .line 34144698
+    invoke-virtual {v8, v11, v12}, Lcom/android/ttcjpaysdk/base/settings/bean/CJPayWebToAnnieXConfig;->isAllowAnnieX(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Z
+
+    .line 34144701
+    move-result v4
+
+    .line 34144702
+    if-eqz v4, :cond_449
+
+    .line 34144704
+    :cond_1c0
+    sget-object v4, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayABExperimentKeys;->m:Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;
+
+    .line 34144706
+    invoke-virtual {v4, v13}, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;->a(Z)Ljava/lang/Object;
+
+    .line 34144709
+    move-result-object v8
+
+    .line 34144710
+    check-cast v8, Lcom/android/ttcjpaysdk/base/settings/bean/CJPayAnnieToWebConfig;
+
+    .line 34144712
+    if-eqz v5, :cond_1d0
+
+    .line 34144714
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144717
+    move-result-object v11
+
+    .line 34144718
+    if-nez v11, :cond_1d1
+
+    .line 34144720
+    :cond_1d0
+    move-object v11, v6
+
+    .line 34144721
+    :cond_1d1
+    new-instance v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openH5ByScheme$3$1;
+
+    .line 34144723
+    invoke-direct {v12, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openH5ByScheme$3$1;-><init>(Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;)V
+
+    .line 34144726
+    invoke-virtual {v8, v11, v12}, Lcom/android/ttcjpaysdk/base/settings/bean/CJPayAnnieToWebConfig;->isAllowCJWeb(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Z
+
+    .line 34144729
+    move-result v4
+
+    .line 34144730
+    const/4 v8, 0x1
+
+    .line 34144731
+    xor-int/2addr v4, v8
+
+    .line 34144732
+    if-eqz v4, :cond_449
+
+    .line 34144734
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 34144737
+    move-result-object v4
+
+    .line 34144738
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34144741
+    invoke-static {}, Ll9/a;->q()Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;
+
+    .line 34144744
+    move-result-object v4
+
+    .line 34144745
+    if-eqz v5, :cond_1f1
+
+    .line 34144747
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144750
+    move-result-object v8
+
+    .line 34144751
+    if-nez v8, :cond_1f2
+
+    .line 34144753
+    :cond_1f1
+    move-object v8, v6
+
+    .line 34144754
+    :cond_1f2
+    invoke-virtual {v4, v8}, Lcom/android/ttcjpaysdk/base/settings/bean/NewContainerConfig;->isAnnieXBlackUrl(Ljava/lang/String;)Z
+
+    .line 34144757
+    move-result v4
+
+    .line 34144758
+    if-nez v4, :cond_449
+
+    .line 34144760
+    instance-of v0, v1, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 34144762
+    const-string v4, "runCatching"
+
+    .line 34144764
+    if-eqz v0, :cond_20d
+
+    .line 34144766
+    move-object v7, v1
+
+    .line 34144767
+    check-cast v7, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 34144769
+    invoke-interface {v7}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 34144772
+    move-result-object v7
+
+    .line 34144773
+    if-eqz v7, :cond_20d
+
+    .line 34144775
+    invoke-static {v7}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 34144778
+    move-result v8
+
+    .line 34144779
+    if-eqz v8, :cond_20e
+
+    .line 34144781
+    :cond_20d
+    move-object v7, v4
+
+    .line 34144782
+    :cond_20e
+    invoke-static {v7}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 34144785
+    move-result v8
+
+    .line 34144786
+    if-eqz v8, :cond_228
+
+    .line 34144788
+    if-eqz v0, :cond_229
+
+    .line 34144790
+    move-object v0, v1
+
+    .line 34144791
+    check-cast v0, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 34144793
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 34144796
+    move-result-object v0
+
+    .line 34144797
+    if-eqz v0, :cond_229
+
+    .line 34144799
+    invoke-static {v0}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 34144802
+    move-result v8
+
+    .line 34144803
+    if-eqz v8, :cond_226
+
+    .line 34144805
+    goto :goto_229
+
+    .line 34144806
+    :cond_226
+    move-object v4, v0
+
+    .line 34144807
+    goto :goto_229
+
+    .line 34144808
+    :cond_228
+    move-object v4, v7
+
+    .line 34144809
+    :cond_229
+    :goto_229
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 34144812
+    move-result-object v0
+
+    .line 34144813
+    invoke-virtual {v0}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 34144816
+    move-result-object v0
+
+    .line 34144817
+    invoke-static {v0, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 34144820
+    const/4 v8, 0x5
+
+    .line 34144821
+    invoke-static {v0, v8}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 34144824
+    move-result-object v18
+
+    .line 34144825
+    const-string v19, "\n "
+
+    .line 34144827
+    const/4 v0, 0x0
+
+    .line 34144828
+    const/4 v9, 0x0
+
+    .line 34144829
+    const/4 v11, 0x0
+
+    .line 34144830
+    const/16 v27, 0x0
+
+    .line 34144832
+    const/16 v28, 0x3e
+
+    .line 34144834
+    const/16 v29, 0x0
+
+    .line 34144836
+    const/16 v20, 0x0
+
+    .line 34144838
+    const/16 v21, 0x0
+
+    .line 34144840
+    const/16 v22, 0x0
+
+    .line 34144842
+    const/16 v23, 0x0
+
+    .line 34144844
+    const/16 v24, 0x0
+
+    .line 34144846
+    const/16 v25, 0x3e
+
+    .line 34144848
+    const/16 v26, 0x0
+
+    .line 34144850
+    invoke-static/range {v18 .. v26}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 34144853
+    move-result-object v13
+
+    .line 34144854
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 34144857
+    move-result-object v18
+
+    .line 34144858
+    invoke-virtual/range {v18 .. v18}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 34144861
+    move-result-object v8
+
+    .line 34144862
+    invoke-static {v8, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 34144865
+    const/16 v12, 0xa
+
+    .line 34144867
+    invoke-static {v8, v12}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 34144870
+    move-result-object v20
+
+    .line 34144871
+    const-string v21, "\n "
+
+    .line 34144873
+    move-object/from16 v22, v0
+
+    .line 34144875
+    move-object/from16 v23, v9
+
+    .line 34144877
+    move/from16 v24, v11
+
+    .line 34144879
+    const/4 v0, 0x0
+
+    .line 34144880
+    move-object/from16 v25, v0
+
+    .line 34144882
+    move-object/from16 v26, v27
+
+    .line 34144884
+    move/from16 v27, v28
+
+    .line 34144886
+    move-object/from16 v28, v29
+
+    .line 34144888
+    invoke-static/range {v20 .. v28}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 34144891
+    move-result-object v0
+
+    .line 34144892
+    new-instance v8, Ljava/lang/StringBuilder;
+
+    .line 34144894
+    const-string v9, "Debug\n "
+
+    .line 34144896
+    invoke-direct {v8, v9}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 34144899
+    invoke-virtual {v8, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 34144902
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 34144905
+    move-result-object v0
+
+    .line 34144906
+    invoke-static {v4, v0}, Lfe0/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34144909
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 34144912
+    move-result-wide v8
+
+    .line 34144913
+    :try_start_291
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 34144915
+    if-eqz v5, :cond_29a
+
+    .line 34144917
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34144920
+    move-result-object v0
+
+    .line 34144921
+    goto :goto_29b
+
+    .line 34144922
+    :cond_29a
+    const/4 v0, 0x0
+
+    .line 34144923
+    :goto_29b
+    new-instance v10, Lkotlin/jvm/internal/Ref$ObjectRef;
+
+    .line 34144925
+    invoke-direct {v10}, Lkotlin/jvm/internal/Ref$ObjectRef;-><init>()V
+
+    .line 34144928
+    iput-object v0, v10, Lkotlin/jvm/internal/Ref$ObjectRef;->element:Ljava/lang/Object;
+
+    .line 34144930
+    sget-object v11, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->INSTANCE:Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;
+
+    .line 34144932
+    const-class v12, Lcom/bytedance/caijing/sdk/infra/base/api/plugin/settings/IPluginSettingsService;
+
+    .line 34144934
+    invoke-virtual {v11, v12}, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->getService(Ljava/lang/Class;)Lcom/bytedance/caijing/sdk/infra/base/core/di/ICJService;
+
+    .line 34144937
+    move-result-object v11
+
+    .line 34144938
+    check-cast v11, Lcom/bytedance/caijing/sdk/infra/base/api/plugin/settings/IPluginSettingsService;
+
+    .line 34144940
+    if-eqz v11, :cond_2b3
+
+    .line 34144942
+    invoke-interface {v11, v0}, Lcom/bytedance/caijing/sdk/infra/base/api/plugin/settings/IPluginSettingsService;->getUrlAppendCommonParams(Ljava/lang/String;)Ljava/util/Map;
+
+    .line 34144945
+    move-result-object v0
+
+    .line 34144946
+    goto :goto_2b4
+
+    .line 34144947
+    :cond_2b3
+    const/4 v0, 0x0
+
+    .line 34144948
+    :goto_2b4
+    if-eqz v0, :cond_304
+
+    .line 34144950
+    invoke-interface {v0}, Ljava/util/Map;->isEmpty()Z
+
+    .line 34144953
+    move-result v11
+
+    .line 34144954
+    const/4 v12, 0x1
+
+    .line 34144955
+    xor-int/2addr v11, v12
+
+    .line 34144956
+    if-eqz v11, :cond_2bf
+
+    .line 34144958
+    goto :goto_2c0
+
+    .line 34144959
+    :cond_2bf
+    const/4 v0, 0x0
+
+    .line 34144960
+    :goto_2c0
+    if-eqz v0, :cond_304
+
+    .line 34144962
+    iget-object v11, v10, Lkotlin/jvm/internal/Ref$ObjectRef;->element:Ljava/lang/Object;
+
+    .line 34144964
+    check-cast v11, Ljava/lang/String;
+
+    .line 34144966
+    invoke-static {v11}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 34144969
+    move-result-object v11
+
+    .line 34144970
+    invoke-virtual {v11}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
+
+    .line 34144973
+    move-result-object v11
+
+    .line 34144974
+    invoke-interface {v0}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    .line 34144977
+    move-result-object v0
+
+    .line 34144978
+    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 34144981
+    move-result-object v0
+
+    .line 34144982
+    :goto_2d6
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 34144985
+    move-result v12
+
+    .line 34144986
+    if-eqz v12, :cond_2f8
+
+    .line 34144988
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 34144991
+    move-result-object v12
+
+    .line 34144992
+    check-cast v12, Ljava/util/Map$Entry;
+
+    .line 34144994
+    invoke-interface {v12}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 34144997
+    move-result-object v18
+
+    .line 34144998
+    move-object/from16 v19, v0
+
+    .line 34145000
+    move-object/from16 v0, v18
+
+    .line 34145002
+    check-cast v0, Ljava/lang/String;
+
+    .line 34145004
+    invoke-interface {v12}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 34145007
+    move-result-object v12
+
+    .line 34145008
+    check-cast v12, Ljava/lang/String;
+
+    .line 34145010
+    invoke-virtual {v11, v0, v12}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145013
+    move-object/from16 v0, v19
+
+    .line 34145015
+    goto :goto_2d6
+
+    .line 34145016
+    :cond_2f8
+    invoke-virtual {v11}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+
+    .line 34145019
+    move-result-object v0
+
+    .line 34145020
+    invoke-virtual {v0}, Landroid/net/Uri;->toString()Ljava/lang/String;
+
+    .line 34145023
+    move-result-object v0
+
+    .line 34145024
+    iput-object v0, v10, Lkotlin/jvm/internal/Ref$ObjectRef;->element:Ljava/lang/Object;
+
+    .line 34145026
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 34145028
+    :cond_304
+    if-eqz v5, :cond_31d
+
+    .line 34145030
+    const-string v0, "cj_page_style"
+
+    .line 34145032
+    invoke-virtual {v5, v0}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34145035
+    move-result-object v0
+
+    .line 34145036
+    if-eqz v0, :cond_31d
+
+    .line 34145038
+    const-string v11, "popup"
+
+    .line 34145040
+    invoke-static {v11, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34145043
+    move-result v11
+
+    .line 34145044
+    if-eqz v11, :cond_317
+
+    .line 34145046
+    goto :goto_318
+
+    .line 34145047
+    :cond_317
+    const/4 v0, 0x0
+
+    .line 34145048
+    :goto_318
+    if-eqz v0, :cond_31d
+
+    .line 34145050
+    const-string v0, "webview_popup"
+
+    .line 34145052
+    goto :goto_31f
+
+    .line 34145053
+    :cond_31d
+    const-string v0, "webview"
+
+    .line 34145055
+    :goto_31f
+    invoke-virtual {v5}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
+
+    .line 34145058
+    move-result-object v11
+
+    .line 34145059
+    const-string v12, "aweme"
+
+    .line 34145061
+    invoke-virtual {v11, v12}, Landroid/net/Uri$Builder;->scheme(Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145064
+    move-result-object v11
+
+    .line 34145065
+    invoke-virtual {v11, v0}, Landroid/net/Uri$Builder;->authority(Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145068
+    move-result-object v0
+
+    .line 34145069
+    const-string v11, "is_from_scan"
+
+    .line 34145071
+    invoke-virtual {v5, v11}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34145074
+    move-result-object v5
+
+    .line 34145075
+    invoke-static {v5, v15}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34145078
+    move-result v5
+
+    .line 34145079
+    if-eqz v5, :cond_33e
+
+    .line 34145081
+    const-string v5, "scan_open"
+
+    .line 34145083
+    invoke-virtual {v0, v5, v15}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145086
+    :cond_33e
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 34145089
+    move-result-wide v11
+
+    .line 34145090
+    invoke-static {v11, v12}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+
+    .line 34145093
+    move-result-object v5
+
+    .line 34145094
+    invoke-virtual {v0, v14, v5}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145097
+    move-result-object v0
+
+    .line 34145098
+    const-string v5, "bid"
+
+    .line 34145100
+    const-string v11, "cjpay"
+
+    .line 34145102
+    invoke-virtual {v0, v5, v11}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145105
+    move-result-object v0
+
+    .line 34145106
+    if-ltz v2, :cond_35d
+
+    .line 34145108
+    const-string v5, "callback_id"
+
+    .line 34145110
+    invoke-static/range {p2 .. p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 34145113
+    move-result-object v2
+
+    .line 34145114
+    invoke-virtual {v0, v5, v2}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145117
+    :cond_35d
+    invoke-virtual {v0}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+
+    .line 34145120
+    move-result-object v0
+
+    .line 34145121
+    invoke-virtual {v0}, Landroid/net/Uri;->toString()Ljava/lang/String;
+
+    .line 34145124
+    move-result-object v0
+
+    .line 34145125
+    invoke-static {v0, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 34145128
+    new-instance v2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openH5ByScheme$4$schema$3;
+
+    .line 34145130
+    invoke-direct {v2, v10}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openH5ByScheme$4$schema$3;-><init>(Lkotlin/jvm/internal/Ref$ObjectRef;)V
+
+    .line 34145133
+    invoke-static {v0, v2}, Lsc/a;->b(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/String;
+
+    .line 34145136
+    move-result-object v0
+
+    .line 34145137
+    sget-object v2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 34145139
+    invoke-static {v2, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34145142
+    sget-object v2, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->INSTANCE:Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;
+
+    .line 34145144
+    const-class v5, Lcom/bytedance/caijing/sdk/infra/base/api/container/IHostContainerInfo;
+
+    .line 34145146
+    invoke-virtual {v2, v5}, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->getService(Ljava/lang/Class;)Lcom/bytedance/caijing/sdk/infra/base/core/di/ICJService;
+
+    .line 34145149
+    move-result-object v2
+
+    .line 34145150
+    check-cast v2, Lcom/bytedance/caijing/sdk/infra/base/api/container/IHostContainerInfo;
+
+    .line 34145152
+    if-eqz v2, :cond_38b
+
+    .line 34145154
+    invoke-interface {v2, v0, v3}, Lcom/bytedance/caijing/sdk/infra/base/api/container/IHostContainerInfo;->openSchema(Ljava/lang/String;Landroid/content/Context;)Z
+
+    .line 34145157
+    move-result v0
+
+    .line 34145158
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 34145161
+    move-result-object v0
+
+    .line 34145162
+    goto :goto_38c
+
+    .line 34145163
+    :cond_38b
+    const/4 v0, 0x0
+
+    .line 34145164
+    :goto_38c
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 34145167
+    move-result-object v0
+    :try_end_390
+    .catchall {:try_start_291 .. :try_end_390} :catchall_391
+
+    .line 34145168
+    goto :goto_39c
+
+    .line 34145169
+    :catchall_391
+    move-exception v0
+
+    .line 34145170
+    sget-object v2, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 34145172
+    invoke-static {v0}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 34145175
+    move-result-object v0
+
+    .line 34145176
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 34145179
+    move-result-object v0
+
+    .line 34145180
+    :goto_39c
+    invoke-static {v0}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    .line 34145183
+    move-result v2
+
+    .line 34145184
+    if-eqz v2, :cond_3b5
+
+    .line 34145186
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 34145188
+    const-string v3, "onSuccess\n "
+
+    .line 34145190
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 34145193
+    invoke-virtual {v2, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 34145196
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 34145199
+    move-result-object v2
+
+    .line 34145200
+    invoke-static {v4, v2}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34145203
+    const/4 v2, 0x1
+
+    .line 34145204
+    goto :goto_3b6
+
+    .line 34145205
+    :cond_3b5
+    const/4 v2, 0x0
+
+    .line 34145206
+    :goto_3b6
+    invoke-static {v0}, Lkotlin/Result;->exceptionOrNull-impl(Ljava/lang/Object;)Ljava/lang/Throwable;
+
+    .line 34145209
+    move-result-object v0
+
+    .line 34145210
+    if-eqz v0, :cond_3c3
+
+    .line 34145212
+    const-string v2, "onFailure"
+
+    .line 34145214
+    invoke-static {v4, v2, v0}, Lfe0/a;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 34145217
+    const/4 v2, 0x0
+
+    .line 34145218
+    goto :goto_3c4
+
+    .line 34145219
+    :cond_3c3
+    const/4 v0, 0x0
+
+    .line 34145220
+    :goto_3c4
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 34145223
+    move-result-wide v10
+
+    .line 34145224
+    sub-long/2addr v10, v8
+
+    .line 34145225
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 34145227
+    const-string v5, "is_success: "
+
+    .line 34145229
+    invoke-direct {v3, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 34145232
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 34145235
+    const-string v5, ", duration: "
+
+    .line 34145237
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 34145240
+    invoke-virtual {v3, v10, v11}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 34145243
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 34145246
+    move-result-object v3
+
+    .line 34145247
+    invoke-static {v4, v3}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34145250
+    sget-object v3, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 34145252
+    sget-object v4, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 34145254
+    new-instance v5, Ljava/util/HashMap;
+
+    .line 34145256
+    invoke-direct {v5}, Ljava/util/HashMap;-><init>()V
+
+    .line 34145259
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34145262
+    invoke-static {v7, v6, v6, v5}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 34145265
+    move-result-object v4
+
+    .line 34145266
+    const/4 v5, 0x5
+
+    .line 34145267
+    new-array v5, v5, [Lkotlin/Pair;
+
+    .line 34145269
+    const-string v8, "tag"
+
+    .line 34145271
+    invoke-static {v8, v7}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 34145274
+    move-result-object v7
+
+    .line 34145275
+    const/4 v8, 0x0
+
+    .line 34145276
+    aput-object v7, v5, v8
+
+    .line 34145278
+    const-string v7, "0"
+
+    .line 34145280
+    invoke-static {v2, v15, v7}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->tf(ZLjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 34145283
+    move-result-object v2
+
+    .line 34145284
+    const-string v7, "is_success"
+
+    .line 34145286
+    invoke-static {v7, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 34145289
+    move-result-object v2
+
+    .line 34145290
+    const/4 v7, 0x1
+
+    .line 34145291
+    aput-object v2, v5, v7
+
+    .line 34145293
+    if-eqz v0, :cond_416
+
+    .line 34145295
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 34145298
+    move-result-object v0
+
+    .line 34145299
+    move-object/from16 v16, v0
+
+    .line 34145301
+    goto :goto_418
+
+    .line 34145302
+    :cond_416
+    const/16 v16, 0x0
+
+    .line 34145304
+    :goto_418
+    if-nez v16, :cond_41b
+
+    .line 34145306
+    goto :goto_41d
+
+    .line 34145307
+    :cond_41b
+    move-object/from16 v6, v16
+
+    .line 34145309
+    :goto_41d
+    const-string v0, "error_msg"
+
+    .line 34145311
+    invoke-static {v0, v6}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 34145314
+    move-result-object v0
+
+    .line 34145315
+    const/4 v2, 0x2
+
+    .line 34145316
+    aput-object v0, v5, v2
+
+    .line 34145318
+    const-string v0, "trace"
+
+    .line 34145320
+    invoke-static {v0, v13}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 34145323
+    move-result-object v0
+
+    .line 34145324
+    const/4 v2, 0x3
+
+    .line 34145325
+    aput-object v0, v5, v2
+
+    .line 34145327
+    const-string v0, "duration"
+
+    .line 34145329
+    invoke-static {v10, v11}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 34145332
+    move-result-object v2
+
+    .line 34145333
+    invoke-static {v0, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 34145336
+    move-result-object v0
+
+    .line 34145337
+    const/4 v2, 0x4
+
+    .line 34145338
+    aput-object v0, v5, v2
+
+    .line 34145340
+    invoke-static {v5}, Lkotlin/collections/MapsKt;->mapOf([Lkotlin/Pair;)Ljava/util/Map;
+
+    .line 34145343
+    move-result-object v0
+
+    .line 34145344
+    const-string v2, "cjpay_run_catch_result"
+
+    .line 34145346
+    invoke-static {v3, v4, v2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->l(Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 34145349
+    new-instance v0, Lcom/android/ttcjpaysdk/base/ktextension/g;
+
+    .line 34145351
+    goto/16 :goto_55b
+
+    .line 34145353
+    :cond_449
+    if-eqz v5, :cond_450
+
+    .line 34145355
+    invoke-virtual {v5, v10}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 34145358
+    move-result-object v4
+
+    .line 34145359
+    goto :goto_451
+
+    .line 34145360
+    :cond_450
+    const/4 v4, 0x0
+
+    .line 34145361
+    :goto_451
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 34145364
+    move-result-object v5
+
+    .line 34145365
+    const-class v8, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 34145367
+    invoke-virtual {v5, v8}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 34145370
+    move-result-object v5
+
+    .line 34145371
+    check-cast v5, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 34145373
+    const-string v8, "enter_from=deeplink"
+
+    .line 34145375
+    const/4 v11, 0x2
+
+    .line 34145376
+    const/4 v12, 0x0
+
+    .line 34145377
+    const/4 v13, 0x0
+
+    .line 34145378
+    invoke-static {v0, v8, v12, v11, v13}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 34145381
+    move-result v8
+
+    .line 34145382
+    if-nez v8, :cond_474
+
+    .line 34145384
+    const-string v8, "enter_from=scan"
+
+    .line 34145386
+    invoke-static {v0, v8, v12, v11, v13}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 34145389
+    move-result v8
+
+    .line 34145390
+    if-eqz v8, :cond_471
+
+    .line 34145392
+    goto :goto_474
+
+    .line 34145393
+    :cond_471
+    const/4 v7, 0x1
+
+    .line 34145394
+    const/4 v8, 0x0
+
+    .line 34145395
+    goto :goto_49d
+
+    .line 34145396
+    :cond_474
+    :goto_474
+    if-eqz v5, :cond_47e
+
+    .line 34145398
+    invoke-interface {v5, v4}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->isWhiteUrl(Ljava/lang/String;)Z
+
+    .line 34145401
+    move-result v8
+
+    .line 34145402
+    if-nez v8, :cond_47e
+
+    .line 34145404
+    const/4 v8, 0x1
+
+    .line 34145405
+    goto :goto_47f
+
+    .line 34145406
+    :cond_47e
+    const/4 v8, 0x0
+
+    .line 34145407
+    :goto_47f
+    if-eqz v8, :cond_471
+
+    .line 34145409
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 34145411
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34145414
+    :try_start_486
+    invoke-static {v7, v9}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->g(Ljava/lang/String;Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 34145417
+    move-result-object v0
+
+    .line 34145418
+    invoke-virtual {v0, v10, v4}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 34145421
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 34145424
+    move-result-object v2
+
+    .line 34145425
+    const-string v3, "wallet_rd_h5_illegal_from_deep_link"
+
+    .line 34145427
+    const/4 v7, 0x1
+
+    .line 34145428
+    new-array v4, v7, [Lorg/json/JSONObject;
+
+    .line 34145430
+    const/4 v8, 0x0
+
+    .line 34145431
+    aput-object v0, v4, v8
+
+    .line 34145433
+    invoke-virtual {v2, v3, v4}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+    :try_end_49c
+    .catch Ljava/lang/Exception; {:try_start_486 .. :try_end_49c} :catch_49c
+
+    .line 34145436
+    :catch_49c
+    return-void
+
+    .line 34145437
+    :goto_49d
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 34145440
+    move-result-object v9
+
+    .line 34145441
+    invoke-virtual {v9}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34145444
+    invoke-static {}, Ll9/a;->x()Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;
+
+    .line 34145447
+    move-result-object v9
+
+    .line 34145448
+    if-eqz v9, :cond_4b3
+
+    .line 34145450
+    invoke-virtual {v9}, Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;->isOpenTrustHostsConfig()Z
+
+    .line 34145453
+    move-result v9
+
+    .line 34145454
+    invoke-static {v9}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 34145457
+    move-result-object v9
+
+    .line 34145458
+    goto :goto_4b4
+
+    .line 34145459
+    :cond_4b3
+    move-object v9, v13
+
+    .line 34145460
+    :goto_4b4
+    if-eqz v9, :cond_4bb
+
+    .line 34145462
+    invoke-virtual {v9}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 34145465
+    move-result v9
+
+    .line 34145466
+    goto :goto_4bc
+
+    .line 34145467
+    :cond_4bb
+    const/4 v9, 0x0
+
+    .line 34145468
+    :goto_4bc
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 34145471
+    move-result-object v10
+
+    .line 34145472
+    invoke-virtual {v10}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34145475
+    invoke-static {}, Ll9/a;->x()Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;
+
+    .line 34145478
+    move-result-object v10
+
+    .line 34145479
+    if-eqz v10, :cond_4d2
+
+    .line 34145481
+    invoke-virtual {v10, v4}, Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;->enableH5WithUrl(Ljava/lang/String;)Z
+
+    .line 34145484
+    move-result v4
+
+    .line 34145485
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 34145488
+    move-result-object v4
+
+    .line 34145489
+    goto :goto_4d3
+
+    .line 34145490
+    :cond_4d2
+    move-object v4, v13
+
+    .line 34145491
+    :goto_4d3
+    if-eqz v4, :cond_4da
+
+    .line 34145493
+    invoke-virtual {v4}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 34145496
+    move-result v12
+
+    .line 34145497
+    goto :goto_4db
+
+    .line 34145498
+    :cond_4da
+    const/4 v12, 0x1
+
+    .line 34145499
+    :goto_4db
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 34145502
+    move-result-object v4
+
+    .line 34145503
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34145506
+    invoke-static {}, Ll9/a;->x()Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;
+
+    .line 34145509
+    move-result-object v4
+
+    .line 34145510
+    if-eqz v4, :cond_4f1
+
+    .line 34145512
+    invoke-virtual {v4}, Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;->useNewSchema()Z
+
+    .line 34145515
+    move-result v4
+
+    .line 34145516
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 34145519
+    move-result-object v4
+
+    .line 34145520
+    goto :goto_4f2
+
+    .line 34145521
+    :cond_4f1
+    move-object v4, v13
+
+    .line 34145522
+    :goto_4f2
+    if-eqz v4, :cond_4f9
+
+    .line 34145524
+    invoke-virtual {v4}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 34145527
+    move-result v13
+
+    .line 34145528
+    goto :goto_4fa
+
+    .line 34145529
+    :cond_4f9
+    const/4 v13, 0x0
+
+    .line 34145530
+    :goto_4fa
+    invoke-static/range {p1 .. p1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 34145533
+    move-result-object v4
+
+    .line 34145534
+    invoke-virtual {v4}, Landroid/net/Uri;->buildUpon()Landroid/net/Uri$Builder;
+
+    .line 34145537
+    move-result-object v4
+
+    .line 34145538
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 34145541
+    move-result-wide v7
+
+    .line 34145542
+    invoke-static {v7, v8}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+
+    .line 34145545
+    move-result-object v7
+
+    .line 34145546
+    invoke-virtual {v4, v14, v7}, Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+
+    .line 34145549
+    invoke-virtual {v4}, Landroid/net/Uri$Builder;->build()Landroid/net/Uri;
+
+    .line 34145552
+    move-result-object v4
+
+    .line 34145553
+    invoke-virtual {v4}, Landroid/net/Uri;->toString()Ljava/lang/String;
+
+    .line 34145556
+    move-result-object v4
+
+    .line 34145557
+    invoke-static {v4, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 34145560
+    if-eqz v9, :cond_51c
+
+    .line 34145562
+    if-nez v12, :cond_51e
+
+    .line 34145564
+    :cond_51c
+    if-nez v9, :cond_549
+
+    .line 34145566
+    :cond_51e
+    new-instance v6, Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;
+
+    .line 34145568
+    invoke-direct {v6}, Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;-><init>()V
+
+    .line 34145571
+    invoke-virtual {v6, v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;->setCallbackId(I)Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;
+
+    .line 34145574
+    move-result-object v2
+
+    .line 34145575
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;
+
+    .line 34145578
+    move-result-object v2
+
+    .line 34145579
+    if-eqz v13, :cond_52e
+
+    .line 34145581
+    goto :goto_52f
+
+    .line 34145582
+    :cond_52e
+    move-object v4, v0
+
+    .line 34145583
+    :goto_52f
+    invoke-virtual {v2, v4}, Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;
+
+    .line 34145586
+    move-result-object v2
+
+    .line 34145587
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 34145589
+    iget-object v4, v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 34145591
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 34145594
+    invoke-static {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 34145597
+    move-result-object v3
+
+    .line 34145598
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;
+
+    .line 34145601
+    move-result-object v2
+
+    .line 34145602
+    if-eqz v5, :cond_549
+
+    .line 34145604
+    invoke-interface {v5, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5ByScheme(Lcom/android/ttcjpaysdk/base/service/bean/H5SchemeParamBuilder;)V
+
+    .line 34145607
+    sget-object v2, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 34145609
+    :cond_549
+    invoke-direct {v1, v0, v9, v12}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->monitorErrorSchema(Ljava/lang/String;ZZ)V
+
+    .line 34145612
+    goto :goto_55b
+
+    .line 34145613
+    :cond_54d
+    :goto_54d
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 34145616
+    move-result-object v0
+
+    .line 34145617
+    const/16 v2, 0x6b
+
+    .line 34145619
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 34145622
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 34145625
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 34145627
+    :cond_55b
+    :goto_55b
+    invoke-virtual/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 34145630
+    return-void
+.end method
+
+.method public static synthetic outerBDPay$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Landroid/content/Context;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;ZLmb0/a;ILjava/lang/Object;)V
+    .registers 20
+
+    .prologue
+    .line 168034304
+    and-int/lit8 v0, p8, 0x4
+
+    .line 168034306
+    const/4 v1, 0x0
+
+    .line 168034307
+    if-eqz v0, :cond_7
+
+    .line 168034309
+    move-object v5, v1
+
+    .line 168034310
+    goto :goto_8
+
+    .line 168034311
+    :cond_7
+    move-object v5, p3
+
+    .line 168034312
+    :goto_8
+    and-int/lit8 v0, p8, 0x8
+
+    .line 168034314
+    if-eqz v0, :cond_e
+
+    .line 168034316
+    move-object v6, v1
+
+    .line 168034317
+    goto :goto_f
+
+    .line 168034318
+    :cond_e
+    move-object v6, p4
+
+    .line 168034319
+    :goto_f
+    and-int/lit8 v0, p8, 0x10
+
+    .line 168034321
+    if-eqz v0, :cond_1b
+
+    .line 168034323
+    sget-object v0, Lcom/android/ttcjpaysdk/base/OuterSceneSource;->DEFAULT:Lcom/android/ttcjpaysdk/base/OuterSceneSource;
+
+    .line 168034325
+    invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;
+
+    .line 168034328
+    move-result-object v0
+
+    .line 168034329
+    move-object v7, v0
+
+    .line 168034330
+    goto :goto_1c
+
+    .line 168034331
+    :cond_1b
+    move-object v7, p5
+
+    .line 168034332
+    :goto_1c
+    and-int/lit8 v0, p8, 0x20
+
+    .line 168034334
+    if-eqz v0, :cond_23
+
+    .line 168034336
+    const/4 v0, 0x0
+
+    .line 168034337
+    const/4 v8, 0x0
+
+    .line 168034338
+    goto :goto_25
+
+    .line 168034339
+    :cond_23
+    move/from16 v8, p6
+
+    .line 168034341
+    :goto_25
+    move-object v2, p0
+
+    .line 168034342
+    move-object v3, p1
+
+    .line 168034343
+    move-object v4, p2
+
+    .line 168034344
+    move-object/from16 v9, p7
+
+    .line 168034346
+    invoke-virtual/range {v2 .. v9}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->outerBDPay(Landroid/content/Context;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;ZLmb0/a;)V
+
+    .line 168034349
+    return-void
+.end method
+
+.method private final payCallAliPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 10
+
+    .prologue
+    .line 84279296
+    const/16 v0, 0x70
+
+    .line 84279298
+    const/4 v1, 0x0
+
+    .line 84279299
+    const/4 v2, 0x0
+
+    .line 84279300
+    :try_start_4
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84279303
+    move-result-object v3
+
+    .line 84279304
+    iput-object p4, v3, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 84279306
+    if-nez p5, :cond_d
+
+    .line 84279308
+    goto :goto_f
+
+    .line 84279309
+    :cond_d
+    iput-object p4, p5, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+    :try_end_f
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_f} :catch_70
+
+    .line 84279311
+    :goto_f
+    const-string p4, "use_visible_callback"
+
+    .line 84279313
+    if-eqz p3, :cond_1c
+
+    .line 84279315
+    :try_start_13
+    invoke-static {p3}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 84279318
+    move-result-object p5
+
+    .line 84279319
+    invoke-virtual {p5, p4, v1}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
+
+    .line 84279322
+    move-result p5
+
+    .line 84279323
+    goto :goto_1d
+
+    .line 84279324
+    :cond_1c
+    const/4 p5, 0x0
+
+    .line 84279325
+    :goto_1d
+    const-string v3, "1"
+
+    .line 84279327
+    invoke-static {p2, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 84279330
+    move-result p2
+
+    .line 84279331
+    if-eqz p2, :cond_28
+
+    .line 84279333
+    const-string p2, "MWEB"
+
+    .line 84279335
+    goto :goto_2a
+
+    .line 84279336
+    :cond_28
+    const-string p2, "APP"
+
+    .line 84279338
+    :goto_2a
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 84279341
+    move-result v3
+
+    .line 84279342
+    if-nez v3, :cond_65
+
+    .line 84279344
+    invoke-direct {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->addTrackInfo(Ljava/lang/String;)V
+
+    .line 84279347
+    if-eqz p5, :cond_53
+
+    .line 84279349
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 84279351
+    invoke-direct {v3, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 84279354
+    invoke-virtual {v3, p4, p5}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;
+
+    .line 84279357
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84279359
+    if-eqz p1, :cond_46
+
+    .line 84279361
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 84279364
+    move-result-object p1
+
+    .line 84279365
+    goto :goto_47
+
+    .line 84279366
+    :cond_46
+    move-object p1, v2
+
+    .line 84279367
+    :goto_47
+    invoke-virtual {v3}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 84279370
+    move-result-object p4
+
+    .line 84279371
+    invoke-direct {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+
+    .line 84279374
+    move-result-object p3
+
+    .line 84279375
+    invoke-virtual {p0, p1, p4, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->aliPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;)V
+
+    .line 84279378
+    goto :goto_85
+
+    .line 84279379
+    :cond_53
+    iget-object p4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84279381
+    if-eqz p4, :cond_5c
+
+    .line 84279383
+    invoke-virtual {p4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 84279386
+    move-result-object p4
+
+    .line 84279387
+    goto :goto_5d
+
+    .line 84279388
+    :cond_5c
+    move-object p4, v2
+
+    .line 84279389
+    :goto_5d
+    invoke-direct {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+
+    .line 84279392
+    move-result-object p3
+
+    .line 84279393
+    invoke-virtual {p0, p4, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->aliPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;)V
+
+    .line 84279396
+    goto :goto_85
+
+    .line 84279397
+    :cond_65
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84279400
+    move-result-object p1
+
+    .line 84279401
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84279404
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_6f
+    .catch Ljava/lang/Exception; {:try_start_13 .. :try_end_6f} :catch_70
+
+    .line 84279407
+    goto :goto_85
+
+    .line 84279408
+    :catch_70
+    move-exception p1
+
+    .line 84279409
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84279412
+    move-result-object p2
+
+    .line 84279413
+    invoke-virtual {p2, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84279416
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 84279419
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 84279421
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84279424
+    const-string p2, "alipay_exception"
+
+    .line 84279426
+    invoke-static {v2, p2, v1, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 84279429
+    :goto_85
+    return-void
+.end method
+
+.method private final payCallCJPayWebView(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 5
+
+    .prologue
+    .line 33816576
+    :try_start_0
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 33816578
+    invoke-direct {v0, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33816581
+    const-string p1, "schema"
+
+    .line 33816583
+    invoke-virtual {v0, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33816586
+    move-result-object p1
+
+    .line 33816587
+    const/4 v0, 0x0
+
+    .line 33816588
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33816591
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 33816594
+    move-result v1
+
+    .line 33816595
+    if-lez v1, :cond_16
+
+    .line 33816597
+    const/4 v0, 0x1
+
+    .line 33816598
+    :cond_16
+    if-eqz v0, :cond_3a
+
+    .line 33816600
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 33816603
+    move-result-object v0
+
+    .line 33816604
+    invoke-virtual {v0, p2}, Lcom/android/ttcjpaysdk/base/c;->a(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)I
+
+    .line 33816607
+    move-result v0
+
+    .line 33816608
+    invoke-direct {p0, p1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openH5ByScheme(Ljava/lang/String;I)V
+    :try_end_23
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_23} :catch_24
+
+    .line 33816611
+    goto :goto_3a
+
+    .line 33816612
+    :catch_24
+    move-exception p1
+
+    .line 33816613
+    if-eqz p2, :cond_3a
+
+    .line 33816615
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 33816617
+    const-string v1, "fail:"
+
+    .line 33816619
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 33816622
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 33816625
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 33816628
+    move-result-object p1
+
+    .line 33816629
+    const/16 v0, -0x64
+
+    .line 33816631
+    invoke-interface {p2, v0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33816634
+    :cond_3a
+    :goto_3a
+    return-void
+.end method
+
+.method private final payCallCloudUnionPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 13
+
+    .prologue
+    .line 67436544
+    const/16 v0, 0x70
+
+    .line 67436546
+    :try_start_2
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67436549
+    move-result-object v1
+
+    .line 67436550
+    iput-object p3, v1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67436552
+    if-nez p4, :cond_b
+
+    .line 67436554
+    goto :goto_d
+
+    .line 67436555
+    :cond_b
+    iput-object p3, p4, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67436557
+    :goto_d
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 67436560
+    move-result p4
+
+    .line 67436561
+    if-nez p4, :cond_2f
+
+    .line 67436563
+    invoke-direct {p0, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->addTrackInfo(Ljava/lang/String;)V
+
+    .line 67436566
+    iget-object p4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436568
+    if-eqz p4, :cond_1f
+
+    .line 67436570
+    invoke-virtual {p4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 67436573
+    move-result-object p4
+
+    .line 67436574
+    goto :goto_20
+
+    .line 67436575
+    :cond_1f
+    const/4 p4, 0x0
+
+    .line 67436576
+    :goto_20
+    move-object v2, p4
+
+    .line 67436577
+    const-string v4, ""
+
+    .line 67436579
+    invoke-direct {p0, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+
+    .line 67436582
+    move-result-object v5
+
+    .line 67436583
+    const/4 v6, 0x0
+
+    .line 67436584
+    move-object v1, p0
+
+    .line 67436585
+    move-object v3, p1
+
+    .line 67436586
+    move-object v7, p3
+
+    .line 67436587
+    invoke-virtual/range {v1 .. v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->cloudUnionPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 67436590
+    goto :goto_44
+
+    .line 67436591
+    :cond_2f
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67436594
+    move-result-object p1
+
+    .line 67436595
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67436598
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_39
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_39} :catch_3a
+
+    .line 67436601
+    goto :goto_44
+
+    .line 67436602
+    :catch_3a
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67436605
+    move-result-object p1
+
+    .line 67436606
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67436609
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 67436612
+    :goto_44
+    return-void
+.end method
+
+.method private final payCallDyCounter(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 13
+
+    .prologue
+    .line 67502080
+    const-string v0, "show_loading"
+
+    .line 67502082
+    const-string v1, ""
+
+    .line 67502084
+    const/16 v2, 0x70
+
+    .line 67502086
+    const/4 v3, 0x0
+
+    .line 67502087
+    :try_start_7
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502090
+    move-result-object v4
+
+    .line 67502091
+    iput-object p3, v4, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67502093
+    if-nez p4, :cond_10
+
+    .line 67502095
+    goto :goto_12
+
+    .line 67502096
+    :cond_10
+    iput-object p3, p4, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67502098
+    :goto_12
+    new-instance p4, Lorg/json/JSONObject;
+
+    .line 67502100
+    invoke-direct {p4, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 67502103
+    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 67502106
+    move-result p1
+
+    .line 67502107
+    if-nez p1, :cond_32
+
+    .line 67502109
+    new-instance p1, Lorg/json/JSONObject;
+
+    .line 67502111
+    invoke-direct {p1, p2}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 67502114
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 67502117
+    move-result v4
+
+    .line 67502118
+    if-eqz v4, :cond_2d
+
+    .line 67502120
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    .line 67502123
+    move-result p1
+
+    .line 67502124
+    goto :goto_2e
+
+    .line 67502125
+    :cond_2d
+    const/4 p1, 0x0
+
+    .line 67502126
+    :goto_2e
+    invoke-direct {p0, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->addTrackInfo(Ljava/lang/String;)V
+
+    .line 67502129
+    goto :goto_33
+
+    .line 67502130
+    :cond_32
+    const/4 p1, 0x0
+
+    .line 67502131
+    :goto_33
+    invoke-virtual {p4}, Lorg/json/JSONObject;->names()Lorg/json/JSONArray;
+
+    .line 67502134
+    move-result-object p2
+
+    .line 67502135
+    if-eqz p2, :cond_73
+
+    .line 67502137
+    new-instance v0, Ljava/util/LinkedHashMap;
+
+    .line 67502139
+    invoke-direct {v0}, Ljava/util/LinkedHashMap;-><init>()V
+
+    .line 67502142
+    invoke-virtual {p2}, Lorg/json/JSONArray;->length()I
+
+    .line 67502145
+    move-result v4
+
+    .line 67502146
+    const/4 v5, 0x0
+
+    .line 67502147
+    :goto_43
+    if-ge v5, v4, :cond_64
+
+    .line 67502149
+    invoke-virtual {p2, v5}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 67502152
+    move-result-object v6
+
+    .line 67502153
+    invoke-static {v6, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67502156
+    check-cast v6, Ljava/lang/String;
+
+    .line 67502158
+    invoke-virtual {p2, v5}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 67502161
+    move-result-object v7
+
+    .line 67502162
+    invoke-static {v7, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67502165
+    check-cast v7, Ljava/lang/String;
+
+    .line 67502167
+    invoke-virtual {p4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 67502170
+    move-result-object v7
+
+    .line 67502171
+    invoke-static {v7, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67502174
+    invoke-interface {v0, v6, v7}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 67502177
+    add-int/lit8 v5, v5, 0x1
+
+    .line 67502179
+    goto :goto_43
+
+    .line 67502180
+    :cond_64
+    const/4 p2, 0x1
+
+    .line 67502181
+    if-ne p1, p2, :cond_68
+
+    .line 67502183
+    goto :goto_69
+
+    .line 67502184
+    :cond_68
+    const/4 p2, 0x0
+
+    .line 67502185
+    :goto_69
+    invoke-virtual {p0, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setNeedLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 67502188
+    invoke-virtual {p0, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 67502191
+    invoke-virtual {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->bdPay(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 67502194
+    goto :goto_94
+
+    .line 67502195
+    :cond_73
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502198
+    move-result-object p1
+
+    .line 67502199
+    invoke-virtual {p1, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67502202
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_7d
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7d} :catch_7e
+
+    .line 67502205
+    goto :goto_94
+
+    .line 67502206
+    :catch_7e
+    move-exception p1
+
+    .line 67502207
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502210
+    move-result-object p2
+
+    .line 67502211
+    invoke-virtual {p2, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67502214
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 67502217
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 67502219
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67502222
+    const/4 p2, 0x0
+
+    .line 67502223
+    const-string p3, "integrated_counter_exception"
+
+    .line 67502225
+    invoke-static {p2, p3, v3, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 67502228
+    :goto_94
+    return-void
+.end method
+
+.method private final payCallIndependentBindCard(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 16
+
+    .prologue
+    .line 50724864
+    const-string v0, "show_loading"
+
+    .line 50724866
+    const/4 v1, 0x0
+
+    .line 50724867
+    const/16 v2, 0x100f
+
+    .line 50724869
+    const/4 v3, 0x0
+
+    .line 50724870
+    :try_start_6
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724873
+    move-result-object v4
+
+    .line 50724874
+    iput-object p3, v4, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 50724876
+    new-instance p3, Lorg/json/JSONObject;
+
+    .line 50724878
+    invoke-direct {p3, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724881
+    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 50724884
+    move-result p1
+    :try_end_15
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_15} :catch_cc
+
+    .line 50724885
+    const/4 v4, 0x1
+
+    .line 50724886
+    const-string v5, ""
+
+    .line 50724888
+    if-nez p1, :cond_61
+
+    .line 50724890
+    :try_start_1a
+    new-instance p1, Lorg/json/JSONObject;
+
+    .line 50724892
+    invoke-direct {p1, p2}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724895
+    const-string p2, "track_info"
+
+    .line 50724897
+    invoke-virtual {p1, p2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50724900
+    move-result-object p2
+
+    .line 50724901
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724904
+    move-result-object v6
+
+    .line 50724905
+    iput-object p2, v6, Lcom/android/ttcjpaysdk/base/c;->y:Lorg/json/JSONObject;
+
+    .line 50724907
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 50724910
+    move-result v6
+
+    .line 50724911
+    if-eqz v6, :cond_36
+
+    .line 50724913
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    .line 50724916
+    move-result v0
+    :try_end_35
+    .catch Ljava/lang/Exception; {:try_start_1a .. :try_end_35} :catch_cc
+
+    .line 50724917
+    goto :goto_37
+
+    .line 50724918
+    :cond_36
+    const/4 v0, 0x0
+
+    .line 50724919
+    :goto_37
+    const-string v6, "source"
+
+    .line 50724921
+    if-eqz p2, :cond_43
+
+    .line 50724923
+    :try_start_3b
+    invoke-virtual {p2, v6}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 50724926
+    move-result v7
+
+    .line 50724927
+    if-ne v7, v4, :cond_43
+
+    .line 50724929
+    const/4 v7, 0x1
+
+    .line 50724930
+    goto :goto_44
+
+    .line 50724931
+    :cond_43
+    const/4 v7, 0x0
+
+    .line 50724932
+    :goto_44
+    if-eqz v7, :cond_4e
+
+    .line 50724934
+    invoke-virtual {p2, v6}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724937
+    move-result-object p2
+
+    .line 50724938
+    invoke-static {p2, v5}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724941
+    goto :goto_4f
+
+    .line 50724942
+    :cond_4e
+    move-object p2, v5
+
+    .line 50724943
+    :goto_4f
+    const-string v6, "bind_card_info"
+
+    .line 50724945
+    invoke-virtual {p1, v6}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50724948
+    move-result-object p1
+
+    .line 50724949
+    if-eqz p1, :cond_5c
+
+    .line 50724951
+    invoke-virtual {p1}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 50724954
+    move-result-object p1
+
+    .line 50724955
+    goto :goto_5d
+
+    .line 50724956
+    :cond_5c
+    move-object p1, v1
+
+    .line 50724957
+    :goto_5d
+    if-nez p1, :cond_64
+
+    .line 50724959
+    move-object p1, v5
+
+    .line 50724960
+    goto :goto_64
+
+    .line 50724961
+    :cond_61
+    move-object p1, v5
+
+    .line 50724962
+    move-object p2, p1
+
+    .line 50724963
+    const/4 v0, 0x0
+
+    .line 50724964
+    :cond_64
+    :goto_64
+    invoke-virtual {p3}, Lorg/json/JSONObject;->names()Lorg/json/JSONArray;
+
+    .line 50724967
+    move-result-object v6
+
+    .line 50724968
+    if-eqz v6, :cond_c1
+
+    .line 50724970
+    new-instance v7, Ljava/util/LinkedHashMap;
+
+    .line 50724972
+    invoke-direct {v7}, Ljava/util/LinkedHashMap;-><init>()V
+
+    .line 50724975
+    invoke-virtual {v6}, Lorg/json/JSONArray;->length()I
+
+    .line 50724978
+    move-result v8
+
+    .line 50724979
+    const/4 v9, 0x0
+
+    .line 50724980
+    :goto_74
+    if-ge v9, v8, :cond_95
+
+    .line 50724982
+    invoke-virtual {v6, v9}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 50724985
+    move-result-object v10
+
+    .line 50724986
+    invoke-static {v10, v5}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724989
+    check-cast v10, Ljava/lang/String;
+
+    .line 50724991
+    invoke-virtual {v6, v9}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 50724994
+    move-result-object v11
+
+    .line 50724995
+    invoke-static {v11, v5}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724998
+    check-cast v11, Ljava/lang/String;
+
+    .line 50725000
+    invoke-virtual {p3, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50725003
+    move-result-object v11
+
+    .line 50725004
+    invoke-static {v11, v5}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50725007
+    invoke-interface {v7, v10, v11}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50725010
+    add-int/lit8 v9, v9, 0x1
+
+    .line 50725012
+    goto :goto_74
+
+    .line 50725013
+    :cond_95
+    if-ne v0, v4, :cond_98
+
+    .line 50725015
+    goto :goto_99
+
+    .line 50725016
+    :cond_98
+    const/4 v4, 0x0
+
+    .line 50725017
+    :goto_99
+    invoke-virtual {p0, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setNeedLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 50725020
+    const-string p3, "merchant_id"
+
+    .line 50725022
+    invoke-virtual {v7, p3}, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50725025
+    move-result-object p3
+
+    .line 50725026
+    check-cast p3, Ljava/lang/String;
+
+    .line 50725028
+    const-string v0, "app_id"
+
+    .line 50725030
+    invoke-virtual {v7, v0}, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50725033
+    move-result-object v0
+
+    .line 50725034
+    check-cast v0, Ljava/lang/String;
+
+    .line 50725036
+    const-string v4, "exts"
+
+    .line 50725038
+    invoke-virtual {v7, v4}, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50725041
+    move-result-object v4
+
+    .line 50725042
+    check-cast v4, Ljava/lang/String;
+
+    .line 50725044
+    invoke-virtual {p0, v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 50725047
+    invoke-virtual {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setMerchantId(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 50725050
+    invoke-virtual {p0, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setAppId(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 50725053
+    invoke-direct {p0, p2, p1, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->independentBindCard(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725056
+    goto :goto_e1
+
+    .line 50725057
+    :cond_c1
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725060
+    move-result-object p1
+
+    .line 50725061
+    invoke-virtual {p1, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725064
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_cb
+    .catch Ljava/lang/Exception; {:try_start_3b .. :try_end_cb} :catch_cc
+
+    .line 50725067
+    goto :goto_e1
+
+    .line 50725068
+    :catch_cc
+    move-exception p1
+
+    .line 50725069
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725072
+    move-result-object p2
+
+    .line 50725073
+    invoke-virtual {p2, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725076
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725079
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50725081
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725084
+    const-string p2, "independent_bindcard_exception"
+
+    .line 50725086
+    invoke-static {v1, p2, v3, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 50725089
+    :goto_e1
+    return-void
+.end method
+
+.method private final payCallInnerDyPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 29
+
+    .prologue
+    .line 67567616
+    move-object/from16 v12, p0
+
+    .line 67567618
+    move-object/from16 v0, p1
+
+    .line 67567620
+    move-object/from16 v8, p2
+
+    .line 67567622
+    move-object/from16 v9, p3
+
+    .line 67567624
+    move-object/from16 v11, p4
+
+    .line 67567626
+    const-string v1, "tracker_source"
+
+    .line 67567628
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 67567630
+    invoke-direct {v2}, Lorg/json/JSONObject;-><init>()V
+
+    .line 67567633
+    invoke-static/range {p2 .. p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 67567636
+    move-result v3
+
+    .line 67567637
+    const-string v13, ""
+
+    .line 67567639
+    if-nez v3, :cond_2d
+
+    .line 67567641
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 67567643
+    invoke-static/range {p2 .. p2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 67567646
+    invoke-direct {v2, v8}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 67567649
+    const-string v3, "cashier_scene"
+
+    .line 67567651
+    invoke-virtual {v2, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 67567654
+    move-result-object v3
+
+    .line 67567655
+    invoke-static {v3, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67567658
+    move-object v6, v2
+
+    .line 67567659
+    move-object v14, v3
+
+    .line 67567660
+    goto :goto_2f
+
+    .line 67567661
+    :cond_2d
+    move-object v6, v2
+
+    .line 67567662
+    move-object v14, v13
+
+    .line 67567663
+    :goto_2f
+    sget-object v2, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker;->b:Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;
+
+    .line 67567665
+    const-string v15, "standard"
+
+    .line 67567667
+    invoke-static {v15, v14}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 67567670
+    move-result v3
+
+    .line 67567671
+    const-string v16, "pre_standard_pay_desk"
+
+    .line 67567673
+    const-string v17, "ecommerce_pay_desk"
+
+    .line 67567675
+    if-eqz v3, :cond_40
+
+    .line 67567677
+    move-object/from16 v3, v16
+
+    .line 67567679
+    goto :goto_42
+
+    .line 67567680
+    :cond_40
+    move-object/from16 v3, v17
+
+    .line 67567682
+    :goto_42
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67567685
+    const-string v10, "wallet_rd_common_sdk_start"
+
+    .line 67567687
+    invoke-static {v10, v3}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67567690
+    invoke-direct/range {p0 .. p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->doFrontTimeConsumeInStageTrackReport(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67567693
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 67567696
+    move-result-object v2
+
+    .line 67567697
+    const-class v3, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;
+
+    .line 67567699
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 67567702
+    move-result-object v2
+
+    .line 67567703
+    move-object v7, v2
+
+    .line 67567704
+    check-cast v7, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;
+
+    .line 67567706
+    :try_start_5a
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67567709
+    move-result-object v2
+
+    .line 67567710
+    iput-object v9, v2, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67567712
+    if-nez v11, :cond_63
+
+    .line 67567714
+    goto :goto_65
+
+    .line 67567715
+    :cond_63
+    iput-object v9, v11, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 67567717
+    :goto_65
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 67567719
+    invoke-direct {v2, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 67567722
+    const-string v3, "zg_info"
+
+    .line 67567724
+    invoke-virtual {v2, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 67567727
+    move-result-object v3
+
+    .line 67567728
+    const-string v5, "unify_cashier_info"
+
+    .line 67567730
+    invoke-virtual {v2, v5}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 67567733
+    move-result-object v19
+
+    .line 67567734
+    invoke-direct {v12, v8, v3, v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setSecurityLoadingInfo(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+
+    .line 67567737
+    invoke-direct/range {p0 .. p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->isLargeAmountPayOrToBTransfer(Ljava/lang/String;)Z
+
+    .line 67567740
+    move-result v2
+
+    .line 67567741
+    if-eqz v2, :cond_81
+
+    .line 67567743
+    move-object v2, v12
+
+    .line 67567744
+    goto :goto_82
+
+    .line 67567745
+    :cond_81
+    const/4 v2, 0x0
+
+    .line 67567746
+    :goto_82
+    if-eqz v2, :cond_88
+
+    .line 67567748
+    invoke-direct {v12, v0, v8, v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->largeAmountPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+
+    .line 67567751
+    return-void
+
+    .line 67567752
+    :cond_88
+    invoke-direct/range {p0 .. p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->isDirectPay(Ljava/lang/String;)Z
+
+    .line 67567755
+    move-result v2
+
+    .line 67567756
+    if-eqz v2, :cond_90
+
+    .line 67567758
+    move-object v2, v12
+
+    .line 67567759
+    goto :goto_91
+
+    .line 67567760
+    :cond_90
+    const/4 v2, 0x0
+
+    .line 67567761
+    :goto_91
+    if-eqz v2, :cond_97
+
+    .line 67567763
+    invoke-direct {v12, v0, v8, v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->directPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+
+    .line 67567766
+    return-void
+
+    .line 67567767
+    :cond_97
+    invoke-static/range {p2 .. p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 67567770
+    move-result v2
+
+    .line 67567771
+    if-nez v2, :cond_dd
+
+    .line 67567773
+    const-string v2, "track_info"
+
+    .line 67567775
+    invoke-virtual {v6, v2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 67567778
+    move-result-object v2
+
+    .line 67567779
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67567782
+    move-result-object v4
+
+    .line 67567783
+    iput-object v2, v4, Lcom/android/ttcjpaysdk/base/c;->y:Lorg/json/JSONObject;
+    :try_end_a9
+    .catch Ljava/lang/Exception; {:try_start_5a .. :try_end_a9} :catch_135
+
+    .line 67567785
+    const-string v4, "source"
+
+    .line 67567787
+    if-eqz v2, :cond_b6
+
+    .line 67567789
+    :try_start_ad
+    invoke-virtual {v2, v4}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 67567792
+    move-result v5
+
+    .line 67567793
+    const/4 v0, 0x1
+
+    .line 67567794
+    if-ne v5, v0, :cond_b6
+
+    .line 67567796
+    const/4 v0, 0x1
+
+    .line 67567797
+    goto :goto_b7
+
+    .line 67567798
+    :cond_b6
+    const/4 v0, 0x0
+
+    .line 67567799
+    :goto_b7
+    if-eqz v0, :cond_c1
+
+    .line 67567801
+    invoke-virtual {v2, v4}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 67567804
+    move-result-object v0
+
+    .line 67567805
+    invoke-static {v0, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67567808
+    goto :goto_c2
+
+    .line 67567809
+    :cond_c1
+    move-object v0, v13
+
+    .line 67567810
+    :goto_c2
+    const-string v2, "bind_card_info"
+
+    .line 67567812
+    invoke-virtual {v6, v2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 67567815
+    move-result-object v2
+
+    .line 67567816
+    if-eqz v2, :cond_cf
+
+    .line 67567818
+    invoke-virtual {v2}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 67567821
+    move-result-object v2
+
+    .line 67567822
+    goto :goto_d0
+
+    .line 67567823
+    :cond_cf
+    const/4 v2, 0x0
+
+    .line 67567824
+    :goto_d0
+    if-nez v2, :cond_d3
+
+    .line 67567826
+    move-object v2, v13
+
+    .line 67567827
+    :cond_d3
+    const-string v4, "closeWebview"
+
+    .line 67567829
+    const/4 v5, 0x1
+
+    .line 67567830
+    invoke-virtual {v6, v4, v5}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
+
+    .line 67567833
+    move-result v4
+
+    .line 67567834
+    move v5, v4
+
+    .line 67567835
+    move-object v4, v2
+
+    .line 67567836
+    goto :goto_e0
+
+    .line 67567837
+    :cond_dd
+    move-object v0, v13
+
+    .line 67567838
+    move-object v4, v0
+
+    .line 67567839
+    const/4 v5, 0x1
+
+    .line 67567840
+    :goto_e0
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67567843
+    move-result-object v2
+
+    .line 67567844
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 67567847
+    move-result-object v2
+    :try_end_e8
+    .catch Ljava/lang/Exception; {:try_start_ad .. :try_end_e8} :catch_135
+
+    .line 67567848
+    move-object/from16 v22, v7
+
+    .line 67567850
+    const/4 v7, 0x1
+
+    .line 67567851
+    :try_start_eb
+    new-array v8, v7, [Lkotlin/Pair;
+
+    .line 67567853
+    invoke-static {v1, v0}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 67567856
+    move-result-object v21
+
+    .line 67567857
+    const/16 v20, 0x0
+
+    .line 67567859
+    aput-object v21, v8, v20
+
+    .line 67567861
+    invoke-static {v8}, Lkotlin/collections/MapsKt;->hashMapOf([Lkotlin/Pair;)Ljava/util/HashMap;
+
+    .line 67567864
+    move-result-object v8
+
+    .line 67567865
+    invoke-virtual {v2, v8}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->b(Ljava/util/Map;)V
+
+    .line 67567868
+    if-eqz v11, :cond_10d
+
+    .line 67567870
+    new-array v2, v7, [Lkotlin/Pair;
+
+    .line 67567872
+    invoke-static {v1, v0}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 67567875
+    move-result-object v1
+
+    .line 67567876
+    aput-object v1, v2, v20
+
+    .line 67567878
+    invoke-static {v2}, Lkotlin/collections/MapsKt;->hashMapOf([Lkotlin/Pair;)Ljava/util/HashMap;
+
+    .line 67567881
+    move-result-object v1
+
+    .line 67567882
+    invoke-virtual {v11, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->b(Ljava/util/Map;)V
+    :try_end_10d
+    .catch Ljava/lang/Exception; {:try_start_eb .. :try_end_10d} :catch_12b
+
+    .line 67567885
+    :cond_10d
+    move-object/from16 v1, p0
+
+    .line 67567887
+    move-object v2, v3
+
+    .line 67567888
+    move-object v3, v0
+
+    .line 67567889
+    const/4 v8, 0x0
+
+    .line 67567890
+    const/4 v7, 0x0
+
+    .line 67567891
+    move-object v12, v7
+
+    .line 67567892
+    move-object/from16 v18, v22
+
+    .line 67567894
+    move-object/from16 v7, p1
+
+    .line 67567896
+    move-object/from16 v20, v14
+
+    .line 67567898
+    const/4 v14, 0x0
+
+    .line 67567899
+    move-object/from16 v8, p2
+
+    .line 67567901
+    move-object/from16 v9, p3
+
+    .line 67567903
+    move-object/from16 v23, v10
+
+    .line 67567905
+    move-object/from16 v10, v19
+
+    .line 67567907
+    move-object/from16 v11, p4
+
+    .line 67567909
+    :try_start_125
+    invoke-direct/range {v1 .. v11}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->frontPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLorg/json/JSONObject;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    :try_end_128
+    .catch Ljava/lang/Exception; {:try_start_125 .. :try_end_128} :catch_129
+
+    .line 67567912
+    goto :goto_180
+
+    .line 67567913
+    :catch_129
+    move-exception v0
+
+    .line 67567914
+    goto :goto_13d
+
+    .line 67567915
+    :catch_12b
+    move-exception v0
+
+    .line 67567916
+    move-object/from16 v23, v10
+
+    .line 67567918
+    move-object/from16 v20, v14
+
+    .line 67567920
+    move-object/from16 v18, v22
+
+    .line 67567922
+    :goto_132
+    const/4 v12, 0x0
+
+    .line 67567923
+    const/4 v14, 0x0
+
+    .line 67567924
+    goto :goto_13d
+
+    .line 67567925
+    :catch_135
+    move-exception v0
+
+    .line 67567926
+    move-object/from16 v18, v7
+
+    .line 67567928
+    move-object/from16 v23, v10
+
+    .line 67567930
+    move-object/from16 v20, v14
+
+    .line 67567932
+    goto :goto_132
+
+    .line 67567933
+    :goto_13d
+    if-eqz v18, :cond_142
+
+    .line 67567935
+    invoke-interface/range {v18 .. v18}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 67567938
+    :cond_142
+    sget-object v1, Lbf/b;->a:Lbf/b;
+
+    .line 67567940
+    invoke-static {v0}, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 67567943
+    move-result-object v2
+
+    .line 67567944
+    invoke-static {v2, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67567947
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67567950
+    const-string v1, "112"
+
+    .line 67567952
+    invoke-static {v1, v2}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67567955
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67567958
+    move-result-object v1
+
+    .line 67567959
+    const/16 v2, 0x70
+
+    .line 67567961
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67567964
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 67567967
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 67567969
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67567972
+    const-string v1, "dy_pay_exception"
+
+    .line 67567974
+    invoke-static {v12, v1, v14, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 67567977
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker;->b:Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;
+
+    .line 67567979
+    move-object/from16 v13, v20
+
+    .line 67567981
+    invoke-static {v15, v13}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 67567984
+    move-result v1
+
+    .line 67567985
+    if-eqz v1, :cond_176
+
+    .line 67567987
+    move-object/from16 v1, v16
+
+    .line 67567989
+    goto :goto_178
+
+    .line 67567990
+    :cond_176
+    move-object/from16 v1, v17
+
+    .line 67567992
+    :goto_178
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67567995
+    move-object/from16 v2, v23
+
+    .line 67567997
+    invoke-static {v2, v1}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67568000
+    :goto_180
+    return-void
+.end method
+
+.method private final payCallIntegratedCounter(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 7
+
+    .prologue
+    .line 84213760
+    :try_start_0
+    invoke-direct {p0, p1, p2, p3, p5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->buildRequestParams(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+
+    .line 84213763
+    move-result p1
+
+    .line 84213764
+    if-eqz p1, :cond_59
+
+    .line 84213766
+    invoke-direct {p0, p4, p5, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->execute(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;)V
+    :try_end_9
+    .catchall {:try_start_0 .. :try_end_9} :catchall_a
+
+    .line 84213769
+    goto :goto_59
+
+    .line 84213770
+    :catchall_a
+    move-exception p1
+
+    .line 84213771
+    invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 84213774
+    move-result-object p2
+
+    .line 84213775
+    const-string p3, "TT_CJ_PAY_REQUEST_PARAMS_ILLEGAL"
+
+    .line 84213777
+    invoke-static {p2, p3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 84213780
+    move-result p2
+
+    .line 84213781
+    const/16 p3, 0x70
+
+    .line 84213783
+    if-eqz p2, :cond_24
+
+    .line 84213785
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84213788
+    move-result-object p1
+
+    .line 84213789
+    invoke-virtual {p1, p3}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84213792
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 84213795
+    goto :goto_59
+
+    .line 84213796
+    :cond_24
+    invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 84213799
+    move-result-object p2
+
+    .line 84213800
+    const-string p4, "ALIPAY_EXCEPTION"
+
+    .line 84213802
+    invoke-static {p2, p4}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 84213805
+    move-result p2
+
+    .line 84213806
+    const/4 p4, 0x0
+
+    .line 84213807
+    const-string p5, "alipay_exception"
+
+    .line 84213809
+    const/4 v0, 0x0
+
+    .line 84213810
+    if-eqz p2, :cond_47
+
+    .line 84213812
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84213815
+    move-result-object p2
+
+    .line 84213816
+    invoke-virtual {p2, p3}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84213819
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 84213822
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 84213824
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84213827
+    invoke-static {v0, p5, p4, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 84213830
+    goto :goto_59
+
+    .line 84213831
+    :cond_47
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84213834
+    move-result-object p2
+
+    .line 84213835
+    invoke-virtual {p2, p3}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84213838
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 84213841
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 84213843
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84213846
+    invoke-static {v0, p5, p4, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 84213849
+    :cond_59
+    :goto_59
+    return-void
+.end method
+
+.method private final payCallLoading(Ljava/lang/String;Ljava/lang/String;)V
+    .registers 9
+
+    .prologue
+    .line 33947648
+    :try_start_0
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 33947651
+    move-result-object v0
+
+    .line 33947652
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;
+
+    .line 33947654
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 33947657
+    move-result-object v0
+
+    .line 33947658
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;
+
+    .line 33947660
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 33947662
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33947665
+    const-string p1, "loading_status"
+
+    .line 33947667
+    invoke-virtual {v1, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947670
+    move-result-object p1
+
+    .line 33947671
+    const-string v2, "loading_text"
+
+    .line 33947673
+    invoke-virtual {v1, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947676
+    move-result-object v1
+
+    .line 33947677
+    const-string v2, "1"
+
+    .line 33947679
+    invoke-virtual {p1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 33947682
+    move-result p1
+
+    .line 33947683
+    if-eqz p1, :cond_8b
+
+    .line 33947685
+    const/4 p1, 0x0
+
+    .line 33947686
+    if-eqz v0, :cond_5b
+
+    .line 33947688
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947690
+    if-eqz v2, :cond_31
+
+    .line 33947692
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33947695
+    move-result-object v2
+
+    .line 33947696
+    goto :goto_32
+
+    .line 33947697
+    :cond_31
+    move-object v2, p1
+
+    .line 33947698
+    :goto_32
+    sget-object v3, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->Companion:Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$Companion;
+    :try_end_34
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_34} :catch_98
+
+    .line 33947700
+    const-string v4, ""
+
+    .line 33947702
+    if-nez p2, :cond_3a
+
+    .line 33947704
+    move-object v5, v4
+
+    .line 33947705
+    goto :goto_3b
+
+    .line 33947706
+    :cond_3a
+    move-object v5, p2
+
+    .line 33947707
+    :goto_3b
+    :try_start_3b
+    invoke-static {v5}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 33947710
+    move-result-object v5
+
+    .line 33947711
+    invoke-virtual {v3, v5}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$Companion;->getSdkShowInfo(Lorg/json/JSONObject;)Ljava/lang/String;
+
+    .line 33947714
+    move-result-object v5
+
+    .line 33947715
+    invoke-virtual {p0, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getSecurityLoadingStatus(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$SecurityLoadingScene;
+
+    .line 33947718
+    move-result-object v5
+
+    .line 33947719
+    if-nez p2, :cond_4a
+
+    .line 33947721
+    move-object p2, v4
+
+    .line 33947722
+    :cond_4a
+    invoke-static {p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 33947725
+    move-result-object p2
+
+    .line 33947726
+    invoke-virtual {v3, p2}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$Companion;->getSdkShowInfo(Lorg/json/JSONObject;)Ljava/lang/String;
+
+    .line 33947729
+    move-result-object p2
+
+    .line 33947730
+    invoke-interface {v0, v2, v5, p2}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->showDialogLoading(Landroid/content/Context;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$SecurityLoadingScene;Ljava/lang/String;)Z
+
+    .line 33947733
+    move-result p2
+
+    .line 33947734
+    invoke-static {p2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 33947737
+    move-result-object p2
+
+    .line 33947738
+    goto :goto_5c
+
+    .line 33947739
+    :cond_5b
+    move-object p2, p1
+
+    .line 33947740
+    :goto_5c
+    if-eqz p2, :cond_63
+
+    .line 33947742
+    invoke-virtual {p2}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 33947745
+    move-result p2
+
+    .line 33947746
+    goto :goto_64
+
+    .line 33947747
+    :cond_63
+    const/4 p2, 0x0
+
+    .line 33947748
+    :goto_64
+    if-nez p2, :cond_98
+
+    .line 33947750
+    sget-object p2, Lcom/android/ttcjpaysdk/base/ui/Utils/f;->a:Lcom/android/ttcjpaysdk/base/ui/Utils/f;
+
+    .line 33947752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947754
+    if-eqz v0, :cond_71
+
+    .line 33947756
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33947759
+    move-result-object v0
+
+    .line 33947760
+    goto :goto_72
+
+    .line 33947761
+    :cond_71
+    move-object v0, p1
+
+    .line 33947762
+    :goto_72
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947765
+    invoke-static {v0, v1}, Lcom/android/ttcjpaysdk/base/ui/Utils/f;->c(Landroid/content/Context;Ljava/lang/String;)Z
+
+    .line 33947768
+    move-result v0
+
+    .line 33947769
+    if-nez v0, :cond_98
+
+    .line 33947771
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947773
+    if-eqz v0, :cond_84
+
+    .line 33947775
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33947778
+    move-result-object v0
+
+    .line 33947779
+    goto :goto_85
+
+    .line 33947780
+    :cond_84
+    move-object v0, p1
+
+    .line 33947781
+    :goto_85
+    const/16 v1, 0xe
+
+    .line 33947783
+    invoke-static {p2, v0, p1, v1}, Lcom/android/ttcjpaysdk/base/ui/Utils/f;->d(Lcom/android/ttcjpaysdk/base/ui/Utils/f;Landroid/content/Context;Ljava/lang/Integer;I)V
+
+    .line 33947786
+    goto :goto_98
+
+    .line 33947787
+    :cond_8b
+    sget-object p1, Lcom/android/ttcjpaysdk/base/ui/Utils/f;->a:Lcom/android/ttcjpaysdk/base/ui/Utils/f;
+
+    .line 33947789
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947792
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/ui/Utils/f;->a()V
+
+    .line 33947795
+    if-eqz v0, :cond_98
+
+    .line 33947797
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->hideDialogLoading()V
+    :try_end_98
+    .catch Ljava/lang/Exception; {:try_start_3b .. :try_end_98} :catch_98
+
+    .line 33947800
+    :catch_98
+    :cond_98
+    :goto_98
+    return-void
+.end method
+
+.method private final payCallMedicalPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 9
+
+    .prologue
+    .line 50724864
+    const-string v0, "open_medicare_schema_fail"
+
+    .line 50724866
+    const/16 v1, 0x70
+
+    .line 50724868
+    const/4 v2, 0x0
+
+    .line 50724869
+    const/4 v3, 0x1
+
+    .line 50724870
+    :try_start_6
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724873
+    move-result-object v4
+
+    .line 50724874
+    iput-object p3, v4, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 50724876
+    const/4 p3, 0x0
+
+    .line 50724877
+    if-eqz p1, :cond_18
+
+    .line 50724879
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    .line 50724882
+    move-result v4
+
+    .line 50724883
+    if-nez v4, :cond_16
+
+    .line 50724885
+    goto :goto_18
+
+    .line 50724886
+    :cond_16
+    const/4 v4, 0x0
+
+    .line 50724887
+    goto :goto_19
+
+    .line 50724888
+    :cond_18
+    :goto_18
+    const/4 v4, 0x1
+
+    .line 50724889
+    :goto_19
+    if-eqz v4, :cond_30
+
+    .line 50724891
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724894
+    move-result-object p1
+
+    .line 50724895
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50724898
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50724901
+    sget-object p1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50724903
+    const-string p2, "\u533b\u4fdd\u652f\u4ed8\u8df3\u8f6cAPP\u5931\u8d25\uff0cschema: \uff0creason: sdkInfo_empty"
+
+    .line 50724905
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724908
+    invoke-static {v3, v2, v0, p2}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->h(ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50724911
+    return-void
+
+    .line 50724912
+    :cond_30
+    invoke-direct {p0, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->addTrackInfo(Ljava/lang/String;)V
+
+    .line 50724915
+    new-instance p2, Lorg/json/JSONObject;
+
+    .line 50724917
+    invoke-direct {p2, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724920
+    const-string p1, "schema"
+
+    .line 50724922
+    invoke-virtual {p2, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724925
+    move-result-object p1
+
+    .line 50724926
+    sget p2, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    .line 50724928
+    const/16 v4, 0x18
+
+    .line 50724930
+    if-lt p2, v4, :cond_4d
+
+    .line 50724932
+    invoke-static {p1, p3}, Landroid/text/Html;->fromHtml(Ljava/lang/String;I)Landroid/text/Spanned;
+
+    .line 50724935
+    move-result-object p1
+
+    .line 50724936
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 50724939
+    move-result-object p1
+
+    .line 50724940
+    goto :goto_55
+
+    .line 50724941
+    :cond_4d
+    invoke-static {p1}, Landroid/text/Html;->fromHtml(Ljava/lang/String;)Landroid/text/Spanned;
+
+    .line 50724944
+    move-result-object p1
+
+    .line 50724945
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 50724948
+    move-result-object p1
+
+    .line 50724949
+    :goto_55
+    if-eqz p1, :cond_5d
+
+    .line 50724951
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    .line 50724954
+    move-result p2
+
+    .line 50724955
+    if-nez p2, :cond_5e
+
+    .line 50724957
+    :cond_5d
+    const/4 p3, 0x1
+
+    .line 50724958
+    :cond_5e
+    if-eqz p3, :cond_75
+
+    .line 50724960
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724963
+    move-result-object p1
+
+    .line 50724964
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50724967
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50724970
+    sget-object p1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50724972
+    const-string p2, "\u533b\u4fdd\u652f\u4ed8\u8df3\u8f6cAPP\u5931\u8d25\uff0cschema: \uff0creason: schema_empty"
+
+    .line 50724974
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724977
+    invoke-static {v3, v2, v0, p2}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->h(ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50724980
+    return-void
+
+    .line 50724981
+    :cond_75
+    sget-object p2, Lcom/android/ttcjpaysdk/medicalpay/b;->a:Lcom/android/ttcjpaysdk/medicalpay/b$a;
+
+    .line 50724983
+    iget-object p3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724985
+    if-eqz p3, :cond_80
+
+    .line 50724987
+    invoke-virtual {p3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50724990
+    move-result-object p3
+
+    .line 50724991
+    goto :goto_81
+
+    .line 50724992
+    :cond_80
+    move-object p3, v2
+
+    .line 50724993
+    :goto_81
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724996
+    invoke-static {p3, p1}, Lcom/android/ttcjpaysdk/medicalpay/b$a;->b(Landroid/content/Context;Ljava/lang/String;)V
+    :try_end_87
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_87} :catch_88
+
+    .line 50724999
+    goto :goto_9c
+
+    .line 50725000
+    :catch_88
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725003
+    move-result-object p1
+
+    .line 50725004
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725007
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725010
+    sget-object p1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50725012
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725015
+    const-string p1, "\u533b\u4fdd\u652f\u4ed8\u8df3\u8f6cAPP\u5931\u8d25\uff0cschema: \uff0creason: jump_fail"
+
+    .line 50725017
+    invoke-static {v3, v2, v0, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->h(ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725020
+    :goto_9c
+    return-void
+.end method
+
+.method private final payCallSignAndPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 11
+
+    .prologue
+    .line 50724864
+    const-string p2, "sign_page_info"
+
+    .line 50724866
+    const-string v0, "pay_source"
+
+    .line 50724868
+    const/4 v1, 0x0
+
+    .line 50724869
+    const/4 v2, 0x0
+
+    .line 50724870
+    :try_start_6
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 50724872
+    invoke-direct {v3, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724875
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724877
+    if-eqz p1, :cond_14
+
+    .line 50724879
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50724882
+    move-result-object p1
+
+    .line 50724883
+    goto :goto_15
+
+    .line 50724884
+    :cond_14
+    move-object p1, v2
+
+    .line 50724885
+    :goto_15
+    instance-of v4, p1, Landroid/app/Activity;
+
+    .line 50724887
+    if-eqz v4, :cond_1c
+
+    .line 50724889
+    check-cast p1, Landroid/app/Activity;
+
+    .line 50724891
+    goto :goto_1d
+
+    .line 50724892
+    :cond_1c
+    move-object p1, v2
+
+    .line 50724893
+    :goto_1d
+    if-eqz p1, :cond_a5
+
+    .line 50724895
+    const-string v4, "outer_bdpay"
+
+    .line 50724897
+    const-string v5, "outer_dypay"
+
+    .line 50724899
+    filled-new-array {v4, v5}, [Ljava/lang/String;
+
+    .line 50724902
+    move-result-object v4
+
+    .line 50724903
+    invoke-static {v4}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 50724906
+    move-result-object v4
+
+    .line 50724907
+    invoke-virtual {v3, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724910
+    move-result-object v5
+
+    .line 50724911
+    invoke-interface {v4, v5}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+
+    .line 50724914
+    move-result v4
+
+    .line 50724915
+    if-eqz v4, :cond_39
+
+    .line 50724917
+    invoke-direct {p0, p1, v3, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallSignOuterPay(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 50724920
+    goto :goto_3c
+
+    .line 50724921
+    :cond_39
+    invoke-direct {p0, p1, v3, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallSignAndPayIntegrated(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 50724924
+    :goto_3c
+    invoke-virtual {v3, p2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 50724927
+    move-result p1
+    :try_end_40
+    .catchall {:try_start_6 .. :try_end_40} :catchall_9a
+
+    .line 50724928
+    const-string p3, ""
+
+    .line 50724930
+    if-eqz p1, :cond_49
+
+    .line 50724932
+    :try_start_44
+    invoke-virtual {v3, p2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50724935
+    move-result-object p1
+
+    .line 50724936
+    goto :goto_56
+
+    .line 50724937
+    :cond_49
+    const-string p1, "sign_page_info_str"
+
+    .line 50724939
+    invoke-virtual {v3, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724942
+    move-result-object p1
+
+    .line 50724943
+    invoke-static {p1, p3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724946
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50724949
+    move-result-object p1
+
+    .line 50724950
+    :goto_56
+    const-string p2, "sign_template_info"
+
+    .line 50724952
+    invoke-virtual {p1, p2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50724955
+    move-result-object p1
+
+    .line 50724956
+    if-eqz p1, :cond_65
+
+    .line 50724958
+    const-string p2, "zg_merchant_id"
+
+    .line 50724960
+    invoke-virtual {p1, p2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724963
+    move-result-object p1
+
+    .line 50724964
+    goto :goto_66
+
+    .line 50724965
+    :cond_65
+    move-object p1, v2
+
+    .line 50724966
+    :goto_66
+    if-nez p1, :cond_6a
+
+    .line 50724968
+    move-object p1, p3
+
+    .line 50724969
+    goto :goto_6d
+
+    .line 50724970
+    :cond_6a
+    invoke-static {p1, p3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724973
+    :goto_6d
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50724975
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724978
+    move-result-object v4
+
+    .line 50724979
+    invoke-virtual {v4}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 50724982
+    move-result-object v4
+
+    .line 50724983
+    invoke-static {v4, p3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724986
+    const-string p3, "wallet_rd_signpay_to_dypay_service"
+
+    .line 50724988
+    const/4 v5, 0x2
+
+    .line 50724989
+    new-array v5, v5, [Lkotlin/Pair;
+
+    .line 50724991
+    const-string v6, "merchant_id"
+
+    .line 50724993
+    invoke-static {v6, p1}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 50724996
+    move-result-object p1
+
+    .line 50724997
+    aput-object p1, v5, v1
+
+    .line 50724999
+    invoke-virtual {v3, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50725002
+    move-result-object p1
+
+    .line 50725003
+    invoke-static {v0, p1}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 50725006
+    move-result-object p1
+
+    .line 50725007
+    const/4 v0, 0x1
+
+    .line 50725008
+    aput-object p1, v5, v0
+
+    .line 50725010
+    invoke-static {v5}, Lkotlin/collections/MapsKt;->hashMapOf([Lkotlin/Pair;)Ljava/util/HashMap;
+
+    .line 50725013
+    move-result-object p1
+
+    .line 50725014
+    invoke-static {p2, v4, p3, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->e(Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/util/Map;)V
+    :try_end_99
+    .catchall {:try_start_44 .. :try_end_99} :catchall_9a
+
+    .line 50725017
+    goto :goto_a5
+
+    .line 50725018
+    :catchall_9a
+    move-exception p1
+
+    .line 50725019
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50725021
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725024
+    const-string p2, "sign_and_pay_exception"
+
+    .line 50725026
+    invoke-static {v2, p2, v1, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 50725029
+    :cond_a5
+    :goto_a5
+    return-void
+.end method
+
+.method private final payCallSignAndPayIntegrated(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 7
+
+    .prologue
+    .line 50659328
+    const-string v0, "sign_page_info"
+
+    .line 50659330
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50659333
+    move-result-object v1
+
+    .line 50659334
+    iput-object p3, v1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 50659336
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50659339
+    move-result-object p3
+
+    .line 50659340
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 50659342
+    invoke-virtual {p3, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50659345
+    move-result-object p3
+
+    .line 50659346
+    check-cast p3, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 50659348
+    if-eqz p3, :cond_5d
+
+    .line 50659350
+    const-string v1, "token"
+
+    .line 50659352
+    invoke-virtual {p2, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659355
+    move-result-object v1
+
+    .line 50659356
+    :try_start_1c
+    sget-object v2, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 50659358
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 50659361
+    move-result v2
+
+    .line 50659362
+    if-eqz v2, :cond_29
+
+    .line 50659364
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50659367
+    move-result-object p2
+
+    .line 50659368
+    goto :goto_35
+
+    .line 50659369
+    :cond_29
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 50659371
+    const-string v2, "sign_page_info_str"
+
+    .line 50659373
+    invoke-virtual {p2, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659376
+    move-result-object p2
+
+    .line 50659377
+    invoke-direct {v0, p2}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50659380
+    move-object p2, v0
+
+    .line 50659381
+    :goto_35
+    invoke-static {p2}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50659384
+    move-result-object p2
+    :try_end_39
+    .catchall {:try_start_1c .. :try_end_39} :catchall_3a
+
+    .line 50659385
+    goto :goto_45
+
+    .line 50659386
+    :catchall_3a
+    move-exception p2
+
+    .line 50659387
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 50659389
+    invoke-static {p2}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 50659392
+    move-result-object p2
+
+    .line 50659393
+    invoke-static {p2}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50659396
+    move-result-object p2
+
+    .line 50659397
+    :goto_45
+    invoke-static {p2}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    .line 50659400
+    move-result v0
+
+    .line 50659401
+    if-eqz v0, :cond_4e
+
+    .line 50659403
+    check-cast p2, Lorg/json/JSONObject;
+
+    .line 50659405
+    goto :goto_4f
+
+    .line 50659406
+    :cond_4e
+    const/4 p2, 0x0
+
+    .line 50659407
+    :goto_4f
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50659409
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50659411
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50659414
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50659417
+    move-result-object v0
+
+    .line 50659418
+    invoke-interface {p3, p1, v1, p2, v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;->startSignWithholding(Landroid/app/Activity;Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
+
+    .line 50659421
+    :cond_5d
+    return-void
+.end method
+
+.method private final payCallSignOnly(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 11
+
+    .prologue
+    .line 33882112
+    const-string v0, "pay_source"
+
+    .line 33882114
+    const/4 v1, 0x0
+
+    .line 33882115
+    const/4 v2, 0x0
+
+    .line 33882116
+    :try_start_4
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 33882118
+    invoke-direct {v3, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33882121
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882123
+    if-eqz p1, :cond_12
+
+    .line 33882125
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33882128
+    move-result-object p1
+
+    .line 33882129
+    goto :goto_13
+
+    .line 33882130
+    :cond_12
+    move-object p1, v2
+
+    .line 33882131
+    :goto_13
+    instance-of v4, p1, Landroid/app/Activity;
+
+    .line 33882133
+    if-eqz v4, :cond_1a
+
+    .line 33882135
+    check-cast p1, Landroid/app/Activity;
+
+    .line 33882137
+    goto :goto_1b
+
+    .line 33882138
+    :cond_1a
+    move-object p1, v2
+
+    .line 33882139
+    :goto_1b
+    if-eqz p1, :cond_7a
+
+    .line 33882141
+    const-string v4, "outer_bdpay"
+
+    .line 33882143
+    const-string v5, "outer_dypay"
+
+    .line 33882145
+    filled-new-array {v4, v5}, [Ljava/lang/String;
+
+    .line 33882148
+    move-result-object v4
+
+    .line 33882149
+    invoke-static {v4}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 33882152
+    move-result-object v4
+
+    .line 33882153
+    invoke-virtual {v3, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882156
+    move-result-object v5
+
+    .line 33882157
+    invoke-interface {v4, v5}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+
+    .line 33882160
+    move-result v4
+
+    .line 33882161
+    if-eqz v4, :cond_37
+
+    .line 33882163
+    invoke-direct {p0, p1, v3, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallSignOuterPay(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 33882166
+    goto :goto_3a
+
+    .line 33882167
+    :cond_37
+    invoke-direct {p0, p1, v3, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallSignOnlyIntegrated(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 33882170
+    :goto_3a
+    sget-object p1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 33882172
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 33882175
+    move-result-object p2
+
+    .line 33882176
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 33882179
+    move-result-object p2
+
+    .line 33882180
+    const-string v4, ""
+
+    .line 33882182
+    invoke-static {p2, v4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33882185
+    const-string v4, "wallet_rd_signpay_to_dypay_service"
+
+    .line 33882187
+    const/4 v5, 0x2
+
+    .line 33882188
+    new-array v5, v5, [Lkotlin/Pair;
+
+    .line 33882190
+    const-string v6, "merchant_id"
+
+    .line 33882192
+    const-string v7, "partnerid"
+
+    .line 33882194
+    invoke-virtual {v3, v7}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882197
+    move-result-object v7
+
+    .line 33882198
+    invoke-static {v6, v7}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 33882201
+    move-result-object v6
+
+    .line 33882202
+    aput-object v6, v5, v1
+
+    .line 33882204
+    invoke-virtual {v3, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882207
+    move-result-object v3
+
+    .line 33882208
+    invoke-static {v0, v3}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 33882211
+    move-result-object v0
+
+    .line 33882212
+    const/4 v3, 0x1
+
+    .line 33882213
+    aput-object v0, v5, v3
+
+    .line 33882215
+    invoke-static {v5}, Lkotlin/collections/MapsKt;->hashMapOf([Lkotlin/Pair;)Ljava/util/HashMap;
+
+    .line 33882218
+    move-result-object v0
+
+    .line 33882219
+    invoke-static {p1, p2, v4, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->e(Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/util/Map;)V
+    :try_end_6e
+    .catchall {:try_start_4 .. :try_end_6e} :catchall_6f
+
+    .line 33882222
+    goto :goto_7a
+
+    .line 33882223
+    :catchall_6f
+    move-exception p1
+
+    .line 33882224
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 33882226
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33882229
+    const-string p2, "sign_exception"
+
+    .line 33882231
+    invoke-static {v2, p2, v1, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 33882234
+    :cond_7a
+    :goto_7a
+    return-void
+.end method
+
+.method private final payCallSignOnlyIntegrated(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 9
+
+    .prologue
+    .line 50659328
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50659331
+    move-result-object v0
+
+    .line 50659332
+    iput-object p3, v0, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 50659334
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50659337
+    move-result-object p3
+
+    .line 50659338
+    const-class v0, Lcom/android/ttcjpaysdk/ICJPaySignService;
+
+    .line 50659340
+    invoke-virtual {p3, v0}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50659343
+    move-result-object p3
+
+    .line 50659344
+    check-cast p3, Lcom/android/ttcjpaysdk/ICJPaySignService;
+
+    .line 50659346
+    if-eqz p3, :cond_44
+
+    .line 50659348
+    const-string v0, "member_biz_order_no"
+
+    .line 50659350
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659353
+    move-result-object v0
+
+    .line 50659354
+    const-string v1, "zg_merchant_id"
+
+    .line 50659356
+    invoke-virtual {p2, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659359
+    move-result-object v1
+
+    .line 50659360
+    const-string v2, "zg_app_id"
+
+    .line 50659362
+    invoke-virtual {p2, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659365
+    move-result-object v2
+
+    .line 50659366
+    const/4 v3, 0x0
+
+    .line 50659367
+    invoke-static {v0, v3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 50659370
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50659372
+    iget-object v4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50659374
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50659377
+    invoke-static {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50659380
+    move-result-object v3
+
+    .line 50659381
+    const-string v4, "merchantId"
+
+    .line 50659383
+    invoke-static {v3, v4, v1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50659386
+    const-string v1, "appId"
+
+    .line 50659388
+    invoke-static {v3, v1, v2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50659391
+    sget-object v1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50659393
+    invoke-interface {p3, p1, v0, p2, v3}, Lcom/android/ttcjpaysdk/ICJPaySignService;->startSignOnlyActivity(Landroid/app/Activity;Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
+
+    .line 50659396
+    :cond_44
+    return-void
+.end method
+
+.method private final payCallSignOuterPay(Landroid/app/Activity;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 14
+
+    .prologue
+    .line 50724864
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50724867
+    move-result-object v0
+
+    .line 50724868
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;
+
+    .line 50724870
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50724873
+    move-result-object v0
+
+    .line 50724874
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;
+
+    .line 50724876
+    const/4 v1, 0x0
+
+    .line 50724877
+    const-string v2, "\u652f\u4ed8\u5931\u8d25"
+
+    .line 50724879
+    const/4 v3, 0x2
+
+    .line 50724880
+    const/4 v4, 0x0
+
+    .line 50724881
+    if-nez v0, :cond_25
+
+    .line 50724883
+    if-eqz p3, :cond_18
+
+    .line 50724885
+    invoke-interface {p3, v3, v2}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 50724888
+    :cond_18
+    sget-object p1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50724890
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724893
+    const-string p1, "dy_pay_exception"
+
+    .line 50724895
+    const-string p2, "IOuterPayService cannot find implement class"
+
+    .line 50724897
+    invoke-static {v4, v1, p1, p2}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->h(ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50724900
+    return-void
+
+    .line 50724901
+    :cond_25
+    sget-object v5, Lcom/android/ttcjpaysdk/base/OuterSource;->JSAPI:Lcom/android/ttcjpaysdk/base/OuterSource;
+
+    .line 50724903
+    iget-object v5, v5, Lcom/android/ttcjpaysdk/base/OuterSource;->value:Ljava/lang/String;
+
+    .line 50724905
+    const-string v6, "invoke_type"
+
+    .line 50724907
+    invoke-virtual {p2, v6}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724910
+    move-result-object v7
+
+    .line 50724911
+    const-string v8, ""
+
+    .line 50724913
+    invoke-static {v7, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724916
+    invoke-virtual {v7}, Ljava/lang/String;->length()I
+
+    .line 50724919
+    move-result v7
+
+    .line 50724920
+    if-lez v7, :cond_3c
+
+    .line 50724922
+    const/4 v7, 0x1
+
+    .line 50724923
+    goto :goto_3d
+
+    .line 50724924
+    :cond_3c
+    const/4 v7, 0x0
+
+    .line 50724925
+    :goto_3d
+    if-eqz v7, :cond_46
+
+    .line 50724927
+    invoke-virtual {p2, v6}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724930
+    move-result-object v5
+
+    .line 50724931
+    invoke-static {v5, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724934
+    :cond_46
+    new-instance v6, Lorg/json/JSONObject;
+
+    .line 50724936
+    invoke-direct {v6}, Lorg/json/JSONObject;-><init>()V
+
+    .line 50724939
+    const-string v7, "token"
+
+    .line 50724941
+    invoke-virtual {p2}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 50724944
+    move-result-object v9
+
+    .line 50724945
+    invoke-static {v6, v7, v9}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724948
+    const-string v7, "partnerid"
+
+    .line 50724950
+    invoke-virtual {p2, v7}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724953
+    move-result-object v7
+
+    .line 50724954
+    const-string v9, "mchid"
+
+    .line 50724956
+    invoke-static {v6, v9, v7}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724959
+    const-string v7, "invoke_source"
+
+    .line 50724961
+    const-string v9, "0"
+
+    .line 50724963
+    invoke-static {v6, v7, v9}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50724966
+    invoke-virtual {v6}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 50724969
+    move-result-object v6
+
+    .line 50724970
+    invoke-static {v6, v8}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724973
+    new-instance v7, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;
+
+    .line 50724975
+    invoke-direct {v7, v1}, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;-><init>(Ljava/lang/Object;)V
+
+    .line 50724978
+    invoke-static {p2}, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->d(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/CJOuterPayBean;
+
+    .line 50724981
+    move-result-object p2
+
+    .line 50724982
+    if-nez p2, :cond_79
+
+    .line 50724984
+    goto :goto_81
+
+    .line 50724985
+    :cond_79
+    sget-object v7, Lcom/android/ttcjpaysdk/base/OuterSceneSource;->JSAPI:Lcom/android/ttcjpaysdk/base/OuterSceneSource;
+
+    .line 50724987
+    invoke-virtual {v7}, Ljava/lang/Enum;->name()Ljava/lang/String;
+
+    .line 50724990
+    move-result-object v7
+
+    .line 50724991
+    iput-object v7, p2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->pay_scene_source:Ljava/lang/String;
+
+    .line 50724993
+    :goto_81
+    if-nez p2, :cond_84
+
+    .line 50724995
+    goto :goto_86
+
+    .line 50724996
+    :cond_84
+    iput-object v5, p2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->pay_source:Ljava/lang/String;
+
+    .line 50724998
+    :goto_86
+    if-nez p2, :cond_89
+
+    .line 50725000
+    goto :goto_8b
+
+    .line 50725001
+    :cond_89
+    iput-object v6, p2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->payInfo:Ljava/lang/String;
+
+    .line 50725003
+    :goto_8b
+    if-nez p2, :cond_8e
+
+    .line 50725005
+    goto :goto_9b
+
+    .line 50725006
+    :cond_8e
+    sget-object v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50725008
+    iget-object v6, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50725010
+    invoke-virtual {v5}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725013
+    invoke-static {v6}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->a(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50725016
+    move-result-object v5
+
+    .line 50725017
+    iput-object v5, p2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50725019
+    :goto_9b
+    if-nez p2, :cond_9e
+
+    .line 50725021
+    goto :goto_a5
+
+    .line 50725022
+    :cond_9e
+    new-instance v5, Ljava/util/LinkedHashMap;
+
+    .line 50725024
+    invoke-direct {v5}, Ljava/util/LinkedHashMap;-><init>()V
+
+    .line 50725027
+    iput-object v5, p2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->extTrackParams:Ljava/util/Map;
+
+    .line 50725029
+    :goto_a5
+    if-nez p2, :cond_b9
+
+    .line 50725031
+    if-eqz p3, :cond_ac
+
+    .line 50725033
+    invoke-interface {p3, v3, v2}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 50725036
+    :cond_ac
+    sget-object p1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50725038
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50725041
+    const-string p1, "json_parser_exception"
+
+    .line 50725043
+    const-string p2, "outPayBean is null"
+
+    .line 50725045
+    invoke-static {v4, v1, p1, p2}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->h(ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725048
+    return-void
+
+    .line 50725049
+    :cond_b9
+    new-instance v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$payCallSignOuterPay$1;
+
+    .line 50725051
+    invoke-direct {v1, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$payCallSignOuterPay$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 50725054
+    invoke-interface {v0, p1, p2, v1}, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;->startOuterProcessInvokeForInner(Landroid/app/Activity;Lcom/android/ttcjpaysdk/base/CJOuterPayBean;Lcom/android/ttcjpaysdk/base/service/CJOuterPayCallback;)V
+
+    .line 50725057
+    return-void
+.end method
+
+.method private final payCallWxPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 12
+
+    .prologue
+    .line 67502080
+    const-string v0, "payCallWxPay wxPayType:"
+
+    .line 67502082
+    const/16 v1, 0x70
+
+    .line 67502084
+    const/4 v2, 0x0
+
+    .line 67502085
+    const/4 v3, 0x0
+
+    .line 67502086
+    :try_start_6
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502089
+    move-result-object v4
+
+    .line 67502090
+    iput-object p4, v4, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+    :try_end_c
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_c} :catch_9b
+
+    .line 67502092
+    const-string p4, "use_visible_callback"
+
+    .line 67502094
+    if-eqz p3, :cond_19
+
+    .line 67502096
+    :try_start_10
+    invoke-static {p3}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 67502099
+    move-result-object v4
+
+    .line 67502100
+    invoke-virtual {v4, p4, v3}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
+
+    .line 67502103
+    move-result v4
+
+    .line 67502104
+    goto :goto_1a
+
+    .line 67502105
+    :cond_19
+    const/4 v4, 0x0
+
+    .line 67502106
+    :goto_1a
+    if-eqz p2, :cond_48
+
+    .line 67502108
+    invoke-virtual {p2}, Ljava/lang/String;->hashCode()I
+
+    .line 67502111
+    move-result v5
+
+    .line 67502112
+    packed-switch v5, :pswitch_data_b2
+
+    .line 67502115
+    goto :goto_48
+
+    .line 67502116
+    :pswitch_24
+    const-string v5, "3"
+
+    .line 67502118
+    invoke-virtual {p2, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 67502121
+    move-result p2
+
+    .line 67502122
+    if-nez p2, :cond_2d
+
+    .line 67502124
+    goto :goto_48
+
+    .line 67502125
+    :cond_2d
+    const-string p2, "MINIH5"
+
+    .line 67502127
+    goto :goto_4a
+
+    .line 67502128
+    :pswitch_30
+    const-string v5, "2"
+
+    .line 67502130
+    invoke-virtual {p2, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 67502133
+    move-result p2
+
+    .line 67502134
+    if-nez p2, :cond_39
+
+    .line 67502136
+    goto :goto_48
+
+    .line 67502137
+    :cond_39
+    const-string p2, "MINIAPP"
+
+    .line 67502139
+    goto :goto_4a
+
+    .line 67502140
+    :pswitch_3c
+    const-string v5, "1"
+
+    .line 67502142
+    invoke-virtual {p2, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 67502145
+    move-result p2
+
+    .line 67502146
+    if-nez p2, :cond_45
+
+    .line 67502148
+    goto :goto_48
+
+    .line 67502149
+    :cond_45
+    const-string p2, "MWEB"
+
+    .line 67502151
+    goto :goto_4a
+
+    .line 67502152
+    :cond_48
+    :goto_48
+    const-string p2, "APP"
+
+    .line 67502154
+    :goto_4a
+    sget-object v5, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 67502156
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    .line 67502158
+    invoke-virtual {v0, p2}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 67502161
+    move-result-object v0
+
+    .line 67502162
+    invoke-static {v5, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67502165
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 67502168
+    move-result v0
+
+    .line 67502169
+    if-nez v0, :cond_90
+
+    .line 67502171
+    invoke-direct {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->addTrackInfo(Ljava/lang/String;)V
+
+    .line 67502174
+    if-eqz v4, :cond_7e
+
+    .line 67502176
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 67502178
+    invoke-direct {v0, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 67502181
+    invoke-virtual {v0, p4, v4}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;
+
+    .line 67502184
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67502186
+    if-eqz p1, :cond_71
+
+    .line 67502188
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 67502191
+    move-result-object p1
+
+    .line 67502192
+    goto :goto_72
+
+    .line 67502193
+    :cond_71
+    move-object p1, v2
+
+    .line 67502194
+    :goto_72
+    invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 67502197
+    move-result-object p4
+
+    .line 67502198
+    invoke-direct {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+
+    .line 67502201
+    move-result-object p3
+
+    .line 67502202
+    invoke-virtual {p0, p1, p4, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->wxPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;)V
+
+    .line 67502205
+    goto :goto_b0
+
+    .line 67502206
+    :cond_7e
+    iget-object p4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67502208
+    if-eqz p4, :cond_87
+
+    .line 67502210
+    invoke-virtual {p4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 67502213
+    move-result-object p4
+
+    .line 67502214
+    goto :goto_88
+
+    .line 67502215
+    :cond_87
+    move-object p4, v2
+
+    .line 67502216
+    :goto_88
+    invoke-direct {p0, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+
+    .line 67502219
+    move-result-object p3
+
+    .line 67502220
+    invoke-virtual {p0, p4, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->wxPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;)V
+
+    .line 67502223
+    goto :goto_b0
+
+    .line 67502224
+    :cond_90
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502227
+    move-result-object p1
+
+    .line 67502228
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67502231
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_9a
+    .catch Ljava/lang/Exception; {:try_start_10 .. :try_end_9a} :catch_9b
+
+    .line 67502234
+    goto :goto_b0
+
+    .line 67502235
+    :catch_9b
+    move-exception p1
+
+    .line 67502236
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67502239
+    move-result-object p2
+
+    .line 67502240
+    invoke-virtual {p2, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67502243
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 67502246
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 67502248
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67502251
+    const-string p2, "wxpay_exception"
+
+    .line 67502253
+    invoke-static {v2, p2, v3, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 67502256
+    :goto_b0
+    return-void
+
+    nop
+
+    .line 67502258
+    :pswitch_data_b2
+    .packed-switch 0x31
+        :pswitch_3c
+        :pswitch_30
+        :pswitch_24
+    .end packed-switch
+.end method
+
+.method private final payCallWxSign(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 11
+
+    .prologue
+    .line 50724864
+    const/16 v0, 0x70
+
+    .line 50724866
+    :try_start_2
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 50724868
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 50724871
+    const-string p1, "MwebUrl"
+
+    .line 50724873
+    invoke-virtual {v1, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724876
+    move-result-object p1
+
+    .line 50724877
+    const-string v2, "pre_entrustweb_id"
+
+    .line 50724879
+    invoke-virtual {v1, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724882
+    move-result-object v2
+
+    .line 50724883
+    const-string v3, "appid"
+
+    .line 50724885
+    invoke-virtual {v1, v3}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50724888
+    move-result-object v1
+
+    .line 50724889
+    const/4 v3, 0x0
+
+    .line 50724890
+    const/4 v4, 0x1
+
+    .line 50724891
+    if-eqz p1, :cond_2a
+
+    .line 50724893
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    .line 50724896
+    move-result v5
+
+    .line 50724897
+    if-lez v5, :cond_25
+
+    .line 50724899
+    const/4 v5, 0x1
+
+    .line 50724900
+    goto :goto_26
+
+    .line 50724901
+    :cond_25
+    const/4 v5, 0x0
+
+    .line 50724902
+    :goto_26
+    if-ne v5, v4, :cond_2a
+
+    .line 50724904
+    const/4 v5, 0x1
+
+    .line 50724905
+    goto :goto_2b
+
+    .line 50724906
+    :cond_2a
+    const/4 v5, 0x0
+
+    .line 50724907
+    :goto_2b
+    const/4 v6, 0x0
+
+    .line 50724908
+    if-eqz v5, :cond_5a
+
+    .line 50724910
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724913
+    move-result-object v1
+
+    .line 50724914
+    iput-object p3, v1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 50724916
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50724919
+    move-result-object p3
+
+    .line 50724920
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;
+
+    .line 50724922
+    invoke-virtual {p3, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50724925
+    move-result-object p3
+
+    .line 50724926
+    check-cast p3, Lcom/android/ttcjpaysdk/base/service/ICJPayWXIndependentSignService;
+
+    .line 50724928
+    if-eqz p3, :cond_c2
+
+    .line 50724930
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724932
+    if-eqz v1, :cond_4a
+
+    .line 50724934
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50724937
+    move-result-object v6
+
+    .line 50724938
+    :cond_4a
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 50724940
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50724942
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50724945
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 50724948
+    move-result-object v1
+
+    .line 50724949
+    invoke-interface {p3, v6, p1, p2, v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayWXIndependentSignService;->independentSign(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lorg/json/JSONObject;)V
+
+    .line 50724952
+    goto/16 :goto_c2
+
+    .line 50724954
+    :cond_5a
+    if-eqz v2, :cond_69
+
+    .line 50724956
+    invoke-virtual {v2}, Ljava/lang/String;->length()I
+
+    .line 50724959
+    move-result p1
+
+    .line 50724960
+    if-lez p1, :cond_64
+
+    .line 50724962
+    const/4 p1, 0x1
+
+    .line 50724963
+    goto :goto_65
+
+    .line 50724964
+    :cond_64
+    const/4 p1, 0x0
+
+    .line 50724965
+    :goto_65
+    if-ne p1, v4, :cond_69
+
+    .line 50724967
+    const/4 p1, 0x1
+
+    .line 50724968
+    goto :goto_6a
+
+    .line 50724969
+    :cond_69
+    const/4 p1, 0x0
+
+    .line 50724970
+    :goto_6a
+    if-eqz p1, :cond_ad
+
+    .line 50724972
+    if-eqz v1, :cond_7a
+
+    .line 50724974
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
+
+    .line 50724977
+    move-result p1
+
+    .line 50724978
+    if-lez p1, :cond_76
+
+    .line 50724980
+    const/4 p1, 0x1
+
+    .line 50724981
+    goto :goto_77
+
+    .line 50724982
+    :cond_76
+    const/4 p1, 0x0
+
+    .line 50724983
+    :goto_77
+    if-ne p1, v4, :cond_7a
+
+    .line 50724985
+    const/4 v3, 0x1
+
+    .line 50724986
+    :cond_7a
+    if-eqz v3, :cond_ad
+
+    .line 50724988
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50724991
+    move-result-object p1
+
+    .line 50724992
+    iput-object p3, p1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 50724994
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50724997
+    move-result-object p1
+
+    .line 50724998
+    const-class p2, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;
+
+    .line 50725000
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50725003
+    move-result-object p1
+
+    .line 50725004
+    check-cast p1, Lcom/android/ttcjpaysdk/base/service/ICJPayWXIndependentSignService;
+
+    .line 50725006
+    if-eqz p1, :cond_9b
+
+    .line 50725008
+    iget-object p2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50725010
+    if-eqz p2, :cond_98
+
+    .line 50725012
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50725015
+    move-result-object v6
+
+    .line 50725016
+    :cond_98
+    invoke-interface {p1, v6, v2, v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayWXIndependentSignService;->independentAppSign(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50725019
+    :cond_9b
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50725022
+    move-result-object p1
+
+    .line 50725023
+    const-class p2, Lcom/android/ttcjpaysdk/base/service/ICJPayHostService;
+
+    .line 50725025
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50725028
+    move-result-object p1
+
+    .line 50725029
+    check-cast p1, Lcom/android/ttcjpaysdk/base/service/ICJPayHostService;
+
+    .line 50725031
+    if-eqz p1, :cond_c2
+
+    .line 50725033
+    invoke-interface {p1, v4}, Lcom/android/ttcjpaysdk/base/service/ICJPayHostService;->setWXIndependentSign(Z)V
+
+    .line 50725036
+    goto :goto_c2
+
+    .line 50725037
+    :cond_ad
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725040
+    move-result-object p1
+
+    .line 50725041
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725044
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_b7
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_b7} :catch_b8
+
+    .line 50725047
+    goto :goto_c2
+
+    .line 50725048
+    :catch_b8
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50725051
+    move-result-object p1
+
+    .line 50725052
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 50725055
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 50725058
+    :cond_c2
+    :goto_c2
+    return-void
+.end method
+
+.method private final payOpenHostScheme(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 31
+
+    .prologue
+    .line 50855936
+    move-object/from16 v9, p0
+
+    .line 50855938
+    move-object/from16 v0, p1
+
+    .line 50855940
+    move-object/from16 v5, p2
+
+    .line 50855942
+    move-object/from16 v10, p3
+
+    .line 50855944
+    const-string v11, "schema"
+
+    .line 50855946
+    const-string v12, "openSchemeInterface is "
+
+    .line 50855948
+    const-string v13, "openSchemaRouter is "
+
+    .line 50855950
+    const-string v14, "openSchemeWithContextInterface is "
+
+    .line 50855952
+    const-string v15, "&callback_id="
+
+    .line 50855954
+    const-string v8, "?callback_id="
+
+    .line 50855956
+    const-string v1, "payOpenHostScheme "
+
+    .line 50855958
+    :try_start_16
+    sget-object v6, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 50855960
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 50855962
+    invoke-direct {v2, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50855965
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50855968
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50855971
+    move-result-object v1
+
+    .line 50855972
+    invoke-static {v6, v1}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50855975
+    invoke-direct/range {p0 .. p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->delegateCloseCallback(Ljava/lang/String;)Z
+
+    .line 50855978
+    move-result v1
+
+    .line 50855979
+    if-eqz v1, :cond_33
+
+    .line 50855981
+    new-instance v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$payOpenHostScheme$1;
+
+    .line 50855983
+    invoke-direct {v1, v10}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$payOpenHostScheme$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 50855986
+    goto :goto_34
+
+    .line 50855987
+    :cond_33
+    const/4 v1, 0x0
+
+    .line 50855988
+    :goto_34
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50855991
+    move-result-object v2
+
+    .line 50855992
+    if-eqz v1, :cond_3b
+
+    .line 50855994
+    goto :goto_3c
+
+    .line 50855995
+    :cond_3b
+    move-object v1, v10
+
+    .line 50855996
+    :goto_3c
+    invoke-virtual {v2, v1}, Lcom/android/ttcjpaysdk/base/c;->a(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)I
+
+    .line 50855999
+    move-result v3
+    :try_end_40
+    .catch Ljava/lang/Exception; {:try_start_16 .. :try_end_40} :catch_28f
+
+    .line 50856000
+    const-string v16, "{}"
+
+    .line 50856002
+    if-nez v0, :cond_47
+
+    .line 50856004
+    move-object/from16 v1, v16
+
+    .line 50856006
+    goto :goto_48
+
+    .line 50856007
+    :cond_47
+    move-object v1, v0
+
+    .line 50856008
+    :goto_48
+    :try_start_48
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50856011
+    move-result-object v2
+    :try_end_4c
+    .catch Ljava/lang/Exception; {:try_start_48 .. :try_end_4c} :catch_28f
+
+    .line 50856012
+    const-string v1, ""
+
+    .line 50856014
+    if-eqz v5, :cond_5f
+
+    .line 50856016
+    :try_start_50
+    invoke-static/range {p2 .. p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50856019
+    move-result-object v4
+
+    .line 50856020
+    const-string v7, "cj_ttpay_flag"
+
+    .line 50856022
+    invoke-virtual {v4, v7, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50856025
+    move-result-object v4
+
+    .line 50856026
+    invoke-static {v4, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856029
+    move-object v7, v4
+
+    .line 50856030
+    goto :goto_60
+
+    .line 50856031
+    :cond_5f
+    move-object v7, v1
+
+    .line 50856032
+    :goto_60
+    invoke-virtual {v2, v11}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50856035
+    move-result-object v4
+
+    .line 50856036
+    invoke-static {v4, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856039
+    invoke-direct {v9, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->isSwitchToUnifyPay(Ljava/lang/String;)Z
+
+    .line 50856042
+    move-result v18
+
+    .line 50856043
+    move-object/from16 v19, v2
+
+    .line 50856045
+    if-eqz v18, :cond_b6
+
+    .line 50856047
+    const-string v2, "lynx 98 \u5207\u6362\u5230\u7edf\u4e00\u6536\u94f6\u53f0\u903b\u8f91"
+
+    .line 50856049
+    invoke-static {v6, v2}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50856052
+    const-string v2, "scheme"
+
+    .line 50856054
+    move/from16 v20, v3
+
+    .line 50856056
+    const/16 v3, 0x62
+
+    .line 50856058
+    invoke-direct {v9, v3, v0, v5, v2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setupCJContextForPay(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 50856061
+    move-result-object v21
+
+    .line 50856062
+    sget-object v2, Lbf/d;->a:Lbf/d;
+
+    .line 50856064
+    invoke-static {v4, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856067
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50856070
+    const/4 v2, 0x1
+
+    .line 50856071
+    invoke-static {v4, v2}, Lbf/d;->a(Ljava/lang/String;Z)Ljava/lang/String;
+
+    .line 50856074
+    move-result-object v3
+
+    .line 50856075
+    const/16 v18, 0x62
+
+    .line 50856077
+    const-string v22, "schema_to_unify"
+
+    .line 50856079
+    move-object v10, v1
+
+    .line 50856080
+    move-object/from16 v1, p0
+
+    .line 50856082
+    move-object/from16 v23, v13
+
+    .line 50856084
+    move-object/from16 v13, v19
+
+    .line 50856086
+    const/16 v19, 0x1
+
+    .line 50856088
+    move/from16 v2, v18
+
+    .line 50856090
+    move/from16 v24, v20
+
+    .line 50856092
+    move-object/from16 v25, v4
+
+    .line 50856094
+    move-object/from16 v4, p1
+
+    .line 50856096
+    move-object/from16 v5, p2
+
+    .line 50856098
+    move-object/from16 v26, v6
+
+    .line 50856100
+    move-object/from16 v6, p3
+
+    .line 50856102
+    move-object/from16 p2, v7
+
+    .line 50856104
+    move-object/from16 v7, v22
+
+    .line 50856106
+    move-object/from16 v17, v12
+
+    .line 50856108
+    move-object v12, v8
+
+    .line 50856109
+    move-object/from16 v8, v21
+
+    .line 50856111
+    invoke-direct/range {v1 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->switchToUnifyUsedPapiId(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+
+    .line 50856114
+    move-result v1
+
+    .line 50856115
+    if-eqz v1, :cond_c8
+
+    .line 50856117
+    return-void
+
+    .line 50856118
+    :cond_b6
+    move-object v10, v1
+
+    .line 50856119
+    move/from16 v24, v3
+
+    .line 50856121
+    move-object/from16 v25, v4
+
+    .line 50856123
+    move-object/from16 v26, v6
+
+    .line 50856125
+    move-object/from16 p2, v7
+
+    .line 50856127
+    move-object/from16 v17, v12
+
+    .line 50856129
+    move-object/from16 v23, v13
+
+    .line 50856131
+    move-object/from16 v13, v19
+
+    .line 50856133
+    const/16 v19, 0x1
+
+    .line 50856135
+    move-object v12, v8
+
+    .line 50856136
+    :cond_c8
+    move-object/from16 v1, v25
+
+    .line 50856138
+    invoke-static {v1, v10}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856141
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
+
+    .line 50856144
+    move-result v2
+
+    .line 50856145
+    if-lez v2, :cond_d5
+
+    .line 50856147
+    const/4 v7, 0x1
+
+    .line 50856148
+    goto :goto_d6
+
+    .line 50856149
+    :cond_d5
+    const/4 v7, 0x0
+
+    .line 50856150
+    :goto_d6
+    if-eqz v7, :cond_2ba
+
+    .line 50856152
+    invoke-static {v1, v10}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856155
+    invoke-direct {v9, v1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->prefetch(Ljava/lang/String;)V
+
+    .line 50856158
+    invoke-static {v1, v10}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856161
+    invoke-direct {v9, v1, v13}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->appendBtmTokenToSchema(Ljava/lang/String;Lorg/json/JSONObject;)Ljava/lang/String;
+
+    .line 50856164
+    move-result-object v1
+
+    .line 50856165
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 50856167
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 50856170
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50856173
+    invoke-static {v1, v10}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856176
+    const-string v3, "?"
+    :try_end_f2
+    .catch Ljava/lang/Exception; {:try_start_50 .. :try_end_f2} :catch_28f
+
+    .line 50856178
+    const/4 v4, 0x2
+
+    .line 50856179
+    const/4 v5, 0x0
+
+    .line 50856180
+    const/4 v6, 0x0
+
+    .line 50856181
+    :try_start_f5
+    invoke-static {v1, v3, v6, v4, v5}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 50856184
+    move-result v1
+
+    .line 50856185
+    if-eqz v1, :cond_10a
+
+    .line 50856187
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 50856189
+    invoke-direct {v1, v15}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50856192
+    move/from16 v3, v24
+
+    .line 50856194
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 50856197
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856200
+    move-result-object v1
+
+    .line 50856201
+    goto :goto_118
+
+    .line 50856202
+    :cond_10a
+    move/from16 v3, v24
+
+    .line 50856204
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 50856206
+    invoke-direct {v1, v12}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50856209
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 50856212
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856215
+    move-result-object v1
+
+    .line 50856216
+    :goto_118
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50856219
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856222
+    move-result-object v1
+
+    .line 50856223
+    invoke-static/range {p2 .. p2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 50856226
+    move-result v2
+
+    .line 50856227
+    xor-int/lit8 v2, v2, 0x1
+
+    .line 50856229
+    if-eqz v2, :cond_12a
+
+    .line 50856231
+    move-object/from16 v2, p2
+
+    .line 50856233
+    goto :goto_12b
+
+    .line 50856234
+    :cond_12a
+    move-object v2, v5
+
+    .line 50856235
+    :goto_12b
+    if-eqz v2, :cond_143
+
+    .line 50856237
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 50856239
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 50856242
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50856245
+    const-string v1, "&cj_ttpay_flag="
+
+    .line 50856247
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50856250
+    move-object/from16 v1, p2
+
+    .line 50856252
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 50856255
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856258
+    move-result-object v1
+
+    .line 50856259
+    :cond_143
+    invoke-direct/range {p0 .. p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->delegateCloseCallback(Ljava/lang/String;)Z
+
+    .line 50856262
+    move-result v2
+
+    .line 50856263
+    if-eqz v2, :cond_198
+
+    .line 50856265
+    if-nez v0, :cond_14d
+
+    .line 50856267
+    move-object/from16 v0, v16
+
+    .line 50856269
+    :cond_14d
+    invoke-static {v0}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50856272
+    move-result-object v0
+
+    .line 50856273
+    const-string v2, "cj_initial_props.cj_data"
+
+    .line 50856275
+    invoke-virtual {v0, v2, v10}, Lorg/json/JSONObject;->optString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50856278
+    move-result-object v0
+
+    .line 50856279
+    iget-object v2, v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50856281
+    if-eqz v2, :cond_160
+
+    .line 50856283
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50856286
+    move-result-object v4
+
+    .line 50856287
+    goto :goto_161
+
+    .line 50856288
+    :cond_160
+    move-object v4, v5
+
+    .line 50856289
+    :goto_161
+    instance-of v2, v4, Landroid/app/Activity;
+
+    .line 50856291
+    if-eqz v2, :cond_168
+
+    .line 50856293
+    check-cast v4, Landroid/app/Activity;
+
+    .line 50856295
+    goto :goto_169
+
+    .line 50856296
+    :cond_168
+    move-object v4, v5
+
+    .line 50856297
+    :goto_169
+    if-nez v4, :cond_16c
+
+    .line 50856299
+    return-void
+
+    .line 50856300
+    :cond_16c
+    invoke-static {}, Lh9/a;->b()Lh9/a;
+
+    .line 50856303
+    move-result-object v2
+
+    .line 50856304
+    const-string v5, "com.android.ttcjpaysdk.base.h5.ui.LynxActivity"
+
+    .line 50856306
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50856309
+    invoke-static {v5}, Lh9/a;->a(Ljava/lang/String;)Lh9/a$a;
+
+    .line 50856312
+    move-result-object v2
+
+    .line 50856313
+    iget-object v5, v2, Lh9/a$a;->b:Landroid/os/Bundle;
+
+    .line 50856315
+    invoke-virtual {v5, v11, v1}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50856318
+    const-string v1, "cj_initial_props"
+
+    .line 50856320
+    if-nez v0, :cond_183
+
+    .line 50856322
+    move-object v0, v10
+
+    .line 50856323
+    :cond_183
+    iget-object v5, v2, Lh9/a$a;->b:Landroid/os/Bundle;
+
+    .line 50856325
+    invoke-virtual {v5, v1, v0}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50856328
+    const-string v0, "callback_id"
+
+    .line 50856330
+    iget-object v1, v2, Lh9/a$a;->b:Landroid/os/Bundle;
+
+    .line 50856332
+    invoke-virtual {v1, v0, v3}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+
+    .line 50856335
+    const/4 v0, -0x1
+
+    .line 50856336
+    invoke-virtual {v2, v0, v4}, Lh9/a$a;->a(ILandroid/content/Context;)Landroidx/fragment/app/Fragment;
+
+    .line 50856339
+    goto/16 :goto_2ba
+
+    .line 50856341
+    :catch_195
+    move-exception v0
+
+    .line 50856342
+    goto/16 :goto_291
+
+    .line 50856344
+    :cond_198
+    invoke-direct {v9, v13}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->isLynxCardKeepDialog(Lorg/json/JSONObject;)Z
+
+    .line 50856347
+    move-result v0
+
+    .line 50856348
+    if-eqz v0, :cond_1ac
+
+    .line 50856350
+    invoke-direct/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->fromValidContext()Z
+
+    .line 50856353
+    move-result v0
+
+    .line 50856354
+    if-eqz v0, :cond_1ac
+
+    .line 50856356
+    invoke-static {v1, v10}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856359
+    invoke-direct {v9, v13, v1, v3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->tryShowLynxKeepDialog(Lorg/json/JSONObject;Ljava/lang/String;I)V
+
+    .line 50856362
+    goto/16 :goto_2ba
+
+    .line 50856364
+    :cond_1ac
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856367
+    move-result-object v0
+
+    .line 50856368
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->f()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;
+
+    .line 50856371
+    move-result-object v0
+
+    .line 50856372
+    if-eqz v0, :cond_20d
+
+    .line 50856374
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 50856376
+    invoke-direct {v0, v14}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50856379
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856382
+    move-result-object v2
+
+    .line 50856383
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/c;->f()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;
+
+    .line 50856386
+    move-result-object v2
+
+    .line 50856387
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 50856390
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856393
+    move-result-object v0
+
+    .line 50856394
+    move-object/from16 v2, v26
+
+    .line 50856396
+    invoke-static {v2, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50856399
+    invoke-static {v1, v10}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856402
+    const-string v0, "popup_by_self=1"
+
+    .line 50856404
+    invoke-static {v1, v0, v6, v4, v5}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 50856407
+    move-result v0
+
+    .line 50856408
+    if-eqz v0, :cond_1f6
+
+    .line 50856410
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50856413
+    move-result-object v0
+
+    .line 50856414
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 50856416
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50856419
+    move-result-object v0
+
+    .line 50856420
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 50856422
+    if-eqz v0, :cond_1ff
+
+    .line 50856424
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->getTopH5Activity()Ljava/lang/ref/WeakReference;
+
+    .line 50856427
+    move-result-object v0
+
+    .line 50856428
+    if-eqz v0, :cond_1ff
+
+    .line 50856430
+    invoke-virtual {v0}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
+
+    .line 50856433
+    move-result-object v0
+
+    .line 50856434
+    move-object v4, v0
+
+    .line 50856435
+    check-cast v4, Landroid/content/Context;
+
+    .line 50856437
+    goto :goto_200
+
+    .line 50856438
+    :cond_1f6
+    iget-object v0, v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50856440
+    if-eqz v0, :cond_1ff
+
+    .line 50856442
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50856445
+    move-result-object v4
+
+    .line 50856446
+    goto :goto_200
+
+    .line 50856447
+    :cond_1ff
+    move-object v4, v5
+
+    .line 50856448
+    :goto_200
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856451
+    move-result-object v0
+
+    .line 50856452
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->f()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;
+
+    .line 50856455
+    move-result-object v0
+
+    .line 50856456
+    invoke-interface {v0, v4, v1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;->openScheme(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 50856459
+    goto/16 :goto_2ba
+
+    .line 50856461
+    :cond_20d
+    move-object/from16 v2, v26
+
+    .line 50856463
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856466
+    move-result-object v0
+
+    .line 50856467
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/c;->c:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;
+
+    .line 50856469
+    if-eqz v0, :cond_239
+
+    .line 50856471
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 50856473
+    move-object/from16 v3, v17
+
+    .line 50856475
+    invoke-direct {v0, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50856478
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856481
+    move-result-object v3
+
+    .line 50856482
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/c;->c:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;
+
+    .line 50856484
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 50856487
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856490
+    move-result-object v0
+
+    .line 50856491
+    invoke-static {v2, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50856494
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856497
+    move-result-object v0
+
+    .line 50856498
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/c;->c:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;
+
+    .line 50856500
+    invoke-interface {v0, v1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;->openScheme(Ljava/lang/String;)V
+    :try_end_237
+    .catch Ljava/lang/Exception; {:try_start_f5 .. :try_end_237} :catch_195
+
+    .line 50856503
+    goto/16 :goto_2ba
+
+    .line 50856505
+    :cond_239
+    :try_start_239
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 50856507
+    move-object/from16 v3, v23
+
+    .line 50856509
+    invoke-direct {v0, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50856512
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50856515
+    move-result-object v3
+
+    .line 50856516
+    const-class v4, Lcom/android/ttcjpaysdk/base/service/ICJPayHostService;
+
+    .line 50856518
+    invoke-virtual {v3, v4}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50856521
+    move-result-object v3
+
+    .line 50856522
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 50856525
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856528
+    move-result-object v0
+
+    .line 50856529
+    invoke-static {v2, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50856532
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50856535
+    move-result-object v0
+
+    .line 50856536
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayHostService;
+
+    .line 50856538
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50856541
+    move-result-object v0
+
+    .line 50856542
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayHostService;
+
+    .line 50856544
+    if-eqz v0, :cond_2ba
+
+    .line 50856546
+    invoke-static {v1, v10}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50856549
+    iget-object v2, v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50856551
+    if-eqz v2, :cond_26e
+
+    .line 50856553
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50856556
+    move-result-object v4
+
+    .line 50856557
+    goto :goto_26f
+
+    .line 50856558
+    :cond_26e
+    move-object v4, v5
+
+    .line 50856559
+    :goto_26f
+    instance-of v2, v4, Landroid/app/Activity;
+
+    .line 50856561
+    if-eqz v2, :cond_276
+
+    .line 50856563
+    check-cast v4, Landroid/app/Activity;
+
+    .line 50856565
+    goto :goto_277
+
+    .line 50856566
+    :cond_276
+    move-object v4, v5
+
+    .line 50856567
+    :goto_277
+    invoke-interface {v0, v1, v4}, Lcom/android/ttcjpaysdk/base/service/ICJPayHostService;->openSchemaRouter(Ljava/lang/String;Landroid/app/Activity;)Z
+    :try_end_27a
+    .catchall {:try_start_239 .. :try_end_27a} :catchall_27b
+
+    .line 50856570
+    goto :goto_2ba
+
+    .line 50856571
+    :catchall_27b
+    move-exception v0
+
+    .line 50856572
+    :try_start_27c
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50856574
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856577
+    move-result-object v2
+
+    .line 50856578
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 50856581
+    move-result-object v2
+
+    .line 50856582
+    const-string v3, "openSchemaRouter"
+
+    .line 50856584
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50856587
+    invoke-static {v2, v3, v6, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+    :try_end_28e
+    .catch Ljava/lang/Exception; {:try_start_27c .. :try_end_28e} :catch_195
+
+    .line 50856590
+    goto :goto_2ba
+
+    .line 50856591
+    :catch_28f
+    move-exception v0
+
+    .line 50856592
+    const/4 v6, 0x0
+
+    .line 50856593
+    :goto_291
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 50856595
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 50856598
+    move-result-object v2
+
+    .line 50856599
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 50856602
+    move-result-object v2
+
+    .line 50856603
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50856606
+    const-string v1, "payOpenHostScheme"
+
+    .line 50856608
+    invoke-static {v2, v1, v6, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 50856611
+    move-object/from16 v1, p3
+
+    .line 50856613
+    if-eqz v1, :cond_2ba
+
+    .line 50856615
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 50856617
+    const-string v3, "fail exception:"
+
+    .line 50856619
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50856622
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 50856625
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50856628
+    move-result-object v0
+
+    .line 50856629
+    const/16 v2, -0x270f
+
+    .line 50856631
+    invoke-interface {v1, v2, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 50856634
+    :cond_2ba
+    :goto_2ba
+    return-void
+.end method
+
+.method private final prefetch(Ljava/lang/String;)V
+    .registers 5
+
+    .prologue
+    .line 17104896
+    :try_start_0
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 17104898
+    const-string v0, "1"
+
+    .line 17104900
+    const-string v1, "enable_cj_prefetch"
+
+    .line 17104902
+    invoke-static {p1, v1}, Lcom/android/ttcjpaysdk/base/ktextension/i;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17104905
+    move-result-object v1
+
+    .line 17104906
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17104909
+    move-result v0
+
+    .line 17104910
+    if-eqz v0, :cond_37
+
+    .line 17104912
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 17104915
+    move-result-object v0
+
+    .line 17104916
+    invoke-virtual {v0}, Ll9/a;->p()Lcom/android/ttcjpaysdk/base/settings/bean/LynxSchemaParamsConfig;
+
+    .line 17104919
+    move-result-object v0
+
+    .line 17104920
+    invoke-virtual {v0, p1}, Lcom/android/ttcjpaysdk/base/settings/bean/LynxSchemaParamsConfig;->getPrefetchData(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 17104923
+    move-result-object v0
+
+    .line 17104924
+    if-eqz v0, :cond_37
+
+    .line 17104926
+    sget-object v1, Lbf/d;->a:Lbf/d;
+
+    .line 17104928
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104931
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 17104934
+    sget-object v1, Lhe0/e;->a:Lhe0/e;
+
+    .line 17104936
+    new-instance v2, Lbf/c;
+
+    .line 17104938
+    invoke-direct {v2, p1, v0}, Lbf/c;-><init>(Ljava/lang/String;Lorg/json/JSONObject;)V
+
+    .line 17104941
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104944
+    const/4 p1, 0x0
+
+    .line 17104945
+    invoke-static {v2, p1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17104948
+    invoke-static {v2}, Lhe0/e;->d(Ljava/lang/Runnable;)V
+
+    .line 17104951
+    :cond_37
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17104953
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_3c
+    .catchall {:try_start_0 .. :try_end_3c} :catchall_3d
+
+    .line 17104956
+    goto :goto_47
+
+    .line 17104957
+    :catchall_3d
+    move-exception p1
+
+    .line 17104958
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 17104960
+    invoke-static {p1}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 17104963
+    move-result-object p1
+
+    .line 17104964
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17104967
+    :goto_47
+    return-void
+.end method
+
+.method private final releaseService()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 196611
+    move-result-object v0
+
+    .line 196612
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayFingerprintService;
+
+    .line 196614
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 196617
+    move-result-object v0
+
+    .line 196618
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayFingerprintService;
+
+    .line 196620
+    if-eqz v0, :cond_11
+
+    .line 196622
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayFingerprintService;->release()V
+
+    .line 196625
+    :cond_11
+    return-void
+.end method
+
+.method private final rrpUpload()V
+    .registers 21
+
+    .prologue
+    .line 458752
+    move-object/from16 v1, p0
+
+    .line 458754
+    instance-of v0, v1, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 458756
+    const-string v2, "runCatching"
+
+    .line 458758
+    if-eqz v0, :cond_17
+
+    .line 458760
+    move-object v3, v1
+
+    .line 458761
+    check-cast v3, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 458763
+    invoke-interface {v3}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 458766
+    move-result-object v3
+
+    .line 458767
+    if-eqz v3, :cond_17
+
+    .line 458769
+    invoke-static {v3}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 458772
+    move-result v4
+
+    .line 458773
+    if-eqz v4, :cond_18
+
+    .line 458775
+    :cond_17
+    move-object v3, v2
+
+    .line 458776
+    :cond_18
+    invoke-static {v3}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 458779
+    move-result v4
+
+    .line 458780
+    if-eqz v4, :cond_32
+
+    .line 458782
+    if-eqz v0, :cond_33
+
+    .line 458784
+    move-object v0, v1
+
+    .line 458785
+    check-cast v0, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 458787
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 458790
+    move-result-object v0
+
+    .line 458791
+    if-eqz v0, :cond_33
+
+    .line 458793
+    invoke-static {v0}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 458796
+    move-result v4
+
+    .line 458797
+    if-eqz v4, :cond_30
+
+    .line 458799
+    goto :goto_33
+
+    .line 458800
+    :cond_30
+    move-object v2, v0
+
+    .line 458801
+    goto :goto_33
+
+    .line 458802
+    :cond_32
+    move-object v2, v3
+
+    .line 458803
+    :cond_33
+    :goto_33
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 458806
+    move-result-object v0
+
+    .line 458807
+    invoke-virtual {v0}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 458810
+    move-result-object v0
+
+    .line 458811
+    const-string v4, ""
+
+    .line 458813
+    invoke-static {v0, v4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 458816
+    const/4 v5, 0x5
+
+    .line 458817
+    invoke-static {v0, v5}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 458820
+    move-result-object v6
+
+    .line 458821
+    const-string v7, "\n "
+
+    .line 458823
+    const/4 v8, 0x0
+
+    .line 458824
+    const/4 v9, 0x0
+
+    .line 458825
+    const/4 v10, 0x0
+
+    .line 458826
+    const/4 v0, 0x0
+
+    .line 458827
+    const/4 v12, 0x0
+
+    .line 458828
+    const/16 v13, 0x3e
+
+    .line 458830
+    const/16 v17, 0x0
+
+    .line 458832
+    const/4 v11, 0x0
+
+    .line 458833
+    const/4 v14, 0x0
+
+    .line 458834
+    invoke-static/range {v6 .. v14}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 458837
+    move-result-object v6
+
+    .line 458838
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 458841
+    move-result-object v7
+
+    .line 458842
+    invoke-virtual {v7}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 458845
+    move-result-object v7
+
+    .line 458846
+    invoke-static {v7, v4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 458849
+    const/16 v8, 0xa
+
+    .line 458851
+    invoke-static {v7, v8}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 458854
+    move-result-object v11
+
+    .line 458855
+    const-string v12, "\n "
+
+    .line 458857
+    const/4 v13, 0x0
+
+    .line 458858
+    const/4 v15, 0x0
+
+    .line 458859
+    const/16 v16, 0x0
+
+    .line 458861
+    const/16 v18, 0x3e
+
+    .line 458863
+    const/16 v19, 0x0
+
+    .line 458865
+    move-object v14, v0
+
+    .line 458866
+    invoke-static/range {v11 .. v19}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 458869
+    move-result-object v0
+
+    .line 458870
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    .line 458872
+    const-string v8, "Debug\n "
+
+    .line 458874
+    invoke-direct {v7, v8}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 458877
+    invoke-virtual {v7, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458880
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 458883
+    move-result-object v0
+
+    .line 458884
+    invoke-static {v2, v0}, Lfe0/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 458887
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 458890
+    move-result-wide v7
+
+    .line 458891
+    :try_start_8b
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 458893
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$rrpUpload$1$1;->INSTANCE:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$rrpUpload$1$1;
+
+    .line 458895
+    const-wide/16 v9, 0x1770
+
+    .line 458897
+    invoke-static {v9, v10, v0}, Lhe0/e;->e(JLjava/lang/Runnable;)V
+
+    .line 458900
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 458902
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 458905
+    move-result-object v0
+    :try_end_9a
+    .catchall {:try_start_8b .. :try_end_9a} :catchall_9b
+
+    .line 458906
+    goto :goto_a6
+
+    .line 458907
+    :catchall_9b
+    move-exception v0
+
+    .line 458908
+    sget-object v9, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 458910
+    invoke-static {v0}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 458913
+    move-result-object v0
+
+    .line 458914
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 458917
+    move-result-object v0
+
+    .line 458918
+    :goto_a6
+    invoke-static {v0}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    .line 458921
+    move-result v9
+
+    .line 458922
+    const/4 v10, 0x1
+
+    .line 458923
+    const/4 v11, 0x0
+
+    .line 458924
+    if-eqz v9, :cond_c1
+
+    .line 458926
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    .line 458928
+    const-string v12, "onSuccess\n "
+
+    .line 458930
+    invoke-direct {v9, v12}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 458933
+    invoke-virtual {v9, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458936
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 458939
+    move-result-object v9
+
+    .line 458940
+    invoke-static {v2, v9}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 458943
+    const/4 v9, 0x1
+
+    .line 458944
+    goto :goto_c2
+
+    .line 458945
+    :cond_c1
+    const/4 v9, 0x0
+
+    .line 458946
+    :goto_c2
+    invoke-static {v0}, Lkotlin/Result;->exceptionOrNull-impl(Ljava/lang/Object;)Ljava/lang/Throwable;
+
+    .line 458949
+    move-result-object v0
+
+    .line 458950
+    const/4 v12, 0x0
+
+    .line 458951
+    if-eqz v0, :cond_d0
+
+    .line 458953
+    const-string v9, "onFailure"
+
+    .line 458955
+    invoke-static {v2, v9, v0}, Lfe0/a;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 458958
+    const/4 v9, 0x0
+
+    .line 458959
+    goto :goto_d1
+
+    .line 458960
+    :cond_d0
+    move-object v0, v12
+
+    .line 458961
+    :goto_d1
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 458964
+    move-result-wide v13
+
+    .line 458965
+    sub-long/2addr v13, v7
+
+    .line 458966
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    .line 458968
+    const-string v8, "is_success: "
+
+    .line 458970
+    invoke-direct {v7, v8}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 458973
+    invoke-virtual {v7, v9}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 458976
+    const-string v8, ", duration: "
+
+    .line 458978
+    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458981
+    invoke-virtual {v7, v13, v14}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 458984
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 458987
+    move-result-object v7
+
+    .line 458988
+    invoke-static {v2, v7}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 458991
+    sget-object v2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 458993
+    sget-object v7, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 458995
+    new-instance v8, Ljava/util/HashMap;
+
+    .line 458997
+    invoke-direct {v8}, Ljava/util/HashMap;-><init>()V
+
+    .line 459000
+    invoke-virtual {v7}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 459003
+    invoke-static {v3, v4, v4, v8}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 459006
+    move-result-object v7
+
+    .line 459007
+    new-array v5, v5, [Lkotlin/Pair;
+
+    .line 459009
+    const-string v8, "tag"
+
+    .line 459011
+    invoke-static {v8, v3}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 459014
+    move-result-object v3
+
+    .line 459015
+    aput-object v3, v5, v11
+
+    .line 459017
+    const-string v3, "1"
+
+    .line 459019
+    const-string v8, "0"
+
+    .line 459021
+    invoke-static {v9, v3, v8}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->tf(ZLjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 459024
+    move-result-object v3
+
+    .line 459025
+    const-string v8, "is_success"
+
+    .line 459027
+    invoke-static {v8, v3}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 459030
+    move-result-object v3
+
+    .line 459031
+    aput-object v3, v5, v10
+
+    .line 459033
+    if-eqz v0, :cond_11f
+
+    .line 459035
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 459038
+    move-result-object v12
+
+    .line 459039
+    :cond_11f
+    if-nez v12, :cond_122
+
+    .line 459041
+    goto :goto_123
+
+    .line 459042
+    :cond_122
+    move-object v4, v12
+
+    .line 459043
+    :goto_123
+    const-string v0, "error_msg"
+
+    .line 459045
+    invoke-static {v0, v4}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 459048
+    move-result-object v0
+
+    .line 459049
+    const/4 v3, 0x2
+
+    .line 459050
+    aput-object v0, v5, v3
+
+    .line 459052
+    const-string v0, "trace"
+
+    .line 459054
+    invoke-static {v0, v6}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 459057
+    move-result-object v0
+
+    .line 459058
+    const/4 v3, 0x3
+
+    .line 459059
+    aput-object v0, v5, v3
+
+    .line 459061
+    const-string v0, "duration"
+
+    .line 459063
+    invoke-static {v13, v14}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 459066
+    move-result-object v3
+
+    .line 459067
+    invoke-static {v0, v3}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 459070
+    move-result-object v0
+
+    .line 459071
+    const/4 v3, 0x4
+
+    .line 459072
+    aput-object v0, v5, v3
+
+    .line 459074
+    invoke-static {v5}, Lkotlin/collections/MapsKt;->mapOf([Lkotlin/Pair;)Ljava/util/Map;
+
+    .line 459077
+    move-result-object v0
+
+    .line 459078
+    const-string v3, "cjpay_run_catch_result"
+
+    .line 459080
+    invoke-static {v2, v7, v3, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->l(Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 459083
+    new-instance v0, Lcom/android/ttcjpaysdk/base/ktextension/g;
+
+    .line 459085
+    return-void
+.end method
+
+.method public static synthetic setBackEnable$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;ZILjava/lang/Object;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 4
+
+    .prologue
+    .line 67239936
+    and-int/lit8 p2, p2, 0x1
+
+    .line 67239938
+    if-eqz p2, :cond_5
+
+    .line 67239940
+    const/4 p1, 0x0
+
+    .line 67239941
+    :cond_5
+    invoke-virtual {p0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setBackEnable(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 67239944
+    move-result-object p0
+
+    .line 67239945
+    return-object p0
+.end method
+
+.method private final setPayCjContext(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+    .registers 9
+
+    .prologue
+    .line 100925440
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100925443
+    move-result-object v0
+
+    .line 100925444
+    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 100925447
+    move-result-object v1
+
+    .line 100925448
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/c;->D:Ljava/lang/String;
+
+    .line 100925450
+    if-nez p5, :cond_10
+
+    .line 100925452
+    invoke-direct {p0, p1, p3, p2, p4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setupCJContextForPay(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 100925455
+    move-result-object p5
+
+    .line 100925456
+    :cond_10
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100925459
+    move-result-object p3
+
+    .line 100925460
+    iput-object p5, p3, Lcom/android/ttcjpaysdk/base/c;->G:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 100925462
+    invoke-direct {p0, p2, p5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setTraceId(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 100925465
+    sget-object p2, Lbf/b;->a:Lbf/b;
+
+    .line 100925467
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 100925470
+    const-string p2, "pay"
+
+    .line 100925472
+    invoke-static {p1, p2}, Lbf/b;->d(ILjava/lang/String;)V
+
+    .line 100925475
+    if-eqz p5, :cond_28
+
+    .line 100925477
+    invoke-virtual {p5, p1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->k(I)V
+
+    .line 100925480
+    :cond_28
+    if-nez p5, :cond_2b
+
+    .line 100925482
+    goto :goto_2d
+
+    .line 100925483
+    :cond_2b
+    iput-object p6, p5, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 100925485
+    :goto_2d
+    return-object p5
+.end method
+
+.method private final setSecurityLoadingInfo(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+    .registers 6
+
+    .prologue
+    .line 50659328
+    const-string v0, "sdk_show_info"
+
+    .line 50659330
+    const-string v1, ""
+
+    .line 50659332
+    if-nez p1, :cond_7
+
+    .line 50659334
+    move-object p1, v1
+
+    .line 50659335
+    :cond_7
+    :try_start_7
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50659338
+    move-result-object p1
+
+    .line 50659339
+    if-nez p2, :cond_e
+
+    .line 50659341
+    move-object p2, v1
+
+    .line 50659342
+    :cond_e
+    invoke-static {p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50659345
+    move-result-object p2
+
+    .line 50659346
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 50659349
+    move-result v1
+
+    .line 50659350
+    if-eqz v1, :cond_19
+
+    .line 50659352
+    goto :goto_2e
+
+    .line 50659353
+    :cond_19
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 50659356
+    move-result v1
+
+    .line 50659357
+    if-eqz v1, :cond_2d
+
+    .line 50659359
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50659362
+    move-result-object v1
+
+    .line 50659363
+    if-eqz v1, :cond_2d
+
+    .line 50659365
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50659368
+    move-result-object p2
+
+    .line 50659369
+    invoke-static {p1, v0, p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50659372
+    goto :goto_2e
+
+    .line 50659373
+    :cond_2d
+    const/4 p1, 0x0
+
+    .line 50659374
+    :goto_2e
+    if-eqz p3, :cond_40
+
+    .line 50659376
+    sget-object p2, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->Companion:Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$Companion;
+
+    .line 50659378
+    invoke-virtual {p2, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$Companion;->getSdkShowInfo(Lorg/json/JSONObject;)Ljava/lang/String;
+
+    .line 50659381
+    move-result-object p1
+
+    .line 50659382
+    invoke-interface {p3, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->setSecurityLoadingInfo(Ljava/lang/String;)V
+    :try_end_39
+    .catchall {:try_start_7 .. :try_end_39} :catchall_3a
+
+    .line 50659385
+    goto :goto_40
+
+    .line 50659386
+    :catchall_3a
+    nop
+
+    .line 50659387
+    if-eqz p3, :cond_40
+
+    .line 50659389
+    invoke-interface {p3}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 50659392
+    :cond_40
+    :goto_40
+    return-void
+.end method
+
+.method public static synthetic setSecurityLoadingInfo$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;ILjava/lang/Object;)V
+    .registers 6
+
+    .prologue
+    .line 100794368
+    and-int/lit8 p4, p4, 0x4
+
+    .line 100794370
+    if-eqz p4, :cond_5
+
+    .line 100794372
+    const/4 p3, 0x0
+
+    .line 100794373
+    :cond_5
+    invoke-direct {p0, p1, p2, p3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setSecurityLoadingInfo(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;)V
+
+    .line 100794376
+    return-void
+.end method
+
+.method private final setTraceId(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 5
+
+    .prologue
+    .line 33816576
+    if-nez p1, :cond_3
+
+    .line 33816578
+    return-void
+
+    .line 33816579
+    :cond_3
+    :try_start_3
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 33816581
+    invoke-direct {v0, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33816584
+    const-string p1, "track_info"
+
+    .line 33816586
+    invoke-virtual {v0, p1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 33816589
+    move-result-object p1
+
+    .line 33816590
+    if-eqz p1, :cond_17
+
+    .line 33816592
+    const-string v0, "trace_id"
+
+    .line 33816594
+    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33816597
+    move-result-object p1
+
+    .line 33816598
+    goto :goto_18
+
+    .line 33816599
+    :cond_17
+    const/4 p1, 0x0
+
+    .line 33816600
+    :goto_18
+    const/4 v0, 0x0
+
+    .line 33816601
+    if-eqz p1, :cond_24
+
+    .line 33816603
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    .line 33816606
+    move-result v1
+
+    .line 33816607
+    if-nez v1, :cond_22
+
+    .line 33816609
+    goto :goto_24
+
+    .line 33816610
+    :cond_22
+    const/4 v1, 0x0
+
+    .line 33816611
+    goto :goto_25
+
+    .line 33816612
+    :cond_24
+    :goto_24
+    const/4 v1, 0x1
+
+    .line 33816613
+    :goto_25
+    if-eqz v1, :cond_28
+
+    .line 33816615
+    return-void
+
+    .line 33816616
+    :cond_28
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 33816619
+    move-result-object v1
+
+    .line 33816620
+    iput-object p1, v1, Lcom/android/ttcjpaysdk/base/c;->z:Ljava/lang/String;
+
+    .line 33816622
+    if-eqz p2, :cond_3d
+
+    .line 33816624
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33816627
+    iput-object p1, p2, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->n:Ljava/lang/String;
+    :try_end_35
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_35} :catch_36
+
+    .line 33816629
+    goto :goto_3d
+
+    .line 33816630
+    :catch_36
+    sget-object p1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 33816632
+    const-string p2, "setTraceId fail"
+
+    .line 33816634
+    invoke-static {p1, p2}, Lfe0/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 33816637
+    :cond_3d
+    :goto_3d
+    return-void
+.end method
+
+.method private final setupCJContextForPay(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+    .registers 8
+
+    .prologue
+    .line 67436544
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 67436546
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436549
+    invoke-static {p3, p2}, Lbf/b;->e(Ljava/lang/String;Ljava/lang/String;)Lkotlin/Pair;
+
+    .line 67436552
+    move-result-object p2
+
+    .line 67436553
+    invoke-virtual {p2}, Lkotlin/Pair;->component1()Ljava/lang/Object;
+
+    .line 67436556
+    move-result-object p3
+
+    .line 67436557
+    check-cast p3, Ljava/lang/String;
+
+    .line 67436559
+    invoke-virtual {p2}, Lkotlin/Pair;->component2()Ljava/lang/Object;
+
+    .line 67436562
+    move-result-object p2
+
+    .line 67436563
+    check-cast p2, Ljava/lang/String;
+
+    .line 67436565
+    invoke-virtual {p3}, Ljava/lang/String;->length()I
+
+    .line 67436568
+    move-result v0
+
+    .line 67436569
+    if-nez v0, :cond_1d
+
+    .line 67436571
+    const/4 v0, 0x1
+
+    .line 67436572
+    goto :goto_1e
+
+    .line 67436573
+    :cond_1d
+    const/4 v0, 0x0
+
+    .line 67436574
+    :goto_1e
+    if-eqz v0, :cond_33
+
+    .line 67436576
+    iget-object p2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436578
+    const-string p3, ""
+
+    .line 67436580
+    if-eqz p2, :cond_2a
+
+    .line 67436582
+    iget-object v0, p2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 67436584
+    if-nez v0, :cond_2b
+
+    .line 67436586
+    :cond_2a
+    move-object v0, p3
+
+    .line 67436587
+    :cond_2b
+    if-eqz p2, :cond_31
+
+    .line 67436589
+    iget-object p2, p2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 67436591
+    if-nez p2, :cond_32
+
+    .line 67436593
+    :cond_31
+    move-object p2, p3
+
+    .line 67436594
+    :cond_32
+    move-object p3, v0
+
+    .line 67436595
+    :cond_33
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 67436597
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 67436599
+    const-string v2, "pay_"
+
+    .line 67436601
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 67436604
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 67436607
+    const/16 p1, 0x5f
+
+    .line 67436609
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 67436612
+    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 67436615
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 67436618
+    move-result-object p1
+
+    .line 67436619
+    invoke-static {v0, p1, p2, p3}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 67436622
+    move-result-object p1
+
+    .line 67436623
+    return-object p1
+.end method
+
+.method private final showProtocolPage(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 12
+
+    .prologue
+    .line 33947648
+    const-string v0, ""
+
+    .line 33947650
+    const/4 v1, 0x0
+
+    .line 33947651
+    if-eqz p1, :cond_8e
+
+    .line 33947653
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 33947656
+    move-result v2
+
+    .line 33947657
+    const/4 v3, 0x1
+
+    .line 33947658
+    if-lez v2, :cond_e
+
+    .line 33947660
+    const/4 v2, 0x1
+
+    .line 33947661
+    goto :goto_f
+
+    .line 33947662
+    :cond_e
+    const/4 v2, 0x0
+
+    .line 33947663
+    :goto_f
+    const/4 v4, 0x0
+
+    .line 33947664
+    if-eqz v2, :cond_13
+
+    .line 33947666
+    goto :goto_14
+
+    .line 33947667
+    :cond_13
+    move-object p1, v4
+
+    .line 33947668
+    :goto_14
+    if-eqz p1, :cond_8e
+
+    .line 33947670
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 33947673
+    move-result-object p1
+
+    .line 33947674
+    const-string v2, "close_icon"
+
+    .line 33947676
+    invoke-virtual {p1, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947679
+    move-result-object v2
+
+    .line 33947680
+    const-string v5, "back"
+
+    .line 33947682
+    invoke-static {v2, v5}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 33947685
+    move-result v2
+
+    .line 33947686
+    xor-int/2addr v2, v3
+
+    .line 33947687
+    const-string v5, "protocol_list"
+
+    .line 33947689
+    invoke-virtual {p1, v5}, Lorg/json/JSONObject;->optJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+
+    .line 33947692
+    move-result-object p1
+
+    .line 33947693
+    if-eqz p1, :cond_86
+
+    .line 33947695
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33947698
+    new-instance v5, Ljava/util/ArrayList;
+
+    .line 33947700
+    invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V
+
+    .line 33947703
+    invoke-virtual {p1}, Lorg/json/JSONArray;->length()I
+
+    .line 33947706
+    move-result v6
+
+    .line 33947707
+    const/4 v7, 0x0
+
+    .line 33947708
+    :goto_3c
+    if-ge v7, v6, :cond_48
+
+    .line 33947710
+    invoke-virtual {p1, v7}, Lorg/json/JSONArray;->optJSONObject(I)Lorg/json/JSONObject;
+
+    .line 33947713
+    move-result-object v8
+
+    .line 33947714
+    invoke-virtual {v5, v8}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 33947717
+    add-int/lit8 v7, v7, 0x1
+
+    .line 33947719
+    goto :goto_3c
+
+    .line 33947720
+    :cond_48
+    invoke-interface {v5}, Ljava/util/Collection;->isEmpty()Z
+
+    .line 33947723
+    move-result p1
+
+    .line 33947724
+    xor-int/2addr p1, v3
+
+    .line 33947725
+    if-eqz p1, :cond_51
+
+    .line 33947727
+    move-object p1, v5
+
+    .line 33947728
+    goto :goto_52
+
+    .line 33947729
+    :cond_51
+    move-object p1, v4
+
+    .line 33947730
+    :goto_52
+    if-eqz p1, :cond_7d
+
+    .line 33947732
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 33947735
+    move-result-object p1
+
+    .line 33947736
+    const-class v6, Lcom/android/ttcjpaysdk/base/service/ICJPayAgreementService;
+
+    .line 33947738
+    invoke-virtual {p1, v6}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 33947741
+    move-result-object p1
+
+    .line 33947742
+    check-cast p1, Lcom/android/ttcjpaysdk/base/service/ICJPayAgreementService;
+
+    .line 33947744
+    if-eqz p1, :cond_6f
+
+    .line 33947746
+    iget-object v6, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947748
+    if-eqz v6, :cond_6b
+
+    .line 33947750
+    invoke-virtual {v6}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33947753
+    move-result-object v6
+
+    .line 33947754
+    goto :goto_6c
+
+    .line 33947755
+    :cond_6b
+    move-object v6, v4
+
+    .line 33947756
+    :goto_6c
+    invoke-interface {p1, v6, v5, v2, v4}, Lcom/android/ttcjpaysdk/base/service/ICJPayAgreementService;->startCJPayAgreementActivity(Landroid/content/Context;Ljava/util/ArrayList;ZLcom/android/ttcjpaysdk/base/service/ICJPayAgreementCallback;)V
+
+    .line 33947759
+    :cond_6f
+    if-eqz p2, :cond_77
+
+    .line 33947761
+    invoke-interface {p2, v3, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33947764
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33947766
+    goto :goto_78
+
+    .line 33947767
+    :cond_77
+    move-object p1, v4
+
+    .line 33947768
+    :goto_78
+    if-nez p1, :cond_7b
+
+    .line 33947770
+    goto :goto_7d
+
+    .line 33947771
+    :cond_7b
+    move-object v4, p1
+
+    .line 33947772
+    goto :goto_84
+
+    .line 33947773
+    :cond_7d
+    :goto_7d
+    if-eqz p2, :cond_84
+
+    .line 33947775
+    invoke-interface {p2, v1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33947778
+    sget-object v4, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33947780
+    :cond_84
+    :goto_84
+    if-nez v4, :cond_95
+
+    .line 33947782
+    :cond_86
+    if-eqz p2, :cond_95
+
+    .line 33947784
+    invoke-interface {p2, v1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33947787
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33947789
+    goto :goto_95
+
+    .line 33947790
+    :cond_8e
+    if-eqz p2, :cond_95
+
+    .line 33947792
+    invoke-interface {p2, v1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;->onResult(ILjava/lang/String;)V
+
+    .line 33947795
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33947797
+    :cond_95
+    :goto_95
+    return-void
+.end method
+
+.method private final superPayOpenAndPay(Ljava/lang/String;Lcom/android/ttcjpaysdk/base/CJPayHostInfo;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;)V
+    .registers 14
+
+    .prologue
+    .line 67436544
+    const/4 v0, 0x0
+
+    .line 67436545
+    const-string v1, "112"
+
+    .line 67436547
+    const/4 v2, 0x0
+
+    .line 67436548
+    if-eqz p2, :cond_c
+
+    .line 67436550
+    :try_start_6
+    invoke-virtual {p2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 67436553
+    move-result-object v3
+
+    .line 67436554
+    move-object v4, v3
+
+    .line 67436555
+    goto :goto_d
+
+    .line 67436556
+    :cond_c
+    move-object v4, v0
+
+    .line 67436557
+    :goto_d
+    if-eqz p1, :cond_1c
+
+    .line 67436559
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    .line 67436562
+    move-result v3
+
+    .line 67436563
+    const/4 v5, 0x1
+
+    .line 67436564
+    if-lez v3, :cond_18
+
+    .line 67436566
+    const/4 v3, 0x1
+
+    .line 67436567
+    goto :goto_19
+
+    .line 67436568
+    :cond_18
+    const/4 v3, 0x0
+
+    .line 67436569
+    :goto_19
+    if-ne v3, v5, :cond_1c
+
+    .line 67436571
+    goto :goto_1d
+
+    .line 67436572
+    :cond_1c
+    const/4 v5, 0x0
+
+    .line 67436573
+    :goto_1d
+    if-eqz v5, :cond_42
+
+    .line 67436575
+    if-nez v4, :cond_22
+
+    .line 67436577
+    goto :goto_42
+
+    .line 67436578
+    :cond_22
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 67436581
+    move-result-object v3
+
+    .line 67436582
+    const-class v5, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 67436584
+    invoke-virtual {v3, v5}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 67436587
+    move-result-object v3
+
+    .line 67436588
+    check-cast v3, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 67436590
+    if-eqz v3, :cond_75
+
+    .line 67436592
+    sget-object v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 67436594
+    invoke-virtual {v5}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436597
+    invoke-static {p2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 67436600
+    move-result-object v6
+
+    .line 67436601
+    move-object v5, p1
+
+    .line 67436602
+    move-object v7, p4
+
+    .line 67436603
+    move-object v8, p3
+
+    .line 67436604
+    invoke-interface/range {v3 .. v8}, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;->doSuperPay(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 67436607
+    goto :goto_75
+
+    .line 67436608
+    :catch_40
+    move-exception p1
+
+    .line 67436609
+    goto :goto_5a
+
+    .line 67436610
+    :cond_42
+    :goto_42
+    if-nez v4, :cond_4f
+
+    .line 67436612
+    sget-object p1, Lbf/b;->a:Lbf/b;
+
+    .line 67436614
+    const-string p2, "context is null"
+
+    .line 67436616
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436619
+    invoke-static {v1, p2}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67436622
+    goto :goto_75
+
+    .line 67436623
+    :cond_4f
+    sget-object p1, Lbf/b;->a:Lbf/b;
+
+    .line 67436625
+    const-string p2, "sdkInfo is empty"
+
+    .line 67436627
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436630
+    invoke-static {v1, p2}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_59
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_59} :catch_40
+
+    .line 67436633
+    goto :goto_75
+
+    .line 67436634
+    :goto_5a
+    sget-object p2, Lbf/b;->a:Lbf/b;
+
+    .line 67436636
+    invoke-static {p1}, Landroid/util/Log;->getStackTraceString(Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 67436639
+    move-result-object p3
+
+    .line 67436640
+    const-string p4, ""
+
+    .line 67436642
+    invoke-static {p3, p4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 67436645
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436648
+    invoke-static {v1, p3}, Lbf/b;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67436651
+    sget-object p2, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 67436653
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436656
+    const-string p2, "super_pay_exception"
+
+    .line 67436658
+    invoke-static {v0, p2, v2, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 67436661
+    :cond_75
+    :goto_75
+    return-void
+.end method
+
+.method private final switchToUnifyUsedPapiId(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+    .registers 40
+
+    .prologue
+    .line 117964800
+    move-object/from16 v8, p0
+
+    .line 117964802
+    move/from16 v0, p1
+
+    .line 117964804
+    move-object/from16 v9, p2
+
+    .line 117964806
+    move-object/from16 v4, p3
+
+    .line 117964808
+    move-object/from16 v3, p4
+
+    .line 117964810
+    move-object/from16 v10, p5
+
+    .line 117964812
+    move-object/from16 v11, p7
+
+    .line 117964814
+    iget-object v1, v8, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 117964816
+    if-eqz v1, :cond_1d
+
+    .line 117964818
+    sget-object v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 117964820
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 117964823
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->a(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 117964826
+    move-result-object v1
+
+    .line 117964827
+    move-object v13, v1
+
+    .line 117964828
+    goto :goto_1e
+
+    .line 117964829
+    :cond_1d
+    const/4 v13, 0x0
+
+    .line 117964830
+    :goto_1e
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 117964833
+    move-result-object v1
+
+    .line 117964834
+    iget-object v14, v1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 117964836
+    const/4 v15, 0x0
+
+    .line 117964837
+    if-eqz v9, :cond_30
+
+    .line 117964839
+    invoke-virtual/range {p2 .. p2}, Ljava/lang/String;->length()I
+
+    .line 117964842
+    move-result v1
+
+    .line 117964843
+    if-nez v1, :cond_2e
+
+    .line 117964845
+    goto :goto_30
+
+    .line 117964846
+    :cond_2e
+    const/4 v1, 0x0
+
+    .line 117964847
+    goto :goto_31
+
+    .line 117964848
+    :cond_30
+    :goto_30
+    const/4 v1, 0x1
+
+    .line 117964849
+    :goto_31
+    if-eqz v1, :cond_34
+
+    .line 117964851
+    return v15
+
+    .line 117964852
+    :cond_34
+    iget-object v6, v8, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 117964854
+    if-eqz v6, :cond_254
+
+    .line 117964856
+    invoke-virtual {v6}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 117964859
+    move-result-object v1
+
+    .line 117964860
+    instance-of v1, v1, Landroid/app/Activity;
+
+    .line 117964862
+    if-nez v1, :cond_42
+
+    .line 117964864
+    goto/16 :goto_254
+
+    .line 117964866
+    :cond_42
+    iget-object v1, v6, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->papiID:Ljava/lang/String;
+
+    .line 117964868
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
+
+    .line 117964871
+    move-result v1
+
+    .line 117964872
+    if-nez v1, :cond_4c
+
+    .line 117964874
+    const/4 v1, 0x1
+
+    .line 117964875
+    goto :goto_4d
+
+    .line 117964876
+    :cond_4c
+    const/4 v1, 0x0
+
+    .line 117964877
+    :goto_4d
+    if-eqz v1, :cond_51
+
+    .line 117964879
+    iput-object v9, v6, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->papiID:Ljava/lang/String;
+
+    .line 117964881
+    :cond_51
+    instance-of v1, v8, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 117964883
+    const-string v2, "runCatching"
+
+    .line 117964885
+    if-eqz v1, :cond_66
+
+    .line 117964887
+    move-object v5, v8
+
+    .line 117964888
+    check-cast v5, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 117964890
+    invoke-interface {v5}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 117964893
+    move-result-object v5
+
+    .line 117964894
+    if-eqz v5, :cond_66
+
+    .line 117964896
+    invoke-static {v5}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 117964899
+    move-result v16
+
+    .line 117964900
+    if-eqz v16, :cond_67
+
+    .line 117964902
+    :cond_66
+    move-object v5, v2
+
+    .line 117964903
+    :cond_67
+    invoke-static {v5}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 117964906
+    move-result v16
+
+    .line 117964907
+    if-eqz v16, :cond_81
+
+    .line 117964909
+    if-eqz v1, :cond_82
+
+    .line 117964911
+    move-object v1, v8
+
+    .line 117964912
+    check-cast v1, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 117964914
+    invoke-interface {v1}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 117964917
+    move-result-object v1
+
+    .line 117964918
+    if-eqz v1, :cond_82
+
+    .line 117964920
+    invoke-static {v1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 117964923
+    move-result v16
+
+    .line 117964924
+    if-eqz v16, :cond_7f
+
+    .line 117964926
+    goto :goto_82
+
+    .line 117964927
+    :cond_7f
+    move-object v2, v1
+
+    .line 117964928
+    goto :goto_82
+
+    .line 117964929
+    :cond_81
+    move-object v2, v5
+
+    .line 117964930
+    :cond_82
+    :goto_82
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 117964933
+    move-result-object v1
+
+    .line 117964934
+    invoke-virtual {v1}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 117964937
+    move-result-object v1
+
+    .line 117964938
+    const-string v12, ""
+
+    .line 117964940
+    invoke-static {v1, v12}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 117964943
+    const/4 v15, 0x5
+
+    .line 117964944
+    invoke-static {v1, v15}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 117964947
+    move-result-object v17
+
+    .line 117964948
+    const-string v18, "\n "
+
+    .line 117964950
+    const/16 v19, 0x0
+
+    .line 117964952
+    const/16 v20, 0x0
+
+    .line 117964954
+    const/16 v21, 0x0
+
+    .line 117964956
+    const/16 v23, 0x0
+
+    .line 117964958
+    const/16 v24, 0x3e
+
+    .line 117964960
+    const/16 v28, 0x0
+
+    .line 117964962
+    const/16 v22, 0x0
+
+    .line 117964964
+    const/16 v25, 0x0
+
+    .line 117964966
+    invoke-static/range {v17 .. v25}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 117964969
+    move-result-object v15
+
+    .line 117964970
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 117964973
+    move-result-object v17
+
+    .line 117964974
+    invoke-virtual/range {v17 .. v17}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 117964977
+    move-result-object v7
+
+    .line 117964978
+    invoke-static {v7, v12}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 117964981
+    const/16 v1, 0xa
+
+    .line 117964983
+    invoke-static {v7, v1}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 117964986
+    move-result-object v22
+
+    .line 117964987
+    const-string v23, "\n "
+
+    .line 117964989
+    const/16 v24, 0x0
+
+    .line 117964991
+    const/16 v26, 0x0
+
+    .line 117964993
+    const/16 v27, 0x0
+
+    .line 117964995
+    const/16 v29, 0x3e
+
+    .line 117964997
+    const/16 v30, 0x0
+
+    .line 117964999
+    const/4 v1, 0x0
+
+    .line 117965000
+    move-object/from16 v25, v1
+
+    .line 117965002
+    invoke-static/range {v22 .. v30}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 117965005
+    move-result-object v1
+
+    .line 117965006
+    new-instance v7, Ljava/lang/StringBuilder;
+
+    .line 117965008
+    move-object/from16 v17, v5
+
+    .line 117965010
+    const-string v5, "Debug\n "
+
+    .line 117965012
+    invoke-direct {v7, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 117965015
+    invoke-virtual {v7, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117965018
+    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 117965021
+    move-result-object v1
+
+    .line 117965022
+    invoke-static {v2, v1}, Lfe0/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 117965025
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 117965028
+    move-result-wide v19
+
+    .line 117965029
+    :try_start_e5
+    sget-object v1, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 117965031
+    invoke-direct {v8, v4, v3, v10, v11}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->buildRequestParams(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+
+    .line 117965034
+    move-result v1
+
+    .line 117965035
+    if-eqz v1, :cond_12f
+
+    .line 117965037
+    sget-object v1, Lbf/b;->a:Lbf/b;
+
+    .line 117965039
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 117965042
+    invoke-static {v0, v3, v4}, Lbf/b;->i(ILjava/lang/String;Ljava/lang/String;)V
+    :try_end_f5
+    .catchall {:try_start_e5 .. :try_end_f5} :catchall_124
+
+    .line 117965045
+    const/16 v1, 0x62
+
+    .line 117965047
+    if-ne v0, v1, :cond_115
+
+    .line 117965049
+    move-object/from16 v1, p0
+
+    .line 117965051
+    move-object v7, v2
+
+    .line 117965052
+    move/from16 v2, p1
+
+    .line 117965054
+    move-object/from16 v3, p4
+
+    .line 117965056
+    move-object/from16 v4, p3
+
+    .line 117965058
+    move-object/from16 v10, v17
+
+    .line 117965060
+    move-object/from16 v5, p6
+
+    .line 117965062
+    move-object/from16 v17, v6
+
+    .line 117965064
+    move-object/from16 v6, p7
+
+    .line 117965066
+    move-object/from16 v31, v7
+
+    .line 117965068
+    move-object/from16 v21, v14
+
+    .line 117965070
+    const/4 v14, 0x1
+
+    .line 117965071
+    move-object/from16 v7, p5
+
+    .line 117965073
+    :try_start_111
+    invoke-direct/range {v1 .. v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setPayCjContext(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 117965076
+    goto :goto_11e
+
+    .line 117965077
+    :cond_115
+    move-object/from16 v31, v2
+
+    .line 117965079
+    move-object/from16 v21, v14
+
+    .line 117965081
+    move-object/from16 v10, v17
+
+    .line 117965083
+    const/4 v14, 0x1
+
+    .line 117965084
+    move-object/from16 v17, v6
+
+    .line 117965086
+    :goto_11e
+    const-string v1, "from_switch_unify"
+
+    .line 117965088
+    invoke-direct {v8, v1, v0, v11}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->executeImpl(Ljava/lang/String;ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 117965091
+    return v14
+
+    .line 117965092
+    :catchall_124
+    move-exception v0
+
+    .line 117965093
+    move-object/from16 v31, v2
+
+    .line 117965095
+    move-object/from16 v21, v14
+
+    .line 117965097
+    move-object/from16 v10, v17
+
+    .line 117965099
+    const/4 v14, 0x1
+
+    .line 117965100
+    move-object/from16 v17, v6
+
+    .line 117965102
+    goto :goto_140
+
+    .line 117965103
+    :cond_12f
+    move-object/from16 v31, v2
+
+    .line 117965105
+    move-object/from16 v21, v14
+
+    .line 117965107
+    move-object/from16 v10, v17
+
+    .line 117965109
+    const/4 v14, 0x1
+
+    .line 117965110
+    move-object/from16 v17, v6
+
+    .line 117965112
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 117965114
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 117965117
+    move-result-object v0
+    :try_end_13e
+    .catchall {:try_start_111 .. :try_end_13e} :catchall_13f
+
+    .line 117965118
+    goto :goto_14a
+
+    .line 117965119
+    :catchall_13f
+    move-exception v0
+
+    .line 117965120
+    :goto_140
+    sget-object v1, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 117965122
+    invoke-static {v0}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 117965125
+    move-result-object v0
+
+    .line 117965126
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 117965129
+    move-result-object v0
+
+    .line 117965130
+    :goto_14a
+    invoke-static {v0}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    .line 117965133
+    move-result v1
+
+    .line 117965134
+    if-eqz v1, :cond_165
+
+    .line 117965136
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 117965138
+    const-string v2, "onSuccess\n "
+
+    .line 117965140
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 117965143
+    invoke-virtual {v1, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117965146
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 117965149
+    move-result-object v1
+
+    .line 117965150
+    move-object/from16 v2, v31
+
+    .line 117965152
+    invoke-static {v2, v1}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 117965155
+    const/4 v7, 0x1
+
+    .line 117965156
+    goto :goto_168
+
+    .line 117965157
+    :cond_165
+    move-object/from16 v2, v31
+
+    .line 117965159
+    const/4 v7, 0x0
+
+    .line 117965160
+    :goto_168
+    invoke-static {v0}, Lkotlin/Result;->exceptionOrNull-impl(Ljava/lang/Object;)Ljava/lang/Throwable;
+
+    .line 117965163
+    move-result-object v0
+
+    .line 117965164
+    if-eqz v0, :cond_175
+
+    .line 117965166
+    const-string v1, "onFailure"
+
+    .line 117965168
+    invoke-static {v2, v1, v0}, Lfe0/a;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 117965171
+    const/4 v7, 0x0
+
+    .line 117965172
+    goto :goto_176
+
+    .line 117965173
+    :cond_175
+    const/4 v0, 0x0
+
+    .line 117965174
+    :goto_176
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 117965177
+    move-result-wide v3
+
+    .line 117965178
+    sub-long v3, v3, v19
+
+    .line 117965180
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 117965182
+    const-string v5, "is_success: "
+
+    .line 117965184
+    invoke-direct {v1, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 117965187
+    invoke-virtual {v1, v7}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 117965190
+    const-string v5, ", duration: "
+
+    .line 117965192
+    invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117965195
+    invoke-virtual {v1, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 117965198
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 117965201
+    move-result-object v1
+
+    .line 117965202
+    invoke-static {v2, v1}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 117965205
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 117965207
+    sget-object v2, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 117965209
+    new-instance v5, Ljava/util/HashMap;
+
+    .line 117965211
+    invoke-direct {v5}, Ljava/util/HashMap;-><init>()V
+
+    .line 117965214
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 117965217
+    invoke-static {v10, v12, v12, v5}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 117965220
+    move-result-object v2
+
+    .line 117965221
+    const/4 v5, 0x5
+
+    .line 117965222
+    new-array v5, v5, [Lkotlin/Pair;
+
+    .line 117965224
+    const-string v6, "tag"
+
+    .line 117965226
+    invoke-static {v6, v10}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 117965229
+    move-result-object v6
+
+    .line 117965230
+    const/4 v10, 0x0
+
+    .line 117965231
+    aput-object v6, v5, v10
+
+    .line 117965233
+    const-string v6, "1"
+
+    .line 117965235
+    const-string v10, "0"
+
+    .line 117965237
+    invoke-static {v7, v6, v10}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->tf(ZLjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 117965240
+    move-result-object v6
+
+    .line 117965241
+    const-string v10, "is_success"
+
+    .line 117965243
+    invoke-static {v10, v6}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 117965246
+    move-result-object v6
+
+    .line 117965247
+    aput-object v6, v5, v14
+
+    .line 117965249
+    if-eqz v0, :cond_1c8
+
+    .line 117965251
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 117965254
+    move-result-object v6
+
+    .line 117965255
+    goto :goto_1c9
+
+    .line 117965256
+    :cond_1c8
+    const/4 v6, 0x0
+
+    .line 117965257
+    :goto_1c9
+    if-nez v6, :cond_1cc
+
+    .line 117965259
+    goto :goto_1cd
+
+    .line 117965260
+    :cond_1cc
+    move-object v12, v6
+
+    .line 117965261
+    :goto_1cd
+    const-string v6, "error_msg"
+
+    .line 117965263
+    invoke-static {v6, v12}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 117965266
+    move-result-object v6
+
+    .line 117965267
+    const/4 v10, 0x2
+
+    .line 117965268
+    aput-object v6, v5, v10
+
+    .line 117965270
+    const-string v6, "trace"
+
+    .line 117965272
+    invoke-static {v6, v15}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 117965275
+    move-result-object v6
+
+    .line 117965276
+    const/4 v10, 0x3
+
+    .line 117965277
+    aput-object v6, v5, v10
+
+    .line 117965279
+    const-string v6, "duration"
+
+    .line 117965281
+    invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 117965284
+    move-result-object v3
+
+    .line 117965285
+    invoke-static {v6, v3}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 117965288
+    move-result-object v3
+
+    .line 117965289
+    const/4 v4, 0x4
+
+    .line 117965290
+    aput-object v3, v5, v4
+
+    .line 117965292
+    invoke-static {v5}, Lkotlin/collections/MapsKt;->mapOf([Lkotlin/Pair;)Ljava/util/Map;
+
+    .line 117965295
+    move-result-object v3
+
+    .line 117965296
+    const-string v4, "cjpay_run_catch_result"
+
+    .line 117965298
+    invoke-static {v1, v2, v4, v3}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->l(Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 117965301
+    new-instance v1, Lcom/android/ttcjpaysdk/base/ktextension/g;
+
+    .line 117965303
+    if-nez v0, :cond_1fe
+
+    .line 117965305
+    new-instance v0, Ljava/lang/Throwable;
+
+    .line 117965307
+    invoke-direct {v0}, Ljava/lang/Throwable;-><init>()V
+
+    .line 117965310
+    :cond_1fe
+    xor-int/lit8 v1, v7, 0x1
+
+    .line 117965312
+    if-eqz v1, :cond_204
+
+    .line 117965314
+    move-object v12, v0
+
+    .line 117965315
+    goto :goto_205
+
+    .line 117965316
+    :cond_204
+    const/4 v12, 0x0
+
+    .line 117965317
+    :goto_205
+    if-eqz v12, :cond_254
+
+    .line 117965319
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 117965321
+    const-string v1, "papi_id:"
+
+    .line 117965323
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 117965326
+    invoke-virtual {v0, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117965329
+    const-string v1, " context:"
+
+    .line 117965331
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117965334
+    invoke-virtual/range {v17 .. v17}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 117965337
+    move-result-object v1
+
+    .line 117965338
+    instance-of v1, v1, Landroid/app/Activity;
+
+    .line 117965340
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 117965343
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 117965346
+    move-result-object v0
+
+    .line 117965347
+    sget-object v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 117965349
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 117965351
+    const-string v3, "\u5207\u7edf\u4e00\u6536\u94f6\u53f0\u5931\u8d25\uff1a"
+
+    .line 117965353
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 117965356
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117965359
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 117965362
+    move-result-object v0
+
+    .line 117965363
+    invoke-static {v1, v0}, Lfe0/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 117965366
+    iput-object v13, v8, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 117965368
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 117965371
+    move-result-object v0
+
+    .line 117965372
+    move-object/from16 v1, v21
+
+    .line 117965374
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 117965376
+    if-nez v11, :cond_243
+
+    .line 117965378
+    goto :goto_247
+
+    .line 117965379
+    :cond_243
+    move-object/from16 v1, p5
+
+    .line 117965381
+    iput-object v1, v11, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 117965383
+    :goto_247
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 117965386
+    move-result-object v0
+
+    .line 117965387
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 117965390
+    move-result-object v0
+
+    .line 117965391
+    move-object/from16 v1, p6
+
+    .line 117965393
+    invoke-static {v0, v1, v14, v12}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 117965396
+    :cond_254
+    :goto_254
+    const/4 v1, 0x0
+
+    .line 117965397
+    return v1
+.end method
+
+.method private final tryShowLynxKeepDialog(Lorg/json/JSONObject;Ljava/lang/String;I)V
+    .registers 8
+
+    .prologue
+    .line 50659328
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50659330
+    const/4 v1, 0x0
+
+    .line 50659331
+    if-eqz v0, :cond_a
+
+    .line 50659333
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 50659336
+    move-result-object v0
+
+    .line 50659337
+    goto :goto_b
+
+    .line 50659338
+    :cond_a
+    move-object v0, v1
+
+    .line 50659339
+    :goto_b
+    instance-of v2, v0, Landroid/app/Activity;
+
+    .line 50659341
+    if-eqz v2, :cond_12
+
+    .line 50659343
+    check-cast v0, Landroid/app/Activity;
+
+    .line 50659345
+    goto :goto_13
+
+    .line 50659346
+    :cond_12
+    move-object v0, v1
+
+    .line 50659347
+    :goto_13
+    if-eqz p1, :cond_1b
+
+    .line 50659349
+    const-string v1, "data"
+
+    .line 50659351
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50659354
+    move-result-object v1
+
+    .line 50659355
+    :cond_1b
+    if-eqz v0, :cond_5c
+
+    .line 50659357
+    sget-object p1, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayLynxStandardKeepActivity;->i:Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayLynxStandardKeepActivity$a;
+
+    .line 50659359
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50659362
+    invoke-static {p2, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50659365
+    invoke-virtual {p2}, Ljava/lang/String;->length()I
+
+    .line 50659368
+    move-result p1
+
+    .line 50659369
+    if-nez p1, :cond_2d
+
+    .line 50659371
+    const/4 p1, 0x1
+
+    .line 50659372
+    goto :goto_2e
+
+    .line 50659373
+    :cond_2d
+    const/4 p1, 0x0
+
+    .line 50659374
+    :goto_2e
+    if-eqz p1, :cond_31
+
+    .line 50659376
+    goto :goto_5c
+
+    .line 50659377
+    :cond_31
+    invoke-static {}, Lh9/a;->b()Lh9/a;
+
+    .line 50659380
+    move-result-object p1
+
+    .line 50659381
+    const-class v2, Lcom/android/ttcjpaysdk/base/ui/dialog/CJPayLynxStandardKeepActivity;
+
+    .line 50659383
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50659386
+    new-instance p1, Lh9/a$a;
+
+    .line 50659388
+    invoke-direct {p1, v2}, Lh9/a$a;-><init>(Ljava/lang/Class;)V
+
+    .line 50659391
+    iget-object v2, p1, Lh9/a$a;->b:Landroid/os/Bundle;
+
+    .line 50659393
+    const-string v3, "scheme"
+
+    .line 50659395
+    invoke-virtual {v2, v3, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50659398
+    invoke-static {v1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 50659401
+    move-result-object p2
+
+    .line 50659402
+    iget-object v1, p1, Lh9/a$a;->b:Landroid/os/Bundle;
+
+    .line 50659404
+    const-string v2, "init_data_str"
+
+    .line 50659406
+    invoke-virtual {v1, v2, p2}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50659409
+    iget-object p2, p1, Lh9/a$a;->b:Landroid/os/Bundle;
+
+    .line 50659411
+    const-string v1, "callback_id"
+
+    .line 50659413
+    invoke-virtual {p2, v1, p3}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+
+    .line 50659416
+    const/4 p2, -0x1
+
+    .line 50659417
+    invoke-virtual {p1, p2, v0}, Lh9/a$a;->a(ILandroid/content/Context;)Landroidx/fragment/app/Fragment;
+
+    .line 50659420
+    :cond_5c
+    :goto_5c
+    return-void
+.end method
+
+.method private final verifyBiometrics(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 11
+
+    .prologue
+    .line 33882112
+    if-eqz p1, :cond_41
+
+    .line 33882114
+    :try_start_2
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 33882116
+    invoke-direct {v0, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 33882119
+    const-string p1, "uid"
+
+    .line 33882121
+    invoke-virtual {v0, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882124
+    move-result-object v3
+
+    .line 33882125
+    const-string p1, "aid"
+
+    .line 33882127
+    invoke-virtual {v0, p1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33882130
+    move-result-object v4
+
+    .line 33882131
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 33882134
+    move-result-object p1
+
+    .line 33882135
+    const-class v0, Lcom/android/ttcjpaysdk/base/service/ICJPayFingerprintService;
+
+    .line 33882137
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 33882140
+    move-result-object p1
+
+    .line 33882141
+    move-object v1, p1
+
+    .line 33882142
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayFingerprintService;
+
+    .line 33882144
+    if-eqz v1, :cond_41
+
+    .line 33882146
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882148
+    const/4 v0, 0x0
+
+    .line 33882149
+    if-eqz p1, :cond_2d
+
+    .line 33882151
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33882154
+    move-result-object p1
+
+    .line 33882155
+    move-object v2, p1
+
+    .line 33882156
+    goto :goto_2e
+
+    .line 33882157
+    :cond_2d
+    move-object v2, v0
+
+    .line 33882158
+    :goto_2e
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882160
+    if-eqz p1, :cond_35
+
+    .line 33882162
+    iget-object v5, p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 33882164
+    goto :goto_36
+
+    .line 33882165
+    :cond_35
+    move-object v5, v0
+
+    .line 33882166
+    :goto_36
+    if-eqz p1, :cond_3c
+
+    .line 33882168
+    iget-object p1, p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 33882170
+    move-object v6, p1
+
+    .line 33882171
+    goto :goto_3d
+
+    .line 33882172
+    :cond_3c
+    move-object v6, v0
+
+    .line 33882173
+    :goto_3d
+    move-object v7, p2
+
+    .line 33882174
+    invoke-interface/range {v1 .. v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayFingerprintService;->verifyFingerprintWithUI(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    :try_end_41
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_41} :catch_41
+
+    .line 33882177
+    :catch_41
+    :cond_41
+    return-void
+.end method
+
+
+# virtual methods
+.method public final aliPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;)V
+    .registers 13
+
+    .prologue
+    .line 67436544
+    const/4 v0, 0x0
+
+    .line 67436545
+    invoke-static {p3, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 67436548
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 67436550
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436552
+    const-string v2, ""
+
+    .line 67436554
+    if-eqz v1, :cond_10
+
+    .line 67436556
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 67436558
+    if-nez v3, :cond_11
+
+    .line 67436560
+    :cond_10
+    move-object v3, v2
+
+    .line 67436561
+    :cond_11
+    if-eqz v1, :cond_19
+
+    .line 67436563
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 67436565
+    if-nez v1, :cond_18
+
+    .line 67436567
+    goto :goto_19
+
+    .line 67436568
+    :cond_18
+    move-object v2, v1
+
+    .line 67436569
+    :cond_19
+    :goto_19
+    const-string v1, "aliPay"
+
+    .line 67436571
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 67436574
+    move-result-object v0
+
+    .line 67436575
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 67436577
+    const-string v2, "cashier"
+
+    .line 67436579
+    invoke-virtual {v1, v2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 67436582
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 67436585
+    move-result-object v0
+
+    .line 67436586
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;
+
+    .line 67436588
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 67436591
+    move-result-object v0
+
+    .line 67436592
+    move-object v1, v0
+
+    .line 67436593
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;
+
+    .line 67436595
+    if-eqz v1, :cond_48
+
+    .line 67436597
+    const/4 v6, 0x0
+
+    .line 67436598
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 67436600
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436602
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436605
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 67436608
+    move-result-object v7
+
+    .line 67436609
+    move-object v2, p1
+
+    .line 67436610
+    move-object v3, p2
+
+    .line 67436611
+    move-object v4, p3
+
+    .line 67436612
+    move-object v5, p4
+
+    .line 67436613
+    invoke-interface/range {v1 .. v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService;->pay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lorg/json/JSONObject;)V
+
+    .line 67436616
+    :cond_48
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 67436619
+    return-void
+.end method
+
+.method public final aliPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;)V
+    .registers 14
+
+    .prologue
+    .line 84279296
+    const/4 v0, 0x0
+
+    .line 84279297
+    invoke-static {p3, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 84279300
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 84279302
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84279304
+    const-string v2, ""
+
+    .line 84279306
+    if-eqz v1, :cond_10
+
+    .line 84279308
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 84279310
+    if-nez v3, :cond_11
+
+    .line 84279312
+    :cond_10
+    move-object v3, v2
+
+    .line 84279313
+    :cond_11
+    if-eqz v1, :cond_19
+
+    .line 84279315
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 84279317
+    if-nez v1, :cond_18
+
+    .line 84279319
+    goto :goto_19
+
+    .line 84279320
+    :cond_18
+    move-object v2, v1
+
+    .line 84279321
+    :cond_19
+    :goto_19
+    const-string v1, "aliPay"
+
+    .line 84279323
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 84279326
+    move-result-object v0
+
+    .line 84279327
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 84279329
+    const-string v2, "cashier"
+
+    .line 84279331
+    invoke-virtual {v1, v2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 84279334
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 84279337
+    move-result-object v0
+
+    .line 84279338
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;
+
+    .line 84279340
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 84279343
+    move-result-object v0
+
+    .line 84279344
+    move-object v1, v0
+
+    .line 84279345
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;
+
+    .line 84279347
+    if-eqz v1, :cond_48
+
+    .line 84279349
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 84279351
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84279353
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84279356
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 84279359
+    move-result-object v7
+
+    .line 84279360
+    move-object v2, p1
+
+    .line 84279361
+    move-object v3, p2
+
+    .line 84279362
+    move-object v4, p3
+
+    .line 84279363
+    move-object v5, p4
+
+    .line 84279364
+    move-object v6, p5
+
+    .line 84279365
+    invoke-interface/range {v1 .. v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService;->pay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lorg/json/JSONObject;)V
+
+    .line 84279368
+    :cond_48
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 84279371
+    return-void
+.end method
+
+.method public final authAlipay(Landroid/app/Activity;Ljava/lang/String;ZLcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayAlipayAuthCallback;)V
+    .registers 7
+
+    .prologue
+    .line 67305472
+    invoke-static {p1, p2, p4}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 67305475
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 67305478
+    move-result-object v0
+
+    .line 67305479
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayAliPaymentService;
+
+    .line 67305481
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 67305484
+    move-result-object v0
+
+    .line 67305485
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayAlipayAuthService;
+
+    .line 67305487
+    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 67305490
+    move-result v1
+
+    .line 67305491
+    if-nez v1, :cond_1a
+
+    .line 67305493
+    if-eqz v0, :cond_1a
+
+    .line 67305495
+    invoke-interface {v0, p1, p2, p3, p4}, Lcom/android/ttcjpaysdk/base/service/ICJPayAlipayAuthService;->authAlipay(Landroid/app/Activity;Ljava/lang/String;ZLcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayAlipayAuthCallback;)V
+
+    .line 67305498
+    :cond_1a
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 67305501
+    return-void
+.end method
+
+.method public final bdPay(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 6
+
+    .prologue
+    .line 17170432
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 17170434
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170436
+    const-string v2, ""
+
+    .line 17170438
+    if-eqz v1, :cond_c
+
+    .line 17170440
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17170442
+    if-nez v3, :cond_d
+
+    .line 17170444
+    :cond_c
+    move-object v3, v2
+
+    .line 17170445
+    :cond_d
+    if-eqz v1, :cond_15
+
+    .line 17170447
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17170449
+    if-nez v1, :cond_14
+
+    .line 17170451
+    goto :goto_15
+
+    .line 17170452
+    :cond_14
+    move-object v2, v1
+
+    .line 17170453
+    :cond_15
+    :goto_15
+    const-string v1, "bdPay"
+
+    .line 17170455
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 17170458
+    move-result-object v0
+
+    .line 17170459
+    iput-object p1, v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 17170461
+    sget-object p1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 17170463
+    const-string v1, "cashier"
+
+    .line 17170465
+    invoke-virtual {p1, v1, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 17170468
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 17170471
+    move-result-object p1
+
+    .line 17170472
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->c()Ljava/lang/String;
+
+    .line 17170475
+    move-result-object v0
+
+    .line 17170476
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170478
+    const/4 v2, 0x0
+
+    .line 17170479
+    if-eqz v1, :cond_34
+
+    .line 17170481
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17170483
+    goto :goto_35
+
+    .line 17170484
+    :cond_34
+    move-object v1, v2
+
+    .line 17170485
+    :goto_35
+    const-string v3, "\u8ffd\u5149\u6536\u94f6\u53f0"
+
+    .line 17170487
+    invoke-direct {p0, v3, p1, v0, v1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->monitorCounterParams(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17170490
+    sget-object p1, Lbf/a;->a:Lbf/a;
+
+    .line 17170492
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170494
+    if-eqz v0, :cond_43
+
+    .line 17170496
+    iget-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17170498
+    goto :goto_44
+
+    .line 17170499
+    :cond_43
+    move-object v1, v2
+
+    .line 17170500
+    :goto_44
+    if-eqz v0, :cond_49
+
+    .line 17170502
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17170504
+    goto :goto_4a
+
+    .line 17170505
+    :cond_49
+    move-object v0, v2
+
+    .line 17170506
+    :goto_4a
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170509
+    invoke-static {v1, v0}, Lbf/a;->b(Ljava/lang/String;Ljava/lang/String;)Z
+
+    .line 17170512
+    move-result p1
+
+    .line 17170513
+    if-nez p1, :cond_58
+
+    .line 17170515
+    const-string p1, "caijing_cashdesk_request"
+
+    .line 17170517
+    invoke-static {p1}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 17170520
+    :cond_58
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170522
+    if-eqz p1, :cond_61
+
+    .line 17170524
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17170527
+    move-result-object p1
+
+    .line 17170528
+    goto :goto_62
+
+    .line 17170529
+    :cond_61
+    move-object p1, v2
+
+    .line 17170530
+    :goto_62
+    if-eqz p1, :cond_cb
+
+    .line 17170532
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170534
+    if-eqz v0, :cond_6b
+
+    .line 17170536
+    iget-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17170538
+    goto :goto_6c
+
+    .line 17170539
+    :cond_6b
+    move-object v1, v2
+
+    .line 17170540
+    :goto_6c
+    if-eqz v1, :cond_cb
+
+    .line 17170542
+    if-eqz v0, :cond_75
+
+    .line 17170544
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 17170547
+    move-result-object v0
+
+    .line 17170548
+    goto :goto_76
+
+    .line 17170549
+    :cond_75
+    move-object v0, v2
+
+    .line 17170550
+    :goto_76
+    if-nez v0, :cond_79
+
+    .line 17170552
+    goto :goto_cb
+
+    .line 17170553
+    :cond_79
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170555
+    if-eqz v0, :cond_80
+
+    .line 17170557
+    iget-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17170559
+    goto :goto_81
+
+    .line 17170560
+    :cond_80
+    move-object v1, v2
+
+    .line 17170561
+    :goto_81
+    if-eqz v1, :cond_ca
+
+    .line 17170563
+    if-eqz v0, :cond_91
+
+    .line 17170565
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17170567
+    if-eqz v0, :cond_91
+
+    .line 17170569
+    invoke-interface {v0}, Ljava/util/Map;->isEmpty()Z
+
+    .line 17170572
+    move-result v0
+
+    .line 17170573
+    const/4 v1, 0x1
+
+    .line 17170574
+    if-ne v0, v1, :cond_91
+
+    .line 17170576
+    goto :goto_92
+
+    .line 17170577
+    :cond_91
+    const/4 v1, 0x0
+
+    .line 17170578
+    :goto_92
+    if-eqz v1, :cond_95
+
+    .line 17170580
+    goto :goto_ca
+
+    .line 17170581
+    :cond_95
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170583
+    if-eqz v0, :cond_9c
+
+    .line 17170585
+    iget-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17170587
+    goto :goto_9d
+
+    .line 17170588
+    :cond_9c
+    move-object v1, v2
+
+    .line 17170589
+    :goto_9d
+    if-eqz v0, :cond_a1
+
+    .line 17170591
+    iget-object v2, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17170593
+    :cond_a1
+    invoke-static {v1, v2}, Lbf/a;->b(Ljava/lang/String;Ljava/lang/String;)Z
+
+    .line 17170596
+    move-result v0
+
+    .line 17170597
+    if-eqz v0, :cond_ad
+
+    .line 17170599
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170601
+    invoke-static {p1}, Lbf/a;->a(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)V
+
+    .line 17170604
+    goto :goto_d7
+
+    .line 17170605
+    :cond_ad
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17170608
+    move-result-object v0
+
+    .line 17170609
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayCounterService;
+
+    .line 17170611
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17170614
+    move-result-object v0
+
+    .line 17170615
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayCounterService;
+
+    .line 17170617
+    if-eqz v0, :cond_d7
+
+    .line 17170619
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17170621
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170623
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170626
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17170629
+    move-result-object v1
+
+    .line 17170630
+    invoke-interface {v0, p1, v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayCounterService;->startCJPayCheckoutCounterActivity(Landroid/content/Context;Lorg/json/JSONObject;)V
+
+    .line 17170633
+    goto :goto_d7
+
+    .line 17170634
+    :cond_ca
+    :goto_ca
+    return-void
+
+    .line 17170635
+    :cond_cb
+    :goto_cb
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17170638
+    move-result-object p1
+
+    .line 17170639
+    const/16 v0, 0x70
+
+    .line 17170641
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17170644
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17170647
+    :cond_d7
+    :goto_d7
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 17170650
+    return-void
+.end method
+
+.method public final bdPayForImRedPacket(Ljava/lang/String;)V
+    .registers 9
+
+    .prologue
+    .line 17235968
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 17235970
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17235972
+    const-string v2, ""
+
+    .line 17235974
+    if-eqz v1, :cond_c
+
+    .line 17235976
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17235978
+    if-nez v3, :cond_d
+
+    .line 17235980
+    :cond_c
+    move-object v3, v2
+
+    .line 17235981
+    :cond_d
+    if-eqz v1, :cond_13
+
+    .line 17235983
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17235985
+    if-nez v1, :cond_14
+
+    .line 17235987
+    :cond_13
+    move-object v1, v2
+
+    .line 17235988
+    :cond_14
+    const-string v4, "bdPayForImRedPacket"
+
+    .line 17235990
+    invoke-static {v0, v4, v3, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 17235993
+    move-result-object v0
+
+    .line 17235994
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 17235996
+    const-string v3, "cashier"
+
+    .line 17235998
+    invoke-virtual {v1, v3, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 17236001
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 17236004
+    move-result-object v0
+
+    .line 17236005
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->c()Ljava/lang/String;
+
+    .line 17236008
+    move-result-object v1
+
+    .line 17236009
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236011
+    const/4 v4, 0x0
+
+    .line 17236012
+    if-eqz v3, :cond_31
+
+    .line 17236014
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17236016
+    goto :goto_32
+
+    .line 17236017
+    :cond_31
+    move-object v3, v4
+
+    .line 17236018
+    :goto_32
+    const-string v5, "\u8ffd\u5149\u6536\u94f6\u53f0"
+
+    .line 17236020
+    invoke-direct {p0, v5, v0, v1, v3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->monitorCounterParams(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236023
+    sget-object v0, Lbf/a;->a:Lbf/a;
+
+    .line 17236025
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236027
+    if-eqz v1, :cond_40
+
+    .line 17236029
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17236031
+    goto :goto_41
+
+    .line 17236032
+    :cond_40
+    move-object v3, v4
+
+    .line 17236033
+    :goto_41
+    if-eqz v1, :cond_46
+
+    .line 17236035
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17236037
+    goto :goto_47
+
+    .line 17236038
+    :cond_46
+    move-object v1, v4
+
+    .line 17236039
+    :goto_47
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236042
+    invoke-static {v3, v1}, Lbf/a;->b(Ljava/lang/String;Ljava/lang/String;)Z
+
+    .line 17236045
+    move-result v0
+
+    .line 17236046
+    if-nez v0, :cond_55
+
+    .line 17236048
+    const-string v0, "caijing_cashdesk_request"
+
+    .line 17236050
+    invoke-static {v0}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 17236053
+    :cond_55
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236055
+    if-eqz v0, :cond_5e
+
+    .line 17236057
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17236060
+    move-result-object v0
+
+    .line 17236061
+    goto :goto_5f
+
+    .line 17236062
+    :cond_5e
+    move-object v0, v4
+
+    .line 17236063
+    :goto_5f
+    if-eqz v0, :cond_14f
+
+    .line 17236065
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236067
+    if-eqz v1, :cond_68
+
+    .line 17236069
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17236071
+    goto :goto_69
+
+    .line 17236072
+    :cond_68
+    move-object v3, v4
+
+    .line 17236073
+    :goto_69
+    if-eqz v3, :cond_14f
+
+    .line 17236075
+    if-eqz v1, :cond_72
+
+    .line 17236077
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 17236080
+    move-result-object v1
+
+    .line 17236081
+    goto :goto_73
+
+    .line 17236082
+    :cond_72
+    move-object v1, v4
+
+    .line 17236083
+    :goto_73
+    if-eqz v1, :cond_14f
+
+    .line 17236085
+    const/4 v1, 0x0
+
+    .line 17236086
+    const/4 v3, 0x1
+
+    .line 17236087
+    if-eqz p1, :cond_82
+
+    .line 17236089
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    .line 17236092
+    move-result v5
+
+    .line 17236093
+    if-nez v5, :cond_80
+
+    .line 17236095
+    goto :goto_82
+
+    .line 17236096
+    :cond_80
+    const/4 v5, 0x0
+
+    .line 17236097
+    goto :goto_83
+
+    .line 17236098
+    :cond_82
+    :goto_82
+    const/4 v5, 0x1
+
+    .line 17236099
+    :goto_83
+    if-eqz v5, :cond_87
+
+    .line 17236101
+    goto/16 :goto_14f
+
+    .line 17236103
+    :cond_87
+    iget-object v5, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236105
+    if-eqz v5, :cond_8e
+
+    .line 17236107
+    iget-object v6, v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17236109
+    goto :goto_8f
+
+    .line 17236110
+    :cond_8e
+    move-object v6, v4
+
+    .line 17236111
+    :goto_8f
+    if-eqz v6, :cond_14e
+
+    .line 17236113
+    if-eqz v5, :cond_9e
+
+    .line 17236115
+    iget-object v5, v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17236117
+    if-eqz v5, :cond_9e
+
+    .line 17236119
+    invoke-interface {v5}, Ljava/util/Map;->isEmpty()Z
+
+    .line 17236122
+    move-result v5
+
+    .line 17236123
+    if-ne v5, v3, :cond_9e
+
+    .line 17236125
+    const/4 v1, 0x1
+
+    .line 17236126
+    :cond_9e
+    if-eqz v1, :cond_a2
+
+    .line 17236128
+    goto/16 :goto_14e
+
+    .line 17236130
+    :cond_a2
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236132
+    if-eqz v1, :cond_a9
+
+    .line 17236134
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17236136
+    goto :goto_aa
+
+    .line 17236137
+    :cond_a9
+    move-object v3, v4
+
+    .line 17236138
+    :goto_aa
+    if-eqz v1, :cond_af
+
+    .line 17236140
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17236142
+    goto :goto_b0
+
+    .line 17236143
+    :cond_af
+    move-object v1, v4
+
+    .line 17236144
+    :goto_b0
+    invoke-static {v3, v1}, Lbf/a;->b(Ljava/lang/String;Ljava/lang/String;)Z
+
+    .line 17236147
+    move-result v1
+
+    .line 17236148
+    if-eqz v1, :cond_bd
+
+    .line 17236150
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236152
+    invoke-static {p1}, Lbf/a;->a(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)V
+
+    .line 17236155
+    goto/16 :goto_15b
+
+    .line 17236157
+    :cond_bd
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17236160
+    move-result-object v1
+
+    .line 17236161
+    const-class v3, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;
+
+    .line 17236163
+    invoke-virtual {v1, v3}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17236166
+    move-result-object v1
+
+    .line 17236167
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;
+
+    .line 17236169
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 17236172
+    move-result-object p1
+
+    .line 17236173
+    if-eqz p1, :cond_115
+
+    .line 17236175
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 17236177
+    invoke-direct {v3}, Lorg/json/JSONObject;-><init>()V
+
+    .line 17236180
+    const-string v5, "token"
+
+    .line 17236182
+    invoke-virtual {p1}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 17236185
+    move-result-object v6
+
+    .line 17236186
+    invoke-static {v3, v5, v6}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17236189
+    const-string v5, "merchantId"
+
+    .line 17236191
+    invoke-virtual {p1, v5}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17236194
+    move-result-object v5
+
+    .line 17236195
+    const-string v6, "mchid"
+
+    .line 17236197
+    invoke-static {v3, v6, v5}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17236200
+    const-string v5, "invoke_source"
+
+    .line 17236202
+    const-string v6, "0"
+
+    .line 17236204
+    invoke-static {v3, v5, v6}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17236207
+    invoke-virtual {v3}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 17236210
+    move-result-object v3
+
+    .line 17236211
+    invoke-static {v3, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 17236214
+    new-instance v2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;
+
+    .line 17236216
+    invoke-direct {v2, v4}, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;-><init>(Ljava/lang/Object;)V
+
+    .line 17236219
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->d(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/CJOuterPayBean;
+
+    .line 17236222
+    move-result-object v2
+
+    .line 17236223
+    if-nez v2, :cond_102
+
+    .line 17236225
+    goto :goto_104
+
+    .line 17236226
+    :cond_102
+    iput-object v3, v2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->payInfo:Ljava/lang/String;
+
+    .line 17236228
+    :goto_104
+    if-nez v2, :cond_107
+
+    .line 17236230
+    goto :goto_116
+
+    .line 17236231
+    :cond_107
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17236233
+    iget-object v5, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236235
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236238
+    invoke-static {v5}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->a(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236241
+    move-result-object v3
+
+    .line 17236242
+    iput-object v3, v2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236244
+    goto :goto_116
+
+    .line 17236245
+    :cond_115
+    move-object v2, v4
+
+    .line 17236246
+    :goto_116
+    if-eqz v2, :cond_13a
+
+    .line 17236248
+    sget-object p1, Lcom/android/ttcjpaysdk/base/ContainerWay;->SDK:Lcom/android/ttcjpaysdk/base/ContainerWay;
+
+    .line 17236250
+    iput-object p1, v2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->container_way:Lcom/android/ttcjpaysdk/base/ContainerWay;
+
+    .line 17236252
+    sget-object p1, Lcom/android/ttcjpaysdk/base/OuterSource;->NATIVE:Lcom/android/ttcjpaysdk/base/OuterSource;
+
+    .line 17236254
+    iget-object p1, p1, Lcom/android/ttcjpaysdk/base/OuterSource;->value:Ljava/lang/String;
+
+    .line 17236256
+    iput-object p1, v2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->pay_source:Ljava/lang/String;
+
+    .line 17236258
+    sget-object p1, Lcom/android/ttcjpaysdk/base/OuterSceneSource;->IMPAY:Lcom/android/ttcjpaysdk/base/OuterSceneSource;
+
+    .line 17236260
+    invoke-virtual {p1}, Ljava/lang/Enum;->name()Ljava/lang/String;
+
+    .line 17236263
+    move-result-object p1
+
+    .line 17236264
+    iput-object p1, v2, Lcom/android/ttcjpaysdk/base/CJOuterPayBean;->pay_scene_source:Ljava/lang/String;
+
+    .line 17236266
+    instance-of p1, v0, Landroid/app/Activity;
+
+    .line 17236268
+    if-eqz p1, :cond_131
+
+    .line 17236270
+    move-object v4, v0
+
+    .line 17236271
+    check-cast v4, Landroid/app/Activity;
+
+    .line 17236273
+    :cond_131
+    new-instance p1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$bdPayForImRedPacket$1;
+
+    .line 17236275
+    invoke-direct {p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$bdPayForImRedPacket$1;-><init>()V
+
+    .line 17236278
+    invoke-interface {v1, v4, v2, p1}, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;->startOuterProcessInvokeForInner(Landroid/app/Activity;Lcom/android/ttcjpaysdk/base/CJOuterPayBean;Lcom/android/ttcjpaysdk/base/service/CJOuterPayCallback;)V
+
+    .line 17236281
+    goto :goto_15b
+
+    .line 17236282
+    :cond_13a
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 17236284
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 17236286
+    const-string v2, "IM Native Pay Failed: params:"
+
+    .line 17236288
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17236291
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 17236294
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17236297
+    move-result-object p1
+
+    .line 17236298
+    invoke-static {v0, p1}, Lfe0/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236301
+    goto :goto_15b
+
+    .line 17236302
+    :cond_14e
+    :goto_14e
+    return-void
+
+    .line 17236303
+    :cond_14f
+    :goto_14f
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17236306
+    move-result-object p1
+
+    .line 17236307
+    const/16 v0, 0x70
+
+    .line 17236309
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17236312
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17236315
+    :goto_15b
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 17236318
+    return-void
+.end method
+
+.method public final closeSDK()V
+    .registers 1
+
+    .prologue
+    .line 65536
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseAll()V
+
+    .line 65539
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/h;->a()V
+
+    .line 65542
+    return-void
+.end method
+
+.method public final cloudUnionPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;)V
+    .registers 13
+
+    .prologue
+    .line 67436544
+    const/4 v0, 0x0
+
+    .line 67436545
+    invoke-static {p3, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 67436548
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 67436550
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436552
+    const-string v2, ""
+
+    .line 67436554
+    if-eqz v1, :cond_10
+
+    .line 67436556
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 67436558
+    if-nez v3, :cond_11
+
+    .line 67436560
+    :cond_10
+    move-object v3, v2
+
+    .line 67436561
+    :cond_11
+    if-eqz v1, :cond_19
+
+    .line 67436563
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 67436565
+    if-nez v1, :cond_18
+
+    .line 67436567
+    goto :goto_19
+
+    .line 67436568
+    :cond_18
+    move-object v2, v1
+
+    .line 67436569
+    :cond_19
+    :goto_19
+    const-string v1, "cloudUnionPay"
+
+    .line 67436571
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 67436574
+    move-result-object v0
+
+    .line 67436575
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 67436577
+    const-string v2, "cashier"
+
+    .line 67436579
+    invoke-virtual {v1, v2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 67436582
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 67436585
+    move-result-object v0
+
+    .line 67436586
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayCloudUnionPaymentService;
+
+    .line 67436588
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 67436591
+    move-result-object v0
+
+    .line 67436592
+    move-object v1, v0
+
+    .line 67436593
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayCloudUnionPaymentService;
+
+    .line 67436595
+    if-eqz v1, :cond_48
+
+    .line 67436597
+    const/4 v6, 0x0
+
+    .line 67436598
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 67436600
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436602
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436605
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 67436608
+    move-result-object v7
+
+    .line 67436609
+    move-object v2, p1
+
+    .line 67436610
+    move-object v3, p2
+
+    .line 67436611
+    move-object v4, p3
+
+    .line 67436612
+    move-object v5, p4
+
+    .line 67436613
+    invoke-interface/range {v1 .. v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService;->pay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lorg/json/JSONObject;)V
+
+    .line 67436616
+    :cond_48
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 67436619
+    return-void
+.end method
+
+.method public final cloudUnionPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 14
+
+    .prologue
+    .line 101056512
+    const/4 v0, 0x0
+
+    .line 101056513
+    invoke-static {p3, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 101056516
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 101056518
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 101056520
+    const-string v2, ""
+
+    .line 101056522
+    if-eqz v1, :cond_10
+
+    .line 101056524
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 101056526
+    if-nez v3, :cond_11
+
+    .line 101056528
+    :cond_10
+    move-object v3, v2
+
+    .line 101056529
+    :cond_11
+    if-eqz v1, :cond_19
+
+    .line 101056531
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 101056533
+    if-nez v1, :cond_18
+
+    .line 101056535
+    goto :goto_19
+
+    .line 101056536
+    :cond_18
+    move-object v2, v1
+
+    .line 101056537
+    :cond_19
+    :goto_19
+    const-string v1, "cloudUnionPay"
+
+    .line 101056539
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 101056542
+    move-result-object v0
+
+    .line 101056543
+    iput-object p6, v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 101056545
+    sget-object p6, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 101056547
+    const-string v1, "cashier"
+
+    .line 101056549
+    invoke-virtual {p6, v1, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 101056552
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 101056555
+    move-result-object p6
+
+    .line 101056556
+    const-class v0, Lcom/android/ttcjpaysdk/base/service/ICJPayCloudUnionPaymentService;
+
+    .line 101056558
+    invoke-virtual {p6, v0}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 101056561
+    move-result-object p6
+
+    .line 101056562
+    move-object v0, p6
+
+    .line 101056563
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayCloudUnionPaymentService;
+
+    .line 101056565
+    if-eqz v0, :cond_4a
+
+    .line 101056567
+    sget-object p6, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 101056569
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 101056571
+    invoke-virtual {p6}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 101056574
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 101056577
+    move-result-object v6
+
+    .line 101056578
+    move-object v1, p1
+
+    .line 101056579
+    move-object v2, p2
+
+    .line 101056580
+    move-object v3, p3
+
+    .line 101056581
+    move-object v4, p4
+
+    .line 101056582
+    move-object v5, p5
+
+    .line 101056583
+    invoke-interface/range {v0 .. v6}, Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService;->pay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lorg/json/JSONObject;)V
+
+    .line 101056586
+    :cond_4a
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 101056589
+    return-void
+.end method
+
+.method public final continueExecute(Ljava/lang/String;)Z
+    .registers 11
+
+    .prologue
+    .line 17235968
+    const/4 v0, 0x0
+
+    .line 17235969
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17235972
+    sget-object v1, Lbf/b;->a:Lbf/b;
+
+    .line 17235974
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17235977
+    const/16 v1, 0x14
+
+    .line 17235979
+    const-string v2, "continueExecute"
+
+    .line 17235981
+    invoke-static {v1, v2}, Lbf/b;->d(ILjava/lang/String;)V
+
+    .line 17235984
+    sget-object v3, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 17235986
+    iget-object v4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17235988
+    const-string v5, ""
+
+    .line 17235990
+    if-eqz v4, :cond_1c
+
+    .line 17235992
+    iget-object v6, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17235994
+    if-nez v6, :cond_1d
+
+    .line 17235996
+    :cond_1c
+    move-object v6, v5
+
+    .line 17235997
+    :cond_1d
+    if-eqz v4, :cond_25
+
+    .line 17235999
+    iget-object v4, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17236001
+    if-nez v4, :cond_24
+
+    .line 17236003
+    goto :goto_25
+
+    .line 17236004
+    :cond_24
+    move-object v5, v4
+
+    .line 17236005
+    :cond_25
+    :goto_25
+    invoke-static {v3, v2, v6, v5}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 17236008
+    move-result-object v2
+
+    .line 17236009
+    sget-object v3, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 17236011
+    const-string v4, "cashier"
+
+    .line 17236013
+    invoke-virtual {v3, v4, v2}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 17236016
+    invoke-virtual {v2, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->k(I)V
+
+    .line 17236019
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    .line 17236022
+    move-result v1
+
+    .line 17236023
+    const/4 v3, 0x1
+
+    .line 17236024
+    if-nez v1, :cond_3c
+
+    .line 17236026
+    const/4 v1, 0x1
+
+    .line 17236027
+    goto :goto_3d
+
+    .line 17236028
+    :cond_3c
+    const/4 v1, 0x0
+
+    .line 17236029
+    :goto_3d
+    if-eqz v1, :cond_40
+
+    .line 17236031
+    return v0
+
+    .line 17236032
+    :cond_40
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236034
+    if-nez v1, :cond_45
+
+    .line 17236036
+    goto :goto_47
+
+    .line 17236037
+    :cond_45
+    iput-boolean v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isContinuePay:Z
+
+    .line 17236039
+    :goto_47
+    if-nez v1, :cond_4a
+
+    .line 17236041
+    goto :goto_4c
+
+    .line 17236042
+    :cond_4a
+    iput-object p1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->papiID:Ljava/lang/String;
+
+    .line 17236044
+    :goto_4c
+    const-string p1, "merchant_id"
+
+    .line 17236046
+    const/4 v4, 0x0
+
+    .line 17236047
+    if-eqz v1, :cond_5c
+
+    .line 17236049
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17236051
+    if-eqz v1, :cond_5c
+
+    .line 17236053
+    invoke-interface {v1, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236056
+    move-result-object v1
+
+    .line 17236057
+    check-cast v1, Ljava/lang/String;
+
+    .line 17236059
+    goto :goto_5d
+
+    .line 17236060
+    :cond_5c
+    move-object v1, v4
+
+    .line 17236061
+    :goto_5d
+    iget-object v5, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236063
+    const-string v6, "app_id"
+
+    .line 17236065
+    if-eqz v5, :cond_6e
+
+    .line 17236067
+    iget-object v5, v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17236069
+    if-eqz v5, :cond_6e
+
+    .line 17236071
+    invoke-interface {v5, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236074
+    move-result-object v5
+
+    .line 17236075
+    check-cast v5, Ljava/lang/String;
+
+    .line 17236077
+    goto :goto_6f
+
+    .line 17236078
+    :cond_6e
+    move-object v5, v4
+
+    .line 17236079
+    :goto_6f
+    const-string v7, "wallet_rd_cashier_call_execute"
+
+    .line 17236081
+    invoke-static {v7, v1, v5}, Lbf/b;->b(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236084
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 17236086
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236089
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 17236092
+    move-result-object v1
+
+    .line 17236093
+    sget-object v5, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_INTEGRATED_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 17236095
+    iget-object v5, v5, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 17236097
+    invoke-static {v1, v5}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 17236100
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 17236102
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 17236105
+    move-result-object v1
+
+    .line 17236106
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->c()Ljava/lang/String;
+
+    .line 17236109
+    move-result-object v5
+
+    .line 17236110
+    iget-object v7, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236112
+    if-eqz v7, :cond_95
+
+    .line 17236114
+    iget-object v7, v7, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17236116
+    goto :goto_96
+
+    .line 17236117
+    :cond_95
+    move-object v7, v4
+
+    .line 17236118
+    :goto_96
+    const-string v8, "from_native_\u805a\u5408\u6536\u94f6\u53f0"
+
+    .line 17236120
+    invoke-direct {p0, v8, v1, v5, v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->monitorCounterParams(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236123
+    sget-object v1, Lbf/a;->a:Lbf/a;
+
+    .line 17236125
+    iget-object v5, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236127
+    if-eqz v5, :cond_a4
+
+    .line 17236129
+    iget-object v7, v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17236131
+    goto :goto_a5
+
+    .line 17236132
+    :cond_a4
+    move-object v7, v4
+
+    .line 17236133
+    :goto_a5
+    if-eqz v5, :cond_aa
+
+    .line 17236135
+    iget-object v5, v5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17236137
+    goto :goto_ab
+
+    .line 17236138
+    :cond_aa
+    move-object v5, v4
+
+    .line 17236139
+    :goto_ab
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236142
+    sget-object v1, Ln9/a;->a:Ln9/a;
+
+    .line 17236144
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236147
+    sget-object v1, Ln9/a;->b:Ljava/lang/String;
+
+    .line 17236149
+    invoke-static {v7, v5, v1}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 17236152
+    move-result-object v1
+
+    .line 17236153
+    iget-boolean v1, v1, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->isNeedDegrade:Z
+
+    .line 17236155
+    if-nez v1, :cond_c2
+
+    .line 17236157
+    const-string v1, "caijing_cashdesk_request"
+
+    .line 17236159
+    invoke-static {v1}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 17236162
+    :cond_c2
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236164
+    if-eqz v1, :cond_cb
+
+    .line 17236166
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17236169
+    move-result-object v1
+
+    .line 17236170
+    goto :goto_cc
+
+    .line 17236171
+    :cond_cb
+    move-object v1, v4
+
+    .line 17236172
+    :goto_cc
+    const/16 v5, 0x70
+
+    .line 17236174
+    const-string v7, "wallet_cashier_imp_failed"
+
+    .line 17236176
+    if-eqz v1, :cond_165
+
+    .line 17236178
+    iget-object v8, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236180
+    if-eqz v8, :cond_d9
+
+    .line 17236182
+    iget-object v8, v8, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->papiID:Ljava/lang/String;
+
+    .line 17236184
+    goto :goto_da
+
+    .line 17236185
+    :cond_d9
+    move-object v8, v4
+
+    .line 17236186
+    :goto_da
+    if-eqz v8, :cond_e5
+
+    .line 17236188
+    invoke-static {v8}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17236191
+    move-result v8
+
+    .line 17236192
+    if-eqz v8, :cond_e3
+
+    .line 17236194
+    goto :goto_e5
+
+    .line 17236195
+    :cond_e3
+    const/4 v8, 0x0
+
+    .line 17236196
+    goto :goto_e6
+
+    .line 17236197
+    :cond_e5
+    :goto_e5
+    const/4 v8, 0x1
+
+    .line 17236198
+    :goto_e6
+    if-nez v8, :cond_165
+
+    .line 17236200
+    iget-object v8, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236202
+    if-eqz v8, :cond_f1
+
+    .line 17236204
+    invoke-virtual {v8}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 17236207
+    move-result-object v8
+
+    .line 17236208
+    goto :goto_f2
+
+    .line 17236209
+    :cond_f1
+    move-object v8, v4
+
+    .line 17236210
+    :goto_f2
+    if-nez v8, :cond_f6
+
+    .line 17236212
+    goto/16 :goto_165
+
+    .line 17236214
+    :cond_f6
+    iget-object v8, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236216
+    if-eqz v8, :cond_fd
+
+    .line 17236218
+    iget-object v8, v8, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->papiID:Ljava/lang/String;
+
+    .line 17236220
+    goto :goto_fe
+
+    .line 17236221
+    :cond_fd
+    move-object v8, v4
+
+    .line 17236222
+    :goto_fe
+    if-eqz v8, :cond_109
+
+    .line 17236224
+    invoke-static {v8}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17236227
+    move-result v8
+
+    .line 17236228
+    if-eqz v8, :cond_107
+
+    .line 17236230
+    goto :goto_109
+
+    .line 17236231
+    :cond_107
+    const/4 v8, 0x0
+
+    .line 17236232
+    goto :goto_10a
+
+    .line 17236233
+    :cond_109
+    :goto_109
+    const/4 v8, 0x1
+
+    .line 17236234
+    :goto_10a
+    if-eqz v8, :cond_121
+
+    .line 17236236
+    const-string p1, "wallet_rd_illegal_execute_params"
+
+    .line 17236238
+    const-string v1, "papi_id params is null"
+
+    .line 17236240
+    invoke-static {p1, v1}, Lbf/b;->h(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236243
+    invoke-static {v7, v1}, Lbf/b;->h(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236246
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17236249
+    move-result-object p1
+
+    .line 17236250
+    invoke-virtual {p1, v5}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17236253
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17236256
+    return v0
+
+    .line 17236257
+    :cond_121
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236259
+    if-eqz v0, :cond_130
+
+    .line 17236261
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17236263
+    if-eqz v0, :cond_130
+
+    .line 17236265
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236268
+    move-result-object p1
+
+    .line 17236269
+    check-cast p1, Ljava/lang/String;
+
+    .line 17236271
+    goto :goto_131
+
+    .line 17236272
+    :cond_130
+    move-object p1, v4
+
+    .line 17236273
+    :goto_131
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236275
+    if-eqz v0, :cond_140
+
+    .line 17236277
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17236279
+    if-eqz v0, :cond_140
+
+    .line 17236281
+    invoke-interface {v0, v6}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17236284
+    move-result-object v0
+
+    .line 17236285
+    move-object v4, v0
+
+    .line 17236286
+    check-cast v4, Ljava/lang/String;
+
+    .line 17236288
+    :cond_140
+    const-string v0, "wallet_rd_cashier_call_execute_successfully"
+
+    .line 17236290
+    invoke-static {v0, p1, v4}, Lbf/b;->b(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236293
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17236296
+    move-result-object p1
+
+    .line 17236297
+    const-class v0, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 17236299
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17236302
+    move-result-object p1
+
+    .line 17236303
+    check-cast p1, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 17236305
+    if-eqz p1, :cond_163
+
+    .line 17236307
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17236309
+    iget-object v4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17236311
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17236314
+    invoke-static {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17236317
+    move-result-object v0
+
+    .line 17236318
+    const-string v4, "from_native"
+
+    .line 17236320
+    invoke-interface {p1, v1, v4, v0, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;->startNewCounterActivity(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 17236323
+    :cond_163
+    const/4 v0, 0x1
+
+    .line 17236324
+    goto :goto_174
+
+    .line 17236325
+    :cond_165
+    :goto_165
+    const-string p1, "continueExecute params illegal"
+
+    .line 17236327
+    invoke-static {v7, p1}, Lbf/b;->h(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17236330
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17236333
+    move-result-object p1
+
+    .line 17236334
+    invoke-virtual {p1, v5}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17236337
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17236340
+    :goto_174
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 17236343
+    return v0
+.end method
+
+.method public final doRefreshOnNetworkError()V
+    .registers 3
+
+    .prologue
+    .line 131072
+    sget-object v0, Lz7/b;->a:Lz7/b;
+
+    .line 131074
+    new-instance v1, Lh8/f1;
+
+    .line 131076
+    invoke-direct {v1}, Lh8/f1;-><init>()V
+
+    .line 131079
+    invoke-virtual {v0, v1}, Lz7/b;->a(Lz7/a;)V
+
+    .line 131082
+    return-void
+.end method
+
+.method public final execute()V
+    .registers 11
+
+    .prologue
+    .line 262144
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 262146
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 262148
+    const-string v2, ""
+
+    .line 262150
+    if-eqz v1, :cond_c
+
+    .line 262152
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 262154
+    if-nez v3, :cond_d
+
+    .line 262156
+    :cond_c
+    move-object v3, v2
+
+    .line 262157
+    :cond_d
+    if-eqz v1, :cond_15
+
+    .line 262159
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 262161
+    if-nez v1, :cond_14
+
+    .line 262163
+    goto :goto_15
+
+    .line 262164
+    :cond_14
+    move-object v2, v1
+
+    .line 262165
+    :cond_15
+    :goto_15
+    const-string v1, "execute_20"
+
+    .line 262167
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 262170
+    move-result-object v6
+
+    .line 262171
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 262174
+    move-result-object v0
+
+    .line 262175
+    iput-object v6, v0, Lcom/android/ttcjpaysdk/base/c;->G:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 262177
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 262179
+    const-string v1, "cashier"
+
+    .line 262181
+    invoke-virtual {v0, v1, v6}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 262184
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 262186
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 262189
+    const/16 v0, 0x14
+
+    .line 262191
+    const-string v1, "execute"
+
+    .line 262193
+    invoke-static {v0, v1}, Lbf/b;->d(ILjava/lang/String;)V
+
+    .line 262196
+    const-string v5, "from_native"
+
+    .line 262198
+    const/4 v7, 0x0
+
+    .line 262199
+    const/4 v8, 0x4
+
+    .line 262200
+    const/4 v9, 0x0
+
+    .line 262201
+    move-object v4, p0
+
+    .line 262202
+    invoke-static/range {v4 .. v9}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->execute$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Object;)V
+
+    .line 262205
+    return-void
+.end method
+
+.method public final executeAggregatePayment(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 5
+
+    .prologue
+    .line 67174400
+    invoke-static {p2, p3, p4}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 67174403
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->execute()V
+
+    .line 67174406
+    return-void
+.end method
+
+.method public final executeCloseAndCallback(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;)V
+    .registers 5
+
+    .prologue
+    .line 50528256
+    invoke-static {p1, p2, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50528259
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 50528262
+    move-result-object p2
+
+    .line 50528263
+    const-class v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 50528265
+    invoke-virtual {p2, v0}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 50528268
+    move-result-object p2
+
+    .line 50528269
+    check-cast p2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 50528271
+    if-nez p2, :cond_12
+
+    .line 50528273
+    return-void
+
+    .line 50528274
+    :cond_12
+    invoke-interface {p2, p1, p3}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->handleCloseCallback(Landroid/content/Context;Lorg/json/JSONObject;)V
+
+    .line 50528277
+    return-void
+.end method
+
+.method public final executeWithdraw()V
+    .registers 8
+
+    .prologue
+    .line 458752
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 458754
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458756
+    const-string v2, ""
+
+    .line 458758
+    if-eqz v1, :cond_c
+
+    .line 458760
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458762
+    if-nez v3, :cond_d
+
+    .line 458764
+    :cond_c
+    move-object v3, v2
+
+    .line 458765
+    :cond_d
+    if-eqz v1, :cond_13
+
+    .line 458767
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458769
+    if-nez v1, :cond_14
+
+    .line 458771
+    :cond_13
+    move-object v1, v2
+
+    .line 458772
+    :cond_14
+    const-string v4, "executeWithdraw"
+
+    .line 458774
+    invoke-static {v0, v4, v3, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 458777
+    move-result-object v0
+
+    .line 458778
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 458781
+    move-result-object v1
+
+    .line 458782
+    iput-object v0, v1, Lcom/android/ttcjpaysdk/base/c;->G:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 458784
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker;->b:Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;
+
+    .line 458786
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458789
+    const-string v0, "wallet_rd_common_sdk_start"
+
+    .line 458791
+    const-string v1, "balance_withdraw"
+
+    .line 458793
+    invoke-static {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 458796
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 458798
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458801
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 458804
+    move-result-object v0
+
+    .line 458805
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_WITHDRAW_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 458807
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 458809
+    invoke-static {v0, v3}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 458812
+    sget-object v0, Lbf/a;->a:Lbf/a;
+
+    .line 458814
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458816
+    const/4 v4, 0x0
+
+    .line 458817
+    if-eqz v3, :cond_46
+
+    .line 458819
+    iget-object v5, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458821
+    goto :goto_47
+
+    .line 458822
+    :cond_46
+    move-object v5, v4
+
+    .line 458823
+    :goto_47
+    if-eqz v3, :cond_4c
+
+    .line 458825
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458827
+    goto :goto_4d
+
+    .line 458828
+    :cond_4c
+    move-object v3, v4
+
+    .line 458829
+    :goto_4d
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458832
+    sget-object v0, Ln9/a;->a:Ln9/a;
+
+    .line 458834
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458837
+    sget-object v0, Ln9/a;->d:Ljava/lang/String;
+
+    .line 458839
+    invoke-static {v5, v3, v0}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 458842
+    move-result-object v3
+
+    .line 458843
+    iget-boolean v3, v3, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->isNeedDegrade:Z
+
+    .line 458845
+    if-eqz v3, :cond_f1
+
+    .line 458847
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458849
+    if-nez v1, :cond_65
+
+    .line 458851
+    goto/16 :goto_16e
+
+    .line 458853
+    :cond_65
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458855
+    iget-object v4, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458857
+    invoke-static {v3, v4, v0}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 458860
+    move-result-object v0
+
+    .line 458861
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 458863
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->l()Ljava/lang/String;
+
+    .line 458866
+    move-result-object v4
+
+    .line 458867
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 458870
+    const-string v4, "/cashdesk_withdraw?risk_info="
+
+    .line 458872
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458875
+    :try_start_7b
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 458878
+    move-result-object v4
+
+    .line 458879
+    const-string v5, "business_id"
+
+    .line 458881
+    const-string v6, "25"
+
+    .line 458883
+    invoke-interface {v4, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 458886
+    new-instance v5, Lorg/json/JSONObject;
+
+    .line 458888
+    invoke-direct {v5, v4}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+
+    .line 458891
+    invoke-virtual {v5}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 458894
+    move-result-object v4
+
+    .line 458895
+    invoke-virtual {v4}, Ljava/lang/String;->getBytes()[B
+
+    .line 458898
+    move-result-object v4
+
+    .line 458899
+    const/4 v5, 0x2
+
+    .line 458900
+    invoke-static {v4, v5}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
+
+    .line 458903
+    move-result-object v4
+
+    .line 458904
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :try_end_9b
+    .catch Ljava/lang/Exception; {:try_start_7b .. :try_end_9b} :catch_9c
+
+    .line 458907
+    goto :goto_9f
+
+    .line 458908
+    :catch_9c
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458911
+    :goto_9f
+    const-string v2, "&payment_type=balancewithdraw&app_id="
+
+    .line 458913
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458916
+    iget-object v2, v0, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->appId:Ljava/lang/String;
+
+    .line 458918
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458921
+    const-string v2, "&product_code=withdraw&merchant_id="
+
+    .line 458923
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458926
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->merchantId:Ljava/lang/String;
+
+    .line 458928
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458931
+    const-string v0, "&is_downgrade=true"
+
+    .line 458933
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458936
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 458939
+    move-result-object v0
+
+    .line 458940
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 458942
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 458945
+    move-result-object v0
+
+    .line 458946
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 458948
+    if-eqz v0, :cond_e6
+
+    .line 458950
+    new-instance v2, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458952
+    invoke-direct {v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 458955
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 458958
+    move-result-object v4
+
+    .line 458959
+    invoke-virtual {v2, v4}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458962
+    move-result-object v2
+
+    .line 458963
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 458966
+    move-result-object v3
+
+    .line 458967
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458970
+    move-result-object v2
+
+    .line 458971
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->f(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 458974
+    move-result-object v3
+
+    .line 458975
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458978
+    move-result-object v2
+
+    .line 458979
+    invoke-interface {v0, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 458982
+    :cond_e6
+    iget-object v0, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458984
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458986
+    const-string v2, "wallet_tixian_downgrade_h5"
+
+    .line 458988
+    invoke-static {v2, v0, v1}, Lbf/a;->c(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 458991
+    goto/16 :goto_16e
+
+    .line 458993
+    :cond_f1
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458995
+    if-eqz v0, :cond_fa
+
+    .line 458997
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 459000
+    move-result-object v0
+
+    .line 459001
+    goto :goto_fb
+
+    .line 459002
+    :cond_fa
+    move-object v0, v4
+
+    .line 459003
+    :goto_fb
+    if-eqz v0, :cond_139
+
+    .line 459005
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->c()Ljava/lang/String;
+
+    .line 459008
+    move-result-object v2
+
+    .line 459009
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 459012
+    move-result v2
+
+    .line 459013
+    if-nez v2, :cond_139
+
+    .line 459015
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 459018
+    move-result-object v2
+
+    .line 459019
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 459022
+    move-result v2
+
+    .line 459023
+    if-nez v2, :cond_139
+
+    .line 459025
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 459027
+    if-eqz v2, :cond_119
+
+    .line 459029
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 459032
+    move-result-object v4
+
+    .line 459033
+    :cond_119
+    if-nez v4, :cond_11c
+
+    .line 459035
+    goto :goto_139
+
+    .line 459036
+    :cond_11c
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 459039
+    move-result-object v1
+
+    .line 459040
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayWithdrawService;
+
+    .line 459042
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 459045
+    move-result-object v1
+
+    .line 459046
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayWithdrawService;
+
+    .line 459048
+    if-eqz v1, :cond_169
+
+    .line 459050
+    sget-object v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 459052
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 459054
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 459057
+    invoke-static {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 459060
+    move-result-object v2
+
+    .line 459061
+    invoke-interface {v1, v0, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayWithdrawService;->startCJPayWithdrawActivity(Landroid/content/Context;Lorg/json/JSONObject;)V
+
+    .line 459064
+    goto :goto_169
+
+    .line 459065
+    :cond_139
+    :goto_139
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 459068
+    move-result-object v0
+
+    .line 459069
+    const/16 v2, 0x70
+
+    .line 459071
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 459074
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 459077
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 459080
+    move-result-object v0
+
+    .line 459081
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 459084
+    move-result-object v0
+
+    .line 459085
+    const/4 v3, 0x1
+
+    .line 459086
+    new-array v3, v3, [Lkotlin/Pair;
+
+    .line 459088
+    const-string v4, "tracker_pay_result"
+
+    .line 459090
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 459093
+    move-result-object v2
+
+    .line 459094
+    invoke-static {v4, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 459097
+    move-result-object v2
+
+    .line 459098
+    const/4 v4, 0x0
+
+    .line 459099
+    aput-object v2, v3, v4
+
+    .line 459101
+    invoke-static {v3}, Lkotlin/collections/MapsKt;->hashMapOf([Lkotlin/Pair;)Ljava/util/HashMap;
+
+    .line 459104
+    move-result-object v2
+
+    .line 459105
+    invoke-virtual {v0, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->b(Ljava/util/Map;)V
+
+    .line 459108
+    const-string v0, "wallet_rd_common_sdk_end"
+
+    .line 459110
+    invoke-static {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 459113
+    :cond_169
+    :goto_169
+    const-string v0, "caijing_cashdesk_request"
+
+    .line 459115
+    invoke-static {v0}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 459118
+    :goto_16e
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 459121
+    return-void
+.end method
+
+.method public final externalBizReport(Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Lorg/json/JSONObject;)V
+    .registers 8
+
+    .prologue
+    .line 84017152
+    invoke-static {p1, p2, p5}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 84017155
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker;->b:Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;
+
+    .line 84017157
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84017160
+    invoke-static/range {p1 .. p6}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->a(Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;Lorg/json/JSONObject;)V
+
+    .line 84017163
+    return-void
+.end method
+
+.method public final fastPay(I)V
+    .registers 11
+
+    .prologue
+    .line 17170432
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170434
+    const/4 v1, 0x0
+
+    .line 17170435
+    if-eqz v0, :cond_b
+
+    .line 17170437
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17170440
+    move-result-object v0
+
+    .line 17170441
+    move-object v3, v0
+
+    .line 17170442
+    goto :goto_c
+
+    .line 17170443
+    :cond_b
+    move-object v3, v1
+
+    .line 17170444
+    :goto_c
+    const/16 v0, 0x70
+
+    .line 17170446
+    if-eqz v3, :cond_8f
+
+    .line 17170448
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170450
+    if-eqz v2, :cond_17
+
+    .line 17170452
+    iget-object v4, v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17170454
+    goto :goto_18
+
+    .line 17170455
+    :cond_17
+    move-object v4, v1
+
+    .line 17170456
+    :goto_18
+    if-eqz v4, :cond_8f
+
+    .line 17170458
+    if-eqz v2, :cond_21
+
+    .line 17170460
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 17170463
+    move-result-object v2
+
+    .line 17170464
+    goto :goto_22
+
+    .line 17170465
+    :cond_21
+    move-object v2, v1
+
+    .line 17170466
+    :goto_22
+    if-nez v2, :cond_25
+
+    .line 17170468
+    goto :goto_8f
+
+    .line 17170469
+    :cond_25
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170471
+    const/4 v4, 0x0
+
+    .line 17170472
+    const/4 v5, 0x1
+
+    .line 17170473
+    if-eqz v2, :cond_38
+
+    .line 17170475
+    iget-object v2, v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17170477
+    if-eqz v2, :cond_38
+
+    .line 17170479
+    invoke-interface {v2}, Ljava/util/Map;->isEmpty()Z
+
+    .line 17170482
+    move-result v2
+
+    .line 17170483
+    xor-int/2addr v2, v5
+
+    .line 17170484
+    if-nez v2, :cond_38
+
+    .line 17170486
+    const/4 v2, 0x1
+
+    .line 17170487
+    goto :goto_39
+
+    .line 17170488
+    :cond_38
+    const/4 v2, 0x0
+
+    .line 17170489
+    :goto_39
+    if-eqz v2, :cond_64
+
+    .line 17170491
+    sget-object p1, Lbf/b;->a:Lbf/b;
+
+    .line 17170493
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170496
+    new-instance p1, Lorg/json/JSONObject;
+
+    .line 17170498
+    invoke-direct {p1}, Lorg/json/JSONObject;-><init>()V
+
+    .line 17170501
+    :try_start_45
+    const-string v1, "params_for_special"
+
+    .line 17170503
+    const-string v2, "tppp"
+
+    .line 17170505
+    invoke-virtual {p1, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_4c
+    .catch Ljava/lang/Exception; {:try_start_45 .. :try_end_4c} :catch_4c
+
+    .line 17170508
+    :catch_4c
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17170511
+    move-result-object v1
+
+    .line 17170512
+    new-array v2, v5, [Lorg/json/JSONObject;
+
+    .line 17170514
+    aput-object p1, v2, v4
+
+    .line 17170516
+    const-string p1, "wallet_rd_illegal_execute_params"
+
+    .line 17170518
+    invoke-virtual {v1, p1, v2}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+
+    .line 17170521
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17170524
+    move-result-object p1
+
+    .line 17170525
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17170528
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17170531
+    return-void
+
+    .line 17170532
+    :cond_64
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17170535
+    move-result-object v0
+
+    .line 17170536
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 17170538
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17170541
+    move-result-object v0
+
+    .line 17170542
+    move-object v2, v0
+
+    .line 17170543
+    check-cast v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 17170545
+    if-eqz v2, :cond_8e
+
+    .line 17170547
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170549
+    if-eqz v0, :cond_79
+
+    .line 17170551
+    iget-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17170553
+    :cond_79
+    move-object v4, v1
+
+    .line 17170554
+    const-string v5, "bytepay"
+
+    .line 17170556
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17170558
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170561
+    invoke-static {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17170564
+    move-result-object v7
+
+    .line 17170565
+    new-instance v8, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$fastPay$1;
+
+    .line 17170567
+    invoke-direct {v8, p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$fastPay$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;)V
+
+    .line 17170570
+    move v6, p1
+
+    .line 17170571
+    invoke-interface/range {v2 .. v8}, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;->fastPay(Landroid/content/Context;Ljava/util/Map;Ljava/lang/String;ILorg/json/JSONObject;Lcom/android/ttcjpaysdk/base/service/IFastPayFailureCallback;)V
+
+    .line 17170574
+    :cond_8e
+    return-void
+
+    .line 17170575
+    :cond_8f
+    :goto_8f
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17170578
+    move-result-object p1
+
+    .line 17170579
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17170582
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17170585
+    return-void
+.end method
+
+.method public final fastPayHideLoading()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 196611
+    move-result-object v0
+
+    .line 196612
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 196614
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 196617
+    move-result-object v0
+
+    .line 196618
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 196620
+    if-eqz v0, :cond_11
+
+    .line 196622
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;->fastPayHideLoading()V
+
+    .line 196625
+    :cond_11
+    return-void
+.end method
+
+.method public final fastPayOnlySendRequest()V
+    .registers 7
+
+    .prologue
+    .line 393216
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 393218
+    const/4 v1, 0x0
+
+    .line 393219
+    if-eqz v0, :cond_a
+
+    .line 393221
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 393224
+    move-result-object v0
+
+    .line 393225
+    goto :goto_b
+
+    .line 393226
+    :cond_a
+    move-object v0, v1
+
+    .line 393227
+    :goto_b
+    const/16 v2, 0x70
+
+    .line 393229
+    if-eqz v0, :cond_7b
+
+    .line 393231
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 393233
+    if-eqz v0, :cond_16
+
+    .line 393235
+    iget-object v3, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 393237
+    goto :goto_17
+
+    .line 393238
+    :cond_16
+    move-object v3, v1
+
+    .line 393239
+    :goto_17
+    if-eqz v3, :cond_7b
+
+    .line 393241
+    if-eqz v0, :cond_20
+
+    .line 393243
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 393246
+    move-result-object v0
+
+    .line 393247
+    goto :goto_21
+
+    .line 393248
+    :cond_20
+    move-object v0, v1
+
+    .line 393249
+    :goto_21
+    if-nez v0, :cond_24
+
+    .line 393251
+    goto :goto_7b
+
+    .line 393252
+    :cond_24
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 393254
+    const/4 v3, 0x0
+
+    .line 393255
+    const/4 v4, 0x1
+
+    .line 393256
+    if-eqz v0, :cond_37
+
+    .line 393258
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 393260
+    if-eqz v0, :cond_37
+
+    .line 393262
+    invoke-interface {v0}, Ljava/util/Map;->isEmpty()Z
+
+    .line 393265
+    move-result v0
+
+    .line 393266
+    xor-int/2addr v0, v4
+
+    .line 393267
+    if-nez v0, :cond_37
+
+    .line 393269
+    const/4 v0, 0x1
+
+    .line 393270
+    goto :goto_38
+
+    .line 393271
+    :cond_37
+    const/4 v0, 0x0
+
+    .line 393272
+    :goto_38
+    if-eqz v0, :cond_63
+
+    .line 393274
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 393276
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 393279
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 393281
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    .line 393284
+    :try_start_44
+    const-string v1, "params_for_special"
+
+    .line 393286
+    const-string v5, "tppp"
+
+    .line 393288
+    invoke-virtual {v0, v1, v5}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_4b
+    .catch Ljava/lang/Exception; {:try_start_44 .. :try_end_4b} :catch_4b
+
+    .line 393291
+    :catch_4b
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 393294
+    move-result-object v1
+
+    .line 393295
+    new-array v4, v4, [Lorg/json/JSONObject;
+
+    .line 393297
+    aput-object v0, v4, v3
+
+    .line 393299
+    const-string v0, "wallet_rd_illegal_execute_params"
+
+    .line 393301
+    invoke-virtual {v1, v0, v4}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+
+    .line 393304
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 393307
+    move-result-object v0
+
+    .line 393308
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 393311
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 393314
+    return-void
+
+    .line 393315
+    :cond_63
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 393318
+    move-result-object v0
+
+    .line 393319
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 393321
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 393324
+    move-result-object v0
+
+    .line 393325
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 393327
+    if-eqz v0, :cond_7a
+
+    .line 393329
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 393331
+    if-eqz v2, :cond_77
+
+    .line 393333
+    iget-object v1, v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 393335
+    :cond_77
+    invoke-interface {v0, v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;->fastPayOnlySendRequest(Ljava/util/Map;)V
+
+    .line 393338
+    :cond_7a
+    return-void
+
+    .line 393339
+    :cond_7b
+    :goto_7b
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 393342
+    move-result-object v0
+
+    .line 393343
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 393346
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 393349
+    return-void
+.end method
+
+.method public final fastPayShowLoading(I)V
+    .registers 11
+
+    .prologue
+    .line 17104896
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104898
+    const/4 v1, 0x0
+
+    .line 17104899
+    if-eqz v0, :cond_b
+
+    .line 17104901
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17104904
+    move-result-object v0
+
+    .line 17104905
+    move-object v3, v0
+
+    .line 17104906
+    goto :goto_c
+
+    .line 17104907
+    :cond_b
+    move-object v3, v1
+
+    .line 17104908
+    :goto_c
+    if-nez v3, :cond_1b
+
+    .line 17104910
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17104913
+    move-result-object p1
+
+    .line 17104914
+    const/16 v0, 0x70
+
+    .line 17104916
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17104919
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17104922
+    return-void
+
+    .line 17104923
+    :cond_1b
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17104926
+    move-result-object v0
+
+    .line 17104927
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 17104929
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17104932
+    move-result-object v0
+
+    .line 17104933
+    move-object v2, v0
+
+    .line 17104934
+    check-cast v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;
+
+    .line 17104936
+    if-eqz v2, :cond_45
+
+    .line 17104938
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104940
+    if-eqz v0, :cond_30
+
+    .line 17104942
+    iget-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 17104944
+    :cond_30
+    move-object v4, v1
+
+    .line 17104945
+    const-string v5, "bytepay"
+
+    .line 17104947
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17104949
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104952
+    invoke-static {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17104955
+    move-result-object v7
+
+    .line 17104956
+    new-instance v8, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$fastPayShowLoading$1;
+
+    .line 17104958
+    invoke-direct {v8, p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$fastPayShowLoading$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;)V
+
+    .line 17104961
+    move v6, p1
+
+    .line 17104962
+    invoke-interface/range {v2 .. v8}, Lcom/android/ttcjpaysdk/base/service/ICJPayFastPayService;->fastPayShowLoading(Landroid/content/Context;Ljava/util/Map;Ljava/lang/String;ILorg/json/JSONObject;Lcom/android/ttcjpaysdk/base/service/IFastPayFailureCallback;)V
+
+    .line 17104965
+    :cond_45
+    return-void
+.end method
+
+.method public final getBioType()Ljava/lang/String;
+    .registers 3
+
+    .prologue
+    .line 196608
+    sget-object v0, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->a:Ljava/lang/String;
+
+    .line 196610
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->applicationContext:Landroid/content/Context;
+
+    .line 196612
+    const/4 v1, 0x0
+
+    .line 196613
+    invoke-static {v0, v1}, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->T(Landroid/content/Context;Z)Z
+
+    .line 196616
+    move-result v0
+
+    .line 196617
+    invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 196620
+    move-result-object v0
+
+    .line 196621
+    const-string v1, ""
+
+    .line 196623
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 196626
+    return-object v0
+.end method
+
+.method public final getCJPayInfo(Ljava/util/HashMap;)Lorg/json/JSONObject;
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/HashMap<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)",
+            "Lorg/json/JSONObject;"
+        }
+    .end annotation
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17039364
+    new-instance p1, Lorg/json/JSONObject;
+
+    .line 17039366
+    invoke-direct {p1}, Lorg/json/JSONObject;-><init>()V
+
+    .line 17039369
+    invoke-static {}, Laa/h;->c()Lorg/json/JSONObject;
+
+    .line 17039372
+    move-result-object v1
+
+    .line 17039373
+    const-string v2, "risk_info"
+
+    .line 17039375
+    invoke-static {p1, v2, v1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17039378
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->applicationContext:Landroid/content/Context;
+
+    .line 17039380
+    if-eqz v1, :cond_1d
+
+    .line 17039382
+    invoke-static {v1, v0}, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->T(Landroid/content/Context;Z)Z
+
+    .line 17039385
+    move-result v1
+
+    .line 17039386
+    if-eqz v1, :cond_1d
+
+    .line 17039388
+    const/4 v0, 0x1
+
+    .line 17039389
+    :cond_1d
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 17039392
+    move-result-object v0
+
+    .line 17039393
+    const-string v1, "bio_type"
+
+    .line 17039395
+    invoke-static {p1, v1, v0}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17039398
+    return-object p1
+.end method
+
+.method public final getCJPayXBridgeMethods()Ljava/util/Map;
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Class<",
+            "+",
+            "Ljava/lang/Object;",
+            ">;>;"
+        }
+    .end annotation
+
+    .prologue
+    .line 262144
+    new-instance v0, Ljava/util/LinkedHashMap;
+
+    .line 262146
+    invoke-direct {v0}, Ljava/util/LinkedHashMap;-><init>()V
+
+    .line 262149
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 262152
+    move-result-object v1
+
+    .line 262153
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 262155
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 262158
+    move-result-object v1
+
+    .line 262159
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 262161
+    if-eqz v1, :cond_2d
+
+    .line 262163
+    invoke-interface {v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->getXBridgeMethods()Ljava/util/Map;
+
+    .line 262166
+    move-result-object v1
+
+    .line 262167
+    if-eqz v1, :cond_2d
+
+    .line 262169
+    const-string v2, ""
+
+    .line 262171
+    invoke-static {v1, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 262174
+    invoke-interface {v1}, Ljava/util/Map;->isEmpty()Z
+
+    .line 262177
+    move-result v2
+
+    .line 262178
+    xor-int/lit8 v2, v2, 0x1
+
+    .line 262180
+    if-eqz v2, :cond_27
+
+    .line 262182
+    goto :goto_28
+
+    .line 262183
+    :cond_27
+    const/4 v1, 0x0
+
+    .line 262184
+    :goto_28
+    if-eqz v1, :cond_2d
+
+    .line 262186
+    invoke-interface {v0, v1}, Ljava/util/Map;->putAll(Ljava/util/Map;)V
+
+    .line 262189
+    :cond_2d
+    return-object v0
+.end method
+
+.method public final getFinanceRisk()Lorg/json/JSONObject;
+    .registers 4
+
+    .prologue
+    .line 196608
+    const-string v0, "dianshang"
+
+    .line 196610
+    const-string v1, "getFinanceRisk()"
+
+    .line 196612
+    invoke-static {v0, v1}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 196615
+    const/4 v0, 0x0
+
+    .line 196616
+    const/16 v1, 0xe
+
+    .line 196618
+    const-string v2, "cj_api"
+
+    .line 196620
+    invoke-static {v2, v0, v0, v1}, Laa/h;->b(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;I)Laa/k;
+
+    .line 196623
+    move-result-object v0
+
+    .line 196624
+    invoke-virtual {v0}, Laa/k;->toJson()Lorg/json/JSONObject;
+
+    .line 196627
+    move-result-object v0
+
+    .line 196628
+    return-object v0
+.end method
+
+.method public final getFinanceRiskWithScene(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lorg/json/JSONObject;
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "+",
+            "Ljava/lang/Object;",
+            ">;)",
+            "Lorg/json/JSONObject;"
+        }
+    .end annotation
+
+    .prologue
+    .line 50593792
+    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50593795
+    const/16 v0, 0x8
+
+    .line 50593797
+    invoke-static {p1, p2, p3, v0}, Laa/h;->b(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;I)Laa/k;
+
+    .line 50593800
+    move-result-object p1
+
+    .line 50593801
+    invoke-virtual {p1}, Laa/k;->toJson()Lorg/json/JSONObject;
+
+    .line 50593804
+    move-result-object p1
+
+    .line 50593805
+    sget-object p2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 50593807
+    new-instance p3, Ljava/lang/StringBuilder;
+
+    .line 50593809
+    const-string v0, "getFinanceRiskWithScene result:"
+
+    .line 50593811
+    invoke-direct {p3, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 50593814
+    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 50593817
+    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 50593820
+    move-result-object p3
+
+    .line 50593821
+    invoke-static {p2, p3}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50593824
+    return-object p1
+.end method
+
+.method public final getHostInfo()Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 2
+    return-object v0
+.end method
+
+.method public final getJailBreak()Ljava/lang/String;
+    .registers 3
+
+    .prologue
+    .line 196608
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->R()Z
+
+    .line 196611
+    move-result v0
+
+    .line 196612
+    if-eqz v0, :cond_9
+
+    .line 196614
+    const-string v0, "1"
+
+    .line 196616
+    goto :goto_b
+
+    .line 196617
+    :cond_9
+    const-string v0, "2"
+
+    .line 196619
+    :goto_b
+    const-string v1, ""
+
+    .line 196621
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 196624
+    return-object v0
+.end method
+
+.method public final getPayComponent(Lcom/android/ttcjpaysdk/base/service/IPayLifecycle;)Lcom/android/ttcjpaysdk/base/service/ITTCJPayComponent;
+    .registers 5
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    :try_start_1
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17039364
+    move-result-object v1
+
+    .line 17039365
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 17039367
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17039370
+    move-result-object v1
+
+    .line 17039371
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 17039373
+    if-eqz v1, :cond_13
+
+    .line 17039375
+    invoke-interface {v1, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;->getPayComponent(Lcom/android/ttcjpaysdk/base/service/IPayLifecycle;)Lcom/android/ttcjpaysdk/base/service/ITTCJPayComponent;
+
+    .line 17039378
+    move-result-object v0
+    :try_end_13
+    .catchall {:try_start_1 .. :try_end_13} :catchall_14
+
+    .line 17039379
+    :cond_13
+    return-object v0
+
+    .line 17039380
+    :catchall_14
+    move-exception p1
+
+    .line 17039381
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 17039383
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17039386
+    const-string v1, "PayComponent"
+
+    .line 17039388
+    const/4 v2, 0x0
+
+    .line 17039389
+    invoke-static {v0, v1, v2, p1}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 17039392
+    return-object v0
+.end method
+
+.method public final getReleaseAllCallBack()Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayReleaseAll;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->mReleaseAllCallBack:Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayReleaseAll;
+
+    .line 2
+    return-object v0
+.end method
+
+.method public final getRemoteDataHasInit()Z
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-boolean v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->remoteDataHasInit:Z
+
+    .line 2
+    return v0
+.end method
+
+.method public final getSDKVersion()Ljava/lang/String;
+    .registers 3
+
+    .prologue
+    .line 131072
+    sget-object v0, Lcom/android/ttcjpaysdk/base/utils/CJPayBasicUtils;->a:Ljava/lang/String;
+
+    .line 131074
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->m()Ljava/lang/String;
+
+    .line 131077
+    move-result-object v0
+
+    .line 131078
+    const-string v1, ""
+
+    .line 131080
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 131083
+    return-object v0
+.end method
+
+.method public final getSecurityLoadingStatus(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$SecurityLoadingScene;
+    .registers 2
+
+    .prologue
+    .line 16908288
+    invoke-direct {p0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->isNoPwdCombine(Ljava/lang/String;)Z
+
+    .line 16908291
+    move-result p1
+
+    .line 16908292
+    if-eqz p1, :cond_9
+
+    .line 16908294
+    sget-object p1, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$SecurityLoadingScene;->SECURITY_LOADING_SCENE_COMBINE:Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$SecurityLoadingScene;
+
+    .line 16908296
+    goto :goto_b
+
+    .line 16908297
+    :cond_9
+    sget-object p1, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$SecurityLoadingScene;->SECURITY_LOADING_SCENE_NORMAL:Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService$SecurityLoadingScene;
+
+    .line 16908299
+    :goto_b
+    return-object p1
+.end method
+
+.method public final getSettingsInfo(Ljava/lang/String;)Ljava/lang/String;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    invoke-virtual {v0, p1}, Ll9/a;->t(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 16908299
+    move-result-object p1
+
+    .line 16908300
+    return-object p1
+.end method
+
+.method public final handleXBridgeMethod(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayXBridgeCallback;)V
+    .registers 7
+
+    .prologue
+    .line 67305472
+    invoke-static {p1, p2, p3, p4}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->q(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 67305475
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 67305478
+    move-result-object v0
+
+    .line 67305479
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 67305481
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 67305484
+    move-result-object v0
+
+    .line 67305485
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 67305487
+    if-nez v0, :cond_12
+
+    .line 67305489
+    return-void
+
+    .line 67305490
+    :cond_12
+    invoke-interface {v0, p1, p2, p3, p4}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->handleXBridgeMethod(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayXBridgeCallback;)V
+
+    .line 67305493
+    return-void
+.end method
+
+.method public final init()V
+    .registers 2
+
+    .prologue
+    .line 131072
+    new-instance v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$init$1;
+
+    .line 131074
+    invoke-direct {v0, p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$init$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;)V
+
+    .line 131077
+    invoke-static {v0}, Lhe0/e;->b(Ljava/lang/Runnable;)V
+
+    .line 131080
+    return-void
+.end method
+
+.method public final initBasic()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 196611
+    move-result-object v0
+
+    .line 196612
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->generalPayCallback:Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;
+
+    .line 196614
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/c;->q:Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;
+
+    .line 196616
+    :try_start_8
+    invoke-static {}, Lcom/bytedance/geckox/GeckoGlobalManager;->inst()Lcom/bytedance/geckox/GeckoGlobalManager;
+
+    .line 196619
+    move-result-object v0
+
+    .line 196620
+    new-instance v1, Lcom/bytedance/caijing/sdk/infra/base/impl/gecko/GeckoRegisterImpl;
+
+    .line 196622
+    invoke-direct {v1}, Lcom/bytedance/caijing/sdk/infra/base/impl/gecko/GeckoRegisterImpl;-><init>()V
+
+    .line 196625
+    invoke-virtual {v0, v1}, Lcom/bytedance/geckox/GeckoGlobalManager;->registerGecko(Lcom/bytedance/geckox/settings/IGeckoRegister;)V
+    :try_end_14
+    .catchall {:try_start_8 .. :try_end_14} :catchall_15
+
+    .line 196628
+    goto :goto_1d
+
+    .line 196629
+    :catchall_15
+    move-exception v0
+
+    .line 196630
+    sget-object v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 196632
+    const-string v2, "register gecko error"
+
+    .line 196634
+    invoke-static {v1, v2, v0}, Lfe0/a;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 196637
+    :goto_1d
+    return-void
+.end method
+
+.method public final initMini()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->applicationContext:Landroid/content/Context;
+
+    .line 196610
+    if-nez v0, :cond_5
+
+    .line 196612
+    return-void
+
+    .line 196613
+    :cond_5
+    const-string v1, "android.permission.INTERNET"
+
+    .line 196615
+    invoke-static {v0, v1}, Landroidx/core/content/ContextCompat;->checkSelfPermission(Landroid/content/Context;Ljava/lang/String;)I
+
+    .line 196618
+    move-result v1
+
+    .line 196619
+    if-nez v1, :cond_1d
+
+    .line 196621
+    const-string v1, "android.permission.ACCESS_NETWORK_STATE"
+
+    .line 196623
+    invoke-static {v0, v1}, Landroidx/core/content/ContextCompat;->checkSelfPermission(Landroid/content/Context;Ljava/lang/String;)I
+
+    .line 196626
+    move-result v0
+
+    .line 196627
+    if-eqz v0, :cond_16
+
+    .line 196629
+    goto :goto_1d
+
+    .line 196630
+    :cond_16
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 196633
+    move-result-object v0
+
+    .line 196634
+    invoke-virtual {v0}, Ll9/a;->a()V
+
+    .line 196637
+    :cond_1d
+    :goto_1d
+    return-void
+.end method
+
+.method public final initPitaya(Landroid/content/Context;)V
+    .registers 5
+
+    .prologue
+    .line 17104896
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 17104898
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    .line 17104901
+    const-string v1, "appVersion"
+
+    .line 17104903
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getSDKVersion()Ljava/lang/String;
+
+    .line 17104906
+    move-result-object v2
+
+    .line 17104907
+    invoke-static {v0, v1, v2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17104910
+    const-string v1, "channel"
+
+    .line 17104912
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->b()Ljava/lang/String;
+
+    .line 17104915
+    move-result-object v2
+
+    .line 17104916
+    invoke-static {v0, v1, v2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17104919
+    const-string v1, "did"
+
+    .line 17104921
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->c()Ljava/lang/String;
+
+    .line 17104924
+    move-result-object v2
+
+    .line 17104925
+    invoke-static {v0, v1, v2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17104928
+    const-string v1, "uid"
+
+    .line 17104930
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->h()Ljava/lang/String;
+
+    .line 17104933
+    move-result-object v2
+
+    .line 17104934
+    invoke-static {v0, v1, v2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 17104937
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17104940
+    move-result-object v1
+
+    .line 17104941
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayPitayaService;
+
+    .line 17104943
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17104946
+    move-result-object v1
+
+    .line 17104947
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayPitayaService;
+
+    .line 17104949
+    if-eqz v1, :cond_3a
+
+    .line 17104951
+    invoke-interface {v1, p1, v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayPitayaService;->init(Landroid/content/Context;Lorg/json/JSONObject;)V
+
+    .line 17104954
+    :cond_3a
+    if-eqz v1, :cond_43
+
+    .line 17104956
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 17104959
+    move-result-object v0
+
+    .line 17104960
+    invoke-interface {v1, p1, v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayPitayaService;->registerApplogRunWithRiskSdkFeature(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 17104963
+    :cond_43
+    return-void
+.end method
+
+.method public final isCloudUnionPayInstalled(Landroid/content/Context;)Z
+    .registers 5
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16973828
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 16973831
+    move-result-object v1
+
+    .line 16973832
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayCloudUnionPaymentService;
+
+    .line 16973834
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 16973837
+    move-result-object v1
+
+    .line 16973838
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayCloudUnionPaymentService;
+
+    .line 16973840
+    if-eqz v1, :cond_16
+
+    .line 16973842
+    invoke-interface {v1, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayCloudUnionPaymentService;->isInstalled(Landroid/content/Context;)Z
+
+    .line 16973845
+    move-result v0
+
+    .line 16973846
+    :cond_16
+    return v0
+.end method
+
+.method public final myBankCard(Ljava/lang/String;)V
+    .registers 6
+
+    .prologue
+    .line 17170432
+    const/4 v0, 0x0
+
+    .line 17170433
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17170436
+    sget-object v0, Lbf/a;->a:Lbf/a;
+
+    .line 17170438
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170440
+    const/4 v2, 0x0
+
+    .line 17170441
+    if-eqz v1, :cond_e
+
+    .line 17170443
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17170445
+    goto :goto_f
+
+    .line 17170446
+    :cond_e
+    move-object v3, v2
+
+    .line 17170447
+    :goto_f
+    if-eqz v1, :cond_14
+
+    .line 17170449
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17170451
+    goto :goto_15
+
+    .line 17170452
+    :cond_14
+    move-object v1, v2
+
+    .line 17170453
+    :goto_15
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170456
+    sget-object v0, Ln9/a;->a:Ln9/a;
+
+    .line 17170458
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170461
+    sget-object v0, Ln9/a;->e:Ljava/lang/String;
+
+    .line 17170463
+    invoke-static {v3, v1, v0}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 17170466
+    move-result-object v1
+
+    .line 17170467
+    iget-boolean v1, v1, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->isNeedDegrade:Z
+
+    .line 17170469
+    if-eqz v1, :cond_8d
+
+    .line 17170471
+    iget-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170473
+    if-nez p1, :cond_2d
+
+    .line 17170475
+    goto/16 :goto_dd
+
+    .line 17170477
+    :cond_2d
+    iget-object v1, p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17170479
+    iget-object v2, p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17170481
+    invoke-static {v1, v2, v0}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 17170484
+    move-result-object v0
+
+    .line 17170485
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 17170487
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->e()Ljava/lang/String;
+
+    .line 17170490
+    move-result-object v2
+
+    .line 17170491
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17170494
+    const-string v2, "/usercenter/cards?app_id="
+
+    .line 17170496
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17170499
+    iget-object v2, v0, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->appId:Ljava/lang/String;
+
+    .line 17170501
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17170504
+    const-string v2, "&merchant_id="
+
+    .line 17170506
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17170509
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->merchantId:Ljava/lang/String;
+
+    .line 17170511
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17170514
+    const-string v0, "&tp_aid="
+
+    .line 17170516
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17170519
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 17170522
+    move-result-object v0
+
+    .line 17170523
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17170526
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17170529
+    move-result-object v0
+
+    .line 17170530
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 17170532
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17170535
+    move-result-object v0
+
+    .line 17170536
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 17170538
+    if-eqz v0, :cond_dd
+
+    .line 17170540
+    new-instance v2, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17170542
+    invoke-direct {v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 17170545
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17170548
+    move-result-object v3
+
+    .line 17170549
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17170552
+    move-result-object v2
+
+    .line 17170553
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17170556
+    move-result-object v1
+
+    .line 17170557
+    invoke-virtual {v2, v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17170560
+    move-result-object v1
+
+    .line 17170561
+    invoke-static {p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->f(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17170564
+    move-result-object p1
+
+    .line 17170565
+    invoke-virtual {v1, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17170568
+    move-result-object p1
+
+    .line 17170569
+    invoke-interface {v0, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 17170572
+    goto :goto_dd
+
+    .line 17170573
+    :cond_8d
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170575
+    if-eqz v0, :cond_96
+
+    .line 17170577
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17170580
+    move-result-object v0
+
+    .line 17170581
+    goto :goto_97
+
+    .line 17170582
+    :cond_96
+    move-object v0, v2
+
+    .line 17170583
+    :goto_97
+    if-eqz v0, :cond_d1
+
+    .line 17170585
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170587
+    if-eqz v1, :cond_a1
+
+    .line 17170589
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 17170592
+    move-result-object v2
+
+    .line 17170593
+    :cond_a1
+    if-nez v2, :cond_a4
+
+    .line 17170595
+    goto :goto_d1
+
+    .line 17170596
+    :cond_a4
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 17170598
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170601
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 17170604
+    move-result-object v1
+
+    .line 17170605
+    sget-object v2, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_MY_CARD:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 17170607
+    iget-object v2, v2, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 17170609
+    invoke-static {v1, v2}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 17170612
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17170615
+    move-result-object v1
+
+    .line 17170616
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontMyBankCardService;
+
+    .line 17170618
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17170621
+    move-result-object v1
+
+    .line 17170622
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontMyBankCardService;
+
+    .line 17170624
+    if-eqz v1, :cond_dd
+
+    .line 17170626
+    sget-object v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17170628
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17170630
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17170633
+    invoke-static {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17170636
+    move-result-object v2
+
+    .line 17170637
+    invoke-interface {v1, v0, p1, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayFrontMyBankCardService;->startFrontMyBankCardWithSchema(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;)V
+
+    .line 17170640
+    goto :goto_dd
+
+    .line 17170641
+    :cond_d1
+    :goto_d1
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 17170644
+    move-result-object p1
+
+    .line 17170645
+    const/16 v0, 0x70
+
+    .line 17170647
+    invoke-virtual {p1, v0}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 17170650
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 17170653
+    :cond_dd
+    :goto_dd
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 17170656
+    return-void
+.end method
+
+.method public final notifyFraudCancel(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/ui/dialog/c;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 8
+
+    .prologue
+    .line 100925440
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100925443
+    move-result-object v0
+
+    .line 100925444
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 100925446
+    if-nez p6, :cond_9
+
+    .line 100925448
+    goto :goto_b
+
+    .line 100925449
+    :cond_9
+    iput-object p1, p6, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 100925451
+    :goto_b
+    if-eqz p2, :cond_10
+
+    .line 100925453
+    invoke-interface {p2}, Lcom/android/ttcjpaysdk/base/service/ICJPaySecurityLoadingService;->release()V
+
+    .line 100925456
+    :cond_10
+    sget-object p1, Lbf/b;->a:Lbf/b;
+
+    .line 100925458
+    iget-object p2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 100925460
+    const-string p6, ""
+
+    .line 100925462
+    if-eqz p2, :cond_1c
+
+    .line 100925464
+    iget-object v0, p2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 100925466
+    if-nez v0, :cond_1d
+
+    .line 100925468
+    :cond_1c
+    move-object v0, p6
+
+    .line 100925469
+    :cond_1d
+    if-eqz p2, :cond_25
+
+    .line 100925471
+    iget-object p2, p2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 100925473
+    if-nez p2, :cond_24
+
+    .line 100925475
+    goto :goto_25
+
+    .line 100925476
+    :cond_24
+    move-object p6, p2
+
+    .line 100925477
+    :cond_25
+    :goto_25
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 100925480
+    invoke-static {p3, v0, p6, p5}, Lbf/b;->f(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 100925483
+    if-eqz p4, :cond_30
+
+    .line 100925485
+    invoke-static {p4}, Lcom/android/ttcjpaysdk/base/ktextension/CJPayKotlinExtensionsKt;->dismissSafely(Landroid/app/Dialog;)V
+
+    .line 100925488
+    :cond_30
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100925491
+    move-result-object p1
+
+    .line 100925492
+    const/16 p2, 0x74
+
+    .line 100925494
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 100925497
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 100925500
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 100925503
+    return-void
+.end method
+
+.method public final openH5(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 11
+
+    .prologue
+    .line 67239936
+    const/4 v5, 0x0
+
+    .line 67239937
+    move-object v0, p0
+
+    .line 67239938
+    move-object v1, p1
+
+    .line 67239939
+    move-object v2, p2
+
+    .line 67239940
+    move-object v3, p3
+
+    .line 67239941
+    move-object v4, p4
+
+    .line 67239942
+    invoke-virtual/range {v0 .. v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openH5(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 67239945
+    return-void
+.end method
+
+.method public final openH5(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 9
+
+    .prologue
+    .line 84213760
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84213762
+    const/4 v1, 0x0
+
+    .line 84213763
+    if-eqz v0, :cond_a
+
+    .line 84213765
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 84213768
+    move-result-object v0
+
+    .line 84213769
+    goto :goto_b
+
+    .line 84213770
+    :cond_a
+    move-object v0, v1
+
+    .line 84213771
+    :goto_b
+    if-eqz v0, :cond_5c
+
+    .line 84213773
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 84213776
+    move-result v2
+
+    .line 84213777
+    if-nez v2, :cond_5c
+
+    .line 84213779
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84213781
+    if-eqz v2, :cond_1b
+
+    .line 84213783
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 84213786
+    move-result-object v1
+
+    .line 84213787
+    :cond_1b
+    if-nez v1, :cond_1e
+
+    .line 84213789
+    goto :goto_5c
+
+    .line 84213790
+    :cond_1e
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 84213793
+    move-result-object v1
+
+    .line 84213794
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84213796
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 84213799
+    move-result-object v1
+
+    .line 84213800
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84213802
+    new-instance v2, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213804
+    invoke-direct {v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 84213807
+    invoke-virtual {v2, v0}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213810
+    move-result-object v0
+
+    .line 84213811
+    invoke-virtual {v0, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213814
+    move-result-object p1
+
+    .line 84213815
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setTitle(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213818
+    move-result-object p1
+
+    .line 84213819
+    invoke-virtual {p1, p3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setIsTransTitleBar(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213822
+    move-result-object p1
+
+    .line 84213823
+    invoke-virtual {p1, p4}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setStatusBarColor(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213826
+    move-result-object p1
+
+    .line 84213827
+    invoke-virtual {p1, p5}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setBackButtonColor(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213830
+    move-result-object p1
+
+    .line 84213831
+    sget-object p2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 84213833
+    iget-object p3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84213835
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84213838
+    invoke-static {p3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 84213841
+    move-result-object p2
+
+    .line 84213842
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213845
+    move-result-object p1
+
+    .line 84213846
+    if-eqz v1, :cond_68
+
+    .line 84213848
+    invoke-interface {v1, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 84213851
+    goto :goto_68
+
+    .line 84213852
+    :cond_5c
+    :goto_5c
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84213855
+    move-result-object p1
+
+    .line 84213856
+    const/16 p2, 0x6b
+
+    .line 84213858
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 84213861
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 84213864
+    :cond_68
+    :goto_68
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 84213867
+    return-void
+.end method
+
+.method public final openH5ByScheme(Ljava/lang/String;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    const/4 v0, -0x1
+
+    .line 16908293
+    invoke-direct {p0, p1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openH5ByScheme(Ljava/lang/String;I)V
+
+    .line 16908296
+    return-void
+.end method
+
+.method public final openH5CashDesk(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;ILjava/lang/String;)V
+    .registers 9
+
+    .prologue
+    .line 84213760
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 84213763
+    move-result-object v0
+
+    .line 84213764
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84213766
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 84213769
+    move-result-object v0
+
+    .line 84213770
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84213772
+    new-instance v1, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213774
+    invoke-direct {v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 84213777
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84213779
+    if-eqz v2, :cond_1a
+
+    .line 84213781
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 84213784
+    move-result-object v2
+
+    .line 84213785
+    goto :goto_1b
+
+    .line 84213786
+    :cond_1a
+    const/4 v2, 0x0
+
+    .line 84213787
+    :goto_1b
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213790
+    move-result-object v1
+
+    .line 84213791
+    invoke-virtual {v1, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213794
+    move-result-object p1
+
+    .line 84213795
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setOrderInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213798
+    move-result-object p1
+
+    .line 84213799
+    invoke-virtual {p1, p3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setChannelInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213802
+    move-result-object p1
+
+    .line 84213803
+    invoke-virtual {p1, p4}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setScreenType(I)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213806
+    move-result-object p1
+
+    .line 84213807
+    invoke-virtual {p1, p5}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setNavigationBarColor(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213810
+    move-result-object p1
+
+    .line 84213811
+    sget-object p2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 84213813
+    iget-object p3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84213815
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84213818
+    invoke-static {p3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 84213821
+    move-result-object p2
+
+    .line 84213822
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84213825
+    move-result-object p1
+
+    .line 84213826
+    if-eqz v0, :cond_47
+
+    .line 84213828
+    invoke-interface {v0, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5CashDesk(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 84213831
+    :cond_47
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 84213834
+    return-void
+.end method
+
+.method public final openH5ModalView(Landroid/content/Context;Ljava/lang/String;IZLjava/lang/String;I)V
+    .registers 9
+
+    .prologue
+    .line 100990976
+    invoke-static {p2, p5}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 100990979
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 100990982
+    move-result-object v0
+
+    .line 100990983
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 100990985
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 100990988
+    move-result-object v0
+
+    .line 100990989
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 100990991
+    new-instance v1, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100990993
+    invoke-direct {v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 100990996
+    invoke-virtual {v1, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100990999
+    move-result-object p1
+
+    .line 100991000
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100991003
+    move-result-object p1
+
+    .line 100991004
+    invoke-virtual {p1, p3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setScreenType(I)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100991007
+    move-result-object p1
+
+    .line 100991008
+    invoke-virtual {p1, p4}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setEnableAnim(Z)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100991011
+    move-result-object p1
+
+    .line 100991012
+    invoke-virtual {p1, p5}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setModalViewBgcolor(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100991015
+    move-result-object p1
+
+    .line 100991016
+    const/4 p3, 0x0
+
+    .line 100991017
+    const/4 p4, 0x1
+
+    .line 100991018
+    if-ne p6, p4, :cond_2e
+
+    .line 100991020
+    const/4 p5, 0x1
+
+    .line 100991021
+    goto :goto_2f
+
+    .line 100991022
+    :cond_2e
+    const/4 p5, 0x0
+
+    .line 100991023
+    :goto_2f
+    invoke-virtual {p1, p5}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setShowLoading(Z)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100991026
+    move-result-object p1
+
+    .line 100991027
+    sget-object p5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 100991029
+    iget-object p6, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 100991031
+    invoke-virtual {p5}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 100991034
+    invoke-static {p6}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 100991037
+    move-result-object p5
+
+    .line 100991038
+    invoke-virtual {p1, p5}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 100991041
+    move-result-object p1
+
+    .line 100991042
+    if-eqz v0, :cond_47
+
+    .line 100991044
+    invoke-interface {v0, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5ModalView(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 100991047
+    :cond_47
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 100991050
+    :try_start_4a
+    sget-object p1, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 100991052
+    new-instance p1, Lorg/json/JSONObject;
+
+    .line 100991054
+    invoke-direct {p1}, Lorg/json/JSONObject;-><init>()V
+
+    .line 100991057
+    const-string p5, "url"
+
+    .line 100991059
+    invoke-virtual {p1, p5, p2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 100991062
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 100991065
+    move-result-object p1
+    :try_end_5a
+    .catchall {:try_start_4a .. :try_end_5a} :catchall_5b
+
+    .line 100991066
+    goto :goto_66
+
+    .line 100991067
+    :catchall_5b
+    move-exception p1
+
+    .line 100991068
+    sget-object p2, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 100991070
+    invoke-static {p1}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 100991073
+    move-result-object p1
+
+    .line 100991074
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 100991077
+    move-result-object p1
+
+    .line 100991078
+    :goto_66
+    invoke-static {p1}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    .line 100991081
+    move-result p2
+
+    .line 100991082
+    if-eqz p2, :cond_7b
+
+    .line 100991084
+    check-cast p1, Lorg/json/JSONObject;
+
+    .line 100991086
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100991089
+    move-result-object p2
+
+    .line 100991090
+    new-array p4, p4, [Lorg/json/JSONObject;
+
+    .line 100991092
+    aput-object p1, p4, p3
+
+    .line 100991094
+    const-string p1, "wallet_rd_open_h5_modal_view"
+
+    .line 100991096
+    invoke-virtual {p2, p1, p4}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+
+    .line 100991099
+    :cond_7b
+    return-void
+.end method
+
+.method public final openH5ModalView(Landroid/content/Context;Ljava/lang/String;IZLjava/lang/String;ILandroid/net/Uri;)V
+    .registers 20
+
+    .prologue
+    .line 117833728
+    move-object v0, p2
+
+    .line 117833729
+    move-object/from16 v1, p5
+
+    .line 117833731
+    move-object/from16 v2, p7
+
+    .line 117833733
+    invoke-static {p2, v1, v2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 117833736
+    invoke-static {}, Ll9/a;->k()Ll9/a;
+
+    .line 117833739
+    move-result-object v3
+
+    .line 117833740
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 117833743
+    invoke-static {}, Ll9/a;->x()Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;
+
+    .line 117833746
+    move-result-object v3
+
+    .line 117833747
+    const/4 v4, 0x0
+
+    .line 117833748
+    const/4 v5, 0x1
+
+    .line 117833749
+    if-eqz v3, :cond_1f
+
+    .line 117833751
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/service/bean/WebViewCommonConfig;->isEnableOpenH5ModalView()Z
+
+    .line 117833754
+    move-result v3
+
+    .line 117833755
+    if-ne v3, v5, :cond_1f
+
+    .line 117833757
+    const/4 v3, 0x1
+
+    .line 117833758
+    goto :goto_20
+
+    .line 117833759
+    :cond_1f
+    const/4 v3, 0x0
+
+    .line 117833760
+    :goto_20
+    if-eqz v3, :cond_7a
+
+    .line 117833762
+    invoke-virtual/range {p7 .. p7}, Landroid/net/Uri;->toString()Ljava/lang/String;
+
+    .line 117833765
+    move-result-object v3
+
+    .line 117833766
+    const-string v6, ""
+
+    .line 117833768
+    invoke-static {v3, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 117833771
+    const-string v6, "url"
+
+    .line 117833773
+    invoke-virtual {v2, v6}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 117833776
+    move-result-object v7
+
+    .line 117833777
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 117833780
+    move-result-object v8
+
+    .line 117833781
+    const-class v9, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 117833783
+    invoke-virtual {v8, v9}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 117833786
+    move-result-object v8
+
+    .line 117833787
+    check-cast v8, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 117833789
+    const/4 v9, 0x0
+
+    .line 117833790
+    const-string v10, "enter_from=deeplink"
+
+    .line 117833792
+    const/4 v11, 0x2
+
+    .line 117833793
+    invoke-static {v3, v10, v4, v11, v9}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 117833796
+    move-result v3
+
+    .line 117833797
+    if-eqz v3, :cond_7a
+
+    .line 117833799
+    if-eqz v8, :cond_51
+
+    .line 117833801
+    invoke-interface {v8, v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->isWhiteUrl(Ljava/lang/String;)Z
+
+    .line 117833804
+    move-result v3
+
+    .line 117833805
+    if-nez v3, :cond_51
+
+    .line 117833807
+    const/4 v3, 0x1
+
+    .line 117833808
+    goto :goto_52
+
+    .line 117833809
+    :cond_51
+    const/4 v3, 0x0
+
+    .line 117833810
+    :goto_52
+    if-eqz v3, :cond_7a
+
+    .line 117833812
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 117833814
+    const-string v1, "merchant_id"
+
+    .line 117833816
+    invoke-virtual {v2, v1}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 117833819
+    move-result-object v1
+
+    .line 117833820
+    const-string v3, "app_id"
+
+    .line 117833822
+    invoke-virtual {v2, v3}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 117833825
+    move-result-object v2
+
+    .line 117833826
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 117833829
+    :try_start_65
+    invoke-static {v1, v2}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->g(Ljava/lang/String;Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 117833832
+    move-result-object v0
+
+    .line 117833833
+    invoke-virtual {v0, v6, v7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 117833836
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 117833839
+    move-result-object v1
+
+    .line 117833840
+    const-string v2, "wallet_rd_h5_illegal_from_deep_link"
+
+    .line 117833842
+    new-array v3, v5, [Lorg/json/JSONObject;
+
+    .line 117833844
+    aput-object v0, v3, v4
+
+    .line 117833846
+    invoke-virtual {v1, v2, v3}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+    :try_end_79
+    .catch Ljava/lang/Exception; {:try_start_65 .. :try_end_79} :catch_79
+
+    .line 117833849
+    :catch_79
+    return-void
+
+    .line 117833850
+    :cond_7a
+    invoke-virtual/range {p0 .. p6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openH5ModalView(Landroid/content/Context;Ljava/lang/String;IZLjava/lang/String;I)V
+
+    .line 117833853
+    return-void
+.end method
+
+.method public final openH5ModalView(Ljava/lang/String;IZLjava/lang/String;I)V
+    .registers 9
+
+    .prologue
+    .line 84344832
+    invoke-static {p1, p4}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 84344835
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84344837
+    if-eqz v0, :cond_c
+
+    .line 84344839
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 84344842
+    move-result-object v0
+
+    .line 84344843
+    goto :goto_d
+
+    .line 84344844
+    :cond_c
+    const/4 v0, 0x0
+
+    .line 84344845
+    :goto_d
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 84344848
+    move-result-object v1
+
+    .line 84344849
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84344851
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 84344854
+    move-result-object v1
+
+    .line 84344855
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84344857
+    new-instance v2, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344859
+    invoke-direct {v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 84344862
+    invoke-virtual {v2, v0}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344865
+    move-result-object v0
+
+    .line 84344866
+    invoke-virtual {v0, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344869
+    move-result-object v0
+
+    .line 84344870
+    invoke-virtual {v0, p2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setScreenType(I)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344873
+    move-result-object p2
+
+    .line 84344874
+    invoke-virtual {p2, p3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setEnableAnim(Z)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344877
+    move-result-object p2
+
+    .line 84344878
+    invoke-virtual {p2, p4}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setModalViewBgcolor(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344881
+    move-result-object p2
+
+    .line 84344882
+    const/4 p3, 0x1
+
+    .line 84344883
+    const/4 p4, 0x0
+
+    .line 84344884
+    if-ne p5, p3, :cond_38
+
+    .line 84344886
+    const/4 p5, 0x1
+
+    .line 84344887
+    goto :goto_39
+
+    .line 84344888
+    :cond_38
+    const/4 p5, 0x0
+
+    .line 84344889
+    :goto_39
+    invoke-virtual {p2, p5}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setShowLoading(Z)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344892
+    move-result-object p2
+
+    .line 84344893
+    sget-object p5, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 84344895
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84344897
+    invoke-virtual {p5}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84344900
+    invoke-static {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 84344903
+    move-result-object p5
+
+    .line 84344904
+    invoke-virtual {p2, p5}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 84344907
+    move-result-object p2
+
+    .line 84344908
+    if-eqz v1, :cond_51
+
+    .line 84344910
+    invoke-interface {v1, p2}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5ModalView(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 84344913
+    :cond_51
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 84344916
+    :try_start_54
+    sget-object p2, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 84344918
+    new-instance p2, Lorg/json/JSONObject;
+
+    .line 84344920
+    invoke-direct {p2}, Lorg/json/JSONObject;-><init>()V
+
+    .line 84344923
+    const-string p5, "url"
+
+    .line 84344925
+    invoke-virtual {p2, p5, p1}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 84344928
+    invoke-static {p2}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 84344931
+    move-result-object p1
+    :try_end_64
+    .catchall {:try_start_54 .. :try_end_64} :catchall_65
+
+    .line 84344932
+    goto :goto_70
+
+    .line 84344933
+    :catchall_65
+    move-exception p1
+
+    .line 84344934
+    sget-object p2, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 84344936
+    invoke-static {p1}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 84344939
+    move-result-object p1
+
+    .line 84344940
+    invoke-static {p1}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 84344943
+    move-result-object p1
+
+    .line 84344944
+    :goto_70
+    invoke-static {p1}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    .line 84344947
+    move-result p2
+
+    .line 84344948
+    if-eqz p2, :cond_85
+
+    .line 84344950
+    check-cast p1, Lorg/json/JSONObject;
+
+    .line 84344952
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 84344955
+    move-result-object p2
+
+    .line 84344956
+    new-array p3, p3, [Lorg/json/JSONObject;
+
+    .line 84344958
+    aput-object p1, p3, p4
+
+    .line 84344960
+    const-string p1, "wallet_rd_open_h5_modal_view"
+
+    .line 84344962
+    invoke-virtual {p2, p1, p3}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+
+    .line 84344965
+    :cond_85
+    return-void
+.end method
+
+.method public final openOCR(Lcom/android/ttcjpaysdk/base/service/ICJPayServiceRetCallBack;)V
+    .registers 5
+
+    .prologue
+    .line 16973824
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 16973826
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    .line 16973829
+    :try_start_5
+    const-string v1, "min_length"
+
+    .line 16973831
+    const/16 v2, 0xc
+
+    .line 16973833
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+
+    .line 16973836
+    const-string v1, "max_length"
+
+    .line 16973838
+    const/16 v2, 0x17
+
+    .line 16973840
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+    :try_end_13
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_13} :catch_13
+
+    .line 16973843
+    :catch_13
+    invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 16973846
+    move-result-object v0
+
+    .line 16973847
+    const-string v1, ""
+
+    .line 16973849
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 16973852
+    invoke-virtual {p0, v0, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openOCR(Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayServiceRetCallBack;)V
+
+    .line 16973855
+    return-void
+.end method
+
+.method public final openOCR(Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayServiceRetCallBack;)V
+    .registers 15
+
+    .prologue
+    .line 33882112
+    const/4 v0, 0x0
+
+    .line 33882113
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 33882116
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 33882119
+    move-result-object v0
+
+    .line 33882120
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayOCRService;
+
+    .line 33882122
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 33882125
+    move-result-object v0
+
+    .line 33882126
+    move-object v1, v0
+
+    .line 33882127
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayOCRService;
+
+    .line 33882129
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882131
+    const/4 v2, 0x0
+
+    .line 33882132
+    if-eqz v0, :cond_22
+
+    .line 33882134
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 33882137
+    move-result-object v0
+
+    .line 33882138
+    if-eqz v0, :cond_22
+
+    .line 33882140
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 33882143
+    move-result-object v0
+
+    .line 33882144
+    move-object v7, v0
+
+    .line 33882145
+    goto :goto_23
+
+    .line 33882146
+    :cond_22
+    move-object v7, v2
+
+    .line 33882147
+    :goto_23
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 33882149
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    .line 33882152
+    if-eqz v1, :cond_59
+
+    .line 33882154
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882156
+    if-eqz v3, :cond_33
+
+    .line 33882158
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 33882161
+    move-result-object v3
+
+    .line 33882162
+    goto :goto_34
+
+    .line 33882163
+    :cond_33
+    move-object v3, v2
+
+    .line 33882164
+    :goto_34
+    iget-object v4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882166
+    if-eqz v4, :cond_3b
+
+    .line 33882168
+    iget-object v5, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 33882170
+    goto :goto_3c
+
+    .line 33882171
+    :cond_3b
+    move-object v5, v2
+
+    .line 33882172
+    :goto_3c
+    if-eqz v4, :cond_40
+
+    .line 33882174
+    iget-object v2, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 33882176
+    :cond_40
+    move-object v4, v2
+
+    .line 33882177
+    invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 33882180
+    move-result-object v6
+
+    .line 33882181
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 33882183
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33882185
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33882188
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 33882191
+    move-result-object v8
+
+    .line 33882192
+    const/4 v9, 0x0
+
+    .line 33882193
+    const/4 v10, 0x0
+
+    .line 33882194
+    move-object v2, v3
+
+    .line 33882195
+    move-object v3, v5
+
+    .line 33882196
+    move-object v5, p1
+
+    .line 33882197
+    move-object v11, p2
+
+    .line 33882198
+    invoke-interface/range {v1 .. v11}, Lcom/android/ttcjpaysdk/base/service/ICJPayOCRService;->startOCR(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayServiceRetCallBack;)V
+
+    .line 33882201
+    :cond_59
+    return-void
+.end method
+
+.method public final openPayScoreWithParams(Landroid/content/Context;Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayXBridgeCallback;)V
+    .registers 14
+
+    .prologue
+    .line 50659328
+    invoke-static {p1, p2, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50659331
+    :try_start_3
+    const-string v0, "sdk_info"
+
+    .line 50659333
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659336
+    move-result-object p2
+
+    .line 50659337
+    new-instance v8, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 50659339
+    invoke-direct {v8}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;-><init>()V
+
+    .line 50659342
+    const-string v0, ""
+
+    .line 50659344
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659347
+    invoke-static {p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 50659350
+    move-result-object p2
+
+    .line 50659351
+    invoke-virtual {v8, p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->b(Landroid/content/Context;)V
+
+    .line 50659354
+    const-string v0, "app_id"
+
+    .line 50659356
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659359
+    move-result-object v0
+
+    .line 50659360
+    iput-object v0, v8, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 50659362
+    const-string v0, "merchant_id"
+
+    .line 50659364
+    invoke-virtual {p2, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659367
+    move-result-object v0
+
+    .line 50659368
+    iput-object v0, v8, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 50659370
+    new-instance v0, Ljava/util/HashMap;
+
+    .line 50659372
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 50659375
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->generalPayCallback:Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;
+
+    .line 50659377
+    if-eqz v1, :cond_66
+
+    .line 50659379
+    invoke-direct {p0, p2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getLynxDepositScheme(Lorg/json/JSONObject;)Ljava/lang/String;
+
+    .line 50659382
+    move-result-object p2
+
+    .line 50659383
+    check-cast p1, Landroid/app/Activity;
+
+    .line 50659385
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 50659387
+    invoke-direct {v2}, Lorg/json/JSONObject;-><init>()V
+
+    .line 50659390
+    const-string v3, "schema"
+
+    .line 50659392
+    invoke-static {v2, v3, p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 50659395
+    sget-object p2, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50659397
+    invoke-virtual {v2}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 50659400
+    move-result-object v2
+
+    .line 50659401
+    const/16 v3, 0x62
+
+    .line 50659403
+    const-string v4, ""
+
+    .line 50659405
+    const-string v5, ""
+
+    .line 50659407
+    const-string v6, ""
+
+    .line 50659409
+    const-string v7, "from_native"
+
+    .line 50659411
+    new-instance v9, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openPayScoreWithParams$1$2;
+
+    .line 50659413
+    invoke-direct {v9, p3, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$openPayScoreWithParams$1$2;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayXBridgeCallback;Ljava/util/HashMap;)V
+
+    .line 50659416
+    move-object v0, v1
+
+    .line 50659417
+    move-object v1, p1
+
+    .line 50659418
+    invoke-interface/range {v0 .. v9}, Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;->pay(Landroid/app/Activity;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/CJPayHostInfo;Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay$IGeneralPayCallback;)V
+    :try_end_5d
+    .catchall {:try_start_3 .. :try_end_5d} :catchall_5e
+
+    .line 50659421
+    goto :goto_66
+
+    .line 50659422
+    :catchall_5e
+    new-instance p1, Ljava/util/HashMap;
+
+    .line 50659424
+    invoke-direct {p1}, Ljava/util/HashMap;-><init>()V
+
+    .line 50659427
+    invoke-interface {p3, p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/ICJPayXBridgeCallback;->fail(Ljava/util/Map;)V
+
+    .line 50659430
+    :cond_66
+    :goto_66
+    return-void
+.end method
+
+.method public final openRealNameAuth(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNameAuthCallback;)V
+    .registers 15
+
+    .prologue
+    .line 84082688
+    invoke-static {p1, p2, p3, p4, p5}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->r(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 84082691
+    const-string v5, "auth"
+
+    .line 84082693
+    const-string v6, ""
+
+    .line 84082695
+    const-string v7, ""
+
+    .line 84082697
+    move-object v0, p0
+
+    .line 84082698
+    move-object v1, p1
+
+    .line 84082699
+    move-object v2, p2
+
+    .line 84082700
+    move-object v3, p3
+
+    .line 84082701
+    move-object v4, p4
+
+    .line 84082702
+    move-object v8, p5
+
+    .line 84082703
+    invoke-virtual/range {v0 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openRealNameAuth(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNameAuthCallback;)V
+
+    .line 84082706
+    return-void
+.end method
+
+.method public final openRealNameAuth(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNameAuthCallback;)V
+    .registers 17
+
+    .prologue
+    .line 117702656
+    invoke-static/range {p1 .. p7}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->t(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 117702659
+    const-string v7, ""
+
+    .line 117702661
+    move-object v0, p0
+
+    .line 117702662
+    move-object v1, p1
+
+    .line 117702663
+    move-object v2, p2
+
+    .line 117702664
+    move-object v3, p3
+
+    .line 117702665
+    move-object v4, p4
+
+    .line 117702666
+    move-object v5, p5
+
+    .line 117702667
+    move-object v6, p6
+
+    .line 117702668
+    move-object/from16 v8, p7
+
+    .line 117702670
+    invoke-virtual/range {v0 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openRealNameAuth(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNameAuthCallback;)V
+
+    .line 117702673
+    return-void
+.end method
+
+.method public final openRealNameAuth(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNameAuthCallback;)V
+    .registers 16
+
+    .prologue
+    .line 134545408
+    invoke-static/range {p1 .. p8}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->u(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 134545411
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 134545414
+    move-result-object v0
+
+    .line 134545415
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayRealNameAuthService;
+
+    .line 134545417
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 134545420
+    move-result-object v0
+
+    .line 134545421
+    move-object v1, v0
+
+    .line 134545422
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayRealNameAuthService;
+
+    .line 134545424
+    if-eqz v1, :cond_4e
+
+    .line 134545426
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 134545428
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+
+    .line 134545431
+    :try_start_17
+    const-string v2, "merchantId"
+
+    .line 134545433
+    invoke-virtual {v0, v2, p2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 134545436
+    move-result-object p2
+
+    .line 134545437
+    const-string v2, "appId"
+
+    .line 134545439
+    invoke-virtual {p2, v2, p3}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 134545442
+    move-result-object p2
+
+    .line 134545443
+    const-string p3, "theme"
+
+    .line 134545445
+    invoke-virtual {p2, p3, p5}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 134545448
+    move-result-object p2
+
+    .line 134545449
+    const-string p3, "scene"
+
+    .line 134545451
+    invoke-virtual {p2, p3, p6}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 134545454
+    move-result-object p2
+
+    .line 134545455
+    const-string p3, "style"
+
+    .line 134545457
+    invoke-virtual {p2, p3, p7}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_34
+    .catch Lorg/json/JSONException; {:try_start_17 .. :try_end_34} :catch_35
+
+    .line 134545460
+    goto :goto_39
+
+    .line 134545461
+    :catch_35
+    move-exception p2
+
+    .line 134545462
+    invoke-virtual {p2}, Lorg/json/JSONException;->printStackTrace()V
+
+    .line 134545465
+    :goto_39
+    invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 134545468
+    move-result-object v3
+
+    .line 134545469
+    sget-object p2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 134545471
+    iget-object p3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 134545473
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134545476
+    invoke-static {p3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 134545479
+    move-result-object v6
+
+    .line 134545480
+    move-object v2, p1
+
+    .line 134545481
+    move-object v4, p4
+
+    .line 134545482
+    move-object v5, p8
+
+    .line 134545483
+    invoke-interface/range {v1 .. v6}, Lcom/android/ttcjpaysdk/base/service/ICJPayRealNameAuthService;->startCJPayRealNameAuthActivity(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNameAuthCallback;Lorg/json/JSONObject;)V
+
+    .line 134545486
+    :cond_4e
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 134545489
+    return-void
+.end method
+
+.method public final openRealNameSetPassword(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNamePasswordCallback;)V
+    .registers 14
+
+    .prologue
+    .line 84148224
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 84148227
+    move-result-object v0
+
+    .line 84148228
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84148230
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 84148233
+    move-result-object v0
+
+    .line 84148234
+    move-object v1, v0
+
+    .line 84148235
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 84148237
+    if-eqz v1, :cond_22
+
+    .line 84148239
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 84148241
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84148243
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84148246
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 84148249
+    move-result-object v7
+
+    .line 84148250
+    move-object v2, p1
+
+    .line 84148251
+    move-object v3, p2
+
+    .line 84148252
+    move-object v4, p3
+
+    .line 84148253
+    move-object v5, p4
+
+    .line 84148254
+    move-object v6, p5
+
+    .line 84148255
+    invoke-interface/range {v1 .. v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->openH5SetPassword(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayRealNamePasswordCallback;Lorg/json/JSONObject;)V
+
+    .line 84148258
+    :cond_22
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 84148261
+    return-void
+.end method
+
+.method public final outerBDPay(Landroid/content/Context;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;ZLmb0/a;)V
+    .registers 35
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/content/Context;",
+            "Ljava/lang/String;",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Z",
+            "Lmb0/a;",
+            ")V"
+        }
+    .end annotation
+
+    .prologue
+    .line 117899264
+    move-object/from16 v1, p1
+
+    .line 117899266
+    move-object/from16 v2, p2
+
+    .line 117899268
+    move-object/from16 v3, p4
+
+    .line 117899270
+    move-object/from16 v4, p7
+
+    .line 117899272
+    invoke-static {v1, v4}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 117899275
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->e()Ljava/lang/String;
+
+    .line 117899278
+    move-result-object v0
+
+    .line 117899279
+    invoke-static {}, Lcom/bytedance/caijing/sdk/infra/base/env/CJEnv;->c()Ljava/lang/String;
+
+    .line 117899282
+    move-result-object v5
+
+    .line 117899283
+    const-string v6, "\u8ffd\u5149\u5524\u7aef\u6536\u94f6\u53f0"
+
+    .line 117899285
+    move-object/from16 v7, p0
+
+    .line 117899287
+    invoke-direct {v7, v6, v0, v5, v2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->monitorCounterParams(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 117899290
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 117899293
+    move-result-object v0
+
+    .line 117899294
+    const-class v5, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;
+
+    .line 117899296
+    invoke-virtual {v0, v5}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 117899299
+    move-result-object v0
+
+    .line 117899300
+    move-object v5, v0
+
+    .line 117899301
+    check-cast v5, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;
+
+    .line 117899303
+    const/4 v6, 0x0
+
+    .line 117899304
+    if-eqz v2, :cond_14d
+
+    .line 117899306
+    const/4 v8, 0x0
+
+    .line 117899307
+    const/4 v9, 0x1
+
+    .line 117899308
+    if-eqz v5, :cond_37
+
+    .line 117899310
+    invoke-static/range {p2 .. p2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 117899313
+    move-result v0
+
+    .line 117899314
+    xor-int/2addr v0, v9
+
+    .line 117899315
+    if-eqz v0, :cond_37
+
+    .line 117899317
+    const/4 v0, 0x1
+
+    .line 117899318
+    goto :goto_38
+
+    .line 117899319
+    :cond_37
+    const/4 v0, 0x0
+
+    .line 117899320
+    :goto_38
+    if-eqz v0, :cond_3c
+
+    .line 117899322
+    move-object v10, v2
+
+    .line 117899323
+    goto :goto_3d
+
+    .line 117899324
+    :cond_3c
+    move-object v10, v6
+
+    .line 117899325
+    :goto_3d
+    if-eqz v10, :cond_14d
+
+    .line 117899327
+    sget-object v11, Lcom/android/ttcjpaysdk/base/OuterSource;->NATIVE:Lcom/android/ttcjpaysdk/base/OuterSource;
+
+    .line 117899329
+    if-eqz v3, :cond_50
+
+    .line 117899331
+    invoke-virtual/range {p4 .. p4}, Ljava/lang/String;->length()I
+
+    .line 117899334
+    move-result v0
+
+    .line 117899335
+    if-lez v0, :cond_4b
+
+    .line 117899337
+    const/4 v0, 0x1
+
+    .line 117899338
+    goto :goto_4c
+
+    .line 117899339
+    :cond_4b
+    const/4 v0, 0x0
+
+    .line 117899340
+    :goto_4c
+    if-ne v0, v9, :cond_50
+
+    .line 117899342
+    const/4 v0, 0x1
+
+    .line 117899343
+    goto :goto_51
+
+    .line 117899344
+    :cond_50
+    const/4 v0, 0x0
+
+    .line 117899345
+    :goto_51
+    const-string v12, ""
+
+    .line 117899347
+    if-eqz v0, :cond_57
+
+    .line 117899349
+    move-object v0, v3
+
+    .line 117899350
+    goto :goto_58
+
+    .line 117899351
+    :cond_57
+    move-object v0, v12
+
+    .line 117899352
+    :goto_58
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    .line 117899355
+    move-result v13
+
+    .line 117899356
+    if-nez v13, :cond_60
+
+    .line 117899358
+    const/4 v13, 0x1
+
+    .line 117899359
+    goto :goto_61
+
+    .line 117899360
+    :cond_60
+    const/4 v13, 0x0
+
+    .line 117899361
+    :goto_61
+    if-eqz v13, :cond_70
+
+    .line 117899363
+    invoke-static/range {p2 .. p2}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 117899366
+    move-result-object v0
+
+    .line 117899367
+    const-string v13, "invoke_type"
+
+    .line 117899369
+    invoke-virtual {v0, v13}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 117899372
+    move-result-object v0
+
+    .line 117899373
+    invoke-static {v0, v12}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 117899376
+    :cond_70
+    :try_start_70
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    .line 117899379
+    move-result v12
+
+    .line 117899380
+    if-lez v12, :cond_78
+
+    .line 117899382
+    const/4 v12, 0x1
+
+    .line 117899383
+    goto :goto_79
+
+    .line 117899384
+    :cond_78
+    const/4 v12, 0x0
+
+    .line 117899385
+    :goto_79
+    if-eqz v12, :cond_cd
+
+    .line 117899387
+    sget-object v12, Lcom/android/ttcjpaysdk/base/OuterSource;->Companion:Lcom/android/ttcjpaysdk/base/OuterSource$a;
+
+    .line 117899389
+    invoke-virtual {v12}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 117899392
+    invoke-static {v0, v8}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 117899395
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/OuterSource;->values()[Lcom/android/ttcjpaysdk/base/OuterSource;
+
+    .line 117899398
+    move-result-object v12
+
+    .line 117899399
+    array-length v13, v12
+
+    .line 117899400
+    const/4 v14, 0x0
+
+    .line 117899401
+    :goto_89
+    if-ge v14, v13, :cond_9a
+
+    .line 117899403
+    aget-object v15, v12, v14
+
+    .line 117899405
+    iget-object v8, v15, Lcom/android/ttcjpaysdk/base/OuterSource;->value:Ljava/lang/String;
+
+    .line 117899407
+    invoke-static {v8, v0}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 117899410
+    move-result v8
+
+    .line 117899411
+    if-eqz v8, :cond_96
+
+    .line 117899413
+    goto :goto_9b
+
+    .line 117899414
+    :cond_96
+    add-int/lit8 v14, v14, 0x1
+
+    .line 117899416
+    const/4 v8, 0x0
+
+    .line 117899417
+    goto :goto_89
+
+    .line 117899418
+    :cond_9a
+    move-object v15, v6
+
+    .line 117899419
+    :goto_9b
+    if-nez v15, :cond_a0
+
+    .line 117899421
+    sget-object v11, Lcom/android/ttcjpaysdk/base/OuterSource;->NATIVE:Lcom/android/ttcjpaysdk/base/OuterSource;
+    :try_end_9f
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_70 .. :try_end_9f} :catch_a3
+
+    .line 117899423
+    goto :goto_cd
+
+    .line 117899424
+    :cond_a0
+    move-object/from16 v19, v15
+
+    .line 117899426
+    goto :goto_cf
+
+    .line 117899427
+    :catch_a3
+    move-exception v0
+
+    .line 117899428
+    sget-object v8, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 117899430
+    new-instance v12, Ljava/lang/StringBuilder;
+
+    .line 117899432
+    const-string v13, "Exception:"
+
+    .line 117899434
+    invoke-direct {v12, v13}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 117899437
+    invoke-virtual {v0}, Ljava/lang/IllegalArgumentException;->getMessage()Ljava/lang/String;
+
+    .line 117899440
+    move-result-object v0
+
+    .line 117899441
+    invoke-virtual {v12, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117899444
+    const-string v0, "\uff0c "
+
+    .line 117899446
+    invoke-virtual {v12, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117899449
+    invoke-virtual {v12, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117899452
+    const-string v0, "\u4e0d\u80fd\u751f\u6210OuterSource"
+
+    .line 117899454
+    invoke-virtual {v12, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 117899457
+    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 117899460
+    move-result-object v0
+
+    .line 117899461
+    invoke-virtual {v8}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 117899464
+    const-string v3, "outer_source_match_exception"
+
+    .line 117899466
+    invoke-static {v9, v6, v3, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->h(ILcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 117899469
+    :cond_cd
+    :goto_cd
+    move-object/from16 v19, v11
+
+    .line 117899471
+    :goto_cf
+    if-nez p5, :cond_d8
+
+    .line 117899473
+    sget-object v0, Lcom/android/ttcjpaysdk/base/OuterSceneSource;->DEFAULT:Lcom/android/ttcjpaysdk/base/OuterSceneSource;
+
+    .line 117899475
+    invoke-virtual {v0}, Ljava/lang/Enum;->name()Ljava/lang/String;
+
+    .line 117899478
+    move-result-object v0
+
+    .line 117899479
+    goto :goto_da
+
+    .line 117899480
+    :cond_d8
+    move-object/from16 v0, p5
+
+    .line 117899482
+    :goto_da
+    invoke-static {v0}, Lcom/android/ttcjpaysdk/base/OuterSceneSource;->valueOf(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/OuterSceneSource;
+
+    .line 117899485
+    move-result-object v20
+
+    .line 117899486
+    if-eqz p3, :cond_e5
+
+    .line 117899488
+    invoke-static/range {p3 .. p3}, Lkotlin/collections/MapsKt;->toMutableMap(Ljava/util/Map;)Ljava/util/Map;
+
+    .line 117899491
+    move-result-object v0
+
+    .line 117899492
+    goto :goto_e6
+
+    .line 117899493
+    :cond_e5
+    move-object v0, v6
+
+    .line 117899494
+    :goto_e6
+    new-instance v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 117899496
+    invoke-direct {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;-><init>()V
+
+    .line 117899499
+    if-eqz v0, :cond_109
+
+    .line 117899501
+    const-string v8, "risk_info"
+
+    .line 117899503
+    invoke-interface {v0, v8}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 117899506
+    move-result-object v11
+
+    .line 117899507
+    check-cast v11, Ljava/lang/String;
+
+    .line 117899509
+    if-eqz v11, :cond_109
+
+    .line 117899511
+    invoke-static {v11}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 117899514
+    move-result-object v11
+
+    .line 117899515
+    invoke-static {v11}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->toMap(Lorg/json/JSONObject;)Ljava/util/Map;
+
+    .line 117899518
+    move-result-object v11
+
+    .line 117899519
+    invoke-static {v11}, Lkotlin/collections/MapsKt;->toMutableMap(Ljava/util/Map;)Ljava/util/Map;
+
+    .line 117899522
+    move-result-object v11
+
+    .line 117899523
+    invoke-virtual {v3, v11}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->d(Ljava/util/Map;)V
+
+    .line 117899526
+    invoke-interface {v0, v8}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 117899529
+    :cond_109
+    invoke-static {v10}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safeCreate(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 117899532
+    move-result-object v8
+
+    .line 117899533
+    const-string v10, "invoke_source"
+
+    .line 117899535
+    invoke-virtual {v8, v10}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 117899538
+    move-result-object v10
+
+    .line 117899539
+    const-string v11, "0"
+
+    .line 117899541
+    invoke-static {v10, v11}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 117899544
+    move-result v10
+
+    .line 117899545
+    if-nez v10, :cond_121
+
+    .line 117899547
+    if-eqz p6, :cond_11e
+
+    .line 117899549
+    goto :goto_121
+
+    .line 117899550
+    :cond_11e
+    const/16 v24, 0x0
+
+    .line 117899552
+    goto :goto_123
+
+    .line 117899553
+    :cond_121
+    :goto_121
+    const/16 v24, 0x1
+
+    .line 117899555
+    :goto_123
+    if-eqz v24, :cond_12c
+
+    .line 117899557
+    const-string v9, "use_outer_loading"
+
+    .line 117899559
+    sget-object v10, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+
+    .line 117899561
+    invoke-static {v8, v9, v10}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->safePut(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 117899564
+    :cond_12c
+    new-instance v9, Lcom/android/ttcjpaysdk/base/service/bean/OuterPayInnerBean;
+
+    .line 117899566
+    const/16 v22, 0x0
+
+    .line 117899568
+    const/16 v23, 0x0
+
+    .line 117899570
+    const/16 v25, 0x60
+
+    .line 117899572
+    const/16 v26, 0x0
+
+    .line 117899574
+    move-object/from16 v16, v9
+
+    .line 117899576
+    move-object/from16 v17, v8
+
+    .line 117899578
+    move-object/from16 v18, v3
+
+    .line 117899580
+    move-object/from16 v21, v0
+
+    .line 117899582
+    invoke-direct/range {v16 .. v26}, Lcom/android/ttcjpaysdk/base/service/bean/OuterPayInnerBean;-><init>(Lorg/json/JSONObject;Lcom/android/ttcjpaysdk/base/CJPayHostInfo;Lcom/android/ttcjpaysdk/base/OuterSource;Lcom/android/ttcjpaysdk/base/OuterSceneSource;Ljava/util/Map;Lcom/android/ttcjpaysdk/base/ContainerWay;Ljava/util/Map;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 117899585
+    if-eqz v5, :cond_14d
+
+    .line 117899587
+    new-instance v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$outerBDPay$2$1$1;
+
+    .line 117899589
+    invoke-direct {v0, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$outerBDPay$2$1$1;-><init>(Lmb0/a;)V
+
+    .line 117899592
+    invoke-interface {v5, v1, v9, v0}, Lcom/android/ttcjpaysdk/base/service/IOuterPayService;->startBDOuterPay(Landroid/content/Context;Lcom/android/ttcjpaysdk/base/service/bean/OuterPayInnerBean;Lcom/android/ttcjpaysdk/base/service/CJOuterPayCallback;)V
+
+    .line 117899595
+    sget-object v6, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 117899597
+    :cond_14d
+    if-nez v6, :cond_158
+
+    .line 117899599
+    if-eqz v2, :cond_155
+
+    .line 117899601
+    invoke-static/range {p2 .. p2}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 117899604
+    move-result v0
+
+    .line 117899605
+    :cond_155
+    invoke-interface/range {p7 .. p7}, Lmb0/a;->a()V
+
+    .line 117899608
+    :cond_158
+    return-void
+.end method
+
+.method public final pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 18
+
+    .prologue
+    .line 100990976
+    move v9, p2
+
+    .line 100990977
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 100990979
+    move-object v10, p0
+
+    .line 100990980
+    iget-object v1, v10, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 100990982
+    const-string v2, ""
+
+    .line 100990984
+    if-eqz v1, :cond_e
+
+    .line 100990986
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 100990988
+    if-nez v3, :cond_f
+
+    .line 100990990
+    :cond_e
+    move-object v3, v2
+
+    .line 100990991
+    :cond_f
+    if-eqz v1, :cond_17
+
+    .line 100990993
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 100990995
+    if-nez v1, :cond_16
+
+    .line 100990997
+    goto :goto_17
+
+    .line 100990998
+    :cond_16
+    move-object v2, v1
+
+    .line 100990999
+    :cond_17
+    :goto_17
+    const-string v1, "pay"
+
+    .line 100991001
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 100991004
+    move-result-object v8
+
+    .line 100991005
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 100991007
+    const-string v1, "cashier"
+
+    .line 100991009
+    invoke-virtual {v0, v1, v8}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 100991012
+    const/16 v0, 0xc
+
+    .line 100991014
+    if-ne v9, v0, :cond_49
+
+    .line 100991016
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100991019
+    move-result-object v0
+
+    .line 100991020
+    invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 100991023
+    move-result-object v1
+
+    .line 100991024
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/c;->D:Ljava/lang/String;
+
+    .line 100991026
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100991029
+    move-result-object v0
+
+    .line 100991030
+    const/4 v1, 0x0
+
+    .line 100991031
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/c;->E:Lorg/json/JSONObject;
+
+    .line 100991033
+    invoke-virtual {v8, p2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->k(I)V
+
+    .line 100991036
+    move-object v1, p0
+
+    .line 100991037
+    move-object v2, p1
+
+    .line 100991038
+    move-object v3, p3
+
+    .line 100991039
+    move-object v4, p4
+
+    .line 100991040
+    move-object/from16 v5, p5
+
+    .line 100991042
+    move-object/from16 v6, p6
+
+    .line 100991044
+    move-object v7, v8
+
+    .line 100991045
+    invoke-direct/range {v1 .. v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->handleCreateOrderAndPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 100991048
+    return-void
+
+    .line 100991049
+    :cond_49
+    const-string v6, "from_native"
+
+    .line 100991051
+    move-object v0, p0
+
+    .line 100991052
+    move-object v1, p1
+
+    .line 100991053
+    move v2, p2
+
+    .line 100991054
+    move-object v3, p3
+
+    .line 100991055
+    move-object v4, p4
+
+    .line 100991056
+    move-object/from16 v5, p5
+
+    .line 100991058
+    move-object/from16 v7, p6
+
+    .line 100991060
+    invoke-direct/range {v0 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->antiFraudBeforePay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)Z
+
+    .line 100991063
+    move-result v0
+
+    .line 100991064
+    if-eqz v0, :cond_68
+
+    .line 100991066
+    const-string v6, "from_native"
+
+    .line 100991068
+    move-object v0, p0
+
+    .line 100991069
+    move-object v1, p1
+
+    .line 100991070
+    move v2, p2
+
+    .line 100991071
+    move-object v3, p3
+
+    .line 100991072
+    move-object v4, p4
+
+    .line 100991073
+    move-object/from16 v5, p5
+
+    .line 100991075
+    move-object/from16 v7, p6
+
+    .line 100991077
+    invoke-virtual/range {v0 .. v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 100991080
+    :cond_68
+    return-void
+.end method
+
+.method public final pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 20
+
+    .prologue
+    .line 117702656
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 117702658
+    move-object v11, p0
+
+    .line 117702659
+    iget-object v1, v11, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 117702661
+    const-string v2, ""
+
+    .line 117702663
+    if-eqz v1, :cond_d
+
+    .line 117702665
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 117702667
+    if-nez v3, :cond_e
+
+    .line 117702669
+    :cond_d
+    move-object v3, v2
+
+    .line 117702670
+    :cond_e
+    if-eqz v1, :cond_16
+
+    .line 117702672
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 117702674
+    if-nez v1, :cond_15
+
+    .line 117702676
+    goto :goto_16
+
+    .line 117702677
+    :cond_15
+    move-object v2, v1
+
+    .line 117702678
+    :cond_16
+    :goto_16
+    const-string v1, "pay"
+
+    .line 117702680
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 117702683
+    move-result-object v10
+
+    .line 117702684
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 117702686
+    const-string v1, "cashier"
+
+    .line 117702688
+    invoke-virtual {v0, v1, v10}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 117702691
+    const-string v7, "from_native"
+
+    .line 117702693
+    move-object v1, p0
+
+    .line 117702694
+    move-object v2, p1
+
+    .line 117702695
+    move v3, p2
+
+    .line 117702696
+    move-object v4, p3
+
+    .line 117702697
+    move-object/from16 v5, p4
+
+    .line 117702699
+    move-object/from16 v6, p5
+
+    .line 117702701
+    move-object/from16 v8, p6
+
+    .line 117702703
+    move-object/from16 v9, p7
+
+    .line 117702705
+    invoke-virtual/range {v1 .. v10}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 117702708
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 117702711
+    return-void
+.end method
+
+.method public final pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 17
+
+    .prologue
+    .line 117571584
+    sget-object v8, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$pay$1;->INSTANCE:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$pay$1;
+
+    .line 117571586
+    move-object v0, p0
+
+    .line 117571587
+    move-object v1, p1
+
+    .line 117571588
+    move v2, p2
+
+    .line 117571589
+    move-object v3, p3
+
+    .line 117571590
+    move-object v4, p4
+
+    .line 117571591
+    move-object v5, p5
+
+    .line 117571592
+    move-object v6, p6
+
+    .line 117571593
+    move-object/from16 v7, p7
+
+    .line 117571595
+    invoke-virtual/range {v0 .. v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lkotlin/jvm/functions/Function1;)V
+
+    .line 117571598
+    return-void
+.end method
+
+.method public final pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lkotlin/jvm/functions/Function1;)V
+    .registers 46
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "I",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;",
+            "Lkotlin/jvm/functions/Function1<",
+            "-",
+            "Ljava/lang/String;",
+            "Lkotlin/Unit;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 134807552
+    move-object/from16 v8, p0
+
+    .line 134807554
+    move-object/from16 v9, p1
+
+    .line 134807556
+    move/from16 v10, p2
+
+    .line 134807558
+    move-object/from16 v11, p3
+
+    .line 134807560
+    move-object/from16 v12, p5
+
+    .line 134807562
+    move-object/from16 v13, p7
+
+    .line 134807564
+    move-object/from16 v0, p8
+
+    .line 134807566
+    const/4 v14, 0x0
+
+    .line 134807567
+    invoke-static {v0, v14}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 134807570
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 134807573
+    move-result-wide v6
+
+    .line 134807574
+    const/16 v1, 0xc
+
+    .line 134807576
+    new-array v1, v1, [Ljava/lang/Integer;
+
+    .line 134807578
+    const/4 v15, 0x1
+
+    .line 134807579
+    invoke-static {v15}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807582
+    move-result-object v2
+
+    .line 134807583
+    aput-object v2, v1, v14
+
+    .line 134807585
+    const/4 v5, 0x2
+
+    .line 134807586
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807589
+    move-result-object v2
+
+    .line 134807590
+    aput-object v2, v1, v15
+
+    .line 134807592
+    const/4 v4, 0x3
+
+    .line 134807593
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807596
+    move-result-object v2
+
+    .line 134807597
+    aput-object v2, v1, v5
+
+    .line 134807599
+    const/16 v3, 0xa
+
+    .line 134807601
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807604
+    move-result-object v2
+
+    .line 134807605
+    aput-object v2, v1, v4
+
+    .line 134807607
+    const/16 v2, 0xb
+
+    .line 134807609
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807612
+    move-result-object v16
+
+    .line 134807613
+    const/16 v17, 0x4
+
+    .line 134807615
+    aput-object v16, v1, v17
+
+    .line 134807617
+    const/16 v14, 0x14
+
+    .line 134807619
+    invoke-static {v14}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807622
+    move-result-object v18
+
+    .line 134807623
+    const/4 v14, 0x5
+
+    .line 134807624
+    aput-object v18, v1, v14
+
+    .line 134807626
+    const/16 v14, 0x1e
+
+    .line 134807628
+    invoke-static {v14}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807631
+    move-result-object v19
+
+    .line 134807632
+    const/16 v20, 0x6
+
+    .line 134807634
+    aput-object v19, v1, v20
+
+    .line 134807636
+    const/16 v14, 0x29
+
+    .line 134807638
+    invoke-static {v14}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807641
+    move-result-object v20
+
+    .line 134807642
+    const/16 v21, 0x7
+
+    .line 134807644
+    aput-object v20, v1, v21
+
+    .line 134807646
+    const/16 v20, 0x33
+
+    .line 134807648
+    invoke-static/range {v20 .. v20}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807651
+    move-result-object v20
+
+    .line 134807652
+    const/16 v21, 0x8
+
+    .line 134807654
+    aput-object v20, v1, v21
+
+    .line 134807656
+    const/16 v20, 0x34
+
+    .line 134807658
+    invoke-static/range {v20 .. v20}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807661
+    move-result-object v20
+
+    .line 134807662
+    const/16 v21, 0x9
+
+    .line 134807664
+    aput-object v20, v1, v21
+
+    .line 134807666
+    const/16 v20, 0x35
+
+    .line 134807668
+    invoke-static/range {v20 .. v20}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807671
+    move-result-object v20
+
+    .line 134807672
+    aput-object v20, v1, v3
+
+    .line 134807674
+    const/16 v20, 0x3e
+
+    .line 134807676
+    invoke-static/range {v20 .. v20}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807679
+    move-result-object v20
+
+    .line 134807680
+    aput-object v20, v1, v2
+
+    .line 134807682
+    invoke-static {v1}, Lkotlin/collections/CollectionsKt;->listOf([Ljava/lang/Object;)Ljava/util/List;
+
+    .line 134807685
+    move-result-object v1
+
+    .line 134807686
+    invoke-static/range {p2 .. p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 134807689
+    move-result-object v2
+
+    .line 134807690
+    invoke-interface {v1, v2}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+
+    .line 134807693
+    move-result v1
+
+    .line 134807694
+    const/16 v21, 0x0
+
+    .line 134807696
+    if-eqz v1, :cond_ae
+
+    .line 134807698
+    const/16 v22, 0x0
+
+    .line 134807700
+    move-object/from16 v1, p0
+
+    .line 134807702
+    const/16 v14, 0xb
+
+    .line 134807704
+    move/from16 v2, p2
+
+    .line 134807706
+    const/16 v14, 0xa
+
+    .line 134807708
+    move-object/from16 v3, p5
+
+    .line 134807710
+    move-object/from16 v4, p1
+
+    .line 134807712
+    move-object/from16 v5, p6
+
+    .line 134807714
+    move-wide/from16 v23, v6
+
+    .line 134807716
+    move-object/from16 v6, v22
+
+    .line 134807718
+    move-object/from16 v7, p7
+
+    .line 134807720
+    invoke-direct/range {v1 .. v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setPayCjContext(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 134807723
+    move-result-object v1
+
+    .line 134807724
+    move-object v6, v1
+
+    .line 134807725
+    goto :goto_b4
+
+    .line 134807726
+    :cond_ae
+    move-wide/from16 v23, v6
+
+    .line 134807728
+    const/16 v14, 0xa
+
+    .line 134807730
+    move-object/from16 v6, v21
+
+    .line 134807732
+    :goto_b4
+    const-string v1, ""
+
+    .line 134807734
+    if-eqz v6, :cond_bc
+
+    .line 134807736
+    iget-object v2, v6, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->a:Ljava/lang/String;
+
+    .line 134807738
+    if-nez v2, :cond_bd
+
+    .line 134807740
+    :cond_bc
+    move-object v2, v1
+
+    .line 134807741
+    :cond_bd
+    invoke-interface {v0, v2}, Lkotlin/jvm/functions/Function1;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 134807744
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 134807746
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134807749
+    move-result-object v2
+
+    .line 134807750
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 134807753
+    move-result-object v2
+
+    .line 134807754
+    const-string v3, "cashier"
+
+    .line 134807756
+    invoke-virtual {v0, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134807759
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 134807761
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 134807763
+    const-string v3, "call pay with service:"
+
+    .line 134807765
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 134807768
+    invoke-virtual {v2, v10}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 134807771
+    const-string v3, ",sdkInfo:"
+
+    .line 134807773
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134807776
+    invoke-virtual {v2, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134807779
+    const-string v3, ",ext:"
+
+    .line 134807781
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134807784
+    invoke-virtual {v2, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134807787
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 134807790
+    move-result-object v2
+
+    .line 134807791
+    invoke-static {v0, v2}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134807794
+    sget-object v0, Lbf/b;->a:Lbf/b;
+
+    .line 134807796
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134807799
+    const-string v2, "payChainTraceParams"
+
+    .line 134807801
+    const-string v3, "is_success: "
+
+    .line 134807803
+    const-string v4, "onSuccess\n "
+
+    .line 134807805
+    const-string v5, "Debug\n "
+
+    .line 134807807
+    new-instance v7, Lorg/json/JSONObject;
+
+    .line 134807809
+    invoke-direct {v7}, Lorg/json/JSONObject;-><init>()V
+
+    .line 134807812
+    new-instance v22, Lorg/json/JSONObject;
+
+    .line 134807814
+    invoke-direct/range {v22 .. v22}, Lorg/json/JSONObject;-><init>()V
+
+    .line 134807817
+    new-instance v25, Lorg/json/JSONObject;
+
+    .line 134807819
+    invoke-direct/range {v25 .. v25}, Lorg/json/JSONObject;-><init>()V
+
+    .line 134807822
+    const-string v14, "track_info"
+
+    .line 134807824
+    if-eqz v12, :cond_12c
+
+    .line 134807826
+    :try_start_112
+    invoke-virtual/range {p5 .. p5}, Ljava/lang/String;->length()I
+
+    .line 134807829
+    move-result v26
+    :try_end_116
+    .catch Ljava/lang/Exception; {:try_start_112 .. :try_end_116} :catch_121
+
+    .line 134807830
+    move-object/from16 p8, v7
+
+    .line 134807832
+    if-lez v26, :cond_11c
+
+    .line 134807834
+    const/4 v7, 0x1
+
+    .line 134807835
+    goto :goto_11d
+
+    .line 134807836
+    :cond_11c
+    const/4 v7, 0x0
+
+    .line 134807837
+    :goto_11d
+    if-ne v7, v15, :cond_12e
+
+    .line 134807839
+    const/4 v7, 0x1
+
+    .line 134807840
+    goto :goto_12f
+
+    .line 134807841
+    :catch_121
+    move-object/from16 p8, v7
+
+    .line 134807843
+    goto :goto_14c
+
+    .line 134807844
+    :goto_124
+    move-object/from16 v23, v1
+
+    .line 134807846
+    move-object/from16 v27, v6
+
+    .line 134807848
+    const/4 v1, 0x2
+
+    .line 134807849
+    const/4 v4, 0x3
+
+    .line 134807850
+    goto/16 :goto_2fc
+
+    .line 134807852
+    :cond_12c
+    move-object/from16 p8, v7
+
+    .line 134807854
+    :cond_12e
+    const/4 v7, 0x0
+
+    .line 134807855
+    :goto_12f
+    if-eqz v7, :cond_304
+
+    .line 134807857
+    :try_start_131
+    new-instance v7, Lorg/json/JSONObject;
+
+    .line 134807859
+    invoke-direct {v7, v12}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 134807862
+    instance-of v15, v0, Lcom/android/ttcjpaysdk/base/ktextension/l;
+    :try_end_138
+    .catch Ljava/lang/Exception; {:try_start_131 .. :try_end_138} :catch_2f5
+
+    .line 134807864
+    const-string v25, "runCatching"
+
+    .line 134807866
+    if-eqz v15, :cond_14e
+
+    .line 134807868
+    :try_start_13c
+    move-object v15, v0
+
+    .line 134807869
+    check-cast v15, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 134807871
+    invoke-interface {v15}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 134807874
+    move-result-object v15
+
+    .line 134807875
+    if-eqz v15, :cond_14e
+
+    .line 134807877
+    invoke-static {v15}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 134807880
+    move-result v27
+    :try_end_149
+    .catch Ljava/lang/Exception; {:try_start_13c .. :try_end_149} :catch_14c
+
+    .line 134807881
+    if-eqz v27, :cond_150
+
+    .line 134807883
+    goto :goto_14e
+
+    .line 134807884
+    :catch_14c
+    :goto_14c
+    nop
+
+    .line 134807885
+    goto :goto_124
+
+    .line 134807886
+    :cond_14e
+    :goto_14e
+    move-object/from16 v15, v25
+
+    .line 134807888
+    :cond_150
+    :try_start_150
+    invoke-static {v15}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 134807891
+    move-result v27
+    :try_end_154
+    .catch Ljava/lang/Exception; {:try_start_150 .. :try_end_154} :catch_2f5
+
+    .line 134807892
+    if-eqz v27, :cond_16e
+
+    .line 134807894
+    :try_start_156
+    instance-of v11, v0, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 134807896
+    if-eqz v11, :cond_16b
+
+    .line 134807898
+    check-cast v0, Lcom/android/ttcjpaysdk/base/ktextension/l;
+
+    .line 134807900
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/ktextension/l;->CJTag()Ljava/lang/String;
+
+    .line 134807903
+    move-result-object v0
+
+    .line 134807904
+    if-eqz v0, :cond_16b
+
+    .line 134807906
+    invoke-static {v0}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 134807909
+    move-result v11
+    :try_end_166
+    .catch Ljava/lang/Exception; {:try_start_156 .. :try_end_166} :catch_14c
+
+    .line 134807910
+    if-eqz v11, :cond_169
+
+    .line 134807912
+    goto :goto_16b
+
+    .line 134807913
+    :cond_169
+    move-object/from16 v25, v0
+
+    .line 134807915
+    :cond_16b
+    :goto_16b
+    move-object/from16 v11, v25
+
+    .line 134807917
+    goto :goto_16f
+
+    .line 134807918
+    :cond_16e
+    move-object v11, v15
+
+    .line 134807919
+    :goto_16f
+    :try_start_16f
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 134807922
+    move-result-object v0
+
+    .line 134807923
+    invoke-virtual {v0}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 134807926
+    move-result-object v0
+
+    .line 134807927
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    :try_end_17a
+    .catch Ljava/lang/Exception; {:try_start_16f .. :try_end_17a} :catch_2f5
+
+    .line 134807930
+    move-object/from16 v27, v6
+
+    .line 134807932
+    const/4 v6, 0x5
+
+    .line 134807933
+    :try_start_17d
+    invoke-static {v0, v6}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 134807936
+    move-result-object v28
+
+    .line 134807937
+    const-string v29, "\n "
+
+    .line 134807939
+    const/16 v30, 0x0
+
+    .line 134807941
+    const/16 v31, 0x0
+
+    .line 134807943
+    const/16 v32, 0x0
+
+    .line 134807945
+    const/16 v33, 0x0
+
+    .line 134807947
+    const/16 v34, 0x0
+
+    .line 134807949
+    const/16 v35, 0x3e
+
+    .line 134807951
+    const/16 v36, 0x0
+
+    .line 134807953
+    invoke-static/range {v28 .. v36}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 134807956
+    move-result-object v6
+
+    .line 134807957
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 134807960
+    move-result-object v0
+
+    .line 134807961
+    invoke-virtual {v0}, Ljava/lang/Thread;->getStackTrace()[Ljava/lang/StackTraceElement;
+
+    .line 134807964
+    move-result-object v0
+
+    .line 134807965
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    :try_end_1a0
+    .catch Ljava/lang/Exception; {:try_start_17d .. :try_end_1a0} :catch_2ea
+
+    .line 134807968
+    const/16 v13, 0xa
+
+    .line 134807970
+    :try_start_1a2
+    invoke-static {v0, v13}, Lkotlin/collections/ArraysKt;->take([Ljava/lang/Object;I)Ljava/util/List;
+
+    .line 134807973
+    move-result-object v28
+
+    .line 134807974
+    const-string v29, "\n "
+
+    .line 134807976
+    const/16 v30, 0x0
+
+    .line 134807978
+    const/16 v31, 0x0
+
+    .line 134807980
+    const/16 v32, 0x0
+
+    .line 134807982
+    const/16 v33, 0x0
+
+    .line 134807984
+    const/16 v34, 0x0
+
+    .line 134807986
+    const/16 v35, 0x3e
+
+    .line 134807988
+    const/16 v36, 0x0
+
+    .line 134807990
+    invoke-static/range {v28 .. v36}, Lkotlin/collections/CollectionsKt;->joinToString$default(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+
+    .line 134807993
+    move-result-object v0
+
+    .line 134807994
+    new-instance v13, Ljava/lang/StringBuilder;
+
+    .line 134807996
+    invoke-direct {v13, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 134807999
+    invoke-virtual {v13, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134808002
+    invoke-virtual {v13}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 134808005
+    move-result-object v0
+
+    .line 134808006
+    invoke-static {v11, v0}, Lfe0/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134808009
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 134808012
+    move-result-wide v28
+    :try_end_1cd
+    .catch Ljava/lang/Exception; {:try_start_1a2 .. :try_end_1cd} :catch_2e7
+
+    .line 134808013
+    :try_start_1cd
+    sget-object v0, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 134808015
+    invoke-virtual {v7, v2}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 134808018
+    move-result v0
+
+    .line 134808019
+    if-eqz v0, :cond_1d7
+
+    .line 134808021
+    move-object v0, v7
+
+    .line 134808022
+    goto :goto_1d9
+
+    .line 134808023
+    :cond_1d7
+    move-object/from16 v0, v21
+
+    .line 134808025
+    :goto_1d9
+    if-eqz v0, :cond_1f7
+
+    .line 134808027
+    invoke-virtual {v0, v2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 134808030
+    move-result-object v0
+
+    .line 134808031
+    if-eqz v0, :cond_1f0
+
+    .line 134808033
+    const-string v2, "params"
+
+    .line 134808035
+    invoke-virtual {v0, v2}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 134808038
+    move-result-object v0
+
+    .line 134808039
+    if-eqz v0, :cond_1f0
+
+    .line 134808041
+    const-string v2, "cj_ttpay_start"
+
+    .line 134808043
+    move-wide/from16 v8, v23
+
+    .line 134808045
+    invoke-virtual {v0, v2, v8, v9}, Lorg/json/JSONObject;->put(Ljava/lang/String;J)Lorg/json/JSONObject;
+
+    .line 134808048
+    :cond_1f0
+    invoke-virtual {v7}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 134808051
+    move-result-object v2
+    :try_end_1f4
+    .catchall {:try_start_1cd .. :try_end_1f4} :catchall_201
+
+    .line 134808052
+    :try_start_1f4
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 134808054
+    goto :goto_1fa
+
+    .line 134808055
+    :cond_1f7
+    move-object v2, v12
+
+    .line 134808056
+    move-object/from16 v0, v21
+
+    .line 134808058
+    :goto_1fa
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 134808061
+    move-result-object v0
+    :try_end_1fe
+    .catchall {:try_start_1f4 .. :try_end_1fe} :catchall_1ff
+
+    .line 134808062
+    goto :goto_20d
+
+    .line 134808063
+    :catchall_1ff
+    move-exception v0
+
+    .line 134808064
+    goto :goto_203
+
+    .line 134808065
+    :catchall_201
+    move-exception v0
+
+    .line 134808066
+    move-object v2, v12
+
+    .line 134808067
+    :goto_203
+    :try_start_203
+    sget-object v5, Lkotlin/Result;->Companion:Lkotlin/Result$Companion;
+
+    .line 134808069
+    invoke-static {v0}, Lkotlin/ResultKt;->createFailure(Ljava/lang/Throwable;)Ljava/lang/Object;
+
+    .line 134808072
+    move-result-object v0
+
+    .line 134808073
+    invoke-static {v0}, Lkotlin/Result;->constructor-impl(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 134808076
+    move-result-object v0
+    :try_end_20d
+    .catch Ljava/lang/Exception; {:try_start_203 .. :try_end_20d} :catch_2e0
+
+    .line 134808077
+    :goto_20d
+    :try_start_20d
+    invoke-static {v0}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    .line 134808080
+    move-result v5
+    :try_end_211
+    .catch Ljava/lang/Exception; {:try_start_20d .. :try_end_211} :catch_2da
+
+    .line 134808081
+    if-eqz v5, :cond_22d
+
+    .line 134808083
+    :try_start_213
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 134808085
+    invoke-direct {v5, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 134808088
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134808091
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 134808094
+    move-result-object v4
+
+    .line 134808095
+    invoke-static {v11, v4}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_222
+    .catch Ljava/lang/Exception; {:try_start_213 .. :try_end_222} :catch_224
+
+    .line 134808098
+    const/4 v4, 0x1
+
+    .line 134808099
+    goto :goto_22e
+
+    .line 134808100
+    :catch_224
+    nop
+
+    .line 134808101
+    move-object/from16 v23, v1
+
+    .line 134808103
+    move-object/from16 v18, v2
+
+    .line 134808105
+    :goto_229
+    const/4 v1, 0x2
+
+    .line 134808106
+    const/4 v4, 0x3
+
+    .line 134808107
+    goto/16 :goto_2d2
+
+    .line 134808109
+    :cond_22d
+    const/4 v4, 0x0
+
+    .line 134808110
+    :goto_22e
+    :try_start_22e
+    invoke-static {v0}, Lkotlin/Result;->exceptionOrNull-impl(Ljava/lang/Object;)Ljava/lang/Throwable;
+
+    .line 134808113
+    move-result-object v0
+    :try_end_232
+    .catch Ljava/lang/Exception; {:try_start_22e .. :try_end_232} :catch_2da
+
+    .line 134808114
+    if-eqz v0, :cond_23b
+
+    .line 134808116
+    :try_start_234
+    const-string v4, "onFailure"
+
+    .line 134808118
+    invoke-static {v11, v4, v0}, Lfe0/a;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    :try_end_239
+    .catch Ljava/lang/Exception; {:try_start_234 .. :try_end_239} :catch_224
+
+    .line 134808121
+    const/4 v4, 0x0
+
+    .line 134808122
+    goto :goto_23d
+
+    .line 134808123
+    :cond_23b
+    move-object/from16 v0, v21
+
+    .line 134808125
+    :goto_23d
+    :try_start_23d
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 134808128
+    move-result-wide v8
+
+    .line 134808129
+    sub-long v8, v8, v28
+
+    .line 134808131
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 134808133
+    invoke-direct {v5, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 134808136
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 134808139
+    const-string v3, ", duration: "
+
+    .line 134808141
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134808144
+    invoke-virtual {v5, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 134808147
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 134808150
+    move-result-object v3
+
+    .line 134808151
+    invoke-static {v11, v3}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134808154
+    sget-object v3, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 134808156
+    sget-object v5, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 134808158
+    new-instance v11, Ljava/util/HashMap;
+
+    .line 134808160
+    invoke-direct {v11}, Ljava/util/HashMap;-><init>()V
+
+    .line 134808163
+    invoke-virtual {v5}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134808166
+    invoke-static {v15, v1, v1, v11}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 134808169
+    move-result-object v5
+
+    .line 134808170
+    const-string v11, "cjpay_run_catch_result"
+
+    .line 134808172
+    const/4 v13, 0x5
+
+    .line 134808173
+    new-array v13, v13, [Lkotlin/Pair;
+    :try_end_26f
+    .catch Ljava/lang/Exception; {:try_start_23d .. :try_end_26f} :catch_2da
+
+    .line 134808175
+    move-object/from16 v18, v2
+
+    .line 134808177
+    :try_start_271
+    const-string v2, "tag"
+
+    .line 134808179
+    invoke-static {v2, v15}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 134808182
+    move-result-object v2
+
+    .line 134808183
+    const/4 v15, 0x0
+
+    .line 134808184
+    aput-object v2, v13, v15
+
+    .line 134808186
+    const-string v2, "is_success"
+
+    .line 134808188
+    const-string v15, "1"
+    :try_end_27e
+    .catch Ljava/lang/Exception; {:try_start_271 .. :try_end_27e} :catch_2d7
+
+    .line 134808190
+    move-object/from16 v23, v1
+
+    .line 134808192
+    :try_start_280
+    const-string v1, "0"
+
+    .line 134808194
+    invoke-static {v4, v15, v1}, Lcom/android/ttcjpaysdk/base/ktextension/KtSafeMethodExtensionKt;->tf(ZLjava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 134808197
+    move-result-object v1
+
+    .line 134808198
+    invoke-static {v2, v1}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 134808201
+    move-result-object v1
+
+    .line 134808202
+    const/4 v2, 0x1
+
+    .line 134808203
+    aput-object v1, v13, v2
+
+    .line 134808205
+    const-string v1, "error_msg"
+    :try_end_28f
+    .catch Ljava/lang/Exception; {:try_start_280 .. :try_end_28f} :catch_2de
+
+    .line 134808207
+    if-eqz v0, :cond_298
+
+    .line 134808209
+    :try_start_291
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 134808212
+    move-result-object v0
+    :try_end_295
+    .catch Ljava/lang/Exception; {:try_start_291 .. :try_end_295} :catch_296
+
+    .line 134808213
+    goto :goto_29a
+
+    .line 134808214
+    :catch_296
+    nop
+
+    .line 134808215
+    goto :goto_229
+
+    .line 134808216
+    :cond_298
+    move-object/from16 v0, v21
+
+    .line 134808218
+    :goto_29a
+    if-nez v0, :cond_29e
+
+    .line 134808220
+    move-object/from16 v0, v23
+
+    .line 134808222
+    :cond_29e
+    :try_start_29e
+    invoke-static {v1, v0}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 134808225
+    move-result-object v0
+    :try_end_2a2
+    .catch Ljava/lang/Exception; {:try_start_29e .. :try_end_2a2} :catch_2de
+
+    .line 134808226
+    const/4 v1, 0x2
+
+    .line 134808227
+    :try_start_2a3
+    aput-object v0, v13, v1
+
+    .line 134808229
+    const-string v0, "trace"
+
+    .line 134808231
+    invoke-static {v0, v6}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 134808234
+    move-result-object v0
+    :try_end_2ab
+    .catch Ljava/lang/Exception; {:try_start_2a3 .. :try_end_2ab} :catch_2d5
+
+    .line 134808235
+    const/4 v4, 0x3
+
+    .line 134808236
+    :try_start_2ac
+    aput-object v0, v13, v4
+
+    .line 134808238
+    const-string v0, "duration"
+
+    .line 134808240
+    invoke-static {v8, v9}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 134808243
+    move-result-object v2
+
+    .line 134808244
+    invoke-static {v0, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 134808247
+    move-result-object v0
+
+    .line 134808248
+    aput-object v0, v13, v17
+
+    .line 134808250
+    invoke-static {v13}, Lkotlin/collections/MapsKt;->mapOf([Lkotlin/Pair;)Ljava/util/Map;
+
+    .line 134808253
+    move-result-object v0
+
+    .line 134808254
+    invoke-static {v3, v5, v11, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->l(Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 134808257
+    new-instance v0, Lcom/android/ttcjpaysdk/base/ktextension/g;
+
+    .line 134808259
+    invoke-virtual {v7, v14}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 134808262
+    move-result-object v0
+
+    .line 134808263
+    if-nez v0, :cond_2ce
+
+    .line 134808265
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 134808267
+    invoke-direct {v0}, Lorg/json/JSONObject;-><init>()V
+    :try_end_2ce
+    .catch Ljava/lang/Exception; {:try_start_2ac .. :try_end_2ce} :catch_2d1
+
+    .line 134808270
+    :cond_2ce
+    move-object/from16 v2, v18
+
+    .line 134808272
+    goto :goto_30f
+
+    .line 134808273
+    :catch_2d1
+    :goto_2d1
+    nop
+
+    .line 134808274
+    :goto_2d2
+    move-object/from16 v2, v18
+
+    .line 134808276
+    goto :goto_2e5
+
+    .line 134808277
+    :catch_2d5
+    :goto_2d5
+    const/4 v4, 0x3
+
+    .line 134808278
+    goto :goto_2d1
+
+    .line 134808279
+    :catch_2d7
+    move-object/from16 v23, v1
+
+    .line 134808281
+    goto :goto_2de
+
+    .line 134808282
+    :catch_2da
+    move-object/from16 v23, v1
+
+    .line 134808284
+    move-object/from16 v18, v2
+
+    .line 134808286
+    :catch_2de
+    :goto_2de
+    const/4 v1, 0x2
+
+    .line 134808287
+    goto :goto_2d5
+
+    .line 134808288
+    :catch_2e0
+    move-object/from16 v23, v1
+
+    .line 134808290
+    const/4 v1, 0x2
+
+    .line 134808291
+    const/4 v4, 0x3
+
+    .line 134808292
+    nop
+
+    .line 134808293
+    :goto_2e5
+    move-object v12, v2
+
+    .line 134808294
+    goto :goto_2fc
+
+    .line 134808295
+    :catch_2e7
+    move-object/from16 v23, v1
+
+    .line 134808297
+    goto :goto_2f9
+
+    .line 134808298
+    :catch_2ea
+    move-object/from16 v23, v1
+
+    .line 134808300
+    const/4 v1, 0x2
+
+    .line 134808301
+    const/4 v4, 0x3
+
+    .line 134808302
+    nop
+
+    .line 134808303
+    move-object/from16 v3, p1
+
+    .line 134808305
+    move-object/from16 v6, v23
+
+    .line 134808307
+    goto/16 :goto_39b
+
+    .line 134808309
+    :catch_2f5
+    move-object/from16 v23, v1
+
+    .line 134808311
+    move-object/from16 v27, v6
+
+    .line 134808313
+    :goto_2f9
+    const/4 v1, 0x2
+
+    .line 134808314
+    const/4 v4, 0x3
+
+    .line 134808315
+    nop
+
+    .line 134808316
+    :goto_2fc
+    move-object/from16 v3, p1
+
+    .line 134808318
+    move-object/from16 v7, p8
+
+    .line 134808320
+    move-object/from16 v6, v23
+
+    .line 134808322
+    goto/16 :goto_39d
+
+    .line 134808324
+    :cond_304
+    move-object/from16 v23, v1
+
+    .line 134808326
+    move-object/from16 v27, v6
+
+    .line 134808328
+    const/4 v1, 0x2
+
+    .line 134808329
+    const/4 v4, 0x3
+
+    .line 134808330
+    move-object v2, v12
+
+    .line 134808331
+    move-object/from16 v0, v22
+
+    .line 134808333
+    move-object/from16 v7, v25
+
+    .line 134808335
+    :goto_30f
+    move-object/from16 v3, p1
+
+    .line 134808337
+    :try_start_311
+    invoke-static {v12, v3}, Lbf/b;->e(Ljava/lang/String;Ljava/lang/String;)Lkotlin/Pair;
+
+    .line 134808340
+    move-result-object v5
+
+    .line 134808341
+    invoke-virtual {v5}, Lkotlin/Pair;->component1()Ljava/lang/Object;
+
+    .line 134808344
+    move-result-object v6
+
+    .line 134808345
+    check-cast v6, Ljava/lang/String;
+
+    .line 134808347
+    invoke-virtual {v5}, Lkotlin/Pair;->component2()Ljava/lang/Object;
+
+    .line 134808350
+    move-result-object v5
+
+    .line 134808351
+    check-cast v5, Ljava/lang/String;
+
+    .line 134808353
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808356
+    move-result-object v8
+
+    .line 134808357
+    iput-object v5, v8, Lcom/android/ttcjpaysdk/base/c;->B:Ljava/lang/String;
+
+    .line 134808359
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808362
+    move-result-object v8
+
+    .line 134808363
+    iput-object v6, v8, Lcom/android/ttcjpaysdk/base/c;->C:Ljava/lang/String;
+
+    .line 134808365
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808368
+    move-result-object v8
+
+    .line 134808369
+    iget-object v8, v8, Lcom/android/ttcjpaysdk/base/c;->D:Ljava/lang/String;
+    :try_end_333
+    .catch Ljava/lang/Exception; {:try_start_311 .. :try_end_333} :catch_395
+
+    .line 134808371
+    if-eqz v8, :cond_353
+
+    .line 134808373
+    :try_start_335
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808376
+    move-result-object v8
+
+    .line 134808377
+    iget-object v8, v8, Lcom/android/ttcjpaysdk/base/c;->D:Ljava/lang/String;
+
+    .line 134808379
+    if-eqz v8, :cond_34b
+
+    .line 134808381
+    invoke-virtual {v8}, Ljava/lang/String;->length()I
+
+    .line 134808384
+    move-result v8
+    :try_end_341
+    .catch Ljava/lang/Exception; {:try_start_335 .. :try_end_341} :catch_34f
+
+    .line 134808385
+    if-nez v8, :cond_345
+
+    .line 134808387
+    const/4 v8, 0x1
+
+    .line 134808388
+    goto :goto_346
+
+    .line 134808389
+    :cond_345
+    const/4 v8, 0x0
+
+    .line 134808390
+    :goto_346
+    const/4 v9, 0x1
+
+    .line 134808391
+    if-ne v8, v9, :cond_34b
+
+    .line 134808393
+    const/4 v8, 0x1
+
+    .line 134808394
+    goto :goto_34c
+
+    .line 134808395
+    :cond_34b
+    const/4 v8, 0x0
+
+    .line 134808396
+    :goto_34c
+    if-eqz v8, :cond_35d
+
+    .line 134808398
+    goto :goto_353
+
+    .line 134808399
+    :catch_34f
+    nop
+
+    .line 134808400
+    move-object/from16 v6, v23
+
+    .line 134808402
+    goto :goto_398
+
+    .line 134808403
+    :cond_353
+    :goto_353
+    :try_start_353
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808406
+    move-result-object v8
+
+    .line 134808407
+    invoke-static/range {p2 .. p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 134808410
+    move-result-object v9
+
+    .line 134808411
+    iput-object v9, v8, Lcom/android/ttcjpaysdk/base/c;->D:Ljava/lang/String;
+    :try_end_35d
+    .catch Ljava/lang/Exception; {:try_start_353 .. :try_end_35d} :catch_395
+
+    .line 134808413
+    :cond_35d
+    const/16 v8, 0xa
+
+    .line 134808415
+    if-ne v10, v8, :cond_375
+
+    .line 134808417
+    :try_start_361
+    const-string v8, "app_id"
+
+    .line 134808419
+    invoke-virtual {v0, v8}, Lorg/json/JSONObject;->remove(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 134808422
+    const-string v8, "merchant_id"
+
+    .line 134808424
+    invoke-virtual {v0, v8}, Lorg/json/JSONObject;->remove(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 134808427
+    invoke-virtual {v7, v14}, Lorg/json/JSONObject;->remove(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 134808430
+    invoke-virtual {v7, v14, v0}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+
+    .line 134808433
+    invoke-virtual {v7}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 134808436
+    move-result-object v2
+    :try_end_375
+    .catch Ljava/lang/Exception; {:try_start_361 .. :try_end_375} :catch_34f
+
+    .line 134808437
+    :cond_375
+    :try_start_375
+    invoke-static {v6, v5}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->g(Ljava/lang/String;Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 134808440
+    move-result-object v5
+    :try_end_379
+    .catch Ljava/lang/Exception; {:try_start_375 .. :try_end_379} :catch_395
+
+    .line 134808441
+    move-object/from16 v6, v23
+
+    .line 134808443
+    :try_start_37b
+    invoke-static {v5, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    :try_end_37e
+    .catch Ljava/lang/Exception; {:try_start_37b .. :try_end_37e} :catch_397
+
+    .line 134808446
+    :try_start_37e
+    const-string v7, "service"
+
+    .line 134808448
+    invoke-virtual {v5, v7, v10}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+
+    .line 134808451
+    const-string v7, "pay_params"
+
+    .line 134808453
+    if-nez v3, :cond_389
+
+    .line 134808455
+    move-object v8, v6
+
+    .line 134808456
+    goto :goto_38a
+
+    .line 134808457
+    :cond_389
+    move-object v8, v3
+
+    .line 134808458
+    :goto_38a
+    invoke-virtual {v5, v7, v8}, Lorg/json/JSONObject;->put(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    :try_end_38d
+    .catch Ljava/lang/Exception; {:try_start_37e .. :try_end_38d} :catch_38f
+
+    .line 134808461
+    move-object v12, v2
+
+    .line 134808462
+    goto :goto_3a0
+
+    .line 134808463
+    :catch_38f
+    nop
+
+    .line 134808464
+    move-object/from16 v22, v0
+
+    .line 134808466
+    move-object v12, v2
+
+    .line 134808467
+    move-object v7, v5
+
+    .line 134808468
+    goto :goto_39d
+
+    .line 134808469
+    :catch_395
+    move-object/from16 v6, v23
+
+    .line 134808471
+    :catch_397
+    nop
+
+    .line 134808472
+    :goto_398
+    move-object/from16 v22, v0
+
+    .line 134808474
+    move-object v12, v2
+
+    .line 134808475
+    :goto_39b
+    move-object/from16 v7, p8
+
+    .line 134808477
+    :goto_39d
+    move-object v5, v7
+
+    .line 134808478
+    move-object/from16 v0, v22
+
+    .line 134808480
+    :goto_3a0
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808483
+    move-result-object v2
+
+    .line 134808484
+    new-array v7, v1, [Lorg/json/JSONObject;
+
+    .line 134808486
+    const/4 v15, 0x0
+
+    .line 134808487
+    aput-object v5, v7, v15
+
+    .line 134808489
+    const/4 v5, 0x1
+
+    .line 134808490
+    aput-object v0, v7, v5
+
+    .line 134808492
+    const-string v0, "wallet_cashier_by_sdk"
+
+    .line 134808494
+    invoke-virtual {v2, v0, v7}, Lcom/android/ttcjpaysdk/base/c;->j(Ljava/lang/String;[Lorg/json/JSONObject;)V
+
+    .line 134808497
+    sget-object v0, Lbf/e;->a:Lbf/e;
+
+    .line 134808499
+    move-object/from16 v7, p0
+
+    .line 134808501
+    iget-object v2, v7, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 134808503
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134808506
+    const-string v5, "Saas"
+
+    .line 134808508
+    const-string v0, "checkCaijingSaasProcess saasScene: "
+
+    .line 134808510
+    if-eqz v2, :cond_40d
+
+    .line 134808512
+    :try_start_3c0
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 134808515
+    move-result-object v2
+
+    .line 134808516
+    if-eqz v2, :cond_40d
+
+    .line 134808518
+    new-instance v8, Lorg/json/JSONObject;
+
+    .line 134808520
+    invoke-direct {v8, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 134808523
+    const-string v9, "saas_scene"
+
+    .line 134808525
+    invoke-virtual {v8, v9}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 134808528
+    move-result-object v8
+
+    .line 134808529
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    .line 134808531
+    invoke-direct {v9, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 134808534
+    invoke-virtual {v9, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134808537
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 134808540
+    move-result-object v0
+
+    .line 134808541
+    invoke-static {v5, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134808544
+    invoke-static {v8, v6}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 134808547
+    invoke-virtual {v8}, Ljava/lang/String;->length()I
+
+    .line 134808550
+    move-result v0
+
+    .line 134808551
+    if-lez v0, :cond_3eb
+
+    .line 134808553
+    const/4 v0, 0x1
+
+    .line 134808554
+    goto :goto_3ec
+
+    .line 134808555
+    :cond_3eb
+    const/4 v0, 0x0
+
+    .line 134808556
+    :goto_3ec
+    if-eqz v0, :cond_40d
+
+    .line 134808558
+    sget-object v0, Li9/b;->a:Li9/b;
+
+    .line 134808560
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134808563
+    invoke-static {v2, v8}, Li9/b;->c(Landroid/content/Context;Ljava/lang/String;)V
+    :try_end_3f6
+    .catch Ljava/lang/Exception; {:try_start_3c0 .. :try_end_3f6} :catch_3f7
+
+    .line 134808566
+    goto :goto_40d
+
+    .line 134808567
+    :catch_3f7
+    move-exception v0
+
+    .line 134808568
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 134808570
+    const-string v6, "checkCaijingSaasProcess exception: "
+
+    .line 134808572
+    invoke-direct {v2, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 134808575
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    .line 134808578
+    move-result-object v0
+
+    .line 134808579
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 134808582
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 134808585
+    move-result-object v0
+
+    .line 134808586
+    invoke-static {v5, v0}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134808589
+    :cond_40d
+    :goto_40d
+    const/4 v2, 0x1
+
+    .line 134808590
+    if-eq v10, v2, :cond_549
+
+    .line 134808592
+    if-eq v10, v1, :cond_538
+
+    .line 134808594
+    if-eq v10, v4, :cond_530
+
+    .line 134808596
+    const/16 v1, 0xa
+
+    .line 134808598
+    if-eq v10, v1, :cond_528
+
+    .line 134808600
+    const/16 v1, 0xb
+
+    .line 134808602
+    if-eq v10, v1, :cond_522
+
+    .line 134808604
+    const/16 v1, 0x14
+
+    .line 134808606
+    if-eq v10, v1, :cond_511
+
+    .line 134808608
+    const/16 v1, 0x1e
+
+    .line 134808610
+    if-eq v10, v1, :cond_509
+
+    .line 134808612
+    const/16 v1, 0x29
+
+    .line 134808614
+    if-eq v10, v1, :cond_503
+
+    .line 134808616
+    const/16 v0, 0x47
+
+    .line 134808618
+    if-eq v10, v0, :cond_4a5
+
+    .line 134808620
+    const/16 v0, 0xc8
+
+    .line 134808622
+    if-eq v10, v0, :cond_49e
+
+    .line 134808624
+    packed-switch v10, :pswitch_data_554
+
+    .line 134808627
+    move-object/from16 v5, p7
+
+    .line 134808629
+    packed-switch v10, :pswitch_data_55e
+
+    .line 134808632
+    packed-switch v10, :pswitch_data_56a
+
+    .line 134808635
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808638
+    move-result-object v0
+
+    .line 134808639
+    const/16 v1, 0x70
+
+    .line 134808641
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 134808644
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 134808647
+    goto/16 :goto_550
+
+    .line 134808649
+    :pswitch_449
+    move-object/from16 v5, p7
+
+    .line 134808651
+    invoke-direct {v7, v3, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallSignOnly(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808654
+    goto/16 :goto_550
+
+    .line 134808656
+    :pswitch_450
+    iget-object v0, v7, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 134808658
+    if-eqz v0, :cond_458
+
+    .line 134808660
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 134808663
+    move-result-object v21
+
+    .line 134808664
+    :cond_458
+    move-object/from16 v0, v21
+
+    .line 134808666
+    invoke-direct {v7, v0, v3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->aliPayIndependentSign(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 134808669
+    goto/16 :goto_550
+
+    .line 134808671
+    :pswitch_45f
+    move-object/from16 v1, p4
+
+    .line 134808673
+    move-object/from16 v5, p7
+
+    .line 134808675
+    invoke-direct {v7, v3, v1, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallWxSign(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808678
+    goto/16 :goto_550
+
+    .line 134808680
+    :pswitch_468
+    invoke-direct/range {p0 .. p1}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->gotoCheckFace(Ljava/lang/String;)V
+
+    .line 134808683
+    goto/16 :goto_550
+
+    .line 134808685
+    :pswitch_46d
+    invoke-direct {v7, v3, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->commonActionForLynx(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808688
+    goto/16 :goto_550
+
+    .line 134808690
+    :pswitch_472
+    iget-object v0, v7, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 134808692
+    move-object/from16 v1, p0
+
+    .line 134808694
+    move-object/from16 v2, p1
+
+    .line 134808696
+    move-object v3, v0
+
+    .line 134808697
+    move-object/from16 v4, p7
+
+    .line 134808699
+    move-object v5, v12
+
+    .line 134808700
+    move-object/from16 v6, v27
+
+    .line 134808702
+    invoke-direct/range {v1 .. v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->doSuperPay(Ljava/lang/String;Lcom/android/ttcjpaysdk/base/CJPayHostInfo;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134808705
+    goto/16 :goto_550
+
+    .line 134808707
+    :pswitch_483
+    invoke-direct {v7, v3, v12}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallLoading(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 134808710
+    goto/16 :goto_550
+
+    .line 134808712
+    :pswitch_488
+    invoke-direct {v7, v3, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallCJPayWebView(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808715
+    goto/16 :goto_550
+
+    .line 134808717
+    :pswitch_48d
+    invoke-direct {v7, v3, v12, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payOpenHostScheme(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808720
+    goto/16 :goto_550
+
+    .line 134808722
+    :pswitch_492
+    move-object/from16 v4, p3
+
+    .line 134808724
+    invoke-direct {v7, v3, v4, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->handleBiometrics(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808727
+    goto/16 :goto_550
+
+    .line 134808729
+    :pswitch_499
+    invoke-direct {v7, v3, v12, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallMedicalPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808732
+    goto/16 :goto_550
+
+    .line 134808734
+    :cond_49e
+    move-object/from16 v5, p7
+
+    .line 134808736
+    invoke-direct {v7, v3, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->handleNativeCacheData(Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808739
+    goto/16 :goto_550
+
+    .line 134808741
+    :cond_4a5
+    move-object/from16 v5, p7
+
+    .line 134808743
+    sget-object v0, Lcom/android/ttcjpaysdk/base/utils/b;->a:Lcom/android/ttcjpaysdk/base/utils/b;
+
+    .line 134808745
+    iget-object v1, v7, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 134808747
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 134808750
+    const-string v0, "show_loading"
+
+    .line 134808752
+    :try_start_4b0
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 134808754
+    invoke-direct {v2, v3}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 134808757
+    if-eqz v12, :cond_4c5
+
+    .line 134808759
+    invoke-virtual {v12}, Ljava/lang/String;->length()I
+
+    .line 134808762
+    move-result v2
+
+    .line 134808763
+    if-lez v2, :cond_4bf
+
+    .line 134808765
+    const/4 v2, 0x1
+
+    .line 134808766
+    goto :goto_4c0
+
+    .line 134808767
+    :cond_4bf
+    const/4 v2, 0x0
+
+    .line 134808768
+    :goto_4c0
+    const/4 v4, 0x1
+
+    .line 134808769
+    if-ne v2, v4, :cond_4c6
+
+    .line 134808771
+    const/4 v2, 0x1
+
+    .line 134808772
+    goto :goto_4c7
+
+    .line 134808773
+    :cond_4c5
+    const/4 v4, 0x1
+
+    .line 134808774
+    :cond_4c6
+    const/4 v2, 0x0
+
+    .line 134808775
+    :goto_4c7
+    if-eqz v2, :cond_4e6
+
+    .line 134808777
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 134808779
+    invoke-direct {v2, v12}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 134808782
+    invoke-virtual {v2, v14}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 134808785
+    move-result-object v6
+
+    .line 134808786
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 134808789
+    move-result-object v8
+
+    .line 134808790
+    iput-object v6, v8, Lcom/android/ttcjpaysdk/base/c;->y:Lorg/json/JSONObject;
+
+    .line 134808792
+    invoke-virtual {v2, v0}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 134808795
+    move-result v6
+
+    .line 134808796
+    if-eqz v6, :cond_4e6
+
+    .line 134808798
+    invoke-virtual {v2, v0}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    .line 134808801
+    move-result v0
+
+    .line 134808802
+    if-nez v0, :cond_4e6
+
+    .line 134808804
+    const/4 v14, 0x0
+
+    .line 134808805
+    goto :goto_4e7
+
+    .line 134808806
+    :cond_4e6
+    const/4 v14, 0x1
+
+    .line 134808807
+    :goto_4e7
+    if-eqz v1, :cond_4ee
+
+    .line 134808809
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 134808812
+    move-result-object v0
+
+    .line 134808813
+    goto :goto_4f0
+
+    .line 134808814
+    :cond_4ee
+    move-object/from16 v0, v21
+
+    .line 134808816
+    :goto_4f0
+    instance-of v1, v0, Landroid/app/Activity;
+
+    .line 134808818
+    if-eqz v1, :cond_4f8
+
+    .line 134808820
+    move-object/from16 v21, v0
+
+    .line 134808822
+    check-cast v21, Landroid/app/Activity;
+
+    .line 134808824
+    :cond_4f8
+    move-object/from16 v0, v21
+
+    .line 134808826
+    new-instance v1, Lcom/android/ttcjpaysdk/base/utils/n0;
+
+    .line 134808828
+    invoke-direct {v1, v5}, Lcom/android/ttcjpaysdk/base/utils/n0;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808831
+    invoke-static {v0, v3, v14, v1}, Lcom/android/ttcjpaysdk/base/utils/b;->a(Landroid/app/Activity;Ljava/lang/String;ZLjava/lang/reflect/InvocationHandler;)V
+    :try_end_502
+    .catch Ljava/lang/Exception; {:try_start_4b0 .. :try_end_502} :catch_550
+
+    .line 134808834
+    goto :goto_550
+
+    .line 134808835
+    :cond_503
+    move-object/from16 v5, p7
+
+    .line 134808837
+    invoke-direct {v7, v3, v12, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallIndependentBindCard(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808840
+    goto :goto_550
+
+    .line 134808841
+    :cond_509
+    move-object/from16 v5, p7
+
+    .line 134808843
+    move-object/from16 v6, v27
+
+    .line 134808845
+    invoke-direct {v7, v3, v12, v5, v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallDyCounter(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134808848
+    goto :goto_550
+
+    .line 134808849
+    :cond_511
+    move-object/from16 v5, p7
+
+    .line 134808851
+    move-object/from16 v6, v27
+
+    .line 134808853
+    move-object/from16 v1, p0
+
+    .line 134808855
+    move-object/from16 v2, p1
+
+    .line 134808857
+    move-object v3, v12
+
+    .line 134808858
+    move-object/from16 v4, p7
+
+    .line 134808860
+    move-object/from16 v5, p6
+
+    .line 134808862
+    invoke-direct/range {v1 .. v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallIntegratedCounter(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134808865
+    goto :goto_550
+
+    .line 134808866
+    :cond_522
+    move-object/from16 v5, p7
+
+    .line 134808868
+    invoke-direct {v7, v3, v12, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallSignAndPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808871
+    goto :goto_550
+
+    .line 134808872
+    :cond_528
+    move-object/from16 v5, p7
+
+    .line 134808874
+    move-object/from16 v6, v27
+
+    .line 134808876
+    invoke-direct {v7, v3, v12, v5, v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallInnerDyPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134808879
+    goto :goto_550
+
+    .line 134808880
+    :cond_530
+    move-object/from16 v5, p7
+
+    .line 134808882
+    move-object/from16 v6, v27
+
+    .line 134808884
+    invoke-direct {v7, v3, v12, v5, v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallCloudUnionPay(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134808887
+    goto :goto_550
+
+    .line 134808888
+    :cond_538
+    move-object/from16 v4, p3
+
+    .line 134808890
+    move-object/from16 v5, p7
+
+    .line 134808892
+    move-object/from16 v6, v27
+
+    .line 134808894
+    move-object/from16 v1, p0
+
+    .line 134808896
+    move-object/from16 v2, p1
+
+    .line 134808898
+    move-object/from16 v3, p3
+
+    .line 134808900
+    move-object v4, v12
+
+    .line 134808901
+    invoke-direct/range {v1 .. v6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallAliPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 134808904
+    goto :goto_550
+
+    .line 134808905
+    :cond_549
+    move-object/from16 v4, p3
+
+    .line 134808907
+    move-object/from16 v5, p7
+
+    .line 134808909
+    invoke-direct {v7, v3, v4, v12, v5}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->payCallWxPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 134808912
+    :catch_550
+    :goto_550
+    invoke-virtual/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 134808915
+    return-void
+
+    .line 134808916
+    :pswitch_data_554
+    .packed-switch 0x33
+        :pswitch_45f
+        :pswitch_450
+        :pswitch_449
+    .end packed-switch
+
+    .line 134808926
+    :pswitch_data_55e
+    .packed-switch 0x3d
+        :pswitch_483
+        :pswitch_472
+        :pswitch_46d
+        :pswitch_468
+    .end packed-switch
+
+    .line 134808938
+    :pswitch_data_56a
+    .packed-switch 0x60
+        :pswitch_499
+        :pswitch_492
+        :pswitch_48d
+        :pswitch_488
+    .end packed-switch
+.end method
+
+.method public final pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    .registers 29
+
+    .prologue
+    .line 151650304
+    move-object/from16 v12, p0
+
+    .line 151650306
+    move-object/from16 v0, p1
+
+    .line 151650308
+    move/from16 v3, p2
+
+    .line 151650310
+    move-object/from16 v4, p3
+
+    .line 151650312
+    move-object/from16 v8, p5
+
+    .line 151650314
+    move-object/from16 v9, p8
+
+    .line 151650316
+    move-object/from16 v1, p9
+
+    .line 151650318
+    const-string v2, "openSchemeInterface is "
+
+    .line 151650320
+    const-string v5, "openSchemeWithContextInterface is "
+
+    .line 151650322
+    const-string v6, "&callback_id="
+
+    .line 151650324
+    const-string v7, "?callback_id="
+
+    .line 151650326
+    const-string v10, "service 98 call "
+
+    .line 151650328
+    if-eqz p7, :cond_465
+
+    .line 151650330
+    invoke-virtual/range {p7 .. p7}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 151650333
+    move-result v11
+
+    .line 151650334
+    if-nez v11, :cond_22
+
+    .line 151650336
+    goto/16 :goto_465
+
+    .line 151650338
+    :cond_22
+    new-instance v11, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$pay$onResultCallback$1;
+
+    .line 151650340
+    invoke-direct {v11, v9}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$pay$onResultCallback$1;-><init>(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 151650343
+    const-string v13, ""
+
+    .line 151650345
+    if-nez v1, :cond_47
+
+    .line 151650347
+    sget-object v14, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 151650349
+    iget-object v15, v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 151650351
+    move-object/from16 p7, v11
+
+    .line 151650353
+    if-eqz v15, :cond_37
+
+    .line 151650355
+    iget-object v11, v15, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 151650357
+    if-nez v11, :cond_38
+
+    .line 151650359
+    :cond_37
+    move-object v11, v13
+
+    .line 151650360
+    :cond_38
+    if-eqz v15, :cond_3e
+
+    .line 151650362
+    iget-object v15, v15, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 151650364
+    if-nez v15, :cond_3f
+
+    .line 151650366
+    :cond_3e
+    move-object v15, v13
+
+    .line 151650367
+    :cond_3f
+    const-string v1, "pay"
+
+    .line 151650369
+    invoke-static {v14, v1, v11, v15}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 151650372
+    move-result-object v1
+
+    .line 151650373
+    move-object v11, v1
+
+    .line 151650374
+    goto :goto_4b
+
+    .line 151650375
+    :cond_47
+    move-object/from16 p7, v11
+
+    .line 151650377
+    move-object/from16 v11, p9
+
+    .line 151650379
+    :goto_4b
+    const/4 v15, 0x1
+
+    .line 151650380
+    const-string v16, "MWEB"
+
+    .line 151650382
+    const-string v17, "APP"
+
+    .line 151650384
+    const-string v14, "1"
+
+    .line 151650386
+    if-eq v3, v15, :cond_41c
+
+    .line 151650388
+    const/4 v15, 0x2
+
+    .line 151650389
+    if-eq v3, v15, :cond_3d6
+
+    .line 151650391
+    const/16 v1, 0xa
+
+    .line 151650393
+    const-string v15, "bind_card_info"
+
+    .line 151650395
+    const-string v14, "track_info"
+
+    .line 151650397
+    move-object/from16 v18, v11
+
+    .line 151650399
+    const-string v11, "source"
+
+    .line 151650401
+    if-eq v3, v1, :cond_351
+
+    .line 151650403
+    const/16 v1, 0x14
+
+    .line 151650405
+    move-object/from16 v16, v15
+
+    .line 151650407
+    const-string v15, "show_loading"
+
+    .line 151650409
+    if-eq v3, v1, :cond_2c8
+
+    .line 151650411
+    const/16 v1, 0x29
+
+    .line 151650413
+    if-eq v3, v1, :cond_1f3
+
+    .line 151650415
+    const/16 v1, 0x33
+
+    .line 151650417
+    if-eq v3, v1, :cond_18c
+
+    .line 151650419
+    const-string v1, "schema"
+
+    .line 151650421
+    packed-switch v3, :pswitch_data_47a
+
+    .line 151650424
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650427
+    move-result-object v0
+
+    .line 151650428
+    const/16 v1, 0x70
+
+    .line 151650430
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151650433
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151650436
+    goto/16 :goto_461
+
+    .line 151650438
+    :pswitch_86
+    :try_start_86
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650441
+    move-result-object v2
+
+    .line 151650442
+    invoke-virtual {v2, v9}, Lcom/android/ttcjpaysdk/base/c;->a(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)I
+
+    .line 151650445
+    move-result v2
+
+    .line 151650446
+    new-instance v3, Lorg/json/JSONObject;
+
+    .line 151650448
+    invoke-direct {v3, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151650451
+    invoke-virtual {v3, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151650454
+    move-result-object v0
+
+    .line 151650455
+    const/4 v1, 0x0
+
+    .line 151650456
+    invoke-static {v0, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 151650459
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    .line 151650462
+    move-result v1
+
+    .line 151650463
+    if-lez v1, :cond_a3
+
+    .line 151650465
+    const/4 v15, 0x1
+
+    .line 151650466
+    goto :goto_a4
+
+    .line 151650467
+    :cond_a3
+    const/4 v15, 0x0
+
+    .line 151650468
+    :goto_a4
+    if-eqz v15, :cond_461
+
+    .line 151650470
+    invoke-direct {v12, v0, v2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->openH5ByScheme(Ljava/lang/String;I)V
+    :try_end_a9
+    .catch Ljava/lang/Exception; {:try_start_86 .. :try_end_a9} :catch_461
+
+    .line 151650473
+    goto/16 :goto_461
+
+    .line 151650475
+    :pswitch_ab
+    :try_start_ab
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650478
+    move-result-object v3
+
+    .line 151650479
+    invoke-virtual {v3, v9}, Lcom/android/ttcjpaysdk/base/c;->a(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)I
+
+    .line 151650482
+    move-result v3
+
+    .line 151650483
+    new-instance v4, Lorg/json/JSONObject;
+
+    .line 151650485
+    invoke-direct {v4, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151650488
+    invoke-virtual {v4, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151650491
+    move-result-object v0
+
+    .line 151650492
+    sget-object v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 151650494
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 151650496
+    invoke-direct {v4, v10}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 151650499
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 151650502
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 151650505
+    move-result-object v4
+
+    .line 151650506
+    invoke-static {v1, v4}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 151650509
+    invoke-static {v0, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151650512
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    .line 151650515
+    move-result v4
+
+    .line 151650516
+    if-lez v4, :cond_d8
+
+    .line 151650518
+    const/4 v15, 0x1
+
+    .line 151650519
+    goto :goto_d9
+
+    .line 151650520
+    :cond_d8
+    const/4 v15, 0x0
+
+    .line 151650521
+    :goto_d9
+    if-eqz v15, :cond_461
+
+    .line 151650523
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 151650525
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 151650528
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 151650531
+    invoke-static {v0, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151650534
+    const-string v8, "?"
+
+    .line 151650536
+    const/4 v9, 0x2
+
+    .line 151650537
+    const/4 v10, 0x0
+
+    .line 151650538
+    const/4 v11, 0x0
+
+    .line 151650539
+    invoke-static {v0, v8, v11, v9, v10}, Lkotlin/text/StringsKt;->contains$default(Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZILjava/lang/Object;)Z
+
+    .line 151650542
+    move-result v0
+
+    .line 151650543
+    if-eqz v0, :cond_fe
+
+    .line 151650545
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 151650547
+    invoke-direct {v0, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 151650550
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 151650553
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 151650556
+    move-result-object v0
+
+    .line 151650557
+    goto :goto_10a
+
+    .line 151650558
+    :cond_fe
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 151650560
+    invoke-direct {v0, v7}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 151650563
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 151650566
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 151650569
+    move-result-object v0
+
+    .line 151650570
+    :goto_10a
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 151650573
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 151650576
+    move-result-object v0
+
+    .line 151650577
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650580
+    move-result-object v3
+
+    .line 151650581
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/c;->f()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;
+
+    .line 151650584
+    move-result-object v3
+
+    .line 151650585
+    if-eqz v3, :cond_149
+
+    .line 151650587
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 151650589
+    invoke-direct {v2, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 151650592
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650595
+    move-result-object v3
+
+    .line 151650596
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/c;->f()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;
+
+    .line 151650599
+    move-result-object v3
+
+    .line 151650600
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 151650603
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 151650606
+    move-result-object v2
+
+    .line 151650607
+    invoke-static {v1, v2}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 151650610
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650613
+    move-result-object v1
+
+    .line 151650614
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/c;->f()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;
+
+    .line 151650617
+    move-result-object v1
+
+    .line 151650618
+    iget-object v2, v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 151650620
+    if-eqz v2, :cond_143
+
+    .line 151650622
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 151650625
+    move-result-object v10
+
+    .line 151650626
+    goto :goto_144
+
+    .line 151650627
+    :cond_143
+    const/4 v10, 0x0
+
+    .line 151650628
+    :goto_144
+    invoke-interface {v1, v10, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;->openScheme(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 151650631
+    goto/16 :goto_461
+
+    .line 151650633
+    :cond_149
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650636
+    move-result-object v3
+
+    .line 151650637
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/c;->c:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;
+
+    .line 151650639
+    if-eqz v3, :cond_171
+
+    .line 151650641
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 151650643
+    invoke-direct {v3, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 151650646
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650649
+    move-result-object v2
+
+    .line 151650650
+    iget-object v2, v2, Lcom/android/ttcjpaysdk/base/c;->c:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;
+
+    .line 151650652
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 151650655
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 151650658
+    move-result-object v2
+
+    .line 151650659
+    invoke-static {v1, v2}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 151650662
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650665
+    move-result-object v1
+
+    .line 151650666
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/c;->c:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;
+
+    .line 151650668
+    invoke-interface {v1, v0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;->openScheme(Ljava/lang/String;)V
+
+    .line 151650671
+    goto/16 :goto_461
+
+    .line 151650673
+    :cond_171
+    const-string v0, "no openSchemeInterface..."
+
+    .line 151650675
+    invoke-static {v1, v0}, Lfe0/a;->g(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_176
+    .catch Ljava/lang/Exception; {:try_start_ab .. :try_end_176} :catch_178
+
+    .line 151650678
+    goto/16 :goto_461
+
+    .line 151650680
+    :catch_178
+    move-exception v0
+
+    .line 151650681
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 151650683
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 151650686
+    const-string v1, "openSchemeFail"
+
+    .line 151650688
+    const/4 v2, 0x0
+
+    .line 151650689
+    const/4 v3, 0x0
+
+    .line 151650690
+    invoke-static {v3, v1, v2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->j(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;ILjava/lang/Throwable;)V
+
+    .line 151650693
+    goto/16 :goto_461
+
+    .line 151650695
+    :pswitch_187
+    invoke-direct {v12, v0, v4, v9}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->handleBiometrics(Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 151650698
+    goto/16 :goto_461
+
+    .line 151650700
+    :cond_18c
+    const/4 v2, 0x0
+
+    .line 151650701
+    const/4 v3, 0x0
+
+    .line 151650702
+    :try_start_18e
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 151650704
+    invoke-direct {v1, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151650707
+    const-string v0, "MwebUrl"
+
+    .line 151650709
+    invoke-virtual {v1, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151650712
+    move-result-object v0
+
+    .line 151650713
+    if-eqz v0, :cond_1a4
+
+    .line 151650715
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    .line 151650718
+    move-result v1
+
+    .line 151650719
+    if-nez v1, :cond_1a2
+
+    .line 151650721
+    goto :goto_1a4
+
+    .line 151650722
+    :cond_1a2
+    const/4 v15, 0x0
+
+    .line 151650723
+    goto :goto_1a5
+
+    .line 151650724
+    :cond_1a4
+    :goto_1a4
+    const/4 v15, 0x1
+
+    .line 151650725
+    :goto_1a5
+    if-eqz v15, :cond_1b5
+
+    .line 151650727
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650730
+    move-result-object v0
+
+    .line 151650731
+    const/16 v1, 0x70
+
+    .line 151650733
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151650736
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151650739
+    goto/16 :goto_461
+
+    .line 151650741
+    :cond_1b5
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650744
+    move-result-object v1
+
+    .line 151650745
+    iput-object v9, v1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 151650747
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 151650750
+    move-result-object v1
+
+    .line 151650751
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;
+
+    .line 151650753
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 151650756
+    move-result-object v1
+
+    .line 151650757
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayWXIndependentSignService;
+
+    .line 151650759
+    if-eqz v1, :cond_461
+
+    .line 151650761
+    iget-object v2, v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 151650763
+    if-eqz v2, :cond_1d2
+
+    .line 151650765
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 151650768
+    move-result-object v2
+
+    .line 151650769
+    goto :goto_1d3
+
+    .line 151650770
+    :cond_1d2
+    move-object v2, v3
+
+    .line 151650771
+    :goto_1d3
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 151650773
+    iget-object v4, v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 151650775
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 151650778
+    invoke-static {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 151650781
+    move-result-object v3
+
+    .line 151650782
+    move-object/from16 v5, p4
+
+    .line 151650784
+    invoke-interface {v1, v2, v0, v5, v3}, Lcom/android/ttcjpaysdk/base/service/ICJPayWXIndependentSignService;->independentSign(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lorg/json/JSONObject;)V
+    :try_end_1e3
+    .catch Ljava/lang/Exception; {:try_start_18e .. :try_end_1e3} :catch_1e5
+
+    .line 151650787
+    goto/16 :goto_461
+
+    .line 151650789
+    :catch_1e5
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650792
+    move-result-object v0
+
+    .line 151650793
+    const/16 v1, 0x70
+
+    .line 151650795
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151650798
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151650801
+    goto/16 :goto_461
+
+    .line 151650803
+    :cond_1f3
+    const/4 v2, 0x0
+
+    .line 151650804
+    const/4 v3, 0x0
+
+    .line 151650805
+    const/16 v1, 0x100f
+
+    .line 151650807
+    :try_start_1f7
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650810
+    move-result-object v4
+
+    .line 151650811
+    iput-object v9, v4, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 151650813
+    new-instance v4, Lorg/json/JSONObject;
+
+    .line 151650815
+    invoke-direct {v4, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151650818
+    invoke-static/range {p5 .. p5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 151650821
+    move-result v0
+
+    .line 151650822
+    if-nez v0, :cond_246
+
+    .line 151650824
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 151650826
+    invoke-direct {v0, v8}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151650829
+    invoke-virtual {v0, v14}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 151650832
+    move-result-object v5
+
+    .line 151650833
+    invoke-virtual {v0, v15}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 151650836
+    move-result v6
+
+    .line 151650837
+    if-eqz v6, :cond_21c
+
+    .line 151650839
+    invoke-virtual {v0, v15}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    .line 151650842
+    move-result v6
+
+    .line 151650843
+    goto :goto_21d
+
+    .line 151650844
+    :cond_21c
+    const/4 v6, 0x0
+
+    .line 151650845
+    :goto_21d
+    if-eqz v5, :cond_228
+
+    .line 151650847
+    invoke-virtual {v5, v11}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 151650850
+    move-result v7
+
+    .line 151650851
+    const/4 v8, 0x1
+
+    .line 151650852
+    if-ne v7, v8, :cond_228
+
+    .line 151650854
+    const/4 v7, 0x1
+
+    .line 151650855
+    goto :goto_229
+
+    .line 151650856
+    :cond_228
+    const/4 v7, 0x0
+
+    .line 151650857
+    :goto_229
+    if-eqz v7, :cond_233
+
+    .line 151650859
+    invoke-virtual {v5, v11}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151650862
+    move-result-object v5
+
+    .line 151650863
+    invoke-static {v5, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151650866
+    goto :goto_234
+
+    .line 151650867
+    :cond_233
+    move-object v5, v13
+
+    .line 151650868
+    :goto_234
+    move-object/from16 v7, v16
+
+    .line 151650870
+    invoke-virtual {v0, v7}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 151650873
+    move-result-object v0
+
+    .line 151650874
+    if-eqz v0, :cond_241
+
+    .line 151650876
+    invoke-virtual {v0}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 151650879
+    move-result-object v0
+
+    .line 151650880
+    goto :goto_242
+
+    .line 151650881
+    :cond_241
+    move-object v0, v3
+
+    .line 151650882
+    :goto_242
+    if-nez v0, :cond_249
+
+    .line 151650884
+    move-object v0, v13
+
+    .line 151650885
+    goto :goto_249
+
+    .line 151650886
+    :cond_246
+    move-object v0, v13
+
+    .line 151650887
+    move-object v5, v0
+
+    .line 151650888
+    const/4 v6, 0x0
+
+    .line 151650889
+    :cond_249
+    :goto_249
+    invoke-virtual {v4}, Lorg/json/JSONObject;->names()Lorg/json/JSONArray;
+
+    .line 151650892
+    move-result-object v3
+
+    .line 151650893
+    if-eqz v3, :cond_2b0
+
+    .line 151650895
+    new-instance v7, Ljava/util/LinkedHashMap;
+
+    .line 151650897
+    invoke-direct {v7}, Ljava/util/LinkedHashMap;-><init>()V
+
+    .line 151650900
+    invoke-virtual {v3}, Lorg/json/JSONArray;->length()I
+
+    .line 151650903
+    move-result v8
+
+    .line 151650904
+    const/4 v9, 0x0
+
+    .line 151650905
+    :goto_259
+    if-ge v9, v8, :cond_27a
+
+    .line 151650907
+    invoke-virtual {v3, v9}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 151650910
+    move-result-object v10
+
+    .line 151650911
+    invoke-static {v10, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151650914
+    check-cast v10, Ljava/lang/String;
+
+    .line 151650916
+    invoke-virtual {v3, v9}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 151650919
+    move-result-object v11
+
+    .line 151650920
+    invoke-static {v11, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151650923
+    check-cast v11, Ljava/lang/String;
+
+    .line 151650925
+    invoke-virtual {v4, v11}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151650928
+    move-result-object v11
+
+    .line 151650929
+    invoke-static {v11, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151650932
+    invoke-interface {v7, v10, v11}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 151650935
+    add-int/lit8 v9, v9, 0x1
+
+    .line 151650937
+    goto :goto_259
+
+    .line 151650938
+    :cond_27a
+    const/4 v3, 0x1
+
+    .line 151650939
+    if-ne v6, v3, :cond_27f
+
+    .line 151650941
+    const/4 v15, 0x1
+
+    .line 151650942
+    goto :goto_280
+
+    .line 151650943
+    :cond_27f
+    const/4 v15, 0x0
+
+    .line 151650944
+    :goto_280
+    invoke-virtual {v12, v15}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setNeedLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 151650947
+    const-string v2, "merchant_id"
+
+    .line 151650949
+    invoke-virtual {v7, v2}, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 151650952
+    move-result-object v2
+
+    .line 151650953
+    check-cast v2, Ljava/lang/String;
+
+    .line 151650955
+    const-string v3, "app_id"
+
+    .line 151650957
+    invoke-virtual {v7, v3}, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 151650960
+    move-result-object v3
+
+    .line 151650961
+    check-cast v3, Ljava/lang/String;
+
+    .line 151650963
+    invoke-virtual {v12, v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 151650966
+    invoke-virtual {v12, v2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setMerchantId(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 151650969
+    invoke-virtual {v12, v3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setAppId(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 151650972
+    const/4 v2, 0x0
+
+    .line 151650973
+    const/4 v3, 0x4
+
+    .line 151650974
+    const/4 v4, 0x0
+
+    .line 151650975
+    move-object/from16 p1, p0
+
+    .line 151650977
+    move-object/from16 p2, v5
+
+    .line 151650979
+    move-object/from16 p3, v0
+
+    .line 151650981
+    move-object/from16 p4, v2
+
+    .line 151650983
+    move/from16 p5, v3
+
+    .line 151650985
+    move-object/from16 p6, v4
+
+    .line 151650987
+    invoke-static/range {p1 .. p6}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->independentBindCard$default(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)V
+
+    .line 151650990
+    goto/16 :goto_461
+
+    .line 151650992
+    :cond_2b0
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151650995
+    move-result-object v0
+
+    .line 151650996
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151650999
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_2ba
+    .catch Ljava/lang/Exception; {:try_start_1f7 .. :try_end_2ba} :catch_2bc
+
+    .line 151651002
+    goto/16 :goto_461
+
+    .line 151651004
+    :catch_2bc
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651007
+    move-result-object v0
+
+    .line 151651008
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651011
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151651014
+    goto/16 :goto_461
+
+    .line 151651016
+    :cond_2c8
+    const/4 v2, 0x0
+
+    .line 151651017
+    :try_start_2c9
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651020
+    move-result-object v1
+
+    .line 151651021
+    iput-object v9, v1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 151651023
+    move-object/from16 v10, v18
+
+    .line 151651025
+    iput-object v9, v10, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 151651027
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 151651029
+    invoke-direct {v1, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151651032
+    invoke-static/range {p5 .. p5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 151651035
+    move-result v0
+
+    .line 151651036
+    if-nez v0, :cond_2ee
+
+    .line 151651038
+    new-instance v0, Lorg/json/JSONObject;
+
+    .line 151651040
+    invoke-direct {v0, v8}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151651043
+    invoke-virtual {v0, v15}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 151651046
+    move-result v3
+
+    .line 151651047
+    if-eqz v3, :cond_2ee
+
+    .line 151651049
+    invoke-virtual {v0, v15}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    .line 151651052
+    move-result v0
+
+    .line 151651053
+    goto :goto_2ef
+
+    .line 151651054
+    :cond_2ee
+    const/4 v0, 0x0
+
+    .line 151651055
+    :goto_2ef
+    invoke-virtual {v1}, Lorg/json/JSONObject;->names()Lorg/json/JSONArray;
+
+    .line 151651058
+    move-result-object v3
+
+    .line 151651059
+    if-eqz v3, :cond_335
+
+    .line 151651061
+    new-instance v4, Ljava/util/LinkedHashMap;
+
+    .line 151651063
+    invoke-direct {v4}, Ljava/util/LinkedHashMap;-><init>()V
+
+    .line 151651066
+    invoke-virtual {v3}, Lorg/json/JSONArray;->length()I
+
+    .line 151651069
+    move-result v5
+
+    .line 151651070
+    const/4 v6, 0x0
+
+    .line 151651071
+    :goto_2ff
+    if-ge v6, v5, :cond_320
+
+    .line 151651073
+    invoke-virtual {v3, v6}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 151651076
+    move-result-object v7
+
+    .line 151651077
+    invoke-static {v7, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151651080
+    check-cast v7, Ljava/lang/String;
+
+    .line 151651082
+    invoke-virtual {v3, v6}, Lorg/json/JSONArray;->get(I)Ljava/lang/Object;
+
+    .line 151651085
+    move-result-object v9
+
+    .line 151651086
+    invoke-static {v9, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151651089
+    check-cast v9, Ljava/lang/String;
+
+    .line 151651091
+    invoke-virtual {v1, v9}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151651094
+    move-result-object v9
+
+    .line 151651095
+    invoke-static {v9, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151651098
+    invoke-interface {v4, v7, v9}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 151651101
+    add-int/lit8 v6, v6, 0x1
+
+    .line 151651103
+    goto :goto_2ff
+
+    .line 151651104
+    :cond_320
+    const/4 v1, 0x1
+
+    .line 151651105
+    if-ne v0, v1, :cond_325
+
+    .line 151651107
+    const/4 v15, 0x1
+
+    .line 151651108
+    goto :goto_326
+
+    .line 151651109
+    :cond_325
+    const/4 v15, 0x0
+
+    .line 151651110
+    :goto_326
+    invoke-virtual {v12, v15}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setNeedLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 151651113
+    invoke-virtual {v12, v4}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+
+    .line 151651116
+    move-object/from16 v0, p6
+
+    .line 151651118
+    move-object/from16 v1, p9
+
+    .line 151651120
+    invoke-direct {v12, v0, v1, v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->execute(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;Ljava/lang/String;)V
+
+    .line 151651123
+    goto/16 :goto_461
+
+    .line 151651125
+    :cond_335
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651128
+    move-result-object v0
+
+    .line 151651129
+    const/16 v1, 0x70
+
+    .line 151651131
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651134
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_341
+    .catch Ljava/lang/Exception; {:try_start_2c9 .. :try_end_341} :catch_343
+
+    .line 151651137
+    goto/16 :goto_461
+
+    .line 151651139
+    :catch_343
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651142
+    move-result-object v0
+
+    .line 151651143
+    const/16 v1, 0x70
+
+    .line 151651145
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651148
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151651151
+    goto/16 :goto_461
+
+    .line 151651153
+    :cond_351
+    move-object v7, v15
+
+    .line 151651154
+    move-object/from16 v10, v18
+
+    .line 151651156
+    const/4 v2, 0x0
+
+    .line 151651157
+    const/4 v3, 0x0
+
+    .line 151651158
+    :try_start_356
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651161
+    move-result-object v1
+
+    .line 151651162
+    iput-object v9, v1, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 151651164
+    iput-object v9, v10, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->l:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 151651166
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 151651168
+    invoke-direct {v1, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151651171
+    const-string v4, "zg_info"
+
+    .line 151651173
+    invoke-virtual {v1, v4}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151651176
+    move-result-object v4
+
+    .line 151651177
+    const-string v5, "unify_cashier_info"
+
+    .line 151651179
+    invoke-virtual {v1, v5}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151651182
+    move-result-object v15
+
+    .line 151651183
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 151651185
+    invoke-direct {v1}, Lorg/json/JSONObject;-><init>()V
+
+    .line 151651188
+    invoke-static/range {p5 .. p5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 151651191
+    move-result v5
+
+    .line 151651192
+    if-nez v5, :cond_3b3
+
+    .line 151651194
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 151651196
+    invoke-direct {v1, v8}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 151651199
+    invoke-virtual {v1, v14}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 151651202
+    move-result-object v5
+
+    .line 151651203
+    if-eqz v5, :cond_38e
+
+    .line 151651205
+    invoke-virtual {v5, v11}, Lorg/json/JSONObject;->has(Ljava/lang/String;)Z
+
+    .line 151651208
+    move-result v6
+
+    .line 151651209
+    const/4 v14, 0x1
+
+    .line 151651210
+    if-ne v6, v14, :cond_38e
+
+    .line 151651212
+    const/4 v14, 0x1
+
+    .line 151651213
+    goto :goto_38f
+
+    .line 151651214
+    :cond_38e
+    const/4 v14, 0x0
+
+    .line 151651215
+    :goto_38f
+    if-eqz v14, :cond_399
+
+    .line 151651217
+    invoke-virtual {v5, v11}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 151651220
+    move-result-object v2
+
+    .line 151651221
+    invoke-static {v2, v13}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 151651224
+    goto :goto_39a
+
+    .line 151651225
+    :cond_399
+    move-object v2, v13
+
+    .line 151651226
+    :goto_39a
+    invoke-virtual {v1, v7}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 151651229
+    move-result-object v5
+
+    .line 151651230
+    if-eqz v5, :cond_3a4
+
+    .line 151651232
+    invoke-virtual {v5}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 151651235
+    move-result-object v3
+
+    .line 151651236
+    :cond_3a4
+    if-nez v3, :cond_3a7
+
+    .line 151651238
+    goto :goto_3a8
+
+    .line 151651239
+    :cond_3a7
+    move-object v13, v3
+
+    .line 151651240
+    :goto_3a8
+    const-string v3, "closeWebview"
+
+    .line 151651242
+    const/4 v5, 0x1
+
+    .line 151651243
+    invoke-virtual {v1, v3, v5}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
+
+    .line 151651246
+    move-result v3
+
+    .line 151651247
+    move-object v6, v1
+
+    .line 151651248
+    move v5, v3
+
+    .line 151651249
+    move-object v3, v2
+
+    .line 151651250
+    goto :goto_3b6
+
+    .line 151651251
+    :cond_3b3
+    const/4 v5, 0x1
+
+    .line 151651252
+    move-object v6, v1
+
+    .line 151651253
+    move-object v3, v13
+
+    .line 151651254
+    :goto_3b6
+    move-object/from16 v1, p0
+
+    .line 151651256
+    move-object v2, v4
+
+    .line 151651257
+    move-object v4, v13
+
+    .line 151651258
+    move-object/from16 v7, p1
+
+    .line 151651260
+    move-object/from16 v8, p5
+
+    .line 151651262
+    move-object/from16 v9, p8
+
+    .line 151651264
+    move-object v0, v10
+
+    .line 151651265
+    move-object v10, v15
+
+    .line 151651266
+    move-object v11, v0
+
+    .line 151651267
+    invoke-direct/range {v1 .. v11}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->frontPay(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLorg/json/JSONObject;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+    :try_end_3c6
+    .catch Ljava/lang/Exception; {:try_start_356 .. :try_end_3c6} :catch_3c8
+
+    .line 151651270
+    goto/16 :goto_461
+
+    .line 151651272
+    :catch_3c8
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651275
+    move-result-object v0
+
+    .line 151651276
+    const/16 v1, 0x70
+
+    .line 151651278
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651281
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151651284
+    goto/16 :goto_461
+
+    .line 151651286
+    :cond_3d6
+    const/4 v3, 0x0
+
+    .line 151651287
+    :try_start_3d7
+    invoke-static {v4, v14}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 151651290
+    move-result v1
+
+    .line 151651291
+    if-eqz v1, :cond_3de
+
+    .line 151651293
+    goto :goto_3e0
+
+    .line 151651294
+    :cond_3de
+    move-object/from16 v16, v17
+
+    .line 151651296
+    :goto_3e0
+    invoke-static/range {p1 .. p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 151651299
+    move-result v1
+
+    .line 151651300
+    if-nez v1, :cond_402
+
+    .line 151651302
+    iget-object v1, v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 151651304
+    if-eqz v1, :cond_3ef
+
+    .line 151651306
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 151651309
+    move-result-object v1
+
+    .line 151651310
+    goto :goto_3f0
+
+    .line 151651311
+    :cond_3ef
+    move-object v1, v3
+
+    .line 151651312
+    :goto_3f0
+    invoke-direct {v12, v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+
+    .line 151651315
+    move-result-object v2
+
+    .line 151651316
+    move-object/from16 p2, p0
+
+    .line 151651318
+    move-object/from16 p3, v1
+
+    .line 151651320
+    move-object/from16 p4, p1
+
+    .line 151651322
+    move-object/from16 p5, v16
+
+    .line 151651324
+    move-object/from16 p6, v2
+
+    .line 151651326
+    invoke-virtual/range {p2 .. p7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->aliPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;)V
+
+    .line 151651329
+    goto :goto_461
+
+    .line 151651330
+    :cond_402
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651333
+    move-result-object v0
+
+    .line 151651334
+    const/16 v1, 0x70
+
+    .line 151651336
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651339
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_40e
+    .catch Ljava/lang/Exception; {:try_start_3d7 .. :try_end_40e} :catch_40f
+
+    .line 151651342
+    goto :goto_461
+
+    .line 151651343
+    :catch_40f
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651346
+    move-result-object v0
+
+    .line 151651347
+    const/16 v1, 0x70
+
+    .line 151651349
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651352
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151651355
+    goto :goto_461
+
+    .line 151651356
+    :cond_41c
+    const/4 v3, 0x0
+
+    .line 151651357
+    :try_start_41d
+    invoke-static {v4, v14}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 151651360
+    move-result v1
+
+    .line 151651361
+    if-eqz v1, :cond_424
+
+    .line 151651363
+    goto :goto_426
+
+    .line 151651364
+    :cond_424
+    move-object/from16 v16, v17
+
+    .line 151651366
+    :goto_426
+    invoke-static/range {p1 .. p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 151651369
+    move-result v1
+
+    .line 151651370
+    if-nez v1, :cond_448
+
+    .line 151651372
+    iget-object v1, v12, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 151651374
+    if-eqz v1, :cond_435
+
+    .line 151651376
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 151651379
+    move-result-object v1
+
+    .line 151651380
+    goto :goto_436
+
+    .line 151651381
+    :cond_435
+    move-object v1, v3
+
+    .line 151651382
+    :goto_436
+    invoke-direct {v12, v8}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->getOnPayResultCallback(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;
+
+    .line 151651385
+    move-result-object v2
+
+    .line 151651386
+    move-object/from16 p2, p0
+
+    .line 151651388
+    move-object/from16 p3, v1
+
+    .line 151651390
+    move-object/from16 p4, p1
+
+    .line 151651392
+    move-object/from16 p5, v16
+
+    .line 151651394
+    move-object/from16 p6, v2
+
+    .line 151651396
+    invoke-virtual/range {p2 .. p7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->wxPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;)V
+
+    .line 151651399
+    goto :goto_461
+
+    .line 151651400
+    :cond_448
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651403
+    move-result-object v0
+
+    .line 151651404
+    const/16 v1, 0x70
+
+    .line 151651406
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651409
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+    :try_end_454
+    .catch Ljava/lang/Exception; {:try_start_41d .. :try_end_454} :catch_455
+
+    .line 151651412
+    goto :goto_461
+
+    .line 151651413
+    :catch_455
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 151651416
+    move-result-object v0
+
+    .line 151651417
+    const/16 v1, 0x70
+
+    .line 151651419
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 151651422
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 151651425
+    :catch_461
+    :cond_461
+    :goto_461
+    invoke-virtual/range {p0 .. p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 151651428
+    return-void
+
+    .line 151651429
+    :cond_465
+    :goto_465
+    move-object/from16 v5, p4
+
+    .line 151651431
+    move-object/from16 v1, p0
+
+    .line 151651433
+    move-object/from16 v2, p1
+
+    .line 151651435
+    move/from16 v3, p2
+
+    .line 151651437
+    move-object/from16 v4, p3
+
+    .line 151651439
+    move-object/from16 v5, p4
+
+    .line 151651441
+    move-object/from16 v6, p5
+
+    .line 151651443
+    move-object/from16 v7, p8
+
+    .line 151651445
+    invoke-virtual/range {v1 .. v7}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->pay(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+
+    .line 151651448
+    return-void
+
+    nop
+
+    .line 151651450
+    :pswitch_data_47a
+    .packed-switch 0x61
+        :pswitch_187
+        :pswitch_ab
+        :pswitch_86
+    .end packed-switch
+.end method
+
+.method public final payFromSubProcess(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;)V
+    .registers 15
+
+    .prologue
+    .line 100925440
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 100925443
+    move-result-object v0
+
+    .line 100925444
+    iput-object p6, v0, Lcom/android/ttcjpaysdk/base/c;->p:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5PayCallback;
+
+    .line 100925446
+    iget-object p6, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 100925448
+    if-eqz p6, :cond_f
+
+    .line 100925450
+    invoke-virtual {p6}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 100925453
+    move-result-object p6
+
+    .line 100925454
+    goto :goto_10
+
+    .line 100925455
+    :cond_f
+    const/4 p6, 0x0
+
+    .line 100925456
+    :goto_10
+    move-object v1, p6
+
+    .line 100925457
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 100925460
+    move-result-object p6
+
+    .line 100925461
+    const-class v0, Lcom/android/ttcjpaysdk/base/service/ICJPayMultiProcessService;
+
+    .line 100925463
+    invoke-virtual {p6, v0}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 100925466
+    move-result-object p6
+
+    .line 100925467
+    move-object v0, p6
+
+    .line 100925468
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayMultiProcessService;
+
+    .line 100925470
+    if-eqz v0, :cond_33
+
+    .line 100925472
+    sget-object p6, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 100925474
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 100925476
+    invoke-virtual {p6}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 100925479
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 100925482
+    move-result-object v2
+
+    .line 100925483
+    move-object v3, p1
+
+    .line 100925484
+    move v4, p2
+
+    .line 100925485
+    move-object v5, p3
+
+    .line 100925486
+    move-object v6, p4
+
+    .line 100925487
+    move-object v7, p5
+
+    .line 100925488
+    invoke-interface/range {v0 .. v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayMultiProcessService;->pay(Landroid/content/Context;Lorg/json/JSONObject;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 100925491
+    :cond_33
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 100925494
+    return-void
+.end method
+
+.method public final preLoadCheckoutCounterData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 5
+
+    return-object p0
+.end method
+
+.method public final preLoadCheckoutCounterData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 6
+
+    return-object p0
+.end method
+
+.method public final preLoadCheckoutCounterDataForH5(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 6
+
+    return-object p0
+.end method
+
+.method public final preLoadFinanceRisk()V
+    .registers 3
+
+    .prologue
+    .line 131072
+    const-string v0, "TTCJPayUtil"
+
+    .line 131074
+    const-string v1, "preLoadFinanceRisk"
+
+    .line 131076
+    invoke-static {v0, v1}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 131079
+    sget-object v0, Laa/h;->a:Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 131081
+    sget-object v0, Laa/g;->a:Laa/g;
+
+    .line 131083
+    invoke-static {v0}, Lhe0/e;->b(Ljava/lang/Runnable;)V
+
+    .line 131086
+    return-void
+.end method
+
+.method public final preLoadYuefuTemplate()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    sget-object v0, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayABExperimentKeys;->w:Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;
+
+    .line 196610
+    const/4 v1, 0x0
+
+    .line 196611
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/settings/abtest/CJPayExperimentValue;->a(Z)Ljava/lang/Object;
+
+    .line 196614
+    move-result-object v0
+
+    .line 196615
+    const-string v1, "1"
+
+    .line 196617
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 196620
+    move-result v0
+
+    .line 196621
+    if-eqz v0, :cond_1e
+
+    .line 196623
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->INSTANCE:Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;
+
+    .line 196625
+    const-class v1, Lcom/bytedance/caijing/sdk/infra/base/api/preload/CJBizPreloadService;
+
+    .line 196627
+    invoke-virtual {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->getService(Ljava/lang/Class;)Lcom/bytedance/caijing/sdk/infra/base/core/di/ICJService;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    check-cast v0, Lcom/bytedance/caijing/sdk/infra/base/api/preload/CJBizPreloadService;
+
+    .line 196633
+    if-eqz v0, :cond_1e
+
+    .line 196635
+    invoke-interface {v0}, Lcom/bytedance/caijing/sdk/infra/base/api/preload/CJBizPreloadService;->preloadYuefuTemplate()V
+
+    .line 196638
+    :cond_1e
+    return-void
+.end method
+
+.method public final privateFetchSettings()Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 1
+
+    return-object p0
+.end method
+
+.method public final readString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .registers 3
+
+    .prologue
+    .line 33685504
+    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 33685507
+    invoke-static {p1, p2}, Lcom/android/ttcjpaysdk/base/utils/f0;->b(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33685510
+    move-result-object p1
+
+    .line 33685511
+    const-string p2, ""
+
+    .line 33685513
+    invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 33685516
+    return-object p1
+.end method
+
+.method public final recharge()V
+    .registers 8
+
+    .prologue
+    .line 458752
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 458754
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458756
+    const-string v2, ""
+
+    .line 458758
+    if-eqz v1, :cond_c
+
+    .line 458760
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458762
+    if-nez v3, :cond_d
+
+    .line 458764
+    :cond_c
+    move-object v3, v2
+
+    .line 458765
+    :cond_d
+    if-eqz v1, :cond_13
+
+    .line 458767
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458769
+    if-nez v1, :cond_14
+
+    .line 458771
+    :cond_13
+    move-object v1, v2
+
+    .line 458772
+    :cond_14
+    const-string v4, "recharge"
+
+    .line 458774
+    invoke-static {v0, v4, v3, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 458777
+    move-result-object v0
+
+    .line 458778
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 458781
+    move-result-object v1
+
+    .line 458782
+    iput-object v0, v1, Lcom/android/ttcjpaysdk/base/c;->G:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 458784
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker;->b:Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;
+
+    .line 458786
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458789
+    const-string v0, "wallet_rd_common_sdk_start"
+
+    .line 458791
+    const-string v1, "balance_recharge"
+
+    .line 458793
+    invoke-static {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 458796
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->c:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;
+
+    .line 458798
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458801
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$a;->a()Lcom/android/ttcjpaysdk/base/CJPayTrackReport;
+
+    .line 458804
+    move-result-object v0
+
+    .line 458805
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->START_RECHARGE_COUNTER:Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;
+
+    .line 458807
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayTrackReport$Scenes;->value:Ljava/lang/String;
+
+    .line 458809
+    invoke-static {v0, v3}, Lcom/android/ttcjpaysdk/base/CJPayTrackReport;->j(Lcom/android/ttcjpaysdk/base/CJPayTrackReport;Ljava/lang/String;)V
+
+    .line 458812
+    sget-object v0, Lbf/a;->a:Lbf/a;
+
+    .line 458814
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458816
+    const/4 v4, 0x0
+
+    .line 458817
+    if-eqz v3, :cond_46
+
+    .line 458819
+    iget-object v5, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458821
+    goto :goto_47
+
+    .line 458822
+    :cond_46
+    move-object v5, v4
+
+    .line 458823
+    :goto_47
+    if-eqz v3, :cond_4c
+
+    .line 458825
+    iget-object v3, v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458827
+    goto :goto_4d
+
+    .line 458828
+    :cond_4c
+    move-object v3, v4
+
+    .line 458829
+    :goto_4d
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458832
+    sget-object v0, Ln9/a;->a:Ln9/a;
+
+    .line 458834
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 458837
+    sget-object v0, Ln9/a;->f:Ljava/lang/String;
+
+    .line 458839
+    invoke-static {v5, v3, v0}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 458842
+    move-result-object v3
+
+    .line 458843
+    iget-boolean v3, v3, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->isNeedDegrade:Z
+
+    .line 458845
+    if-eqz v3, :cond_f0
+
+    .line 458847
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458849
+    if-nez v1, :cond_65
+
+    .line 458851
+    goto/16 :goto_159
+
+    .line 458853
+    :cond_65
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458855
+    iget-object v4, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458857
+    invoke-static {v3, v4, v0}, Ln9/a;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;
+
+    .line 458860
+    move-result-object v0
+
+    .line 458861
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 458863
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->l()Ljava/lang/String;
+
+    .line 458866
+    move-result-object v4
+
+    .line 458867
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 458870
+    const-string v4, "/cashdesk/balance_recharge?risk_info="
+
+    .line 458872
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458875
+    :try_start_7b
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 458878
+    move-result-object v4
+
+    .line 458879
+    const-string v5, "business_id"
+
+    .line 458881
+    const-string v6, "31"
+
+    .line 458883
+    invoke-interface {v4, v5, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 458886
+    new-instance v5, Lorg/json/JSONObject;
+
+    .line 458888
+    invoke-direct {v5, v4}, Lorg/json/JSONObject;-><init>(Ljava/util/Map;)V
+
+    .line 458891
+    invoke-virtual {v5}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+
+    .line 458894
+    move-result-object v4
+
+    .line 458895
+    invoke-virtual {v4}, Ljava/lang/String;->getBytes()[B
+
+    .line 458898
+    move-result-object v4
+
+    .line 458899
+    const/4 v5, 0x2
+
+    .line 458900
+    invoke-static {v4, v5}, Landroid/util/Base64;->encodeToString([BI)Ljava/lang/String;
+
+    .line 458903
+    move-result-object v4
+
+    .line 458904
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :try_end_9b
+    .catch Ljava/lang/Exception; {:try_start_7b .. :try_end_9b} :catch_9c
+
+    .line 458907
+    goto :goto_9f
+
+    .line 458908
+    :catch_9c
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458911
+    :goto_9f
+    const-string v2, "&app_id="
+
+    .line 458913
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458916
+    iget-object v2, v0, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->appId:Ljava/lang/String;
+
+    .line 458918
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458921
+    const-string v2, "&tag=cash_recharge&merchant_id="
+
+    .line 458923
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458926
+    iget-object v0, v0, Lcom/android/ttcjpaysdk/base/settings/bean/DegradeResultBean;->merchantId:Ljava/lang/String;
+
+    .line 458928
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458931
+    const-string v0, "&is_downgrade=true"
+
+    .line 458933
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 458936
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 458939
+    move-result-object v0
+
+    .line 458940
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 458942
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 458945
+    move-result-object v0
+
+    .line 458946
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 458948
+    if-eqz v0, :cond_e6
+
+    .line 458950
+    new-instance v2, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458952
+    invoke-direct {v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 458955
+    invoke-virtual {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 458958
+    move-result-object v4
+
+    .line 458959
+    invoke-virtual {v2, v4}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458962
+    move-result-object v2
+
+    .line 458963
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 458966
+    move-result-object v3
+
+    .line 458967
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458970
+    move-result-object v2
+
+    .line 458971
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->f(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 458974
+    move-result-object v3
+
+    .line 458975
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 458978
+    move-result-object v2
+
+    .line 458979
+    invoke-interface {v0, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 458982
+    :cond_e6
+    iget-object v0, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 458984
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 458986
+    const-string v2, "wallet_change_cashie_downgrade_h5"
+
+    .line 458988
+    invoke-static {v2, v0, v1}, Lbf/a;->c(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 458991
+    goto :goto_159
+
+    .line 458992
+    :cond_f0
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 458994
+    if-eqz v0, :cond_f9
+
+    .line 458996
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 458999
+    move-result-object v0
+
+    .line 459000
+    goto :goto_fa
+
+    .line 459001
+    :cond_f9
+    move-object v0, v4
+
+    .line 459002
+    :goto_fa
+    if-eqz v0, :cond_124
+
+    .line 459004
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 459006
+    if-eqz v2, :cond_104
+
+    .line 459008
+    invoke-virtual {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 459011
+    move-result-object v4
+
+    .line 459012
+    :cond_104
+    if-nez v4, :cond_107
+
+    .line 459014
+    goto :goto_124
+
+    .line 459015
+    :cond_107
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 459018
+    move-result-object v1
+
+    .line 459019
+    const-class v2, Lcom/android/ttcjpaysdk/base/service/ICJPayRechargeService;
+
+    .line 459021
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 459024
+    move-result-object v1
+
+    .line 459025
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayRechargeService;
+
+    .line 459027
+    if-eqz v1, :cond_154
+
+    .line 459029
+    sget-object v2, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 459031
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 459033
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 459036
+    invoke-static {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 459039
+    move-result-object v2
+
+    .line 459040
+    invoke-interface {v1, v0, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayRechargeService;->startCJPayRechargeActivity(Landroid/content/Context;Lorg/json/JSONObject;)V
+
+    .line 459043
+    goto :goto_154
+
+    .line 459044
+    :cond_124
+    :goto_124
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 459047
+    move-result-object v0
+
+    .line 459048
+    const/16 v2, 0x70
+
+    .line 459050
+    invoke-virtual {v0, v2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 459053
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 459056
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 459059
+    move-result-object v0
+
+    .line 459060
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->c()Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 459063
+    move-result-object v0
+
+    .line 459064
+    const/4 v3, 0x1
+
+    .line 459065
+    new-array v3, v3, [Lkotlin/Pair;
+
+    .line 459067
+    const-string v4, "tracker_pay_result"
+
+    .line 459069
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 459072
+    move-result-object v2
+
+    .line 459073
+    invoke-static {v4, v2}, Lkotlin/TuplesKt;->to(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+
+    .line 459076
+    move-result-object v2
+
+    .line 459077
+    const/4 v4, 0x0
+
+    .line 459078
+    aput-object v2, v3, v4
+
+    .line 459080
+    invoke-static {v3}, Lkotlin/collections/MapsKt;->hashMapOf([Lkotlin/Pair;)Ljava/util/HashMap;
+
+    .line 459083
+    move-result-object v2
+
+    .line 459084
+    invoke-virtual {v0, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->b(Ljava/util/Map;)V
+
+    .line 459087
+    const-string v0, "wallet_rd_common_sdk_end"
+
+    .line 459089
+    invoke-static {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/event/DynamicEventTracker$c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 459092
+    :cond_154
+    :goto_154
+    const-string v0, "caijing_cashdesk_request"
+
+    .line 459094
+    invoke-static {v0}, Lk9/a;->a(Ljava/lang/String;)V
+
+    .line 459097
+    :goto_159
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 459100
+    return-void
+.end method
+
+.method public final registerCJPayXbridge()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 196611
+    move-result-object v0
+
+    .line 196612
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 196614
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 196617
+    move-result-object v0
+
+    .line 196618
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 196620
+    if-nez v0, :cond_f
+
+    .line 196622
+    return-void
+
+    .line 196623
+    :cond_f
+    invoke-interface {v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->registerXBridgeMethods()V
+
+    .line 196626
+    return-void
+.end method
+
+.method public final releaseAll()V
+    .registers 5
+
+    .prologue
+    .line 262144
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 262147
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 262149
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 262152
+    const/4 v0, 0x0
+
+    .line 262153
+    sput-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->titleBitmap:Landroid/graphics/Bitmap;
+
+    .line 262155
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 262158
+    move-result-object v1
+
+    .line 262159
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 262162
+    new-instance v2, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayResult;
+
+    .line 262164
+    invoke-direct {v2}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayResult;-><init>()V
+
+    .line 262167
+    iput-object v2, v1, Lcom/android/ttcjpaysdk/base/c;->b:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayResult;
+
+    .line 262169
+    iget-object v2, v1, Lcom/android/ttcjpaysdk/base/c;->b:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayResult;
+
+    .line 262171
+    const/16 v3, 0x68
+
+    .line 262173
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayResult;->setCode(I)V
+
+    .line 262176
+    iput-object v0, v1, Lcom/android/ttcjpaysdk/base/c;->y:Lorg/json/JSONObject;
+
+    .line 262178
+    const-string v2, ""
+
+    .line 262180
+    iput-object v2, v1, Lcom/android/ttcjpaysdk/base/c;->A:Ljava/lang/String;
+
+    .line 262182
+    iput-object v0, v1, Lcom/android/ttcjpaysdk/base/c;->h:Lcom/android/ttcjpaysdk/ttcjpayapi/ITTCJPayResultInterceptor;
+
+    .line 262184
+    sget-object v0, Lcom/android/ttcjpaysdk/base/g;->a:Ljava/util/Stack;
+
+    .line 262186
+    invoke-virtual {v0}, Ljava/util/Stack;->clear()V
+
+    .line 262189
+    invoke-direct {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseService()V
+
+    .line 262192
+    return-void
+.end method
+
+.method public final releaseAllFromSubProcess()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 196611
+    move-result-object v0
+
+    .line 196612
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayMultiProcessService;
+
+    .line 196614
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 196617
+    move-result-object v0
+
+    .line 196618
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayMultiProcessService;
+
+    .line 196620
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->applicationContext:Landroid/content/Context;
+
+    .line 196622
+    invoke-interface {v0, v1}, Lcom/android/ttcjpaysdk/base/service/ICJPayMultiProcessService;->stop(Landroid/content/Context;)V
+
+    .line 196625
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseAll()V
+
+    .line 196628
+    return-void
+.end method
+
+.method public final releaseHostInfo()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    new-instance v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 65538
+    invoke-direct {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;-><init>()V
+
+    .line 65541
+    iput-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 65543
+    return-void
+.end method
+
+.method public final reportInitAgain()V
+    .registers 4
+
+    .prologue
+    .line 65536
+    sget-object v0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$reportInitAgain$1;->INSTANCE:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner$reportInitAgain$1;
+
+    .line 65538
+    const-wide/16 v1, 0x7530
+
+    .line 65540
+    invoke-static {v1, v2, v0}, Lhe0/e;->c(JLjava/lang/Runnable;)V
+
+    .line 65543
+    return-void
+.end method
+
+.method public final setAid(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->aid:Ljava/lang/String;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setAnimationResourceMap(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Integer;",
+            ">;)",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;"
+        }
+    .end annotation
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->animationResourceMap:Ljava/util/Map;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setAppId(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setAppUpdateVersion(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appUpdateVersion:Ljava/lang/String;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setBackEnable(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-boolean p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->backEnableAfterResultBack:Z
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setBasicModeCallback(Lcom/android/ttcjpaysdk/ttcjpayapi/IBasicMode;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->s:Lcom/android/ttcjpaysdk/ttcjpayapi/IBasicMode;
+
+    .line 16908298
+    return-object p0
+.end method
+
+.method public final setBlockDialog(Lcom/android/ttcjpaysdk/ttcjpayapi/IBlockDialog;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->r:Lcom/android/ttcjpaysdk/ttcjpayapi/IBlockDialog;
+
+    .line 16908298
+    return-object p0
+.end method
+
+.method public final setBoeEnv(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->boeEnv:Ljava/lang/String;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16908290
+    if-eqz v0, :cond_7
+
+    .line 16908292
+    invoke-virtual {v0, p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->b(Landroid/content/Context;)V
+
+    .line 16908295
+    :cond_7
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908298
+    move-result-object p1
+
+    .line 16908299
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->generalPayCallback:Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;
+
+    .line 16908301
+    iput-object v0, p1, Lcom/android/ttcjpaysdk/base/c;->q:Lcom/android/ttcjpaysdk/ttcjpayapi/IGeneralPay;
+
+    .line 16908303
+    return-object p0
+.end method
+
+.method public final setCustomActionListener(Lcom/android/ttcjpaysdk/ttcjpayapi/ICustomActionListener;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object v0
+
+    .line 16842756
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->u:Lcom/android/ttcjpaysdk/ttcjpayapi/ICustomActionListener;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setCustomUA(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    const/4 v0, 0x0
+
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    return-object p0
+.end method
+
+.method public final setCustomerServiceCallback(Lcom/android/ttcjpaysdk/ttcjpayapi/ICustomerServiceCallback;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->v:Lcom/android/ttcjpaysdk/ttcjpayapi/ICustomerServiceCallback;
+
+    .line 16908298
+    return-object p0
+.end method
+
+.method public final setDid(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->did:Ljava/lang/String;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setEnvChannel(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16842752
+    if-nez p1, :cond_4
+
+    .line 16842754
+    const-string p1, "online"
+
+    .line 16842756
+    :cond_4
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->envChannel:Ljava/lang/String;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setEvent(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayEvent;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object v0
+
+    .line 16842756
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->k:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayEvent;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setExternalEventCenterAdapter(Ls7/a;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object p1
+
+    .line 16842756
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 16842759
+    return-object p0
+.end method
+
+.method public final setExternalLynxServiceAdapter(Ls7/c;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object p1
+
+    .line 16842756
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 16842759
+    return-object p0
+.end method
+
+.method public final setExtraHeaderMap(Ljava/util/HashMap;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/HashMap<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->extraHeaderMap:Ljava/util/HashMap;
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setFaceLive(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayDoFaceLive;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object v0
+
+    .line 16842756
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->m:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayDoFaceLive;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setFollowSystemTheme(Z)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-boolean p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isFollowSystemTheme:Z
+
+    .line 16777218
+    return-void
+.end method
+
+.method public final setFontScale(F)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-eqz v0, :cond_6
+
+    .line 16842756
+    sput p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->fontScale:F
+
+    .line 16842758
+    :cond_6
+    return-object p0
+.end method
+
+.method public final setFromFastPay(I)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16908290
+    if-nez v0, :cond_5
+
+    .line 16908292
+    goto :goto_b
+
+    .line 16908293
+    :cond_5
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 16908296
+    move-result-object p1
+
+    .line 16908297
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->fromFastPayType:Ljava/lang/Integer;
+
+    .line 16908299
+    :goto_b
+    return-object p0
+.end method
+
+.method public final setFromImRedPacket(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-boolean p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->fromImRedPacket:Z
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setGameNewCounterStyle(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-boolean p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isGameNewCounterStyle:Z
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setGameNewStyle(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-boolean p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isGameNewStyle:Z
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setH5NotificationCallback(Lcom/android/ttcjpaysdk/ttcjpayapi/IH5NotificationCallback;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->t:Lcom/android/ttcjpaysdk/ttcjpayapi/IH5NotificationCallback;
+
+    .line 16908298
+    return-object p0
+.end method
+
+.method public final setHostInfo(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    iput-object p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setHostJSBMethodsInterface(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayHostJSBMethodsInterface;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->e:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayHostJSBMethodsInterface;
+
+    .line 16908298
+    return-void
+.end method
+
+.method public final setHostLoginService(Lcom/android/ttcjpaysdk/ttcjpayapi/ICJHostLoginService;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->o:Lcom/android/ttcjpaysdk/ttcjpayapi/ICJHostLoginService;
+
+    .line 16908298
+    return-object p0
+.end method
+
+.method public final setHostPrivacyService(Lcom/android/ttcjpaysdk/ttcjpayapi/ICJHostPrivacyService;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->F:Lcom/android/ttcjpaysdk/ttcjpayapi/ICJHostPrivacyService;
+
+    .line 16908298
+    return-object p0
+.end method
+
+.method public final setInheritTheme(Ljava/lang/String;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->inheritTheme:Ljava/lang/String;
+
+    .line 16777218
+    return-void
+.end method
+
+.method public final setIntegratedHostDomain(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 6
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x0
+
+    .line 17039361
+    const/4 v1, 0x1
+
+    .line 17039362
+    if-eqz p1, :cond_d
+
+    .line 17039364
+    invoke-interface {p1}, Ljava/lang/CharSequence;->length()I
+
+    .line 17039367
+    move-result v2
+
+    .line 17039368
+    if-nez v2, :cond_b
+
+    .line 17039370
+    goto :goto_d
+
+    .line 17039371
+    :cond_b
+    const/4 v2, 0x0
+
+    .line 17039372
+    goto :goto_e
+
+    .line 17039373
+    :cond_d
+    :goto_d
+    const/4 v2, 0x1
+
+    .line 17039374
+    :goto_e
+    if-nez v2, :cond_23
+
+    .line 17039376
+    invoke-static {p1}, Lkotlin/text/StringsKt;->isBlank(Ljava/lang/CharSequence;)Z
+
+    .line 17039379
+    move-result v2
+
+    .line 17039380
+    xor-int/2addr v1, v2
+
+    .line 17039381
+    if-eqz v1, :cond_23
+
+    .line 17039383
+    const/4 v1, 0x2
+
+    .line 17039384
+    const/4 v2, 0x0
+
+    .line 17039385
+    const-string v3, "https:"
+
+    .line 17039387
+    invoke-static {p1, v3, v0, v1, v2}, Lkotlin/text/StringsKt;->startsWith$default(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Z
+
+    .line 17039390
+    move-result v0
+
+    .line 17039391
+    if-eqz v0, :cond_23
+
+    .line 17039393
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->integratedHostDomain:Ljava/lang/String;
+
+    .line 17039395
+    :cond_23
+    return-object p0
+.end method
+
+.method public final setIsAggregatePayment(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    return-object p0
+.end method
+
+.method public final setIsBalancePaymentExposed(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    return-object p0
+.end method
+
+.method public final setIsHideStatusBar(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    return-object p0
+.end method
+
+.method public final setIsTransCheckoutCounterActivityWhenLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-boolean p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isTransCheckoutCounterActivityWhenLoading:Z
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setIsUsingGecko(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-boolean p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isUsingGecko:Z
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setIsUsingTTNet(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16842752
+    sput-boolean p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isUsingTTNet:Z
+
+    .line 16842754
+    sput-boolean p1, Lx8/a;->b:Z
+
+    .line 16842756
+    return-object p0
+.end method
+
+.method public final setJSBridgeAuth(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-boolean p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->needJSBridgeAuth:Z
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setLanguageTypeStr(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->languageTypeStr:Ljava/lang/String;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setLoadingAdapter(Ls7/d;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<T:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Ls7/d<",
+            "TT;>;)",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object p1
+
+    .line 16842756
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 16842759
+    return-object p0
+.end method
+
+.method public final setLoginToken(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 9
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;"
+        }
+    .end annotation
+
+    .prologue
+    .line 17104896
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17104898
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104901
+    if-eqz p1, :cond_67
+
+    .line 17104903
+    invoke-interface {p1}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    .line 17104906
+    move-result-object v0
+
+    .line 17104907
+    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 17104910
+    move-result-object v0
+
+    .line 17104911
+    const-string v1, ""
+
+    .line 17104913
+    const/4 v2, 0x0
+
+    .line 17104914
+    :goto_12
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17104917
+    move-result v3
+
+    .line 17104918
+    if-eqz v3, :cond_65
+
+    .line 17104920
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17104923
+    move-result-object v3
+
+    .line 17104924
+    check-cast v3, Ljava/util/Map$Entry;
+
+    .line 17104926
+    invoke-interface {v3}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 17104929
+    move-result-object v4
+
+    .line 17104930
+    check-cast v4, Ljava/lang/String;
+
+    .line 17104932
+    invoke-interface {v3}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 17104935
+    move-result-object v3
+
+    .line 17104936
+    check-cast v3, Ljava/lang/String;
+
+    .line 17104938
+    add-int/lit8 v2, v2, 0x1
+
+    .line 17104940
+    invoke-interface {p1}, Ljava/util/Map;->size()I
+
+    .line 17104943
+    move-result v5
+
+    .line 17104944
+    const/16 v6, 0x3d
+
+    .line 17104946
+    if-ne v2, v5, :cond_4a
+
+    .line 17104948
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 17104950
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 17104953
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104956
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104959
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 17104962
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104965
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104968
+    move-result-object v1
+
+    .line 17104969
+    goto :goto_12
+
+    .line 17104970
+    :cond_4a
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 17104972
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 17104975
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104978
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104981
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 17104984
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104987
+    const/16 v1, 0x3b
+
+    .line 17104989
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 17104992
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104995
+    move-result-object v1
+
+    .line 17104996
+    goto :goto_12
+
+    .line 17104997
+    :cond_65
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->loginTokenMap:Ljava/util/Map;
+
+    .line 17104999
+    :cond_67
+    return-object p0
+.end method
+
+.method public final setMerchantId(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setMonitor(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayMonitor;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object v0
+
+    .line 16842756
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->j:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayMonitor;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setNeedLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-boolean p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->needLoading:Z
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final setNetworkErrorAdapter(Ls7/e;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object p1
+
+    .line 16842756
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 16842759
+    return-object p0
+.end method
+
+.method public final setNetworkInterceptor(Ljava/lang/Object;)V
+    .registers 4
+
+    .prologue
+    .line 16973824
+    sget-object v0, Lx8/a;->a:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 16973826
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->INSTANCE:Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;
+
+    .line 16973828
+    const-class v1, Lcom/bytedance/caijing/sdk/infra/base/api/ttnet/TTNetService;
+
+    .line 16973830
+    invoke-virtual {v0, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/di/CJServiceManager;->getService(Ljava/lang/Class;)Lcom/bytedance/caijing/sdk/infra/base/core/di/ICJService;
+
+    .line 16973833
+    move-result-object v0
+
+    .line 16973834
+    check-cast v0, Lcom/bytedance/caijing/sdk/infra/base/api/ttnet/TTNetService;
+
+    .line 16973836
+    const-string v1, "from_app"
+
+    .line 16973838
+    invoke-interface {v0, v1, p1}, Lcom/bytedance/caijing/sdk/infra/base/api/ttnet/TTNetService;->addInterceptor(Ljava/lang/String;Ljava/lang/Object;)V
+
+    .line 16973841
+    return-void
+.end method
+
+.method public final setObserver(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayObserver;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object v0
+
+    .line 16842756
+    invoke-virtual {v0, p1}, Lcom/android/ttcjpaysdk/base/c;->r(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayObserver;)V
+
+    .line 16842759
+    return-object p0
+.end method
+
+.method public final setOpenSchemeCallback(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object v0
+
+    .line 16842756
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->c:Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeInterface;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setOpenSchemeWithContextCallback(Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 4
+
+    .prologue
+    .line 16908288
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908291
+    move-result-object v0
+
+    .line 16908292
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 16908295
+    new-instance v1, Lcom/android/ttcjpaysdk/base/c$c;
+
+    .line 16908297
+    invoke-direct {v1, v0, p1}, Lcom/android/ttcjpaysdk/base/c$c;-><init>(Lcom/android/ttcjpaysdk/base/c;Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayOpenSchemeWithContextInterface;)V
+
+    .line 16908300
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/c;->d:Lcom/android/ttcjpaysdk/base/c$c;
+
+    .line 16908302
+    return-object p0
+.end method
+
+.method public final setPhoneCarrierService(Lcom/android/ttcjpaysdk/ttcjpayapi/ITTCJPayPhoneCarrierService;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16908295
+    move-result-object v0
+
+    .line 16908296
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->n:Lcom/android/ttcjpaysdk/ttcjpayapi/ITTCJPayPhoneCarrierService;
+
+    .line 16908298
+    return-object p0
+.end method
+
+.method public final setRemoteDataHasInit(Z)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    iput-boolean p1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->remoteDataHasInit:Z
+
+    .line 16777218
+    return-void
+.end method
+
+.method public final setRequestParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-eqz v0, :cond_7
+
+    .line 16842756
+    invoke-virtual {v0, p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->c(Ljava/util/Map;)V
+
+    .line 16842759
+    :cond_7
+    return-object p0
+.end method
+
+.method public final setRiskInfoParams(Ljava/util/Map;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;)",
+            "Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;"
+        }
+    .end annotation
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-eqz v0, :cond_7
+
+    .line 16842756
+    invoke-virtual {v0, p1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->d(Ljava/util/Map;)V
+
+    .line 16842759
+    :cond_7
+    return-object p0
+.end method
+
+.method public final setScreenOrientationType(I)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 4
+
+    .prologue
+    .line 16973824
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16973826
+    if-nez v0, :cond_5
+
+    .line 16973828
+    goto :goto_b
+
+    .line 16973829
+    :cond_5
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 16973832
+    move-result-object v1
+
+    .line 16973833
+    iput-object v1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->mScreenOrientationType:Ljava/lang/Integer;
+
+    .line 16973835
+    :goto_b
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 16973838
+    move-result-object p1
+
+    .line 16973839
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->screenOrientationType:Ljava/lang/Integer;
+
+    .line 16973841
+    return-object p0
+.end method
+
+.method public final setServerType(I)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->serverType:I
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setTitleBitmap(Landroid/graphics/Bitmap;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    const/4 v0, 0x0
+
+    .line 16842753
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16842756
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->titleBitmap:Landroid/graphics/Bitmap;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setTitleStr(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16908294
+    if-nez v0, :cond_9
+
+    .line 16908296
+    goto :goto_b
+
+    .line 16908297
+    :cond_9
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->titleStr:Ljava/lang/String;
+
+    .line 16908299
+    :goto_b
+    return-object p0
+.end method
+
+.method public final setToastAdapter(Ls7/f;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object p1
+
+    .line 16842756
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 16842759
+    return-object p0
+.end method
+
+.method public final setTrackInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 16842755
+    move-result-object v0
+
+    .line 16842756
+    iput-object p1, v0, Lcom/android/ttcjpaysdk/base/c;->y:Lorg/json/JSONObject;
+
+    .line 16842758
+    return-object p0
+.end method
+
+.method public final setUid(Ljava/lang/String;)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    .prologue
+    .line 16777216
+    sput-object p1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->uid:Ljava/lang/String;
+
+    .line 16777218
+    return-object p0
+.end method
+
+.method public final setUnifyHideLoading(Z)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 16842754
+    if-nez v0, :cond_5
+
+    .line 16842756
+    goto :goto_7
+
+    .line 16842757
+    :cond_5
+    iput-boolean p1, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isUnifyHideLoading:Z
+
+    .line 16842759
+    :goto_7
+    return-object p0
+.end method
+
+.method public final sign()V
+    .registers 6
+
+    .prologue
+    .line 393216
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 393218
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 393220
+    const-string v2, ""
+
+    .line 393222
+    if-eqz v1, :cond_c
+
+    .line 393224
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 393226
+    if-nez v3, :cond_d
+
+    .line 393228
+    :cond_c
+    move-object v3, v2
+
+    .line 393229
+    :cond_d
+    if-eqz v1, :cond_15
+
+    .line 393231
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 393233
+    if-nez v1, :cond_14
+
+    .line 393235
+    goto :goto_15
+
+    .line 393236
+    :cond_14
+    move-object v2, v1
+
+    .line 393237
+    :cond_15
+    :goto_15
+    const-string v1, "sign"
+
+    .line 393239
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 393242
+    move-result-object v0
+
+    .line 393243
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 393245
+    const-string v2, "cashier"
+
+    .line 393247
+    invoke-virtual {v1, v2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 393250
+    iget-object v0, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 393252
+    const/16 v1, 0x70
+
+    .line 393254
+    if-eqz v0, :cond_78
+
+    .line 393256
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 393259
+    move-result-object v2
+
+    .line 393260
+    if-nez v2, :cond_52
+
+    .line 393262
+    iget-object v2, v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->payRequestParams:Ljava/util/Map;
+
+    .line 393264
+    if-eqz v2, :cond_3b
+
+    .line 393266
+    invoke-interface {v2}, Ljava/util/Map;->isEmpty()Z
+
+    .line 393269
+    move-result v2
+
+    .line 393270
+    const/4 v3, 0x1
+
+    .line 393271
+    xor-int/2addr v2, v3
+
+    .line 393272
+    if-ne v2, v3, :cond_3b
+
+    .line 393274
+    goto :goto_3c
+
+    .line 393275
+    :cond_3b
+    const/4 v3, 0x0
+
+    .line 393276
+    :goto_3c
+    if-nez v3, :cond_52
+
+    .line 393278
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->a()Ljava/util/Map;
+
+    .line 393281
+    move-result-object v2
+
+    .line 393282
+    if-eqz v2, :cond_45
+
+    .line 393284
+    goto :goto_52
+
+    .line 393285
+    :cond_45
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 393288
+    move-result-object v0
+
+    .line 393289
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 393292
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 393295
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 393297
+    goto :goto_76
+
+    .line 393298
+    :cond_52
+    :goto_52
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 393301
+    move-result-object v2
+
+    .line 393302
+    const-class v3, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedSign;
+
+    .line 393304
+    invoke-virtual {v2, v3}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 393307
+    move-result-object v2
+
+    .line 393308
+    check-cast v2, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedSign;
+
+    .line 393310
+    if-eqz v2, :cond_75
+
+    .line 393312
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 393315
+    move-result-object v0
+
+    .line 393316
+    sget-object v3, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 393318
+    iget-object v4, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 393320
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 393323
+    invoke-static {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 393326
+    move-result-object v3
+
+    .line 393327
+    invoke-interface {v2, v0, v3}, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedSign;->showCounter(Landroid/content/Context;Lorg/json/JSONObject;)V
+
+    .line 393330
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 393332
+    goto :goto_76
+
+    .line 393333
+    :cond_75
+    const/4 v0, 0x0
+
+    .line 393334
+    :goto_76
+    if-nez v0, :cond_84
+
+    .line 393336
+    :cond_78
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 393339
+    move-result-object v0
+
+    .line 393340
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 393343
+    invoke-virtual {v0}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 393346
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 393348
+    :cond_84
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 393351
+    return-void
+.end method
+
+.method public final storeString(Ljava/lang/String;Ljava/lang/String;)V
+    .registers 3
+
+    .prologue
+    .line 33619968
+    invoke-static {p1, p2}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->n(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 33619971
+    invoke-static {p1, p2}, Lcom/android/ttcjpaysdk/base/utils/f0;->d(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 33619974
+    return-void
+.end method
+
+.method public final tradeManager(Ljava/lang/String;)V
+    .registers 6
+
+    .prologue
+    .line 17104896
+    const/4 v0, 0x0
+
+    .line 17104897
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17104900
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 17104902
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 17104905
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->e()Ljava/lang/String;
+
+    .line 17104908
+    move-result-object v1
+
+    .line 17104909
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104912
+    const-string v1, "/usercenter/paymng?merchant_id="
+
+    .line 17104914
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104917
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104919
+    const/4 v2, 0x0
+
+    .line 17104920
+    if-eqz v1, :cond_1d
+
+    .line 17104922
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17104924
+    goto :goto_1e
+
+    .line 17104925
+    :cond_1d
+    move-object v1, v2
+
+    .line 17104926
+    :goto_1e
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104929
+    const-string v1, "&app_id="
+
+    .line 17104931
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104934
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104936
+    if-eqz v1, :cond_2d
+
+    .line 17104938
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17104940
+    goto :goto_2e
+
+    .line 17104941
+    :cond_2d
+    move-object v1, v2
+
+    .line 17104942
+    :goto_2e
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104945
+    const-string v1, "&smch_id="
+
+    .line 17104947
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104950
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104953
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104956
+    move-result-object p1
+
+    .line 17104957
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17104960
+    move-result-object v0
+
+    .line 17104961
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 17104963
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17104966
+    move-result-object v0
+
+    .line 17104967
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 17104969
+    new-instance v1, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17104971
+    invoke-direct {v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 17104974
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104976
+    if-eqz v3, :cond_56
+
+    .line 17104978
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17104981
+    move-result-object v2
+
+    .line 17104982
+    :cond_56
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17104985
+    move-result-object v1
+
+    .line 17104986
+    invoke-virtual {v1, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17104989
+    move-result-object p1
+
+    .line 17104990
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17104992
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104994
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104997
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17105000
+    move-result-object v1
+
+    .line 17105001
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17105004
+    move-result-object p1
+
+    .line 17105005
+    if-eqz v0, :cond_72
+
+    .line 17105007
+    invoke-interface {v0, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 17105010
+    :cond_72
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 17105013
+    return-void
+.end method
+
+.method public final tradeRecord(Ljava/lang/String;)V
+    .registers 6
+
+    .prologue
+    .line 17104896
+    const/4 v0, 0x0
+
+    .line 17104897
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17104900
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 17104902
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 17104905
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/utils/CJPayParamsUtils;->e()Ljava/lang/String;
+
+    .line 17104908
+    move-result-object v1
+
+    .line 17104909
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104912
+    const-string v1, "/usercenter/transaction/list?merchant_id="
+
+    .line 17104914
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104917
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104919
+    const/4 v2, 0x0
+
+    .line 17104920
+    if-eqz v1, :cond_1d
+
+    .line 17104922
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 17104924
+    goto :goto_1e
+
+    .line 17104925
+    :cond_1d
+    move-object v1, v2
+
+    .line 17104926
+    :goto_1e
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104929
+    const-string v1, "&app_id="
+
+    .line 17104931
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104934
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104936
+    if-eqz v1, :cond_2d
+
+    .line 17104938
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 17104940
+    goto :goto_2e
+
+    .line 17104941
+    :cond_2d
+    move-object v1, v2
+
+    .line 17104942
+    :goto_2e
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104945
+    const-string v1, "&smch_id="
+
+    .line 17104947
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104950
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104953
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104956
+    move-result-object p1
+
+    .line 17104957
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 17104960
+    move-result-object v0
+
+    .line 17104961
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 17104963
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 17104966
+    move-result-object v0
+
+    .line 17104967
+    check-cast v0, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;
+
+    .line 17104969
+    new-instance v1, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17104971
+    invoke-direct {v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;-><init>()V
+
+    .line 17104974
+    iget-object v3, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104976
+    if-eqz v3, :cond_56
+
+    .line 17104978
+    invoke-virtual {v3}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->getContext()Landroid/content/Context;
+
+    .line 17104981
+    move-result-object v2
+
+    .line 17104982
+    :cond_56
+    invoke-virtual {v1, v2}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setContext(Landroid/content/Context;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17104985
+    move-result-object v1
+
+    .line 17104986
+    invoke-virtual {v1, p1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setUrl(Ljava/lang/String;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17104989
+    move-result-object p1
+
+    .line 17104990
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 17104992
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 17104994
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17104997
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 17105000
+    move-result-object v1
+
+    .line 17105001
+    invoke-virtual {p1, v1}, Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;->setHostInfo(Lorg/json/JSONObject;)Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;
+
+    .line 17105004
+    move-result-object p1
+
+    .line 17105005
+    if-eqz v0, :cond_72
+
+    .line 17105007
+    invoke-interface {v0, p1}, Lcom/android/ttcjpaysdk/base/service/ICJPayH5Service;->startH5(Lcom/android/ttcjpaysdk/base/service/bean/H5ParamBuilder;)V
+
+    .line 17105010
+    :cond_72
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 17105013
+    return-void
+.end method
+
+.method public final updateLoginStatus(I)Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;
+    .registers 2
+
+    return-object p0
+.end method
+
+.method public final verifyScanResultSync(Landroid/content/Context;Ljava/lang/String;)Z
+    .registers 9
+
+    .prologue
+    .line 33947648
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 33947650
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947652
+    const-string v2, ""
+
+    .line 33947654
+    if-eqz v1, :cond_c
+
+    .line 33947656
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 33947658
+    if-nez v3, :cond_d
+
+    .line 33947660
+    :cond_c
+    move-object v3, v2
+
+    .line 33947661
+    :cond_d
+    if-eqz v1, :cond_13
+
+    .line 33947663
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 33947665
+    if-nez v1, :cond_14
+
+    .line 33947667
+    :cond_13
+    move-object v1, v2
+
+    .line 33947668
+    :cond_14
+    const-string v4, "verifyScanResultSync"
+
+    .line 33947670
+    invoke-static {v0, v4, v3, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 33947673
+    move-result-object v0
+
+    .line 33947674
+    sget-object v1, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->TAG:Ljava/lang/String;
+
+    .line 33947676
+    invoke-static {v1, v4}, Lfe0/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 33947679
+    const/4 v1, 0x0
+
+    .line 33947680
+    const/4 v3, 0x1
+
+    .line 33947681
+    if-eqz p2, :cond_2c
+
+    .line 33947683
+    invoke-virtual {p2}, Ljava/lang/String;->length()I
+
+    .line 33947686
+    move-result v4
+
+    .line 33947687
+    if-nez v4, :cond_2a
+
+    .line 33947689
+    goto :goto_2c
+
+    .line 33947690
+    :cond_2a
+    const/4 v4, 0x0
+
+    .line 33947691
+    goto :goto_2d
+
+    .line 33947692
+    :cond_2c
+    :goto_2c
+    const/4 v4, 0x1
+
+    .line 33947693
+    :goto_2d
+    if-eqz v4, :cond_30
+
+    .line 33947695
+    return v1
+
+    .line 33947696
+    :cond_30
+    invoke-static {p2}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 33947699
+    move-result-object p2
+
+    .line 33947700
+    const-string v4, "use_native"
+
+    .line 33947702
+    invoke-virtual {p2, v4}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947705
+    move-result-object v4
+
+    .line 33947706
+    if-eqz v4, :cond_45
+
+    .line 33947708
+    invoke-virtual {v4}, Ljava/lang/String;->length()I
+
+    .line 33947711
+    move-result v5
+
+    .line 33947712
+    if-nez v5, :cond_43
+
+    .line 33947714
+    goto :goto_45
+
+    .line 33947715
+    :cond_43
+    const/4 v5, 0x0
+
+    .line 33947716
+    goto :goto_46
+
+    .line 33947717
+    :cond_45
+    :goto_45
+    const/4 v5, 0x1
+
+    .line 33947718
+    :goto_46
+    if-nez v5, :cond_b5
+
+    .line 33947720
+    const-string v5, "0"
+
+    .line 33947722
+    invoke-static {v4, v5}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 33947725
+    move-result v4
+
+    .line 33947726
+    if-eqz v4, :cond_51
+
+    .line 33947728
+    goto :goto_b5
+
+    .line 33947729
+    :cond_51
+    const-string v4, "papi_id"
+
+    .line 33947731
+    invoke-virtual {p2, v4}, Landroid/net/Uri;->getQueryParameter(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 33947734
+    move-result-object p2
+
+    .line 33947735
+    if-eqz p2, :cond_62
+
+    .line 33947737
+    invoke-virtual {p2}, Ljava/lang/String;->length()I
+
+    .line 33947740
+    move-result v4
+
+    .line 33947741
+    if-nez v4, :cond_60
+
+    .line 33947743
+    goto :goto_62
+
+    .line 33947744
+    :cond_60
+    const/4 v4, 0x0
+
+    .line 33947745
+    goto :goto_63
+
+    .line 33947746
+    :cond_62
+    :goto_62
+    const/4 v4, 0x1
+
+    .line 33947747
+    :goto_63
+    if-eqz v4, :cond_66
+
+    .line 33947749
+    return v1
+
+    .line 33947750
+    :cond_66
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/account/CJAccount;->a:Lcom/bytedance/caijing/sdk/infra/base/account/CJAccount;
+
+    .line 33947752
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947755
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/account/CJAccount;->b:Lkotlin/Lazy;
+
+    .line 33947757
+    invoke-interface {v1}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    .line 33947760
+    move-result-object v1
+
+    .line 33947761
+    check-cast v1, Lcom/bytedance/caijing/sdk/infra/base/api/account/CJAccountService;
+
+    .line 33947763
+    invoke-interface {v1}, Lcom/bytedance/caijing/sdk/infra/base/api/account/CJAccountService;->getHostCurrentUserInfo()Lnb0/f;
+
+    .line 33947766
+    move-result-object v1
+
+    .line 33947767
+    new-instance v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 33947769
+    invoke-direct {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;-><init>()V
+
+    .line 33947772
+    iput-object p2, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->papiID:Ljava/lang/String;
+
+    .line 33947774
+    if-eqz v1, :cond_84
+
+    .line 33947776
+    iget-object p2, v1, Lnb0/f;->d:Ljava/lang/String;
+
+    .line 33947778
+    if-nez p2, :cond_85
+
+    .line 33947780
+    :cond_84
+    move-object p2, v2
+
+    .line 33947781
+    :cond_85
+    iput-object p2, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->nickName:Ljava/lang/String;
+
+    .line 33947783
+    if-eqz v1, :cond_8f
+
+    .line 33947785
+    iget-object p2, v1, Lnb0/f;->e:Ljava/lang/String;
+
+    .line 33947787
+    if-nez p2, :cond_8e
+
+    .line 33947789
+    goto :goto_8f
+
+    .line 33947790
+    :cond_8e
+    move-object v2, p2
+
+    .line 33947791
+    :cond_8f
+    :goto_8f
+    iput-object v2, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->avatarUrl:Ljava/lang/String;
+
+    .line 33947793
+    iput-boolean v3, v4, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->isFromScan:Z
+
+    .line 33947795
+    const/16 p2, 0x14
+
+    .line 33947797
+    invoke-virtual {v0, p2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->k(I)V
+
+    .line 33947800
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 33947803
+    move-result-object p2
+
+    .line 33947804
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 33947806
+    invoke-virtual {p2, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 33947809
+    move-result-object p2
+
+    .line 33947810
+    check-cast p2, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;
+
+    .line 33947812
+    if-eqz p2, :cond_b4
+
+    .line 33947814
+    sget-object v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 33947816
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33947819
+    invoke-static {v4}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 33947822
+    move-result-object v1
+
+    .line 33947823
+    const-string v2, "from_scan"
+
+    .line 33947825
+    invoke-interface {p2, p1, v2, v1, v0}, Lcom/android/ttcjpaysdk/base/service/ICJPayIntegratedCounterService;->startNewCounterActivity(Landroid/content/Context;Ljava/lang/String;Lorg/json/JSONObject;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 33947828
+    :cond_b4
+    return v3
+
+    .line 33947829
+    :cond_b5
+    :goto_b5
+    return v1
+.end method
+
+.method public final wxPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;)V
+    .registers 15
+
+    .prologue
+    .line 67436544
+    const/4 v0, 0x0
+
+    .line 67436545
+    invoke-static {p3, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 67436548
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 67436550
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436552
+    const-string v2, ""
+
+    .line 67436554
+    if-eqz v1, :cond_10
+
+    .line 67436556
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 67436558
+    if-nez v3, :cond_11
+
+    .line 67436560
+    :cond_10
+    move-object v3, v2
+
+    .line 67436561
+    :cond_11
+    if-eqz v1, :cond_17
+
+    .line 67436563
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 67436565
+    if-nez v1, :cond_18
+
+    .line 67436567
+    :cond_17
+    move-object v1, v2
+
+    .line 67436568
+    :cond_18
+    const-string v4, "wxPay"
+
+    .line 67436570
+    invoke-static {v0, v4, v3, v1}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 67436573
+    move-result-object v0
+
+    .line 67436574
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 67436576
+    const-string v3, "cashier"
+
+    .line 67436578
+    invoke-virtual {v1, v3, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 67436581
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 67436584
+    move-result-object v0
+
+    .line 67436585
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;
+
+    .line 67436587
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 67436590
+    move-result-object v0
+
+    .line 67436591
+    move-object v3, v0
+
+    .line 67436592
+    check-cast v3, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;
+
+    .line 67436594
+    invoke-interface {v3, p1, v2}, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;->isWXUnInstalled(Landroid/content/Context;Ljava/lang/String;)Z
+
+    .line 67436597
+    move-result v0
+
+    .line 67436598
+    if-eqz v0, :cond_45
+
+    .line 67436600
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/c;->e()Lcom/android/ttcjpaysdk/base/c;
+
+    .line 67436603
+    move-result-object p1
+
+    .line 67436604
+    const/16 p2, 0x77
+
+    .line 67436606
+    invoke-virtual {p1, p2}, Lcom/android/ttcjpaysdk/base/c;->s(I)V
+
+    .line 67436609
+    invoke-virtual {p1}, Lcom/android/ttcjpaysdk/base/c;->i()V
+
+    .line 67436612
+    goto :goto_58
+
+    .line 67436613
+    :cond_45
+    const/4 v8, 0x0
+
+    .line 67436614
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 67436616
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 67436618
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67436621
+    invoke-static {v1}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 67436624
+    move-result-object v9
+
+    .line 67436625
+    move-object v4, p1
+
+    .line 67436626
+    move-object v5, p2
+
+    .line 67436627
+    move-object v6, p3
+
+    .line 67436628
+    move-object v7, p4
+
+    .line 67436629
+    invoke-interface/range {v3 .. v9}, Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService;->pay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lorg/json/JSONObject;)V
+
+    .line 67436632
+    :goto_58
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 67436635
+    return-void
+.end method
+
+.method public final wxPay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;)V
+    .registers 14
+
+    .prologue
+    .line 84279296
+    const/4 v0, 0x0
+
+    .line 84279297
+    invoke-static {p3, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 84279300
+    sget-object v0, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;->r:Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;
+
+    .line 84279302
+    iget-object v1, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84279304
+    const-string v2, ""
+
+    .line 84279306
+    if-eqz v1, :cond_10
+
+    .line 84279308
+    iget-object v3, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->appId:Ljava/lang/String;
+
+    .line 84279310
+    if-nez v3, :cond_11
+
+    .line 84279312
+    :cond_10
+    move-object v3, v2
+
+    .line 84279313
+    :cond_11
+    if-eqz v1, :cond_19
+
+    .line 84279315
+    iget-object v1, v1, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->merchantId:Ljava/lang/String;
+
+    .line 84279317
+    if-nez v1, :cond_18
+
+    .line 84279319
+    goto :goto_19
+
+    .line 84279320
+    :cond_18
+    move-object v2, v1
+
+    .line 84279321
+    :cond_19
+    :goto_19
+    const-string v1, "wxPay"
+
+    .line 84279323
+    invoke-static {v0, v1, v3, v2}, Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;->b(Lcom/bytedance/caijing/sdk/infra/base/core/CJContext$c;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;
+
+    .line 84279326
+    move-result-object v0
+
+    .line 84279327
+    sget-object v1, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->a:Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;
+
+    .line 84279329
+    const-string v2, "cashier"
+
+    .line 84279331
+    invoke-virtual {v1, v2, v0}, Lcom/bytedance/caijing/sdk/infra/base/event/CJReporter;->g(Ljava/lang/String;Lcom/bytedance/caijing/sdk/infra/base/core/CJContext;)V
+
+    .line 84279334
+    invoke-static {}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getInstance()Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;
+
+    .line 84279337
+    move-result-object v0
+
+    .line 84279338
+    const-class v1, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;
+
+    .line 84279340
+    invoke-virtual {v0, v1}, Lcom/android/ttcjpaysdk/base/service/CJPayServiceManager;->getIService(Ljava/lang/Class;)Lcom/android/ttcjpaysdk/base/service/ICJPayService;
+
+    .line 84279343
+    move-result-object v0
+
+    .line 84279344
+    move-object v1, v0
+
+    .line 84279345
+    check-cast v1, Lcom/android/ttcjpaysdk/base/service/ICJPayWXPaymentService;
+
+    .line 84279347
+    if-eqz v1, :cond_48
+
+    .line 84279349
+    sget-object v0, Lcom/android/ttcjpaysdk/base/CJPayHostInfo;->Companion:Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;
+
+    .line 84279351
+    iget-object v2, p0, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->hostInfo:Lcom/android/ttcjpaysdk/base/CJPayHostInfo;
+
+    .line 84279353
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 84279356
+    invoke-static {v2}, Lcom/android/ttcjpaysdk/base/CJPayHostInfo$a;->d(Lcom/android/ttcjpaysdk/base/CJPayHostInfo;)Lorg/json/JSONObject;
+
+    .line 84279359
+    move-result-object v7
+
+    .line 84279360
+    move-object v2, p1
+
+    .line 84279361
+    move-object v3, p2
+
+    .line 84279362
+    move-object v4, p3
+
+    .line 84279363
+    move-object v5, p4
+
+    .line 84279364
+    move-object v6, p5
+
+    .line 84279365
+    invoke-interface/range {v1 .. v7}, Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService;->pay(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnPayResultCallback;Lcom/android/ttcjpaysdk/base/service/ICJPayBasisPaymentService$OnResultCallback;Lorg/json/JSONObject;)V
+
+    .line 84279368
+    :cond_48
+    invoke-virtual {p0}, Lcom/android/ttcjpaysdk/ttcjpayapi/TTCJPayUtilsInner;->releaseHostInfo()V
+
+    .line 84279371
+    return-void
+.end method

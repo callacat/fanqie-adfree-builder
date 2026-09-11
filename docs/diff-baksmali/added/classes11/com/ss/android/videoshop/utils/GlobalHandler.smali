@@ -1,0 +1,93 @@
+.class public Lcom/ss/android/videoshop/utils/GlobalHandler;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# static fields
+.field private static sMainHandler:Landroid/os/Handler;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa3685
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static getMainHandler()Landroid/os/Handler;
+    .registers 3
+
+    .prologue
+    .line 196608
+    sget-object v0, Lcom/ss/android/videoshop/utils/GlobalHandler;->sMainHandler:Landroid/os/Handler;
+
+    .line 196610
+    if-nez v0, :cond_1b
+
+    .line 196612
+    const-class v0, Lcom/ss/android/videoshop/utils/GlobalHandler;
+
+    .line 196614
+    monitor-enter v0
+
+    .line 196615
+    :try_start_7
+    sget-object v1, Lcom/ss/android/videoshop/utils/GlobalHandler;->sMainHandler:Landroid/os/Handler;
+
+    .line 196617
+    if-nez v1, :cond_16
+
+    .line 196619
+    new-instance v1, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 196621
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 196624
+    move-result-object v2
+
+    .line 196625
+    invoke-direct {v1, v2}, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;-><init>(Landroid/os/Looper;)V
+
+    .line 196628
+    sput-object v1, Lcom/ss/android/videoshop/utils/GlobalHandler;->sMainHandler:Landroid/os/Handler;
+
+    .line 196630
+    :cond_16
+    monitor-exit v0
+
+    .line 196631
+    goto :goto_1b
+
+    .line 196632
+    :catchall_18
+    move-exception v1
+
+    .line 196633
+    monitor-exit v0
+    :try_end_1a
+    .catchall {:try_start_7 .. :try_end_1a} :catchall_18
+
+    .line 196634
+    throw v1
+
+    .line 196635
+    :cond_1b
+    :goto_1b
+    sget-object v0, Lcom/ss/android/videoshop/utils/GlobalHandler;->sMainHandler:Landroid/os/Handler;
+
+    .line 196637
+    return-object v0
+.end method

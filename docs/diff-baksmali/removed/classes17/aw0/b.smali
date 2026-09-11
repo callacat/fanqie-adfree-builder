@@ -1,0 +1,23 @@
+.class public interface abstract Law0/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lsv0/a;
+
+
+# virtual methods
+.method public abstract F8(Ljava/lang/String;)Ljava/lang/String;
+.end method
+
+.method public abstract getLong(Ljava/lang/String;)J
+.end method
+
+.method public abstract putLong(Ljava/lang/String;J)V
+.end method
+
+.method public abstract putString(Ljava/lang/String;Ljava/lang/String;)V
+.end method
+
+.method public abstract remove(Ljava/lang/String;)V
+.end method

@@ -1,0 +1,90 @@
+## classes20/cm2/j.smali
+# added=0 removed=0 changed=1
+
+.method public final onClick(Landroid/view/View;)V
+[MOD-CHANGED]
+.method public final onClick(Landroid/view/View;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    iget-object p1, p0, Lcm2/j;->a:Lcom/dragon/community/impl/publish/ai/ParaCommentWithAIPublishFragment;
+
+    .line 16973826
+    sget v0, Lcom/dragon/community/impl/publish/ai/ParaCommentWithAIPublishFragment;->G:I
+
+    .line 16973828
+    invoke-virtual {p1}, Lcom/dragon/community/impl/publish/ai/ParaCommentWithAIPublishFragment;->fg()Z
+
+    .line 16973831
+    move-result v0
+
+    .line 16973832
+    if-eqz v0, :cond_b
+
+    .line 16973834
+    goto :goto_12
+
+    .line 16973835
+    :cond_b
+    invoke-virtual {p1}, Landroidx/fragment/app/Fragment;->requireActivity()Landroidx/fragment/app/FragmentActivity;
+
+    .line 16973838
+    move-result-object p1
+
+    .line 16973839
+    invoke-virtual {p1}, Landroid/app/Activity;->finish()V
+
+    .line 16973842
+    :goto_12
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public final onClick(Landroid/view/View;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    iget-object p1, p0, Lcm2/j;->a:Lcom/dragon/community/impl/publish/ai/ParaCommentWithAIPublishFragment;
+
+    .line 16973825
+    .line 16973826
+    sget v0, Lcom/dragon/community/impl/publish/ai/ParaCommentWithAIPublishFragment;->G:I
+
+    .line 16973827
+    .line 16973828
+    invoke-virtual {p1}, Lcom/dragon/community/impl/publish/ai/ParaCommentWithAIPublishFragment;->fg()Z
+
+    .line 16973829
+    .line 16973830
+    .line 16973831
+    move-result v0
+
+    .line 16973832
+    if-eqz v0, :cond_b
+
+    .line 16973833
+    .line 16973834
+    goto :goto_12
+
+    .line 16973835
+    :cond_b
+    invoke-virtual {p1}, Landroidx/fragment/app/Fragment;->requireActivity()Landroidx/fragment/app/FragmentActivity;
+
+    .line 16973836
+    .line 16973837
+    .line 16973838
+    move-result-object p1
+
+    .line 16973839
+    invoke-virtual {p1}, Landroid/app/Activity;->finish()V
+
+    .line 16973840
+    .line 16973841
+    .line 16973842
+    :goto_12
+    return-void
+.end method
+
+

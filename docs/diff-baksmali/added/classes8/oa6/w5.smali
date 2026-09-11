@@ -1,0 +1,219 @@
+.class public final Loa6/w5;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Loa6/w5$a;,
+        Loa6/w5$b;
+    }
+.end annotation
+
+.annotation runtime Lkotlinx/serialization/Serializable;
+.end annotation
+
+
+# static fields
+.field public static final Companion:Loa6/w5$b;
+
+
+# instance fields
+.field public final a:Ljava/lang/String;
+
+.field public final b:Ljava/lang/String;
+
+.field public final c:Ljava/lang/String;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    .prologue
+    .line 131072
+    const v0, 0x9b93f
+
+    .line 131075
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 131078
+    new-instance v0, Loa6/w5$b;
+
+    .line 131080
+    invoke-direct {v0}, Loa6/w5$b;-><init>()V
+
+    .line 131083
+    sput-object v0, Loa6/w5;->Companion:Loa6/w5$b;
+
+    .line 131085
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 3
+
+    const/4 v0, 0x0
+
+    const/4 v1, 0x7
+
+    invoke-direct {p0, v0, v0, v0, v1}, Loa6/w5;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 7
+    .param p2    # Ljava/lang/String;
+        .annotation runtime Lkotlinx/serialization/SerialName;
+            value = "recommend_group_id"
+        .end annotation
+    .end param
+    .param p3    # Ljava/lang/String;
+        .annotation runtime Lkotlinx/serialization/SerialName;
+            value = "recommend_info"
+        .end annotation
+    .end param
+    .param p4    # Ljava/lang/String;
+        .annotation runtime Lkotlinx/serialization/SerialName;
+            value = "request_info"
+        .end annotation
+    .end param
+
+    .prologue
+    .line 67371008
+    and-int/lit8 v0, p1, 0x0
+
+    .line 67371010
+    if-eqz v0, :cond_e
+
+    .line 67371012
+    sget-object v0, Loa6/w5$a;->a:Loa6/w5$a;
+
+    .line 67371014
+    invoke-virtual {v0}, Loa6/w5$a;->getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 67371017
+    move-result-object v0
+
+    .line 67371018
+    const/4 v1, 0x0
+
+    .line 67371019
+    invoke-static {p1, v1, v0}, Lkotlinx/serialization/internal/PluginExceptionsKt;->throwMissingFieldException(IILkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 67371022
+    :cond_e
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 67371025
+    and-int/lit8 v0, p1, 0x1
+
+    .line 67371027
+    const/4 v1, 0x0
+
+    .line 67371028
+    if-nez v0, :cond_19
+
+    .line 67371030
+    iput-object v1, p0, Loa6/w5;->a:Ljava/lang/String;
+
+    .line 67371032
+    goto :goto_1b
+
+    .line 67371033
+    :cond_19
+    iput-object p2, p0, Loa6/w5;->a:Ljava/lang/String;
+
+    .line 67371035
+    :goto_1b
+    and-int/lit8 p2, p1, 0x2
+
+    .line 67371037
+    if-nez p2, :cond_22
+
+    .line 67371039
+    iput-object v1, p0, Loa6/w5;->b:Ljava/lang/String;
+
+    .line 67371041
+    goto :goto_24
+
+    .line 67371042
+    :cond_22
+    iput-object p3, p0, Loa6/w5;->b:Ljava/lang/String;
+
+    .line 67371044
+    :goto_24
+    and-int/lit8 p1, p1, 0x4
+
+    .line 67371046
+    if-nez p1, :cond_2b
+
+    .line 67371048
+    iput-object v1, p0, Loa6/w5;->c:Ljava/lang/String;
+
+    .line 67371050
+    goto :goto_2d
+
+    .line 67371051
+    :cond_2b
+    iput-object p4, p0, Loa6/w5;->c:Ljava/lang/String;
+
+    .line 67371053
+    :goto_2d
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    .registers 7
+
+    .prologue
+    .line 67305472
+    and-int/lit8 v0, p4, 0x1
+
+    .line 67305474
+    const/4 v1, 0x0
+
+    .line 67305475
+    if-eqz v0, :cond_6
+
+    .line 67305477
+    move-object p1, v1
+
+    .line 67305478
+    :cond_6
+    and-int/lit8 v0, p4, 0x2
+
+    .line 67305480
+    if-eqz v0, :cond_b
+
+    .line 67305482
+    move-object p2, v1
+
+    .line 67305483
+    :cond_b
+    and-int/lit8 p4, p4, 0x4
+
+    .line 67305485
+    if-eqz p4, :cond_10
+
+    .line 67305487
+    move-object p3, v1
+
+    .line 67305488
+    :cond_10
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 67305491
+    iput-object p1, p0, Loa6/w5;->a:Ljava/lang/String;
+
+    .line 67305493
+    iput-object p2, p0, Loa6/w5;->b:Ljava/lang/String;
+
+    .line 67305495
+    iput-object p3, p0, Loa6/w5;->c:Ljava/lang/String;
+
+    .line 67305497
+    return-void
+.end method

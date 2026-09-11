@@ -1,0 +1,139 @@
+.class public final Lkotlin/comparisons/ComparisonsKt__ComparisonsKt$f;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/util/Comparator;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lkotlin/comparisons/ComparisonsKt__ComparisonsKt;->thenBy(Ljava/util/Comparator;Ljava/util/Comparator;Lkotlin/jvm/functions/Function1;)Ljava/util/Comparator;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/lang/Object;",
+        "Ljava/util/Comparator;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Ljava/util/Comparator;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Comparator<",
+            "TT;>;"
+        }
+    .end annotation
+.end field
+
+.field public final synthetic b:Ljava/util/Comparator;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Comparator<",
+            "-TK;>;"
+        }
+    .end annotation
+.end field
+
+.field public final synthetic c:Lkotlin/jvm/functions/Function1;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lkotlin/jvm/functions/Function1<",
+            "TT;TK;>;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Ljava/util/Comparator;Ljava/util/Comparator;Lkotlin/jvm/functions/Function1;)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Comparator<",
+            "TT;>;",
+            "Ljava/util/Comparator<",
+            "-TK;>;",
+            "Lkotlin/jvm/functions/Function1<",
+            "-TT;+TK;>;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt$f;->a:Ljava/util/Comparator;
+
+    iput-object p2, p0, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt$f;->b:Ljava/util/Comparator;
+
+    iput-object p3, p0, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt$f;->c:Lkotlin/jvm/functions/Function1;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;TT;)I"
+        }
+    .end annotation
+
+    .prologue
+    .line 33751040
+    iget-object v0, p0, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt$f;->a:Ljava/util/Comparator;
+
+    .line 33751042
+    invoke-interface {v0, p1, p2}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    .line 33751045
+    move-result v0
+
+    .line 33751046
+    if-eqz v0, :cond_9
+
+    .line 33751048
+    goto :goto_19
+
+    .line 33751049
+    :cond_9
+    iget-object v0, p0, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt$f;->b:Ljava/util/Comparator;
+
+    .line 33751051
+    iget-object v1, p0, Lkotlin/comparisons/ComparisonsKt__ComparisonsKt$f;->c:Lkotlin/jvm/functions/Function1;
+
+    .line 33751053
+    invoke-interface {v1, p1}, Lkotlin/jvm/functions/Function1;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33751056
+    move-result-object p1
+
+    .line 33751057
+    invoke-interface {v1, p2}, Lkotlin/jvm/functions/Function1;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33751060
+    move-result-object p2
+
+    .line 33751061
+    invoke-interface {v0, p1, p2}, Ljava/util/Comparator;->compare(Ljava/lang/Object;Ljava/lang/Object;)I
+
+    .line 33751064
+    move-result v0
+
+    .line 33751065
+    :goto_19
+    return v0
+.end method

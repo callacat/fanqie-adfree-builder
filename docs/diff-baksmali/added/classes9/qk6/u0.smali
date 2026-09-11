@@ -1,0 +1,84 @@
+.class public final Lqk6/u0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lld6/l4$b;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/ui/SocialRecyclerView;
+
+.field public final synthetic b:Lcom/dragon/read/social/question/CommunityQuestionTabFragment;
+
+
+# direct methods
+.method public constructor <init>(Lcom/dragon/read/social/question/CommunityQuestionTabFragment;Lcom/dragon/read/social/ui/SocialRecyclerView;)V
+    .registers 3
+
+    .prologue
+    .line 33619968
+    iput-object p2, p0, Lqk6/u0;->a:Lcom/dragon/read/social/ui/SocialRecyclerView;
+
+    .line 33619970
+    iput-object p1, p0, Lqk6/u0;->b:Lcom/dragon/read/social/question/CommunityQuestionTabFragment;
+
+    .line 33619972
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33619975
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(ILjava/lang/Object;)V
+    .registers 3
+
+    .prologue
+    .line 33751040
+    iget-object p2, p0, Lqk6/u0;->a:Lcom/dragon/read/social/ui/SocialRecyclerView;
+
+    .line 33751042
+    invoke-virtual {p2, p1}, Landroidx/recyclerview/widget/RecyclerView;->findViewHolderForAdapterPosition(I)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
+    .line 33751045
+    move-result-object p1
+
+    .line 33751046
+    instance-of p1, p1, Lsk6/c;
+
+    .line 33751048
+    if-eqz p1, :cond_15
+
+    .line 33751050
+    iget-object p1, p0, Lqk6/u0;->b:Lcom/dragon/read/social/question/CommunityQuestionTabFragment;
+
+    .line 33751052
+    iget-object p1, p1, Lcom/dragon/read/social/question/CommunityQuestionTabFragment;->m:Lcom/dragon/read/social/question/CommunityQuestionDetailsActivity$d;
+
+    .line 33751054
+    if-eqz p1, :cond_15
+
+    .line 33751056
+    iget-object p1, p1, Lcom/dragon/read/social/question/CommunityQuestionDetailsActivity$d;->a:Lcom/dragon/read/social/question/CommunityQuestionDetailsActivity;
+
+    .line 33751058
+    invoke-virtual {p1}, Lcom/dragon/read/social/question/CommunityQuestionDetailsActivity;->g1()V
+
+    .line 33751061
+    :cond_15
+    return-void
+.end method
+
+.method public final synthetic b(I)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public final synthetic c()V
+    .registers 1
+
+    return-void
+.end method

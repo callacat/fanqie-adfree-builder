@@ -1,0 +1,927 @@
+## classes19/ks1/d.smali
+# added=0 removed=0 changed=7
+
+.method public final getDaoliangTaskData()Ljava/util/Map;
+[MOD-CHANGED]
+.method public final getDaoliangTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getDaoliangTaskData()Ljava/util/Map;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getDaoliangTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196609
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196611
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196613
+    .line 196614
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196617
+    .line 196618
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196624
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196626
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getDaoliangTaskData()Ljava/util/Map;
+
+    .line 196628
+    .line 196629
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+
+.method public final getListeningTaskData()Ljava/util/Map;
+[MOD-CHANGED]
+.method public final getListeningTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getListeningTaskData()Ljava/util/Map;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getListeningTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196609
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196611
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196613
+    .line 196614
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196617
+    .line 196618
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196624
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196626
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getListeningTaskData()Ljava/util/Map;
+
+    .line 196628
+    .line 196629
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+
+.method public final getMergeTaskData()Ljava/util/Map;
+[MOD-CHANGED]
+.method public final getMergeTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getMergeTaskData()Ljava/util/Map;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getMergeTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196609
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196611
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196613
+    .line 196614
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196617
+    .line 196618
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196624
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196626
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getMergeTaskData()Ljava/util/Map;
+
+    .line 196628
+    .line 196629
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+
+.method public final getReadingTaskData()Ljava/util/Map;
+[MOD-CHANGED]
+.method public final getReadingTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getReadingTaskData()Ljava/util/Map;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getReadingTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196609
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196611
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196613
+    .line 196614
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196617
+    .line 196618
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196624
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196626
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getReadingTaskData()Ljava/util/Map;
+
+    .line 196628
+    .line 196629
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+
+.method public final getRedPackSplitTaskData()Ljava/util/Map;
+[MOD-CHANGED]
+.method public final getRedPackSplitTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getRedPackSplitTaskData()Ljava/util/Map;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getRedPackSplitTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196609
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196611
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196613
+    .line 196614
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196617
+    .line 196618
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196624
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196626
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getRedPackSplitTaskData()Ljava/util/Map;
+
+    .line 196628
+    .line 196629
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+
+.method public final getSevenTaskData()Ljava/util/Map;
+[MOD-CHANGED]
+.method public final getSevenTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getSevenTaskData()Ljava/util/Map;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getSevenTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196609
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196611
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196613
+    .line 196614
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196617
+    .line 196618
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196624
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196626
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getSevenTaskData()Ljava/util/Map;
+
+    .line 196628
+    .line 196629
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+
+.method public final getShortVideoTaskData()Ljava/util/Map;
+[MOD-CHANGED]
+.method public final getShortVideoTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getShortVideoTaskData()Ljava/util/Map;
+
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getShortVideoTaskData()Ljava/util/Map;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 196608
+    sget-object v0, Lsv0/c;->a:Lsv0/c;
+
+    .line 196609
+    .line 196610
+    const-class v1, Lis1/e;
+
+    .line 196611
+    .line 196612
+    invoke-static {v1}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    .line 196613
+    .line 196614
+    .line 196615
+    move-result-object v1
+
+    .line 196616
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 196617
+    .line 196618
+    .line 196619
+    invoke-static {v1}, Lsv0/c;->a(Lkotlin/reflect/KClass;)Lsv0/a;
+
+    .line 196620
+    .line 196621
+    .line 196622
+    move-result-object v0
+
+    .line 196623
+    check-cast v0, Lis1/e;
+
+    .line 196624
+    .line 196625
+    if-eqz v0, :cond_18
+
+    .line 196626
+    .line 196627
+    invoke-interface {v0}, Lis1/e;->getShortVideoTaskData()Ljava/util/Map;
+
+    .line 196628
+    .line 196629
+    .line 196630
+    move-result-object v0
+
+    .line 196631
+    goto :goto_19
+
+    .line 196632
+    :cond_18
+    const/4 v0, 0x0
+
+    .line 196633
+    :goto_19
+    return-object v0
+.end method
+
+

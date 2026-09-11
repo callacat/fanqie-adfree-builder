@@ -1,0 +1,1020 @@
+.class public Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode$$PropsSetter;
+.super Lcom/lynx/tasm/behavior/shadow/ShadowNode$$PropsSetter;
+.source "SourceFile"
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Lcom/lynx/tasm/behavior/shadow/ShadowNode$$PropsSetter;-><init>()V
+
+    .line 3
+    return-void
+.end method
+
+
+# virtual methods
+.method public setProperty(Lcom/lynx/tasm/behavior/shadow/ShadowNode;Ljava/lang/String;Lcom/lynx/tasm/behavior/StylesDiffMap;)V
+    .registers 8
+
+    .prologue
+    .line 50855936
+    move-object v0, p1
+
+    .line 50855937
+    check-cast v0, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;
+
+    .line 50855939
+    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50855942
+    invoke-virtual {p2}, Ljava/lang/String;->hashCode()I
+
+    .line 50855945
+    move-result v1
+
+    .line 50855946
+    const/4 v2, 0x0
+
+    .line 50855947
+    const/4 v3, -0x1
+
+    .line 50855948
+    sparse-switch v1, :sswitch_data_226
+
+    .line 50855951
+    goto/16 :goto_156
+
+    .line 50855953
+    :sswitch_11
+    const-string v1, "enable-region-view"
+
+    .line 50855955
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50855958
+    move-result v1
+
+    .line 50855959
+    if-nez v1, :cond_1b
+
+    .line 50855961
+    goto/16 :goto_156
+
+    .line 50855963
+    :cond_1b
+    const/16 v3, 0x18
+
+    .line 50855965
+    goto/16 :goto_156
+
+    .line 50855967
+    :sswitch_1f
+    const-string v1, "text-maxline"
+
+    .line 50855969
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50855972
+    move-result v1
+
+    .line 50855973
+    if-nez v1, :cond_29
+
+    .line 50855975
+    goto/16 :goto_156
+
+    .line 50855977
+    :cond_29
+    const/16 v3, 0x17
+
+    .line 50855979
+    goto/16 :goto_156
+
+    .line 50855981
+    :sswitch_2d
+    const-string v1, "typewriter-height-transition-duration"
+
+    .line 50855983
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50855986
+    move-result v1
+
+    .line 50855987
+    if-nez v1, :cond_37
+
+    .line 50855989
+    goto/16 :goto_156
+
+    .line 50855991
+    :cond_37
+    const/16 v3, 0x16
+
+    .line 50855993
+    goto/16 :goto_156
+
+    .line 50855995
+    :sswitch_3b
+    const-string v1, "text-mark-attachments"
+
+    .line 50855997
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856000
+    move-result v1
+
+    .line 50856001
+    if-nez v1, :cond_45
+
+    .line 50856003
+    goto/16 :goto_156
+
+    .line 50856005
+    :cond_45
+    const/16 v3, 0x15
+
+    .line 50856007
+    goto/16 :goto_156
+
+    .line 50856009
+    :sswitch_49
+    const-string v1, "image-sync-load"
+
+    .line 50856011
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856014
+    move-result v1
+
+    .line 50856015
+    if-nez v1, :cond_53
+
+    .line 50856017
+    goto/16 :goto_156
+
+    .line 50856019
+    :cond_53
+    const/16 v3, 0x14
+
+    .line 50856021
+    goto/16 :goto_156
+
+    .line 50856023
+    :sswitch_57
+    const-string v1, "selection-background-color"
+
+    .line 50856025
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856028
+    move-result v1
+
+    .line 50856029
+    if-nez v1, :cond_61
+
+    .line 50856031
+    goto/16 :goto_156
+
+    .line 50856033
+    :cond_61
+    const/16 v3, 0x13
+
+    .line 50856035
+    goto/16 :goto_156
+
+    .line 50856037
+    :sswitch_65
+    const-string v1, "markdown-style"
+
+    .line 50856039
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856042
+    move-result v1
+
+    .line 50856043
+    if-nez v1, :cond_6f
+
+    .line 50856045
+    goto/16 :goto_156
+
+    .line 50856047
+    :cond_6f
+    const/16 v3, 0x12
+
+    .line 50856049
+    goto/16 :goto_156
+
+    .line 50856051
+    :sswitch_73
+    const-string v1, "content"
+
+    .line 50856053
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856056
+    move-result v1
+
+    .line 50856057
+    if-nez v1, :cond_7d
+
+    .line 50856059
+    goto/16 :goto_156
+
+    .line 50856061
+    :cond_7d
+    const/16 v3, 0x11
+
+    .line 50856063
+    goto/16 :goto_156
+
+    .line 50856065
+    :sswitch_81
+    const-string v1, "exposure-tags"
+
+    .line 50856067
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856070
+    move-result v1
+
+    .line 50856071
+    if-nez v1, :cond_8b
+
+    .line 50856073
+    goto/16 :goto_156
+
+    .line 50856075
+    :cond_8b
+    const/16 v3, 0x10
+
+    .line 50856077
+    goto/16 :goto_156
+
+    .line 50856079
+    :sswitch_8f
+    const-string v1, "content-id"
+
+    .line 50856081
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856084
+    move-result v1
+
+    .line 50856085
+    if-nez v1, :cond_99
+
+    .line 50856087
+    goto/16 :goto_156
+
+    .line 50856089
+    :cond_99
+    const/16 v3, 0xf
+
+    .line 50856091
+    goto/16 :goto_156
+
+    .line 50856093
+    :sswitch_9d
+    const-string v1, "text-selection"
+
+    .line 50856095
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856098
+    move-result v1
+
+    .line 50856099
+    if-nez v1, :cond_a7
+
+    .line 50856101
+    goto/16 :goto_156
+
+    .line 50856103
+    :cond_a7
+    const/16 v3, 0xe
+
+    .line 50856105
+    goto/16 :goto_156
+
+    .line 50856107
+    :sswitch_ab
+    const-string v1, "content-complete"
+
+    .line 50856109
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856112
+    move-result v1
+
+    .line 50856113
+    if-nez v1, :cond_b5
+
+    .line 50856115
+    goto/16 :goto_156
+
+    .line 50856117
+    :cond_b5
+    const/16 v3, 0xd
+
+    .line 50856119
+    goto/16 :goto_156
+
+    .line 50856121
+    :sswitch_b9
+    const-string v1, "image-downsampling"
+
+    .line 50856123
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856126
+    move-result v1
+
+    .line 50856127
+    if-nez v1, :cond_c3
+
+    .line 50856129
+    goto/16 :goto_156
+
+    .line 50856131
+    :cond_c3
+    const/16 v3, 0xc
+
+    .line 50856133
+    goto/16 :goto_156
+
+    .line 50856135
+    :sswitch_c7
+    const-string v1, "markdown-effect"
+
+    .line 50856137
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856140
+    move-result v1
+
+    .line 50856141
+    if-nez v1, :cond_d1
+
+    .line 50856143
+    goto/16 :goto_156
+
+    .line 50856145
+    :cond_d1
+    const/16 v3, 0xb
+
+    .line 50856147
+    goto/16 :goto_156
+
+    .line 50856149
+    :sswitch_d5
+    const-string v1, "allow-break-around-punctuation"
+
+    .line 50856151
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856154
+    move-result v1
+
+    .line 50856155
+    if-nez v1, :cond_df
+
+    .line 50856157
+    goto/16 :goto_156
+
+    .line 50856159
+    :cond_df
+    const/16 v3, 0xa
+
+    .line 50856161
+    goto/16 :goto_156
+
+    .line 50856163
+    :sswitch_e3
+    const-string v1, "animation-velocity"
+
+    .line 50856165
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856168
+    move-result v1
+
+    .line 50856169
+    if-nez v1, :cond_ed
+
+    .line 50856171
+    goto/16 :goto_156
+
+    .line 50856173
+    :cond_ed
+    const/16 v3, 0x9
+
+    .line 50856175
+    goto/16 :goto_156
+
+    .line 50856177
+    :sswitch_f1
+    const-string v1, "animation-frame-rate"
+
+    .line 50856179
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856182
+    move-result v1
+
+    .line 50856183
+    if-nez v1, :cond_fb
+
+    .line 50856185
+    goto/16 :goto_156
+
+    .line 50856187
+    :cond_fb
+    const/16 v3, 0x8
+
+    .line 50856189
+    goto/16 :goto_156
+
+    .line 50856191
+    :sswitch_ff
+    const-string v1, "typewriter-dynamic-height"
+
+    .line 50856193
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856196
+    move-result v1
+
+    .line 50856197
+    if-nez v1, :cond_108
+
+    .line 50856199
+    goto :goto_156
+
+    .line 50856200
+    :cond_108
+    const/4 v3, 0x7
+
+    .line 50856201
+    goto :goto_156
+
+    .line 50856202
+    :sswitch_10a
+    const-string v1, "selection-handle-size"
+
+    .line 50856204
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856207
+    move-result v1
+
+    .line 50856208
+    if-nez v1, :cond_113
+
+    .line 50856210
+    goto :goto_156
+
+    .line 50856211
+    :cond_113
+    const/4 v3, 0x6
+
+    .line 50856212
+    goto :goto_156
+
+    .line 50856213
+    :sswitch_115
+    const-string v1, "selection-handle-color"
+
+    .line 50856215
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856218
+    move-result v1
+
+    .line 50856219
+    if-nez v1, :cond_11e
+
+    .line 50856221
+    goto :goto_156
+
+    .line 50856222
+    :cond_11e
+    const/4 v3, 0x5
+
+    .line 50856223
+    goto :goto_156
+
+    .line 50856224
+    :sswitch_120
+    const-string v1, "content-range"
+
+    .line 50856226
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856229
+    move-result v1
+
+    .line 50856230
+    if-nez v1, :cond_129
+
+    .line 50856232
+    goto :goto_156
+
+    .line 50856233
+    :cond_129
+    const/4 v3, 0x4
+
+    .line 50856234
+    goto :goto_156
+
+    .line 50856235
+    :sswitch_12b
+    const-string v1, "animation-type"
+
+    .line 50856237
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856240
+    move-result v1
+
+    .line 50856241
+    if-nez v1, :cond_134
+
+    .line 50856243
+    goto :goto_156
+
+    .line 50856244
+    :cond_134
+    const/4 v3, 0x3
+
+    .line 50856245
+    goto :goto_156
+
+    .line 50856246
+    :sswitch_136
+    const-string v1, "initial-animation-step"
+
+    .line 50856248
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856251
+    move-result v1
+
+    .line 50856252
+    if-nez v1, :cond_13f
+
+    .line 50856254
+    goto :goto_156
+
+    .line 50856255
+    :cond_13f
+    const/4 v3, 0x2
+
+    .line 50856256
+    goto :goto_156
+
+    .line 50856257
+    :sswitch_141
+    const-string v1, "markdown-max-height"
+
+    .line 50856259
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856262
+    move-result v1
+
+    .line 50856263
+    if-nez v1, :cond_14a
+
+    .line 50856265
+    goto :goto_156
+
+    .line 50856266
+    :cond_14a
+    const/4 v3, 0x1
+
+    .line 50856267
+    goto :goto_156
+
+    .line 50856268
+    :sswitch_14c
+    const-string v1, "typewriter-height-transition-prefetch"
+
+    .line 50856270
+    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 50856273
+    move-result v1
+
+    .line 50856274
+    if-nez v1, :cond_155
+
+    .line 50856276
+    goto :goto_156
+
+    .line 50856277
+    :cond_155
+    const/4 v3, 0x0
+
+    .line 50856278
+    :goto_156
+    const/4 v1, 0x0
+
+    .line 50856279
+    packed-switch v3, :pswitch_data_28c
+
+    .line 50856282
+    invoke-super {p0, p1, p2, p3}, Lcom/lynx/tasm/behavior/shadow/ShadowNode$$PropsSetter;->setProperty(Lcom/lynx/tasm/behavior/shadow/ShadowNode;Ljava/lang/String;Lcom/lynx/tasm/behavior/StylesDiffMap;)V
+
+    .line 50856285
+    return-void
+
+    .line 50856286
+    :pswitch_15e
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856289
+    move-result p1
+
+    .line 50856290
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setEnableRegionView(Z)V
+
+    .line 50856293
+    return-void
+
+    .line 50856294
+    :pswitch_166
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getInt(Ljava/lang/String;I)I
+
+    .line 50856297
+    move-result p1
+
+    .line 50856298
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setTextMaxLine(I)V
+
+    .line 50856301
+    return-void
+
+    .line 50856302
+    :pswitch_16e
+    invoke-virtual {p3, p2, v1}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getFloat(Ljava/lang/String;F)F
+
+    .line 50856305
+    move-result p1
+
+    .line 50856306
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setTypewriterHeightTransitionDuration(F)V
+
+    .line 50856309
+    return-void
+
+    .line 50856310
+    :pswitch_176
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getArray(Ljava/lang/String;)Lcom/lynx/react/bridge/ReadableArray;
+
+    .line 50856313
+    move-result-object p1
+
+    .line 50856314
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setTextMarkAttachments(Lcom/lynx/react/bridge/ReadableArray;)V
+
+    .line 50856317
+    return-void
+
+    .line 50856318
+    :pswitch_17e
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856321
+    move-result p1
+
+    .line 50856322
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setImageSyncLoad(Z)V
+
+    .line 50856325
+    return-void
+
+    .line 50856326
+    :pswitch_186
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getInt(Ljava/lang/String;I)I
+
+    .line 50856329
+    move-result p1
+
+    .line 50856330
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setSelectionBackgroundColor(I)V
+
+    .line 50856333
+    return-void
+
+    .line 50856334
+    :pswitch_18e
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getMap(Ljava/lang/String;)Lcom/lynx/react/bridge/ReadableMap;
+
+    .line 50856337
+    move-result-object p1
+
+    .line 50856338
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setStyleSheet(Lcom/lynx/react/bridge/ReadableMap;)V
+
+    .line 50856341
+    return-void
+
+    .line 50856342
+    :pswitch_196
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50856345
+    move-result-object p1
+
+    .line 50856346
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setContent(Ljava/lang/String;)V
+
+    .line 50856349
+    return-void
+
+    .line 50856350
+    :pswitch_19e
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getArray(Ljava/lang/String;)Lcom/lynx/react/bridge/ReadableArray;
+
+    .line 50856353
+    move-result-object p1
+
+    .line 50856354
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setExposureTags(Lcom/lynx/react/bridge/ReadableArray;)V
+
+    .line 50856357
+    return-void
+
+    .line 50856358
+    :pswitch_1a6
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50856361
+    move-result-object p1
+
+    .line 50856362
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setContentID(Ljava/lang/String;)V
+
+    .line 50856365
+    return-void
+
+    .line 50856366
+    :pswitch_1ae
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856369
+    move-result p1
+
+    .line 50856370
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setEnableTextSelection(Z)V
+
+    .line 50856373
+    return-void
+
+    .line 50856374
+    :pswitch_1b6
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856377
+    move-result p1
+
+    .line 50856378
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setContentComplete(Z)V
+
+    .line 50856381
+    return-void
+
+    .line 50856382
+    :pswitch_1be
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856385
+    move-result p1
+
+    .line 50856386
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setImageDownSampling(Z)V
+
+    .line 50856389
+    return-void
+
+    .line 50856390
+    :pswitch_1c6
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getMap(Ljava/lang/String;)Lcom/lynx/react/bridge/ReadableMap;
+
+    .line 50856393
+    move-result-object p1
+
+    .line 50856394
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setMarkdownEffect(Lcom/lynx/react/bridge/ReadableMap;)V
+
+    .line 50856397
+    return-void
+
+    .line 50856398
+    :pswitch_1ce
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856401
+    move-result p1
+
+    .line 50856402
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setAllowBreakAroundPunctuation(Z)V
+
+    .line 50856405
+    return-void
+
+    .line 50856406
+    :pswitch_1d6
+    invoke-virtual {p3, p2, v1}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getFloat(Ljava/lang/String;F)F
+
+    .line 50856409
+    move-result p1
+
+    .line 50856410
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setAnimationVelocity(F)V
+
+    .line 50856413
+    return-void
+
+    .line 50856414
+    :pswitch_1de
+    invoke-virtual {p3, p2, v1}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getFloat(Ljava/lang/String;F)F
+
+    .line 50856417
+    move-result p1
+
+    .line 50856418
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setAnimationFrameRate(F)V
+
+    .line 50856421
+    return-void
+
+    .line 50856422
+    :pswitch_1e6
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856425
+    move-result p1
+
+    .line 50856426
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setTypewriterAutoHeight(Z)V
+
+    .line 50856429
+    return-void
+
+    .line 50856430
+    :pswitch_1ee
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getInt(Ljava/lang/String;I)I
+
+    .line 50856433
+    move-result p1
+
+    .line 50856434
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setSelectionHandleSize(I)V
+
+    .line 50856437
+    return-void
+
+    .line 50856438
+    :pswitch_1f6
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getInt(Ljava/lang/String;I)I
+
+    .line 50856441
+    move-result p1
+
+    .line 50856442
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setSelectionHandleColor(I)V
+
+    .line 50856445
+    return-void
+
+    .line 50856446
+    :pswitch_1fe
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getArray(Ljava/lang/String;)Lcom/lynx/react/bridge/ReadableArray;
+
+    .line 50856449
+    move-result-object p1
+
+    .line 50856450
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setMarkdownContentRange(Lcom/lynx/react/bridge/ReadableArray;)V
+
+    .line 50856453
+    return-void
+
+    .line 50856454
+    :pswitch_206
+    invoke-virtual {p3, p2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50856457
+    move-result-object p1
+
+    .line 50856458
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setAnimationType(Ljava/lang/String;)V
+
+    .line 50856461
+    return-void
+
+    .line 50856462
+    :pswitch_20e
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getInt(Ljava/lang/String;I)I
+
+    .line 50856465
+    move-result p1
+
+    .line 50856466
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setInitialAnimationStep(I)V
+
+    .line 50856469
+    return-void
+
+    .line 50856470
+    :pswitch_216
+    invoke-virtual {p3, p2, v1}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getFloat(Ljava/lang/String;F)F
+
+    .line 50856473
+    move-result p1
+
+    .line 50856474
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setMarkdownMaxHeight(F)V
+
+    .line 50856477
+    return-void
+
+    .line 50856478
+    :pswitch_21e
+    invoke-virtual {p3, p2, v2}, Lcom/lynx/tasm/behavior/StylesDiffMap;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 50856481
+    move-result p1
+
+    .line 50856482
+    invoke-virtual {v0, p1}, Lcom/lynx/xelement/markdown/LynxUIMarkdownShadowNode;->setTypewriterHeightTransitionPrefetch(Z)V
+
+    .line 50856485
+    return-void
+
+    .line 50856486
+    :sswitch_data_226
+    .sparse-switch
+        -0x776f3497 -> :sswitch_14c
+        -0x76cf6eb2 -> :sswitch_141
+        -0x6a8bfae2 -> :sswitch_136
+        -0x5901d81d -> :sswitch_12b
+        -0x546f7d17 -> :sswitch_120
+        -0x4503f5e1 -> :sswitch_115
+        -0x4443423b -> :sswitch_10a
+        -0x428e0beb -> :sswitch_ff
+        -0x3e2ea8d7 -> :sswitch_f1
+        -0x2e40a6fa -> :sswitch_e3
+        -0x293e1114 -> :sswitch_d5
+        -0x189373d1 -> :sswitch_c7
+        -0x14e70645 -> :sswitch_b9
+        -0xcd987f3 -> :sswitch_ab
+        0xfb8c4ec -> :sswitch_9d
+        0xfc402ef -> :sswitch_8f
+        0x1714e51f -> :sswitch_81
+        0x38b73479 -> :sswitch_73
+        0x42117f53 -> :sswitch_65
+        0x43cfdc25 -> :sswitch_57
+        0x48660ae6 -> :sswitch_49
+        0x4af13950 -> :sswitch_3b
+        0x5ea49706 -> :sswitch_2d
+        0x6118aeb8 -> :sswitch_1f
+        0x723b7894 -> :sswitch_11
+    .end sparse-switch
+
+    .line 50856588
+    :pswitch_data_28c
+    .packed-switch 0x0
+        :pswitch_21e
+        :pswitch_216
+        :pswitch_20e
+        :pswitch_206
+        :pswitch_1fe
+        :pswitch_1f6
+        :pswitch_1ee
+        :pswitch_1e6
+        :pswitch_1de
+        :pswitch_1d6
+        :pswitch_1ce
+        :pswitch_1c6
+        :pswitch_1be
+        :pswitch_1b6
+        :pswitch_1ae
+        :pswitch_1a6
+        :pswitch_19e
+        :pswitch_196
+        :pswitch_18e
+        :pswitch_186
+        :pswitch_17e
+        :pswitch_176
+        :pswitch_16e
+        :pswitch_166
+        :pswitch_15e
+    .end packed-switch
+.end method

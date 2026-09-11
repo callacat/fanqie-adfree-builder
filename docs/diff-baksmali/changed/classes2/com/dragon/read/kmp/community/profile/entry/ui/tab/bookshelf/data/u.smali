@@ -1,0 +1,175 @@
+## classes2/com/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u.smali
+# added=0 removed=0 changed=1
+
+.method public constructor <init>(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+[MOD-CHANGED]
+.method public constructor <init>(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 8
+
+    .prologue
+    .line 84148224
+    and-int/lit8 v0, p2, 0x1
+
+    .line 84148226
+    const-string v1, ""
+
+    .line 84148228
+    if-eqz v0, :cond_7
+
+    .line 84148230
+    move-object p3, v1
+
+    .line 84148231
+    :cond_7
+    and-int/lit8 v0, p2, 0x2
+
+    .line 84148233
+    if-eqz v0, :cond_c
+
+    .line 84148235
+    move-object p4, v1
+
+    .line 84148236
+    :cond_c
+    and-int/lit8 v0, p2, 0x4
+
+    .line 84148238
+    if-eqz v0, :cond_11
+
+    .line 84148240
+    const/4 p1, 0x0
+
+    .line 84148241
+    :cond_11
+    and-int/lit8 p2, p2, 0x8
+
+    .line 84148243
+    if-eqz p2, :cond_16
+
+    .line 84148245
+    move-object p5, v1
+
+    .line 84148246
+    :cond_16
+    invoke-static {p3, p4, p5}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 84148249
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 84148252
+    iput-object p3, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->a:Ljava/lang/String;
+
+    .line 84148254
+    iput-object p4, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->b:Ljava/lang/String;
+
+    .line 84148256
+    iput p1, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->c:I
+
+    .line 84148258
+    iput-object p5, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->d:Ljava/lang/String;
+
+    .line 84148260
+    const/4 p1, 0x0
+
+    .line 84148261
+    iput-object p1, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->e:Ljava/lang/Integer;
+
+    .line 84148263
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 8
+
+    .prologue
+    .line 84148224
+    and-int/lit8 v0, p2, 0x1
+
+    .line 84148225
+    .line 84148226
+    const-string v1, ""
+
+    .line 84148227
+    .line 84148228
+    if-eqz v0, :cond_7
+
+    .line 84148229
+    .line 84148230
+    move-object p3, v1
+
+    .line 84148231
+    :cond_7
+    and-int/lit8 v0, p2, 0x2
+
+    .line 84148232
+    .line 84148233
+    if-eqz v0, :cond_c
+
+    .line 84148234
+    .line 84148235
+    move-object p4, v1
+
+    .line 84148236
+    :cond_c
+    and-int/lit8 v0, p2, 0x4
+
+    .line 84148237
+    .line 84148238
+    if-eqz v0, :cond_11
+
+    .line 84148239
+    .line 84148240
+    const/4 p1, 0x0
+
+    .line 84148241
+    :cond_11
+    and-int/lit8 p2, p2, 0x8
+
+    .line 84148242
+    .line 84148243
+    if-eqz p2, :cond_16
+
+    .line 84148244
+    .line 84148245
+    move-object p5, v1
+
+    .line 84148246
+    :cond_16
+    invoke-static {p3, p4, p5}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 84148247
+    .line 84148248
+    .line 84148249
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 84148250
+    .line 84148251
+    .line 84148252
+    iput-object p3, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->a:Ljava/lang/String;
+
+    .line 84148253
+    .line 84148254
+    iput-object p4, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->b:Ljava/lang/String;
+
+    .line 84148255
+    .line 84148256
+    iput p1, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->c:I
+
+    .line 84148257
+    .line 84148258
+    iput-object p5, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->d:Ljava/lang/String;
+
+    .line 84148259
+    .line 84148260
+    const/4 p1, 0x0
+
+    .line 84148261
+    iput-object p1, p0, Lcom/dragon/read/kmp/community/profile/entry/ui/tab/bookshelf/data/u;->e:Ljava/lang/Integer;
+
+    .line 84148262
+    .line 84148263
+    return-void
+.end method
+
+

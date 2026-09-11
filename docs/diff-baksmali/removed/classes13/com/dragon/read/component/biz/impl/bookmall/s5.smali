@@ -1,0 +1,53 @@
+.class public final synthetic Lcom/dragon/read/component/biz/impl/bookmall/s5;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke()Ljava/lang/Object;
+    .registers 5
+
+    .prologue
+    .line 131072
+    new-instance v0, Lorg/jetbrains/compose/resources/StringResource;
+
+    .line 131073
+    .line 131074
+    invoke-static {}, Lkotlin/collections/SetsKt;->emptySet()Ljava/util/Set;
+
+    .line 131075
+    .line 131076
+    .line 131077
+    move-result-object v1
+
+    .line 131078
+    const v2, 0x7f062298
+
+    .line 131079
+    .line 131080
+    .line 131081
+    const-string/jumbo v3, "video_feed_tab_left_game_area_title"
+
+    .line 131082
+    .line 131083
+    .line 131084
+    invoke-direct {v0, v2, v3, v1}, Lorg/jetbrains/compose/resources/StringResource;-><init>(ILjava/lang/String;Ljava/util/Set;)V
+
+    .line 131085
+    .line 131086
+    .line 131087
+    return-object v0
+.end method

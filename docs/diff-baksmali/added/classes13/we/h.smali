@@ -1,0 +1,100 @@
+.class public final Lwe/h;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnTouchListener;
+
+
+# instance fields
+.field public final synthetic a:Lwe/j;
+
+
+# direct methods
+.method public constructor <init>(Lwe/j;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lwe/h;->a:Lwe/j;
+
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    .registers 4
+
+    .prologue
+    .line 33816576
+    iget-object p1, p0, Lwe/h;->a:Lwe/j;
+
+    .line 33816578
+    iget-object p1, p1, Lwe/j;->c:Lcom/android/ttcjpaysdk/thirdparty/view/CJPayPasteAwareEditText;
+
+    .line 33816580
+    invoke-virtual {p1}, Landroid/widget/EditText;->isFocusable()Z
+
+    .line 33816583
+    move-result p1
+
+    .line 33816584
+    if-eqz p1, :cond_2a
+
+    .line 33816586
+    iget-object p1, p0, Lwe/h;->a:Lwe/j;
+
+    .line 33816588
+    iget-object p1, p1, Lwe/j;->c:Lcom/android/ttcjpaysdk/thirdparty/view/CJPayPasteAwareEditText;
+
+    .line 33816590
+    invoke-virtual {p1}, Landroid/widget/EditText;->isFocusableInTouchMode()Z
+
+    .line 33816593
+    move-result p1
+
+    .line 33816594
+    if-eqz p1, :cond_2a
+
+    .line 33816596
+    iget-object p1, p0, Lwe/h;->a:Lwe/j;
+
+    .line 33816598
+    iget-object p2, p1, Lwe/j;->l:Lt9/f;
+
+    .line 33816600
+    invoke-virtual {p1}, La8/c;->getContext()Landroid/content/Context;
+
+    .line 33816603
+    move-result-object p1
+
+    .line 33816604
+    iget-object v0, p0, Lwe/h;->a:Lwe/j;
+
+    .line 33816606
+    iget-object v0, v0, Lwe/j;->c:Lcom/android/ttcjpaysdk/thirdparty/view/CJPayPasteAwareEditText;
+
+    .line 33816608
+    invoke-virtual {p2, v0, p1}, Lt9/f;->e(Lcom/android/ttcjpaysdk/thirdparty/view/CJPayPasteAwareEditText;Landroid/content/Context;)V
+
+    .line 33816611
+    iget-object p1, p0, Lwe/h;->a:Lwe/j;
+
+    .line 33816613
+    iget-object p1, p1, Lwe/j;->c:Lcom/android/ttcjpaysdk/thirdparty/view/CJPayPasteAwareEditText;
+
+    .line 33816615
+    invoke-virtual {p1}, Landroid/widget/EditText;->requestFocus()Z
+
+    .line 33816618
+    :cond_2a
+    const/4 p1, 0x0
+
+    .line 33816619
+    return p1
+.end method

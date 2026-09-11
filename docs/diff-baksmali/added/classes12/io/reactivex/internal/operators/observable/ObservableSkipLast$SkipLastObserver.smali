@@ -1,0 +1,218 @@
+.class final Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;
+.super Ljava/util/ArrayDeque;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/Observer;
+.implements Lio/reactivex/disposables/Disposable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/reactivex/internal/operators/observable/ObservableSkipLast;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "SkipLastObserver"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/util/ArrayDeque<",
+        "TT;>;",
+        "Lio/reactivex/Observer<",
+        "TT;>;",
+        "Lio/reactivex/disposables/Disposable;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final serialVersionUID:J = -0x34d6eda843bdac95L
+
+
+# instance fields
+.field final downstream:Lio/reactivex/Observer;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lio/reactivex/Observer<",
+            "-TT;>;"
+        }
+    .end annotation
+.end field
+
+.field final skip:I
+
+.field upstream:Lio/reactivex/disposables/Disposable;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa4f9c
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lio/reactivex/Observer;I)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lio/reactivex/Observer<",
+            "-TT;>;I)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 33619968
+    invoke-direct {p0, p2}, Ljava/util/ArrayDeque;-><init>(I)V
+
+    .line 33619971
+    iput-object p1, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->downstream:Lio/reactivex/Observer;
+
+    .line 33619973
+    iput p2, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->skip:I
+
+    .line 33619975
+    return-void
+.end method
+
+
+# virtual methods
+.method public final dispose()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    iget-object v0, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->upstream:Lio/reactivex/disposables/Disposable;
+
+    .line 65538
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->dispose()V
+
+    .line 65541
+    return-void
+.end method
+
+.method public final isDisposed()Z
+    .registers 2
+
+    .prologue
+    .line 65536
+    iget-object v0, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->upstream:Lio/reactivex/disposables/Disposable;
+
+    .line 65538
+    invoke-interface {v0}, Lio/reactivex/disposables/Disposable;->isDisposed()Z
+
+    .line 65541
+    move-result v0
+
+    .line 65542
+    return v0
+.end method
+
+.method public final onComplete()V
+    .registers 2
+
+    .prologue
+    .line 65536
+    iget-object v0, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->downstream:Lio/reactivex/Observer;
+
+    .line 65538
+    invoke-interface {v0}, Lio/reactivex/Observer;->onComplete()V
+
+    .line 65541
+    return-void
+.end method
+
+.method public final onError(Ljava/lang/Throwable;)V
+    .registers 3
+
+    .prologue
+    .line 16842752
+    iget-object v0, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->downstream:Lio/reactivex/Observer;
+
+    .line 16842754
+    invoke-interface {v0, p1}, Lio/reactivex/Observer;->onError(Ljava/lang/Throwable;)V
+
+    .line 16842757
+    return-void
+.end method
+
+.method public final onNext(Ljava/lang/Object;)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 16973824
+    iget v0, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->skip:I
+
+    .line 16973826
+    invoke-virtual {p0}, Ljava/util/ArrayDeque;->size()I
+
+    .line 16973829
+    move-result v1
+
+    .line 16973830
+    if-ne v0, v1, :cond_11
+
+    .line 16973832
+    iget-object v0, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->downstream:Lio/reactivex/Observer;
+
+    .line 16973834
+    invoke-virtual {p0}, Ljava/util/ArrayDeque;->poll()Ljava/lang/Object;
+
+    .line 16973837
+    move-result-object v1
+
+    .line 16973838
+    invoke-interface {v0, v1}, Lio/reactivex/Observer;->onNext(Ljava/lang/Object;)V
+
+    .line 16973841
+    :cond_11
+    invoke-virtual {p0, p1}, Ljava/util/ArrayDeque;->offer(Ljava/lang/Object;)Z
+
+    .line 16973844
+    return-void
+.end method
+
+.method public final onSubscribe(Lio/reactivex/disposables/Disposable;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    iget-object v0, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->upstream:Lio/reactivex/disposables/Disposable;
+
+    .line 16908290
+    invoke-static {v0, p1}, Lio/reactivex/internal/disposables/DisposableHelper;->validate(Lio/reactivex/disposables/Disposable;Lio/reactivex/disposables/Disposable;)Z
+
+    .line 16908293
+    move-result v0
+
+    .line 16908294
+    if-eqz v0, :cond_f
+
+    .line 16908296
+    iput-object p1, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->upstream:Lio/reactivex/disposables/Disposable;
+
+    .line 16908298
+    iget-object p1, p0, Lio/reactivex/internal/operators/observable/ObservableSkipLast$SkipLastObserver;->downstream:Lio/reactivex/Observer;
+
+    .line 16908300
+    invoke-interface {p1, p0}, Lio/reactivex/Observer;->onSubscribe(Lio/reactivex/disposables/Disposable;)V
+
+    .line 16908303
+    :cond_f
+    return-void
+.end method

@@ -1,0 +1,186 @@
+.class public final Las0/j;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic a:Las0/k;
+
+.field public final synthetic b:Lcom/bytedance/geckox/model/UpdatePackage;
+
+.field public final synthetic c:J
+
+.field public final synthetic d:J
+
+
+# direct methods
+.method public constructor <init>(Las0/k;Lcom/bytedance/geckox/model/UpdatePackage;JJ)V
+    .registers 7
+
+    iput-object p1, p0, Las0/j;->a:Las0/k;
+
+    iput-object p2, p0, Las0/j;->b:Lcom/bytedance/geckox/model/UpdatePackage;
+
+    iput-wide p3, p0, Las0/j;->c:J
+
+    iput-wide p5, p0, Las0/j;->d:J
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 10
+
+    .prologue
+    .line 327680
+    iget-object v0, p0, Las0/j;->a:Las0/k;
+
+    .line 327681
+    .line 327682
+    iget-object v0, v0, Las0/k;->m:Lkotlin/jvm/functions/Function1;
+
+    .line 327683
+    .line 327684
+    if-eqz v0, :cond_1f
+
+    .line 327685
+    .line 327686
+    new-instance v8, Las0/l;
+
+    .line 327687
+    .line 327688
+    iget-object v1, p0, Las0/j;->b:Lcom/bytedance/geckox/model/UpdatePackage;
+
+    .line 327689
+    .line 327690
+    invoke-virtual {v1}, Lcom/bytedance/geckox/model/UpdatePackage;->getAccessKey()Ljava/lang/String;
+
+    .line 327691
+    .line 327692
+    .line 327693
+    move-result-object v2
+
+    .line 327694
+    iget-object v1, p0, Las0/j;->b:Lcom/bytedance/geckox/model/UpdatePackage;
+
+    .line 327695
+    .line 327696
+    invoke-virtual {v1}, Lcom/bytedance/geckox/model/UpdatePackage;->getChannel()Ljava/lang/String;
+
+    .line 327697
+    .line 327698
+    .line 327699
+    move-result-object v3
+
+    .line 327700
+    iget-wide v4, p0, Las0/j;->c:J
+
+    .line 327701
+    .line 327702
+    iget-wide v6, p0, Las0/j;->d:J
+
+    .line 327703
+    .line 327704
+    move-object v1, v8
+
+    .line 327705
+    invoke-direct/range {v1 .. v7}, Las0/l;-><init>(Ljava/lang/String;Ljava/lang/String;JJ)V
+
+    .line 327706
+    .line 327707
+    .line 327708
+    invoke-interface {v0, v8}, Lkotlin/jvm/functions/Function1;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 327709
+    .line 327710
+    .line 327711
+    :cond_1f
+    iget-object v0, p0, Las0/j;->a:Las0/k;
+
+    .line 327712
+    .line 327713
+    iget-object v1, v0, Las0/k;->c:Lcom/bytedance/geckox/listener/GeckoUpdateListener;
+
+    .line 327714
+    .line 327715
+    if-eqz v1, :cond_45
+
+    .line 327716
+    .line 327717
+    :try_start_25
+    iget-object v2, p0, Las0/j;->b:Lcom/bytedance/geckox/model/UpdatePackage;
+
+    .line 327718
+    .line 327719
+    iget-wide v3, p0, Las0/j;->c:J
+
+    .line 327720
+    .line 327721
+    iget-wide v5, p0, Las0/j;->d:J
+
+    .line 327722
+    .line 327723
+    invoke-virtual/range {v1 .. v6}, Lcom/bytedance/geckox/listener/GeckoUpdateListener;->onDownloadProgress(Lcom/bytedance/geckox/model/UpdatePackage;JJ)V
+    :try_end_2e
+    .catchall {:try_start_25 .. :try_end_2e} :catchall_2f
+
+    .line 327724
+    .line 327725
+    .line 327726
+    goto :goto_45
+
+    .line 327727
+    :catchall_2f
+    move-exception v0
+
+    .line 327728
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 327729
+    .line 327730
+    const-string v2, "onDownloadProgress exception: "
+
+    .line 327731
+    .line 327732
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327733
+    .line 327734
+    .line 327735
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 327736
+    .line 327737
+    .line 327738
+    move-result-object v0
+
+    .line 327739
+    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327740
+    .line 327741
+    .line 327742
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327743
+    .line 327744
+    .line 327745
+    move-result-object v0
+
+    .line 327746
+    invoke-static {v0}, Lcom/bytedance/geckox/logger/GeckoLogger;->w(Ljava/lang/String;)V
+
+    .line 327747
+    .line 327748
+    .line 327749
+    :cond_45
+    :goto_45
+    return-void
+.end method

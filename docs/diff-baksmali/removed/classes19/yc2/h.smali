@@ -1,0 +1,1339 @@
+.class public Lyc2/h;
+.super Landroidx/constraintlayout/widget/ConstraintLayout;
+.source "SourceFile"
+
+# interfaces
+.implements Ljb2/b;
+
+
+# static fields
+.field public static final synthetic q:I
+
+
+# instance fields
+.field public final g:Z
+
+.field public final h:Ljava/lang/String;
+
+.field public i:Lyc2/e;
+
+.field public final j:Landroid/view/View;
+
+.field public final k:Landroid/widget/TextView;
+
+.field public final l:Landroid/widget/TextView;
+
+.field public final m:Landroid/widget/TextView;
+
+.field public final n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+.field public o:Z
+
+.field public p:J
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x8beb0
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;Z)V
+    .registers 6
+
+    .prologue
+    .line 50659328
+    const/4 v0, 0x0
+
+    .line 50659329
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 50659330
+    .line 50659331
+    .line 50659332
+    invoke-direct {p0, p1, p2}, Landroidx/constraintlayout/widget/ConstraintLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+
+    .line 50659333
+    .line 50659334
+    .line 50659335
+    iput-boolean p3, p0, Lyc2/h;->g:Z
+
+    .line 50659336
+    .line 50659337
+    const-string p2, "ContentDetailDividerHeaderView"
+
+    .line 50659338
+    .line 50659339
+    iput-object p2, p0, Lyc2/h;->h:Ljava/lang/String;
+
+    .line 50659340
+    .line 50659341
+    new-instance p2, Lyc2/e;
+
+    .line 50659342
+    .line 50659343
+    invoke-direct {p2}, Lyc2/e;-><init>()V
+
+    .line 50659344
+    .line 50659345
+    .line 50659346
+    iput-object p2, p0, Lyc2/h;->i:Lyc2/e;
+
+    .line 50659347
+    .line 50659348
+    invoke-virtual {p0}, Lyc2/h;->getLayoutId()I
+
+    .line 50659349
+    .line 50659350
+    .line 50659351
+    move-result p2
+
+    .line 50659352
+    invoke-static {p1, p2, p0}, Landroid/view/ViewGroup;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
+
+    .line 50659353
+    .line 50659354
+    .line 50659355
+    const p2, 0x7f110115
+
+    .line 50659356
+    .line 50659357
+    .line 50659358
+    invoke-virtual {p0, p2}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
+
+    .line 50659359
+    .line 50659360
+    .line 50659361
+    move-result-object p2
+
+    .line 50659362
+    const-string v0, ""
+
+    .line 50659363
+    .line 50659364
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659365
+    .line 50659366
+    .line 50659367
+    iput-object p2, p0, Lyc2/h;->j:Landroid/view/View;
+
+    .line 50659368
+    .line 50659369
+    const p2, 0x7f11040a
+
+    .line 50659370
+    .line 50659371
+    .line 50659372
+    invoke-virtual {p0, p2}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
+
+    .line 50659373
+    .line 50659374
+    .line 50659375
+    move-result-object p2
+
+    .line 50659376
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659377
+    .line 50659378
+    .line 50659379
+    check-cast p2, Landroid/widget/TextView;
+
+    .line 50659380
+    .line 50659381
+    iput-object p2, p0, Lyc2/h;->k:Landroid/widget/TextView;
+
+    .line 50659382
+    .line 50659383
+    const v1, 0x7f111301
+
+    .line 50659384
+    .line 50659385
+    .line 50659386
+    invoke-virtual {p0, v1}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
+
+    .line 50659387
+    .line 50659388
+    .line 50659389
+    move-result-object v1
+
+    .line 50659390
+    invoke-static {v1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659391
+    .line 50659392
+    .line 50659393
+    check-cast v1, Landroid/widget/TextView;
+
+    .line 50659394
+    .line 50659395
+    iput-object v1, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 50659396
+    .line 50659397
+    const v1, 0x7f1115b4
+
+    .line 50659398
+    .line 50659399
+    .line 50659400
+    invoke-virtual {p0, v1}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
+
+    .line 50659401
+    .line 50659402
+    .line 50659403
+    move-result-object v1
+
+    .line 50659404
+    invoke-static {v1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659405
+    .line 50659406
+    .line 50659407
+    check-cast v1, Landroid/widget/TextView;
+
+    .line 50659408
+    .line 50659409
+    iput-object v1, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 50659410
+    .line 50659411
+    const v1, 0x7f112bad
+
+    .line 50659412
+    .line 50659413
+    .line 50659414
+    invoke-virtual {p0, v1}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
+
+    .line 50659415
+    .line 50659416
+    .line 50659417
+    move-result-object v1
+
+    .line 50659418
+    invoke-static {v1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659419
+    .line 50659420
+    .line 50659421
+    check-cast v1, Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 50659422
+    .line 50659423
+    iput-object v1, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 50659424
+    .line 50659425
+    if-eqz p3, :cond_6b
+
+    .line 50659426
+    .line 50659427
+    const p3, 0x7f060294
+
+    .line 50659428
+    .line 50659429
+    .line 50659430
+    invoke-virtual {p1, p3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 50659431
+    .line 50659432
+    .line 50659433
+    move-result-object p1
+
+    .line 50659434
+    goto :goto_72
+
+    .line 50659435
+    :cond_6b
+    const p3, 0x7f060286
+
+    .line 50659436
+    .line 50659437
+    .line 50659438
+    invoke-virtual {p1, p3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 50659439
+    .line 50659440
+    .line 50659441
+    move-result-object p1
+
+    .line 50659442
+    :goto_72
+    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 50659443
+    .line 50659444
+    .line 50659445
+    invoke-virtual {p2, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 50659446
+    .line 50659447
+    .line 50659448
+    invoke-direct {p0}, Lyc2/h;->Y1()V
+
+    .line 50659449
+    .line 50659450
+    .line 50659451
+    return-void
+.end method
+
+.method public static U1(Lyc2/h;Landroid/view/View$OnClickListener;Landroid/view/View;)V
+    .registers 4
+
+    .prologue
+    .line 50528256
+    invoke-direct {p0}, Lyc2/h;->Y1()V
+
+    .line 50528257
+    .line 50528258
+    .line 50528259
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 50528260
+    .line 50528261
+    invoke-virtual {v0}, Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;->resumeAnimation()V
+
+    .line 50528262
+    .line 50528263
+    .line 50528264
+    iget-object p0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 50528265
+    .line 50528266
+    invoke-virtual {p0}, Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;->resumeAnimation()V
+
+    .line 50528267
+    .line 50528268
+    .line 50528269
+    invoke-interface {p1, p2}, Landroid/view/View$OnClickListener;->onClick(Landroid/view/View;)V
+
+    .line 50528270
+    .line 50528271
+    .line 50528272
+    return-void
+.end method
+
+.method private final Y1()V
+    .registers 5
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lyc2/h;->h:Ljava/lang/String;
+
+    .line 196609
+    .line 196610
+    const/4 v1, 0x0
+
+    .line 196611
+    new-array v2, v1, [Ljava/lang/Object;
+
+    .line 196612
+    .line 196613
+    const-string v3, "    showLoadingView()"
+
+    .line 196614
+    .line 196615
+    invoke-static {v0, v3, v2}, Lcom/dragon/community/saas/utils/w0;->b(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196616
+    .line 196617
+    .line 196618
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196619
+    .line 196620
+    invoke-virtual {v0, v1}, Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;->setAutoControl(Z)V
+
+    .line 196621
+    .line 196622
+    .line 196623
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196624
+    .line 196625
+    invoke-static {v0}, Lur2/p;->B(Landroid/view/View;)V
+
+    .line 196626
+    .line 196627
+    .line 196628
+    iget-object v0, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 196629
+    .line 196630
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196631
+    .line 196632
+    .line 196633
+    iget-object v0, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 196634
+    .line 196635
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196636
+    .line 196637
+    .line 196638
+    return-void
+.end method
+
+
+# virtual methods
+.method public V1()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lyc2/h;->h:Ljava/lang/String;
+
+    .line 196609
+    .line 196610
+    const/4 v1, 0x0
+
+    .line 196611
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 196612
+    .line 196613
+    const-string v2, "    showContentLayout()"
+
+    .line 196614
+    .line 196615
+    invoke-static {v0, v2, v1}, Lcom/dragon/community/saas/utils/w0;->b(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196616
+    .line 196617
+    .line 196618
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196619
+    .line 196620
+    invoke-virtual {v0}, Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;->pauseAnimation()V
+
+    .line 196621
+    .line 196622
+    .line 196623
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196624
+    .line 196625
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196626
+    .line 196627
+    .line 196628
+    iget-object v0, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 196629
+    .line 196630
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196631
+    .line 196632
+    .line 196633
+    iget-object v0, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 196634
+    .line 196635
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196636
+    .line 196637
+    .line 196638
+    return-void
+.end method
+
+.method public W1()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lyc2/h;->h:Ljava/lang/String;
+
+    .line 196609
+    .line 196610
+    const/4 v1, 0x0
+
+    .line 196611
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 196612
+    .line 196613
+    const-string v2, "    showDataEmptyView()"
+
+    .line 196614
+    .line 196615
+    invoke-static {v0, v2, v1}, Lcom/dragon/community/saas/utils/w0;->b(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196616
+    .line 196617
+    .line 196618
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196619
+    .line 196620
+    invoke-virtual {v0}, Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;->pauseAnimation()V
+
+    .line 196621
+    .line 196622
+    .line 196623
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196624
+    .line 196625
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196626
+    .line 196627
+    .line 196628
+    iget-object v0, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 196629
+    .line 196630
+    invoke-static {v0}, Lur2/p;->B(Landroid/view/View;)V
+
+    .line 196631
+    .line 196632
+    .line 196633
+    iget-object v0, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 196634
+    .line 196635
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196636
+    .line 196637
+    .line 196638
+    return-void
+.end method
+
+.method public X1()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lyc2/h;->h:Ljava/lang/String;
+
+    .line 196609
+    .line 196610
+    const/4 v1, 0x0
+
+    .line 196611
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 196612
+    .line 196613
+    const-string v2, "    showErrorView()"
+
+    .line 196614
+    .line 196615
+    invoke-static {v0, v2, v1}, Lcom/dragon/community/saas/utils/w0;->b(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196616
+    .line 196617
+    .line 196618
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196619
+    .line 196620
+    invoke-virtual {v0}, Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;->pauseAnimation()V
+
+    .line 196621
+    .line 196622
+    .line 196623
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 196624
+    .line 196625
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196626
+    .line 196627
+    .line 196628
+    iget-object v0, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 196629
+    .line 196630
+    invoke-static {v0}, Lur2/p;->o(Landroid/view/View;)V
+
+    .line 196631
+    .line 196632
+    .line 196633
+    iget-object v0, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 196634
+    .line 196635
+    invoke-static {v0}, Lur2/p;->B(Landroid/view/View;)V
+
+    .line 196636
+    .line 196637
+    .line 196638
+    return-void
+.end method
+
+.method public final Z1(JZZ)V
+    .registers 11
+
+    .prologue
+    .line 50724864
+    iget-boolean v0, p0, Lyc2/h;->o:Z
+
+    .line 50724865
+    .line 50724866
+    const v1, 0x7f060294
+
+    .line 50724867
+    .line 50724868
+    .line 50724869
+    const-wide/16 v2, 0x0
+
+    .line 50724870
+    .line 50724871
+    if-eqz v0, :cond_5f
+
+    .line 50724872
+    .line 50724873
+    iput-wide p1, p0, Lyc2/h;->p:J
+
+    .line 50724874
+    .line 50724875
+    invoke-virtual {p0}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;
+
+    .line 50724876
+    .line 50724877
+    .line 50724878
+    move-result-object v0
+
+    .line 50724879
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 50724880
+    .line 50724881
+    .line 50724882
+    move-result-object v0
+
+    .line 50724883
+    const-string v1, ""
+
+    .line 50724884
+    .line 50724885
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50724886
+    .line 50724887
+    .line 50724888
+    new-instance v1, Landroid/text/SpannableStringBuilder;
+
+    .line 50724889
+    .line 50724890
+    invoke-direct {v1}, Landroid/text/SpannableStringBuilder;-><init>()V
+
+    .line 50724891
+    .line 50724892
+    .line 50724893
+    invoke-virtual {v1, v0}, Landroid/text/SpannableStringBuilder;->append(Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;
+
+    .line 50724894
+    .line 50724895
+    .line 50724896
+    cmp-long v0, p1, v2
+
+    .line 50724897
+    .line 50724898
+    if-lez v0, :cond_4a
+
+    .line 50724899
+    .line 50724900
+    if-eqz p4, :cond_4a
+
+    .line 50724901
+    .line 50724902
+    invoke-virtual {v1}, Landroid/text/SpannableStringBuilder;->length()I
+
+    .line 50724903
+    .line 50724904
+    .line 50724905
+    move-result p4
+
+    .line 50724906
+    invoke-static {p1, p2}, Lnc2/g;->c(J)Ljava/lang/String;
+
+    .line 50724907
+    .line 50724908
+    .line 50724909
+    move-result-object p1
+
+    .line 50724910
+    invoke-virtual {v1, p1}, Landroid/text/SpannableStringBuilder;->append(Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;
+
+    .line 50724911
+    .line 50724912
+    .line 50724913
+    invoke-virtual {v1}, Landroid/text/SpannableStringBuilder;->length()I
+
+    .line 50724914
+    .line 50724915
+    .line 50724916
+    move-result p1
+
+    .line 50724917
+    new-instance p2, Landroid/text/style/RelativeSizeSpan;
+
+    .line 50724918
+    .line 50724919
+    const v0, 0x3f333333    # 0.7f
+
+    .line 50724920
+    .line 50724921
+    .line 50724922
+    invoke-direct {p2, v0}, Landroid/text/style/RelativeSizeSpan;-><init>(F)V
+
+    .line 50724923
+    .line 50724924
+    .line 50724925
+    const/16 v0, 0x11
+
+    .line 50724926
+    .line 50724927
+    invoke-virtual {v1, p2, p4, p1, v0}, Landroid/text/SpannableStringBuilder;->setSpan(Ljava/lang/Object;III)V
+
+    .line 50724928
+    .line 50724929
+    .line 50724930
+    new-instance p2, Lef2/c;
+
+    .line 50724931
+    .line 50724932
+    invoke-direct {p2}, Lef2/c;-><init>()V
+
+    .line 50724933
+    .line 50724934
+    .line 50724935
+    invoke-virtual {v1, p2, p4, p1, v0}, Landroid/text/SpannableStringBuilder;->setSpan(Ljava/lang/Object;III)V
+
+    .line 50724936
+    .line 50724937
+    .line 50724938
+    :cond_4a
+    iget-object p1, p0, Lyc2/h;->k:Landroid/widget/TextView;
+
+    .line 50724939
+    .line 50724940
+    invoke-virtual {p1, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 50724941
+    .line 50724942
+    .line 50724943
+    if-eqz p3, :cond_5e
+
+    .line 50724944
+    .line 50724945
+    iget-wide p1, p0, Lyc2/h;->p:J
+
+    .line 50724946
+    .line 50724947
+    cmp-long p3, p1, v2
+
+    .line 50724948
+    .line 50724949
+    if-gtz p3, :cond_5b
+
+    .line 50724950
+    .line 50724951
+    invoke-virtual {p0}, Lyc2/h;->W1()V
+
+    .line 50724952
+    .line 50724953
+    .line 50724954
+    goto :goto_5e
+
+    .line 50724955
+    :cond_5b
+    invoke-virtual {p0}, Lyc2/h;->V1()V
+
+    .line 50724956
+    .line 50724957
+    .line 50724958
+    :cond_5e
+    :goto_5e
+    return-void
+
+    .line 50724959
+    :cond_5f
+    iput-wide p1, p0, Lyc2/h;->p:J
+
+    .line 50724960
+    .line 50724961
+    iget-boolean v0, p0, Lyc2/h;->g:Z
+
+    .line 50724962
+    .line 50724963
+    const/4 v4, 0x0
+
+    .line 50724964
+    const/4 v5, 0x1
+
+    .line 50724965
+    if-eqz v0, :cond_8a
+
+    .line 50724966
+    .line 50724967
+    cmp-long v0, p1, v2
+
+    .line 50724968
+    .line 50724969
+    if-lez v0, :cond_81
+
+    .line 50724970
+    .line 50724971
+    if-eqz p4, :cond_81
+
+    .line 50724972
+    .line 50724973
+    invoke-virtual {p0}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;
+
+    .line 50724974
+    .line 50724975
+    .line 50724976
+    move-result-object p4
+
+    .line 50724977
+    new-array v0, v5, [Ljava/lang/Object;
+
+    .line 50724978
+    .line 50724979
+    invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 50724980
+    .line 50724981
+    .line 50724982
+    move-result-object p1
+
+    .line 50724983
+    aput-object p1, v0, v4
+
+    .line 50724984
+    .line 50724985
+    const p1, 0x7f060295
+
+    .line 50724986
+    .line 50724987
+    .line 50724988
+    invoke-virtual {p4, p1, v0}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 50724989
+    .line 50724990
+    .line 50724991
+    move-result-object p1
+
+    .line 50724992
+    goto :goto_af
+
+    .line 50724993
+    :cond_81
+    invoke-virtual {p0}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;
+
+    .line 50724994
+    .line 50724995
+    .line 50724996
+    move-result-object p1
+
+    .line 50724997
+    invoke-virtual {p1, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 50724998
+    .line 50724999
+    .line 50725000
+    move-result-object p1
+
+    .line 50725001
+    goto :goto_af
+
+    .line 50725002
+    :cond_8a
+    cmp-long v0, p1, v2
+
+    .line 50725003
+    .line 50725004
+    if-lez v0, :cond_a4
+
+    .line 50725005
+    .line 50725006
+    if-eqz p4, :cond_a4
+
+    .line 50725007
+    .line 50725008
+    invoke-virtual {p0}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;
+
+    .line 50725009
+    .line 50725010
+    .line 50725011
+    move-result-object p4
+
+    .line 50725012
+    new-array v0, v5, [Ljava/lang/Object;
+
+    .line 50725013
+    .line 50725014
+    invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 50725015
+    .line 50725016
+    .line 50725017
+    move-result-object p1
+
+    .line 50725018
+    aput-object p1, v0, v4
+
+    .line 50725019
+    .line 50725020
+    const p1, 0x7f060289
+
+    .line 50725021
+    .line 50725022
+    .line 50725023
+    invoke-virtual {p4, p1, v0}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 50725024
+    .line 50725025
+    .line 50725026
+    move-result-object p1
+
+    .line 50725027
+    goto :goto_af
+
+    .line 50725028
+    :cond_a4
+    invoke-virtual {p0}, Landroid/view/ViewGroup;->getContext()Landroid/content/Context;
+
+    .line 50725029
+    .line 50725030
+    .line 50725031
+    move-result-object p1
+
+    .line 50725032
+    const p2, 0x7f060286
+
+    .line 50725033
+    .line 50725034
+    .line 50725035
+    invoke-virtual {p1, p2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 50725036
+    .line 50725037
+    .line 50725038
+    move-result-object p1
+
+    .line 50725039
+    :goto_af
+    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 50725040
+    .line 50725041
+    .line 50725042
+    iget-object p2, p0, Lyc2/h;->k:Landroid/widget/TextView;
+
+    .line 50725043
+    .line 50725044
+    invoke-virtual {p2, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 50725045
+    .line 50725046
+    .line 50725047
+    if-eqz p3, :cond_c6
+
+    .line 50725048
+    .line 50725049
+    iget-wide p1, p0, Lyc2/h;->p:J
+
+    .line 50725050
+    .line 50725051
+    cmp-long p3, p1, v2
+
+    .line 50725052
+    .line 50725053
+    if-gtz p3, :cond_c3
+
+    .line 50725054
+    .line 50725055
+    invoke-virtual {p0}, Lyc2/h;->W1()V
+
+    .line 50725056
+    .line 50725057
+    .line 50725058
+    goto :goto_c6
+
+    .line 50725059
+    :cond_c3
+    invoke-virtual {p0}, Lyc2/h;->V1()V
+
+    .line 50725060
+    .line 50725061
+    .line 50725062
+    :cond_c6
+    :goto_c6
+    return-void
+.end method
+
+.method public final getAllReplyCount()J
+    .registers 3
+
+    .prologue
+    .line 0
+    iget-wide v0, p0, Lyc2/h;->p:J
+
+    .line 1
+    .line 2
+    return-wide v0
+.end method
+
+.method public final getAllReplyTv()Landroid/widget/TextView;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lyc2/h;->k:Landroid/widget/TextView;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+.method public final getDividerView()Landroid/view/View;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lyc2/h;->j:Landroid/view/View;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+.method public final getEmptyView()Landroid/widget/TextView;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+.method public final getEnableUIOpt()Z
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-boolean v0, p0, Lyc2/h;->o:Z
+
+    .line 1
+    .line 2
+    return v0
+.end method
+
+.method public final getErrorView()Landroid/widget/TextView;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+.method public getLayoutId()I
+    .registers 2
+
+    const v0, 0x7f050501
+
+    return v0
+.end method
+
+.method public final getLoadingView()Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lyc2/h;->n:Lcom/dragon/community/saas/ui/view/commonlayout/SaaSLoadingView;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+.method public final getThemeConfig()Lyc2/e;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lyc2/h;->i:Lyc2/e;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+.method public final onAttachedToWindow()V
+    .registers 4
+
+    .prologue
+    .line 131072
+    invoke-super {p0}, Landroid/view/ViewGroup;->onAttachedToWindow()V
+
+    .line 131073
+    .line 131074
+    .line 131075
+    iget-object v0, p0, Lyc2/h;->h:Ljava/lang/String;
+
+    .line 131076
+    .line 131077
+    const/4 v1, 0x0
+
+    .line 131078
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 131079
+    .line 131080
+    const-string v2, "    onAttachedToWindow()"
+
+    .line 131081
+    .line 131082
+    invoke-static {v0, v2, v1}, Lcom/dragon/community/saas/utils/w0;->b(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 131083
+    .line 131084
+    .line 131085
+    return-void
+.end method
+
+.method public onThemeUpdate(I)V
+    .registers 4
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lyc2/h;->i:Lyc2/e;
+
+    .line 17039361
+    .line 17039362
+    iput p1, v0, Lgb2/d;->a:I
+
+    .line 17039363
+    .line 17039364
+    iget-object v1, p0, Lyc2/h;->j:Landroid/view/View;
+
+    .line 17039365
+    .line 17039366
+    invoke-static {p1}, Lcom/dragon/read/lib/community/inner/e;->w(I)I
+
+    .line 17039367
+    .line 17039368
+    .line 17039369
+    move-result p1
+
+    .line 17039370
+    invoke-virtual {v1, p1}, Landroid/view/View;->setBackgroundColor(I)V
+
+    .line 17039371
+    .line 17039372
+    .line 17039373
+    iget-object p1, p0, Lyc2/h;->k:Landroid/widget/TextView;
+
+    .line 17039374
+    .line 17039375
+    iget v1, v0, Lgb2/d;->a:I
+
+    .line 17039376
+    .line 17039377
+    invoke-static {v1}, Lcom/dragon/read/lib/community/inner/e;->i(I)I
+
+    .line 17039378
+    .line 17039379
+    .line 17039380
+    move-result v1
+
+    .line 17039381
+    invoke-virtual {p1, v1}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 17039382
+    .line 17039383
+    .line 17039384
+    iget-object p1, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 17039385
+    .line 17039386
+    iget v1, v0, Lgb2/d;->a:I
+
+    .line 17039387
+    .line 17039388
+    invoke-static {v1}, Lcom/dragon/read/lib/community/inner/e;->C(I)I
+
+    .line 17039389
+    .line 17039390
+    .line 17039391
+    move-result v1
+
+    .line 17039392
+    invoke-virtual {p1, v1}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 17039393
+    .line 17039394
+    .line 17039395
+    iget-object p1, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 17039396
+    .line 17039397
+    iget v0, v0, Lgb2/d;->a:I
+
+    .line 17039398
+    .line 17039399
+    invoke-static {v0}, Lcom/dragon/read/lib/community/inner/e;->C(I)I
+
+    .line 17039400
+    .line 17039401
+    .line 17039402
+    move-result v0
+
+    .line 17039403
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 17039404
+    .line 17039405
+    .line 17039406
+    return-void
+.end method
+
+.method public final setAllReplyCount(J)V
+    .registers 3
+
+    .prologue
+    .line 16777216
+    iput-wide p1, p0, Lyc2/h;->p:J
+
+    .line 16777217
+    .line 16777218
+    return-void
+.end method
+
+.method public setEmptyViewClickListener(Landroid/view/View$OnClickListener;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908290
+    .line 16908291
+    .line 16908292
+    iget-object v0, p0, Lyc2/h;->l:Landroid/widget/TextView;
+
+    .line 16908293
+    .line 16908294
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 16908295
+    .line 16908296
+    .line 16908297
+    return-void
+.end method
+
+.method public final setEnableUIOpt(Z)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    iput-boolean p1, p0, Lyc2/h;->o:Z
+
+    .line 16777217
+    .line 16777218
+    return-void
+.end method
+
+.method public final setErrorStatus(Landroid/view/View$OnClickListener;)V
+    .registers 5
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16973826
+    .line 16973827
+    .line 16973828
+    iget-object v1, p0, Lyc2/h;->h:Ljava/lang/String;
+
+    .line 16973829
+    .line 16973830
+    const-string v2, "    setErrorStatus()"
+
+    .line 16973831
+    .line 16973832
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 16973833
+    .line 16973834
+    invoke-static {v1, v2, v0}, Lcom/dragon/community/saas/utils/w0;->b(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 16973835
+    .line 16973836
+    .line 16973837
+    invoke-virtual {p0}, Lyc2/h;->X1()V
+
+    .line 16973838
+    .line 16973839
+    .line 16973840
+    iget-object v0, p0, Lyc2/h;->m:Landroid/widget/TextView;
+
+    .line 16973841
+    .line 16973842
+    new-instance v1, Lyc2/f;
+
+    .line 16973843
+    .line 16973844
+    invoke-direct {v1, p0, p1}, Lyc2/f;-><init>(Lyc2/h;Landroid/view/View$OnClickListener;)V
+
+    .line 16973845
+    .line 16973846
+    .line 16973847
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 16973848
+    .line 16973849
+    .line 16973850
+    return-void
+.end method
+
+.method public final setThemeConfig(Lyc2/e;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    if-nez p1, :cond_3
+
+    .line 16842753
+    .line 16842754
+    return-void
+
+    .line 16842755
+    :cond_3
+    iput-object p1, p0, Lyc2/h;->i:Lyc2/e;
+
+    .line 16842756
+    .line 16842757
+    return-void
+.end method

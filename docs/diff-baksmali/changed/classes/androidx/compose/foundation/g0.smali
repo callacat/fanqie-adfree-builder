@@ -1,0 +1,149 @@
+## classes/androidx/compose/foundation/g0.smali
+# added=0 removed=0 changed=1
+
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+[MOD-CHANGED]
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Landroidx/compose/foundation/g0;->a:Landroidx/compose/foundation/CombinedClickableNode;
+
+    .line 17039362
+    check-cast p1, Lc0/e;
+
+    .line 17039364
+    iget-object p1, v0, Landroidx/compose/foundation/CombinedClickableNode;->L:Lkotlin/jvm/functions/Function0;
+
+    .line 17039366
+    if-eqz p1, :cond_b
+
+    .line 17039368
+    invoke-interface {p1}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 17039371
+    :cond_b
+    iget-boolean p1, v0, Landroidx/compose/foundation/CombinedClickableNode;->N:Z
+
+    .line 17039373
+    if-eqz p1, :cond_23
+
+    .line 17039375
+    sget-object p1, Landroidx/compose/ui/platform/CompositionLocalsKt;->l:Landroidx/compose/runtime/x4;
+
+    .line 17039377
+    invoke-static {v0, p1}, Landroidx/compose/ui/node/e;->a(Landroidx/compose/ui/node/d;Landroidx/compose/runtime/ProvidableCompositionLocal;)Ljava/lang/Object;
+
+    .line 17039380
+    move-result-object p1
+
+    .line 17039381
+    check-cast p1, Lh0/a;
+
+    .line 17039383
+    sget-object v0, Lh0/b;->a:Lh0/b$a;
+
+    .line 17039385
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17039388
+    invoke-static {}, Lh0/b$a;->a()V
+
+    .line 17039391
+    const/4 v0, 0x0
+
+    .line 17039392
+    invoke-interface {p1, v0}, Lh0/a;->a(I)V
+
+    .line 17039395
+    :cond_23
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17039397
+    return-object p1
+.end method
+
+[INNER-ORIGINAL]
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Landroidx/compose/foundation/g0;->a:Landroidx/compose/foundation/CombinedClickableNode;
+
+    .line 17039361
+    .line 17039362
+    check-cast p1, Lc0/e;
+
+    .line 17039363
+    .line 17039364
+    iget-object p1, v0, Landroidx/compose/foundation/CombinedClickableNode;->L:Lkotlin/jvm/functions/Function0;
+
+    .line 17039365
+    .line 17039366
+    if-eqz p1, :cond_b
+
+    .line 17039367
+    .line 17039368
+    invoke-interface {p1}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 17039369
+    .line 17039370
+    .line 17039371
+    :cond_b
+    iget-boolean p1, v0, Landroidx/compose/foundation/CombinedClickableNode;->N:Z
+
+    .line 17039372
+    .line 17039373
+    if-eqz p1, :cond_23
+
+    .line 17039374
+    .line 17039375
+    sget-object p1, Landroidx/compose/ui/platform/CompositionLocalsKt;->l:Landroidx/compose/runtime/x4;
+
+    .line 17039376
+    .line 17039377
+    invoke-static {v0, p1}, Landroidx/compose/ui/node/e;->a(Landroidx/compose/ui/node/d;Landroidx/compose/runtime/ProvidableCompositionLocal;)Ljava/lang/Object;
+
+    .line 17039378
+    .line 17039379
+    .line 17039380
+    move-result-object p1
+
+    .line 17039381
+    check-cast p1, Lh0/a;
+
+    .line 17039382
+    .line 17039383
+    sget-object v0, Lh0/b;->a:Lh0/b$a;
+
+    .line 17039384
+    .line 17039385
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17039386
+    .line 17039387
+    .line 17039388
+    invoke-static {}, Lh0/b$a;->a()V
+
+    .line 17039389
+    .line 17039390
+    .line 17039391
+    const/4 v0, 0x0
+
+    .line 17039392
+    invoke-interface {p1, v0}, Lh0/a;->a(I)V
+
+    .line 17039393
+    .line 17039394
+    .line 17039395
+    :cond_23
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17039396
+    .line 17039397
+    return-object p1
+.end method
+
+

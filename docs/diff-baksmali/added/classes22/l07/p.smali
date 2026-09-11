@@ -1,0 +1,89 @@
+.class public final synthetic Ll07/p;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/plugin/common/api/live/ILiveResultCallback;
+
+.field public final synthetic b:Liu1/c;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/plugin/common/api/live/ILiveResultCallback;Liu1/c;)V
+    .registers 3
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Ll07/p;->a:Lcom/dragon/read/plugin/common/api/live/ILiveResultCallback;
+
+    iput-object p2, p0, Ll07/p;->b:Liu1/c;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onClick(Landroid/view/View;)V
+    .registers 7
+
+    .prologue
+    .line 17039360
+    iget-object p1, p0, Ll07/p;->a:Lcom/dragon/read/plugin/common/api/live/ILiveResultCallback;
+
+    .line 17039362
+    iget-object v0, p0, Ll07/p;->b:Liu1/c;
+
+    .line 17039364
+    sget-object v1, Ll07/c0;->b:Lcom/dragon/read/base/util/LogHelper;
+
+    .line 17039366
+    const/4 v2, 0x0
+
+    .line 17039367
+    new-array v2, v2, [Ljava/lang/Object;
+
+    .line 17039369
+    invoke-virtual {v1}, Lcom/dragon/read/base/util/LogHelper;->getTag()Ljava/lang/String;
+
+    .line 17039372
+    move-result-object v1
+
+    .line 17039373
+    const-string v3, "default"
+
+    .line 17039375
+    const-string/jumbo v4, "showConfirmDisconnectBindingDialog click cancel"
+
+    .line 17039378
+    invoke-static {v3, v1, v4, v2}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17039381
+    if-eqz p1, :cond_1c
+
+    .line 17039383
+    sget-object v1, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
+
+    .line 17039385
+    invoke-interface {p1, v1}, Lcom/dragon/read/plugin/common/api/live/ILiveResultCallback;->onSuccess(Ljava/lang/Object;)V
+
+    .line 17039388
+    :cond_1c
+    if-eqz v0, :cond_25
+
+    .line 17039390
+    const/4 p1, -0x2
+
+    .line 17039391
+    const-string/jumbo v1, "\u53d6\u6d88\u89e3\u7ed1\u5b9a"
+
+    .line 17039394
+    invoke-interface {v0, p1, v1}, Liu1/c;->onFailed(ILjava/lang/String;)V
+
+    .line 17039397
+    :cond_25
+    return-void
+.end method

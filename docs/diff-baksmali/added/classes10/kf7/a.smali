@@ -1,0 +1,1535 @@
+.class public final Lkf7/a;
+.super Landroid/view/SurfaceView;
+.source "SourceFile"
+
+# interfaces
+.implements Lkf7/e;
+.implements Landroid/view/SurfaceHolder$Callback;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lkf7/a$b;,
+        Lkf7/a$a;
+    }
+.end annotation
+
+
+# instance fields
+.field public final a:Lxe7/e;
+
+.field public final b:Landroid/view/SurfaceHolder;
+
+.field public c:Landroid/os/HandlerThread;
+
+.field public d:Lkf7/a$b;
+
+.field public final e:Ljava/util/concurrent/atomic/AtomicLong;
+
+.field public f:Landroid/view/Choreographer;
+
+.field public final g:Ljava/lang/Object;
+
+.field public final h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+.field public volatile i:Landroid/graphics/Rect;
+
+.field public volatile j:Landroid/graphics/Rect;
+
+.field public final k:Lkf7/b;
+
+.field public final l:Landroid/graphics/Paint;
+
+.field public final m:Lkotlin/jvm/functions/Function1;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lkotlin/jvm/functions/Function1<",
+            "Lxe7/d$b;",
+            "Lkotlin/Unit;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field public final n:Lze7/a;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa1005
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    new-instance v0, Lkf7/a$a;
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;Lvi2/a;Lzi2/c2;)V
+    .registers 4
+
+    .prologue
+    .line 50659328
+    invoke-static {p1, p2, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50659331
+    invoke-direct {p0, p1}, Landroid/view/SurfaceView;-><init>(Landroid/content/Context;)V
+
+    .line 50659334
+    iput-object p2, p0, Lkf7/a;->m:Lkotlin/jvm/functions/Function1;
+
+    .line 50659336
+    iput-object p3, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 50659338
+    new-instance p1, Lxe7/e;
+
+    .line 50659340
+    invoke-direct {p1, p0}, Lxe7/e;-><init>(Lkf7/e;)V
+
+    .line 50659343
+    iput-object p1, p0, Lkf7/a;->a:Lxe7/e;
+
+    .line 50659345
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getHolder()Landroid/view/SurfaceHolder;
+
+    .line 50659348
+    move-result-object p1
+
+    .line 50659349
+    invoke-interface {p1, p0}, Landroid/view/SurfaceHolder;->addCallback(Landroid/view/SurfaceHolder$Callback;)V
+
+    .line 50659352
+    const/4 p2, -0x3
+
+    .line 50659353
+    invoke-interface {p1, p2}, Landroid/view/SurfaceHolder;->setFormat(I)V
+
+    .line 50659356
+    const-string p2, ""
+
+    .line 50659358
+    invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->checkExpressionValueIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659361
+    iput-object p1, p0, Lkf7/a;->b:Landroid/view/SurfaceHolder;
+
+    .line 50659363
+    new-instance p1, Ljava/util/concurrent/atomic/AtomicLong;
+
+    .line 50659365
+    const-wide/16 p2, 0x0
+
+    .line 50659367
+    invoke-direct {p1, p2, p3}, Ljava/util/concurrent/atomic/AtomicLong;-><init>(J)V
+
+    .line 50659370
+    iput-object p1, p0, Lkf7/a;->e:Ljava/util/concurrent/atomic/AtomicLong;
+
+    .line 50659372
+    new-instance p1, Ljava/lang/Object;
+
+    .line 50659374
+    invoke-direct {p1}, Ljava/lang/Object;-><init>()V
+
+    .line 50659377
+    iput-object p1, p0, Lkf7/a;->g:Ljava/lang/Object;
+
+    .line 50659379
+    new-instance p1, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 50659381
+    const/4 p2, 0x0
+
+    .line 50659382
+    invoke-direct {p1, p2}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
+    .line 50659385
+    iput-object p1, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 50659387
+    new-instance p1, Lkf7/b;
+
+    .line 50659389
+    invoke-direct {p1, p0}, Lkf7/b;-><init>(Lkf7/a;)V
+
+    .line 50659392
+    iput-object p1, p0, Lkf7/a;->k:Lkf7/b;
+
+    .line 50659394
+    const/4 p1, 0x1
+
+    .line 50659395
+    invoke-virtual {p0, p1}, Landroid/view/SurfaceView;->setZOrderMediaOverlay(Z)V
+
+    .line 50659398
+    invoke-virtual {p0, p1}, Landroid/view/SurfaceView;->setWillNotDraw(Z)V
+
+    .line 50659401
+    new-instance p1, Landroid/graphics/Paint;
+
+    .line 50659403
+    invoke-direct {p1}, Landroid/graphics/Paint;-><init>()V
+
+    .line 50659406
+    const/high16 p2, -0x1000000
+
+    .line 50659408
+    invoke-virtual {p1, p2}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 50659411
+    iput-object p1, p0, Lkf7/a;->l:Landroid/graphics/Paint;
+
+    .line 50659413
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Lkotlin/jvm/functions/Function1;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lkotlin/jvm/functions/Function1<",
+            "Lxe7/d$b;",
+            "Lkotlin/Unit;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lkf7/a;->m:Lkotlin/jvm/functions/Function1;
+
+    .line 2
+    return-object v0
+.end method
+
+.method public final b(Landroid/graphics/Canvas;)V
+    .registers 12
+
+    .prologue
+    .line 17170432
+    iget-object v0, p0, Lkf7/a;->i:Landroid/graphics/Rect;
+
+    .line 17170434
+    const/4 v1, 0x0
+
+    .line 17170435
+    if-eqz v0, :cond_97
+
+    .line 17170437
+    invoke-virtual {v0}, Landroid/graphics/Rect;->isEmpty()Z
+
+    .line 17170440
+    move-result v2
+
+    .line 17170441
+    if-eqz v2, :cond_d
+
+    .line 17170443
+    goto/16 :goto_97
+
+    .line 17170445
+    :cond_d
+    iget-object v2, p0, Lkf7/a;->j:Landroid/graphics/Rect;
+
+    .line 17170447
+    if-eqz v2, :cond_91
+
+    .line 17170449
+    invoke-virtual {v2}, Landroid/graphics/Rect;->isEmpty()Z
+
+    .line 17170452
+    move-result v3
+
+    .line 17170453
+    if-eqz v3, :cond_19
+
+    .line 17170455
+    goto/16 :goto_91
+
+    .line 17170457
+    :cond_19
+    invoke-static {v2, v0}, Landroid/graphics/Rect;->intersects(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z
+
+    .line 17170460
+    move-result v3
+
+    .line 17170461
+    if-nez v3, :cond_27
+
+    .line 17170463
+    const/high16 v0, -0x1000000
+
+    .line 17170465
+    sget-object v1, Landroid/graphics/PorterDuff$Mode;->SRC:Landroid/graphics/PorterDuff$Mode;
+
+    .line 17170467
+    invoke-virtual {p1, v0, v1}, Landroid/graphics/Canvas;->drawColor(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 17170470
+    return-void
+
+    .line 17170471
+    :cond_27
+    sget-object v3, Landroid/graphics/PorterDuff$Mode;->CLEAR:Landroid/graphics/PorterDuff$Mode;
+
+    .line 17170473
+    invoke-virtual {p1, v1, v3}, Landroid/graphics/Canvas;->drawColor(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 17170476
+    iget v1, v0, Landroid/graphics/Rect;->left:I
+
+    .line 17170478
+    iget v3, v2, Landroid/graphics/Rect;->left:I
+
+    .line 17170480
+    if-le v1, v3, :cond_41
+
+    .line 17170482
+    const/4 v5, 0x0
+
+    .line 17170483
+    const/4 v6, 0x0
+
+    .line 17170484
+    sub-int/2addr v1, v3
+
+    .line 17170485
+    int-to-float v7, v1
+
+    .line 17170486
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getHeight()I
+
+    .line 17170489
+    move-result v1
+
+    .line 17170490
+    int-to-float v8, v1
+
+    .line 17170491
+    iget-object v9, p0, Lkf7/a;->l:Landroid/graphics/Paint;
+
+    .line 17170493
+    move-object v4, p1
+
+    .line 17170494
+    invoke-virtual/range {v4 .. v9}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    .line 17170497
+    :cond_41
+    iget v1, v0, Landroid/graphics/Rect;->right:I
+
+    .line 17170499
+    iget v3, v2, Landroid/graphics/Rect;->right:I
+
+    .line 17170501
+    if-ge v1, v3, :cond_5c
+
+    .line 17170503
+    iget v3, v2, Landroid/graphics/Rect;->left:I
+
+    .line 17170505
+    sub-int/2addr v1, v3
+
+    .line 17170506
+    int-to-float v4, v1
+
+    .line 17170507
+    const/4 v5, 0x0
+
+    .line 17170508
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getWidth()I
+
+    .line 17170511
+    move-result v1
+
+    .line 17170512
+    int-to-float v6, v1
+
+    .line 17170513
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getHeight()I
+
+    .line 17170516
+    move-result v1
+
+    .line 17170517
+    int-to-float v7, v1
+
+    .line 17170518
+    iget-object v8, p0, Lkf7/a;->l:Landroid/graphics/Paint;
+
+    .line 17170520
+    move-object v3, p1
+
+    .line 17170521
+    invoke-virtual/range {v3 .. v8}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    .line 17170524
+    :cond_5c
+    iget v1, v0, Landroid/graphics/Rect;->top:I
+
+    .line 17170526
+    iget v3, v2, Landroid/graphics/Rect;->top:I
+
+    .line 17170528
+    if-le v1, v3, :cond_75
+
+    .line 17170530
+    const/4 v5, 0x0
+
+    .line 17170531
+    const/4 v6, 0x0
+
+    .line 17170532
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getWidth()I
+
+    .line 17170535
+    move-result v1
+
+    .line 17170536
+    int-to-float v7, v1
+
+    .line 17170537
+    iget v1, v0, Landroid/graphics/Rect;->top:I
+
+    .line 17170539
+    iget v3, v2, Landroid/graphics/Rect;->top:I
+
+    .line 17170541
+    sub-int/2addr v1, v3
+
+    .line 17170542
+    int-to-float v8, v1
+
+    .line 17170543
+    iget-object v9, p0, Lkf7/a;->l:Landroid/graphics/Paint;
+
+    .line 17170545
+    move-object v4, p1
+
+    .line 17170546
+    invoke-virtual/range {v4 .. v9}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    .line 17170549
+    :cond_75
+    iget v0, v0, Landroid/graphics/Rect;->bottom:I
+
+    .line 17170551
+    iget v1, v2, Landroid/graphics/Rect;->bottom:I
+
+    .line 17170553
+    if-ge v0, v1, :cond_90
+
+    .line 17170555
+    const/4 v4, 0x0
+
+    .line 17170556
+    iget v1, v2, Landroid/graphics/Rect;->top:I
+
+    .line 17170558
+    sub-int/2addr v0, v1
+
+    .line 17170559
+    int-to-float v5, v0
+
+    .line 17170560
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getWidth()I
+
+    .line 17170563
+    move-result v0
+
+    .line 17170564
+    int-to-float v6, v0
+
+    .line 17170565
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getHeight()I
+
+    .line 17170568
+    move-result v0
+
+    .line 17170569
+    int-to-float v7, v0
+
+    .line 17170570
+    iget-object v8, p0, Lkf7/a;->l:Landroid/graphics/Paint;
+
+    .line 17170572
+    move-object v3, p1
+
+    .line 17170573
+    invoke-virtual/range {v3 .. v8}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    .line 17170576
+    :cond_90
+    return-void
+
+    .line 17170577
+    :cond_91
+    :goto_91
+    sget-object v0, Landroid/graphics/PorterDuff$Mode;->CLEAR:Landroid/graphics/PorterDuff$Mode;
+
+    .line 17170579
+    invoke-virtual {p1, v1, v0}, Landroid/graphics/Canvas;->drawColor(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 17170582
+    return-void
+
+    .line 17170583
+    :cond_97
+    :goto_97
+    sget-object v0, Landroid/graphics/PorterDuff$Mode;->CLEAR:Landroid/graphics/PorterDuff$Mode;
+
+    .line 17170585
+    invoke-virtual {p1, v1, v0}, Landroid/graphics/Canvas;->drawColor(ILandroid/graphics/PorterDuff$Mode;)V
+
+    .line 17170588
+    return-void
+.end method
+
+.method public final c()V
+    .registers 5
+
+    .prologue
+    .line 327680
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 327682
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 327684
+    const-string v2, "initRenderThread, this: "
+
+    .line 327686
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327689
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327692
+    const-string v2, ", renderThread: "
+
+    .line 327694
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327697
+    iget-object v2, p0, Lkf7/a;->c:Landroid/os/HandlerThread;
+
+    .line 327699
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327702
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327705
+    move-result-object v1
+
+    .line 327706
+    const/4 v2, 0x0
+
+    .line 327707
+    new-array v2, v2, [Ljava/lang/Object;
+
+    .line 327709
+    invoke-interface {v0, v1, v2}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 327712
+    iget-object v0, p0, Lkf7/a;->c:Landroid/os/HandlerThread;
+
+    .line 327714
+    if-eqz v0, :cond_25
+
+    .line 327716
+    return-void
+
+    .line 327717
+    :cond_25
+    new-instance v0, Landroid/os/HandlerThread;
+
+    .line 327719
+    const-string v1, "DanmakuSurfaceRenderThread"
+
+    .line 327721
+    invoke-direct {v0, v1}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;)V
+
+    .line 327724
+    invoke-virtual {v0}, Landroid/os/HandlerThread;->start()V
+
+    .line 327727
+    new-instance v1, Lkf7/a$b;
+
+    .line 327729
+    invoke-virtual {v0}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
+
+    .line 327732
+    move-result-object v2
+
+    .line 327733
+    const-string v3, ""
+
+    .line 327735
+    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->checkExpressionValueIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 327738
+    invoke-direct {v1, v2}, Lkf7/a$b;-><init>(Landroid/os/Looper;)V
+
+    .line 327741
+    iput-object v1, p0, Lkf7/a;->d:Lkf7/a$b;
+
+    .line 327743
+    iput-object v0, p0, Lkf7/a;->c:Landroid/os/HandlerThread;
+
+    .line 327745
+    return-void
+.end method
+
+.method public final d()Z
+    .registers 3
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 131074
+    invoke-interface {v0}, Lze7/a;->getChannel()Ljava/lang/String;
+
+    .line 131077
+    move-result-object v0
+
+    .line 131078
+    sget-object v1, Lwe7/a;->a:Ljava/util/List;
+
+    .line 131080
+    invoke-interface {v1, v0}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+
+    .line 131083
+    move-result v0
+
+    .line 131084
+    return v0
+.end method
+
+.method public final e(J)V
+    .registers 7
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17039362
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 17039365
+    move-result v0
+
+    .line 17039366
+    if-nez v0, :cond_9
+
+    .line 17039368
+    return-void
+
+    .line 17039369
+    :cond_9
+    iget-object v0, p0, Lkf7/a;->f:Landroid/view/Choreographer;
+
+    .line 17039371
+    if-eqz v0, :cond_23
+
+    .line 17039373
+    iget-object v1, p0, Lkf7/a;->k:Lkf7/b;
+
+    .line 17039375
+    invoke-virtual {v0, v1}, Landroid/view/Choreographer;->removeFrameCallback(Landroid/view/Choreographer$FrameCallback;)V
+
+    .line 17039378
+    const-wide/16 v1, 0x0
+
+    .line 17039380
+    cmp-long v3, p1, v1
+
+    .line 17039382
+    if-gtz v3, :cond_1e
+
+    .line 17039384
+    iget-object p1, p0, Lkf7/a;->k:Lkf7/b;
+
+    .line 17039386
+    invoke-virtual {v0, p1}, Landroid/view/Choreographer;->postFrameCallback(Landroid/view/Choreographer$FrameCallback;)V
+
+    .line 17039389
+    goto :goto_23
+
+    .line 17039390
+    :cond_1e
+    iget-object v1, p0, Lkf7/a;->k:Lkf7/b;
+
+    .line 17039392
+    invoke-virtual {v0, v1, p1, p2}, Landroid/view/Choreographer;->postFrameCallbackDelayed(Landroid/view/Choreographer$FrameCallback;J)V
+
+    .line 17039395
+    :cond_23
+    :goto_23
+    return-void
+.end method
+
+.method public final f(Ljava/lang/String;)V
+    .registers 5
+
+    .prologue
+    .line 17104896
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 17104898
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 17104900
+    const-string v2, "stopDrawing, this: "
+
+    .line 17104902
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17104905
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 17104908
+    const-string v2, ",isDrawingEnabled: "
+
+    .line 17104910
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104913
+    iget-object v2, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17104915
+    invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 17104918
+    move-result v2
+
+    .line 17104919
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 17104922
+    const-string v2, ", reason: "
+
+    .line 17104924
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104927
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104930
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104933
+    move-result-object p1
+
+    .line 17104934
+    const/4 v1, 0x0
+
+    .line 17104935
+    new-array v2, v1, [Ljava/lang/Object;
+
+    .line 17104937
+    invoke-interface {v0, p1, v2}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17104940
+    iget-object p1, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17104942
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 17104945
+    move-result p1
+
+    .line 17104946
+    if-nez p1, :cond_35
+
+    .line 17104948
+    return-void
+
+    .line 17104949
+    :cond_35
+    iget-object p1, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17104951
+    invoke-virtual {p1, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+
+    .line 17104954
+    iget-object p1, p0, Lkf7/a;->e:Ljava/util/concurrent/atomic/AtomicLong;
+
+    .line 17104956
+    const-wide/16 v0, 0x0
+
+    .line 17104958
+    invoke-virtual {p1, v0, v1}, Ljava/util/concurrent/atomic/AtomicLong;->set(J)V
+
+    .line 17104961
+    iget-object p1, p0, Lkf7/a;->d:Lkf7/a$b;
+
+    .line 17104963
+    if-eqz p1, :cond_4d
+
+    .line 17104965
+    new-instance v0, Lkf7/a$d;
+
+    .line 17104967
+    invoke-direct {v0, p0}, Lkf7/a$d;-><init>(Lkf7/a;)V
+
+    .line 17104970
+    invoke-virtual {p1, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 17104973
+    :cond_4d
+    const/4 p1, 0x0
+
+    .line 17104974
+    iput-object p1, p0, Lkf7/a;->f:Landroid/view/Choreographer;
+
+    .line 17104976
+    return-void
+.end method
+
+.method public final g(Landroid/graphics/Rect;)V
+    .registers 3
+
+    .prologue
+    .line 17039360
+    if-eqz p1, :cond_8
+
+    .line 17039362
+    new-instance v0, Landroid/graphics/Rect;
+
+    .line 17039364
+    invoke-direct {v0, p1}, Landroid/graphics/Rect;-><init>(Landroid/graphics/Rect;)V
+
+    .line 17039367
+    goto :goto_9
+
+    .line 17039368
+    :cond_8
+    const/4 v0, 0x0
+
+    .line 17039369
+    :goto_9
+    iput-object v0, p0, Lkf7/a;->i:Landroid/graphics/Rect;
+
+    .line 17039371
+    iget-object p1, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17039373
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 17039376
+    move-result p1
+
+    .line 17039377
+    if-eqz p1, :cond_20
+
+    .line 17039379
+    iget-object p1, p0, Lkf7/a;->a:Lxe7/e;
+
+    .line 17039381
+    iget-object v0, p1, Lxe7/e;->a:Lxe7/d;
+
+    .line 17039383
+    iget-object v0, v0, Lxe7/d;->d:Lxe7/d$c;
+
+    .line 17039385
+    iget-boolean v0, v0, Lxe7/d$c;->j:Z
+
+    .line 17039387
+    if-eqz v0, :cond_20
+
+    .line 17039389
+    invoke-virtual {p1}, Lxe7/e;->h()V
+
+    .line 17039392
+    :cond_20
+    return-void
+.end method
+
+.method public getController()Lxe7/e;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lkf7/a;->a:Lxe7/e;
+
+    .line 2
+    return-object v0
+.end method
+
+.method public final getDepend()Lze7/a;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 2
+    return-object v0
+.end method
+
+.method public getDrawThreadHandler()Landroid/os/Handler;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lkf7/a;->d:Lkf7/a$b;
+
+    .line 2
+    return-object v0
+.end method
+
+.method public getRenderScheduler()Lkf7/d;
+    .registers 2
+
+    .prologue
+    .line 65536
+    new-instance v0, Lkf7/a$c;
+
+    .line 65538
+    invoke-direct {v0, p0}, Lkf7/a$c;-><init>(Lkf7/a;)V
+
+    .line 65541
+    return-object v0
+.end method
+
+.method public getView()Landroid/view/View;
+    .registers 1
+
+    return-object p0
+.end method
+
+.method public getViewType()I
+    .registers 2
+
+    const/16 v0, 0x3e9
+
+    return v0
+.end method
+
+.method public final h()V
+    .registers 5
+
+    .prologue
+    .line 327680
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getWidth()I
+
+    .line 327683
+    move-result v0
+
+    .line 327684
+    const/4 v1, 0x0
+
+    .line 327685
+    if-eqz v0, :cond_38
+
+    .line 327687
+    invoke-virtual {p0}, Landroid/view/SurfaceView;->getHeight()I
+
+    .line 327690
+    move-result v0
+
+    .line 327691
+    if-nez v0, :cond_e
+
+    .line 327693
+    goto :goto_38
+
+    .line 327694
+    :cond_e
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 327696
+    invoke-interface {v0, p0}, Lze7/a;->c(Landroid/view/View;)Landroid/graphics/Rect;
+
+    .line 327699
+    move-result-object v0
+
+    .line 327700
+    iput-object v0, p0, Lkf7/a;->j:Landroid/graphics/Rect;
+
+    .line 327702
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 327704
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 327706
+    const-string v3, "updateViewRect videoRect: "
+
+    .line 327708
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327711
+    iget-object v3, p0, Lkf7/a;->i:Landroid/graphics/Rect;
+
+    .line 327713
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327716
+    const-string v3, " viewRect: "
+
+    .line 327718
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327721
+    iget-object v3, p0, Lkf7/a;->j:Landroid/graphics/Rect;
+
+    .line 327723
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327726
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327729
+    move-result-object v2
+
+    .line 327730
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 327732
+    invoke-interface {v0, v2, v1}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 327735
+    return-void
+
+    .line 327736
+    :cond_38
+    :goto_38
+    const/4 v0, 0x0
+
+    .line 327737
+    iput-object v0, p0, Lkf7/a;->j:Landroid/graphics/Rect;
+
+    .line 327739
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 327741
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 327743
+    const-string v3, "updateViewRect skipped, size=0 view="
+
+    .line 327745
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327748
+    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327751
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327754
+    move-result-object v2
+
+    .line 327755
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 327757
+    invoke-interface {v0, v2, v1}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 327760
+    return-void
+.end method
+
+.method public final onAttachedToWindow()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    invoke-super {p0}, Landroid/view/SurfaceView;->onAttachedToWindow()V
+
+    .line 196611
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 196613
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 196615
+    const-string v2, "onAttachedToWindow, this: "
+
+    .line 196617
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 196620
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 196623
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 196626
+    move-result-object v1
+
+    .line 196627
+    const/4 v2, 0x0
+
+    .line 196628
+    new-array v2, v2, [Ljava/lang/Object;
+
+    .line 196630
+    invoke-interface {v0, v1, v2}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196633
+    invoke-virtual {p0}, Lkf7/a;->c()V
+
+    .line 196636
+    invoke-virtual {p0}, Lkf7/a;->h()V
+
+    .line 196639
+    return-void
+.end method
+
+.method public final onDetachedFromWindow()V
+    .registers 5
+
+    .prologue
+    .line 327680
+    invoke-super {p0}, Landroid/view/SurfaceView;->onDetachedFromWindow()V
+
+    .line 327683
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 327685
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 327687
+    const-string v2, "onDetachedFromWindow, this: "
+
+    .line 327689
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327692
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327695
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327698
+    move-result-object v1
+
+    .line 327699
+    const/4 v2, 0x0
+
+    .line 327700
+    new-array v3, v2, [Ljava/lang/Object;
+
+    .line 327702
+    invoke-interface {v0, v1, v3}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 327705
+    const-string v0, "detachWindow"
+
+    .line 327707
+    invoke-virtual {p0, v0}, Lkf7/a;->f(Ljava/lang/String;)V
+
+    .line 327710
+    iget-object v0, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 327712
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 327714
+    const-string v3, "destroyRenderThread, this: "
+
+    .line 327716
+    invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327719
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327722
+    const-string v3, ", renderThread: "
+
+    .line 327724
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 327727
+    iget-object v3, p0, Lkf7/a;->c:Landroid/os/HandlerThread;
+
+    .line 327729
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327732
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327735
+    move-result-object v1
+
+    .line 327736
+    new-array v2, v2, [Ljava/lang/Object;
+
+    .line 327738
+    invoke-interface {v0, v1, v2}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 327741
+    iget-object v0, p0, Lkf7/a;->c:Landroid/os/HandlerThread;
+
+    .line 327743
+    if-eqz v0, :cond_44
+
+    .line 327745
+    invoke-virtual {v0}, Landroid/os/HandlerThread;->quitSafely()Z
+
+    .line 327748
+    :cond_44
+    const/4 v0, 0x0
+
+    .line 327749
+    iput-object v0, p0, Lkf7/a;->c:Landroid/os/HandlerThread;
+
+    .line 327751
+    iput-object v0, p0, Lkf7/a;->d:Lkf7/a$b;
+
+    .line 327753
+    iput-object v0, p0, Lkf7/a;->f:Landroid/view/Choreographer;
+
+    .line 327755
+    return-void
+.end method
+
+.method public final onLayout(ZIIII)V
+    .registers 6
+
+    .prologue
+    .line 83951616
+    invoke-super/range {p0 .. p5}, Landroid/view/SurfaceView;->onLayout(ZIIII)V
+
+    .line 83951619
+    invoke-virtual {p0}, Lkf7/a;->h()V
+
+    .line 83951622
+    return-void
+.end method
+
+.method public final onTouchEvent(Landroid/view/MotionEvent;)Z
+    .registers 3
+
+    .prologue
+    .line 16973824
+    const/4 v0, 0x0
+
+    .line 16973825
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16973828
+    iget-object v0, p0, Lkf7/a;->a:Lxe7/e;
+
+    .line 16973830
+    invoke-virtual {v0, p1}, Lxe7/e;->k(Landroid/view/MotionEvent;)Z
+
+    .line 16973833
+    move-result v0
+
+    .line 16973834
+    if-eqz v0, :cond_e
+
+    .line 16973836
+    const/4 p1, 0x1
+
+    .line 16973837
+    return p1
+
+    .line 16973838
+    :cond_e
+    invoke-super {p0, p1}, Landroid/view/SurfaceView;->onTouchEvent(Landroid/view/MotionEvent;)Z
+
+    .line 16973841
+    move-result p1
+
+    .line 16973842
+    return p1
+.end method
+
+.method public final surfaceChanged(Landroid/view/SurfaceHolder;III)V
+    .registers 8
+
+    .prologue
+    .line 67371008
+    const/4 v0, 0x0
+
+    .line 67371009
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 67371012
+    iget-object p1, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 67371014
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 67371016
+    const-string v2, "surfaceChanged, this: "
+
+    .line 67371018
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 67371021
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 67371024
+    const-string v2, ", size: "
+
+    .line 67371026
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 67371029
+    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 67371032
+    const/16 v2, 0x78
+
+    .line 67371034
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 67371037
+    invoke-virtual {v1, p4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 67371040
+    const-string v2, ", format: "
+
+    .line 67371042
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 67371045
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 67371048
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 67371051
+    move-result-object p2
+
+    .line 67371052
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 67371054
+    invoke-interface {p1, p2, v0}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 67371057
+    iget-object p1, p0, Lkf7/a;->a:Lxe7/e;
+
+    .line 67371059
+    invoke-virtual {p1, p3, p4}, Lxe7/e;->j(II)V
+
+    .line 67371062
+    return-void
+.end method
+
+.method public final surfaceCreated(Landroid/view/SurfaceHolder;)V
+    .registers 5
+
+    .prologue
+    .line 17104896
+    const/4 v0, 0x0
+
+    .line 17104897
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17104900
+    iget-object p1, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 17104902
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 17104904
+    const-string v2, "surfaceCreated, this: "
+
+    .line 17104906
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17104909
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 17104912
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104915
+    move-result-object v1
+
+    .line 17104916
+    new-array v2, v0, [Ljava/lang/Object;
+
+    .line 17104918
+    invoke-interface {p1, v1, v2}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17104921
+    iget-object p1, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 17104923
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 17104925
+    const-string v2, "startDrawing, this: "
+
+    .line 17104927
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17104930
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 17104933
+    const-string v2, ", isDrawingEnabled: "
+
+    .line 17104935
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104938
+    iget-object v2, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17104940
+    invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 17104943
+    move-result v2
+
+    .line 17104944
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 17104947
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104950
+    move-result-object v1
+
+    .line 17104951
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 17104953
+    invoke-interface {p1, v1, v0}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17104956
+    iget-object p1, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17104958
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 17104961
+    move-result p1
+
+    .line 17104962
+    if-eqz p1, :cond_45
+
+    .line 17104964
+    goto :goto_61
+
+    .line 17104965
+    :cond_45
+    invoke-virtual {p0}, Lkf7/a;->c()V
+
+    .line 17104968
+    iget-object p1, p0, Lkf7/a;->h:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 17104970
+    const/4 v0, 0x1
+
+    .line 17104971
+    invoke-virtual {p1, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+
+    .line 17104974
+    iget-object p1, p0, Lkf7/a;->e:Ljava/util/concurrent/atomic/AtomicLong;
+
+    .line 17104976
+    const-wide/16 v0, 0x0
+
+    .line 17104978
+    invoke-virtual {p1, v0, v1}, Ljava/util/concurrent/atomic/AtomicLong;->set(J)V
+
+    .line 17104981
+    iget-object p1, p0, Lkf7/a;->d:Lkf7/a$b;
+
+    .line 17104983
+    if-eqz p1, :cond_61
+
+    .line 17104985
+    new-instance v0, Lkf7/c;
+
+    .line 17104987
+    invoke-direct {v0, p0}, Lkf7/c;-><init>(Lkf7/a;)V
+
+    .line 17104990
+    invoke-virtual {p1, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 17104993
+    :cond_61
+    :goto_61
+    return-void
+.end method
+
+.method public final surfaceDestroyed(Landroid/view/SurfaceHolder;)V
+    .registers 6
+
+    .prologue
+    .line 17039360
+    const-string v0, "surfaceDestroyed, this: "
+
+    .line 17039362
+    const/4 v1, 0x0
+
+    .line 17039363
+    invoke-static {p1, v1}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 17039366
+    iget-object p1, p0, Lkf7/a;->g:Ljava/lang/Object;
+
+    .line 17039368
+    monitor-enter p1
+
+    .line 17039369
+    :try_start_9
+    iget-object v2, p0, Lkf7/a;->n:Lze7/a;
+
+    .line 17039371
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 17039373
+    invoke-direct {v3, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17039376
+    invoke-virtual {v3, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 17039379
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17039382
+    move-result-object v0
+
+    .line 17039383
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 17039385
+    invoke-interface {v2, v0, v1}, Lze7/a;->b(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17039388
+    const-string v0, "surfaceDestroy"
+
+    .line 17039390
+    invoke-virtual {p0, v0}, Lkf7/a;->f(Ljava/lang/String;)V
+
+    .line 17039393
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+    :try_end_23
+    .catchall {:try_start_9 .. :try_end_23} :catchall_25
+
+    .line 17039395
+    monitor-exit p1
+
+    .line 17039396
+    return-void
+
+    .line 17039397
+    :catchall_25
+    move-exception v0
+
+    .line 17039398
+    monitor-exit p1
+
+    .line 17039399
+    throw v0
+.end method

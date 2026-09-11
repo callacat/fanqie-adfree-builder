@@ -1,0 +1,119 @@
+.class public final Lio/reactivex/internal/operators/flowable/FlowableRetryBiPredicate;
+.super Lio/reactivex/internal/operators/flowable/a;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lio/reactivex/internal/operators/flowable/FlowableRetryBiPredicate$RetryBiSubscriber;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Lio/reactivex/internal/operators/flowable/a<",
+        "TT;TT;>;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final b:Lio/reactivex/functions/BiPredicate;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lio/reactivex/functions/BiPredicate<",
+            "-",
+            "Ljava/lang/Integer;",
+            "-",
+            "Ljava/lang/Throwable;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa4d32
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lio/reactivex/Flowable;Lio/reactivex/functions/BiPredicate;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lio/reactivex/Flowable<",
+            "TT;>;",
+            "Lio/reactivex/functions/BiPredicate<",
+            "-",
+            "Ljava/lang/Integer;",
+            "-",
+            "Ljava/lang/Throwable;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 33619968
+    invoke-direct {p0, p1}, Lio/reactivex/internal/operators/flowable/a;-><init>(Lio/reactivex/Flowable;)V
+
+    .line 33619971
+    iput-object p2, p0, Lio/reactivex/internal/operators/flowable/FlowableRetryBiPredicate;->b:Lio/reactivex/functions/BiPredicate;
+
+    .line 33619973
+    return-void
+.end method
+
+
+# virtual methods
+.method public final subscribeActual(Lorg/reactivestreams/Subscriber;)V
+    .registers 6
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/reactivestreams/Subscriber<",
+            "-TT;>;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 16973824
+    new-instance v0, Lio/reactivex/internal/subscriptions/SubscriptionArbiter;
+
+    .line 16973826
+    const/4 v1, 0x0
+
+    .line 16973827
+    invoke-direct {v0, v1}, Lio/reactivex/internal/subscriptions/SubscriptionArbiter;-><init>(Z)V
+
+    .line 16973830
+    invoke-interface {p1, v0}, Lorg/reactivestreams/Subscriber;->onSubscribe(Lorg/reactivestreams/Subscription;)V
+
+    .line 16973833
+    new-instance v1, Lio/reactivex/internal/operators/flowable/FlowableRetryBiPredicate$RetryBiSubscriber;
+
+    .line 16973835
+    iget-object v2, p0, Lio/reactivex/internal/operators/flowable/FlowableRetryBiPredicate;->b:Lio/reactivex/functions/BiPredicate;
+
+    .line 16973837
+    iget-object v3, p0, Lio/reactivex/internal/operators/flowable/a;->a:Lio/reactivex/Flowable;
+
+    .line 16973839
+    invoke-direct {v1, p1, v2, v0, v3}, Lio/reactivex/internal/operators/flowable/FlowableRetryBiPredicate$RetryBiSubscriber;-><init>(Lorg/reactivestreams/Subscriber;Lio/reactivex/functions/BiPredicate;Lio/reactivex/internal/subscriptions/SubscriptionArbiter;Lio/reactivex/Flowable;)V
+
+    .line 16973842
+    invoke-virtual {v1}, Lio/reactivex/internal/operators/flowable/FlowableRetryBiPredicate$RetryBiSubscriber;->a()V
+
+    .line 16973845
+    return-void
+.end method

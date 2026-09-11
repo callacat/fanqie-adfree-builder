@@ -1,0 +1,564 @@
+.class public abstract Lcom/xiaomi/push/ew;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa4734
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    return-void
+.end method
+
+.method public static INVOKEVIRTUAL_com_xiaomi_push_ew_com_dragon_read_aop_ContextAop_startService(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
+    .registers 3
+    .annotation runtime Lme/ele/lancet/base/annotations/Proxy;
+        value = "startService"
+    .end annotation
+
+    .annotation runtime Lme/ele/lancet/base/annotations/TargetClass;
+        value = "android.content.Context"
+    .end annotation
+
+    .prologue
+    .line 33816576
+    instance-of v0, p0, Landroid/content/Context;
+
+    .line 33816578
+    if-nez v0, :cond_9
+
+    .line 33816580
+    invoke-virtual {p0, p1}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+
+    .line 33816583
+    move-result-object p0
+
+    .line 33816584
+    return-object p0
+
+    .line 33816585
+    :cond_9
+    invoke-static {}, Lm26/b;->a()Z
+
+    .line 33816588
+    move-result v0
+
+    .line 33816589
+    if-eqz v0, :cond_13
+
+    .line 33816591
+    invoke-static {p0, p1}, Lm26/b;->b(Landroid/content/Context;Landroid/content/Intent;)V
+
+    .line 33816594
+    goto :goto_2b
+
+    .line 33816595
+    :cond_13
+    invoke-static {}, Lcom/dragon/read/app/App;->context()Landroid/app/Application;
+
+    .line 33816598
+    move-result-object v0
+
+    .line 33816599
+    invoke-static {v0}, Lcom/ss/android/common/util/ToolUtils;->isMainProcess(Landroid/content/Context;)Z
+
+    .line 33816602
+    move-result v0
+
+    .line 33816603
+    if-eqz v0, :cond_2b
+
+    .line 33816605
+    sget-boolean v0, Lcom/dragon/read/app/launch/task/m4;->a:Z
+
+    .line 33816607
+    if-eqz v0, :cond_2b
+
+    .line 33816609
+    sget-object v0, Lcom/dragon/read/component/biz/api/NsPushService;->IMPL:Lcom/dragon/read/component/biz/api/NsPushService;
+
+    .line 33816611
+    invoke-interface {v0, p0, p1}, Lcom/dragon/read/component/biz/api/NsPushService;->isInterceptStartPushStart(Landroid/content/Context;Landroid/content/Intent;)Z
+
+    .line 33816614
+    move-result v0
+
+    .line 33816615
+    if-eqz v0, :cond_2b
+
+    .line 33816617
+    const/4 p0, 0x0
+
+    .line 33816618
+    return-object p0
+
+    .line 33816619
+    :cond_2b
+    :goto_2b
+    invoke-virtual {p0, p1}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+
+    .line 33816622
+    move-result-object p0
+
+    .line 33816623
+    return-object p0
+.end method
+
+.method public static c()I
+    .registers 4
+
+    .prologue
+    .line 262144
+    invoke-static {}, Lcom/xiaomi/push/gv;->b()I
+
+    .line 262147
+    move-result v0
+
+    .line 262148
+    invoke-static {}, Lcom/xiaomi/push/t;->a()Landroid/content/Context;
+
+    .line 262151
+    move-result-object v1
+
+    .line 262152
+    if-nez v1, :cond_b
+
+    .line 262154
+    return v0
+
+    .line 262155
+    :cond_b
+    invoke-static {v1}, Lcom/xiaomi/push/service/aq;->a(Landroid/content/Context;)Lcom/xiaomi/push/service/aq;
+
+    .line 262158
+    move-result-object v1
+
+    .line 262159
+    sget-object v2, Lcom/xiaomi/push/hz;->bX:Lcom/xiaomi/push/hz;
+
+    .line 262161
+    invoke-virtual {v2}, Lcom/xiaomi/push/hz;->a()I
+
+    .line 262164
+    move-result v2
+
+    .line 262165
+    invoke-virtual {v1, v2, v0}, Lcom/xiaomi/push/service/aq;->a(II)I
+
+    .line 262168
+    move-result v1
+
+    .line 262169
+    const v2, 0x33450
+
+    .line 262172
+    if-gt v2, v1, :cond_21
+
+    .line 262174
+    if-gt v1, v0, :cond_21
+
+    .line 262176
+    return v1
+
+    .line 262177
+    :cond_21
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 262179
+    const-string v3, "illegal ping interval. configInterval:"
+
+    .line 262181
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 262184
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 262187
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 262190
+    move-result-object v1
+
+    .line 262191
+    const-string v2, "HwKaMgr"
+
+    .line 262193
+    invoke-static {v2, v1}, Lcom/xiaomi/channel/commonutils/logger/c;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 262196
+    return v0
+.end method
+
+
+# virtual methods
+.method public a()I
+    .registers 2
+
+    .prologue
+    .line 131072
+    invoke-static {}, Lcom/xiaomi/push/eu;->a()Lcom/xiaomi/push/eu;
+
+    .line 131075
+    move-result-object v0
+
+    .line 131076
+    invoke-virtual {v0}, Lcom/xiaomi/push/eu;->a()I
+
+    .line 131079
+    move-result v0
+
+    .line 131080
+    return v0
+.end method
+
+.method public a()Lcom/xiaomi/push/eu;
+    .registers 2
+
+    .prologue
+    .line 65536
+    invoke-static {}, Lcom/xiaomi/push/eu;->a()Lcom/xiaomi/push/eu;
+
+    .line 65539
+    move-result-object v0
+
+    .line 65540
+    return-object v0
+.end method
+
+.method public abstract a()Ljava/lang/String;
+.end method
+
+.method public a()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public a(ILjava/lang/Exception;Z)V
+    .registers 4
+
+    return-void
+.end method
+
+.method public abstract a(Lcom/xiaomi/push/ew;)V
+.end method
+
+.method public a(Lcom/xiaomi/push/ew;Ljava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 33947648
+    if-eqz p1, :cond_11
+
+    .line 33947650
+    invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 33947653
+    move-result v0
+
+    .line 33947654
+    if-eqz v0, :cond_9
+
+    .line 33947656
+    goto :goto_11
+
+    .line 33947657
+    :cond_9
+    invoke-virtual {p0}, Lcom/xiaomi/push/ew;->a()Lcom/xiaomi/push/eu;
+
+    .line 33947660
+    move-result-object v0
+
+    .line 33947661
+    invoke-virtual {v0, p0, p1, p2}, Lcom/xiaomi/push/eu;->a(Lcom/xiaomi/push/ew;Lcom/xiaomi/push/ew;Ljava/lang/String;)V
+
+    .line 33947664
+    return-void
+
+    .line 33947665
+    :cond_11
+    :goto_11
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    .line 33947667
+    const-string p2, "["
+
+    .line 33947669
+    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 33947672
+    invoke-virtual {p0}, Lcom/xiaomi/push/ew;->a()Ljava/lang/String;
+
+    .line 33947675
+    move-result-object p2
+
+    .line 33947676
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33947679
+    const-string p2, "] next state or event is null when setting state"
+
+    .line 33947681
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33947684
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 33947687
+    move-result-object p1
+
+    .line 33947688
+    const-string p2, "HwKaMgr"
+
+    .line 33947690
+    invoke-static {p2, p1}, Lcom/xiaomi/channel/commonutils/logger/c;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 33947693
+    return-void
+.end method
+
+.method public a(Ljava/lang/String;)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public a(Ljava/net/Socket;)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public a(Z)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public b()I
+    .registers 2
+
+    .prologue
+    .line 131072
+    invoke-static {}, Lcom/xiaomi/push/eu;->a()Lcom/xiaomi/push/eu;
+
+    .line 131075
+    move-result-object v0
+
+    .line 131076
+    invoke-virtual {v0}, Lcom/xiaomi/push/eu;->b()I
+
+    .line 131079
+    move-result v0
+
+    .line 131080
+    return v0
+.end method
+
+.method public b()Ljava/lang/String;
+    .registers 2
+
+    .prologue
+    .line 196608
+    invoke-static {}, Lcom/xiaomi/push/eu;->a()Lcom/xiaomi/push/eu;
+
+    .line 196611
+    move-result-object v0
+
+    .line 196612
+    invoke-virtual {v0}, Lcom/xiaomi/push/eu;->b()Ljava/lang/String;
+
+    .line 196615
+    move-result-object v0
+
+    .line 196616
+    return-object v0
+.end method
+
+.method public b()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public abstract b(Lcom/xiaomi/push/ew;)V
+.end method
+
+.method public b(Ljava/lang/String;)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public b(Z)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public c()Ljava/lang/String;
+    .registers 2
+
+    .prologue
+    .line 131072
+    invoke-static {}, Lcom/xiaomi/push/eu;->a()Lcom/xiaomi/push/eu;
+
+    .line 131075
+    move-result-object v0
+
+    .line 131076
+    invoke-virtual {v0}, Lcom/xiaomi/push/eu;->c()Ljava/lang/String;
+
+    .line 131079
+    move-result-object v0
+
+    .line 131080
+    return-object v0
+.end method
+
+.method public c()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public c(Z)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public d()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public d(Z)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public e()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public f()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public g()V
+    .registers 1
+
+    return-void
+.end method
+
+.method public h()V
+    .registers 5
+
+    .prologue
+    .line 262144
+    invoke-static {}, Lcom/xiaomi/push/t;->a()Landroid/content/Context;
+
+    .line 262147
+    move-result-object v0
+
+    .line 262148
+    if-nez v0, :cond_7
+
+    .line 262150
+    return-void
+
+    .line 262151
+    :cond_7
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 262153
+    const-string v2, "["
+
+    .line 262155
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 262158
+    invoke-virtual {p0}, Lcom/xiaomi/push/ew;->a()Ljava/lang/String;
+
+    .line 262161
+    move-result-object v2
+
+    .line 262162
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 262165
+    const-string v2, "]  trigger a ping package"
+
+    .line 262167
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 262170
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 262173
+    move-result-object v1
+
+    .line 262174
+    const-string v2, "HwKaMgr"
+
+    .line 262176
+    invoke-static {v2, v1}, Lcom/xiaomi/channel/commonutils/logger/c;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 262179
+    new-instance v1, Landroid/content/Intent;
+
+    .line 262181
+    invoke-direct {v1}, Landroid/content/Intent;-><init>()V
+
+    .line 262184
+    const-string v2, "com.xiaomi.xmsf"
+
+    .line 262186
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 262189
+    const-string v3, "com.xiaomi.xmsf.push.service.XMPushService"
+
+    .line 262191
+    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 262194
+    const-string v3, "mipush_app_package"
+
+    .line 262196
+    invoke-virtual {v1, v3, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 262199
+    sget-object v2, Lcom/xiaomi/push/service/ay;->r:Ljava/lang/String;
+
+    .line 262201
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 262204
+    invoke-static {v0, v1}, Lcom/xiaomi/push/ew;->INVOKEVIRTUAL_com_xiaomi_push_ew_com_dragon_read_aop_ContextAop_startService(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
+
+    .line 262207
+    return-void
+.end method

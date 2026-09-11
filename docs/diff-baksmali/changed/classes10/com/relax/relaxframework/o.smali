@@ -1,0 +1,432 @@
+## classes10/com/relax/relaxframework/o.smali
+# added=0 removed=0 changed=4
+
+.method public constructor <init>(Lcom/relax/relaxframework/ModifierType_WithPattern;)V
+[MOD-CHANGED]
+.method public constructor <init>(Lcom/relax/relaxframework/ModifierType_WithPattern;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16908295
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908298
+    iput-object p1, p0, Lcom/relax/relaxframework/o;->a:Lcom/relax/relaxframework/ModifierType_WithPattern;
+
+    .line 16908300
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Lcom/relax/relaxframework/ModifierType_WithPattern;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908290
+    .line 16908291
+    .line 16908292
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16908293
+    .line 16908294
+    .line 16908295
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908296
+    .line 16908297
+    .line 16908298
+    iput-object p1, p0, Lcom/relax/relaxframework/o;->a:Lcom/relax/relaxframework/ModifierType_WithPattern;
+
+    .line 16908299
+    .line 16908300
+    return-void
+.end method
+
+
+.method public a()Lcom/relax/relaxframework/ImageFilterType;
+[MOD-CHANGED]
+.method public a()Lcom/relax/relaxframework/ImageFilterType;
+    .registers 2
+
+    .prologue
+    .line 0
+    sget-object v0, Lcom/relax/relaxframework/ImageFilterType;->Blur:Lcom/relax/relaxframework/ImageFilterType;
+
+    .line 2
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public a()Lcom/relax/relaxframework/ImageFilterType;
+    .registers 2
+
+    .prologue
+    .line 0
+    sget-object v0, Lcom/relax/relaxframework/ImageFilterType;->Blur:Lcom/relax/relaxframework/ImageFilterType;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+
+.method public collectForArray()Ljava/util/ArrayList;
+[MOD-CHANGED]
+.method public collectForArray()Ljava/util/ArrayList;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList<",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 65536
+    const/4 v0, 0x0
+
+    .line 65537
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 65539
+    invoke-static {v0}, Lcom/bytedance/rts/foundation/RTSArrayKt;->rtsArrayOf([Ljava/lang/Object;)Ljava/util/ArrayList;
+
+    .line 65542
+    move-result-object v0
+
+    .line 65543
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public collectForArray()Ljava/util/ArrayList;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList<",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 65536
+    const/4 v0, 0x0
+
+    .line 65537
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 65538
+    .line 65539
+    invoke-static {v0}, Lcom/bytedance/rts/foundation/RTSArrayKt;->rtsArrayOf([Ljava/lang/Object;)Ljava/util/ArrayList;
+
+    .line 65540
+    .line 65541
+    .line 65542
+    move-result-object v0
+
+    .line 65543
+    return-object v0
+.end method
+
+
+.method public final collectForStruct()Lcom/relax/relaxframework/h1;
+[MOD-CHANGED]
+.method public final collectForStruct()Lcom/relax/relaxframework/h1;
+    .registers 9
+
+    .prologue
+    .line 327680
+    new-instance v0, Lcom/relax/relaxframework/h1;
+
+    .line 327682
+    invoke-virtual {p0}, Lcom/relax/relaxframework/o;->a()Lcom/relax/relaxframework/ImageFilterType;
+
+    .line 327685
+    move-result-object v1
+
+    .line 327686
+    iget v1, v1, Lcom/relax/relaxframework/ImageFilterType;->value:I
+
+    .line 327688
+    const/4 v2, 0x2
+
+    .line 327689
+    new-array v2, v2, [Ljava/lang/Double;
+
+    .line 327691
+    iget-object v3, p0, Lcom/relax/relaxframework/o;->a:Lcom/relax/relaxframework/ModifierType_WithPattern;
+
+    .line 327693
+    const/4 v4, 0x0
+
+    .line 327694
+    const-string v5, ""
+
+    .line 327696
+    if-eqz v3, :cond_13
+
+    .line 327698
+    goto :goto_17
+
+    .line 327699
+    :cond_13
+    invoke-static {v5}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
+
+    .line 327702
+    move-object v3, v4
+
+    .line 327703
+    :goto_17
+    invoke-virtual {v3}, Lcom/relax/relaxframework/ModifierType_WithPattern;->getValue()D
+
+    .line 327706
+    move-result-wide v6
+
+    .line 327707
+    invoke-static {v6, v7}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 327710
+    move-result-object v3
+
+    .line 327711
+    const/4 v6, 0x0
+
+    .line 327712
+    aput-object v3, v2, v6
+
+    .line 327714
+    sget-object v3, Lcom/bytedance/rts/foundation/Int32;->Companion:Lcom/bytedance/rts/foundation/Int32$Companion;
+
+    .line 327716
+    iget-object v6, p0, Lcom/relax/relaxframework/o;->a:Lcom/relax/relaxframework/ModifierType_WithPattern;
+
+    .line 327718
+    if-eqz v6, :cond_2a
+
+    .line 327720
+    move-object v4, v6
+
+    .line 327721
+    goto :goto_2d
+
+    .line 327722
+    :cond_2a
+    invoke-static {v5}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
+
+    .line 327725
+    :goto_2d
+    invoke-virtual {v4}, Lcom/relax/relaxframework/ModifierType_WithPattern;->getPattern()Lcom/relax/relaxframework/ModifierValuePattern;
+
+    .line 327728
+    move-result-object v4
+
+    .line 327729
+    iget v4, v4, Lcom/relax/relaxframework/ModifierValuePattern;->value:I
+
+    .line 327731
+    invoke-virtual {v3, v4}, Lcom/bytedance/rts/foundation/Int32$Companion;->toFloat64(I)D
+
+    .line 327734
+    move-result-wide v3
+
+    .line 327735
+    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 327738
+    move-result-object v3
+
+    .line 327739
+    const/4 v4, 0x1
+
+    .line 327740
+    aput-object v3, v2, v4
+
+    .line 327742
+    invoke-static {v2}, Lcom/bytedance/rts/foundation/RTSArrayKt;->rtsArrayOf([Ljava/lang/Object;)Ljava/util/ArrayList;
+
+    .line 327745
+    move-result-object v2
+
+    .line 327746
+    invoke-direct {v0, v1, v2}, Lcom/relax/relaxframework/h1;-><init>(ILjava/util/ArrayList;)V
+
+    .line 327749
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final collectForStruct()Lcom/relax/relaxframework/h1;
+    .registers 9
+
+    .prologue
+    .line 327680
+    new-instance v0, Lcom/relax/relaxframework/h1;
+
+    .line 327681
+    .line 327682
+    invoke-virtual {p0}, Lcom/relax/relaxframework/o;->a()Lcom/relax/relaxframework/ImageFilterType;
+
+    .line 327683
+    .line 327684
+    .line 327685
+    move-result-object v1
+
+    .line 327686
+    iget v1, v1, Lcom/relax/relaxframework/ImageFilterType;->value:I
+
+    .line 327687
+    .line 327688
+    const/4 v2, 0x2
+
+    .line 327689
+    new-array v2, v2, [Ljava/lang/Double;
+
+    .line 327690
+    .line 327691
+    iget-object v3, p0, Lcom/relax/relaxframework/o;->a:Lcom/relax/relaxframework/ModifierType_WithPattern;
+
+    .line 327692
+    .line 327693
+    const/4 v4, 0x0
+
+    .line 327694
+    const-string v5, ""
+
+    .line 327695
+    .line 327696
+    if-eqz v3, :cond_13
+
+    .line 327697
+    .line 327698
+    goto :goto_17
+
+    .line 327699
+    :cond_13
+    invoke-static {v5}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
+
+    .line 327700
+    .line 327701
+    .line 327702
+    move-object v3, v4
+
+    .line 327703
+    :goto_17
+    invoke-virtual {v3}, Lcom/relax/relaxframework/ModifierType_WithPattern;->getValue()D
+
+    .line 327704
+    .line 327705
+    .line 327706
+    move-result-wide v6
+
+    .line 327707
+    invoke-static {v6, v7}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 327708
+    .line 327709
+    .line 327710
+    move-result-object v3
+
+    .line 327711
+    const/4 v6, 0x0
+
+    .line 327712
+    aput-object v3, v2, v6
+
+    .line 327713
+    .line 327714
+    sget-object v3, Lcom/bytedance/rts/foundation/Int32;->Companion:Lcom/bytedance/rts/foundation/Int32$Companion;
+
+    .line 327715
+    .line 327716
+    iget-object v6, p0, Lcom/relax/relaxframework/o;->a:Lcom/relax/relaxframework/ModifierType_WithPattern;
+
+    .line 327717
+    .line 327718
+    if-eqz v6, :cond_2a
+
+    .line 327719
+    .line 327720
+    move-object v4, v6
+
+    .line 327721
+    goto :goto_2d
+
+    .line 327722
+    :cond_2a
+    invoke-static {v5}, Lkotlin/jvm/internal/Intrinsics;->throwUninitializedPropertyAccessException(Ljava/lang/String;)V
+
+    .line 327723
+    .line 327724
+    .line 327725
+    :goto_2d
+    invoke-virtual {v4}, Lcom/relax/relaxframework/ModifierType_WithPattern;->getPattern()Lcom/relax/relaxframework/ModifierValuePattern;
+
+    .line 327726
+    .line 327727
+    .line 327728
+    move-result-object v4
+
+    .line 327729
+    iget v4, v4, Lcom/relax/relaxframework/ModifierValuePattern;->value:I
+
+    .line 327730
+    .line 327731
+    invoke-virtual {v3, v4}, Lcom/bytedance/rts/foundation/Int32$Companion;->toFloat64(I)D
+
+    .line 327732
+    .line 327733
+    .line 327734
+    move-result-wide v3
+
+    .line 327735
+    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 327736
+    .line 327737
+    .line 327738
+    move-result-object v3
+
+    .line 327739
+    const/4 v4, 0x1
+
+    .line 327740
+    aput-object v3, v2, v4
+
+    .line 327741
+    .line 327742
+    invoke-static {v2}, Lcom/bytedance/rts/foundation/RTSArrayKt;->rtsArrayOf([Ljava/lang/Object;)Ljava/util/ArrayList;
+
+    .line 327743
+    .line 327744
+    .line 327745
+    move-result-object v2
+
+    .line 327746
+    invoke-direct {v0, v1, v2}, Lcom/relax/relaxframework/h1;-><init>(ILjava/util/ArrayList;)V
+
+    .line 327747
+    .line 327748
+    .line 327749
+    return-object v0
+.end method
+
+

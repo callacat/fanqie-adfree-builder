@@ -1,0 +1,45 @@
+.class public final Luc6/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lxj6/e;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/author/comment/AuthorSpeakActivity;
+
+
+# direct methods
+.method public constructor <init>(Lcom/dragon/read/social/author/comment/AuthorSpeakActivity;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Luc6/a;->a:Lcom/dragon/read/social/author/comment/AuthorSpeakActivity;
+
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()V
+    .registers 3
+
+    .prologue
+    .line 65536
+    iget-object v0, p0, Luc6/a;->a:Lcom/dragon/read/social/author/comment/AuthorSpeakActivity;
+
+    .line 65538
+    const-string v1, "page_author_speak_details"
+
+    .line 65540
+    invoke-virtual {v0, v1}, Lcom/dragon/read/social/profile/delegate/a;->e1(Ljava/lang/String;)Z
+
+    .line 65543
+    return-void
+.end method

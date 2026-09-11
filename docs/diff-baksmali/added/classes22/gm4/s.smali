@@ -1,0 +1,139 @@
+.class public final synthetic Lgm4/s;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final a:Lgm4/a0;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 0
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Lgm4/c0;)V
+    .registers 4
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lgm4/s;->a:Lgm4/a0;
+
+    invoke-static {}, Lcom/dragon/read/reader/ad/۟ۤۦۥۥ;->۟ۨۦۧ()I
+
+    move-result p1
+
+    if-gtz p1, :cond_1a
+
+    const-string p1, "iTo4iH"
+
+    invoke-static {p1}, Lcom/a/ۧۦۣ۟;->ۨۦۣۨ(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-static {p1}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+
+    move-result-wide v0
+
+    sget-object p1, Ljava/lang/System;->out:Ljava/io/PrintStream;
+
+    invoke-virtual {p1, v0, v1}, Ljava/io/PrintStream;->println(J)V
+
+    :cond_1a
+    return-void
+.end method
+
+.method public static ۣۡۦۥ(Ljava/lang/Object;)Lcom/dragon/community/common/ui/SlideRatingStarView;
+    .registers 2
+
+    invoke-static {}, Lgn4/ۥۣۡۢ;->۟ۡۦ۟۟()I
+
+    move-result v0
+
+    if-lez v0, :cond_d
+
+    check-cast p0, Lgm4/a0;
+
+    invoke-virtual {p0}, Lgm4/a0;->getStarView()Lcom/dragon/community/common/ui/SlideRatingStarView;
+
+    move-result-object p0
+
+    goto :goto_e
+
+    :cond_d
+    const/4 p0, 0x0
+
+    :goto_e
+    return-object p0
+.end method
+
+.method public static ۦۥۦۡ(Ljava/lang/Object;F)V
+    .registers 3
+
+    invoke-static {}, Lmj4/ۣۧ۟۟;->۟ۤۤۧۤ()I
+
+    move-result v0
+
+    if-gtz v0, :cond_b
+
+    check-cast p0, Lcom/dragon/community/common/ui/SlideRatingStarView;
+
+    invoke-virtual {p0, p1}, Lcom/dragon/community/common/ui/SlideRatingStarView;->n(F)V
+
+    :cond_b
+    return-void
+.end method
+
+.method public static ۨۥۣۦ()Lkotlin/Unit;
+    .registers 1
+
+    invoke-static {}, Lcom/bytedance/shadowhook/小说/۟ۦۦ۠ۦ;->ۨ۟ۦۡ()I
+
+    move-result v0
+
+    if-lez v0, :cond_9
+
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    goto :goto_a
+
+    :cond_9
+    const/4 v0, 0x0
+
+    :goto_a
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 3
+
+    invoke-static {p0}, Lgn4/۟۠ۦۥۤ;->ۣ۟ۦ۟ۤ(Ljava/lang/Object;)Lgm4/a0;
+
+    move-result-object v0
+
+    check-cast p1, Ljava/lang/Integer;
+
+    invoke-static {v0}, Lgm4/s;->ۣۡۦۥ(Ljava/lang/Object;)Lcom/dragon/community/common/ui/SlideRatingStarView;
+
+    move-result-object v0
+
+    invoke-static {p1}, Lcom/dragon/read/component/biz/impl/mine/loginv2/view/۟ۤ۠ۨ۠;->ۨۧۥۦ(Ljava/lang/Object;)I
+
+    move-result p1
+
+    int-to-float p1, p1
+
+    invoke-static {v0, p1}, Lgm4/s;->ۦۥۦۡ(Ljava/lang/Object;F)V
+
+    invoke-static {}, Lgm4/s;->ۨۥۣۦ()Lkotlin/Unit;
+
+    move-result-object p1
+
+    return-object p1
+.end method

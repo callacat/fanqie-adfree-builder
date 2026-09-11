@@ -1,0 +1,71 @@
+.class public final synthetic Ly44/w2;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/functions/Consumer;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV2;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV2;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Ly44/w2;->a:Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV2;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final accept(Ljava/lang/Object;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    iget-object v0, p0, Ly44/w2;->a:Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV2;
+
+    .line 16973826
+    check-cast p1, Ljava/lang/Throwable;
+
+    .line 16973828
+    iget-object p1, v0, Lcom/dragon/read/component/biz/impl/mine/pref/interest/minetab/WatchPreferenceFragmentV2;->h:Lcom/dragon/read/rpc/model/UserPreferenceScene;
+
+    .line 16973830
+    sget-object v0, Lcom/dragon/read/rpc/model/UserPreferenceScene;->gold_coin_page:Lcom/dragon/read/rpc/model/UserPreferenceScene;
+
+    .line 16973832
+    if-eq p1, v0, :cond_1a
+
+    .line 16973834
+    invoke-static {}, Lcom/dragon/read/util/NetworkUtils;->isNetworkConnected()Z
+
+    .line 16973837
+    move-result p1
+
+    .line 16973838
+    if-eqz p1, :cond_14
+
+    .line 16973840
+    const p1, 0x7f061b93
+
+    .line 16973843
+    goto :goto_17
+
+    .line 16973844
+    :cond_14
+    const p1, 0x7f06169d
+
+    .line 16973847
+    :goto_17
+    invoke-static {p1}, Lcom/dragon/read/util/ToastUtils;->showCommonToast(I)V
+
+    .line 16973850
+    :cond_1a
+    return-void
+.end method

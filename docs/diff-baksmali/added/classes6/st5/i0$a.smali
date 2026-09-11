@@ -1,0 +1,382 @@
+.class public final Lst5/i0$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lst5/i0;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 14
+
+    .prologue
+    .line 393216
+    sget-object v0, Lst5/i0;->g:Lst5/i0$c;
+
+    .line 393218
+    const/4 v1, 0x0
+
+    .line 393219
+    if-nez v0, :cond_29
+
+    .line 393221
+    new-instance v0, Lst5/i0$c;
+
+    .line 393223
+    invoke-direct {v0, v1}, Lst5/i0$c;-><init>(I)V
+
+    .line 393226
+    sput-object v0, Lst5/i0;->g:Lst5/i0$c;
+
+    .line 393228
+    sget-object v0, Lst5/i0;->c:Lcom/dragon/read/base/util/LogHelper;
+
+    .line 393230
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 393232
+    const-string v3, "config:"
+
+    .line 393234
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 393237
+    sget-object v3, Lst5/i0;->g:Lst5/i0$c;
+
+    .line 393239
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 393242
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 393245
+    move-result-object v2
+
+    .line 393246
+    new-array v3, v1, [Ljava/lang/Object;
+
+    .line 393248
+    invoke-virtual {v0}, Lcom/dragon/read/base/util/LogHelper;->getTag()Ljava/lang/String;
+
+    .line 393251
+    move-result-object v0
+
+    .line 393252
+    const-string v4, "default"
+
+    .line 393254
+    invoke-static {v4, v0, v2, v3}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 393257
+    :cond_29
+    sget-object v0, Lst5/i0;->g:Lst5/i0$c;
+
+    .line 393259
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 393262
+    iget v0, v0, Lst5/i0$c;->a:I
+
+    .line 393264
+    if-nez v0, :cond_42
+
+    .line 393266
+    sget-object v0, Lst5/i0;->c:Lcom/dragon/read/base/util/LogHelper;
+
+    .line 393268
+    const-string v2, "auto close not enable"
+
+    .line 393270
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 393272
+    invoke-virtual {v0}, Lcom/dragon/read/base/util/LogHelper;->getTag()Ljava/lang/String;
+
+    .line 393275
+    move-result-object v0
+
+    .line 393276
+    const-string v3, "default"
+
+    .line 393278
+    invoke-static {v3, v0, v2, v1}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 393281
+    return-void
+
+    .line 393282
+    :cond_42
+    sget-object v0, Lst5/i0;->g:Lst5/i0$c;
+
+    .line 393284
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 393287
+    iget v0, v0, Lst5/i0$c;->b:I
+
+    .line 393289
+    sget-object v2, Lst5/i0;->d:Ljava/util/Map;
+
+    .line 393291
+    const-string v3, ""
+
+    .line 393293
+    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 393296
+    monitor-enter v2
+
+    .line 393297
+    :try_start_51
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+
+    .line 393300
+    move-result-wide v3
+
+    .line 393301
+    const-string v5, ""
+
+    .line 393303
+    invoke-static {v2, v5}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 393306
+    invoke-interface {v2}, Ljava/util/Map;->entrySet()Ljava/util/Set;
+
+    .line 393309
+    move-result-object v5
+
+    .line 393310
+    invoke-interface {v5}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 393313
+    move-result-object v5
+
+    .line 393314
+    :cond_62
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 393317
+    move-result v6
+
+    .line 393318
+    if-eqz v6, :cond_cc
+
+    .line 393320
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 393323
+    move-result-object v6
+
+    .line 393324
+    check-cast v6, Ljava/util/Map$Entry;
+
+    .line 393326
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 393329
+    move-result-object v7
+
+    .line 393330
+    check-cast v7, Ljava/lang/String;
+
+    .line 393332
+    invoke-interface {v6}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 393335
+    move-result-object v6
+
+    .line 393336
+    check-cast v6, Lst5/j0;
+
+    .line 393338
+    iget-boolean v8, v6, Lst5/j0;->c:Z
+
+    .line 393340
+    if-eqz v8, :cond_7f
+
+    .line 393342
+    goto :goto_cc
+
+    .line 393343
+    :cond_7f
+    iget-wide v8, v6, Lst5/j0;->b:J
+
+    .line 393345
+    sub-long v8, v3, v8
+
+    .line 393347
+    int-to-long v10, v0
+
+    .line 393348
+    cmp-long v12, v8, v10
+
+    .line 393350
+    if-ltz v12, :cond_62
+
+    .line 393352
+    iget-object v0, v6, Lst5/j0;->a:Lcom/tencent/mmkv/MMKV;
+
+    .line 393354
+    if-eqz v0, :cond_8f
+
+    .line 393356
+    invoke-virtual {v0}, Lcom/tencent/mmkv/MMKV;->close()V
+
+    .line 393359
+    :cond_8f
+    sget-object v0, Lst5/d0;->a:Lst5/d0;
+
+    .line 393361
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 393364
+    sget-object v0, Lst5/d0;->b:Lst5/c0;
+
+    .line 393366
+    if-eqz v0, :cond_9e
+
+    .line 393368
+    invoke-static {v7}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 393371
+    invoke-virtual {v0, v7}, Lst5/c0;->a(Ljava/lang/String;)V
+
+    .line 393374
+    :cond_9e
+    invoke-interface {v5}, Ljava/util/Iterator;->remove()V
+
+    .line 393377
+    sget-object v0, Lst5/i0;->c:Lcom/dragon/read/base/util/LogHelper;
+
+    .line 393379
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 393381
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 393384
+    const-string v6, "auto close mmkv:"
+
+    .line 393386
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 393389
+    invoke-virtual {v5, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 393392
+    const-string v6, ", cost:"
+
+    .line 393394
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 393397
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+
+    .line 393400
+    move-result-wide v6
+
+    .line 393401
+    sub-long/2addr v6, v3
+
+    .line 393402
+    invoke-virtual {v5, v6, v7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 393405
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 393408
+    move-result-object v3
+
+    .line 393409
+    new-array v1, v1, [Ljava/lang/Object;
+
+    .line 393411
+    invoke-virtual {v0}, Lcom/dragon/read/base/util/LogHelper;->getTag()Ljava/lang/String;
+
+    .line 393414
+    move-result-object v0
+
+    .line 393415
+    const-string v4, "default"
+
+    .line 393417
+    invoke-static {v4, v0, v3, v1}, Lcom/dragon/read/base/util/LogWrapper;->info(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 393420
+    :cond_cc
+    :goto_cc
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+    :try_end_ce
+    .catchall {:try_start_51 .. :try_end_ce} :catchall_e8
+
+    .line 393422
+    monitor-exit v2
+
+    .line 393423
+    sget-object v0, Lst5/i0;->b:Lst5/i0$b;
+
+    .line 393425
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 393428
+    sget-object v0, Lst5/i0;->h:Lkotlin/Lazy;
+
+    .line 393430
+    invoke-interface {v0}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    .line 393433
+    move-result-object v0
+
+    .line 393434
+    check-cast v0, Landroid/os/Handler;
+
+    .line 393436
+    sget-object v1, Lst5/i0;->g:Lst5/i0$c;
+
+    .line 393438
+    invoke-static {v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 393441
+    iget v1, v1, Lst5/i0$c;->c:I
+
+    .line 393443
+    int-to-long v1, v1
+
+    .line 393444
+    invoke-virtual {v0, p0, v1, v2}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 393447
+    return-void
+
+    .line 393448
+    :catchall_e8
+    move-exception v0
+
+    .line 393449
+    monitor-exit v2
+
+    .line 393450
+    throw v0
+.end method

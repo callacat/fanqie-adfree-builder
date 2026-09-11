@@ -1,0 +1,166 @@
+.class public final Lwz5/n3;
+.super Lcom/bytedance/ug/sdk/luckycat/impl/xbridge/a;
+.source "SourceFile"
+
+
+# annotations
+.annotation runtime Lcom/bytedance/sdk/xbridge/annotations/XBridgeMethod;
+    name = "luckycatNovelGetAccountBind"
+    owner = "liubai"
+.end annotation
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x9a82e
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Lcom/bytedance/ug/sdk/luckycat/impl/xbridge/a;-><init>()V
+
+    .line 3
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lcom/bytedance/ies/xbridge/XReadableMap;Lcom/bytedance/ug/sdk/luckycat/impl/xbridge/d;Lcom/bytedance/ies/xbridge/XBridgePlatformType;)V
+    .registers 9
+
+    .prologue
+    .line 50659328
+    invoke-static {p1, p2, p3}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->p(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 50659331
+    new-instance p3, Lorg/json/JSONObject;
+
+    .line 50659333
+    invoke-direct {p3}, Lorg/json/JSONObject;-><init>()V
+
+    .line 50659336
+    const/4 v0, 0x0
+
+    .line 50659337
+    :try_start_9
+    const-string v1, "platform"
+
+    .line 50659339
+    invoke-interface {p1, v1}, Lcom/bytedance/ies/xbridge/XReadableMap;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50659342
+    move-result-object p1
+
+    .line 50659343
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 50659346
+    move-result v1
+    :try_end_13
+    .catch Lorg/json/JSONException; {:try_start_9 .. :try_end_13} :catch_3c
+
+    .line 50659347
+    const-string v2, "success"
+
+    .line 50659349
+    const-string v3, "status"
+
+    .line 50659351
+    const/4 v4, 0x1
+
+    .line 50659352
+    if-nez v1, :cond_35
+
+    .line 50659354
+    :try_start_1a
+    const-string v1, "douyin"
+
+    .line 50659356
+    invoke-static {v1, p1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 50659359
+    move-result v1
+
+    .line 50659360
+    if-eqz v1, :cond_24
+
+    .line 50659362
+    const-string p1, "aweme_v2"
+
+    .line 50659364
+    :cond_24
+    sget-object v1, Lcom/dragon/read/NsCommonDepend;->IMPL:Lcom/dragon/read/NsCommonDepend;
+
+    .line 50659366
+    invoke-interface {v1}, Lcom/dragon/read/NsCommonDepend;->acctManager()Lcom/dragon/read/component/interfaces/NsAcctManager;
+
+    .line 50659369
+    move-result-object v1
+
+    .line 50659370
+    invoke-interface {v1, p1}, Lcom/dragon/read/component/interfaces/NsAcctManager;->isBindPlatformAccount(Ljava/lang/String;)Z
+
+    .line 50659373
+    move-result p1
+
+    .line 50659374
+    invoke-virtual {p3, v3, p1}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+
+    .line 50659377
+    invoke-virtual {p2, v4, v2, p3}, Lcom/bytedance/ug/sdk/luckycat/impl/xbridge/d;->a(ILjava/lang/String;Lorg/json/JSONObject;)V
+
+    .line 50659380
+    goto :goto_43
+
+    .line 50659381
+    :cond_35
+    invoke-virtual {p3, v3, v0}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+
+    .line 50659384
+    invoke-virtual {p2, v4, v2, p3}, Lcom/bytedance/ug/sdk/luckycat/impl/xbridge/d;->a(ILjava/lang/String;Lorg/json/JSONObject;)V
+    :try_end_3b
+    .catch Lorg/json/JSONException; {:try_start_1a .. :try_end_3b} :catch_3c
+
+    .line 50659387
+    goto :goto_43
+
+    .line 50659388
+    :catch_3c
+    const-string p1, "error"
+
+    .line 50659390
+    const/4 p3, 0x2
+
+    .line 50659391
+    const/4 v1, 0x0
+
+    .line 50659392
+    invoke-static {p2, v0, v1, p1, p3}, Lcom/bytedance/ug/sdk/luckycat/impl/xbridge/d;->b(Lcom/bytedance/ug/sdk/luckycat/impl/xbridge/d;ILorg/json/JSONObject;Ljava/lang/String;I)V
+
+    .line 50659395
+    :goto_43
+    return-void
+.end method
+
+.method public final getName()Ljava/lang/String;
+    .registers 2
+
+    const-string v0, "luckycatNovelGetAccountBind"
+
+    return-object v0
+.end method
+
+.method public final release()V
+    .registers 1
+
+    return-void
+.end method

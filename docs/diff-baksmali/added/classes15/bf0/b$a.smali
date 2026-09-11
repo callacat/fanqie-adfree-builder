@@ -1,0 +1,69 @@
+.class public final Lbf0/b$a;
+.super Lbf0/a;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lbf0/b;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "a"
+.end annotation
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x818dc
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Lbf0/a;-><init>()V
+
+    .line 3
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(J)V
+    .registers 3
+
+    return-void
+.end method
+
+.method public final b(IIZ)V
+    .registers 4
+
+    return-void
+.end method
+
+.method public final c(I)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public final d(Ljava/lang/String;)V
+    .registers 2
+
+    return-void
+.end method
+
+.method public final e(Ljava/lang/String;)V
+    .registers 2
+
+    return-void
+.end method

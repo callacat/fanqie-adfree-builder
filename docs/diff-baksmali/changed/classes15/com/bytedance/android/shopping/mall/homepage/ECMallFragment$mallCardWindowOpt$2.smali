@@ -1,0 +1,363 @@
+## classes15/com/bytedance/android/shopping/mall/homepage/ECMallFragment$mallCardWindowOpt$2.smali
+# added=0 removed=0 changed=1
+
+.method public final invoke()Ljava/lang/Object;
+[MOD-CHANGED]
+.method public final invoke()Ljava/lang/Object;
+    .registers 7
+
+    .prologue
+    .line 327680
+    sget-object v0, Lwx/a;->a:Lwx/a;
+
+    .line 327682
+    const/4 v0, 0x0
+
+    .line 327683
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 327686
+    move-result-object v1
+
+    .line 327687
+    sget-object v2, Lcom/bytedance/android/ec/hybrid/monitor/HybridAppInfoService;->INSTANCE:Lcom/bytedance/android/ec/hybrid/monitor/HybridAppInfoService;
+
+    .line 327689
+    invoke-virtual {v2}, Lcom/bytedance/android/ec/hybrid/monitor/HybridAppInfoService;->getAppId()Ljava/lang/String;
+
+    .line 327692
+    move-result-object v2
+
+    .line 327693
+    if-eqz v2, :cond_4f
+
+    .line 327695
+    const-string v3, "1128"
+
+    .line 327697
+    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 327700
+    move-result v3
+
+    .line 327701
+    if-nez v3, :cond_1f
+
+    .line 327703
+    const-string v3, "2329"
+
+    .line 327705
+    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 327708
+    move-result v2
+
+    .line 327709
+    if-eqz v2, :cond_4f
+
+    .line 327711
+    :cond_1f
+    sget-object v2, Lcom/bytedance/android/ec/hybrid/ECHybrid;->INSTANCE:Lcom/bytedance/android/ec/hybrid/ECHybrid;
+
+    .line 327713
+    invoke-virtual {v2}, Lcom/bytedance/android/ec/hybrid/ECHybrid;->obtainECHostService()Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostService;
+
+    .line 327716
+    move-result-object v2
+
+    .line 327717
+    if-eqz v2, :cond_37
+
+    .line 327719
+    invoke-interface {v2}, Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostService;->getHostAB()Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostABService;
+
+    .line 327722
+    move-result-object v2
+
+    .line 327723
+    if-eqz v2, :cond_37
+
+    .line 327725
+    const-string v3, "ec_mall_card_window_opt"
+
+    .line 327727
+    invoke-interface {v2, v3, v1}, Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostABService;->getValue(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 327730
+    move-result-object v2
+
+    .line 327731
+    if-nez v2, :cond_36
+
+    .line 327733
+    goto :goto_37
+
+    .line 327734
+    :cond_36
+    move-object v1, v2
+
+    .line 327735
+    :cond_37
+    :goto_37
+    sget-object v2, Lcom/bytedance/android/ec/hybrid/log/mall/ECMallLogUtil;->c:Lcom/bytedance/android/ec/hybrid/log/mall/ECMallLogUtil;
+
+    .line 327737
+    sget-object v3, Lau/c$a;->b:Lau/c$a;
+
+    .line 327739
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 327741
+    const-string v5, "Key : ec_mall_card_window_opt, Value: "
+
+    .line 327743
+    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327746
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327749
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327752
+    move-result-object v4
+
+    .line 327753
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 327756
+    invoke-static {v3, v4}, Lcom/bytedance/android/ec/hybrid/log/mall/ECMallLogUtil;->c(Lau/p;Ljava/lang/String;)V
+
+    .line 327759
+    :cond_4f
+    check-cast v1, Ljava/lang/Number;
+
+    .line 327761
+    invoke-virtual {v1}, Ljava/lang/Number;->intValue()I
+
+    .line 327764
+    move-result v1
+
+    .line 327765
+    const/4 v2, 0x1
+
+    .line 327766
+    if-ne v1, v2, :cond_59
+
+    .line 327768
+    const/4 v0, 0x1
+
+    .line 327769
+    :cond_59
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 327772
+    move-result-object v0
+
+    .line 327773
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final invoke()Ljava/lang/Object;
+    .registers 7
+
+    .prologue
+    .line 327680
+    sget-object v0, Lwx/a;->a:Lwx/a;
+
+    .line 327681
+    .line 327682
+    const/4 v0, 0x0
+
+    .line 327683
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 327684
+    .line 327685
+    .line 327686
+    move-result-object v1
+
+    .line 327687
+    sget-object v2, Lcom/bytedance/android/ec/hybrid/monitor/HybridAppInfoService;->INSTANCE:Lcom/bytedance/android/ec/hybrid/monitor/HybridAppInfoService;
+
+    .line 327688
+    .line 327689
+    invoke-virtual {v2}, Lcom/bytedance/android/ec/hybrid/monitor/HybridAppInfoService;->getAppId()Ljava/lang/String;
+
+    .line 327690
+    .line 327691
+    .line 327692
+    move-result-object v2
+
+    .line 327693
+    if-eqz v2, :cond_4f
+
+    .line 327694
+    .line 327695
+    const-string v3, "1128"
+
+    .line 327696
+    .line 327697
+    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 327698
+    .line 327699
+    .line 327700
+    move-result v3
+
+    .line 327701
+    if-nez v3, :cond_1f
+
+    .line 327702
+    .line 327703
+    const-string v3, "2329"
+
+    .line 327704
+    .line 327705
+    invoke-static {v2, v3}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 327706
+    .line 327707
+    .line 327708
+    move-result v2
+
+    .line 327709
+    if-eqz v2, :cond_4f
+
+    .line 327710
+    .line 327711
+    :cond_1f
+    sget-object v2, Lcom/bytedance/android/ec/hybrid/ECHybrid;->INSTANCE:Lcom/bytedance/android/ec/hybrid/ECHybrid;
+
+    .line 327712
+    .line 327713
+    invoke-virtual {v2}, Lcom/bytedance/android/ec/hybrid/ECHybrid;->obtainECHostService()Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostService;
+
+    .line 327714
+    .line 327715
+    .line 327716
+    move-result-object v2
+
+    .line 327717
+    if-eqz v2, :cond_37
+
+    .line 327718
+    .line 327719
+    invoke-interface {v2}, Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostService;->getHostAB()Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostABService;
+
+    .line 327720
+    .line 327721
+    .line 327722
+    move-result-object v2
+
+    .line 327723
+    if-eqz v2, :cond_37
+
+    .line 327724
+    .line 327725
+    const-string v3, "ec_mall_card_window_opt"
+
+    .line 327726
+    .line 327727
+    invoke-interface {v2, v3, v1}, Lcom/bytedance/android/ec/hybrid/hostapi/IHybridHostABService;->getValue(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 327728
+    .line 327729
+    .line 327730
+    move-result-object v2
+
+    .line 327731
+    if-nez v2, :cond_36
+
+    .line 327732
+    .line 327733
+    goto :goto_37
+
+    .line 327734
+    :cond_36
+    move-object v1, v2
+
+    .line 327735
+    :cond_37
+    :goto_37
+    sget-object v2, Lcom/bytedance/android/ec/hybrid/log/mall/ECMallLogUtil;->c:Lcom/bytedance/android/ec/hybrid/log/mall/ECMallLogUtil;
+
+    .line 327736
+    .line 327737
+    sget-object v3, Lau/c$a;->b:Lau/c$a;
+
+    .line 327738
+    .line 327739
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 327740
+    .line 327741
+    const-string v5, "Key : ec_mall_card_window_opt, Value: "
+
+    .line 327742
+    .line 327743
+    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 327744
+    .line 327745
+    .line 327746
+    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 327747
+    .line 327748
+    .line 327749
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 327750
+    .line 327751
+    .line 327752
+    move-result-object v4
+
+    .line 327753
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 327754
+    .line 327755
+    .line 327756
+    invoke-static {v3, v4}, Lcom/bytedance/android/ec/hybrid/log/mall/ECMallLogUtil;->c(Lau/p;Ljava/lang/String;)V
+
+    .line 327757
+    .line 327758
+    .line 327759
+    :cond_4f
+    check-cast v1, Ljava/lang/Number;
+
+    .line 327760
+    .line 327761
+    invoke-virtual {v1}, Ljava/lang/Number;->intValue()I
+
+    .line 327762
+    .line 327763
+    .line 327764
+    move-result v1
+
+    .line 327765
+    const/4 v2, 0x1
+
+    .line 327766
+    if-ne v1, v2, :cond_59
+
+    .line 327767
+    .line 327768
+    const/4 v0, 0x1
+
+    .line 327769
+    :cond_59
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 327770
+    .line 327771
+    .line 327772
+    move-result-object v0
+
+    .line 327773
+    return-object v0
+.end method
+
+

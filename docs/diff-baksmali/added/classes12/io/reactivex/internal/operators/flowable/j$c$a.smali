@@ -1,0 +1,125 @@
+.class public final Lio/reactivex/internal/operators/flowable/j$c$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/reactivex/internal/operators/flowable/j$c;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x11
+    name = "a"
+.end annotation
+
+
+# instance fields
+.field public final a:Ljava/util/Collection;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "TU;"
+        }
+    .end annotation
+.end field
+
+.field public final synthetic b:Lio/reactivex/internal/operators/flowable/j$c;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa4c32
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lio/reactivex/internal/operators/flowable/j$c;Ljava/util/Collection;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TU;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 33619968
+    iput-object p1, p0, Lio/reactivex/internal/operators/flowable/j$c$a;->b:Lio/reactivex/internal/operators/flowable/j$c;
+
+    .line 33619970
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33619973
+    iput-object p2, p0, Lio/reactivex/internal/operators/flowable/j$c$a;->a:Ljava/util/Collection;
+
+    .line 33619975
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/j$c$a;->b:Lio/reactivex/internal/operators/flowable/j$c;
+
+    .line 196610
+    monitor-enter v0
+
+    .line 196611
+    :try_start_3
+    iget-object v1, p0, Lio/reactivex/internal/operators/flowable/j$c$a;->b:Lio/reactivex/internal/operators/flowable/j$c;
+
+    .line 196613
+    iget-object v1, v1, Lio/reactivex/internal/operators/flowable/j$c;->m:Ljava/util/List;
+
+    .line 196615
+    iget-object v2, p0, Lio/reactivex/internal/operators/flowable/j$c$a;->a:Ljava/util/Collection;
+
+    .line 196617
+    check-cast v1, Ljava/util/LinkedList;
+
+    .line 196619
+    invoke-virtual {v1, v2}, Ljava/util/LinkedList;->remove(Ljava/lang/Object;)Z
+
+    .line 196622
+    monitor-exit v0
+    :try_end_f
+    .catchall {:try_start_3 .. :try_end_f} :catchall_19
+
+    .line 196623
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/j$c$a;->b:Lio/reactivex/internal/operators/flowable/j$c;
+
+    .line 196625
+    iget-object v1, p0, Lio/reactivex/internal/operators/flowable/j$c$a;->a:Ljava/util/Collection;
+
+    .line 196627
+    iget-object v2, v0, Lio/reactivex/internal/operators/flowable/j$c;->l:Lio/reactivex/Scheduler$Worker;
+
+    .line 196629
+    invoke-virtual {v0, v1, v2}, Lio/reactivex/internal/subscribers/h;->e(Ljava/lang/Object;Lio/reactivex/disposables/Disposable;)V
+
+    .line 196632
+    return-void
+
+    .line 196633
+    :catchall_19
+    move-exception v1
+
+    .line 196634
+    :try_start_1a
+    monitor-exit v0
+    :try_end_1b
+    .catchall {:try_start_1a .. :try_end_1b} :catchall_19
+
+    .line 196635
+    throw v1
+.end method

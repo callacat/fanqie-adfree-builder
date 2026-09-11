@@ -1,0 +1,89 @@
+.class public final Lu46/w$c;
+.super Landroidx/lifecycle/MutableLiveData;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lu46/w;-><init>()V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Landroidx/lifecycle/MutableLiveData<",
+        "Lf56/f;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lu46/w;
+
+
+# direct methods
+.method public constructor <init>(Lu46/w;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lu46/w$c;->a:Lu46/w;
+
+    .line 16842753
+    .line 16842754
+    invoke-direct {p0}, Landroidx/lifecycle/MutableLiveData;-><init>()V
+
+    .line 16842755
+    .line 16842756
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final setValue(Ljava/lang/Object;)V
+    .registers 4
+
+    .prologue
+    .line 16973824
+    check-cast p1, Lf56/f;
+
+    .line 16973825
+    .line 16973826
+    iget-object v0, p0, Lu46/w$c;->a:Lu46/w;
+
+    .line 16973827
+    .line 16973828
+    if-eqz p1, :cond_9
+
+    .line 16973829
+    .line 16973830
+    iget-object v1, p1, Lf56/f;->b:Ljava/util/LinkedHashMap;
+
+    .line 16973831
+    .line 16973832
+    goto :goto_a
+
+    .line 16973833
+    :cond_9
+    const/4 v1, 0x0
+
+    .line 16973834
+    :goto_a
+    invoke-virtual {v0, v1}, Lu46/w;->z0(Ljava/util/LinkedHashMap;)V
+
+    .line 16973835
+    .line 16973836
+    .line 16973837
+    invoke-super {p0, p1}, Landroidx/lifecycle/MutableLiveData;->setValue(Ljava/lang/Object;)V
+
+    .line 16973838
+    .line 16973839
+    .line 16973840
+    return-void
+.end method

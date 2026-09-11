@@ -1,0 +1,54 @@
+.class public final Lcom/bytedance/bdp/appbase/auth/ui/entity/AuthViewProperty$PrivacyPolicyConfig;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/bytedance/bdp/appbase/auth/ui/entity/AuthViewProperty;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "PrivacyPolicyConfig"
+.end annotation
+
+
+# instance fields
+.field public appName:Ljava/lang/String;
+
+.field public customerText:Ljava/lang/String;
+
+.field public privacyPolicySuffix:Ljava/lang/String;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x80a98
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 4
+
+    .prologue
+    .line 50462720
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50462723
+    iput-object p1, p0, Lcom/bytedance/bdp/appbase/auth/ui/entity/AuthViewProperty$PrivacyPolicyConfig;->appName:Ljava/lang/String;
+
+    .line 50462725
+    iput-object p2, p0, Lcom/bytedance/bdp/appbase/auth/ui/entity/AuthViewProperty$PrivacyPolicyConfig;->privacyPolicySuffix:Ljava/lang/String;
+
+    .line 50462727
+    iput-object p3, p0, Lcom/bytedance/bdp/appbase/auth/ui/entity/AuthViewProperty$PrivacyPolicyConfig;->customerText:Ljava/lang/String;
+
+    .line 50462729
+    return-void
+.end method

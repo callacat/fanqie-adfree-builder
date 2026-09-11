@@ -1,0 +1,97 @@
+.class public final synthetic Lld6/u;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljd6/q$a;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/comment/chapter/ChapterCommentDetailsFragment;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/social/comment/chapter/ChapterCommentDetailsFragment;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lld6/u;->a:Lcom/dragon/read/social/comment/chapter/ChapterCommentDetailsFragment;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lyc6/t2;)V
+    .registers 6
+
+    .prologue
+    .line 17039360
+    iget-object v0, p0, Lld6/u;->a:Lcom/dragon/read/social/comment/chapter/ChapterCommentDetailsFragment;
+
+    .line 17039362
+    iget-object v0, v0, Lcom/dragon/read/social/comment/chapter/ChapterCommentDetailsFragment;->C:Lld6/f1;
+
+    .line 17039364
+    iget-object v1, v0, Lld6/f1;->f:Lcom/dragon/read/rpc/model/GetItemReplyRequest;
+
+    .line 17039366
+    if-nez v1, :cond_9
+
+    .line 17039368
+    goto :goto_2c
+
+    .line 17039369
+    :cond_9
+    iget v2, p1, Lyc6/t2;->a:I
+
+    .line 17039371
+    int-to-long v2, v2
+
+    .line 17039372
+    iput-wide v2, v1, Lcom/dragon/read/rpc/model/GetItemReplyRequest;->offset:J
+
+    .line 17039374
+    iget-object v1, v0, Lld6/f1;->b:Lld6/u0;
+
+    .line 17039376
+    iget-object v2, v0, Lld6/f1;->f:Lcom/dragon/read/rpc/model/GetItemReplyRequest;
+
+    .line 17039378
+    invoke-virtual {v1, v2}, Lld6/u0;->a(Lcom/dragon/read/rpc/model/GetItemReplyRequest;)Lio/reactivex/Single;
+
+    .line 17039381
+    move-result-object v1
+
+    .line 17039382
+    new-instance v2, Lld6/c1;
+
+    .line 17039384
+    invoke-direct {v2, v0, p1}, Lld6/c1;-><init>(Lld6/f1;Lyc6/t2;)V
+
+    .line 17039387
+    invoke-virtual {v1, v2}, Lio/reactivex/Single;->map(Lio/reactivex/functions/Function;)Lio/reactivex/Single;
+
+    .line 17039390
+    move-result-object p1
+
+    .line 17039391
+    new-instance v1, Lld6/a1;
+
+    .line 17039393
+    invoke-direct {v1, v0}, Lld6/a1;-><init>(Lld6/f1;)V
+
+    .line 17039396
+    new-instance v2, Lld6/b1;
+
+    .line 17039398
+    invoke-direct {v2, v0}, Lld6/b1;-><init>(Lld6/f1;)V
+
+    .line 17039401
+    invoke-virtual {p1, v1, v2}, Lio/reactivex/Single;->subscribe(Lio/reactivex/functions/Consumer;Lio/reactivex/functions/Consumer;)Lio/reactivex/disposables/Disposable;
+
+    .line 17039404
+    :goto_2c
+    return-void
+.end method

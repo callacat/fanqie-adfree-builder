@@ -1,0 +1,538 @@
+.class public final Lwr0/a$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lwr0/a;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "a"
+.end annotation
+
+
+# instance fields
+.field public final a:I
+
+.field public final b:Z
+
+.field public final c:I
+
+.field public final d:I
+
+.field public final e:Z
+
+.field public final f:F
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x82e33
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/app/Activity;)V
+    .registers 9
+
+    .prologue
+    .line 17170432
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 17170435
+    invoke-virtual {p1}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+
+    .line 17170438
+    move-result-object v0
+
+    .line 17170439
+    invoke-virtual {v0}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    .line 17170442
+    move-result-object v1
+
+    .line 17170443
+    iget v1, v1, Landroid/content/res/Configuration;->orientation:I
+
+    .line 17170445
+    const/4 v2, 0x0
+
+    .line 17170446
+    const/4 v3, 0x1
+
+    .line 17170447
+    if-ne v1, v3, :cond_13
+
+    .line 17170449
+    const/4 v1, 0x1
+
+    .line 17170450
+    goto :goto_14
+
+    .line 17170451
+    :cond_13
+    const/4 v1, 0x0
+
+    .line 17170452
+    :goto_14
+    iput-boolean v1, p0, Lwr0/a$a;->e:Z
+
+    .line 17170454
+    new-instance v4, Landroid/util/DisplayMetrics;
+
+    .line 17170456
+    invoke-direct {v4}, Landroid/util/DisplayMetrics;-><init>()V
+
+    .line 17170459
+    invoke-virtual {p1}, Landroid/app/Activity;->getWindowManager()Landroid/view/WindowManager;
+
+    .line 17170462
+    move-result-object v5
+
+    .line 17170463
+    invoke-interface {v5}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
+
+    .line 17170466
+    move-result-object v5
+
+    .line 17170467
+    invoke-virtual {v5, v4}, Landroid/view/Display;->getRealMetrics(Landroid/util/DisplayMetrics;)V
+
+    .line 17170470
+    iget v5, v4, Landroid/util/DisplayMetrics;->widthPixels:I
+
+    .line 17170472
+    int-to-float v5, v5
+
+    .line 17170473
+    iget v6, v4, Landroid/util/DisplayMetrics;->density:F
+
+    .line 17170475
+    div-float/2addr v5, v6
+
+    .line 17170476
+    iget v4, v4, Landroid/util/DisplayMetrics;->heightPixels:I
+
+    .line 17170478
+    int-to-float v4, v4
+
+    .line 17170479
+    div-float/2addr v4, v6
+
+    .line 17170480
+    invoke-static {v5, v4}, Ljava/lang/Math;->min(FF)F
+
+    .line 17170483
+    move-result v4
+
+    .line 17170484
+    iput v4, p0, Lwr0/a$a;->f:F
+
+    .line 17170486
+    const-string v4, "status_bar_height"
+
+    .line 17170488
+    invoke-static {v0, v4}, Lwr0/a$a;->b(Landroid/content/res/Resources;Ljava/lang/String;)I
+
+    .line 17170491
+    move-result v0
+
+    .line 17170492
+    iput v0, p0, Lwr0/a$a;->a:I
+
+    .line 17170494
+    new-instance v0, Landroid/util/TypedValue;
+
+    .line 17170496
+    invoke-direct {v0}, Landroid/util/TypedValue;-><init>()V
+
+    .line 17170499
+    invoke-virtual {p1}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+
+    .line 17170502
+    move-result-object v4
+
+    .line 17170503
+    const v5, 0x10102eb
+
+    .line 17170506
+    invoke-virtual {v4, v5, v0, v3}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
+
+    .line 17170509
+    iget v0, v0, Landroid/util/TypedValue;->data:I
+
+    .line 17170511
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    .line 17170514
+    move-result-object v4
+
+    .line 17170515
+    invoke-virtual {v4}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 17170518
+    move-result-object v4
+
+    .line 17170519
+    invoke-static {v0, v4}, Landroid/util/TypedValue;->complexToDimensionPixelSize(ILandroid/util/DisplayMetrics;)I
+
+    .line 17170522
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    .line 17170525
+    move-result-object v0
+
+    .line 17170526
+    invoke-static {p1}, Lwr0/a$a;->c(Landroid/content/Context;)Z
+
+    .line 17170529
+    move-result v4
+
+    .line 17170530
+    if-eqz v4, :cond_70
+
+    .line 17170532
+    if-eqz v1, :cond_69
+
+    .line 17170534
+    const-string v1, "navigation_bar_height"
+
+    .line 17170536
+    goto :goto_6b
+
+    .line 17170537
+    :cond_69
+    const-string v1, "navigation_bar_height_landscape"
+
+    .line 17170539
+    :goto_6b
+    invoke-static {v0, v1}, Lwr0/a$a;->b(Landroid/content/res/Resources;Ljava/lang/String;)I
+
+    .line 17170542
+    move-result v0
+
+    .line 17170543
+    goto :goto_71
+
+    .line 17170544
+    :cond_70
+    const/4 v0, 0x0
+
+    .line 17170545
+    :goto_71
+    iput v0, p0, Lwr0/a$a;->c:I
+
+    .line 17170547
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    .line 17170550
+    move-result-object v1
+
+    .line 17170551
+    invoke-static {p1}, Lwr0/a$a;->c(Landroid/content/Context;)Z
+
+    .line 17170554
+    move-result p1
+
+    .line 17170555
+    if-eqz p1, :cond_84
+
+    .line 17170557
+    const-string p1, "navigation_bar_width"
+
+    .line 17170559
+    invoke-static {v1, p1}, Lwr0/a$a;->b(Landroid/content/res/Resources;Ljava/lang/String;)I
+
+    .line 17170562
+    move-result p1
+
+    .line 17170563
+    goto :goto_85
+
+    .line 17170564
+    :cond_84
+    const/4 p1, 0x0
+
+    .line 17170565
+    :goto_85
+    iput p1, p0, Lwr0/a$a;->d:I
+
+    .line 17170567
+    if-lez v0, :cond_8a
+
+    .line 17170569
+    const/4 v2, 0x1
+
+    .line 17170570
+    :cond_8a
+    iput-boolean v2, p0, Lwr0/a$a;->b:Z
+
+    .line 17170572
+    return-void
+.end method
+
+.method public static a(Landroid/content/res/Resources;Ljava/lang/String;Ljava/lang/String;)I
+    .registers 6
+    .annotation runtime Lme/ele/lancet/base/annotations/Proxy;
+        value = "getIdentifier"
+    .end annotation
+
+    .annotation runtime Lme/ele/lancet/base/annotations/Skip;
+        value = {
+            "com.bytedance.frameworks.plugin.core.res.MiraResourcesWrapper"
+        }
+    .end annotation
+
+    .annotation runtime Lme/ele/lancet/base/annotations/TargetClass;
+        value = "android.content.res.Resources"
+    .end annotation
+
+    .prologue
+    .line 50659328
+    const/4 v0, 0x0
+
+    .line 50659329
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 50659332
+    sget-object v0, Lcom/dragon/base/ssconfig/template/ResourceOpt;->a:Lcom/dragon/base/ssconfig/template/ResourceOpt$a;
+
+    .line 50659334
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50659337
+    sget-boolean v0, Lcom/dragon/base/ssconfig/template/ResourceOpt;->f:Z
+
+    .line 50659339
+    const-string v1, "android"
+
+    .line 50659341
+    const-string v2, ""
+
+    .line 50659343
+    if-nez v0, :cond_21
+
+    .line 50659345
+    invoke-virtual {p0, p1, p2, v1}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 50659348
+    move-result p0
+
+    .line 50659349
+    invoke-static {p0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50659352
+    move-result-object p0
+
+    .line 50659353
+    invoke-static {p0, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659356
+    invoke-virtual {p0}, Ljava/lang/Integer;->intValue()I
+
+    .line 50659359
+    move-result p0
+
+    .line 50659360
+    return p0
+
+    .line 50659361
+    :cond_21
+    sget-object v0, Lfa6/b;->a:Lfa6/b;
+
+    .line 50659363
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 50659366
+    invoke-static {p1, p2, v1}, Lfa6/b;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Integer;
+
+    .line 50659369
+    move-result-object v0
+
+    .line 50659370
+    if-eqz v0, :cond_31
+
+    .line 50659372
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    .line 50659375
+    move-result p0
+
+    .line 50659376
+    goto :goto_47
+
+    .line 50659377
+    :cond_31
+    invoke-virtual {p0, p1, p2, v1}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 50659380
+    move-result p0
+
+    .line 50659381
+    invoke-static {p0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50659384
+    move-result-object p0
+
+    .line 50659385
+    invoke-static {p0, v2}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 50659388
+    invoke-virtual {p0}, Ljava/lang/Number;->intValue()I
+
+    .line 50659391
+    move-result v0
+
+    .line 50659392
+    invoke-static {v0, p1, p2, v1}, Lfa6/b;->b(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 50659395
+    invoke-virtual {p0}, Ljava/lang/Number;->intValue()I
+
+    .line 50659398
+    move-result p0
+
+    .line 50659399
+    :goto_47
+    return p0
+.end method
+
+.method public static b(Landroid/content/res/Resources;Ljava/lang/String;)I
+    .registers 3
+
+    .prologue
+    .line 33685504
+    const-string v0, "dimen"
+
+    .line 33685506
+    invoke-static {p0, p1, v0}, Lwr0/a$a;->a(Landroid/content/res/Resources;Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 33685509
+    move-result p1
+
+    .line 33685510
+    if-lez p1, :cond_d
+
+    .line 33685512
+    invoke-virtual {p0, p1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    .line 33685515
+    move-result p0
+
+    .line 33685516
+    goto :goto_e
+
+    .line 33685517
+    :cond_d
+    const/4 p0, 0x0
+
+    .line 33685518
+    :goto_e
+    return p0
+.end method
+
+.method public static c(Landroid/content/Context;)Z
+    .registers 4
+
+    .prologue
+    .line 17039360
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    .line 17039363
+    move-result-object v0
+
+    .line 17039364
+    const-string v1, "bool"
+
+    .line 17039366
+    const-string v2, "config_showNavigationBar"
+
+    .line 17039368
+    invoke-static {v0, v2, v1}, Lwr0/a$a;->a(Landroid/content/res/Resources;Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 17039371
+    move-result v1
+
+    .line 17039372
+    const/4 v2, 0x1
+
+    .line 17039373
+    if-eqz v1, :cond_2a
+
+    .line 17039375
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
+
+    .line 17039378
+    move-result p0
+
+    .line 17039379
+    sget-object v0, Lwr0/a;->f:Ljava/lang/String;
+
+    .line 17039381
+    const-string v1, "1"
+
+    .line 17039383
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 17039386
+    move-result v1
+
+    .line 17039387
+    if-eqz v1, :cond_1f
+
+    .line 17039389
+    const/4 v2, 0x0
+
+    .line 17039390
+    goto :goto_29
+
+    .line 17039391
+    :cond_1f
+    const-string v1, "0"
+
+    .line 17039393
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 17039396
+    move-result v0
+
+    .line 17039397
+    if-eqz v0, :cond_28
+
+    .line 17039399
+    goto :goto_29
+
+    .line 17039400
+    :cond_28
+    move v2, p0
+
+    .line 17039401
+    :goto_29
+    return v2
+
+    .line 17039402
+    :cond_2a
+    invoke-static {p0}, Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
+
+    .line 17039405
+    move-result-object p0
+
+    .line 17039406
+    invoke-virtual {p0}, Landroid/view/ViewConfiguration;->hasPermanentMenuKey()Z
+
+    .line 17039409
+    move-result p0
+
+    .line 17039410
+    xor-int/2addr p0, v2
+
+    .line 17039411
+    return p0
+.end method

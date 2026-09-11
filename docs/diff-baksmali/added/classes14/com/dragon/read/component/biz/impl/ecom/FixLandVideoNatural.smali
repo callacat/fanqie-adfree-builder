@@ -1,0 +1,132 @@
+.class public final Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural$a;
+    }
+.end annotation
+
+
+# static fields
+.field public static final a:Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural$a;
+
+.field public static final b:Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;
+
+
+# instance fields
+.field public final enable:Z
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "enable"
+    .end annotation
+.end field
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 4
+
+    .prologue
+    .line 262144
+    const v0, 0x9228a
+
+    .line 262147
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 262150
+    new-instance v0, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural$a;
+
+    .line 262152
+    invoke-direct {v0}, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural$a;-><init>()V
+
+    .line 262155
+    sput-object v0, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;->a:Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural$a;
+
+    .line 262157
+    const-class v0, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;
+
+    .line 262159
+    const-class v1, Lcom/dragon/read/component/biz/impl/ecom/IFixLandVideoNatural;
+
+    .line 262161
+    const-string v2, "fix_land_video_natural_ecom"
+
+    .line 262163
+    invoke-static {v2, v0, v1}, Lcom/dragon/read/base/ssconfig/SsConfigMgr;->prepareAB(Ljava/lang/String;Ljava/lang/Class;Ljava/lang/Class;)V
+
+    .line 262166
+    new-instance v0, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;
+
+    .line 262168
+    const/4 v1, 0x0
+
+    .line 262169
+    const/4 v2, 0x1
+
+    .line 262170
+    const/4 v3, 0x0
+
+    .line 262171
+    invoke-direct {v0, v1, v2, v3}, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;-><init>(ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 262174
+    sput-object v0, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;->b:Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;
+
+    .line 262176
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 4
+
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x0
+
+    invoke-direct {p0, v2, v0, v1}, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;-><init>(ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Z)V
+    .registers 2
+
+    .prologue
+    .line 16908288
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16908291
+    iput-boolean p1, p0, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;->enable:Z
+
+    .line 16908293
+    return-void
+.end method
+
+.method public synthetic constructor <init>(ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .registers 4
+
+    .prologue
+    .line 50528256
+    const/4 p3, 0x1
+
+    .line 50528257
+    and-int/2addr p2, p3
+
+    .line 50528258
+    if-eqz p2, :cond_5
+
+    .line 50528260
+    const/4 p1, 0x1
+
+    .line 50528261
+    :cond_5
+    invoke-direct {p0, p1}, Lcom/dragon/read/component/biz/impl/ecom/FixLandVideoNatural;-><init>(Z)V
+
+    .line 50528264
+    return-void
+.end method

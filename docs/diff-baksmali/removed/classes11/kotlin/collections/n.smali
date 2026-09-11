@@ -1,0 +1,36 @@
+.class public final synthetic Lkotlin/collections/n;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# instance fields
+.field public final synthetic a:[Z
+
+
+# direct methods
+.method public synthetic constructor <init>([Z)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lkotlin/collections/n;->a:[Z
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke()Ljava/lang/Object;
+    .registers 2
+
+    iget-object v0, p0, Lkotlin/collections/n;->a:[Z
+
+    invoke-static {v0}, Lkotlin/collections/ArraysKt___ArraysKt;->e([Z)Ljava/util/Iterator;
+
+    move-result-object v0
+
+    return-object v0
+.end method

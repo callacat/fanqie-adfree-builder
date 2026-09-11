@@ -1,0 +1,47 @@
+.class public interface abstract annotation Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig$Scene;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/annotation/Annotation;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x2609
+    name = "Scene"
+.end annotation
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig$Scene$a;
+    }
+.end annotation
+
+.annotation runtime Ljava/lang/annotation/Retention;
+    value = .enum Ljava/lang/annotation/RetentionPolicy;->RUNTIME:Ljava/lang/annotation/RetentionPolicy;
+.end annotation
+
+
+# static fields
+.field public static final Companion:Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig$Scene$a;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x7e243
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    sget-object v0, Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig$Scene$a;->a:Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig$Scene$a;
+
+    sput-object v0, Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig$Scene;->Companion:Lcom/bytedance/android/ad/data/base/model/applink/AdAppLinkEventConfig$Scene$a;
+
+    return-void
+.end method

@@ -1,0 +1,51 @@
+.class public final synthetic Llh6/s;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Llh6/u;
+
+
+# direct methods
+.method public synthetic constructor <init>(Llh6/u;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Llh6/s;->a:Llh6/u;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    iget-object v0, p0, Llh6/s;->a:Llh6/u;
+
+    .line 16908290
+    check-cast p1, Ljava/lang/Throwable;
+
+    .line 16908292
+    iget-object p1, v0, Llh6/u;->d:Llh6/v;
+
+    .line 16908294
+    if-eqz p1, :cond_b
+
+    .line 16908296
+    invoke-virtual {p1}, Lnh6/v;->e()V
+
+    .line 16908299
+    :cond_b
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 16908301
+    return-object p1
+.end method

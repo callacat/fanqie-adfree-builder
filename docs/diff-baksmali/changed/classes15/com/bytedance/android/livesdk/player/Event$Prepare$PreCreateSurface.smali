@@ -1,0 +1,85 @@
+## classes15/com/bytedance/android/livesdk/player/Event$Prepare$PreCreateSurface.smali
+# added=0 removed=0 changed=2
+
+.method public constructor <init>(Landroid/content/Context;)V
+[MOD-CHANGED]
+.method public constructor <init>(Landroid/content/Context;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    const/4 v0, 0x0
+
+    .line 16908293
+    invoke-direct {p0, v0}, Lcom/bytedance/android/livesdk/player/Event$Prepare;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 16908296
+    iput-object p1, p0, Lcom/bytedance/android/livesdk/player/Event$Prepare$PreCreateSurface;->activity:Landroid/content/Context;
+
+    .line 16908298
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Landroid/content/Context;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908290
+    .line 16908291
+    .line 16908292
+    const/4 v0, 0x0
+
+    .line 16908293
+    invoke-direct {p0, v0}, Lcom/bytedance/android/livesdk/player/Event$Prepare;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 16908294
+    .line 16908295
+    .line 16908296
+    iput-object p1, p0, Lcom/bytedance/android/livesdk/player/Event$Prepare$PreCreateSurface;->activity:Landroid/content/Context;
+
+    .line 16908297
+    .line 16908298
+    return-void
+.end method
+
+
+.method public final getActivity()Landroid/content/Context;
+[MOD-CHANGED]
+.method public final getActivity()Landroid/content/Context;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lcom/bytedance/android/livesdk/player/Event$Prepare$PreCreateSurface;->activity:Landroid/content/Context;
+
+    .line 2
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getActivity()Landroid/content/Context;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lcom/bytedance/android/livesdk/player/Event$Prepare$PreCreateSurface;->activity:Landroid/content/Context;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+

@@ -1,0 +1,64 @@
+## classes3/gc4/x1.smali
+# added=0 removed=0 changed=1
+
+.method public final onClick(Landroid/view/View;)V
+[MOD-CHANGED]
+.method public final onClick(Landroid/view/View;)V
+    .registers 4
+
+    .prologue
+    .line 16908288
+    iget-object p1, p0, Lgc4/x1;->a:Lcom/dragon/read/component/biz/impl/videocollection/VideoCollectionDeliveryFragmentImpl;
+
+    .line 16908290
+    sget v0, Lcom/dragon/read/component/biz/impl/videocollection/VideoCollectionDeliveryFragmentImpl;->y:I
+
+    .line 16908292
+    sget v0, Lcom/dragon/read/component/biz/impl/videocollection/a$a;->a:I
+
+    .line 16908294
+    const/4 v0, 0x0
+
+    .line 16908295
+    const/4 v1, 0x0
+
+    .line 16908296
+    invoke-virtual {p1, v1, v0}, Lcom/dragon/read/component/biz/impl/videocollection/VideoCollectionDeliveryFragmentImpl;->Hd(ZLlx3/c;)V
+
+    .line 16908299
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public final onClick(Landroid/view/View;)V
+    .registers 4
+
+    .prologue
+    .line 16908288
+    iget-object p1, p0, Lgc4/x1;->a:Lcom/dragon/read/component/biz/impl/videocollection/VideoCollectionDeliveryFragmentImpl;
+
+    .line 16908289
+    .line 16908290
+    sget v0, Lcom/dragon/read/component/biz/impl/videocollection/VideoCollectionDeliveryFragmentImpl;->y:I
+
+    .line 16908291
+    .line 16908292
+    sget v0, Lcom/dragon/read/component/biz/impl/videocollection/a$a;->a:I
+
+    .line 16908293
+    .line 16908294
+    const/4 v0, 0x0
+
+    .line 16908295
+    const/4 v1, 0x0
+
+    .line 16908296
+    invoke-virtual {p1, v1, v0}, Lcom/dragon/read/component/biz/impl/videocollection/VideoCollectionDeliveryFragmentImpl;->Hd(ZLlx3/c;)V
+
+    .line 16908297
+    .line 16908298
+    .line 16908299
+    return-void
+.end method
+
+

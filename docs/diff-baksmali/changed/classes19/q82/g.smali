@@ -1,0 +1,352 @@
+## classes19/q82/g.smali
+# added=0 removed=0 changed=3
+
+.method public static constructor <clinit>()V
+[MOD-CHANGED]
+.method public static constructor <clinit>()V
+    .registers 3
+
+    .prologue
+    .line 262144
+    const v0, 0x8b768
+
+    .line 262147
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 262150
+    new-instance v0, Lq82/g$b;
+
+    .line 262152
+    invoke-direct {v0}, Lq82/g$b;-><init>()V
+
+    .line 262155
+    sput-object v0, Lq82/g;->Companion:Lq82/g$b;
+
+    .line 262157
+    const/4 v0, 0x1
+
+    .line 262158
+    new-array v0, v0, [Lkotlin/Lazy;
+
+    .line 262160
+    sget-object v1, Lkotlin/LazyThreadSafetyMode;->PUBLICATION:Lkotlin/LazyThreadSafetyMode;
+
+    .line 262162
+    new-instance v2, Lq82/f;
+
+    .line 262164
+    invoke-direct {v2}, Lq82/f;-><init>()V
+
+    .line 262167
+    invoke-static {v1, v2}, Lkotlin/LazyKt;->lazy(Lkotlin/LazyThreadSafetyMode;Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    .line 262170
+    move-result-object v1
+
+    .line 262171
+    const/4 v2, 0x0
+
+    .line 262172
+    aput-object v1, v0, v2
+
+    .line 262174
+    sput-object v0, Lq82/g;->b:[Lkotlin/Lazy;
+
+    .line 262176
+    new-instance v0, Lq82/g;
+
+    .line 262178
+    const/4 v1, 0x0
+
+    .line 262179
+    invoke-direct {v0, v1}, Lq82/g;-><init>(Ljava/lang/Object;)V
+
+    .line 262182
+    sput-object v0, Lq82/g;->c:Lq82/g;
+
+    .line 262184
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public static constructor <clinit>()V
+    .registers 3
+
+    .prologue
+    .line 262144
+    const v0, 0x8b768
+
+    .line 262145
+    .line 262146
+    .line 262147
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 262148
+    .line 262149
+    .line 262150
+    new-instance v0, Lq82/g$b;
+
+    .line 262151
+    .line 262152
+    invoke-direct {v0}, Lq82/g$b;-><init>()V
+
+    .line 262153
+    .line 262154
+    .line 262155
+    sput-object v0, Lq82/g;->Companion:Lq82/g$b;
+
+    .line 262156
+    .line 262157
+    const/4 v0, 0x1
+
+    .line 262158
+    new-array v0, v0, [Lkotlin/Lazy;
+
+    .line 262159
+    .line 262160
+    sget-object v1, Lkotlin/LazyThreadSafetyMode;->PUBLICATION:Lkotlin/LazyThreadSafetyMode;
+
+    .line 262161
+    .line 262162
+    new-instance v2, Lq82/f;
+
+    .line 262163
+    .line 262164
+    invoke-direct {v2}, Lq82/f;-><init>()V
+
+    .line 262165
+    .line 262166
+    .line 262167
+    invoke-static {v1, v2}, Lkotlin/LazyKt;->lazy(Lkotlin/LazyThreadSafetyMode;Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    .line 262168
+    .line 262169
+    .line 262170
+    move-result-object v1
+
+    .line 262171
+    const/4 v2, 0x0
+
+    .line 262172
+    aput-object v1, v0, v2
+
+    .line 262173
+    .line 262174
+    sput-object v0, Lq82/g;->b:[Lkotlin/Lazy;
+
+    .line 262175
+    .line 262176
+    new-instance v0, Lq82/g;
+
+    .line 262177
+    .line 262178
+    const/4 v1, 0x0
+
+    .line 262179
+    invoke-direct {v0, v1}, Lq82/g;-><init>(Ljava/lang/Object;)V
+
+    .line 262180
+    .line 262181
+    .line 262182
+    sput-object v0, Lq82/g;->c:Lq82/g;
+
+    .line 262183
+    .line 262184
+    return-void
+.end method
+
+
+.method public synthetic constructor <init>(ILjava/util/List;)V
+[MOD-CHANGED]
+.method public synthetic constructor <init>(ILjava/util/List;)V
+    .registers 5
+
+    .prologue
+    .line 33751040
+    and-int/lit8 v0, p1, 0x0
+
+    .line 33751042
+    if-eqz v0, :cond_e
+
+    .line 33751044
+    sget-object v0, Lq82/g$a;->a:Lq82/g$a;
+
+    .line 33751046
+    invoke-virtual {v0}, Lq82/g$a;->getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 33751049
+    move-result-object v0
+
+    .line 33751050
+    const/4 v1, 0x0
+
+    .line 33751051
+    invoke-static {p1, v1, v0}, Lkotlinx/serialization/internal/PluginExceptionsKt;->throwMissingFieldException(IILkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 33751054
+    :cond_e
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33751057
+    and-int/lit8 p1, p1, 0x1
+
+    .line 33751059
+    if-nez p1, :cond_1c
+
+    .line 33751061
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 33751064
+    move-result-object p1
+
+    .line 33751065
+    iput-object p1, p0, Lq82/g;->a:Ljava/util/List;
+
+    .line 33751067
+    goto :goto_1e
+
+    .line 33751068
+    :cond_1c
+    iput-object p2, p0, Lq82/g;->a:Ljava/util/List;
+
+    .line 33751070
+    :goto_1e
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public synthetic constructor <init>(ILjava/util/List;)V
+    .registers 5
+
+    .prologue
+    .line 33751040
+    and-int/lit8 v0, p1, 0x0
+
+    .line 33751041
+    .line 33751042
+    if-eqz v0, :cond_e
+
+    .line 33751043
+    .line 33751044
+    sget-object v0, Lq82/g$a;->a:Lq82/g$a;
+
+    .line 33751045
+    .line 33751046
+    invoke-virtual {v0}, Lq82/g$a;->getDescriptor()Lkotlinx/serialization/descriptors/SerialDescriptor;
+
+    .line 33751047
+    .line 33751048
+    .line 33751049
+    move-result-object v0
+
+    .line 33751050
+    const/4 v1, 0x0
+
+    .line 33751051
+    invoke-static {p1, v1, v0}, Lkotlinx/serialization/internal/PluginExceptionsKt;->throwMissingFieldException(IILkotlinx/serialization/descriptors/SerialDescriptor;)V
+
+    .line 33751052
+    .line 33751053
+    .line 33751054
+    :cond_e
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 33751055
+    .line 33751056
+    .line 33751057
+    and-int/lit8 p1, p1, 0x1
+
+    .line 33751058
+    .line 33751059
+    if-nez p1, :cond_1c
+
+    .line 33751060
+    .line 33751061
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 33751062
+    .line 33751063
+    .line 33751064
+    move-result-object p1
+
+    .line 33751065
+    iput-object p1, p0, Lq82/g;->a:Ljava/util/List;
+
+    .line 33751066
+    .line 33751067
+    goto :goto_1e
+
+    .line 33751068
+    :cond_1c
+    iput-object p2, p0, Lq82/g;->a:Ljava/util/List;
+
+    .line 33751069
+    .line 33751070
+    :goto_1e
+    return-void
+.end method
+
+
+.method public constructor <init>(Ljava/lang/Object;)V
+[MOD-CHANGED]
+.method public constructor <init>(Ljava/lang/Object;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 16908291
+    move-result-object p1
+
+    .line 16908292
+    const/4 v0, 0x0
+
+    .line 16908293
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908296
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16908299
+    iput-object p1, p0, Lq82/g;->a:Ljava/util/List;
+
+    .line 16908301
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Ljava/lang/Object;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    invoke-static {}, Lkotlin/collections/CollectionsKt;->emptyList()Ljava/util/List;
+
+    .line 16908289
+    .line 16908290
+    .line 16908291
+    move-result-object p1
+
+    .line 16908292
+    const/4 v0, 0x0
+
+    .line 16908293
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908294
+    .line 16908295
+    .line 16908296
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16908297
+    .line 16908298
+    .line 16908299
+    iput-object p1, p0, Lq82/g;->a:Ljava/util/List;
+
+    .line 16908300
+    .line 16908301
+    return-void
+.end method
+
+

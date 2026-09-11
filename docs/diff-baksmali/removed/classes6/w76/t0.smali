@@ -1,0 +1,63 @@
+.class public final synthetic Lw76/t0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# instance fields
+.field public final synthetic a:Landroid/content/Context;
+
+
+# direct methods
+.method public synthetic constructor <init>(Landroid/content/Context;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lw76/t0;->a:Landroid/content/Context;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke()Ljava/lang/Object;
+    .registers 5
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Lw76/t0;->a:Landroid/content/Context;
+
+    .line 131073
+    .line 131074
+    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    .line 131075
+    .line 131076
+    .line 131077
+    move-result-object v0
+
+    .line 131078
+    const v1, 0x7f0507a9
+
+    .line 131079
+    .line 131080
+    .line 131081
+    const/4 v2, 0x0
+
+    .line 131082
+    const/4 v3, 0x0
+
+    .line 131083
+    invoke-virtual {v0, v1, v2, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+
+    .line 131084
+    .line 131085
+    .line 131086
+    move-result-object v0
+
+    .line 131087
+    return-object v0
+.end method

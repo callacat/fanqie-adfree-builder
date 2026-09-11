@@ -1,0 +1,80 @@
+.class public final Lx05/o$b;
+.super Landroid/view/ViewOutlineProvider;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lx05/o;-><init>(Landroid/view/View;Lcom/dragon/read/base/impression/c;Ls05/r;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lx05/o;
+
+
+# direct methods
+.method public constructor <init>(Lx05/o;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lx05/o$b;->a:Lx05/o;
+
+    .line 16842754
+    invoke-direct {p0}, Landroid/view/ViewOutlineProvider;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+
+# virtual methods
+.method public final getOutline(Landroid/view/View;Landroid/graphics/Outline;)V
+    .registers 9
+
+    .prologue
+    .line 33751040
+    const/4 v1, 0x0
+
+    .line 33751041
+    const/4 v2, 0x0
+
+    .line 33751042
+    invoke-virtual {p1}, Landroid/view/View;->getMeasuredWidth()I
+
+    .line 33751045
+    move-result v3
+
+    .line 33751046
+    invoke-virtual {p1}, Landroid/view/View;->getMeasuredHeight()I
+
+    .line 33751049
+    move-result v4
+
+    .line 33751050
+    iget-object p1, p0, Lx05/o$b;->a:Lx05/o;
+
+    .line 33751052
+    invoke-virtual {p1}, Lx05/o;->z2()I
+
+    .line 33751055
+    move-result p1
+
+    .line 33751056
+    int-to-float v5, p1
+
+    .line 33751057
+    move-object v0, p2
+
+    .line 33751058
+    invoke-virtual/range {v0 .. v5}, Landroid/graphics/Outline;->setRoundRect(IIIIF)V
+
+    .line 33751061
+    return-void
+.end method

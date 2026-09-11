@@ -1,0 +1,275 @@
+.class public final Lvv1/f;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final a:Ljava/lang/String;
+
+.field public final b:Liu1/h;
+
+.field public c:Lorg/json/JSONObject;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x8a726
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;Lorg/json/JSONObject;Liu1/h;)V
+    .registers 4
+
+    .prologue
+    .line 50462720
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50462723
+    iput-object p1, p0, Lvv1/f;->a:Ljava/lang/String;
+
+    .line 50462725
+    iput-object p3, p0, Lvv1/f;->b:Liu1/h;
+
+    .line 50462727
+    iput-object p2, p0, Lvv1/f;->c:Lorg/json/JSONObject;
+
+    .line 50462729
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .registers 6
+
+    .prologue
+    .line 393216
+    new-instance v0, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 393218
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 393221
+    move-result-object v1
+
+    .line 393222
+    invoke-direct {v0, v1}, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;-><init>(Landroid/os/Looper;)V
+
+    .line 393225
+    :try_start_9
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 393227
+    invoke-static {}, Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;->getInstance()Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;
+
+    .line 393230
+    move-result-object v2
+
+    .line 393231
+    invoke-virtual {v2}, Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;->getTaskAwardUrl()Ljava/lang/String;
+
+    .line 393234
+    move-result-object v2
+
+    .line 393235
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 393238
+    iget-object v2, p0, Lvv1/f;->a:Ljava/lang/String;
+
+    .line 393240
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 393243
+    invoke-static {}, Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;->getInstance()Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;
+
+    .line 393246
+    move-result-object v2
+
+    .line 393247
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 393250
+    move-result-object v1
+
+    .line 393251
+    const/4 v3, 0x1
+
+    .line 393252
+    invoke-virtual {v2, v1, v3}, Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;->addCommonParams(Ljava/lang/String;Z)Ljava/lang/String;
+
+    .line 393255
+    move-result-object v1
+
+    .line 393256
+    iget-object v2, p0, Lvv1/f;->c:Lorg/json/JSONObject;
+
+    .line 393258
+    if-nez v2, :cond_33
+
+    .line 393260
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 393262
+    invoke-direct {v2}, Lorg/json/JSONObject;-><init>()V
+
+    .line 393265
+    iput-object v2, p0, Lvv1/f;->c:Lorg/json/JSONObject;
+
+    .line 393267
+    :cond_33
+    invoke-static {}, Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;->getInstance()Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;
+
+    .line 393270
+    move-result-object v2
+
+    .line 393271
+    iget-object v3, p0, Lvv1/f;->c:Lorg/json/JSONObject;
+
+    .line 393273
+    const/16 v4, 0x5000
+
+    .line 393275
+    invoke-virtual {v2, v4, v1, v3}, Lcom/bytedance/ug/sdk/luckycat/impl/manager/LuckyCatConfigManager;->executePost(ILjava/lang/String;Lorg/json/JSONObject;)Ljava/lang/String;
+
+    .line 393278
+    move-result-object v1
+
+    .line 393279
+    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 393282
+    move-result v2
+
+    .line 393283
+    if-eqz v2, :cond_4e
+
+    .line 393285
+    new-instance v1, Lvv1/f$a;
+
+    .line 393287
+    invoke-direct {v1, p0}, Lvv1/f$a;-><init>(Lvv1/f;)V
+
+    .line 393290
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 393293
+    return-void
+
+    .line 393294
+    :cond_4e
+    new-instance v2, Lorg/json/JSONObject;
+
+    .line 393296
+    invoke-direct {v2, v1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    .line 393299
+    invoke-static {v2}, Lcom/bytedance/ug/sdk/luckycat/impl/utils/t;->a(Lorg/json/JSONObject;)Z
+
+    .line 393302
+    move-result v1
+
+    .line 393303
+    if-nez v1, :cond_62
+
+    .line 393305
+    new-instance v1, Lvv1/f$b;
+
+    .line 393307
+    invoke-direct {v1, p0, v2}, Lvv1/f$b;-><init>(Lvv1/f;Lorg/json/JSONObject;)V
+
+    .line 393310
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 393313
+    return-void
+
+    .line 393314
+    :cond_62
+    const-string v1, "data"
+
+    .line 393316
+    invoke-virtual {v2, v1}, Lorg/json/JSONObject;->optJSONObject(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    .line 393319
+    move-result-object v1
+
+    .line 393320
+    if-eqz v1, :cond_7c
+
+    .line 393322
+    new-instance v2, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 393324
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 393327
+    move-result-object v3
+
+    .line 393328
+    invoke-direct {v2, v3}, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;-><init>(Landroid/os/Looper;)V
+
+    .line 393331
+    new-instance v3, Lvv1/f$c;
+
+    .line 393333
+    invoke-direct {v3, p0, v1}, Lvv1/f$c;-><init>(Lvv1/f;Lorg/json/JSONObject;)V
+
+    .line 393336
+    invoke-virtual {v2, v3}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 393339
+    goto :goto_97
+
+    .line 393340
+    :cond_7c
+    new-instance v1, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 393342
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 393345
+    move-result-object v2
+
+    .line 393346
+    invoke-direct {v1, v2}, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;-><init>(Landroid/os/Looper;)V
+
+    .line 393349
+    new-instance v2, Lvv1/f$d;
+
+    .line 393351
+    invoke-direct {v2, p0}, Lvv1/f$d;-><init>(Lvv1/f;)V
+
+    .line 393354
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+    :try_end_8d
+    .catchall {:try_start_9 .. :try_end_8d} :catchall_8e
+
+    .line 393357
+    goto :goto_97
+
+    .line 393358
+    :catchall_8e
+    move-exception v1
+
+    .line 393359
+    new-instance v2, Lvv1/f$e;
+
+    .line 393361
+    invoke-direct {v2, p0, v1}, Lvv1/f$e;-><init>(Lvv1/f;Ljava/lang/Throwable;)V
+
+    .line 393364
+    invoke-virtual {v0, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 393367
+    :goto_97
+    return-void
+.end method

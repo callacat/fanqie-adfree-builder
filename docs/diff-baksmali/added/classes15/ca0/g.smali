@@ -1,0 +1,32 @@
+.class public final Lca0/g;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/bytedance/retrofit2/client/Client$Provider;
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final get()Lcom/bytedance/retrofit2/client/Client;
+    .registers 2
+
+    .prologue
+    .line 65536
+    new-instance v0, Lcom/bytedance/ttnet/retrofit/SsRetrofitClient;
+
+    .line 65538
+    invoke-direct {v0}, Lcom/bytedance/ttnet/retrofit/SsRetrofitClient;-><init>()V
+
+    .line 65541
+    return-object v0
+.end method

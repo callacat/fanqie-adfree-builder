@@ -1,0 +1,1519 @@
+.class public Lcom/xiaomi/push/service/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/xiaomi/push/service/a$a;
+    }
+.end annotation
+
+
+# instance fields
+.field private a:I
+
+.field private a:J
+
+.field private final a:Landroid/content/SharedPreferences;
+
+.field private a:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+.field private a:Z
+
+.field private b:I
+
+.field private b:Z
+
+.field private c:I
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa47fb
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .registers 6
+
+    .prologue
+    .line 327680
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 327683
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 327685
+    invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>()V
+
+    .line 327688
+    iput-object v0, p0, Lcom/xiaomi/push/service/a;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 327690
+    invoke-static {}, Lcom/xiaomi/push/t;->a()Landroid/content/Context;
+
+    .line 327693
+    move-result-object v0
+
+    .line 327694
+    const-string v1, "mipush"
+
+    .line 327696
+    const/4 v2, 0x0
+
+    .line 327697
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    .line 327700
+    move-result-object v0
+
+    .line 327701
+    iput-object v0, p0, Lcom/xiaomi/push/service/a;->a:Landroid/content/SharedPreferences;
+
+    .line 327703
+    iget-object v1, p0, Lcom/xiaomi/push/service/a;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 327705
+    const-string v3, "app_info_restored"
+
+    .line 327707
+    invoke-interface {v0, v3, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 327710
+    move-result v3
+
+    .line 327711
+    invoke-virtual {v1, v3}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+
+    .line 327714
+    const-string v1, "info_restore_last_req_time"
+
+    .line 327716
+    const-wide/16 v3, 0x0
+
+    .line 327718
+    invoke-interface {v0, v1, v3, v4}, Landroid/content/SharedPreferences;->getLong(Ljava/lang/String;J)J
+
+    .line 327721
+    move-result-wide v3
+
+    .line 327722
+    iput-wide v3, p0, Lcom/xiaomi/push/service/a;->a:J
+
+    .line 327724
+    const-string v1, "info_restore_retry_cnt"
+
+    .line 327726
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    .line 327729
+    move-result v1
+
+    .line 327730
+    iput v1, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 327732
+    const-string v1, "info_restore_partial_fail"
+
+    .line 327734
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 327737
+    move-result v1
+
+    .line 327738
+    iput-boolean v1, p0, Lcom/xiaomi/push/service/a;->a:Z
+
+    .line 327740
+    const-string v1, "info_restore_full_fail"
+
+    .line 327742
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 327745
+    move-result v0
+
+    .line 327746
+    iput-boolean v0, p0, Lcom/xiaomi/push/service/a;->b:Z
+
+    .line 327748
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Lcom/xiaomi/push/service/a$1;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    invoke-direct {p0}, Lcom/xiaomi/push/service/a;-><init>()V
+
+    .line 16777219
+    return-void
+.end method
+
+.method public static a()Lcom/xiaomi/push/service/a;
+    .registers 1
+
+    .prologue
+    .line 65536
+    invoke-static {}, Lcom/xiaomi/push/service/a$a;->a()Lcom/xiaomi/push/service/a;
+
+    .line 65539
+    move-result-object v0
+
+    .line 65540
+    return-object v0
+.end method
+
+.method private a(Ljava/lang/String;)Ljava/util/Map;
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 17104896
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 17104898
+    const-string v1, "generateParamMap, eventType="
+
+    .line 17104900
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 17104903
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104906
+    const-string v1, ", mRetryCnt="
+
+    .line 17104908
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104911
+    iget v1, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 17104913
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 17104916
+    const-string v1, ", mLoopCnt="
+
+    .line 17104918
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104921
+    iget v1, p0, Lcom/xiaomi/push/service/a;->c:I
+
+    .line 17104923
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 17104926
+    const-string v1, ", mDataCnt="
+
+    .line 17104928
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17104931
+    iget v1, p0, Lcom/xiaomi/push/service/a;->a:I
+
+    .line 17104933
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 17104936
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17104939
+    move-result-object v0
+
+    .line 17104940
+    const-string v1, "AppInfoRestorer"
+
+    .line 17104942
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17104945
+    new-instance v0, Ljava/util/HashMap;
+
+    .line 17104947
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 17104950
+    const-string v1, "type_str"
+
+    .line 17104952
+    invoke-virtual {v0, v1, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17104955
+    iget p1, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 17104957
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 17104960
+    move-result-object p1
+
+    .line 17104961
+    const-string v1, "retry_cnt"
+
+    .line 17104963
+    invoke-virtual {v0, v1, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17104966
+    iget p1, p0, Lcom/xiaomi/push/service/a;->c:I
+
+    .line 17104968
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 17104971
+    move-result-object p1
+
+    .line 17104972
+    const-string v1, "loop_cnt"
+
+    .line 17104974
+    invoke-virtual {v0, v1, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17104977
+    iget p1, p0, Lcom/xiaomi/push/service/a;->a:I
+
+    .line 17104979
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 17104982
+    move-result-object p1
+
+    .line 17104983
+    const-string v1, "data_cnt"
+
+    .line 17104985
+    invoke-virtual {v0, v1, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17104988
+    return-object v0
+.end method
+
+.method private a()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    const/4 v0, 0x1
+
+    .line 196609
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 196611
+    const/4 v1, 0x0
+
+    .line 196612
+    const-string v2, "onRestoreSuccess"
+
+    .line 196614
+    aput-object v2, v0, v1
+
+    .line 196616
+    const-string v1, "AppInfoRestorer"
+
+    .line 196618
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196621
+    const-string v0, "success"
+
+    .line 196623
+    invoke-direct {p0, v0}, Lcom/xiaomi/push/service/a;->a(Ljava/lang/String;)Ljava/util/Map;
+
+    .line 196626
+    move-result-object v0
+
+    .line 196627
+    invoke-static {}, Lcom/xiaomi/push/fw;->a()Lcom/xiaomi/push/fw;
+
+    .line 196630
+    move-result-object v1
+
+    .line 196631
+    const-string v2, "info_restore"
+
+    .line 196633
+    invoke-virtual {v1, v2, v0}, Lcom/xiaomi/push/fw;->a(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 196636
+    return-void
+.end method
+
+.method private a(Lcom/xiaomi/push/il;)V
+    .registers 5
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x1
+
+    .line 17039361
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 17039363
+    const/4 v1, 0x0
+
+    .line 17039364
+    const-string v2, "onRestoreDataInvalid"
+
+    .line 17039366
+    aput-object v2, v0, v1
+
+    .line 17039368
+    const-string v1, "AppInfoRestorer"
+
+    .line 17039370
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17039373
+    const-string v0, "invalid_data"
+
+    .line 17039375
+    invoke-direct {p0, v0}, Lcom/xiaomi/push/service/a;->a(Ljava/lang/String;)Ljava/util/Map;
+
+    .line 17039378
+    move-result-object v0
+
+    .line 17039379
+    if-nez p1, :cond_18
+
+    .line 17039381
+    const-string p1, "empty"
+
+    .line 17039383
+    goto :goto_1c
+
+    .line 17039384
+    :cond_18
+    invoke-virtual {p1}, Lcom/xiaomi/push/il;->toString()Ljava/lang/String;
+
+    .line 17039387
+    move-result-object p1
+
+    .line 17039388
+    :goto_1c
+    const-string v1, "message"
+
+    .line 17039390
+    invoke-interface {v0, v1, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17039393
+    invoke-static {}, Lcom/xiaomi/push/fw;->a()Lcom/xiaomi/push/fw;
+
+    .line 17039396
+    move-result-object p1
+
+    .line 17039397
+    const-string v1, "info_restore"
+
+    .line 17039399
+    invoke-virtual {p1, v1, v0}, Lcom/xiaomi/push/fw;->a(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 17039402
+    return-void
+.end method
+
+.method private a(Lcom/xiaomi/push/service/XMPushService;Ljava/lang/String;)V
+    .registers 8
+
+    .prologue
+    .line 33947648
+    const/4 v0, 0x1
+
+    .line 33947649
+    new-array v1, v0, [Ljava/lang/Object;
+
+    .line 33947651
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 33947653
+    const-string v3, "requestAppInfo, offsetFlag="
+
+    .line 33947655
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 33947658
+    invoke-virtual {v2, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33947661
+    const-string v3, ", retryTimes="
+
+    .line 33947663
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33947666
+    iget v3, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 33947668
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 33947671
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 33947674
+    move-result-object v2
+
+    .line 33947675
+    const/4 v3, 0x0
+
+    .line 33947676
+    aput-object v2, v1, v3
+
+    .line 33947678
+    const-string v2, "AppInfoRestorer"
+
+    .line 33947680
+    invoke-static {v2, v1}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 33947683
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 33947686
+    move-result-wide v1
+
+    .line 33947687
+    iput-wide v1, p0, Lcom/xiaomi/push/service/a;->a:J
+
+    .line 33947689
+    iget-object v1, p0, Lcom/xiaomi/push/service/a;->a:Landroid/content/SharedPreferences;
+
+    .line 33947691
+    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 33947694
+    move-result-object v1
+
+    .line 33947695
+    const-string v2, "info_restore_last_req_time"
+
+    .line 33947697
+    iget-wide v3, p0, Lcom/xiaomi/push/service/a;->a:J
+
+    .line 33947699
+    invoke-interface {v1, v2, v3, v4}, Landroid/content/SharedPreferences$Editor;->putLong(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+
+    .line 33947702
+    move-result-object v1
+
+    .line 33947703
+    invoke-interface {v1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 33947706
+    new-instance v1, Lcom/xiaomi/push/it;
+
+    .line 33947708
+    invoke-direct {v1}, Lcom/xiaomi/push/it;-><init>()V
+
+    .line 33947711
+    sget-object v2, Lcom/xiaomi/push/ie;->aq:Lcom/xiaomi/push/ie;
+
+    .line 33947713
+    iget-object v2, v2, Lcom/xiaomi/push/ie;->a:Ljava/lang/String;
+
+    .line 33947715
+    invoke-virtual {v1, v2}, Lcom/xiaomi/push/it;->c(Ljava/lang/String;)Lcom/xiaomi/push/it;
+
+    .line 33947718
+    invoke-static {}, Lcom/xiaomi/push/service/as;->a()Ljava/lang/String;
+
+    .line 33947721
+    move-result-object v2
+
+    .line 33947722
+    invoke-virtual {v1, v2}, Lcom/xiaomi/push/it;->a(Ljava/lang/String;)Lcom/xiaomi/push/it;
+
+    .line 33947725
+    new-instance v2, Ljava/util/HashMap;
+
+    .line 33947727
+    invoke-direct {v2}, Ljava/util/HashMap;-><init>()V
+
+    .line 33947730
+    iput-object v2, v1, Lcom/xiaomi/push/it;->a:Ljava/util/Map;
+
+    .line 33947732
+    const-string v3, "offset"
+
+    .line 33947734
+    invoke-interface {v2, v3, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33947737
+    iget p2, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 33947739
+    if-le p2, v0, :cond_69
+
+    .line 33947741
+    iget-object v2, v1, Lcom/xiaomi/push/it;->a:Ljava/util/Map;
+
+    .line 33947743
+    sub-int/2addr p2, v0
+
+    .line 33947744
+    invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 33947747
+    move-result-object p2
+
+    .line 33947748
+    const-string v3, "retry_times"
+
+    .line 33947750
+    invoke-interface {v2, v3, p2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33947753
+    :cond_69
+    sget-object p2, Lcom/xiaomi/push/service/v;->a:Ljava/lang/String;
+
+    .line 33947755
+    sget-object v2, Lcom/xiaomi/push/hu;->i:Lcom/xiaomi/push/hu;
+
+    .line 33947757
+    const-string v3, "com.xiaomi.xmsf"
+
+    .line 33947759
+    invoke-static {v3, p2, v1, v2}, Lcom/xiaomi/push/service/ab;->a(Ljava/lang/String;Ljava/lang/String;Lcom/xiaomi/push/jf;Lcom/xiaomi/push/hu;)Lcom/xiaomi/push/iq;
+
+    .line 33947762
+    move-result-object p2
+
+    .line 33947763
+    invoke-virtual {p2, v0}, Lcom/xiaomi/push/iq;->b(Z)Lcom/xiaomi/push/iq;
+
+    .line 33947766
+    invoke-static {p2}, Lcom/xiaomi/push/je;->a(Lcom/xiaomi/push/jf;)[B
+
+    .line 33947769
+    move-result-object p2
+
+    .line 33947770
+    invoke-virtual {p1, v3, p2, v0}, Lcom/xiaomi/push/service/XMPushService;->a(Ljava/lang/String;[BZ)V
+
+    .line 33947773
+    return-void
+.end method
+
+.method public static synthetic a(Lcom/xiaomi/push/service/a;Lcom/xiaomi/push/service/XMPushService;)V
+    .registers 2
+
+    .prologue
+    .line 33554432
+    invoke-direct {p0, p1}, Lcom/xiaomi/push/service/a;->c(Lcom/xiaomi/push/service/XMPushService;)V
+
+    .line 33554435
+    return-void
+.end method
+
+.method private a()Z
+    .registers 9
+
+    .prologue
+    .line 458752
+    iget-object v0, p0, Lcom/xiaomi/push/service/a;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 458754
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 458757
+    move-result v0
+
+    .line 458758
+    const/4 v1, 0x0
+
+    .line 458759
+    if-eqz v0, :cond_a
+
+    .line 458761
+    return v1
+
+    .line 458762
+    :cond_a
+    iget v0, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 458764
+    const/16 v2, 0xa
+
+    .line 458766
+    const/4 v3, 0x1
+
+    .line 458767
+    if-lt v0, v2, :cond_35
+
+    .line 458769
+    new-array v0, v3, [Ljava/lang/Object;
+
+    .line 458771
+    const-string v2, "requestAppInfo, retry too much,  stop request"
+
+    .line 458773
+    aput-object v2, v0, v1
+
+    .line 458775
+    const-string v2, "AppInfoRestorer"
+
+    .line 458777
+    invoke-static {v2, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 458780
+    iget-boolean v0, p0, Lcom/xiaomi/push/service/a;->b:Z
+
+    .line 458782
+    if-nez v0, :cond_34
+
+    .line 458784
+    invoke-direct {p0}, Lcom/xiaomi/push/service/a;->c()V
+
+    .line 458787
+    iput-boolean v3, p0, Lcom/xiaomi/push/service/a;->b:Z
+
+    .line 458789
+    iget-object v0, p0, Lcom/xiaomi/push/service/a;->a:Landroid/content/SharedPreferences;
+
+    .line 458791
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 458794
+    move-result-object v0
+
+    .line 458795
+    const-string v2, "info_restore_full_fail"
+
+    .line 458797
+    invoke-interface {v0, v2, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    .line 458800
+    move-result-object v0
+
+    .line 458801
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 458804
+    :cond_34
+    return v1
+
+    .line 458805
+    :cond_35
+    const/4 v2, 0x5
+
+    .line 458806
+    if-lt v0, v2, :cond_63
+
+    .line 458808
+    iget-boolean v0, p0, Lcom/xiaomi/push/service/a;->a:Z
+
+    .line 458810
+    if-nez v0, :cond_50
+
+    .line 458812
+    invoke-direct {p0}, Lcom/xiaomi/push/service/a;->b()V
+
+    .line 458815
+    iput-boolean v3, p0, Lcom/xiaomi/push/service/a;->a:Z
+
+    .line 458817
+    iget-object v0, p0, Lcom/xiaomi/push/service/a;->a:Landroid/content/SharedPreferences;
+
+    .line 458819
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 458822
+    move-result-object v0
+
+    .line 458823
+    const-string v2, "info_restore_partial_fail"
+
+    .line 458825
+    invoke-interface {v0, v2, v3}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    .line 458828
+    move-result-object v0
+
+    .line 458829
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 458832
+    :cond_50
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    .line 458835
+    move-result-wide v4
+
+    .line 458836
+    iget-wide v6, p0, Lcom/xiaomi/push/service/a;->a:J
+
+    .line 458838
+    sub-long/2addr v4, v6
+
+    .line 458839
+    invoke-static {v4, v5}, Ljava/lang/Math;->abs(J)J
+
+    .line 458842
+    move-result-wide v4
+
+    .line 458843
+    const-wide/32 v6, 0x5265c00
+
+    .line 458846
+    cmp-long v0, v4, v6
+
+    .line 458848
+    if-gez v0, :cond_63
+
+    .line 458850
+    return v1
+
+    .line 458851
+    :cond_63
+    return v3
+.end method
+
+.method private a(Ljava/lang/String;)Z
+    .registers 11
+
+    .prologue
+    .line 17301504
+    const/4 v0, 0x0
+
+    .line 17301505
+    :try_start_1
+    new-instance v1, Lorg/json/JSONArray;
+
+    .line 17301507
+    invoke-direct {v1, p1}, Lorg/json/JSONArray;-><init>(Ljava/lang/String;)V
+
+    .line 17301510
+    invoke-static {}, Lcom/xiaomi/push/t;->a()Landroid/content/Context;
+
+    .line 17301513
+    move-result-object p1
+
+    .line 17301514
+    const-string v2, "mipush_apps_scrt"
+
+    .line 17301516
+    invoke-virtual {p1, v2, v0}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    .line 17301519
+    move-result-object p1
+
+    .line 17301520
+    invoke-static {}, Lcom/xiaomi/push/t;->a()Landroid/content/Context;
+
+    .line 17301523
+    move-result-object v2
+
+    .line 17301524
+    const-string v3, "pref_registered_pkg_names"
+
+    .line 17301526
+    invoke-virtual {v2, v3, v0}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    .line 17301529
+    move-result-object v2
+
+    .line 17301530
+    iget v3, p0, Lcom/xiaomi/push/service/a;->a:I
+
+    .line 17301532
+    invoke-virtual {v1}, Lorg/json/JSONArray;->length()I
+
+    .line 17301535
+    move-result v4
+
+    .line 17301536
+    add-int/2addr v3, v4
+
+    .line 17301537
+    iput v3, p0, Lcom/xiaomi/push/service/a;->a:I
+
+    .line 17301539
+    const/4 v3, 0x0
+
+    .line 17301540
+    :goto_24
+    invoke-virtual {v1}, Lorg/json/JSONArray;->length()I
+
+    .line 17301543
+    move-result v4
+
+    .line 17301544
+    if-ge v3, v4, :cond_80
+
+    .line 17301546
+    invoke-virtual {v1, v3}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
+
+    .line 17301549
+    move-result-object v4
+
+    .line 17301550
+    const-string v5, "package_name"
+
+    .line 17301552
+    invoke-virtual {v4, v5}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17301555
+    move-result-object v5
+
+    .line 17301556
+    const-string v6, "secret"
+
+    .line 17301558
+    invoke-virtual {v4, v6}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17301561
+    move-result-object v6
+
+    .line 17301562
+    const-string v7, "app_id"
+
+    .line 17301564
+    invoke-virtual {v4, v7}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17301567
+    move-result-object v4
+
+    .line 17301568
+    invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 17301571
+    move-result v7
+
+    .line 17301572
+    if-nez v7, :cond_7d
+
+    .line 17301574
+    invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 17301577
+    move-result v7
+
+    .line 17301578
+    if-nez v7, :cond_7d
+
+    .line 17301580
+    invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 17301583
+    move-result v7
+
+    .line 17301584
+    if-nez v7, :cond_7d
+
+    .line 17301586
+    const/4 v7, 0x0
+
+    .line 17301587
+    invoke-interface {p1, v5, v7}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17301590
+    move-result-object v8
+
+    .line 17301591
+    invoke-static {v8}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 17301594
+    move-result v8
+
+    .line 17301595
+    if-eqz v8, :cond_68
+
+    .line 17301597
+    invoke-interface {p1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 17301600
+    move-result-object v8
+
+    .line 17301601
+    invoke-interface {v8, v5, v6}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 17301604
+    move-result-object v6
+
+    .line 17301605
+    invoke-interface {v6}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 17301608
+    :cond_68
+    invoke-interface {v2, v5, v7}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 17301611
+    move-result-object v6
+
+    .line 17301612
+    invoke-static {v6}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 17301615
+    move-result v6
+
+    .line 17301616
+    if-eqz v6, :cond_7d
+
+    .line 17301618
+    invoke-interface {v2}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 17301621
+    move-result-object v6
+
+    .line 17301622
+    invoke-interface {v6, v5, v4}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 17301625
+    move-result-object v4
+
+    .line 17301626
+    invoke-interface {v4}, Landroid/content/SharedPreferences$Editor;->apply()V
+    :try_end_7d
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_7d} :catch_82
+
+    .line 17301629
+    :cond_7d
+    add-int/lit8 v3, v3, 0x1
+
+    .line 17301631
+    goto :goto_24
+
+    .line 17301632
+    :cond_80
+    const/4 v0, 0x1
+
+    .line 17301633
+    goto :goto_89
+
+    .line 17301634
+    :catch_82
+    const-string p1, "AppInfoRestorer"
+
+    .line 17301636
+    const-string v1, "failed to parse app info"
+
+    .line 17301638
+    invoke-static {p1, v1}, Lcom/xiaomi/channel/commonutils/logger/c;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17301641
+    :goto_89
+    return v0
+.end method
+
+.method private b()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    const/4 v0, 0x1
+
+    .line 196609
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 196611
+    const/4 v1, 0x0
+
+    .line 196612
+    const-string v2, "reportPartialFailEvent"
+
+    .line 196614
+    aput-object v2, v0, v1
+
+    .line 196616
+    const-string v1, "AppInfoRestorer"
+
+    .line 196618
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196621
+    const-string v0, "partial_fail"
+
+    .line 196623
+    invoke-direct {p0, v0}, Lcom/xiaomi/push/service/a;->a(Ljava/lang/String;)Ljava/util/Map;
+
+    .line 196626
+    move-result-object v0
+
+    .line 196627
+    invoke-static {}, Lcom/xiaomi/push/fw;->a()Lcom/xiaomi/push/fw;
+
+    .line 196630
+    move-result-object v1
+
+    .line 196631
+    const-string v2, "info_restore"
+
+    .line 196633
+    invoke-virtual {v1, v2, v0}, Lcom/xiaomi/push/fw;->a(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 196636
+    return-void
+.end method
+
+.method private b(Lcom/xiaomi/push/il;)V
+    .registers 5
+
+    .prologue
+    .line 17039360
+    const/4 v0, 0x1
+
+    .line 17039361
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 17039363
+    const/4 v1, 0x0
+
+    .line 17039364
+    const-string v2, "onRestoreLoopTooMuch"
+
+    .line 17039366
+    aput-object v2, v0, v1
+
+    .line 17039368
+    const-string v1, "AppInfoRestorer"
+
+    .line 17039370
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 17039373
+    const-string v0, "loop_too_much"
+
+    .line 17039375
+    invoke-direct {p0, v0}, Lcom/xiaomi/push/service/a;->a(Ljava/lang/String;)Ljava/util/Map;
+
+    .line 17039378
+    move-result-object v0
+
+    .line 17039379
+    if-nez p1, :cond_18
+
+    .line 17039381
+    const-string p1, "empty"
+
+    .line 17039383
+    goto :goto_1c
+
+    .line 17039384
+    :cond_18
+    invoke-virtual {p1}, Lcom/xiaomi/push/il;->toString()Ljava/lang/String;
+
+    .line 17039387
+    move-result-object p1
+
+    .line 17039388
+    :goto_1c
+    const-string v1, "message"
+
+    .line 17039390
+    invoke-interface {v0, v1, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17039393
+    invoke-static {}, Lcom/xiaomi/push/fw;->a()Lcom/xiaomi/push/fw;
+
+    .line 17039396
+    move-result-object p1
+
+    .line 17039397
+    const-string v1, "info_restore"
+
+    .line 17039399
+    invoke-virtual {p1, v1, v0}, Lcom/xiaomi/push/fw;->a(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 17039402
+    return-void
+.end method
+
+.method private c()V
+    .registers 4
+
+    .prologue
+    .line 196608
+    const/4 v0, 0x1
+
+    .line 196609
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 196611
+    const/4 v1, 0x0
+
+    .line 196612
+    const-string v2, "reportFullFailEvent"
+
+    .line 196614
+    aput-object v2, v0, v1
+
+    .line 196616
+    const-string v1, "AppInfoRestorer"
+
+    .line 196618
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 196621
+    const-string v0, "full_fail"
+
+    .line 196623
+    invoke-direct {p0, v0}, Lcom/xiaomi/push/service/a;->a(Ljava/lang/String;)Ljava/util/Map;
+
+    .line 196626
+    move-result-object v0
+
+    .line 196627
+    invoke-static {}, Lcom/xiaomi/push/fw;->a()Lcom/xiaomi/push/fw;
+
+    .line 196630
+    move-result-object v1
+
+    .line 196631
+    const-string v2, "info_restore"
+
+    .line 196633
+    invoke-virtual {v1, v2, v0}, Lcom/xiaomi/push/fw;->a(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 196636
+    return-void
+.end method
+
+.method private c(Lcom/xiaomi/push/service/XMPushService;)V
+    .registers 6
+
+    .prologue
+    .line 17039360
+    invoke-direct {p0}, Lcom/xiaomi/push/service/a;->a()Z
+
+    .line 17039363
+    move-result v0
+
+    .line 17039364
+    if-eqz v0, :cond_25
+
+    .line 17039366
+    const/4 v0, 0x0
+
+    .line 17039367
+    iput v0, p0, Lcom/xiaomi/push/service/a;->c:I
+
+    .line 17039369
+    iget-object v1, p0, Lcom/xiaomi/push/service/a;->a:Landroid/content/SharedPreferences;
+
+    .line 17039371
+    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 17039374
+    move-result-object v1
+
+    .line 17039375
+    iget v2, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 17039377
+    add-int/lit8 v2, v2, 0x1
+
+    .line 17039379
+    iput v2, p0, Lcom/xiaomi/push/service/a;->b:I
+
+    .line 17039381
+    const-string v3, "info_restore_retry_cnt"
+
+    .line 17039383
+    invoke-interface {v1, v3, v2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+
+    .line 17039386
+    move-result-object v1
+
+    .line 17039387
+    invoke-interface {v1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 17039390
+    iput v0, p0, Lcom/xiaomi/push/service/a;->a:I
+
+    .line 17039392
+    const-string v0, ""
+
+    .line 17039394
+    invoke-direct {p0, p1, v0}, Lcom/xiaomi/push/service/a;->a(Lcom/xiaomi/push/service/XMPushService;Ljava/lang/String;)V
+
+    .line 17039397
+    :cond_25
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Lcom/xiaomi/push/service/XMPushService;)V
+    .registers 4
+
+    .prologue
+    .line 16908288
+    invoke-static {p1}, Lcom/xiaomi/push/ah;->a(Landroid/content/Context;)Lcom/xiaomi/push/ah;
+
+    .line 16908291
+    move-result-object v0
+
+    .line 16908292
+    new-instance v1, Lcom/xiaomi/push/service/a$1;
+
+    .line 16908294
+    invoke-direct {v1, p0, p1}, Lcom/xiaomi/push/service/a$1;-><init>(Lcom/xiaomi/push/service/a;Lcom/xiaomi/push/service/XMPushService;)V
+
+    .line 16908297
+    const/4 p1, 0x5
+
+    .line 16908298
+    invoke-virtual {v0, v1, p1}, Lcom/xiaomi/push/ah;->a(Ljava/lang/Runnable;I)V
+
+    .line 16908301
+    return-void
+.end method
+
+.method public a(Lcom/xiaomi/push/service/XMPushService;Lcom/xiaomi/push/il;)V
+    .registers 11
+
+    .prologue
+    .line 34144256
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 34144258
+    const-string v1, "onAppInfoRestored, notification id="
+
+    .line 34144260
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 34144263
+    iget-object v1, p2, Lcom/xiaomi/push/il;->b:Ljava/lang/String;
+
+    .line 34144265
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 34144268
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 34144271
+    move-result-object v0
+
+    .line 34144272
+    const-string v1, "AppInfoRestorer"
+
+    .line 34144274
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34144277
+    iget v0, p0, Lcom/xiaomi/push/service/a;->c:I
+
+    .line 34144279
+    const/4 v2, 0x1
+
+    .line 34144280
+    add-int/2addr v0, v2
+
+    .line 34144281
+    iput v0, p0, Lcom/xiaomi/push/service/a;->c:I
+
+    .line 34144283
+    invoke-virtual {p2}, Lcom/xiaomi/push/il;->a()Ljava/util/Map;
+
+    .line 34144286
+    move-result-object v0
+
+    .line 34144287
+    const/4 v3, 0x0
+
+    .line 34144288
+    if-eqz v0, :cond_8f
+
+    .line 34144290
+    const-string v4, "offset"
+
+    .line 34144292
+    invoke-interface {v0, v4}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 34144295
+    move-result-object v4
+
+    .line 34144296
+    check-cast v4, Ljava/lang/String;
+
+    .line 34144298
+    const-string v5, "data"
+
+    .line 34144300
+    invoke-interface {v0, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 34144303
+    move-result-object v0
+
+    .line 34144304
+    check-cast v0, Ljava/lang/String;
+
+    .line 34144306
+    if-eqz v0, :cond_54
+
+    .line 34144308
+    invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 34144311
+    move-result v5
+
+    .line 34144312
+    if-nez v5, :cond_54
+
+    .line 34144314
+    invoke-direct {p0, v0}, Lcom/xiaomi/push/service/a;->a(Ljava/lang/String;)Z
+
+    .line 34144317
+    move-result v0
+
+    .line 34144318
+    new-array v5, v2, [Ljava/lang/Object;
+
+    .line 34144320
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    .line 34144322
+    const-string v7, "onAppInfoRestored, mergeAppInfo result="
+
+    .line 34144324
+    invoke-direct {v6, v7}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 34144327
+    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    .line 34144330
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 34144333
+    move-result-object v6
+
+    .line 34144334
+    aput-object v6, v5, v3
+
+    .line 34144336
+    invoke-static {v1, v5}, Lcom/xiaomi/channel/commonutils/logger/c;->c(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 34144339
+    goto :goto_5a
+
+    .line 34144340
+    :cond_54
+    const-string v0, "onAppInfoRestored, infoString or offset flag is null"
+
+    .line 34144342
+    invoke-static {v1, v0}, Lcom/xiaomi/channel/commonutils/logger/c;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34144345
+    const/4 v0, 0x0
+
+    .line 34144346
+    :goto_5a
+    if-eqz v0, :cond_8f
+
+    .line 34144348
+    const-string v0, "END"
+
+    .line 34144350
+    invoke-virtual {v0, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 34144353
+    move-result v0
+
+    .line 34144354
+    if-eqz v0, :cond_81
+
+    .line 34144356
+    iget-object p1, p0, Lcom/xiaomi/push/service/a;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 34144358
+    invoke-virtual {p1, v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+
+    .line 34144361
+    iget-object p1, p0, Lcom/xiaomi/push/service/a;->a:Landroid/content/SharedPreferences;
+
+    .line 34144363
+    invoke-interface {p1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 34144366
+    move-result-object p1
+
+    .line 34144367
+    const-string v0, "app_info_restored"
+
+    .line 34144369
+    invoke-interface {p1, v0, v2}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
+
+    .line 34144372
+    move-result-object p1
+
+    .line 34144373
+    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 34144376
+    invoke-direct {p0}, Lcom/xiaomi/push/service/a;->a()V
+
+    .line 34144379
+    const-string p1, "app info restore done"
+
+    .line 34144381
+    invoke-static {v1, p1}, Lcom/xiaomi/channel/commonutils/logger/c;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 34144384
+    goto :goto_90
+
+    .line 34144385
+    :cond_81
+    iget v0, p0, Lcom/xiaomi/push/service/a;->c:I
+
+    .line 34144387
+    const/16 v1, 0x64
+
+    .line 34144389
+    if-lt v0, v1, :cond_8b
+
+    .line 34144391
+    invoke-direct {p0, p2}, Lcom/xiaomi/push/service/a;->b(Lcom/xiaomi/push/il;)V
+
+    .line 34144394
+    goto :goto_90
+
+    .line 34144395
+    :cond_8b
+    invoke-direct {p0, p1, v4}, Lcom/xiaomi/push/service/a;->a(Lcom/xiaomi/push/service/XMPushService;Ljava/lang/String;)V
+
+    .line 34144398
+    goto :goto_90
+
+    .line 34144399
+    :cond_8f
+    const/4 v2, 0x0
+
+    .line 34144400
+    :goto_90
+    if-nez v2, :cond_95
+
+    .line 34144402
+    invoke-direct {p0, p2}, Lcom/xiaomi/push/service/a;->a(Lcom/xiaomi/push/il;)V
+
+    .line 34144405
+    :cond_95
+    return-void
+.end method
+
+.method public b(Lcom/xiaomi/push/service/XMPushService;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    invoke-direct {p0, p1}, Lcom/xiaomi/push/service/a;->c(Lcom/xiaomi/push/service/XMPushService;)V
+
+    .line 16777219
+    return-void
+.end method

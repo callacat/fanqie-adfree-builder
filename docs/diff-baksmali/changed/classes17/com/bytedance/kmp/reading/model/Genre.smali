@@ -1,0 +1,747 @@
+## classes17/com/bytedance/kmp/reading/model/Genre.smali
+# added=0 removed=0 changed=2
+
+.method public static constructor <clinit>()V
+[MOD-CHANGED]
+.method public static constructor <clinit>()V
+    .registers 16
+
+    .prologue
+    .line 393216
+    const v0, 0x84dc1
+
+    .line 393219
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 393222
+    new-instance v0, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393224
+    const-string v1, "NOVEL"
+
+    .line 393226
+    const/4 v2, 0x0
+
+    .line 393227
+    invoke-direct {v0, v1, v2, v2}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393230
+    sput-object v0, Lcom/bytedance/kmp/reading/model/Genre;->NOVEL:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393232
+    new-instance v1, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393234
+    const-string v3, "COMIC"
+
+    .line 393236
+    const/4 v4, 0x1
+
+    .line 393237
+    invoke-direct {v1, v3, v4, v4}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393240
+    sput-object v1, Lcom/bytedance/kmp/reading/model/Genre;->COMIC:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393242
+    new-instance v3, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393244
+    const-string v5, "OTHER"
+
+    .line 393246
+    const/4 v6, 0x2
+
+    .line 393247
+    invoke-direct {v3, v5, v6, v6}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393250
+    sput-object v3, Lcom/bytedance/kmp/reading/model/Genre;->OTHER:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393252
+    new-instance v5, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393254
+    const-string v7, "VIDEO"
+
+    .line 393256
+    const/4 v8, 0x3
+
+    .line 393257
+    invoke-direct {v5, v7, v8, v8}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393260
+    sput-object v5, Lcom/bytedance/kmp/reading/model/Genre;->VIDEO:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393262
+    new-instance v7, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393264
+    const-string v9, "VOICE"
+
+    .line 393266
+    const/4 v10, 0x4
+
+    .line 393267
+    invoke-direct {v7, v9, v10, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393270
+    sput-object v7, Lcom/bytedance/kmp/reading/model/Genre;->VOICE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393272
+    new-instance v9, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393274
+    const-string v11, "MAGAZINE"
+
+    .line 393276
+    const/4 v12, 0x5
+
+    .line 393277
+    invoke-direct {v9, v11, v12, v12}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393280
+    sput-object v9, Lcom/bytedance/kmp/reading/model/Genre;->MAGAZINE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393282
+    new-instance v11, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393284
+    const-string v13, "PUBLISH"
+
+    .line 393286
+    const/4 v14, 0x6
+
+    .line 393287
+    invoke-direct {v11, v13, v14, v14}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393290
+    sput-object v11, Lcom/bytedance/kmp/reading/model/Genre;->PUBLISH:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393292
+    new-instance v13, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393294
+    const-string v15, "CONTE"
+
+    .line 393296
+    const/4 v14, 0x7
+
+    .line 393297
+    invoke-direct {v13, v15, v14, v14}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393300
+    sput-object v13, Lcom/bytedance/kmp/reading/model/Genre;->CONTE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393302
+    new-instance v15, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393304
+    const-string v14, "STORY"
+
+    .line 393306
+    const/16 v12, 0x8
+
+    .line 393308
+    invoke-direct {v15, v14, v12, v12}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393311
+    sput-object v15, Lcom/bytedance/kmp/reading/model/Genre;->STORY:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393313
+    new-instance v14, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393315
+    const-string v12, "DIALOGUE"
+
+    .line 393317
+    const/16 v10, 0x9
+
+    .line 393319
+    invoke-direct {v14, v12, v10, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393322
+    sput-object v14, Lcom/bytedance/kmp/reading/model/Genre;->DIALOGUE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393324
+    new-instance v12, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393326
+    const/16 v10, 0xcc
+
+    .line 393328
+    const-string v8, "ANCIENTBOOK"
+
+    .line 393330
+    const/16 v6, 0xa
+
+    .line 393332
+    invoke-direct {v12, v8, v6, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393335
+    sput-object v12, Lcom/bytedance/kmp/reading/model/Genre;->ANCIENTBOOK:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393337
+    new-instance v8, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393339
+    const/16 v10, 0x386
+
+    .line 393341
+    const-string v6, "STORY_ALBUM"
+
+    .line 393343
+    const/16 v4, 0xb
+
+    .line 393345
+    invoke-direct {v8, v6, v4, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393348
+    sput-object v8, Lcom/bytedance/kmp/reading/model/Genre;->STORY_ALBUM:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393350
+    const/16 v6, 0xc
+
+    .line 393352
+    new-array v6, v6, [Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393354
+    aput-object v0, v6, v2
+
+    .line 393356
+    const/4 v0, 0x1
+
+    .line 393357
+    aput-object v1, v6, v0
+
+    .line 393359
+    const/4 v0, 0x2
+
+    .line 393360
+    aput-object v3, v6, v0
+
+    .line 393362
+    const/4 v0, 0x3
+
+    .line 393363
+    aput-object v5, v6, v0
+
+    .line 393365
+    const/4 v0, 0x4
+
+    .line 393366
+    aput-object v7, v6, v0
+
+    .line 393368
+    const/4 v0, 0x5
+
+    .line 393369
+    aput-object v9, v6, v0
+
+    .line 393371
+    const/4 v0, 0x6
+
+    .line 393372
+    aput-object v11, v6, v0
+
+    .line 393374
+    const/4 v0, 0x7
+
+    .line 393375
+    aput-object v13, v6, v0
+
+    .line 393377
+    const/16 v0, 0x8
+
+    .line 393379
+    aput-object v15, v6, v0
+
+    .line 393381
+    const/16 v0, 0x9
+
+    .line 393383
+    aput-object v14, v6, v0
+
+    .line 393385
+    const/16 v0, 0xa
+
+    .line 393387
+    aput-object v12, v6, v0
+
+    .line 393389
+    aput-object v8, v6, v4
+
+    .line 393391
+    sput-object v6, Lcom/bytedance/kmp/reading/model/Genre;->$VALUES:[Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393393
+    new-instance v0, Lcom/bytedance/kmp/reading/model/Genre$a;
+
+    .line 393395
+    invoke-direct {v0}, Lcom/bytedance/kmp/reading/model/Genre$a;-><init>()V
+
+    .line 393398
+    sput-object v0, Lcom/bytedance/kmp/reading/model/Genre;->Companion:Lcom/bytedance/kmp/reading/model/Genre$a;
+
+    .line 393400
+    sget-object v0, Lkotlin/LazyThreadSafetyMode;->PUBLICATION:Lkotlin/LazyThreadSafetyMode;
+
+    .line 393402
+    sget-object v1, Lcom/bytedance/kmp/reading/model/Genre$Companion$1;->INSTANCE:Lcom/bytedance/kmp/reading/model/Genre$Companion$1;
+
+    .line 393404
+    invoke-static {v0, v1}, Lkotlin/LazyKt;->lazy(Lkotlin/LazyThreadSafetyMode;Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    .line 393407
+    move-result-object v0
+
+    .line 393408
+    sput-object v0, Lcom/bytedance/kmp/reading/model/Genre;->$cachedSerializer$delegate:Lkotlin/Lazy;
+
+    .line 393410
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public static constructor <clinit>()V
+    .registers 16
+
+    .prologue
+    .line 393216
+    const v0, 0x84dc1
+
+    .line 393217
+    .line 393218
+    .line 393219
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 393220
+    .line 393221
+    .line 393222
+    new-instance v0, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393223
+    .line 393224
+    const-string v1, "NOVEL"
+
+    .line 393225
+    .line 393226
+    const/4 v2, 0x0
+
+    .line 393227
+    invoke-direct {v0, v1, v2, v2}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393228
+    .line 393229
+    .line 393230
+    sput-object v0, Lcom/bytedance/kmp/reading/model/Genre;->NOVEL:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393231
+    .line 393232
+    new-instance v1, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393233
+    .line 393234
+    const-string v3, "COMIC"
+
+    .line 393235
+    .line 393236
+    const/4 v4, 0x1
+
+    .line 393237
+    invoke-direct {v1, v3, v4, v4}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393238
+    .line 393239
+    .line 393240
+    sput-object v1, Lcom/bytedance/kmp/reading/model/Genre;->COMIC:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393241
+    .line 393242
+    new-instance v3, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393243
+    .line 393244
+    const-string v5, "OTHER"
+
+    .line 393245
+    .line 393246
+    const/4 v6, 0x2
+
+    .line 393247
+    invoke-direct {v3, v5, v6, v6}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393248
+    .line 393249
+    .line 393250
+    sput-object v3, Lcom/bytedance/kmp/reading/model/Genre;->OTHER:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393251
+    .line 393252
+    new-instance v5, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393253
+    .line 393254
+    const-string v7, "VIDEO"
+
+    .line 393255
+    .line 393256
+    const/4 v8, 0x3
+
+    .line 393257
+    invoke-direct {v5, v7, v8, v8}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393258
+    .line 393259
+    .line 393260
+    sput-object v5, Lcom/bytedance/kmp/reading/model/Genre;->VIDEO:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393261
+    .line 393262
+    new-instance v7, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393263
+    .line 393264
+    const-string v9, "VOICE"
+
+    .line 393265
+    .line 393266
+    const/4 v10, 0x4
+
+    .line 393267
+    invoke-direct {v7, v9, v10, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393268
+    .line 393269
+    .line 393270
+    sput-object v7, Lcom/bytedance/kmp/reading/model/Genre;->VOICE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393271
+    .line 393272
+    new-instance v9, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393273
+    .line 393274
+    const-string v11, "MAGAZINE"
+
+    .line 393275
+    .line 393276
+    const/4 v12, 0x5
+
+    .line 393277
+    invoke-direct {v9, v11, v12, v12}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393278
+    .line 393279
+    .line 393280
+    sput-object v9, Lcom/bytedance/kmp/reading/model/Genre;->MAGAZINE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393281
+    .line 393282
+    new-instance v11, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393283
+    .line 393284
+    const-string v13, "PUBLISH"
+
+    .line 393285
+    .line 393286
+    const/4 v14, 0x6
+
+    .line 393287
+    invoke-direct {v11, v13, v14, v14}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393288
+    .line 393289
+    .line 393290
+    sput-object v11, Lcom/bytedance/kmp/reading/model/Genre;->PUBLISH:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393291
+    .line 393292
+    new-instance v13, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393293
+    .line 393294
+    const-string v15, "CONTE"
+
+    .line 393295
+    .line 393296
+    const/4 v14, 0x7
+
+    .line 393297
+    invoke-direct {v13, v15, v14, v14}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393298
+    .line 393299
+    .line 393300
+    sput-object v13, Lcom/bytedance/kmp/reading/model/Genre;->CONTE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393301
+    .line 393302
+    new-instance v15, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393303
+    .line 393304
+    const-string v14, "STORY"
+
+    .line 393305
+    .line 393306
+    const/16 v12, 0x8
+
+    .line 393307
+    .line 393308
+    invoke-direct {v15, v14, v12, v12}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393309
+    .line 393310
+    .line 393311
+    sput-object v15, Lcom/bytedance/kmp/reading/model/Genre;->STORY:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393312
+    .line 393313
+    new-instance v14, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393314
+    .line 393315
+    const-string v12, "DIALOGUE"
+
+    .line 393316
+    .line 393317
+    const/16 v10, 0x9
+
+    .line 393318
+    .line 393319
+    invoke-direct {v14, v12, v10, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393320
+    .line 393321
+    .line 393322
+    sput-object v14, Lcom/bytedance/kmp/reading/model/Genre;->DIALOGUE:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393323
+    .line 393324
+    new-instance v12, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393325
+    .line 393326
+    const/16 v10, 0xcc
+
+    .line 393327
+    .line 393328
+    const-string v8, "ANCIENTBOOK"
+
+    .line 393329
+    .line 393330
+    const/16 v6, 0xa
+
+    .line 393331
+    .line 393332
+    invoke-direct {v12, v8, v6, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393333
+    .line 393334
+    .line 393335
+    sput-object v12, Lcom/bytedance/kmp/reading/model/Genre;->ANCIENTBOOK:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393336
+    .line 393337
+    new-instance v8, Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393338
+    .line 393339
+    const/16 v10, 0x386
+
+    .line 393340
+    .line 393341
+    const-string v6, "STORY_ALBUM"
+
+    .line 393342
+    .line 393343
+    const/16 v4, 0xb
+
+    .line 393344
+    .line 393345
+    invoke-direct {v8, v6, v4, v10}, Lcom/bytedance/kmp/reading/model/Genre;-><init>(Ljava/lang/String;II)V
+
+    .line 393346
+    .line 393347
+    .line 393348
+    sput-object v8, Lcom/bytedance/kmp/reading/model/Genre;->STORY_ALBUM:Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393349
+    .line 393350
+    const/16 v6, 0xc
+
+    .line 393351
+    .line 393352
+    new-array v6, v6, [Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393353
+    .line 393354
+    aput-object v0, v6, v2
+
+    .line 393355
+    .line 393356
+    const/4 v0, 0x1
+
+    .line 393357
+    aput-object v1, v6, v0
+
+    .line 393358
+    .line 393359
+    const/4 v0, 0x2
+
+    .line 393360
+    aput-object v3, v6, v0
+
+    .line 393361
+    .line 393362
+    const/4 v0, 0x3
+
+    .line 393363
+    aput-object v5, v6, v0
+
+    .line 393364
+    .line 393365
+    const/4 v0, 0x4
+
+    .line 393366
+    aput-object v7, v6, v0
+
+    .line 393367
+    .line 393368
+    const/4 v0, 0x5
+
+    .line 393369
+    aput-object v9, v6, v0
+
+    .line 393370
+    .line 393371
+    const/4 v0, 0x6
+
+    .line 393372
+    aput-object v11, v6, v0
+
+    .line 393373
+    .line 393374
+    const/4 v0, 0x7
+
+    .line 393375
+    aput-object v13, v6, v0
+
+    .line 393376
+    .line 393377
+    const/16 v0, 0x8
+
+    .line 393378
+    .line 393379
+    aput-object v15, v6, v0
+
+    .line 393380
+    .line 393381
+    const/16 v0, 0x9
+
+    .line 393382
+    .line 393383
+    aput-object v14, v6, v0
+
+    .line 393384
+    .line 393385
+    const/16 v0, 0xa
+
+    .line 393386
+    .line 393387
+    aput-object v12, v6, v0
+
+    .line 393388
+    .line 393389
+    aput-object v8, v6, v4
+
+    .line 393390
+    .line 393391
+    sput-object v6, Lcom/bytedance/kmp/reading/model/Genre;->$VALUES:[Lcom/bytedance/kmp/reading/model/Genre;
+
+    .line 393392
+    .line 393393
+    new-instance v0, Lcom/bytedance/kmp/reading/model/Genre$a;
+
+    .line 393394
+    .line 393395
+    invoke-direct {v0}, Lcom/bytedance/kmp/reading/model/Genre$a;-><init>()V
+
+    .line 393396
+    .line 393397
+    .line 393398
+    sput-object v0, Lcom/bytedance/kmp/reading/model/Genre;->Companion:Lcom/bytedance/kmp/reading/model/Genre$a;
+
+    .line 393399
+    .line 393400
+    sget-object v0, Lkotlin/LazyThreadSafetyMode;->PUBLICATION:Lkotlin/LazyThreadSafetyMode;
+
+    .line 393401
+    .line 393402
+    sget-object v1, Lcom/bytedance/kmp/reading/model/Genre$Companion$1;->INSTANCE:Lcom/bytedance/kmp/reading/model/Genre$Companion$1;
+
+    .line 393403
+    .line 393404
+    invoke-static {v0, v1}, Lkotlin/LazyKt;->lazy(Lkotlin/LazyThreadSafetyMode;Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    .line 393405
+    .line 393406
+    .line 393407
+    move-result-object v0
+
+    .line 393408
+    sput-object v0, Lcom/bytedance/kmp/reading/model/Genre;->$cachedSerializer$delegate:Lkotlin/Lazy;
+
+    .line 393409
+    .line 393410
+    return-void
+.end method
+
+
+.method public constructor <init>(Ljava/lang/String;II)V
+[MOD-CHANGED]
+.method public constructor <init>(Ljava/lang/String;II)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 50397184
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    .line 50397187
+    iput p3, p0, Lcom/bytedance/kmp/reading/model/Genre;->value:I
+
+    .line 50397189
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Ljava/lang/String;II)V
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 50397184
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    .line 50397185
+    .line 50397186
+    .line 50397187
+    iput p3, p0, Lcom/bytedance/kmp/reading/model/Genre;->value:I
+
+    .line 50397188
+    .line 50397189
+    return-void
+.end method
+
+

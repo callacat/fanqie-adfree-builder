@@ -1,0 +1,225 @@
+.class final Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;
+.super Lkotlin/coroutines/jvm/internal/SuspendLambda;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;->releaseTask()V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/coroutines/jvm/internal/SuspendLambda;",
+        "Lkotlin/jvm/functions/Function2<",
+        "Lkotlinx/coroutines/CoroutineScope;",
+        "Lkotlin/coroutines/Continuation<",
+        "-",
+        "Lkotlin/Unit;",
+        ">;",
+        "Ljava/lang/Object;",
+        ">;"
+    }
+.end annotation
+
+.annotation runtime Lkotlin/coroutines/jvm/internal/DebugMetadata;
+    c = "com.bytedance.android.anniex.lite.flow.base.BaseAnnieXDispatchManager$releaseTask$1"
+    f = "BaseAnnieXDispatchManager.kt"
+    i = {}
+    l = {
+        0x66
+    }
+    m = "invokeSuspend"
+    n = {}
+    s = {}
+.end annotation
+
+
+# instance fields
+.field label:I
+
+.field final synthetic this$0:Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;
+
+
+# direct methods
+.method public constructor <init>(Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;Lkotlin/coroutines/Continuation;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;",
+            ">;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->this$0:Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;
+
+    const/4 p1, 0x2
+
+    invoke-direct {p0, p1, p2}, Lkotlin/coroutines/jvm/internal/SuspendLambda;-><init>(ILkotlin/coroutines/Continuation;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+    .registers 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Object;",
+            "Lkotlin/coroutines/Continuation<",
+            "*>;)",
+            "Lkotlin/coroutines/Continuation<",
+            "Lkotlin/Unit;",
+            ">;"
+        }
+    .end annotation
+
+    new-instance p1, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;
+
+    iget-object v0, p0, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->this$0:Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;
+
+    invoke-direct {p1, v0, p2}, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;-><init>(Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;Lkotlin/coroutines/Continuation;)V
+
+    return-object p1
+.end method
+
+.method public bridge synthetic invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 3
+
+    check-cast p1, Lkotlinx/coroutines/CoroutineScope;
+
+    check-cast p2, Lkotlin/coroutines/Continuation;
+
+    invoke-virtual {p0, p1, p2}, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->invoke(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final invoke(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlinx/coroutines/CoroutineScope;",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lkotlin/Unit;",
+            ">;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    invoke-virtual {p0, p1, p2}, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    move-result-object p1
+
+    check-cast p1, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;
+
+    sget-object p2, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    invoke-virtual {p1, p2}, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 7
+
+    .prologue
+    .line 17039360
+    invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->getCOROUTINE_SUSPENDED()Ljava/lang/Object;
+
+    .line 17039363
+    move-result-object v0
+
+    .line 17039364
+    iget v1, p0, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->label:I
+
+    .line 17039366
+    const/4 v2, 0x1
+
+    .line 17039367
+    if-eqz v1, :cond_17
+
+    .line 17039369
+    if-ne v1, v2, :cond_f
+
+    .line 17039371
+    invoke-static {p1}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V
+
+    .line 17039374
+    goto :goto_28
+
+    .line 17039375
+    :cond_f
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 17039377
+    const-string v0, "call to \'resume\' before \'invoke\' with coroutine"
+
+    .line 17039379
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 17039382
+    throw p1
+
+    .line 17039383
+    :cond_17
+    invoke-static {p1}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V
+
+    .line 17039386
+    invoke-static {}, Lcom/bytedance/ies/bullet/service/base/IConditionCallKt;->annieXFlowReleaseInternal()I
+
+    .line 17039389
+    move-result p1
+
+    .line 17039390
+    int-to-long v3, p1
+
+    .line 17039391
+    iput v2, p0, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->label:I
+
+    .line 17039393
+    invoke-static {v3, v4, p0}, Lkotlinx/coroutines/DelayKt;->delay(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    .line 17039396
+    move-result-object p1
+
+    .line 17039397
+    if-ne p1, v0, :cond_28
+
+    .line 17039399
+    return-object v0
+
+    .line 17039400
+    :cond_28
+    :goto_28
+    iget-object p1, p0, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager$releaseTask$1;->this$0:Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;
+
+    .line 17039402
+    invoke-virtual {p1}, Lcom/bytedance/android/anniex/lite/flow/base/BaseAnnieXDispatchManager;->release()V
+
+    .line 17039405
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 17039407
+    return-object p1
+.end method

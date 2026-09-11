@@ -1,0 +1,85 @@
+## classes18/com/bytedance/sdk/xbridge/cn/runtime/depend/IHostUserDepend$UserModelExt.smali
+# added=0 removed=0 changed=3
+
+.method public constructor <init>()V
+[MOD-CHANGED]
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>()V
+    .registers 1
+
+    .prologue
+    .line 0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 1
+    .line 2
+    .line 3
+    return-void
+.end method
+
+
+.method public final getShortID()Ljava/lang/String;
+[MOD-CHANGED]
+.method public final getShortID()Ljava/lang/String;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lcom/bytedance/sdk/xbridge/cn/runtime/depend/IHostUserDepend$UserModelExt;->shortID:Ljava/lang/String;
+
+    .line 2
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final getShortID()Ljava/lang/String;
+    .registers 2
+
+    .prologue
+    .line 0
+    iget-object v0, p0, Lcom/bytedance/sdk/xbridge/cn/runtime/depend/IHostUserDepend$UserModelExt;->shortID:Ljava/lang/String;
+
+    .line 1
+    .line 2
+    return-object v0
+.end method
+
+
+.method public final setShortID(Ljava/lang/String;)V
+[MOD-CHANGED]
+.method public final setShortID(Ljava/lang/String;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    iput-object p1, p0, Lcom/bytedance/sdk/xbridge/cn/runtime/depend/IHostUserDepend$UserModelExt;->shortID:Ljava/lang/String;
+
+    .line 16777218
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public final setShortID(Ljava/lang/String;)V
+    .registers 2
+
+    .prologue
+    .line 16777216
+    iput-object p1, p0, Lcom/bytedance/sdk/xbridge/cn/runtime/depend/IHostUserDepend$UserModelExt;->shortID:Ljava/lang/String;
+
+    .line 16777217
+    .line 16777218
+    return-void
+.end method
+
+

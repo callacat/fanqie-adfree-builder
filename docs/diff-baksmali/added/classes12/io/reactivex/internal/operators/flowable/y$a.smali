@@ -1,0 +1,349 @@
+.class public final Lio/reactivex/internal/operators/flowable/y$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/FlowableSubscriber;
+.implements Lio/reactivex/disposables/Disposable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/reactivex/internal/operators/flowable/y;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "a"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/lang/Object;",
+        "Lio/reactivex/FlowableSubscriber<",
+        "TT;>;",
+        "Lio/reactivex/disposables/Disposable;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final a:Lio/reactivex/SingleObserver;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lio/reactivex/SingleObserver<",
+            "-TT;>;"
+        }
+    .end annotation
+.end field
+
+.field public final b:J
+
+.field public final c:Ljava/lang/Object;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "TT;"
+        }
+    .end annotation
+.end field
+
+.field public d:Lorg/reactivestreams/Subscription;
+
+.field public e:J
+
+.field public f:Z
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0xa4c86
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lio/reactivex/SingleObserver;JLjava/lang/Object;)V
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lio/reactivex/SingleObserver<",
+            "-TT;>;JTT;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 50462720
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 50462723
+    iput-object p1, p0, Lio/reactivex/internal/operators/flowable/y$a;->a:Lio/reactivex/SingleObserver;
+
+    .line 50462725
+    iput-wide p2, p0, Lio/reactivex/internal/operators/flowable/y$a;->b:J
+
+    .line 50462727
+    iput-object p4, p0, Lio/reactivex/internal/operators/flowable/y$a;->c:Ljava/lang/Object;
+
+    .line 50462729
+    return-void
+.end method
+
+
+# virtual methods
+.method public final dispose()V
+    .registers 2
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 131074
+    invoke-interface {v0}, Lorg/reactivestreams/Subscription;->cancel()V
+
+    .line 131077
+    sget-object v0, Lio/reactivex/internal/subscriptions/SubscriptionHelper;->CANCELLED:Lio/reactivex/internal/subscriptions/SubscriptionHelper;
+
+    .line 131079
+    iput-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 131081
+    return-void
+.end method
+
+.method public final isDisposed()Z
+    .registers 3
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 131074
+    sget-object v1, Lio/reactivex/internal/subscriptions/SubscriptionHelper;->CANCELLED:Lio/reactivex/internal/subscriptions/SubscriptionHelper;
+
+    .line 131076
+    if-ne v0, v1, :cond_8
+
+    .line 131078
+    const/4 v0, 0x1
+
+    .line 131079
+    goto :goto_9
+
+    .line 131080
+    :cond_8
+    const/4 v0, 0x0
+
+    .line 131081
+    :goto_9
+    return v0
+.end method
+
+.method public final onComplete()V
+    .registers 3
+
+    .prologue
+    .line 196608
+    sget-object v0, Lio/reactivex/internal/subscriptions/SubscriptionHelper;->CANCELLED:Lio/reactivex/internal/subscriptions/SubscriptionHelper;
+
+    .line 196610
+    iput-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 196612
+    iget-boolean v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->f:Z
+
+    .line 196614
+    if-nez v0, :cond_1f
+
+    .line 196616
+    const/4 v0, 0x1
+
+    .line 196617
+    iput-boolean v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->f:Z
+
+    .line 196619
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->c:Ljava/lang/Object;
+
+    .line 196621
+    if-eqz v0, :cond_15
+
+    .line 196623
+    iget-object v1, p0, Lio/reactivex/internal/operators/flowable/y$a;->a:Lio/reactivex/SingleObserver;
+
+    .line 196625
+    invoke-interface {v1, v0}, Lio/reactivex/SingleObserver;->onSuccess(Ljava/lang/Object;)V
+
+    .line 196628
+    goto :goto_1f
+
+    .line 196629
+    :cond_15
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->a:Lio/reactivex/SingleObserver;
+
+    .line 196631
+    new-instance v1, Ljava/util/NoSuchElementException;
+
+    .line 196633
+    invoke-direct {v1}, Ljava/util/NoSuchElementException;-><init>()V
+
+    .line 196636
+    invoke-interface {v0, v1}, Lio/reactivex/SingleObserver;->onError(Ljava/lang/Throwable;)V
+
+    .line 196639
+    :cond_1f
+    :goto_1f
+    return-void
+.end method
+
+.method public final onError(Ljava/lang/Throwable;)V
+    .registers 3
+
+    .prologue
+    .line 16973824
+    iget-boolean v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->f:Z
+
+    .line 16973826
+    if-eqz v0, :cond_8
+
+    .line 16973828
+    invoke-static {p1}, Lio/reactivex/plugins/RxJavaPlugins;->onError(Ljava/lang/Throwable;)V
+
+    .line 16973831
+    return-void
+
+    .line 16973832
+    :cond_8
+    const/4 v0, 0x1
+
+    .line 16973833
+    iput-boolean v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->f:Z
+
+    .line 16973835
+    sget-object v0, Lio/reactivex/internal/subscriptions/SubscriptionHelper;->CANCELLED:Lio/reactivex/internal/subscriptions/SubscriptionHelper;
+
+    .line 16973837
+    iput-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 16973839
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->a:Lio/reactivex/SingleObserver;
+
+    .line 16973841
+    invoke-interface {v0, p1}, Lio/reactivex/SingleObserver;->onError(Ljava/lang/Throwable;)V
+
+    .line 16973844
+    return-void
+.end method
+
+.method public final onNext(Ljava/lang/Object;)V
+    .registers 7
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 17039360
+    iget-boolean v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->f:Z
+
+    .line 17039362
+    if-eqz v0, :cond_5
+
+    .line 17039364
+    return-void
+
+    .line 17039365
+    :cond_5
+    iget-wide v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->e:J
+
+    .line 17039367
+    iget-wide v2, p0, Lio/reactivex/internal/operators/flowable/y$a;->b:J
+
+    .line 17039369
+    cmp-long v4, v0, v2
+
+    .line 17039371
+    if-nez v4, :cond_1f
+
+    .line 17039373
+    const/4 v0, 0x1
+
+    .line 17039374
+    iput-boolean v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->f:Z
+
+    .line 17039376
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 17039378
+    invoke-interface {v0}, Lorg/reactivestreams/Subscription;->cancel()V
+
+    .line 17039381
+    sget-object v0, Lio/reactivex/internal/subscriptions/SubscriptionHelper;->CANCELLED:Lio/reactivex/internal/subscriptions/SubscriptionHelper;
+
+    .line 17039383
+    iput-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 17039385
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->a:Lio/reactivex/SingleObserver;
+
+    .line 17039387
+    invoke-interface {v0, p1}, Lio/reactivex/SingleObserver;->onSuccess(Ljava/lang/Object;)V
+
+    .line 17039390
+    return-void
+
+    .line 17039391
+    :cond_1f
+    const-wide/16 v2, 0x1
+
+    .line 17039393
+    add-long/2addr v0, v2
+
+    .line 17039394
+    iput-wide v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->e:J
+
+    .line 17039396
+    return-void
+.end method
+
+.method public final onSubscribe(Lorg/reactivestreams/Subscription;)V
+    .registers 4
+
+    .prologue
+    .line 16973824
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 16973826
+    invoke-static {v0, p1}, Lio/reactivex/internal/subscriptions/SubscriptionHelper;->r(Lorg/reactivestreams/Subscription;Lorg/reactivestreams/Subscription;)Z
+
+    .line 16973829
+    move-result v0
+
+    .line 16973830
+    if-eqz v0, :cond_17
+
+    .line 16973832
+    iput-object p1, p0, Lio/reactivex/internal/operators/flowable/y$a;->d:Lorg/reactivestreams/Subscription;
+
+    .line 16973834
+    iget-object v0, p0, Lio/reactivex/internal/operators/flowable/y$a;->a:Lio/reactivex/SingleObserver;
+
+    .line 16973836
+    invoke-interface {v0, p0}, Lio/reactivex/SingleObserver;->onSubscribe(Lio/reactivex/disposables/Disposable;)V
+
+    .line 16973839
+    const-wide v0, 0x7fffffffffffffffL
+
+    .line 16973844
+    invoke-interface {p1, v0, v1}, Lorg/reactivestreams/Subscription;->request(J)V
+
+    .line 16973847
+    :cond_17
+    return-void
+.end method

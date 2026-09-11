@@ -1,0 +1,107 @@
+.class public final Ltn5/w;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ltn5/n;
+
+
+# instance fields
+.field public final a:Ltn5/n;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 1
+
+    const v0, 0x97da8
+
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ltn5/x;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16908295
+    iput-object p1, p0, Ltn5/w;->a:Ltn5/n;
+
+    .line 16908297
+    return-void
+.end method
+
+
+# virtual methods
+.method public final F(Ljava/lang/String;)Lcom/dragon/reader/lib/datalevel/model/ChapterItem;
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    iget-object v0, p0, Ltn5/w;->a:Ltn5/n;
+
+    .line 16908294
+    invoke-interface {v0, p1}, Ltn5/n;->F(Ljava/lang/String;)Lcom/dragon/reader/lib/datalevel/model/ChapterItem;
+
+    .line 16908297
+    move-result-object p1
+
+    .line 16908298
+    return-object p1
+.end method
+
+.method public final getIndex(Ljava/lang/String;)I
+    .registers 3
+
+    .prologue
+    .line 16908288
+    const/4 v0, 0x0
+
+    .line 16908289
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 16908292
+    iget-object v0, p0, Ltn5/w;->a:Ltn5/n;
+
+    .line 16908294
+    invoke-interface {v0, p1}, Ltn5/n;->getIndex(Ljava/lang/String;)I
+
+    .line 16908297
+    move-result p1
+
+    .line 16908298
+    return p1
+.end method
+
+.method public final getSize()I
+    .registers 2
+
+    .prologue
+    .line 65536
+    iget-object v0, p0, Ltn5/w;->a:Ltn5/n;
+
+    .line 65538
+    invoke-interface {v0}, Ltn5/n;->getSize()I
+
+    .line 65541
+    move-result v0
+
+    .line 65542
+    return v0
+.end method

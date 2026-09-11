@@ -1,0 +1,97 @@
+.class public final synthetic Lcom/dragon/read/social/comment/action/n1;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/comment/action/u1;
+
+.field public final synthetic b:Lorg/jetbrains/compose/resources/DrawableResource;
+
+.field public final synthetic c:F
+
+.field public final synthetic d:Landroidx/compose/ui/Modifier;
+
+.field public final synthetic e:I
+
+.field public final synthetic f:I
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/social/comment/action/u1;Lorg/jetbrains/compose/resources/DrawableResource;FLandroidx/compose/ui/Modifier;II)V
+    .registers 7
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/dragon/read/social/comment/action/n1;->a:Lcom/dragon/read/social/comment/action/u1;
+
+    iput-object p2, p0, Lcom/dragon/read/social/comment/action/n1;->b:Lorg/jetbrains/compose/resources/DrawableResource;
+
+    iput p3, p0, Lcom/dragon/read/social/comment/action/n1;->c:F
+
+    iput-object p4, p0, Lcom/dragon/read/social/comment/action/n1;->d:Landroidx/compose/ui/Modifier;
+
+    iput p5, p0, Lcom/dragon/read/social/comment/action/n1;->e:I
+
+    iput p6, p0, Lcom/dragon/read/social/comment/action/n1;->f:I
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 10
+
+    .prologue
+    .line 33751040
+    iget-object v0, p0, Lcom/dragon/read/social/comment/action/n1;->a:Lcom/dragon/read/social/comment/action/u1;
+
+    .line 33751042
+    iget-object v1, p0, Lcom/dragon/read/social/comment/action/n1;->b:Lorg/jetbrains/compose/resources/DrawableResource;
+
+    .line 33751044
+    iget v2, p0, Lcom/dragon/read/social/comment/action/n1;->c:F
+
+    .line 33751046
+    iget-object v3, p0, Lcom/dragon/read/social/comment/action/n1;->d:Landroidx/compose/ui/Modifier;
+
+    .line 33751048
+    iget v4, p0, Lcom/dragon/read/social/comment/action/n1;->e:I
+
+    .line 33751050
+    iget v6, p0, Lcom/dragon/read/social/comment/action/n1;->f:I
+
+    .line 33751052
+    check-cast p1, Landroidx/compose/runtime/Composer;
+
+    .line 33751054
+    check-cast p2, Ljava/lang/Integer;
+
+    .line 33751056
+    invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I
+
+    .line 33751059
+    or-int/lit8 p2, v4, 0x1
+
+    .line 33751061
+    invoke-static {p2}, Landroidx/compose/runtime/r2;->a(I)I
+
+    .line 33751064
+    move-result v5
+
+    .line 33751065
+    move-object v4, p1
+
+    .line 33751066
+    invoke-static/range {v0 .. v6}, Lcom/dragon/read/social/comment/action/FeedbackActionArrowDialogKt;->d(Lcom/dragon/read/social/comment/action/u1;Lorg/jetbrains/compose/resources/DrawableResource;FLandroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+
+    .line 33751069
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 33751071
+    return-object p1
+.end method

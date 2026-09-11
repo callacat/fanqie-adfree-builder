@@ -1,0 +1,188 @@
+.class public final Lwq5/m$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function3;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lwq5/m;->b(ZLkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Lkotlin/jvm/functions/Function3<",
+        "Landroidx/compose/foundation/lazy/h;",
+        "Landroidx/compose/runtime/Composer;",
+        "Ljava/lang/Integer;",
+        "Lkotlin/Unit;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lkotlin/jvm/functions/Function2;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lkotlin/jvm/functions/Function2<",
+            "Landroidx/compose/runtime/Composer;",
+            "Ljava/lang/Integer;",
+            "Lkotlin/Unit;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Lkotlin/jvm/functions/Function2;)V
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlin/jvm/functions/Function2<",
+            "-",
+            "Landroidx/compose/runtime/Composer;",
+            "-",
+            "Ljava/lang/Integer;",
+            "Lkotlin/Unit;",
+            ">;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lwq5/m$a;->a:Lkotlin/jvm/functions/Function2;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 7
+
+    .prologue
+    .line 50659328
+    check-cast p1, Landroidx/compose/foundation/lazy/h;
+
+    .line 50659330
+    check-cast p2, Landroidx/compose/runtime/Composer;
+
+    .line 50659332
+    check-cast p3, Ljava/lang/Number;
+
+    .line 50659334
+    invoke-virtual {p3}, Ljava/lang/Number;->intValue()I
+
+    .line 50659337
+    move-result p3
+
+    .line 50659338
+    const/4 v0, 0x0
+
+    .line 50659339
+    invoke-static {p1, v0}, Lcom/ss/android/ugc/bytex/kt_intermediate/lib/CheckNpeV2;->throwNpe1(Ljava/lang/Object;I)V
+
+    .line 50659342
+    and-int/lit8 p1, p3, 0x11
+
+    .line 50659344
+    const/16 v1, 0x10
+
+    .line 50659346
+    if-eq p1, v1, :cond_16
+
+    .line 50659348
+    const/4 p1, 0x1
+
+    .line 50659349
+    goto :goto_17
+
+    .line 50659350
+    :cond_16
+    const/4 p1, 0x0
+
+    .line 50659351
+    :goto_17
+    and-int/lit8 v1, p3, 0x1
+
+    .line 50659353
+    invoke-interface {p2, p1, v1}, Landroidx/compose/runtime/Composer;->shouldExecute(ZI)Z
+
+    .line 50659356
+    move-result p1
+
+    .line 50659357
+    if-eqz p1, :cond_41
+
+    .line 50659359
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 50659362
+    move-result p1
+
+    .line 50659363
+    if-eqz p1, :cond_2e
+
+    .line 50659365
+    const-string p1, "com.dragon.read.kmp.smartspeed.SmartSpeedCenteredPanel.<anonymous>.<anonymous>.<anonymous> (SmartSpeedPanels.kt:169)"
+
+    .line 50659367
+    const v1, -0x4f1874d2
+
+    .line 50659370
+    const/4 v2, -0x1
+
+    .line 50659371
+    invoke-static {v1, p3, v2, p1}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 50659374
+    :cond_2e
+    iget-object p1, p0, Lwq5/m$a;->a:Lkotlin/jvm/functions/Function2;
+
+    .line 50659376
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 50659379
+    move-result-object p3
+
+    .line 50659380
+    invoke-interface {p1, p2, p3}, Lkotlin/jvm/functions/Function2;->invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 50659383
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    .line 50659386
+    move-result p1
+
+    .line 50659387
+    if-eqz p1, :cond_44
+
+    .line 50659389
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .line 50659392
+    goto :goto_44
+
+    .line 50659393
+    :cond_41
+    invoke-interface {p2}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
+
+    .line 50659396
+    :cond_44
+    :goto_44
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 50659398
+    return-object p1
+.end method

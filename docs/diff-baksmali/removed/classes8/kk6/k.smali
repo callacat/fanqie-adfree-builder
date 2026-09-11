@@ -1,0 +1,53 @@
+.class public final synthetic Lkk6/k;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
+
+
+# instance fields
+.field public final synthetic a:Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView;
+
+.field public final synthetic b:Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView$c;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView;Lcom/dragon/read/social/profile/tab/userbooklist/c;)V
+    .registers 3
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lkk6/k;->a:Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView;
+
+    iput-object p2, p0, Lkk6/k;->b:Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView$c;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onClick(Landroid/view/View;)V
+    .registers 4
+
+    .prologue
+    .line 16908288
+    iget-object p1, p0, Lkk6/k;->a:Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView;
+
+    .line 16908289
+    .line 16908290
+    iget-object v0, p0, Lkk6/k;->b:Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView$c;
+
+    .line 16908291
+    .line 16908292
+    sget v1, Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView;->k:I
+
+    .line 16908293
+    .line 16908294
+    invoke-virtual {p1, v0}, Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView;->b(Lcom/dragon/read/social/profile/tab/userbooklist/UserBookListView$c;)V
+
+    .line 16908295
+    .line 16908296
+    .line 16908297
+    return-void
+.end method

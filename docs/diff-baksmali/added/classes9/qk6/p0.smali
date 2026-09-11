@@ -1,0 +1,41 @@
+.class public final synthetic Lqk6/p0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/dragon/read/social/ui/SocialRecyclerView$e;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()V
+    .registers 3
+
+    .prologue
+    .line 131072
+    sget v0, Lcom/dragon/read/social/question/CommunityQuestionTabFragment;->r:I
+
+    .line 131074
+    new-instance v0, Lcom/dragon/read/editor/CollapsingPublishLayout$a;
+
+    .line 131076
+    const-string v1, "community_question"
+
+    .line 131078
+    invoke-direct {v0, v1}, Lcom/dragon/read/editor/CollapsingPublishLayout$a;-><init>(Ljava/lang/String;)V
+
+    .line 131081
+    invoke-static {v0}, Lcom/ss/android/messagebus/BusProvider;->post(Ljava/lang/Object;)V
+
+    .line 131084
+    return-void
+.end method

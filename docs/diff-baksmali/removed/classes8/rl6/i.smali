@@ -1,0 +1,63 @@
+.class public final synthetic Lrl6/i;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# instance fields
+.field public final synthetic a:Lrl6/q;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lrl6/q;)V
+    .registers 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lrl6/i;->a:Lrl6/q;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .registers 4
+
+    .prologue
+    .line 16973824
+    iget-object v0, p0, Lrl6/i;->a:Lrl6/q;
+
+    .line 16973825
+    .line 16973826
+    check-cast p1, Ljava/util/List;
+
+    .line 16973827
+    .line 16973828
+    iget-object v1, v0, Lrl6/q;->a:Lrl6/t;
+
+    .line 16973829
+    .line 16973830
+    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    .line 16973831
+    .line 16973832
+    .line 16973833
+    invoke-interface {v1, p1}, Lrl6/t;->i(Ljava/util/List;)V
+
+    .line 16973834
+    .line 16973835
+    .line 16973836
+    invoke-virtual {v0}, Lrl6/q;->i()V
+
+    .line 16973837
+    .line 16973838
+    .line 16973839
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 16973840
+    .line 16973841
+    return-object p1
+.end method

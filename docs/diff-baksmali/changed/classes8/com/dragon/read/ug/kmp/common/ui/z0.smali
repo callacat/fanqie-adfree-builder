@@ -1,0 +1,66 @@
+## classes8/com/dragon/read/ug/kmp/common/ui/z0.smali
+# added=0 removed=0 changed=1
+
+.method public final invoke()Ljava/lang/Object;
+[MOD-CHANGED]
+.method public final invoke()Ljava/lang/Object;
+    .registers 5
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->a:Lcom/dragon/read/ug/kmp/common/ui/y0;
+
+    .line 131074
+    iget-object v1, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->b:Lkotlinx/coroutines/CoroutineScope;
+
+    .line 131076
+    iget-object v2, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->c:Landroidx/compose/runtime/MutableState;
+
+    .line 131078
+    iget-object v3, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->d:Landroidx/compose/runtime/MutableState;
+
+    .line 131080
+    invoke-static {v0, v1, v2, v3}, Lcom/dragon/read/ug/kmp/common/ui/CommonSheetContainerKt;->b(Lcom/dragon/read/ug/kmp/common/ui/y0;Lkotlinx/coroutines/CoroutineScope;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;)V
+
+    .line 131083
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 131085
+    return-object v0
+.end method
+
+[INNER-ORIGINAL]
+.method public final invoke()Ljava/lang/Object;
+    .registers 5
+
+    .prologue
+    .line 131072
+    iget-object v0, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->a:Lcom/dragon/read/ug/kmp/common/ui/y0;
+
+    .line 131073
+    .line 131074
+    iget-object v1, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->b:Lkotlinx/coroutines/CoroutineScope;
+
+    .line 131075
+    .line 131076
+    iget-object v2, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->c:Landroidx/compose/runtime/MutableState;
+
+    .line 131077
+    .line 131078
+    iget-object v3, p0, Lcom/dragon/read/ug/kmp/common/ui/z0;->d:Landroidx/compose/runtime/MutableState;
+
+    .line 131079
+    .line 131080
+    invoke-static {v0, v1, v2, v3}, Lcom/dragon/read/ug/kmp/common/ui/CommonSheetContainerKt;->b(Lcom/dragon/read/ug/kmp/common/ui/y0;Lkotlinx/coroutines/CoroutineScope;Landroidx/compose/runtime/MutableState;Landroidx/compose/runtime/MutableState;)V
+
+    .line 131081
+    .line 131082
+    .line 131083
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 131084
+    .line 131085
+    return-object v0
+.end method
+
+

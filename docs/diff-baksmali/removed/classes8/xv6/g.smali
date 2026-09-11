@@ -1,0 +1,100 @@
+.class public final synthetic Lxv6/g;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# instance fields
+.field public final synthetic a:Lxv6/k;
+
+.field public final synthetic b:Landroidx/compose/runtime/MutableState;
+
+.field public final synthetic c:Lcom/dragon/read/ug/kmp/common/ui/r0;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lxv6/k;Landroidx/compose/runtime/MutableState;Lcom/dragon/read/ug/kmp/common/ui/r0;)V
+    .registers 4
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lxv6/g;->a:Lxv6/k;
+
+    iput-object p2, p0, Lxv6/g;->b:Landroidx/compose/runtime/MutableState;
+
+    iput-object p3, p0, Lxv6/g;->c:Lcom/dragon/read/ug/kmp/common/ui/r0;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final invoke()Ljava/lang/Object;
+    .registers 4
+
+    .prologue
+    .line 196608
+    iget-object v0, p0, Lxv6/g;->a:Lxv6/k;
+
+    .line 196609
+    .line 196610
+    iget-object v1, p0, Lxv6/g;->b:Landroidx/compose/runtime/MutableState;
+
+    .line 196611
+    .line 196612
+    iget-object v2, p0, Lxv6/g;->c:Lcom/dragon/read/ug/kmp/common/ui/r0;
+
+    .line 196613
+    .line 196614
+    iget-boolean v0, v0, Lxv6/k;->e:Z
+
+    .line 196615
+    .line 196616
+    if-eqz v0, :cond_1d
+
+    .line 196617
+    .line 196618
+    const-string v0, "upgrade"
+
+    .line 196619
+    .line 196620
+    invoke-static {v0}, Lxv6/j;->d(Ljava/lang/String;)V
+
+    .line 196621
+    .line 196622
+    .line 196623
+    const-string v0, "appointment_upgrade_reserve_watch_ad"
+
+    .line 196624
+    .line 196625
+    invoke-interface {v1, v0}, Landroidx/compose/runtime/MutableState;->setValue(Ljava/lang/Object;)V
+
+    .line 196626
+    .line 196627
+    .line 196628
+    iget-object v0, v2, Lcom/dragon/read/ug/kmp/common/ui/r0;->b:Lkotlin/jvm/functions/Function2;
+
+    .line 196629
+    .line 196630
+    sget-object v1, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
+
+    .line 196631
+    .line 196632
+    sget-object v2, Lcom/dragon/read/ug/kmp/common/ui/CommonPopupDismissType;->ContentCloseDismiss:Lcom/dragon/read/ug/kmp/common/ui/CommonPopupDismissType;
+
+    .line 196633
+    .line 196634
+    invoke-interface {v0, v1, v2}, Lkotlin/jvm/functions/Function2;->invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 196635
+    .line 196636
+    .line 196637
+    :cond_1d
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    .line 196638
+    .line 196639
+    return-object v0
+.end method

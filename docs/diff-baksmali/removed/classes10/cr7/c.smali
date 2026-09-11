@@ -1,0 +1,415 @@
+.class public final Lcr7/c;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcr7/c$d;
+    }
+.end annotation
+
+
+# static fields
+.field public static final a:Ljava/lang/Object;
+
+.field public static final b:Ljava/util/concurrent/ConcurrentHashMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/concurrent/ConcurrentHashMap<",
+            "Ljava/lang/reflect/Type;",
+            "Ljava/util/concurrent/ConcurrentHashMap<",
+            "Lcr7/c$d;",
+            "Ljava/lang/Object;",
+            ">;>;"
+        }
+    .end annotation
+.end field
+
+.field public static final c:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+
+# direct methods
+.method public static constructor <clinit>()V
+    .registers 2
+
+    .prologue
+    .line 196608
+    const v0, 0xa30e7
+
+    .line 196609
+    .line 196610
+    .line 196611
+    invoke-static {v0}, Lcom/bytedance/covode/number/Covode;->recordClassIndex(I)V
+
+    .line 196612
+    .line 196613
+    .line 196614
+    new-instance v0, Ljava/lang/Object;
+
+    .line 196615
+    .line 196616
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 196617
+    .line 196618
+    .line 196619
+    sput-object v0, Lcr7/c;->a:Ljava/lang/Object;
+
+    .line 196620
+    .line 196621
+    new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 196622
+    .line 196623
+    invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
+
+    .line 196624
+    .line 196625
+    .line 196626
+    sput-object v0, Lcr7/c;->b:Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 196627
+    .line 196628
+    new-instance v0, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 196629
+    .line 196630
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 196631
+    .line 196632
+    .line 196633
+    move-result-object v1
+
+    .line 196634
+    invoke-direct {v0, v1}, Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;-><init>(Landroid/os/Looper;)V
+
+    .line 196635
+    .line 196636
+    .line 196637
+    sput-object v0, Lcr7/c;->c:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 196638
+    .line 196639
+    return-void
+.end method
+
+.method public static a(Ljava/lang/Object;)V
+    .registers 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<Event:",
+            "Ljava/lang/Object;",
+            ">(TEvent;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 17039360
+    invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+
+    .line 17039361
+    .line 17039362
+    .line 17039363
+    move-result-object v0
+
+    .line 17039364
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 17039365
+    .line 17039366
+    .line 17039367
+    move-result-object v1
+
+    .line 17039368
+    if-eq v0, v1, :cond_15
+
+    .line 17039369
+    .line 17039370
+    sget-object v0, Lcr7/c;->c:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 17039371
+    .line 17039372
+    new-instance v1, Lcr7/c$c;
+
+    .line 17039373
+    .line 17039374
+    invoke-direct {v1, p0}, Lcr7/c$c;-><init>(Ljava/lang/Object;)V
+
+    .line 17039375
+    .line 17039376
+    .line 17039377
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 17039378
+    .line 17039379
+    .line 17039380
+    return-void
+
+    .line 17039381
+    :cond_15
+    sget-object v0, Lcr7/c;->b:Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 17039382
+    .line 17039383
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17039384
+    .line 17039385
+    .line 17039386
+    move-result-object v1
+
+    .line 17039387
+    invoke-virtual {v0, v1}, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 17039388
+    .line 17039389
+    .line 17039390
+    move-result-object v0
+
+    .line 17039391
+    check-cast v0, Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 17039392
+    .line 17039393
+    if-eqz v0, :cond_3d
+
+    .line 17039394
+    .line 17039395
+    invoke-virtual {v0}, Ljava/util/concurrent/ConcurrentHashMap;->keySet()Ljava/util/Set;
+
+    .line 17039396
+    .line 17039397
+    .line 17039398
+    move-result-object v0
+
+    .line 17039399
+    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 17039400
+    .line 17039401
+    .line 17039402
+    move-result-object v0
+
+    .line 17039403
+    :cond_2b
+    :goto_2b
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 17039404
+    .line 17039405
+    .line 17039406
+    move-result v1
+
+    .line 17039407
+    if-eqz v1, :cond_3d
+
+    .line 17039408
+    .line 17039409
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 17039410
+    .line 17039411
+    .line 17039412
+    move-result-object v1
+
+    .line 17039413
+    check-cast v1, Lcr7/c$d;
+
+    .line 17039414
+    .line 17039415
+    if-eqz v1, :cond_2b
+
+    .line 17039416
+    .line 17039417
+    invoke-interface {v1, p0}, Lcr7/c$d;->a(Ljava/lang/Object;)V
+
+    .line 17039418
+    .line 17039419
+    .line 17039420
+    goto :goto_2b
+
+    .line 17039421
+    :cond_3d
+    return-void
+.end method
+
+.method public static b(Landroidx/lifecycle/LifecycleOwner;Lcr7/c$d;)V
+    .registers 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<EVENT:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Landroidx/lifecycle/LifecycleOwner;",
+            "Lcr7/c$d<",
+            "TEVENT;>;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 33882112
+    if-nez p1, :cond_3
+
+    .line 33882113
+    .line 33882114
+    return-void
+
+    .line 33882115
+    :cond_3
+    invoke-static {}, Landroid/os/Looper;->myLooper()Landroid/os/Looper;
+
+    .line 33882116
+    .line 33882117
+    .line 33882118
+    move-result-object v0
+
+    .line 33882119
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 33882120
+    .line 33882121
+    .line 33882122
+    move-result-object v1
+
+    .line 33882123
+    if-eq v0, v1, :cond_18
+
+    .line 33882124
+    .line 33882125
+    sget-object v0, Lcr7/c;->c:Lcom/ss/android/ugc/bytex/taskmonitor/proxy/HandlerDelegate;
+
+    .line 33882126
+    .line 33882127
+    new-instance v1, Lcr7/c$a;
+
+    .line 33882128
+    .line 33882129
+    invoke-direct {v1, p0, p1}, Lcr7/c$a;-><init>(Landroidx/lifecycle/LifecycleOwner;Lcr7/c$d;)V
+
+    .line 33882130
+    .line 33882131
+    .line 33882132
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 33882133
+    .line 33882134
+    .line 33882135
+    return-void
+
+    .line 33882136
+    :cond_18
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 33882137
+    .line 33882138
+    .line 33882139
+    move-result-object v0
+
+    .line 33882140
+    invoke-virtual {v0}, Ljava/lang/Class;->getGenericInterfaces()[Ljava/lang/reflect/Type;
+
+    .line 33882141
+    .line 33882142
+    .line 33882143
+    move-result-object v0
+
+    .line 33882144
+    const/4 v1, 0x0
+
+    .line 33882145
+    aget-object v0, v0, v1
+
+    .line 33882146
+    .line 33882147
+    check-cast v0, Ljava/lang/reflect/ParameterizedType;
+
+    .line 33882148
+    .line 33882149
+    invoke-interface {v0}, Ljava/lang/reflect/ParameterizedType;->getActualTypeArguments()[Ljava/lang/reflect/Type;
+
+    .line 33882150
+    .line 33882151
+    .line 33882152
+    move-result-object v0
+
+    .line 33882153
+    aget-object v0, v0, v1
+
+    .line 33882154
+    .line 33882155
+    sget-object v1, Lcr7/c;->b:Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 33882156
+    .line 33882157
+    invoke-virtual {v1, v0}, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33882158
+    .line 33882159
+    .line 33882160
+    move-result-object v2
+
+    .line 33882161
+    check-cast v2, Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 33882162
+    .line 33882163
+    if-nez v2, :cond_3d
+
+    .line 33882164
+    .line 33882165
+    new-instance v2, Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 33882166
+    .line 33882167
+    invoke-direct {v2}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
+
+    .line 33882168
+    .line 33882169
+    .line 33882170
+    invoke-virtual {v1, v0, v2}, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33882171
+    .line 33882172
+    .line 33882173
+    :cond_3d
+    sget-object v1, Lcr7/c;->a:Ljava/lang/Object;
+
+    .line 33882174
+    .line 33882175
+    invoke-virtual {v2, p1, v1}, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33882176
+    .line 33882177
+    .line 33882178
+    if-eqz p0, :cond_50
+
+    .line 33882179
+    .line 33882180
+    invoke-interface {p0}, Landroidx/lifecycle/LifecycleOwner;->getLifecycle()Landroidx/lifecycle/Lifecycle;
+
+    .line 33882181
+    .line 33882182
+    .line 33882183
+    move-result-object p0
+
+    .line 33882184
+    new-instance v1, Lcr7/c$b;
+
+    .line 33882185
+    .line 33882186
+    invoke-direct {v1, v2, p1, v0}, Lcr7/c$b;-><init>(Ljava/util/concurrent/ConcurrentHashMap;Lcr7/c$d;Ljava/lang/reflect/Type;)V
+
+    .line 33882187
+    .line 33882188
+    .line 33882189
+    invoke-virtual {p0, v1}, Landroidx/lifecycle/Lifecycle;->addObserver(Landroidx/lifecycle/LifecycleObserver;)V
+
+    .line 33882190
+    .line 33882191
+    .line 33882192
+    :cond_50
+    return-void
+.end method

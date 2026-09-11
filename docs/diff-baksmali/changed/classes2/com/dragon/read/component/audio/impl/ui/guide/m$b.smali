@@ -1,0 +1,102 @@
+## classes2/com/dragon/read/component/audio/impl/ui/guide/m$b.smali
+# added=0 removed=0 changed=2
+
+.method public constructor <init>(Lcom/dragon/read/component/audio/impl/ui/guide/m;)V
+[MOD-CHANGED]
+.method public constructor <init>(Lcom/dragon/read/component/audio/impl/ui/guide/m;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lcom/dragon/read/component/audio/impl/ui/guide/m$b;->a:Lcom/dragon/read/component/audio/impl/ui/guide/m;
+
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842757
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public constructor <init>(Lcom/dragon/read/component/audio/impl/ui/guide/m;)V
+    .registers 2
+
+    .prologue
+    .line 16842752
+    iput-object p1, p0, Lcom/dragon/read/component/audio/impl/ui/guide/m$b;->a:Lcom/dragon/read/component/audio/impl/ui/guide/m;
+
+    .line 16842753
+    .line 16842754
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 16842755
+    .line 16842756
+    .line 16842757
+    return-void
+.end method
+
+
+.method public final onAnimationEnd(Landroid/animation/Animator;)V
+[MOD-CHANGED]
+.method public final onAnimationEnd(Landroid/animation/Animator;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    iget-object p1, p0, Lcom/dragon/read/component/audio/impl/ui/guide/m$b;->a:Lcom/dragon/read/component/audio/impl/ui/guide/m;
+
+    .line 16908290
+    const/16 v0, 0x8
+
+    .line 16908292
+    invoke-virtual {p1, v0}, Landroid/widget/FrameLayout;->setVisibility(I)V
+
+    .line 16908295
+    iget-object p1, p0, Lcom/dragon/read/component/audio/impl/ui/guide/m$b;->a:Lcom/dragon/read/component/audio/impl/ui/guide/m;
+
+    .line 16908297
+    const/high16 v0, 0x3f800000    # 1.0f
+
+    .line 16908299
+    invoke-virtual {p1, v0}, Landroid/widget/FrameLayout;->setAlpha(F)V
+
+    .line 16908302
+    return-void
+.end method
+
+[INNER-ORIGINAL]
+.method public final onAnimationEnd(Landroid/animation/Animator;)V
+    .registers 3
+
+    .prologue
+    .line 16908288
+    iget-object p1, p0, Lcom/dragon/read/component/audio/impl/ui/guide/m$b;->a:Lcom/dragon/read/component/audio/impl/ui/guide/m;
+
+    .line 16908289
+    .line 16908290
+    const/16 v0, 0x8
+
+    .line 16908291
+    .line 16908292
+    invoke-virtual {p1, v0}, Landroid/widget/FrameLayout;->setVisibility(I)V
+
+    .line 16908293
+    .line 16908294
+    .line 16908295
+    iget-object p1, p0, Lcom/dragon/read/component/audio/impl/ui/guide/m$b;->a:Lcom/dragon/read/component/audio/impl/ui/guide/m;
+
+    .line 16908296
+    .line 16908297
+    const/high16 v0, 0x3f800000    # 1.0f
+
+    .line 16908298
+    .line 16908299
+    invoke-virtual {p1, v0}, Landroid/widget/FrameLayout;->setAlpha(F)V
+
+    .line 16908300
+    .line 16908301
+    .line 16908302
+    return-void
+.end method
+
+
