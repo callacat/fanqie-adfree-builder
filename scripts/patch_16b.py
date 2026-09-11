@@ -28,13 +28,21 @@ def nop_invoke_in_file(path, invoke_pat, tag, expect_min=1):
     report.append(f'{tag}: OK（{n} 处 NOP）{path}')
     return n
 
-# ── P1: MuteApplication.onCreate 的 com/a/a.init()
-mute_app = os.path.join(root, 'smali/com/dragon/read/base/mute/MuteApplicationStub.smali')
-if not os.path.exists(mute_app):
-    # mod 包的 stub 路径可能不同，全树找
-    cands = glob.glob(os.path.join(root, 'smali*/com/dragon/read/**/MuteApplication*.smali'), recursive=True)
-    mute_app = cands[0] if cands else mute_app
-p1 = nop_invoke_in_file(mute_app, r'invoke-\w+ \{[^}]*\}, Lcom/a/a;->init\(\)V', 'P1-init')
+# ── P1: com/a/a.init() 调用点（首跑实锤：不在 MuteApplicationStub，全树找真实调用者）
+p1_total = 0
+p1_files = []
+for f in glob.glob(os.path.join(root, 'smali*/**/*.smali'), recursive=True):
+    with open(f, encoding='utf-8', errors='replace') as fh:
+        if 'Lcom/a/a;->init()V' not in fh.read():
+            continue
+    n = nop_invoke_in_file(f, r'invoke-\w+ \{[^}]*\}, Lcom/a/a;->init\(\)V', 'P1-init', 0)
+    if n > 0:
+        p1_total += n
+        p1_files.append(os.path.basename(f))
+if p1_total == 0:
+    report.append('P1-init: WARN(全树 0 命中——init 可能内联/更名，com/a/a 类未断调用；标注不确定点，不 fatal)')
+else:
+    report.append(f'P1-init 合计: {p1_total} 处 NOP（{", ".join(p1_files[:5])}）')
 
 # ── P2: 全树对 com/rN 的调用点（rN 类文件本身不动）
 p2_total = 0
