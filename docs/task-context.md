@@ -50,3 +50,7 @@
 - **00:13 检测东哥正前台阅读**（topResumedActivity=ReaderActivity，番茄 lastTimeUsed 00:10:21）→ 换装会清书架/进度/登录态，**按 A7④ 停手未卸载**。
 - 已办：任务表 claim（进展→进行中）+ update 登记暂停原因；群 sys 话题 @东哥 请示装机窗口（om_x100b66f0463f5ca8b1657b0417f8d49）。
 - 下一步：东哥回「可以装」→ pm uninstall com.dragon.read → adb install v3 包 → 启动过 Splash → 广告位复测（开屏/信息流/章末）→ 回报+任务表 done。
+
+## 2026-09-11 18:50 路线切换（东哥拍板）：官方直改搁置 → 破解版底包改造（去后门/广告/弹窗），loop 方式推进
+- 方案：docs/方案-破解版改造.md（唯一事实源）。round16a=外层22dex vs 官方原包全量diff（码农CI）→ 老马审读A/B/C/D分类 → round16b patch构建 → 装机三测。
+- 核心依据：Tinker壳+liborgapk.so官方原包签名未动 → sig_hash天然正确，绕开b3-shell卡死的签名伪装层。
