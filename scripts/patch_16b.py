@@ -11,7 +11,7 @@ root = sys.argv[1]
 report = []
 
 def nop_invoke_in_file(path, invoke_pat, tag, expect_min=1):
-    """把匹配的 invoke-… 行替换为 nop（保留寄存器布局无关——nop 无寄存器）。幂等。"""
+    """把匹配的 invoke-…(/range) 行替换为 nop。幂等。"""
     if not os.path.exists(path):
         report.append(f'{tag}: SKIP(文件不存在) {path}')
         return 0
@@ -19,7 +19,6 @@ def nop_invoke_in_file(path, invoke_pat, tag, expect_min=1):
     if f'PATCHED_ROUND16B {tag}' in src:
         report.append(f'{tag}: SKIP(已patch) {path}')
         return -1
-    # invoke-kind {regs...}, Lcom/…;->method(...) 替换为 nop + 注释
     new, n = re.subn(invoke_pat, lambda m: f'nop # PATCHED_ROUND16B {tag}: {m.group(0)[:80]}', src)
     if n == 0:
         report.append(f'{tag}: WARN(0 命中) {path}')
@@ -28,6 +27,9 @@ def nop_invoke_in_file(path, invoke_pat, tag, expect_min=1):
     report.append(f'{tag}: OK（{n} 处 NOP）{path}')
     return n
 
+# invoke 匹配通用前缀（覆盖 invoke-virtual/range 等）
+INV = r'invoke-\w+(?:/range)? \{[^}]*\}, '
+
 # ── P1: com/a/a.init() 调用点（首跑实锤：不在 MuteApplicationStub，全树找真实调用者）
 p1_total = 0
 p1_files = []
@@ -35,7 +37,7 @@ for f in glob.glob(os.path.join(root, 'smali*/**/*.smali'), recursive=True):
     with open(f, encoding='utf-8', errors='replace') as fh:
         if 'Lcom/a/a;->init()V' not in fh.read():
             continue
-    n = nop_invoke_in_file(f, r'invoke-\w+ \{[^}]*\}, Lcom/a/a;->init\(\)V', 'P1-init', 0)
+    n = nop_invoke_in_file(f, INV + r'Lcom/a/a;->init\(\)V', 'P1-init', 0)
     if n > 0:
         p1_total += n
         p1_files.append(os.path.basename(f))
@@ -55,7 +57,7 @@ for f in glob.glob(os.path.join(root, 'smali*/**/*.smali'), recursive=True):
         with open(f, encoding='utf-8', errors='replace') as fh:
             if 'Lcom/rN;' not in fh.read():
                 continue
-    n = nop_invoke_in_file(f, r'invoke-\w+ \{[^}]*\}, Lcom/rN;->[^\n]*', 'P2-rN', 0)
+    n = nop_invoke_in_file(f, INV + r'Lcom/rN;->[^\n]*', 'P2-rN', 0)
     if n > 0:
         p2_total += n
 report.append(f'P2-rN 合计: {p2_total} 处 NOP')
@@ -71,7 +73,7 @@ for f in glob.glob(os.path.join(root, 'smali*/**/*.smali'), recursive=True):
         # SafeLoader 自身的 native 注册方法体不动（保留结构），只断外部调用者——
         # 若 SafeLoader 内部静态块自注册，这里也 NOP（该 so 无卡密外消费方，§1.2 判定）
         pass
-    new, n = re.subn(r'invoke-\w+ \{[^}]*\}, Lsgcore0/SafeLoader;->registerNativesForClass[^\n]*',
+    new, n = re.subn(INV + r'Lsgcore0/SafeLoader;->registerNativesForClass[^\n]*',
                      lambda m: f'nop # PATCHED_ROUND16B P3-registerNatives: {m.group(0)[:80]}', src)
     if n:
         open(f, 'w', encoding='utf-8').write(new)
