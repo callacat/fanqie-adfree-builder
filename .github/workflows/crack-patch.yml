@@ -71,6 +71,10 @@ jobs:
           L2=$(grep -rn 'invoke-.*Lcom/rN;->' mod_src/smali*/ | grep -v PATCHED | wc -l)
           L3=$(grep -rn 'invoke-.*Lsgcore0/SafeLoader;->registerNativesForClass' mod_src/smali*/ | grep -v PATCHED | wc -l)
           echo "残留: init=$L1 rN=$L2 registerNatives=$L3（应全 0）"
+          if [ "$L2" != "0" ]; then
+            echo "== rN 残留样本（判形态）=="
+            grep -rn 'invoke-.*Lcom/rN;->' mod_src/smali*/ | grep -v PATCHED | head -8
+          fi
           [ "$L1" = "0" ] && [ "$L2" = "0" ] && [ "$L3" = "0" ] || { echo '!! 存在未 NOP 的活调用'; exit 1; }
 
       - name: apktool b 重建
