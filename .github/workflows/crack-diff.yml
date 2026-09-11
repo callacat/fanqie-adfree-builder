@@ -114,6 +114,7 @@ jobs:
       - name: Commit + push 产物
         run: |
           cd "$GITHUB_WORKSPACE"
+          cp work/diff-out/docs/size-audit.txt docs/size-audit.txt
           git config user.name "codery-ci"
           git config user.email "codery-ci@noreply"
           git add docs/diff-report.md docs/diff-baksmali/ docs/size-audit.txt
