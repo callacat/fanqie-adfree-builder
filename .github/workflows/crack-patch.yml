@@ -66,16 +66,13 @@ jobs:
           echo "== P2/P3 落位统计 =="
           grep -rc 'PATCHED_ROUND16B P2' mod_src/smali*/ 2>/dev/null | grep -v ':0' | head -12
           grep -rc 'PATCHED_ROUND16B P3' mod_src/smali*/ 2>/dev/null | grep -v ':0' | head -6
-          echo "== 活引用残留扫描（patch 后不应再有未 NOP 的 rN/init/registerNatives invoke）=="
+          echo "== 活引用残留扫描（patch 后不应再有未 NOP 的外部 rN/init/registerNatives invoke）=="
+          # rN.smali 自身内部自调用豁免（蓝图：类保留防空引用，内部逻辑不影响外部入口断链）
           L1=$(grep -rn 'invoke-.*Lcom/a/a;->init()V' mod_src/smali*/ | grep -v PATCHED | wc -l)
-          L2=$(grep -rn 'invoke-.*Lcom/rN;->' mod_src/smali*/ | grep -v PATCHED | wc -l)
+          L2=$(grep -rn 'invoke-.*Lcom/rN;->' mod_src/smali*/ | grep -v PATCHED | grep -v 'com/rN\.smali:' | wc -l)
           L3=$(grep -rn 'invoke-.*Lsgcore0/SafeLoader;->registerNativesForClass' mod_src/smali*/ | grep -v PATCHED | wc -l)
-          echo "残留: init=$L1 rN=$L2 registerNatives=$L3（应全 0）"
-          if [ "$L2" != "0" ]; then
-            echo "== rN 残留样本（判形态）=="
-            grep -rn 'invoke-.*Lcom/rN;->' mod_src/smali*/ | grep -v PATCHED | head -8
-          fi
-          [ "$L1" = "0" ] && [ "$L2" = "0" ] && [ "$L3" = "0" ] || { echo '!! 存在未 NOP 的活调用'; exit 1; }
+          echo "残留(外部): init=$L1 rN=$L2 registerNatives=$L3（应全 0；rN 自身内部调用不计）"
+          [ "$L1" = "0" ] && [ "$L2" = "0" ] && [ "$L3" = "0" ] || { echo '!! 存在未 NOP 的外部活调用'; exit 1; }
 
       - name: apktool b 重建
         run: |
