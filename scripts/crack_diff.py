@@ -29,9 +29,22 @@ for droot, _, fs in os.walk(MOD):
             mod_classes[rel] = os.path.join(droot, f)
 
 METHOD_RE = re.compile(r'^\.method\s+(.+)$')
+# r16a 修正：剥离调试/行号指令后再对比——mod 重打包改了 .line 偏移，首轮 50.8 万「修改方法」
+# 抽样实锤 95%+ 是纯 .line 噪声（真实语义差异被淹没）。剥离=.line/.prologue/.local/.end local/
+# .restart/.catch 声明行保留（catch 是语义），空行归一。
+DEBUG_RE = re.compile(r'^\s*\.(line|prologue|local|end local|restart local|source)\b')
+
+def norm_method_body(text):
+    out = []
+    for line in text.split('\n'):
+        s = line.strip()
+        if DEBUG_RE.match(line) or not s:
+            continue
+        out.append(s)
+    return '\n'.join(out)
 
 def parse_methods(path):
-    """返回 {方法签名: 方法体文本}；类级字段/注解不进对比（方法级 diff 足够老马审读）"""
+    """返回 {方法签名: 归一化方法体}；调试指令剥离，只比语义指令"""
     methods = {}
     cur_name, cur_buf = None, None
     with open(path, encoding='utf-8', errors='replace') as f:
@@ -43,7 +56,7 @@ def parse_methods(path):
             elif cur_name is not None:
                 cur_buf.append(line)
                 if line.strip() == '.end method':
-                    methods[cur_name] = ''.join(cur_buf)
+                    methods[cur_name] = norm_method_body(''.join(cur_buf))
                     cur_name, cur_buf = None, None
     return methods
 
