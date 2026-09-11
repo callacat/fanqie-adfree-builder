@@ -39,12 +39,24 @@ jobs:
           gh release download samples -R "$GITHUB_REPOSITORY" -p 'fanqie-73368-mod-218M.apk' -p 'inner-73368-orig.apk' -D .
           echo "fdf7e7c1b56a0f3409bf4bf3d1a9c7c252f43d951de0debdbccbb8ff798a3024  fanqie-73368-mod-218M.apk" | sha256sum -c -
 
-      - name: 解包双包（mod 外层 dex + inner 官方包）
+      - name: 解包双包（mod 外层 dex + inner 官方包；mod 包有重叠组件 Info-ZIP 拦 bomb，python zipfile 无此检查——round8 已知特性）
         run: |
           cd work
-          unzip -o -q fanqie-73368-mod-218M.apk 'classes*.dex' -d mod-outer/
-          unzip -o -q inner-73368-orig.apk 'classes*.dex' -d inner-org/
-          unzip -o -q fanqie-73368-mod-218M.apk -d mod-full/ -x 'classes*.dex' 2>/dev/null || unzip -o -q fanqie-73368-mod-218M.apk -d mod-full/
+          python3 - <<'EOF'
+          import zipfile, os
+          z = zipfile.ZipFile('fanqie-73368-mod-218M.apk')
+          os.makedirs('mod-outer', exist_ok=True)
+          for n in z.namelist():
+              if n.startswith('classes') and n.endswith('.dex'):
+                  open(os.path.join('mod-outer', n), 'wb').write(z.read(n))
+          zi = zipfile.ZipFile('inner-73368-orig.apk')
+          os.makedirs('inner-org', exist_ok=True)
+          for n in zi.namelist():
+              if n.startswith('classes') and n.endswith('.dex'):
+                  open(os.path.join('inner-org', n), 'wb').write(zi.read(n))
+          print('mod dex:', len([n for n in z.namelist() if n.startswith('classes') and n.endswith('.dex')]))
+          print('inner dex:', len([n for n in zi.namelist() if n.startswith('classes') and n.endswith('.dex')]))
+          EOF
           echo "mod 外层 dex 数: $(ls mod-outer/classes*.dex | wc -l)"
           echo "inner dex 数: $(ls inner-org/classes*.dex | wc -l)"
           ls mod-outer/classes*.dex | head -25
