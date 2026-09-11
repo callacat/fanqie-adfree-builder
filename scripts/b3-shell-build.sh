@@ -175,6 +175,48 @@ dump_method() {  # $1=file $2=method-name-regex —— 提取方法体
   echo; echo "## round13-I4 z56/l 内 ci2(0x7f061199) 引用行上下文（哪个方法用到文案）"
   grep -n "0x7f061199" "$F2"
   awk 'BEGIN{m=""} /^\.method/{m=$0} /0x7f061199/{print "所在方法: " m}' "$F2" | head -3
+
+  # ===== round16b recon：卡密体系依赖分析（蓝图第一步，patch 前必做）=====
+  echo; echo "## r16b-A1 com/a/a 设备标识链：类文件与公开方法"
+  AA=$(find shell_src -path "*/com/a/a.smali" | head -1)
+  echo "com/a/a = $AA"
+  [ -n "$AA" ] && grep -nE '^\.method' "$AA" | head -20
+  echo "-- com/a/a 引用的外部类（去重 top25）--"
+  [ -n "$AA" ] && grep -oE 'L[a-zA-Z0-9/_$]+;->' "$AA" | sort | uniq -c | sort -rn | head -25
+
+  echo; echo "## r16b-A2 com/a/a 消费方反查（谁调用 Lcom/a/a;->）"
+  grep -rln 'Lcom/a/a;->' shell_src/smali* 2>/dev/null | head -15
+  echo "-- 各调用点命中行 --"
+  for F in $(grep -rln 'Lcom/a/a;->' shell_src/smali* 2>/dev/null | head -6); do
+    echo "### $F"
+    grep -n 'Lcom/a/a;->[a-zA-Z]*(' "$F" | head -5
+  done
+
+  echo; echo "## r16b-A3 sgcore0/libseccore native 注册链"
+  grep -rln 'sgcore0\|registerNatives' shell_src/smali* 2>/dev/null | head -10
+  echo "-- libseccore 导出的 Java_ 符号 --"
+  SECC=$(find shell_src/lib -name "libseccore.so" | head -1)
+  [ -n "$SECC" ] && strings -a "$SECC" | grep -E '^Java_' | head -15
+  echo "-- libsrtool.so Java_ 符号 --"
+  SRT=$(find shell_src/lib -name "libsrtool.so" | head -1)
+  [ -n "$SRT" ] && strings -a "$SRT" | grep -E '^Java_' | head -10
+
+  echo; echo "## r16b-A4 MinePolarisBenefitRepository 语义"
+  MB=$(find shell_src -name "MinePolarisBenefitRepository*.smali" | head -2)
+  echo "文件: $MB"
+  for F in $MB; do echo "### $F 方法清单"; grep -nE '^\.method' "$F" | head -12; done
+
+  echo; echo "## r16b-A5 com/rN 卡密 UI 与 arm/model SDK 入口"
+  echo "-- rN 类清单（前8）--"
+  find shell_src -path "*/rN/*" -name "*.smali" | head -8
+  RN_MAIN=$(find shell_src -path "*/rN/*.smali" | head -1)
+  [ -n "$RN_MAIN" ] && { echo "-- rN 首类头部（判 Activity/Dialog）--"; head -15 "$RN_MAIN"; }
+  echo "-- rN 入口反查（rN 目录外的引用者）--"
+  grep -rln 'com/rN/' shell_src/smali* 2>/dev/null | grep -v '/rN/' | head -8
+  echo "-- arm/model 类清单 --"
+  find shell_src -path "*arm/model*" -name "*.smali" | head -12
+  echo "-- arm/model 消费方（目录外）--"
+  grep -rln 'Larm/model' shell_src/smali* 2>/dev/null | grep -v 'arm/model' | head -8
 } | tee recon-report.txt
 echo "recon 完，recon-report.txt $(wc -l < recon-report.txt) 行"
 if [ "${RECON_ONLY:-false}" = "true" ]; then echo "RECON_ONLY=1，跳过构建"; exit 0; fi
