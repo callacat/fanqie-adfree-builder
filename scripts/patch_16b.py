@@ -167,6 +167,41 @@ for f in all_smali():
         R(f'P5: OK {n} 处 {rp}')
 R(f'P5 合计: {p5_total} 处 NOP（全树命中 {sum(len(v) for v in p5_tree_hits.values())}，额外 {len(extra)} 处未删）')
 
+# ── P7（round17b）: Lcom/n;->Call(Activity) 入口 NOP（v8 真机二轮：P2 打进家族内部
+#    com/n.a 的 rN->c() 致 v0 恒 null，onStart→Call 异步链 null-NPE；掐入口即永不触达残骸）
+#    全树枚举，命中 ⊆ 预期 2 文件才删；集合外命中标不确定点不盲扩（同 P5 纪律）
+EXPECT_P7 = ['com/dragon/read/base/AbsActivity.smali',
+             'com/dragon/read/pages/main/MainFragmentActivity.smali']
+P7_PAT = INV + r'Lcom/n;->Call\(Landroid/app/Activity;\)V'
+p7_tree_hits = {}
+for f in all_smali():
+    rp = os.path.relpath(f, root).replace(os.sep, '/')
+    if rp.endswith('/com/n.smali'):
+        continue  # 类体自身（若含自调）不动，入口=外部调用者
+    src = read(f)
+    lines = [i + 1 for i, l in enumerate(src.splitlines())
+             if re.search(P7_PAT, l) and 'PATCHED_ROUND17B P7' not in l]
+    if lines:
+        p7_tree_hits[rp] = lines
+extra7 = {k: v for k, v in p7_tree_hits.items() if not any(k.endswith(e) for e in EXPECT_P7)}
+for k, v in sorted(p7_tree_hits.items()):
+    R(f'P7-枚举[{"⚠不确定点(不删)" if k in extra7 else "预期"}]: {k} 行 {v}')
+p7_total = 0
+for f in all_smali():
+    rp = os.path.relpath(f, root).replace(os.sep, '/')
+    if not any(rp.endswith(e) for e in EXPECT_P7):
+        continue
+    src = read(f)
+    if 'PATCHED_ROUND17B P7' in src:
+        continue
+    new, n = nop_line(src, P7_PAT, 'P7')
+    if n:
+        new = new.replace('PATCHED P7', 'PATCHED_ROUND17B P7')
+        open(f, 'w', encoding='utf-8').write(new)
+        p7_total += n
+        R(f'P7: OK {n} 处 {rp}')
+R(f'P7 合计: {p7_total} 处 NOP（全树命中 {sum(len(v) for v in p7_tree_hits.values())}，额外 {len(extra7)} 处未删）')
+
 # ── P6: 「当前版本不安全」拦截静态补位（round4 蓝图方法，73368 mod 包重新定位）
 # ① recon：strings.xml 反查含「当前版本不安全」的 string 名 → public.xml 拿资源 ID
 names, ids = [], []
@@ -286,6 +321,7 @@ if p6z == 0:
 # ── 残留扫描（硬门数据，CI 断言用）──
 res_kz7 = 0
 res_sec = 0
+res_ncall = 0
 tok_pat = re.compile(re.escape(sec_token)) if sec_token else None
 for f in all_smali():
     rp = f.replace(os.sep, '/')
@@ -299,9 +335,12 @@ for f in all_smali():
         if tok_pat and re.search(INV, l) and tok_pat.search(l) and '/query/security/' not in rp:
             res_sec += 1
             R(f'RESIDUAL-security: {rp}:{i+1}: {l.strip()[:100]}')
+        if 'Lcom/n;->Call(' in l and re.search(INV, l) and not rp.endswith('/com/n.smali'):
+            res_ncall += 1
+            R(f'RESIDUAL-nCall: {rp}:{i+1}: {l.strip()[:100]}')
 
 print('\n'.join(report))
 print(f'PATCH17_SUMMARY P1={p1_total} P2={p2_total} P3={p3_total} P4={p4_total} '
-      f'P5={p5_total} P6const={sum(p6_ref_files.values())} P6a={p6a} P6b={p6b} P6net={p6net} P6z56={p6z}')
-print(f'PATCH17_RESIDUAL kz7a_external={res_kz7} security_entry={res_sec} extra_p5={len(extra)}')
+      f'P5={p5_total} P7={p7_total} P6const={sum(p6_ref_files.values())} P6a={p6a} P6b={p6b} P6net={p6net} P6z56={p6z}')
+print(f'PATCH17_RESIDUAL kz7a_external={res_kz7} security_entry={res_sec} nCall_external={res_ncall} extra_p5={len(extra)} extra_p7={len(extra7)}')
 print('PATCH_16B_DONE')

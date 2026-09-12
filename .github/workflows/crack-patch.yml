@@ -60,10 +60,12 @@ jobs:
           S=$(grep 'PATCH17_SUMMARY' patch-16b.log)
           echo "$S"
           P4=$(echo "$S" | grep -oP 'P4=\K[0-9]+'); P5=$(echo "$S" | grep -oP 'P5=\K[0-9]+')
+          P7=$(echo "$S" | grep -oP 'P7=\K[0-9]+')
           P6C=$(echo "$S" | grep -oP 'P6const=\K[0-9]+'); P6A=$(echo "$S" | grep -oP 'P6a=\K[0-9]+')
           P6Z=$(echo "$S" | grep -oP 'P6z56=\K[0-9]+')
           [ "$P4" = "1" ] || { echo "!! P4 计数=$P4 预期1"; exit 1; }
           [ "$P5" = "4" ] || { echo "!! P5 计数=$P5 预期4"; exit 1; }
+          [ "$P7" = "2" ] || { echo "!! P7 计数=$P7 预期2（round17b，枚举明细见 log 不确定点）"; exit 1; }
           # P6 硬门：文案 const 引用者、assertIllegalAccess 真身、全屏链至少掐到一处（073368 混淆漂移时全部落空=定位失败，交人工）
           [ $((P6C + P6A + P6Z)) -ge 1 ] || { echo "!! P6 无任何落位（const=$P6C 真身=$P6A z56=$P6Z）——73368 定位失败"; exit 1; }
           grep -E 'P6-recon|P6-const|P6a|P6b|P6net|P6z56|不确定点' patch-16b.log
@@ -90,8 +92,12 @@ jobs:
           # round17 硬门：kz7/a 外部调用残留=0；security/̐;->̎ 入口残留=0（在 query/security 包外部，即非包内自引用）
           L4=$(grep -rn 'invoke-.*Lkz7/a;->a()V' mod_src/smali*/ | grep -v PATCHED | grep -v '/kz7/a\.smali:' | wc -l)
           L5=$(grep -rn 'invoke-.*;->.*Landroid/app/Activity;)V' mod_src/smali*/ | grep 'query/security' | grep -v PATCHED | grep -v '/query/security/' | wc -l)
-          echo "残留(外部): init=$L1 rN=$L2 registerNatives=$L3 kz7a=$L4 secAct=$L5（应全 0；rN 自身内部调用不计）"
-          [ "$L1" = "0" ] && [ "$L2" = "0" ] && [ "$L3" = "0" ] && [ "$L4" = "0" ] && [ "$L5" = "0" ] || { echo '!! 存在未 NOP 的外部活调用'; exit 1; }
+          # round17b 硬门：com/n;->Call 外部残留=0（com/n.smali 类体内自调豁免——入口掐后永不触达）
+          L6=$(grep -rn 'invoke-.*Lcom/n;->Call(' mod_src/smali*/ | grep -v PATCHED | grep -v '/com/n\.smali:' | wc -l)
+          echo "残留(外部): init=$L1 rN=$L2 registerNatives=$L3 kz7a=$L4 secAct=$L5 nCall=$L6（应全 0；rN/n 自身内部调用不计）"
+          [ "$L1" = "0" ] && [ "$L2" = "0" ] && [ "$L3" = "0" ] && [ "$L4" = "0" ] && [ "$L5" = "0" ] && [ "$L6" = "0" ] || { echo '!! 存在未 NOP 的外部活调用'; exit 1; }
+          # round17b：P7 集合外命中必须=0（防家族魔改新增入口静默漏掐）
+          grep -q 'extra_p7=0' patch-16b.log || { echo '!! P7 存在集合外命中（不确定点未处置）'; exit 1; }
           grep 'PATCH17_RESIDUAL' patch-16b.log
 
       - name: apktool b 重建
