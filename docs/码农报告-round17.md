@@ -91,3 +91,46 @@ v7 冷启动 12s FATAL：round16b P3 断了 `sgcore0/SafeLoader->registerNatives
 
 - 再崩且栈含 security/sgcore0 → 枚举漏网入口，拿新栈补位（同 P4/P5 方法）
 - 弹窗仍现 → 看 §3 recon 是否命中短文案第二资源（classes7「当前版本不安全」独立链，round4 蓝图§3.4 预案）
+
+---
+
+# round17b：v8 真机二轮崩溃修复（P7）
+
+> 任务：m-fanqie-019-round17b · 依据：docs/修复蓝图-round17-崩溃修复.md §6（commit ca71c8d674）
+> 日期：2026-09-12 · 产物：Release **v9**（run 34671358636）
+
+## 8. 真机反馈与根因（东哥/老马 ACE5 实测 v8）
+
+**v8 战绩**：冷启动过闪屏（t+20 双进程存活）——**round17 的 P4/P5 修复真机实锤生效，v7 的 `UnsatisfiedLinkError: special_clinit_3_00` 已消失**。
+t+60 新崩溃：
+
+```
+java.lang.NullPointerException: AtomicReference.set(null receiver)
+  at com.n.a(bslxc:1) ← com.cE.a ← com.iH.a(qyfeg:18) ← com.gZ.run ← Handler
+```
+
+根因（蓝图§6 定案）：round16b P2 的全树 NOP 正则 `invoke-… Lcom/rN;->` 无差别打进了卡密家族**内部** `com/n.smali`（`com/n.a` 体内 `invoke-static {}, Lcom/rN;->c()` 被 NOP → v0 恒 null），而残留的 `iget-object … Lcom/rN;->c`（field 读取不是 invoke）不匹配、原样保留 → onStart 触发的 `com/n;->Call(Activity)` 异步链（iH 线程池→gZ→cE→n.a）null receiver NPE。P2/P4/P5 均未掐 Call **入口本身**。
+
+## 9. P7 点位与实现（patch_16b.py round17b 段，commit a0a3a48fc7）
+
+操作：全树枚举 `invoke-static {p0}, Lcom/n;->Call(Landroid/app/Activity;)V`（com/n.smali 类体自身豁免），命中 ⊆ 预期 2 文件才 NOP；集合外命中打印行号标 `⚠不确定点(不删)`（同 P5 纪律）。预期=2：
+
+| 文件 | 位置 | 命中 |
+|---|---|---|
+| `smali_classes21/com/dragon/read/base/AbsActivity.smali` | onStart @2342 | 1 ✅ |
+| `smali_classes22/com/dragon/read/pages/main/MainFragmentActivity.smali` | onStart @56161 | 1 ✅ |
+
+CI 硬门：`P7=2` 断言 ✅ + `nCall_external=0`（CI grep，/com/n.smali 自调豁免）✅ + `extra_p7=0`（枚举无集合外命中）✅。三路齐过。
+
+P2 正则**不改**：家族内部残骸（NOP 掉的 invoke + null field 读）在 Call 入口掐断后永不触达——「宁残骸不崩溃」。不删类体/方法/so，红线不变。
+
+## 10. round17b 核验结果（run 34671358636 全绿，2026-09-12 03:48→03:56 UTC）
+
+- `PATCH17_SUMMARY P1=1 P2=59 P3=34 P4=1 P5=4 P7=2 P6const=3 P6a=1 P6b=1 P6net=1 P6z56=1`（除新增 P7 外与 v8 全持平，无回归）
+- `PATCH17_RESIDUAL kz7a_external=0 security_entry=0 nCall_external=0 extra_p5=0 extra_p7=0`；CI grep 六路残留 `init=0 rN=0 registerNatives=0 kz7a=0 secAct=0 nCall=0` 全 0 ✅
+- 底包 sha256 校验过；apksigner **v1/v2/v3 全 true** ✅
+- Release **v9**（tag 顺延）：`fanqie-73368-clean-signed.apk` sha256 `fb2edc452ba520d9c65682b93c60a8e4cc32b734f766a1c4bfc13d8f0e0a59df`，run https://github.com/callacat/fanqie-adfree-builder/actions/runs/34671358636
+
+## 11. v9 装机判据（移交老马，ACE5；判据=蓝图§6 验证段）
+
+①冷启动 **90s** 无 FATAL（AbsActivity 派生页 onStart 全过=直接验证 P7）②书城内容 ③阅读页正文+零「不安全」拦截（**P6 首次真机验证**）④卡密/气泡 UI 消失。测完 force-stop。
