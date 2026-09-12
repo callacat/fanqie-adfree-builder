@@ -57,3 +57,35 @@ patch 脚本扩展 patch_16b.py（新增 P4/P5 段，幂等 + 残留扫描硬门
 ## 5. 红线
 
 不动 liborgapk.so/inner 原包（签名链）；不删 kz7/a、security/*、com/a 类体（只断调用）；重活全 CI；产物 commit push。
+
+
+---
+
+## 6. round17b 追加：v8 真机第二轮崩溃定案（2026-09-12 11:38，东哥手机 ACE5）
+
+**v8 现象**：冷启动过闪屏（t+20 双进程存活=**P4/P5 修复生效，v7 的 UnsatisfiedLinkError 已消失**），t+60 崩：
+```
+java.lang.NullPointerException: AtomicReference.set(null receiver)
+  at com.n.a(bslxc:1) ← com.cE.a ← com.iH.a(qyfeg:18) ← com.gZ.run ← Handler
+```
+
+**根因（老马静态定案）**：P2 正则 `invoke-\w+ \{[^}]*}, Lcom/rN;->` 全树 NOP 打进了家族内部 com/n.smali——
+`com/n.a` 方法体里 `invoke-static {}, Lcom/rN;->c()` 被 NOP 后 v0 恒 null，
+残留 `iget-object p0, v0, Lcom/rN;->c` + `AtomicReference.set` 未匹配（field 读取不是 invoke）→ null receiver NPE。
+**触发入口** = `Lcom/n;->Call(Landroid/app/Activity;)V`（onStart 时机，异步经 iH 线程池→gZ→cE→n.a）——P2/P4/P5 都没掐这个入口本身。
+
+**外部入口全树枚举实锤（git grep docs/diff-baksmali）**：`Lcom/n;->Call` 仅 2 处，其余 com/n、com/iH 引用全在 classes22/com 家族文件自身内部（内部自调不构成外部入口）：
+1. `changed/classes21/com/dragon/read/base/AbsActivity.smali` → `onStart()` 内 1 行
+2. `added/classes22/com/dragon/read/pages/main/MainFragmentActivity.smali` → `onStart()` 内 1 行（作者魔改版）
+
+### P7 点位表（机械执行）
+
+| # | 文件（apktool 解包路径） | 操作 | 预期计数 |
+|---|---|---|---|
+| P7 | 全树匹配 `invoke-static {p0}, Lcom/n;->Call(Landroid/app/Activity;)V` | NOP（带 PATCHED_ROUND17B P7 标记） | **2**（≠2 即打印上下文，勿盲扩） |
+
+patch_16b.py 增加 P7 段；残留硬门新增：`Lcom/n;->Call` 未 PATCH 残留=0。
+P2 正则不改（家族内部残骸无害，掐了 Call 入口即永不触达）——符合「宁残骸不崩溃」。
+
+### 验证判据（v9，ACE5 真机）
+①冷启动 90s 无 FATAL（AbsActivity 派生页面 onStart 全过）②书城内容 ③阅读页正文+零拦截（P6 首次真机验证）④卡密/气泡 UI 消失。测完 force-stop。
