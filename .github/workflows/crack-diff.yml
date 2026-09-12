@@ -117,7 +117,7 @@ jobs:
           cp work/diff-out/docs/size-audit.txt docs/size-audit.txt
           git config user.name "codery-ci"
           git config user.email "codery-ci@noreply"
-          git add docs/diff-report.md docs/diff-baksmali/ docs/size-audit.txt
+          git add docs/diff-report.md docs/size-audit.txt && git add -f docs/diff-baksmali/
           git commit -m "docs: round16a 全量 dex diff 产物（外层22dex vs 官方原包，机械归档供 A/B/C/D 分类）" || echo "无变更"
           git push origin main
 

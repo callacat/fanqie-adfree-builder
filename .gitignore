@@ -7,3 +7,6 @@ __pycache__/
 *.jks
 decoded/
 work/
+
+# diff 归档可经 fanqie-crack-diff workflow 再生，不留仓 (2026-09-12 收尾)
+docs/diff-baksmali/

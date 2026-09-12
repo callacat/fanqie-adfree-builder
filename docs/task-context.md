@@ -31,7 +31,11 @@
 - [ ] APK 交付 CT107 实测（老马负责实测）
 
 ## Current Status
-⚠️ 2026-09-05 18:37 撞车合流：本文件由兄弟会话线 20260827_194726_274fd6d9 与老马主会话线共同维护。
+🟢 **2026-09-12 终态：v9 已交付 + 真机四判据全过（主任务 recvul3UNi4ptV done，sha256 fb2edc45…）；仓库进入维护态，已完成收尾清理（见文末「2026-09-12 仓库收尾清理记录」）。**
+
+以下为历史各轮 Current Status，按时间倒序保留：
+
+⚠️ 2026-09-05 18:37 撞车合流（历史）：本文件由兄弟会话线 20260827_194726_274fd6d9 与老马主会话线共同维护。
 - 兄弟线产出：research-round1/2/3（round3=DNS/AdGuard 拦截路线 + afwfv/DD-AD 规则源）、apk/fanqie-latest.apk（另一来源样本）、CT107 原版基准实测脚本与实测（原版已装 CT107）。
 - 老马线产出：round1-landscape.md / round2a-apktool.md（gpt-5.6-luna 联网调研）、FanqieHook v0.4.0 源码 hook 点位（github/FanqieHook-src/AdHooks.kt，已验证 73532）、应用宝官方样本 fanqie-73532-yyb.apk（v7a-only 实锤）、CT107 native bridge 判定（libnb 支持 v7a，可装）、方案.md（smali patch 蓝图 §2）。
 - 派单：兄弟线 task-context 曾称「已派单码农」但无 relay 证据（18:30 grep 为空）→ 老马线 18:37 实际补派（sessionKey=task:recvul3UNi4ptV，证据 dispatch-ownership.md + a2a-dispatch-result.txt）。任何一方不得再补派。
@@ -54,3 +58,12 @@
 ## 2026-09-11 18:50 路线切换（东哥拍板）：官方直改搁置 → 破解版底包改造（去后门/广告/弹窗），loop 方式推进
 - 方案：docs/方案-破解版改造.md（唯一事实源）。round16a=外层22dex vs 官方原包全量diff（码农CI）→ 老马审读A/B/C/D分类 → round16b patch构建 → 装机三测。
 - 核心依据：Tinker壳+liborgapk.so官方原包签名未动 → sig_hash天然正确，绕开b3-shell卡死的签名伪装层。
+
+## 2026-09-12 仓库收尾清理记录（码农执行，东哥拍板，指令文档 §1-§2）
+- 任务：recvuYX5lDA9nJ（messageId m-fanqie-020-repo-cleanup）。§3 平台清理（Release/runs 删除）归老马 API，本次未动。
+- 1a) `git rm -r docs/diff-baksmali/`：移出 30.3 万文件全量 dex diff 归档（仓库体积 99%）。可经 Actions → fanqie-crack-diff 重跑再生（samples 底包在）。`.gitignore` 追加 `docs/diff-baksmali/` 防误重提交；同步把 crack-diff.yml 产物入库步骤改为 `git add -f docs/diff-baksmali/`（否则重跑时 add 失败）。
+- 1b) 删搁置线 workflow：build.yml / v6-lspatch.yml / b3-shell.yml（删前 git grep 实锤：现役 crack-diff.yml/crack-patch.yml 零引用；待删脚本仅被待删 yml 引用）。
+- 1c) 删搁置线专属脚本：patch_fanqie.py / patch_illegal.py / patch_stub.py / b3-shell-build.sh。现役脚本保留：crack_diff.py、patch_16b.py、extract_cert.py、gen_builtin_cert.py。
+- 2) README.md 重写终态（唯一路线+版本谱系+再生路径+红线）；旧线文档 21 件 `git mv` 入 docs/archive/（历史证据不销毁，git 历史保留）；docs/ 索引表按现存文件重写。
+- 红线遵守：samples Release 未动、v9 Release 未动、全部 tag 未动、现役两条 workflow 触发链未动、APK 未入 git。
+- 验证：git ls-files 303347 → 38（<100 达标）；工作树 clean 后 commit push（数字见 commit message）。

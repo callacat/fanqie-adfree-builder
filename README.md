@@ -1,26 +1,50 @@
-# fanqie-adfree-builder
+# fanqie-builder
 
-番茄免费小说 7.3.5.32（com.dragon.read）去广告重打包 CI（方案 §6 v2 执行位）。
+番茄免费小说（com.dragon.read）破解版净化改造 CI 仓库。**当前状态：维护态**——v9 已交付并通过真机四判据验收（2026-09-12），仓库按东哥 9-12 指令完成收尾清理，仅保留唯一现役路线的资产。
 
-- **仅 workflow + patch 脚本 + 文档**；样本 APK / 解码树 / 签名 keystore 严禁提交（版权物与秘密，仅存在于 runner 运行时磁盘与 artifacts，retention 3 天）。
-- 触发：Actions → fanqie-adfree-build → Run workflow（workflow_dispatch）。
-- 流程：CI 直下样本（sha256 强校验）→ `apktool d -r` → `scripts/patch_fanqie.py`（方案 §2 点位表，产出 find/未find 报告 + unified diff）→ `apktool b` → `zipalign -P 16` → `apksigner` v1+v2+v3 → verify → artifacts + **Release**。
-- 签名：首次运行生成 keystore 并作为 artifact 吐出，回填 repo secrets（`KEYSTORE_BASE64` / `KEYSTORE_PASSWORD` / `KEY_ALIAS` / `KEY_PASSWORD`）保证后续构建签名稳定。
-- patch 点位蓝图：FanqieHook v0.4.0（LSPosed hook 静态翻译），依据 `docs/方案.md` §2。
-- 「当前版本不安全」弹窗修复：服务端业务 code=110 触发本地 Toast（非签名自检），3 点位 patch 见 `docs/修复蓝图-不安全弹窗.md`，round2 构建已含。
+## 唯一路线：破解版底包净化改造
 
-## docs/ 项目档案
+在破解版底包（外层 Tinker 壳 + `liborgapk.so` 内嵌官方原包，签名未动 → sig_hash 天然正确）上做静态 smali patch：去后门、去广告、修崩溃、掐弹窗。方案唯一事实源：`docs/方案-破解版改造.md`。
+
+### 版本谱系（一句话）
+
+round16a 外层 22dex 全量 diff → round16b 卡密链 P1-P3 patch → round17 P4/P5 崩溃入口修复 + P6 弹窗拦截 → round17b P7 掐 `com/n;->Call(Activity)` 双入口 → **v9 真机四判据全过（最终交付版）**。
+
+### 现役工具链（GitHub Actions，本机禁止跑重活）
+
+| Workflow | 用途 | 触发 |
+|---|---|---|
+| `fanqie-crack-diff` | 底包 vs 官方原包全量 dex/baksmali diff，产物回 push 供分类审读 | workflow_dispatch |
+| `fanqie-crack-patch` | 按点位表 patch → 重打包 → zipalign → apksigner → Release | workflow_dispatch |
+
+现役脚本：`scripts/crack_diff.py`、`scripts/patch_16b.py`、`scripts/extract_cert.py`、`scripts/gen_builtin_cert.py`。
+
+### diff 归档再生路径
+
+`docs/diff-baksmali/`（约 30 万文件、381MB 仓库体积的 99%）已于 2026-09-12 移出 git 树并加入 `.gitignore`。需要时：**Actions → fanqie-crack-diff → 重跑**即可再生（samples 底包 Release 在，依赖 `gh release download samples`）。
+
+### 红线
+
+- 仅供个人本地研究，**不分发**。
+- 样本 APK、解码树、签名 keystore **严禁入 git**（已在 `.gitignore`；版权物与秘密仅存在于 runner 运行时）。
+- **samples Release 禁删**：两条现役 workflow 运行时依赖其底包；v9 Release = 最终交付物；全部 tag 保留（报告引用锚点）。
+- CT110 本机只做轻量操作与产物核验，反编译/重打包/签名一律走 CI。
+
+## docs/ 索引（现存）
 
 | 文件 | 内容 |
 |---|---|
-| 方案.md | 总方案（v1 smali patch 蓝图 + v2 CI 执行位 + 签名分级应对） |
-| 修复蓝图-不安全弹窗.md | 「不安全」弹窗机制实锤（code=110 链路）+ 3 点位 patch 蓝图 |
-| 构建报告-round1.md / -round2.md | 码农两轮构建自证报告（点位回读、签名验证） |
-| smali-diff-round1.patch / -round2.patch | 两轮 smali diff 留档 |
-| research-round4-unsafe-prompt.md | gpt-5.6-luna 联网调研（弹窗机制社区证据） |
-| task-context.md | 任务上下文与进度（跨会话状态载体） |
+| 方案-破解版改造.md | 现役唯一路线方案（事实源） |
+| 修复蓝图-破解版改造.md | 卡密链/崩溃/弹窗 patch 点位蓝图 |
+| 修复蓝图-round17-崩溃修复.md | round17 崩溃修复点位 |
+| round16b-依赖分析.md | 卡密链依赖分析 |
+| 码农报告-round16a.md | 16a 全量 diff 报告 |
+| 码农报告-round17.md | 17/17b 构建与核验报告（v9 定案） |
+| diff-report.md / size-audit.txt | 16a diff 产物摘要（全量 baksmali 走再生路径） |
+| task-context.md | 任务跨会话上下文（含收尾清理记录） |
+| archive/ | 旧线历史证据归档（官方直改线 round1-15、LSPosed/b3-shell 搁置线、smali diff 留档等 21 件，不销毁） |
 
 ## Releases
 
-- 构建产物 APK 发布到 GitHub Release（private 仓，仅协作者可见可下载）。
-- **仅供东哥本地个人研究，不分发。**
+- **v9**：最终交付 APK（真机四判据全过，sha256 fb2edc45…）。
+- **samples**：底包（`fanqie-73368-mod-218M.apk` + `inner-73368-orig.apk`）——CI 运行时依赖，禁删。
