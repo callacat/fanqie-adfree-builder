@@ -50,13 +50,23 @@ jobs:
           java -jar /usr/local/bin/apktool.jar d -f -o mod_src fanqie-73368-mod-218M.apk
           echo "smali 树: $(find mod_src -name '*.smali' | wc -l) 文件"
 
-      - name: patch（P1 init NOP / P2 rN 调用点 NOP / P3 registerNatives NOP）
+      - name: patch（r16b P1-P3 + r17 P4/P5 掐入口 + P6 弹窗拦截静态补位）
         run: |
           cd work
           python3 ../scripts/patch_16b.py "$PWD/mod_src" | tee patch-16b.log
           grep -q 'PATCH_16B_DONE' patch-16b.log || { echo '!! patch 脚本未正常结束'; exit 1; }
-          # P1 允许 WARN（首跑实锤 init 调用可能内联/不在 stub，标注不确定点交真机验证），P2/P3 必须命中
           grep -q 'P2-rN 合计' patch-16b.log && ! grep -q 'P3-registerNatives: WARN(0 命中' patch-16b.log || { echo '!! P2/P3 关键点位未命中'; exit 1; }
+          echo "== round17 计数断言 =="
+          S=$(grep 'PATCH17_SUMMARY' patch-16b.log)
+          echo "$S"
+          P4=$(echo "$S" | grep -oP 'P4=\K[0-9]+'); P5=$(echo "$S" | grep -oP 'P5=\K[0-9]+')
+          P6C=$(echo "$S" | grep -oP 'P6const=\K[0-9]+'); P6A=$(echo "$S" | grep -oP 'P6a=\K[0-9]+')
+          P6Z=$(echo "$S" | grep -oP 'P6z56=\K[0-9]+')
+          [ "$P4" = "1" ] || { echo "!! P4 计数=$P4 预期1"; exit 1; }
+          [ "$P5" = "4" ] || { echo "!! P5 计数=$P5 预期4"; exit 1; }
+          # P6 硬门：文案 const 引用者、assertIllegalAccess 真身、全屏链至少掐到一处（073368 混淆漂移时全部落空=定位失败，交人工）
+          [ $((P6C + P6A + P6Z)) -ge 1 ] || { echo "!! P6 无任何落位（const=$P6C 真身=$P6A z56=$P6Z）——73368 定位失败"; exit 1; }
+          grep -E 'P6-recon|P6-const|P6a|P6b|P6net|P6z56|不确定点' patch-16b.log
           # mod 资源脏条目清理：作者重打包遗留 public.xml invalid* 类型（aapt1 容忍 aapt2 拒绝，五跑实锤 54479 行）
           sed -i 's|<public type="invalid[0-9]*" |<public type="ignore_me" |g' mod_src/res/values/public.xml
           sed -i '/type="ignore_me"/d' mod_src/res/values/public.xml
@@ -77,8 +87,12 @@ jobs:
           L1=$(grep -rn 'invoke-.*Lcom/a/a;->init()V' mod_src/smali*/ | grep -v PATCHED | wc -l)
           L2=$(grep -rn 'invoke-.*Lcom/rN;->' mod_src/smali*/ | grep -v PATCHED | grep -v 'com/rN\.smali:' | wc -l)
           L3=$(grep -rn 'invoke-.*Lsgcore0/SafeLoader;->registerNativesForClass' mod_src/smali*/ | grep -v PATCHED | wc -l)
-          echo "残留(外部): init=$L1 rN=$L2 registerNatives=$L3（应全 0；rN 自身内部调用不计）"
-          [ "$L1" = "0" ] && [ "$L2" = "0" ] && [ "$L3" = "0" ] || { echo '!! 存在未 NOP 的外部活调用'; exit 1; }
+          # round17 硬门：kz7/a 外部调用残留=0；security/̐;->̎ 入口残留=0（在 query/security 包外部，即非包内自引用）
+          L4=$(grep -rn 'invoke-.*Lkz7/a;->a()V' mod_src/smali*/ | grep -v PATCHED | grep -v '/kz7/a\.smali:' | wc -l)
+          L5=$(grep -rn 'invoke-.*;->.*Landroid/app/Activity;)V' mod_src/smali*/ | grep 'query/security' | grep -v PATCHED | grep -v '/query/security/' | wc -l)
+          echo "残留(外部): init=$L1 rN=$L2 registerNatives=$L3 kz7a=$L4 secAct=$L5（应全 0；rN 自身内部调用不计）"
+          [ "$L1" = "0" ] && [ "$L2" = "0" ] && [ "$L3" = "0" ] && [ "$L4" = "0" ] && [ "$L5" = "0" ] || { echo '!! 存在未 NOP 的外部活调用'; exit 1; }
+          grep 'PATCH17_RESIDUAL' patch-16b.log
 
       - name: apktool b 重建
         run: |
@@ -103,7 +117,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}
-          name: 番茄净化 round16b（破解版底包·卡密体系去除）
+          name: 番茄净化 round17（崩溃修复 P4/P5 + 弹窗拦截补位 P6）
           body_path: work/sha256-16b.txt
           files: |
             work/fanqie-73368-clean-signed.apk
